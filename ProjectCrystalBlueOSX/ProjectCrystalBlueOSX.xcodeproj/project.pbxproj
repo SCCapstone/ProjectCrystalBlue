@@ -1,0 +1,479 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
+		D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD03181C1FC600F762A3 /* InfoPlist.strings */; };
+		D729BD07181C1FC600F762A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD06181C1FC600F762A3 /* main.m */; };
+		D729BD0B181C1FC600F762A3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D729BD09181C1FC600F762A3 /* Credits.rtf */; };
+		D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD0D181C1FC600F762A3 /* AppDelegate.m */; };
+		D729BD11181C1FC600F762A3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D729BD0F181C1FC600F762A3 /* MainMenu.xib */; };
+		D729BD13181C1FC600F762A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D729BD12181C1FC600F762A3 /* Images.xcassets */; };
+		D729BD1A181C1FC600F762A3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD19181C1FC600F762A3 /* XCTest.framework */; };
+		D729BD1B181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
+		D729BD23181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD21181C1FC600F762A3 /* InfoPlist.strings */; };
+		D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D729BD1C181C1FC600F762A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D729BCEF181C1FC600F762A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D729BCF6181C1FC600F762A3;
+			remoteInfo = ProjectCrystalBlueOSX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D729BCF7181C1FC600F762A3 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D729BCFA181C1FC600F762A3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D729BCFD181C1FC600F762A3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D729BCFE181C1FC600F762A3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D729BCFF181C1FC600F762A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D729BD02181C1FC600F762A3 /* ProjectCrystalBlueOSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSX-Info.plist"; sourceTree = "<group>"; };
+		D729BD04181C1FC600F762A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D729BD06181C1FC600F762A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D729BD08181C1FC600F762A3 /* ProjectCrystalBlueOSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjectCrystalBlueOSX-Prefix.pch"; sourceTree = "<group>"; };
+		D729BD0A181C1FC600F762A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		D729BD0C181C1FC600F762A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D729BD0D181C1FC600F762A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D729BD10181C1FC600F762A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D729BD12181C1FC600F762A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D729BD18181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectCrystalBlueOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D729BD19181C1FC600F762A3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D729BD20181C1FC600F762A3 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
+		D729BD22181C1FC600F762A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D729BCF4181C1FC600F762A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D729BD15181C1FC600F762A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D729BD1B181C1FC600F762A3 /* Cocoa.framework in Frameworks */,
+				D729BD1A181C1FC600F762A3 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D729BCEE181C1FC600F762A3 = {
+			isa = PBXGroup;
+			children = (
+				D729BD00181C1FC600F762A3 /* ProjectCrystalBlueOSX */,
+				D729BD1E181C1FC600F762A3 /* ProjectCrystalBlueOSXTests */,
+				D729BCF9181C1FC600F762A3 /* Frameworks */,
+				D729BCF8181C1FC600F762A3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D729BCF8181C1FC600F762A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D729BCF7181C1FC600F762A3 /* ProjectCrystalBlueOSX.app */,
+				D729BD18181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D729BCF9181C1FC600F762A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D729BCFA181C1FC600F762A3 /* Cocoa.framework */,
+				D729BD19181C1FC600F762A3 /* XCTest.framework */,
+				D729BCFC181C1FC600F762A3 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D729BCFC181C1FC600F762A3 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D729BCFD181C1FC600F762A3 /* AppKit.framework */,
+				D729BCFE181C1FC600F762A3 /* CoreData.framework */,
+				D729BCFF181C1FC600F762A3 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		D729BD00181C1FC600F762A3 /* ProjectCrystalBlueOSX */ = {
+			isa = PBXGroup;
+			children = (
+				D729BD0C181C1FC600F762A3 /* AppDelegate.h */,
+				D729BD0D181C1FC600F762A3 /* AppDelegate.m */,
+				D729BD0F181C1FC600F762A3 /* MainMenu.xib */,
+				D729BD12181C1FC600F762A3 /* Images.xcassets */,
+				D729BD01181C1FC600F762A3 /* Supporting Files */,
+			);
+			path = ProjectCrystalBlueOSX;
+			sourceTree = "<group>";
+		};
+		D729BD01181C1FC600F762A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D729BD02181C1FC600F762A3 /* ProjectCrystalBlueOSX-Info.plist */,
+				D729BD03181C1FC600F762A3 /* InfoPlist.strings */,
+				D729BD06181C1FC600F762A3 /* main.m */,
+				D729BD08181C1FC600F762A3 /* ProjectCrystalBlueOSX-Prefix.pch */,
+				D729BD09181C1FC600F762A3 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D729BD1E181C1FC600F762A3 /* ProjectCrystalBlueOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */,
+				D729BD1F181C1FC600F762A3 /* Supporting Files */,
+			);
+			path = ProjectCrystalBlueOSXTests;
+			sourceTree = "<group>";
+		};
+		D729BD1F181C1FC600F762A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D729BD20181C1FC600F762A3 /* ProjectCrystalBlueOSXTests-Info.plist */,
+				D729BD21181C1FC600F762A3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D729BCF6181C1FC600F762A3 /* ProjectCrystalBlueOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D729BD28181C1FC600F762A3 /* Build configuration list for PBXNativeTarget "ProjectCrystalBlueOSX" */;
+			buildPhases = (
+				D729BCF3181C1FC600F762A3 /* Sources */,
+				D729BCF4181C1FC600F762A3 /* Frameworks */,
+				D729BCF5181C1FC600F762A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProjectCrystalBlueOSX;
+			productName = ProjectCrystalBlueOSX;
+			productReference = D729BCF7181C1FC600F762A3 /* ProjectCrystalBlueOSX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D729BD17181C1FC600F762A3 /* ProjectCrystalBlueOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D729BD2B181C1FC600F762A3 /* Build configuration list for PBXNativeTarget "ProjectCrystalBlueOSXTests" */;
+			buildPhases = (
+				D729BD14181C1FC600F762A3 /* Sources */,
+				D729BD15181C1FC600F762A3 /* Frameworks */,
+				D729BD16181C1FC600F762A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D729BD1D181C1FC600F762A3 /* PBXTargetDependency */,
+			);
+			name = ProjectCrystalBlueOSXTests;
+			productName = ProjectCrystalBlueOSXTests;
+			productReference = D729BD18181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D729BCEF181C1FC600F762A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Logan Hood";
+				TargetAttributes = {
+					D729BD17181C1FC600F762A3 = {
+						TestTargetID = D729BCF6181C1FC600F762A3;
+					};
+				};
+			};
+			buildConfigurationList = D729BCF2181C1FC600F762A3 /* Build configuration list for PBXProject "ProjectCrystalBlueOSX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D729BCEE181C1FC600F762A3;
+			productRefGroup = D729BCF8181C1FC600F762A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D729BCF6181C1FC600F762A3 /* ProjectCrystalBlueOSX */,
+				D729BD17181C1FC600F762A3 /* ProjectCrystalBlueOSXTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D729BCF5181C1FC600F762A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */,
+				D729BD13181C1FC600F762A3 /* Images.xcassets in Resources */,
+				D729BD0B181C1FC600F762A3 /* Credits.rtf in Resources */,
+				D729BD11181C1FC600F762A3 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D729BD16181C1FC600F762A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D729BD23181C1FC600F762A3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D729BCF3181C1FC600F762A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
+				D729BD07181C1FC600F762A3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D729BD14181C1FC600F762A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D729BD1D181C1FC600F762A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D729BCF6181C1FC600F762A3 /* ProjectCrystalBlueOSX */;
+			targetProxy = D729BD1C181C1FC600F762A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D729BD03181C1FC600F762A3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D729BD04181C1FC600F762A3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D729BD09181C1FC600F762A3 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D729BD0A181C1FC600F762A3 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		D729BD0F181C1FC600F762A3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D729BD10181C1FC600F762A3 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		D729BD21181C1FC600F762A3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D729BD22181C1FC600F762A3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D729BD26181C1FC600F762A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D729BD27181C1FC600F762A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D729BD29181C1FC600F762A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
+				INFOPLIST_FILE = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D729BD2A181C1FC600F762A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
+				INFOPLIST_FILE = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D729BD2C181C1FC600F762A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ProjectCrystalBlueOSX.app/Contents/MacOS/ProjectCrystalBlueOSX";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ProjectCrystalBlueOSXTests/ProjectCrystalBlueOSXTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		D729BD2D181C1FC600F762A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ProjectCrystalBlueOSX.app/Contents/MacOS/ProjectCrystalBlueOSX";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
+				INFOPLIST_FILE = "ProjectCrystalBlueOSXTests/ProjectCrystalBlueOSXTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D729BCF2181C1FC600F762A3 /* Build configuration list for PBXProject "ProjectCrystalBlueOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D729BD26181C1FC600F762A3 /* Debug */,
+				D729BD27181C1FC600F762A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D729BD28181C1FC600F762A3 /* Build configuration list for PBXNativeTarget "ProjectCrystalBlueOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D729BD29181C1FC600F762A3 /* Debug */,
+				D729BD2A181C1FC600F762A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D729BD2B181C1FC600F762A3 /* Build configuration list for PBXNativeTarget "ProjectCrystalBlueOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D729BD2C181C1FC600F762A3 /* Debug */,
+				D729BD2D181C1FC600F762A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D729BCEF181C1FC600F762A3 /* Project object */;
+}
