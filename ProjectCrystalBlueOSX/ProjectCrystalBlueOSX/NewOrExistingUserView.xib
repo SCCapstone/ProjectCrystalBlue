@@ -30,6 +30,9 @@
                     <buttonCell key="cell" type="squareTextured" title="Log-in" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dUS-Fv-GfR">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
+                        <connections>
+                            <action selector="onClick:" target="-2" id="NEw-hv-VJG"/>
+                        </connections>
                     </buttonCell>
                 </button>
             </subviews>

@@ -1,22 +1,22 @@
 //
-//  NewOrExistingUserView.m
+//  ExistingUserView.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 11/5/13.
 //  Copyright (c) 2013 Logan Hood. All rights reserved.
 //
 
-#import "NewOrExistingUserView.h"
+#import "ExistingUserView.h"
 
-@interface NewOrExistingUserView ()
+@interface ExistingUserView ()
 
 @end
 
-@implementation NewOrExistingUserView
+@implementation ExistingUserView
 
 - (id)initWithNibNameAndViewSelector:(NSString *)nibNameOrNil
                               bundle:(NSBundle *)nibBundleOrNil
-                        viewSelector:(ViewSelector *)viewSelectorSelf;
+                        viewSelector:(ViewSelector *)viewSelectorSelf
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -24,7 +24,6 @@
     }
     return self;
 }
-
 - (IBAction)onClick:(id)sender {
     [self.viewSelector setView:sender];
 }

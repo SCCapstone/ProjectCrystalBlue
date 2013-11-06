@@ -1,5 +1,5 @@
 //
-//  NewOrExistingUserView.h
+//  ExistingUserView.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 11/5/13.
@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "ViewSelector.h"
 
-@interface NewOrExistingUserView : NSViewController
+@interface ExistingUserView : NSViewController
 
 @property (weak) ViewSelector *viewSelector;
 
