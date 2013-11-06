@@ -18,6 +18,9 @@
 		D729BD1B181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD23181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD21181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */; };
+		D7A012281829D5C200CADA00 /* ViewSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A012271829D5C200CADA00 /* ViewSelector.m */; };
+		D7A0122E1829D76600CADA00 /* NewOrExistingUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A0122C1829D76600CADA00 /* NewOrExistingUserView.m */; };
+		D7A0122F1829D76600CADA00 /* NewOrExistingUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A0122D1829D76600CADA00 /* NewOrExistingUserView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,11 @@
 		D729BD20181C1FC600F762A3 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
 		D729BD22181C1FC600F762A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
+		D7A012261829D5C200CADA00 /* ViewSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewSelector.h; sourceTree = "<group>"; };
+		D7A012271829D5C200CADA00 /* ViewSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewSelector.m; sourceTree = "<group>"; };
+		D7A0122B1829D76600CADA00 /* NewOrExistingUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrExistingUserView.h; sourceTree = "<group>"; };
+		D7A0122C1829D76600CADA00 /* NewOrExistingUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrExistingUserView.m; sourceTree = "<group>"; };
+		D7A0122D1829D76600CADA00 /* NewOrExistingUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewOrExistingUserView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +123,12 @@
 		D729BD00181C1FC600F762A3 /* ProjectCrystalBlueOSX */ = {
 			isa = PBXGroup;
 			children = (
+				D7A012291829D70100CADA00 /* Views */,
 				D729BD0C181C1FC600F762A3 /* AppDelegate.h */,
 				D729BD0D181C1FC600F762A3 /* AppDelegate.m */,
 				D729BD0F181C1FC600F762A3 /* MainMenu.xib */,
+				D7A012261829D5C200CADA00 /* ViewSelector.h */,
+				D7A012271829D5C200CADA00 /* ViewSelector.m */,
 				D729BD12181C1FC600F762A3 /* Images.xcassets */,
 				D729BD01181C1FC600F762A3 /* Supporting Files */,
 			);
@@ -152,6 +163,24 @@
 				D729BD21181C1FC600F762A3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D7A012291829D70100CADA00 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7A0122A1829D70A00CADA00 /* Log-in */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D7A0122A1829D70A00CADA00 /* Log-in */ = {
+			isa = PBXGroup;
+			children = (
+				D7A0122B1829D76600CADA00 /* NewOrExistingUserView.h */,
+				D7A0122C1829D76600CADA00 /* NewOrExistingUserView.m */,
+				D7A0122D1829D76600CADA00 /* NewOrExistingUserView.xib */,
+			);
+			name = "Log-in";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */,
+				D7A0122F1829D76600CADA00 /* NewOrExistingUserView.xib in Resources */,
 				D729BD13181C1FC600F762A3 /* Images.xcassets in Resources */,
 				D729BD0B181C1FC600F762A3 /* Credits.rtf in Resources */,
 				D729BD11181C1FC600F762A3 /* MainMenu.xib in Resources */,
@@ -252,7 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7A012281829D5C200CADA00 /* ViewSelector.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
+				D7A0122E1829D76600CADA00 /* NewOrExistingUserView.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +496,7 @@
 				D729BD2A181C1FC600F762A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D729BD2B181C1FC600F762A3 /* Build configuration list for PBXNativeTarget "ProjectCrystalBlueOSXTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +505,7 @@
 				D729BD2D181C1FC600F762A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
