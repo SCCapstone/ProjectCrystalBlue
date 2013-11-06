@@ -25,7 +25,11 @@
     return self;
 }
 
-- (IBAction)onClick:(id)sender {
+- (IBAction)onExistingUserClick:(id)sender {
+    [self.viewSelector setView:sender];
+}
+
+- (IBAction)onNewUserClick:(id)sender {
     [self.viewSelector setView:sender];
 }
 

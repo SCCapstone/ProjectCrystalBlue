@@ -23,6 +23,8 @@
 		D7A0122F1829D76600CADA00 /* NewOrExistingUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A0122D1829D76600CADA00 /* NewOrExistingUserView.xib */; };
 		D7A012331829E21300CADA00 /* ExistingUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A012311829E21300CADA00 /* ExistingUserView.m */; };
 		D7A012341829E21300CADA00 /* ExistingUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A012321829E21300CADA00 /* ExistingUserView.xib */; };
+		D7A012381829ECC900CADA00 /* NewUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A012361829ECC900CADA00 /* NewUserView.m */; };
+		D7A012391829ECC900CADA00 /* NewUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A012371829ECC900CADA00 /* NewUserView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,9 @@
 		D7A012301829E21300CADA00 /* ExistingUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExistingUserView.h; sourceTree = "<group>"; };
 		D7A012311829E21300CADA00 /* ExistingUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExistingUserView.m; sourceTree = "<group>"; };
 		D7A012321829E21300CADA00 /* ExistingUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExistingUserView.xib; sourceTree = "<group>"; };
+		D7A012351829ECC900CADA00 /* NewUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserView.h; sourceTree = "<group>"; };
+		D7A012361829ECC900CADA00 /* NewUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserView.m; sourceTree = "<group>"; };
+		D7A012371829ECC900CADA00 /* NewUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewUserView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +137,6 @@
 				D729BD0C181C1FC600F762A3 /* AppDelegate.h */,
 				D729BD0D181C1FC600F762A3 /* AppDelegate.m */,
 				D729BD0F181C1FC600F762A3 /* MainMenu.xib */,
-				D7A012261829D5C200CADA00 /* ViewSelector.h */,
-				D7A012271829D5C200CADA00 /* ViewSelector.m */,
 				D729BD12181C1FC600F762A3 /* Images.xcassets */,
 				D729BD01181C1FC600F762A3 /* Supporting Files */,
 			);
@@ -173,6 +176,8 @@
 		D7A012291829D70100CADA00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D7A012261829D5C200CADA00 /* ViewSelector.h */,
+				D7A012271829D5C200CADA00 /* ViewSelector.m */,
 				D7A0122A1829D70A00CADA00 /* Log-in */,
 			);
 			name = Views;
@@ -187,6 +192,9 @@
 				D7A012301829E21300CADA00 /* ExistingUserView.h */,
 				D7A012311829E21300CADA00 /* ExistingUserView.m */,
 				D7A012321829E21300CADA00 /* ExistingUserView.xib */,
+				D7A012351829ECC900CADA00 /* NewUserView.h */,
+				D7A012361829ECC900CADA00 /* NewUserView.m */,
+				D7A012371829ECC900CADA00 /* NewUserView.xib */,
 			);
 			name = "Log-in";
 			sourceTree = "<group>";
@@ -270,6 +278,7 @@
 				D7A012341829E21300CADA00 /* ExistingUserView.xib in Resources */,
 				D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */,
 				D7A0122F1829D76600CADA00 /* NewOrExistingUserView.xib in Resources */,
+				D7A012391829ECC900CADA00 /* NewUserView.xib in Resources */,
 				D729BD13181C1FC600F762A3 /* Images.xcassets in Resources */,
 				D729BD0B181C1FC600F762A3 /* Credits.rtf in Resources */,
 				D729BD11181C1FC600F762A3 /* MainMenu.xib in Resources */,
@@ -295,6 +304,7 @@
 				D7A012281829D5C200CADA00 /* ViewSelector.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
 				D7A0122E1829D76600CADA00 /* NewOrExistingUserView.m in Sources */,
+				D7A012381829ECC900CADA00 /* NewUserView.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

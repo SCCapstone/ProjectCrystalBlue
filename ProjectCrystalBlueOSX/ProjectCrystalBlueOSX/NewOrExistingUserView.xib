@@ -23,6 +23,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="onNewUserClick:" target="-2" id="b59-bp-lhr"/>
+                    </connections>
                 </button>
                 <button identifier="ExistingUserView" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GyB-Hv-gjv">
                     <rect key="frame" x="185" y="123" width="110" height="25"/>
@@ -30,10 +33,10 @@
                     <buttonCell key="cell" type="squareTextured" title="Log-in" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dUS-Fv-GfR">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
-                        <connections>
-                            <action selector="onClick:" target="-2" id="NEw-hv-VJG"/>
-                        </connections>
                     </buttonCell>
+                    <connections>
+                        <action selector="onExistingUserClick:" target="-2" id="eA9-F2-Nqa"/>
+                    </connections>
                 </button>
             </subviews>
         </customView>

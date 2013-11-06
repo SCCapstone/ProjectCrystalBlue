@@ -13,6 +13,7 @@
 #import "ViewSelector.h"
 #import "NewOrExistingUserView.h"
 #import "ExistingUserView.h"
+#import "NewUserView.h"
 
 @implementation ViewSelector
 
@@ -24,6 +25,7 @@
 // Names of all the .xib files for each view in the application.
 NSString* const NEW_OR_EXISTING_USER_VIEW = @"NewOrExistingUserView";
 NSString* const EXISTING_USER_VIEW = @"ExistingUserView";
+NSString* const NEW_USER_VIEW = @"NewUserView";
 
 // The view that will be loaded at startup.
 NSString* const STARTUP_VIEW = @"NewOrExistingUserView";
@@ -50,6 +52,11 @@ NSString* const STARTUP_VIEW = @"NewOrExistingUserView";
                                       viewSelector:self];
     } else if ([EXISTING_USER_VIEW isEqualToString:(identifier)]) {
         self.currentViewController = [[ExistingUserView alloc]
+                                      initWithNibNameAndViewSelector:identifier
+                                      bundle:nil
+                                      viewSelector:self];
+    } else if ([NEW_USER_VIEW isEqualToString:(identifier)]) {
+        self.currentViewController = [[NewUserView alloc]
                                       initWithNibNameAndViewSelector:identifier
                                       bundle:nil
                                       viewSelector:self];
