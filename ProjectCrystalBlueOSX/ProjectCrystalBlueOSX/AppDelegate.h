@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  ProjectCrystalBlueOSX
 //
-//  Created by Logan Hood on 10/26/13.
+//  Created by Logan Hood on 10/26/13. 
 //  Copyright (c) 2013 Logan Hood. All rights reserved.
 //
 
