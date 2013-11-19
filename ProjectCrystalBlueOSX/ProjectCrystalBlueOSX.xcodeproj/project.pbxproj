@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0715591183B4BFE00147694 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0715590183B4BFE00147694 /* Sample.m */; };
 		D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD03181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD07181C1FC600F762A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD06181C1FC600F762A3 /* main.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D071558F183B4BFE00147694 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
+		D0715590183B4BFE00147694 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
 		D729BCF7181C1FC600F762A3 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BCFA181C1FC600F762A3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D729BCFD181C1FC600F762A3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -91,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D071558E183B4BEA00147694 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D071558F183B4BFE00147694 /* Sample.h */,
+				D0715590183B4BFE00147694 /* Sample.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		D729BCEE181C1FC600F762A3 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +145,7 @@
 		D729BD00181C1FC600F762A3 /* ProjectCrystalBlueOSX */ = {
 			isa = PBXGroup;
 			children = (
+				D071558E183B4BEA00147694 /* Models */,
 				D7A012291829D70100CADA00 /* Views */,
 				D729BD0C181C1FC600F762A3 /* AppDelegate.h */,
 				D729BD0D181C1FC600F762A3 /* AppDelegate.m */,
@@ -306,6 +319,7 @@
 				D7A0122E1829D76600CADA00 /* NewOrExistingUserView.m in Sources */,
 				D7A012381829ECC900CADA00 /* NewUserView.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
+				D0715591183B4BFE00147694 /* Sample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
