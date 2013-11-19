@@ -11,7 +11,7 @@
 @interface Sample : NSObject
 
 @property(atomic) NSString* rockType;
-@property(atomic) int identifier;
+@property(atomic) int rockId;
 @property(atomic) NSString* coordinates;
 @property(atomic) bool isPulverized;
 

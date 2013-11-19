@@ -14,6 +14,7 @@
 #import "NewOrExistingUserView.h"
 #import "ExistingUserView.h"
 #import "NewUserView.h"
+#import "LibraryView.h"
 
 @implementation ViewSelector
 
@@ -26,6 +27,7 @@
 NSString* const NEW_OR_EXISTING_USER_VIEW = @"NewOrExistingUserView";
 NSString* const EXISTING_USER_VIEW = @"ExistingUserView";
 NSString* const NEW_USER_VIEW = @"NewUserView";
+NSString* const LIBRARY_VIEW = @"LibraryView";
 
 // The view that will be loaded at startup.
 NSString* const STARTUP_VIEW = @"NewOrExistingUserView";
@@ -57,6 +59,11 @@ NSString* const STARTUP_VIEW = @"NewOrExistingUserView";
                                       viewSelector:self];
     } else if ([NEW_USER_VIEW isEqualToString:(identifier)]) {
         self.currentViewController = [[NewUserView alloc]
+                                      initWithNibNameAndViewSelector:identifier
+                                      bundle:nil
+                                      viewSelector:self];
+    } else if ([LIBRARY_VIEW isEqualToString:(identifier)]) {
+        self.currentViewController = [[LibraryView alloc]
                                       initWithNibNameAndViewSelector:identifier
                                       bundle:nil
                                       viewSelector:self];

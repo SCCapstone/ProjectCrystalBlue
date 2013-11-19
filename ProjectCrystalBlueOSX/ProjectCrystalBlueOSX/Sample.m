@@ -11,7 +11,7 @@
 @implementation Sample
 
 @synthesize rockType;
-@synthesize identifier;
+@synthesize rockId;
 @synthesize coordinates;
 @synthesize isPulverized;
 
@@ -19,7 +19,7 @@
     self = [super init];
     if (self) {
         rockType = @"Igneous";
-        identifier = 0;
+        rockId = 0;
         coordinates = @"234 234";
         isPulverized = NO;
     }

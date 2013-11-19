@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D0715591183B4BFE00147694 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0715590183B4BFE00147694 /* Sample.m */; };
+		D0715596183B4EAB00147694 /* LibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0715594183B4EAB00147694 /* LibraryView.m */; };
+		D0715597183B4EAB00147694 /* LibraryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0715595183B4EAB00147694 /* LibraryView.xib */; };
 		D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD03181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD07181C1FC600F762A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD06181C1FC600F762A3 /* main.m */; };
@@ -41,6 +43,9 @@
 /* Begin PBXFileReference section */
 		D071558F183B4BFE00147694 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
 		D0715590183B4BFE00147694 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
+		D0715593183B4EAB00147694 /* LibraryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryView.h; sourceTree = "<group>"; };
+		D0715594183B4EAB00147694 /* LibraryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryView.m; sourceTree = "<group>"; };
+		D0715595183B4EAB00147694 /* LibraryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryView.xib; sourceTree = "<group>"; };
 		D729BCF7181C1FC600F762A3 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BCFA181C1FC600F762A3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D729BCFD181C1FC600F762A3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -101,6 +106,16 @@
 				D0715590183B4BFE00147694 /* Sample.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		D0715592183B4E8900147694 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				D0715593183B4EAB00147694 /* LibraryView.h */,
+				D0715594183B4EAB00147694 /* LibraryView.m */,
+				D0715595183B4EAB00147694 /* LibraryView.xib */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 		D729BCEE181C1FC600F762A3 = {
@@ -189,6 +204,7 @@
 		D7A012291829D70100CADA00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D0715592183B4E8900147694 /* Library */,
 				D7A012261829D5C200CADA00 /* ViewSelector.h */,
 				D7A012271829D5C200CADA00 /* ViewSelector.m */,
 				D7A0122A1829D70A00CADA00 /* Log-in */,
@@ -288,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0715597183B4EAB00147694 /* LibraryView.xib in Resources */,
 				D7A012341829E21300CADA00 /* ExistingUserView.xib in Resources */,
 				D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */,
 				D7A0122F1829D76600CADA00 /* NewOrExistingUserView.xib in Resources */,
@@ -313,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0715596183B4EAB00147694 /* LibraryView.m in Sources */,
 				D7A012331829E21300CADA00 /* ExistingUserView.m in Sources */,
 				D7A012281829D5C200CADA00 /* ViewSelector.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,

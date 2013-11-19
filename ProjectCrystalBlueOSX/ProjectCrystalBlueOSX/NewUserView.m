@@ -29,4 +29,8 @@
     [self.viewSelector setView:sender];
 }
 
+- (IBAction)onOkClick:(id)sender {
+    [self.viewSelector setView:sender];
+}
+
 @end
