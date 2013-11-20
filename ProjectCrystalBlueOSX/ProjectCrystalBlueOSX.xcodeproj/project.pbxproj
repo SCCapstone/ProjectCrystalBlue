@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D069CE5E183C716D0065B65F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D069CE5D183C716D0065B65F /* libsqlite3.dylib */; };
+		D069CE61183C727C0065B65F /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D069CE60183C727C0065B65F /* SQLiteWrapper.m */; };
 		D0715591183B4BFE00147694 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0715590183B4BFE00147694 /* Sample.m */; };
 		D0715596183B4EAB00147694 /* LibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0715594183B4EAB00147694 /* LibraryView.m */; };
 		D0715597183B4EAB00147694 /* LibraryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0715595183B4EAB00147694 /* LibraryView.xib */; };
@@ -41,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D069CE5B183C712E0065B65F /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		D069CE5D183C716D0065B65F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		D069CE5F183C727C0065B65F /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteWrapper.h; sourceTree = "<group>"; };
+		D069CE60183C727C0065B65F /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteWrapper.m; sourceTree = "<group>"; };
 		D071558F183B4BFE00147694 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
 		D0715590183B4BFE00147694 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
 		D0715593183B4EAB00147694 /* LibraryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryView.h; sourceTree = "<group>"; };
@@ -83,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D069CE5E183C716D0065B65F /* libsqlite3.dylib in Frameworks */,
 				D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +147,8 @@
 		D729BCF9181C1FC600F762A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D069CE5D183C716D0065B65F /* libsqlite3.dylib */,
+				D069CE5B183C712E0065B65F /* libsqlite3.0.dylib */,
 				D729BCFA181C1FC600F762A3 /* Cocoa.framework */,
 				D729BD19181C1FC600F762A3 /* XCTest.framework */,
 				D729BCFC181C1FC600F762A3 /* Other Frameworks */,
@@ -167,6 +176,8 @@
 				D729BD0F181C1FC600F762A3 /* MainMenu.xib */,
 				D729BD12181C1FC600F762A3 /* Images.xcassets */,
 				D729BD01181C1FC600F762A3 /* Supporting Files */,
+				D069CE5F183C727C0065B65F /* SQLiteWrapper.h */,
+				D069CE60183C727C0065B65F /* SQLiteWrapper.m */,
 			);
 			path = ProjectCrystalBlueOSX;
 			sourceTree = "<group>";
@@ -335,6 +346,7 @@
 				D7A012281829D5C200CADA00 /* ViewSelector.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
 				D7A0122E1829D76600CADA00 /* NewOrExistingUserView.m in Sources */,
+				D069CE61183C727C0065B65F /* SQLiteWrapper.m in Sources */,
 				D7A012381829ECC900CADA00 /* NewUserView.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
 				D0715591183B4BFE00147694 /* Sample.m in Sources */,
