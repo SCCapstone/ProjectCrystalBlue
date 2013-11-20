@@ -26,7 +26,7 @@
                     </textFieldCell>
                 </textField>
                 <button identifier="NewOrExistingUserView" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gGK-Dk-ScD">
-                    <rect key="frame" x="350" y="179" width="110" height="25"/>
+                    <rect key="frame" x="398" y="179" width="110" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="squareTextured" title="Cancel" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yLl-Bf-yil">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -37,7 +37,7 @@
                     </connections>
                 </button>
                 <button identifier="LibraryView" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qyh-ch-4fP">
-                    <rect key="frame" x="232" y="179" width="110" height="25"/>
+                    <rect key="frame" x="265" y="179" width="110" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="squareTextured" title="OK" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lCQ-2Y-DFK">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -48,7 +48,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="apk-V8-bo3">
-                    <rect key="frame" x="18" y="312" width="444" height="70"/>
+                    <rect key="frame" x="18" y="312" width="492" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="kh5-sm-H5w">
                         <font key="font" metaFont="system"/>
@@ -58,7 +58,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NkR-Sn-n6G">
-                    <rect key="frame" x="114" y="250" width="346" height="22"/>
+                    <rect key="frame" x="114" y="250" width="394" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="admin" drawsBackground="YES" id="uux-s6-tKv">
                         <font key="font" metaFont="system"/>
@@ -67,7 +67,7 @@
                     </textFieldCell>
                 </textField>
                 <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fZ-dD-Xeu">
-                    <rect key="frame" x="114" y="218" width="346" height="22"/>
+                    <rect key="frame" x="114" y="218" width="394" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="password" drawsBackground="YES" usesSingleLineMode="YES" id="7zW-Wa-50P">
                         <font key="font" metaFont="system"/>
@@ -79,7 +79,7 @@
                     </secureTextFieldCell>
                 </secureTextField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="75a-P2-VX6">
-                    <rect key="frame" x="114" y="282" width="346" height="22"/>
+                    <rect key="frame" x="114" y="282" width="394" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="https://example.org" drawsBackground="YES" id="lk7-hU-DTy">
                         <font key="font" metaFont="system"/>
