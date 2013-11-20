@@ -72,5 +72,7 @@ NSString* const STARTUP_VIEW = @"NewOrExistingUserView";
     
     [_currentView addSubview:[_currentViewController view]];
     [[_currentViewController view] setFrame:[_currentView bounds]];
+    [[_currentViewController view] setAutoresizingMask:NSViewHeightSizable|NSViewWidthSizable];
 }
+
 @end
