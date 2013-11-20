@@ -10,9 +10,9 @@
 
 @interface Sample : NSObject
 
-@property NSString* rockType;
-@property int rockId;
-@property NSString* coordinates;
-@property bool isPulverized;
+@property(nonatomic) NSString* rockType;
+@property(nonatomic) int rockId;
+@property(nonatomic) NSString* coordinates;
+@property(nonatomic) bool isPulverized;
 
 @end
