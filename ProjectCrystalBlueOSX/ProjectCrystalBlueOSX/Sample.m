@@ -10,22 +10,37 @@
 
 @implementation Sample
 
-@synthesize rockType;
-@synthesize rockId;
-@synthesize coordinates;
-@synthesize isPulverized;
+@synthesize rockType = _rockType;
+@synthesize rockId = _rockId;
+@synthesize coordinates = _coordinates;
+@synthesize isPulverized = _isPulverized;
 
 -(id) init {
     self = [super init];
     if (self) {
-        rockType = @"Igneous";
-        rockId = 0;
-        coordinates = @"234 234";
-        isPulverized = NO;
+        _rockType = @"Igneous";
+        _rockId = 0;
+        _coordinates = @"234 234";
+        _isPulverized = NO;
     }
     return self;
 }
 
+-(void) setRockType:(NSString *)rockType {
+    _rockType = rockType;
+}
+
+-(void) setRockId:(int)rockId {
+    _rockId = rockId;
+}
+
+-(void) setCoordinates:(NSString *)coordinates {
+    _coordinates = coordinates;
+}
+
+-(void) setIsPulverized:(bool)isPulverized {
+    _isPulverized = isPulverized;
+}
 
 
 @end
