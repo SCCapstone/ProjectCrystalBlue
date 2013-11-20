@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import "Sample.h"
 
 @interface SQLiteWrapper : NSObject {
     sqlite3 *db;
 }
 
--(NSArray *)performQuery:(NSString *)query;
+-(NSArray *) performQuery:(NSString *)query;
+-(NSMutableArray *) getSamples;
+-(void) insertSample:(Sample *)sample;
+-(void) updateSample:(Sample *)sample;
+-(void) deleteSample:(Sample *)sample;
 
 @end

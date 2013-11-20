@@ -9,9 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import "ViewSelector.h"
 #import "Sample.h"
+#import "SQLiteWrapper.h"
 
 @interface LibraryView : NSViewController {
     NSMutableArray *sampleLibrary;
+    SQLiteWrapper *database;
 }
 
 @property (weak) ViewSelector *viewSelector;

@@ -16,16 +16,16 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        sampleLibrary = [[NSMutableArray alloc] init];
-        [sampleLibrary addObject:[[Sample alloc] init]];
-        self.viewSelector = viewSelectorSelf;
+        database = [[SQLiteWrapper alloc] init];
+        sampleLibrary = [database getSamples];
+        _viewSelector = viewSelectorSelf;
     }
     return self;
 }
 
 - (IBAction)addSample:(id)sender {
     NSString *rockType = [[_rockTypeField selectedCell] title];
-    int rockId = [_rockIdField intValue];
+    NSInteger rockId = [_rockIdField intValue];
     NSString *coordinates = [_coordinatesField stringValue];
     bool isPulverized = [[[_pulverizedField selectedCell] title] isEqualToString:@"Yes"];
     
@@ -34,20 +34,21 @@
                                        AndCoordinates:coordinates
                                       AndIsPulverized:isPulverized];
     [_arrayController addObject:sample];
+    [database insertSample:sample];
 }
 
 - (IBAction)deleteSample:(id)sender {
     NSInteger index = [_tableView selectedRow];
     [_arrayController removeObjectAtArrangedObjectIndex:index];
+    [database deleteSample: [sampleLibrary objectAtIndex:index]];
 }
 
 - (IBAction)cloneSample:(id)sender {
     NSInteger index = [_tableView selectedRow];
     Sample *sample = [sampleLibrary objectAtIndex:index];
     [_arrayController addObject:sample];
+    [database insertSample:sample];
 }
-
-
 
 - (void)setSampleLibrary:(NSMutableArray *) library {
     if (library == sampleLibrary) {

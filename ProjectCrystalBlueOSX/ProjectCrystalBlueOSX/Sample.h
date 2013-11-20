@@ -11,12 +11,12 @@
 @interface Sample : NSObject
 
 @property(nonatomic) NSString* rockType;
-@property(nonatomic) int rockId;
+@property(nonatomic) NSInteger rockId;
 @property(nonatomic) NSString* coordinates;
 @property(nonatomic) bool isPulverized;
 
 -(id) initWithRockType:(NSString*)rockType
-             AndRockId:(int)rockId
+             AndRockId:(NSInteger)rockId
         AndCoordinates:(NSString*)coordinates
        AndIsPulverized:(bool)isPulverized;
 

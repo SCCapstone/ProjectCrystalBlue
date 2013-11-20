@@ -15,14 +15,14 @@
     if (self) {
         sqlite3 *dbConnection;
         // Try to open temporary database
-        if (sqlite3_open(NULL, &dbConnection) != SQLITE_OK) {
+        if (sqlite3_open("test.db", &dbConnection) != SQLITE_OK) {
             NSLog(@"Failed to open database");
             return nil;
         }
         db = dbConnection;
         
         // Create sample database
-        NSString *sql = @"CREATE TABLE samples("
+        NSString *sql = @"CREATE TABLE IF NOT EXISTS samples("
                         "rockType TEXT,"
                         "rockId INTEGER PRIMARY KEY,"
                         "coordinates TEXT,"
@@ -65,6 +65,39 @@
         [result addObject:row];
     }
     return result;
+}
+
+-(NSMutableArray *) getSamples {
+    NSString *sql = @"SELECT * FROM samples";
+    NSArray *result = [self performQuery:sql];
+    NSMutableArray *samples = [[NSMutableArray alloc] init];
+    if (result != nil) {
+        for (int i=0; i<[result count]; i++) {
+            Sample *sample = [[Sample alloc] initWithRockType:[[result objectAtIndex:i] objectAtIndex:0]
+                                                  AndRockId:(int)[[result objectAtIndex:i] objectAtIndex:1]
+                                             AndCoordinates:[[result objectAtIndex:i] objectAtIndex:2]
+                                              AndIsPulverized:(bool)[[result objectAtIndex:i] objectAtIndex:3]];
+            [samples addObject:sample];
+        }
+        return samples;
+    }
+    return nil;
+}
+
+-(void) insertSample:(Sample *)sample {
+    NSString *sql = [NSString stringWithFormat:@"INSERT INTO samples(rockType,rockId,coordinates,isPulverized) "
+                     "VALUES ('%@',%d,'%@',%d);", [sample rockType], (int)[sample rockId], [sample coordinates],
+                     [sample isPulverized] ? 1 : 0];
+    [self performQuery:sql];
+}
+
+-(void) updateSample:(Sample *)sample {
+    
+}
+
+-(void) deleteSample:(Sample *)sample {
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM samples WHERE rockId=%d;", (int)[sample rockId]];
+    [self performQuery:sql];
 }
 
 
