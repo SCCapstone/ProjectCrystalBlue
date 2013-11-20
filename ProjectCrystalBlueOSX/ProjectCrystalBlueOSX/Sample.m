@@ -26,6 +26,46 @@
     return self;
 }
 
+-(int)rockId {
+    return rockId;
+}
 
+-(void) setRockId:(int)newRockId {
+    // TODO: Validate field
+    rockId = newRockId;
+}
+
+-(NSString *) rockType {
+    return rockType;
+}
+
+-(void) setRockType:(NSString *)newRockType {
+    // TODO: Validate field
+    if (rockType == newRockType) {
+        return;
+    }
+    rockType = newRockType;
+}
+
+-(NSString *) coordinates {
+    return coordinates;
+}
+
+-(void) setCoordinates:(NSString *)newCoordinates {
+    // TODO: validate field
+    if (coordinates == newCoordinates) {
+        return;
+    }
+    
+    coordinates = newCoordinates;
+}
+
+-(bool) isPulverized {
+    return isPulverized;
+}
+
+-(void) setIsPulverized:(bool)newIsPulverized {
+    isPulverized = newIsPulverized;
+}
 
 @end
