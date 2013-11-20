@@ -8,10 +8,6 @@
 
 #import "LibraryView.h"
 
-@interface LibraryView ()
-
-@end
-
 @implementation LibraryView
 
 - (id)initWithNibNameAndViewSelector:(NSString *)nibNameOrNil
@@ -26,6 +22,32 @@
     }
     return self;
 }
+
+- (IBAction)addSample:(id)sender {
+    NSString *rockType = [[_rockTypeField selectedCell] title];
+    int rockId = [_rockIdField intValue];
+    NSString *coordinates = [_coordinatesField stringValue];
+    bool isPulverized = [[[_pulverizedField selectedCell] title] isEqualToString:@"Yes"];
+    
+    Sample *sample = [[Sample alloc] initWithRockType:rockType
+                                            AndRockId:rockId
+                                       AndCoordinates:coordinates
+                                      AndIsPulverized:isPulverized];
+    [_arrayController addObject:sample];
+}
+
+- (IBAction)deleteSample:(id)sender {
+    NSInteger index = [_tableView selectedRow];
+    [_arrayController removeObjectAtArrangedObjectIndex:index];
+}
+
+- (IBAction)cloneSample:(id)sender {
+    NSInteger index = [_tableView selectedRow];
+    Sample *sample = [sampleLibrary objectAtIndex:index];
+    [_arrayController addObject:sample];
+}
+
+
 
 - (void)setSampleLibrary:(NSMutableArray *) library {
     if (library == sampleLibrary) {

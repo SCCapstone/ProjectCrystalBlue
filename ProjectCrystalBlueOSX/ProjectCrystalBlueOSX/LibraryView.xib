@@ -7,6 +7,12 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LibraryView">
             <connections>
+                <outlet property="arrayController" destination="8SG-Su-O38" id="iYg-VR-8p7"/>
+                <outlet property="coordinatesField" destination="9XP-sk-OCt" id="i6b-74-FXO"/>
+                <outlet property="pulverizedField" destination="fvt-Nk-0av" id="LlP-wD-M0l"/>
+                <outlet property="rockIdField" destination="0fB-XN-Yl9" id="A1O-5V-YD5"/>
+                <outlet property="rockTypeField" destination="Iam-7d-B58" id="Aqh-pv-465"/>
+                <outlet property="tableView" destination="sLw-a4-aUU" id="IDt-U7-1eQ"/>
                 <outlet property="view" destination="1" id="2"/>
             </connections>
         </customObject>
@@ -243,7 +249,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="addSample:" target="HoL-J0-XwU" id="Cgc-eJ-VST"/>
+                                    <action selector="addSample:" target="-2" id="KXc-1P-aqH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -287,7 +293,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="remove:" target="8SG-Su-O38" id="5FY-Mq-m8y"/>
+                        <action selector="deleteSample:" target="-2" id="MLj-bF-Iqw"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zyd-tb-qCv">
@@ -300,6 +306,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="cloneSample:" target="-2" id="iPh-iG-QQf"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>
@@ -328,19 +337,5 @@
                 <binding destination="-2" name="contentArray" keyPath="sampleLibrary" id="ShX-ZG-OHs"/>
             </connections>
         </arrayController>
-        <customObject id="HoL-J0-XwU" customClass="AddSampleController">
-            <connections>
-                <outlet property="addSample" destination="T9E-Xx-hyL" id="nUg-zA-L8A"/>
-                <outlet property="addSampleCoordinates" destination="9XP-sk-OCt" id="hBZ-W7-eWV"/>
-                <outlet property="addSampleIdentifier" destination="0fB-XN-Yl9" id="aOI-AC-6Fn"/>
-                <outlet property="addSamplePulverized" destination="fvt-Nk-0av" id="hs4-Zt-TpO"/>
-                <outlet property="addSampleRockType" destination="Iam-7d-B58" id="kYv-PM-qiP"/>
-                <outlet property="arrayController" destination="8SG-Su-O38" id="VNg-pw-1K3"/>
-                <outlet property="newCoordinates" destination="9XP-sk-OCt" id="Nz1-D9-GSw"/>
-                <outlet property="newIdentifier" destination="0fB-XN-Yl9" id="4pe-II-hpK"/>
-                <outlet property="newPulverized" destination="fvt-Nk-0av" id="nVR-Gy-B7a"/>
-                <outlet property="newRockType" destination="Iam-7d-B58" id="9xV-xg-Tpj"/>
-            </connections>
-        </customObject>
     </objects>
 </document>

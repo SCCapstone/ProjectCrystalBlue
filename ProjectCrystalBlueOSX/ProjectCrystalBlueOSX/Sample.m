@@ -15,15 +15,26 @@
 @synthesize coordinates = _coordinates;
 @synthesize isPulverized = _isPulverized;
 
--(id) init {
+-(id) initWithRockType:(NSString*)rockType
+             AndRockId:(int)rockId
+        AndCoordinates:(NSString*)coordinates
+       AndIsPulverized:(bool)isPulverized
+{
     self = [super init];
     if (self) {
-        _rockType = @"Igneous";
-        _rockId = 0;
-        _coordinates = @"234 234";
-        _isPulverized = NO;
+        _rockType = rockType;
+        _rockId = rockId;
+        _coordinates = coordinates;
+        _isPulverized = isPulverized;
     }
     return self;
+}
+
+-(id) init {
+    return [self initWithRockType:@"Igneous"
+                        AndRockId:0
+                   AndCoordinates:@"123,123"
+                  AndIsPulverized:NO];
 }
 
 -(void) setRockType:(NSString *)rockType {

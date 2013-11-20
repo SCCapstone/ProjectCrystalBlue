@@ -16,8 +16,8 @@
             <rect key="frame" x="0.0" y="0.0" width="597" height="473"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button identifier="NewUserView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PC9-KG-Nic">
-                    <rect key="frame" x="243" y="300" width="110" height="25"/>
+                <button identifier="NewUserView" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PC9-KG-Nic">
+                    <rect key="frame" x="243" y="338" width="110" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="squareTextured" title="New User" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tyK-i8-jKW">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -46,7 +46,7 @@
                 <constraint firstItem="GyB-Hv-gjv" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="E1s-o4-3uB"/>
                 <constraint firstItem="GyB-Hv-gjv" firstAttribute="trailing" secondItem="PC9-KG-Nic" secondAttribute="trailing" id="bEN-XV-zjO"/>
                 <constraint firstItem="GyB-Hv-gjv" firstAttribute="leading" secondItem="PC9-KG-Nic" secondAttribute="leading" id="hMf-hu-PER"/>
-                <constraint firstItem="PC9-KG-Nic" firstAttribute="top" secondItem="GyB-Hv-gjv" secondAttribute="bottom" constant="46" id="kDT-MB-Ff8"/>
+                <constraint firstItem="PC9-KG-Nic" firstAttribute="top" secondItem="GyB-Hv-gjv" secondAttribute="bottom" constant="10" id="kDT-MB-Ff8"/>
                 <constraint firstItem="GyB-Hv-gjv" firstAttribute="top" secondItem="1" secondAttribute="top" constant="81" id="lSy-8n-iwf"/>
             </constraints>
         </customView>

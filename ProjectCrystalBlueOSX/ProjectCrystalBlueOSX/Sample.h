@@ -15,4 +15,9 @@
 @property(nonatomic) NSString* coordinates;
 @property(nonatomic) bool isPulverized;
 
+-(id) initWithRockType:(NSString*)rockType
+             AndRockId:(int)rockId
+        AndCoordinates:(NSString*)coordinates
+       AndIsPulverized:(bool)isPulverized;
+
 @end

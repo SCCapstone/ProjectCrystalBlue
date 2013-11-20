@@ -15,8 +15,20 @@
 }
 
 @property (weak) ViewSelector *viewSelector;
+@property (strong) IBOutlet NSArrayController *arrayController;
+@property (weak) IBOutlet NSTableView *tableView;
+@property (weak) IBOutlet NSTextField *rockIdField;
+@property (weak) IBOutlet NSMatrix *rockTypeField;
+@property (weak) IBOutlet NSTextField *coordinatesField;
+@property (weak) IBOutlet NSMatrix *pulverizedField;
+
 
 - (id)initWithNibNameAndViewSelector:(NSString *)nibNameOrNil
                               bundle:(NSBundle *)nibBundleOrNil
                         viewSelector:(ViewSelector *)viewSelectorSelf;
+- (IBAction)addSample:(id)sender;
+- (IBAction)deleteSample:(id)sender;
+- (IBAction)cloneSample:(id)sender;
+
+
 @end
