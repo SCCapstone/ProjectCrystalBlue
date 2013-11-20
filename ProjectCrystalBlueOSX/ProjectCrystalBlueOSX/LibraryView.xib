@@ -164,15 +164,15 @@
                                 </buttonCell>
                                 <cells>
                                     <column>
-                                        <buttonCell type="radio" title="Igneous" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="Pak-2n-Aeh">
+                                        <buttonCell type="radio" title="Igneous" imagePosition="left" alignment="left" state="on" identifier="Igneous" tag="1" inset="2" id="Pak-2n-Aeh">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
-                                        <buttonCell type="radio" title="Metamorphic" imagePosition="left" alignment="left" inset="2" id="fk5-kb-Mwx">
+                                        <buttonCell type="radio" title="Metamorphic" imagePosition="left" alignment="left" identifier="Metamorphic" inset="2" id="fk5-kb-Mwx">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
-                                        <buttonCell type="radio" title="Sedimentary" imagePosition="left" alignment="left" inset="2" id="X8v-In-9Pl">
+                                        <buttonCell type="radio" title="Sedimentary" imagePosition="left" alignment="left" identifier="Sedimentary" inset="2" id="X8v-In-9Pl">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -242,6 +242,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addSample:" target="HoL-J0-XwU" id="Cgc-eJ-VST"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
@@ -325,5 +328,19 @@
                 <binding destination="-2" name="contentArray" keyPath="sampleLibrary" id="ShX-ZG-OHs"/>
             </connections>
         </arrayController>
+        <customObject id="HoL-J0-XwU" customClass="AddSampleController">
+            <connections>
+                <outlet property="addSample" destination="T9E-Xx-hyL" id="nUg-zA-L8A"/>
+                <outlet property="addSampleCoordinates" destination="9XP-sk-OCt" id="hBZ-W7-eWV"/>
+                <outlet property="addSampleIdentifier" destination="0fB-XN-Yl9" id="aOI-AC-6Fn"/>
+                <outlet property="addSamplePulverized" destination="fvt-Nk-0av" id="hs4-Zt-TpO"/>
+                <outlet property="addSampleRockType" destination="Iam-7d-B58" id="kYv-PM-qiP"/>
+                <outlet property="arrayController" destination="8SG-Su-O38" id="VNg-pw-1K3"/>
+                <outlet property="newCoordinates" destination="9XP-sk-OCt" id="Nz1-D9-GSw"/>
+                <outlet property="newIdentifier" destination="0fB-XN-Yl9" id="4pe-II-hpK"/>
+                <outlet property="newPulverized" destination="fvt-Nk-0av" id="nVR-Gy-B7a"/>
+                <outlet property="newRockType" destination="Iam-7d-B58" id="9xV-xg-Tpj"/>
+            </connections>
+        </customObject>
     </objects>
 </document>

@@ -28,6 +28,7 @@
 		D7A012341829E21300CADA00 /* ExistingUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A012321829E21300CADA00 /* ExistingUserView.xib */; };
 		D7A012381829ECC900CADA00 /* NewUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A012361829ECC900CADA00 /* NewUserView.m */; };
 		D7A012391829ECC900CADA00 /* NewUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A012371829ECC900CADA00 /* NewUserView.xib */; };
+		D7D45239183C790C00DFAD9C /* AddSampleController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D45238183C790C00DFAD9C /* AddSampleController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		D7A012351829ECC900CADA00 /* NewUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserView.h; sourceTree = "<group>"; };
 		D7A012361829ECC900CADA00 /* NewUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserView.m; sourceTree = "<group>"; };
 		D7A012371829ECC900CADA00 /* NewUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewUserView.xib; sourceTree = "<group>"; };
+		D7D45237183C790C00DFAD9C /* AddSampleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSampleController.h; sourceTree = "<group>"; };
+		D7D45238183C790C00DFAD9C /* AddSampleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSampleController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,7 @@
 		D729BD00181C1FC600F762A3 /* ProjectCrystalBlueOSX */ = {
 			isa = PBXGroup;
 			children = (
+				D7D45236183C78FA00DFAD9C /* Controller */,
 				D071558E183B4BEA00147694 /* Models */,
 				D7A012291829D70100CADA00 /* Views */,
 				D729BD0C181C1FC600F762A3 /* AppDelegate.h */,
@@ -226,6 +230,15 @@
 				D7A012371829ECC900CADA00 /* NewUserView.xib */,
 			);
 			name = "Log-in";
+			sourceTree = "<group>";
+		};
+		D7D45236183C78FA00DFAD9C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D7D45237183C790C00DFAD9C /* AddSampleController.h */,
+				D7D45238183C790C00DFAD9C /* AddSampleController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7D45239183C790C00DFAD9C /* AddSampleController.m in Sources */,
 				D0715596183B4EAB00147694 /* LibraryView.m in Sources */,
 				D7A012331829E21300CADA00 /* ExistingUserView.m in Sources */,
 				D7A012281829D5C200CADA00 /* ViewSelector.m in Sources */,
