@@ -660,11 +660,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="659" height="541"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CDU-CP-pvp">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="CDU-CP-pvp">
                         <rect key="frame" x="0.0" y="0.0" width="659" height="541"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="5hk-YN-Rqf">
+                                <rect key="frame" x="0.0" y="0.0" width="659" height="541"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5hk-YN-Rqf" secondAttribute="trailing" id="0Qt-t2-8SJ"/>
+                            <constraint firstAttribute="centerX" secondItem="5hk-YN-Rqf" secondAttribute="centerX" id="7Yk-Wf-vEI"/>
+                            <constraint firstAttribute="bottom" secondItem="5hk-YN-Rqf" secondAttribute="bottom" id="I2E-Yq-oEm"/>
+                            <constraint firstAttribute="trailing" secondItem="5hk-YN-Rqf" secondAttribute="trailing" id="JaF-Fa-IQg"/>
+                            <constraint firstItem="5hk-YN-Rqf" firstAttribute="centerX" secondItem="CDU-CP-pvp" secondAttribute="centerX" id="d89-tU-MAm"/>
+                            <constraint firstAttribute="trailing" secondItem="5hk-YN-Rqf" secondAttribute="trailing" id="m2H-UW-yop"/>
+                            <constraint firstItem="5hk-YN-Rqf" firstAttribute="top" secondItem="CDU-CP-pvp" secondAttribute="top" id="yRV-vs-aiL"/>
+                        </constraints>
                     </customView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="CDU-CP-pvp" firstAttribute="top" secondItem="372" secondAttribute="top" id="IB7-SW-yh1"/>
+                    <constraint firstItem="CDU-CP-pvp" firstAttribute="leading" secondItem="372" secondAttribute="leading" id="Sic-Pi-zsq"/>
+                    <constraint firstAttribute="trailing" secondItem="CDU-CP-pvp" secondAttribute="trailing" id="a0V-4m-X4A"/>
+                    <constraint firstAttribute="bottom" secondItem="CDU-CP-pvp" secondAttribute="bottom" id="fBr-Jn-ZfB"/>
+                </constraints>
             </view>
         </window>
         <customObject id="494" customClass="AppDelegate">
