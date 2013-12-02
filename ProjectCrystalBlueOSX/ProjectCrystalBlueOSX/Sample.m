@@ -30,6 +30,14 @@
     return self;
 }
 
+-(id) initWithSample:(Sample*)sample {
+    self = [self initWithRockType:sample.rockType
+                 AndRockId:sample.rockId
+            AndCoordinates:sample.coordinates
+           AndIsPulverized:sample.isPulverized];
+    return self;
+}
+
 -(id) init {
     return [self initWithRockType:@"Igneous"
                         AndRockId:0

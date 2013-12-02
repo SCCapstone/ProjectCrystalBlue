@@ -20,4 +20,6 @@
         AndCoordinates:(NSString*)coordinates
        AndIsPulverized:(bool)isPulverized;
 
+-(id) initWithSample:(Sample*)sample;
+
 @end
