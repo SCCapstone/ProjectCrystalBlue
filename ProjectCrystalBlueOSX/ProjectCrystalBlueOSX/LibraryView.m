@@ -47,7 +47,7 @@
 
 - (IBAction)cloneSample:(id)sender {
     NSInteger index = [_tableView selectedRow];
-    Sample *sample = [sampleLibrary objectAtIndex:index];
+    Sample *sample = [[Sample alloc] initWithSample:[sampleLibrary objectAtIndex:index]];
     [sample setRockId:[self nextValidRockId:sample.rockId]];
     [_arrayController addObject:sample];
     [database insertSample:sample];
@@ -75,7 +75,7 @@
     return YES;
 }
 
-// Returns the next available ID number greater than the provided one.
+// Returns the next available ID number greater than or equal to the provided one.
 - (NSInteger)nextValidRockId:(NSInteger) rockId {
     Sample *tempSample = [[Sample alloc] initWithRockType:nil
                                                 AndRockId:rockId
