@@ -53,5 +53,35 @@
     _isPulverized = isPulverized;
 }
 
+// Compare this Sample to another object.
+-(BOOL) isEqual:(id)other {
+    if (other == self) {
+        return YES;
+    } else if (!other || ![other isKindOfClass:[self class]]) {
+        return NO;
+    } else {
+        return [self isEqualToSample:other];
+    }
+}
+
+// Compare this Sample to another Sample.
+// This generally shouldn't be called directly - use isEqual.
+-(BOOL) isEqualToSample:(Sample *)other {
+    if (self == other) {
+        return YES;
+    } else if (self.rockId == other.rockId) {
+        // For now, samples are considered equal if they have the same ID.
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+// For now, hash is just based on the sample's ID.
+-(NSUInteger) hash {
+    NSUInteger hashcode = 0;
+    hashcode += self.rockId;
+    return hashcode;
+}
 
 @end
