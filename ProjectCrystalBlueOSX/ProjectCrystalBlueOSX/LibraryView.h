@@ -28,9 +28,12 @@
 - (id)initWithNibNameAndViewSelector:(NSString *)nibNameOrNil
                               bundle:(NSBundle *)nibBundleOrNil
                         viewSelector:(ViewSelector *)viewSelectorSelf;
+- (BOOL)canAddSampleToLibrary:(Sample *) sample;
+
 - (IBAction)addSample:(id)sender;
 - (IBAction)deleteSample:(id)sender;
 - (IBAction)cloneSample:(id)sender;
+
 
 
 @end

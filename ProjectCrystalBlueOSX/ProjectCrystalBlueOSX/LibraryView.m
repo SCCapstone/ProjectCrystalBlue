@@ -33,8 +33,10 @@
                                             AndRockId:rockId
                                        AndCoordinates:coordinates
                                       AndIsPulverized:isPulverized];
-    [_arrayController addObject:sample];
-    [database insertSample:sample];
+    if ([self canAddSampleToLibrary:sample]) {
+        [_arrayController addObject:sample];
+        [database insertSample:sample];
+    }
 }
 
 - (IBAction)deleteSample:(id)sender {
@@ -56,6 +58,20 @@
     }
     
     sampleLibrary = library;
+}
+
+// Validates that a sample contains valid data and can be legally added to
+// the sample library.
+- (BOOL)canAddSampleToLibrary:(Sample *) sample {
+    if ([sampleLibrary containsObject:sample]) {
+        NSString* const duplicateInfo = @"You cannot add two samples with the same ID.";
+
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Alert" defaultButton:@"Ok" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:duplicateInfo];
+        [alert runModal];
+        return NO;
+    }
+    // TODO: Check other fields.
+    return YES;
 }
 
 @end
