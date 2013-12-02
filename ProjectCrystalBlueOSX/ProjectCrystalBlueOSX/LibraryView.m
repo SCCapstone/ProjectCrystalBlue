@@ -48,6 +48,7 @@
 - (IBAction)cloneSample:(id)sender {
     NSInteger index = [_tableView selectedRow];
     Sample *sample = [sampleLibrary objectAtIndex:index];
+    [sample setRockId:[self nextValidRockId:sample.rockId]];
     [_arrayController addObject:sample];
     [database insertSample:sample];
 }
@@ -64,7 +65,7 @@
 // the sample library.
 - (BOOL)canAddSampleToLibrary:(Sample *) sample {
     if ([sampleLibrary containsObject:sample]) {
-        NSString* const duplicateInfo = @"You cannot add two samples with the same ID.";
+        NSString* const duplicateInfo = @"You cannot add two samples with the same ID number.";
 
         NSAlert *alert = [NSAlert alertWithMessageText:@"Alert" defaultButton:@"Ok" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:duplicateInfo];
         [alert runModal];
@@ -72,6 +73,18 @@
     }
     // TODO: Check other fields.
     return YES;
+}
+
+// Returns the next available ID number greater than the provided one.
+- (NSInteger)nextValidRockId:(NSInteger) rockId {
+    Sample *tempSample = [[Sample alloc] initWithRockType:nil
+                                                AndRockId:rockId
+                                           AndCoordinates:nil
+                                          AndIsPulverized:nil];
+    while ([sampleLibrary containsObject:tempSample]) {
+        [tempSample setRockId:tempSample.rockId+1];
+    }
+    return tempSample.rockId;
 }
 
 @end
