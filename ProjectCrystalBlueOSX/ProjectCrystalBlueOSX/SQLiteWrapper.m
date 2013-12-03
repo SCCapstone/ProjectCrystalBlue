@@ -43,7 +43,9 @@
     
     sqlite3_stmt *statement = nil;
     const char *sql = [query UTF8String];
-    if (sqlite3_prepare_v2(db, sql, -1, &statement, NULL) != SQLITE_OK) {
+    int resultCode = sqlite3_prepare_v2(db, sql, -1, &statement, NULL);
+    NSLog(@"Result code was %d", resultCode);
+    if (resultCode != SQLITE_OK) {
         NSLog(@"Failed to prepare query");
         return nil;
     }
