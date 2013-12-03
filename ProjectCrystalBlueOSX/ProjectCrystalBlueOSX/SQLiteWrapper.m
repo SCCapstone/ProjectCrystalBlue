@@ -36,8 +36,11 @@
     return self;
 }
 
-// Execute a QUERY command against the local SQLite database
+// Execute a query command against the local SQLite database
 -(NSArray *)performQuery:(NSString *)query {
+    
+    NSLog(@"SQLiteWrapper: sending query \"%@\"", query);
+    
     sqlite3_stmt *statement = nil;
     const char *sql = [query UTF8String];
     if (sqlite3_prepare_v2(db, sql, -1, &statement, NULL) != SQLITE_OK) {

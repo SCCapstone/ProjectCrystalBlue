@@ -47,8 +47,9 @@
 // Deletes the currently selected sample from the database.
 - (IBAction)deleteSample:(id)sender {
     NSInteger index = [_tableView selectedRow];
+    id object = [sampleLibrary objectAtIndex:index];
     [_arrayController removeObjectAtArrangedObjectIndex:index];
-    [database deleteSample: [sampleLibrary objectAtIndex:index]];
+    [database deleteSample: object];
 }
 
 // Creates a duplicate of the currently selected sample (but generates a new unique ID)
