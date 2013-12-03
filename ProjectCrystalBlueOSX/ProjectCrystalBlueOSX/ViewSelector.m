@@ -32,18 +32,22 @@ NSString* const LIBRARY_VIEW = @"LibraryView";
 // The view that will be loaded at startup.
 NSString* const STARTUP_VIEW = @"NewOrExistingUserView";
 
+/// METHODS ///
 
+// Automatically called on startup.
 - (void)awakeFromNib {
     [self setViewController:STARTUP_VIEW];
 }
 
+// Used to switch between application views.
 - (IBAction)setView:(id)sender {
-    NSLog(@"ViewSelector: setView sent from %@ with indentifier \"%@\"", sender, [sender identifier]);
+    NSLog(@"ViewSelector: setView sent from %@ with identifier \"%@\"", sender, [sender identifier]);
     
     NSString* buttonId = [sender identifier];
     [self setViewController:buttonId];
 }
 
+// Sets the current view - not to be called externally - use the SetView method.
 - (void)setViewController:(NSString* const)identifier {
     [[_currentViewController view] removeFromSuperview];
     

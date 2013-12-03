@@ -2,6 +2,9 @@
 //  LibraryView.m
 //  ProjectCrystalBlueOSX
 //
+//  View and controller functions for viewing a sample library.
+//  Displays the database contents in tabular form and allows basic operations.
+//
 //  Created by Justin Baumgartner on 11/19/13.
 //  Copyright (c) 2013 Logan Hood. All rights reserved.
 //
@@ -10,6 +13,7 @@
 
 @implementation LibraryView
 
+// Constructor for this library view.
 - (id)initWithNibNameAndViewSelector:(NSString *)nibNameOrNil
                               bundle:(NSBundle *)nibBundleOrNil
                         viewSelector:(ViewSelector *)viewSelectorSelf
@@ -23,6 +27,7 @@
     return self;
 }
 
+// Adds a new sample to the database.
 - (IBAction)addSample:(id)sender {
     NSString *rockType = [[_rockTypeField selectedCell] title];
     NSInteger rockId = [_rockIdField intValue];
@@ -39,12 +44,14 @@
     }
 }
 
+// Deletes the currently selected sample from the database.
 - (IBAction)deleteSample:(id)sender {
     NSInteger index = [_tableView selectedRow];
     [_arrayController removeObjectAtArrangedObjectIndex:index];
     [database deleteSample: [sampleLibrary objectAtIndex:index]];
 }
 
+// Creates a duplicate of the currently selected sample (but generates a new unique ID)
 - (IBAction)cloneSample:(id)sender {
     NSInteger index = [_tableView selectedRow];
     Sample *sample = [[Sample alloc] initWithSample:[sampleLibrary objectAtIndex:index]];

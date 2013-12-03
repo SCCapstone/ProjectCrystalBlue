@@ -1,6 +1,9 @@
 //
-//  Sample.h
+//  Sample.m
 //  ProjectCrystalBlueOSX
+//
+//  This is a class to represent a single Sample.
+//  For example, in the context of Geology, this refers to an individual rock or soil sample.
 //
 //  Created by Justin Baumgartner on 11/19/13.
 //  Copyright (c) 2013 Logan Hood. All rights reserved.

@@ -2,6 +2,8 @@
 //  SQLiteWrapper.m
 //  ProjectCrystalBlueOSX
 //
+//  Adapter class to interface with the SQLite C library.
+//
 //  Created by Justin Baumgartner on 11/19/13.
 //  Copyright (c) 2013 Logan Hood. All rights reserved.
 //
@@ -10,6 +12,8 @@
 
 @implementation SQLiteWrapper
 
+// The constructor not only initializes the adapter, but also attempts to
+// open the current local SQLite database.
 -(id)init {
     self = [super init];
     if (self) {
@@ -32,6 +36,7 @@
     return self;
 }
 
+// Execute a QUERY command against the local SQLite database
 -(NSArray *)performQuery:(NSString *)query {
     sqlite3_stmt *statement = nil;
     const char *sql = [query UTF8String];
@@ -67,6 +72,7 @@
     return result;
 }
 
+// Retrieve all the samples in the SQLite database. Returns an array of Sample objects.
 -(NSMutableArray *) getSamples {
     NSString *sql = @"SELECT * FROM samples";
     NSArray *result = [self performQuery:sql];
@@ -84,6 +90,7 @@
     return nil;
 }
 
+// Add a sample object to the SQLite database.
 -(void) insertSample:(Sample *)sample {
     NSString *sql = [NSString stringWithFormat:@"INSERT INTO samples(rockType,rockId,coordinates,isPulverized) "
                      "VALUES ('%@',%d,'%@',%d);", [sample rockType], (int)[sample rockId], [sample coordinates],
@@ -91,10 +98,12 @@
     [self performQuery:sql];
 }
 
+// Submits a change to the SQLite database.
 -(void) updateSample:(Sample *)sample {
     
 }
 
+// Remove a sample from the SQLite database.
 -(void) deleteSample:(Sample *)sample {
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM samples WHERE rockId=%d;", (int)[sample rockId]];
     [self performQuery:sql];

@@ -17,7 +17,10 @@
 @property (weak) IBOutlet NSView *currentView;
 @property (strong) NSViewController *currentViewController;
 
+// Used to switch between application views.
 - (IBAction)setView:(id)sender;
+
+// Sets the current view - not to be called externally - use the SetView method.
 - (void)setViewController:(const NSString*)tag;
 
 @end

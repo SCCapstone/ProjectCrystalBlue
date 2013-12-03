@@ -1,6 +1,9 @@
 //
-//  LibraryView.h
+//  LibraryView.m
 //  ProjectCrystalBlueOSX
+//
+//  View and controller functions for viewing a sample library.
+//  Displays the database contents in tabular form and allows basic operations.
 //
 //  Created by Justin Baumgartner on 11/19/13.
 //  Copyright (c) 2013 Logan Hood. All rights reserved.
