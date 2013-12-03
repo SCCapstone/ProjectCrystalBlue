@@ -10,6 +10,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SampleFieldConstants.h"
 
 @interface Sample : NSObject
 

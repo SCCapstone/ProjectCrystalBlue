@@ -30,6 +30,7 @@
 		D7A012341829E21300CADA00 /* ExistingUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A012321829E21300CADA00 /* ExistingUserView.xib */; };
 		D7A012381829ECC900CADA00 /* NewUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A012361829ECC900CADA00 /* NewUserView.m */; };
 		D7A012391829ECC900CADA00 /* NewUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A012371829ECC900CADA00 /* NewUserView.xib */; };
+		D7B89483184DAE8400A1F3C6 /* SampleFieldConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B89482184DAE8400A1F3C6 /* SampleFieldConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		D7A012351829ECC900CADA00 /* NewUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserView.h; sourceTree = "<group>"; };
 		D7A012361829ECC900CADA00 /* NewUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserView.m; sourceTree = "<group>"; };
 		D7A012371829ECC900CADA00 /* NewUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewUserView.xib; sourceTree = "<group>"; };
+		D7B89481184DAE8400A1F3C6 /* SampleFieldConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleFieldConstants.h; sourceTree = "<group>"; };
+		D7B89482184DAE8400A1F3C6 /* SampleFieldConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 			children = (
 				D071558F183B4BFE00147694 /* Sample.h */,
 				D0715590183B4BFE00147694 /* Sample.m */,
+				D7B89481184DAE8400A1F3C6 /* SampleFieldConstants.h */,
+				D7B89482184DAE8400A1F3C6 /* SampleFieldConstants.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 			files = (
 				D0715596183B4EAB00147694 /* LibraryView.m in Sources */,
 				D7A012331829E21300CADA00 /* ExistingUserView.m in Sources */,
+				D7B89483184DAE8400A1F3C6 /* SampleFieldConstants.m in Sources */,
 				D7A012281829D5C200CADA00 /* ViewSelector.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
 				D7A0122E1829D76600CADA00 /* NewOrExistingUserView.m in Sources */,

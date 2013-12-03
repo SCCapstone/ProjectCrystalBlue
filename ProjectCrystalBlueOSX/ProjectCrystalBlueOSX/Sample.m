@@ -49,7 +49,11 @@
 }
 
 -(void) setRockType:(NSString *)rockType {
-    _rockType = rockType;
+    if ([[SampleFieldConstants getRockTypes] containsObject:rockType]) {
+        _rockType = rockType;
+    } else {
+        return;
+    }
 }
 
 -(void) setRockId:(NSInteger)rockId {
