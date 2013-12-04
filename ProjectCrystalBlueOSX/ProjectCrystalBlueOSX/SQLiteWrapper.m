@@ -59,8 +59,8 @@
                 const unsigned char *col = sqlite3_column_text(statement, i);
                 value = [NSString stringWithFormat:@"%s", col];
             } else if (colType == SQLITE_INTEGER) {
-                long col = sqlite3_column_int64(statement, i);
-                value = [NSNumber numberWithLong:col];
+                int col = sqlite3_column_int(statement, i);
+                value = [NSNumber numberWithInt:col];
             } else if (colType == SQLITE_FLOAT) {
                 double col = sqlite3_column_double(statement, i);
                 value = [NSNumber numberWithDouble:col];
@@ -86,7 +86,7 @@
     if (result != nil) {
         for (int i=0; i<[result count]; i++) {
             Sample *sample = [[Sample alloc] initWithRockType:[[result objectAtIndex:i] objectAtIndex:0]
-                                                  AndRockId:[[[result objectAtIndex:i] objectAtIndex:1] longValue]
+                                                  AndRockId:[[[result objectAtIndex:i] objectAtIndex:1] integerValue]
                                              AndCoordinates:[[result objectAtIndex:i] objectAtIndex:2]
                                               AndIsPulverized:(bool)[[result objectAtIndex:i] objectAtIndex:3]];
             [samples addObject:sample];
