@@ -63,7 +63,7 @@
 
 - (IBAction)updateAll:(id)sender {
     for (Sample *sample in sampleLibrary) {
-        NSLog(@"Would have updated %ld", (long)sample.rockId);
+        [database updateSample:sample];
     }
 }
 

@@ -38,9 +38,6 @@
 
 // Execute a query command against the local SQLite database
 -(NSArray *)performQuery:(NSString *)query {
-    
-    NSLog(@"SQLiteWrapper: sending query \"%@\"", query);
-    
     sqlite3_stmt *statement = nil;
     const char *sql = [query UTF8String];
     int resultCode = sqlite3_prepare_v2(db, sql, -1, &statement, NULL);
@@ -74,7 +71,6 @@
         }
         [result addObject:row];
     }
-    NSLog(@"%@", result);
     return result;
 }
 
@@ -88,7 +84,7 @@
             Sample *sample = [[Sample alloc] initWithRockType:[[result objectAtIndex:i] objectAtIndex:0]
                                                   AndRockId:[[[result objectAtIndex:i] objectAtIndex:1] integerValue]
                                              AndCoordinates:[[result objectAtIndex:i] objectAtIndex:2]
-                                              AndIsPulverized:(bool)[[result objectAtIndex:i] objectAtIndex:3]];
+                                              AndIsPulverized:[[[result objectAtIndex:i] objectAtIndex:3] boolValue]];
             [samples addObject:sample];
         }
         return samples;
@@ -106,7 +102,7 @@
 
 // Submits a change to the SQLite database.
 -(void) updateSample:(Sample *)sample {
-    NSString *sql = [NSString stringWithFormat:@"UPDATE samples set rockType='%@',coordinates='%@',isPulverized=%d "
+    NSString *sql = [NSString stringWithFormat:@"UPDATE samples SET rockType='%@',coordinates='%@',isPulverized=%d "
                      "WHERE rockId=%d;", [sample rockType], [sample coordinates], [sample isPulverized] ? 1 : 0,
                      (int)[sample rockId]];
     [self performQuery:sql];
