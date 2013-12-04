@@ -106,7 +106,10 @@
 
 // Submits a change to the SQLite database.
 -(void) updateSample:(Sample *)sample {
-    
+    NSString *sql = [NSString stringWithFormat:@"UPDATE samples set rockType='%@',coordinates='%@',isPulverized=%d "
+                     "WHERE rockId=%d;", [sample rockType], [sample coordinates], [sample isPulverized] ? 1 : 0,
+                     (int)[sample rockId]];
+    [self performQuery:sql];
 }
 
 // Remove a sample from the SQLite database.
