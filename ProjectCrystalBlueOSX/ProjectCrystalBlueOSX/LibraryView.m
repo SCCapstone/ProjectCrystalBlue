@@ -61,6 +61,12 @@
     [database insertSample:sample];
 }
 
+- (IBAction)updateAll:(id)sender {
+    for (Sample *sample in sampleLibrary) {
+        NSLog(@"Would have updated %ld", (long)sample.rockId);
+    }
+}
+
 - (void)setSampleLibrary:(NSMutableArray *) library {
     if (library == sampleLibrary) {
         return;
