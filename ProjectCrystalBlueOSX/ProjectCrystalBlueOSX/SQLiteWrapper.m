@@ -74,6 +74,7 @@
         }
         [result addObject:row];
     }
+    NSLog(@"%@", result);
     return result;
 }
 
@@ -85,7 +86,7 @@
     if (result != nil) {
         for (int i=0; i<[result count]; i++) {
             Sample *sample = [[Sample alloc] initWithRockType:[[result objectAtIndex:i] objectAtIndex:0]
-                                                  AndRockId:(int)[[result objectAtIndex:i] objectAtIndex:1]
+                                                  AndRockId:(NSInteger)[[result objectAtIndex:i] objectAtIndex:1]
                                              AndCoordinates:[[result objectAtIndex:i] objectAtIndex:2]
                                               AndIsPulverized:(bool)[[result objectAtIndex:i] objectAtIndex:3]];
             [samples addObject:sample];
