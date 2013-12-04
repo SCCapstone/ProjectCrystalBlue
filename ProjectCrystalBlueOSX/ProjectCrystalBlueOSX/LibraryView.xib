@@ -13,6 +13,7 @@
                 <outlet property="rockIdField" destination="0fB-XN-Yl9" id="A1O-5V-YD5"/>
                 <outlet property="rockTypeField" destination="Iam-7d-B58" id="Aqh-pv-465"/>
                 <outlet property="tableView" destination="sLw-a4-aUU" id="IDt-U7-1eQ"/>
+                <outlet property="updateAll" destination="pL2-fd-Snb" id="Ydh-4u-BpS"/>
                 <outlet property="view" destination="1" id="2"/>
             </connections>
         </customObject>
@@ -310,6 +311,17 @@
                         <action selector="cloneSample:" target="-2" id="iPh-iG-QQf"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pL2-fd-Snb">
+                    <rect key="frame" x="257" y="199" width="132" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="squareTextured" title="Save to Database" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yud-ql-H4e">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="updateAll:" target="-2" id="RaM-eB-g81"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="6Wy-6u-IHh" secondAttribute="trailing" constant="20" symbolic="YES" id="6qR-Sa-Jic"/>
@@ -337,5 +349,20 @@
                 <binding destination="-2" name="contentArray" keyPath="sampleLibrary" id="ShX-ZG-OHs"/>
             </connections>
         </arrayController>
+        <textField verticalHuggingPriority="750" id="dRB-b6-SeS">
+            <rect key="frame" x="0.0" y="0.0" width="96" height="22"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="GBt-JF-ui6">
+                <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#,##0.###" negativeFormat="#,##0.###" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="0" maximumFractionDigits="3" id="vzP-8I-bBI">
+                    <real key="roundingIncrement" value="0.0"/>
+                    <metadata>
+                        <bool key="localizesFormat" value="YES"/>
+                    </metadata>
+                </numberFormatter>
+                <font key="font" metaFont="system"/>
+                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+        </textField>
     </objects>
 </document>

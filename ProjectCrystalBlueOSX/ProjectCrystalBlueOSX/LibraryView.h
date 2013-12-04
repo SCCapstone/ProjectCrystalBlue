@@ -37,6 +37,7 @@
 - (IBAction)addSample:(id)sender;
 - (IBAction)deleteSample:(id)sender;
 - (IBAction)cloneSample:(id)sender;
+- (IBAction)updateAll:(id)sender;
 
 
 
