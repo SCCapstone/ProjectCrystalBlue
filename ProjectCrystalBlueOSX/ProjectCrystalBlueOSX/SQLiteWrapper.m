@@ -24,9 +24,10 @@
             return nil;
         }
         db = dbConnection;
+        zumero_register(db);
         
         // Create sample database
-        NSString *sql = @"CREATE TABLE IF NOT EXISTS samples("
+        NSString *sql = @"CREATE VIRTUAL TABLE IF NOT EXISTS samples USING zumero("
                         "rockType TEXT,"
                         "rockId INTEGER PRIMARY KEY,"
                         "coordinates TEXT,"
@@ -41,7 +42,6 @@
     sqlite3_stmt *statement = nil;
     const char *sql = [query UTF8String];
     int resultCode = sqlite3_prepare_v2(db, sql, -1, &statement, NULL);
-    NSLog(@"Result code was %d", resultCode);
     if (resultCode != SQLITE_OK) {
         NSLog(@"Failed to prepare query");
         return nil;
@@ -71,6 +71,7 @@
         }
         [result addObject:row];
     }
+    NSLog(@"%@",result);
     return result;
 }
 
@@ -114,5 +115,29 @@
     [self performQuery:sql];
 }
 
+// Sync local database with zumero database
+-(void) sync {
+    NSString *sql = @"SELECT zumero_sync("
+        "'test',"
+        "'https://zinst7655bd1e667.s.zumero.net',"
+        "'test_db2',"
+        "zumero_internal_auth_scheme('zumero_users_admin'),"
+        "'admin',"
+        "'pcbcsce490','temp_file');";
+    [self performQuery:sql];
+}
+
+// Get storage usage stats from zumero database
+-(void) storageUsage {
+    NSString *sql = @"SELECT zumero_get_storage_usage_on_server("
+        "'https://zinst7655bd1e667.s.zumero.net',"
+        "zumero_internal_auth_scheme('zumero_users_admin'),"
+        "'admin',"
+        "'pcbcsce490',"
+        "'my_dbfile_list');";
+    [self performQuery:sql];
+    sql = @"SELECT * FROM my_dbfile_list;";
+    [self performQuery:sql];
+}
 
 @end

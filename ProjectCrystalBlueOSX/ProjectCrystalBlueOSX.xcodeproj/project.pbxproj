@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D02E874018519C7B00B15316 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E873F18519C7B00B15316 /* CFNetwork.framework */; };
+		D02E874218519C8700B15316 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E874118519C8700B15316 /* libz.dylib */; };
 		D069CE5E183C716D0065B65F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D069CE5D183C716D0065B65F /* libsqlite3.dylib */; };
-		D069CE61183C727C0065B65F /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D069CE60183C727C0065B65F /* SQLiteWrapper.m */; };
 		D0715591183B4BFE00147694 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0715590183B4BFE00147694 /* Sample.m */; };
 		D0715596183B4EAB00147694 /* LibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0715594183B4EAB00147694 /* LibraryView.m */; };
 		D0715597183B4EAB00147694 /* LibraryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0715595183B4EAB00147694 /* LibraryView.xib */; };
+		D0969B4F1851C03C008C4BD5 /* zumero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0969B4E1851C03C008C4BD5 /* zumero.a */; };
+		D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0969B511851C142008C4BD5 /* SQLiteWrapper.m */; };
 		D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD03181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD07181C1FC600F762A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD06181C1FC600F762A3 /* main.m */; };
@@ -44,15 +47,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D069CE5B183C712E0065B65F /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		D02E873F18519C7B00B15316 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D02E874118519C8700B15316 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D069CE5D183C716D0065B65F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		D069CE5F183C727C0065B65F /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteWrapper.h; sourceTree = "<group>"; };
-		D069CE60183C727C0065B65F /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteWrapper.m; sourceTree = "<group>"; };
 		D071558F183B4BFE00147694 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
 		D0715590183B4BFE00147694 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
 		D0715593183B4EAB00147694 /* LibraryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryView.h; sourceTree = "<group>"; };
 		D0715594183B4EAB00147694 /* LibraryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryView.m; sourceTree = "<group>"; };
 		D0715595183B4EAB00147694 /* LibraryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryView.xib; sourceTree = "<group>"; };
+		D0969B4E1851C03C008C4BD5 /* zumero.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = zumero.a; path = include/zumero.a; sourceTree = "<group>"; };
+		D0969B501851C142008C4BD5 /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteWrapper.h; sourceTree = "<group>"; };
+		D0969B511851C142008C4BD5 /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteWrapper.m; sourceTree = "<group>"; };
 		D729BCF7181C1FC600F762A3 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BCFA181C1FC600F762A3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D729BCFD181C1FC600F762A3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -92,6 +97,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0969B4F1851C03C008C4BD5 /* zumero.a in Frameworks */,
+				D02E874218519C8700B15316 /* libz.dylib in Frameworks */,
+				D02E874018519C7B00B15316 /* CFNetwork.framework in Frameworks */,
 				D069CE5E183C716D0065B65F /* libsqlite3.dylib in Frameworks */,
 				D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */,
 			);
@@ -152,8 +160,10 @@
 		D729BCF9181C1FC600F762A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0969B4E1851C03C008C4BD5 /* zumero.a */,
+				D02E874118519C8700B15316 /* libz.dylib */,
+				D02E873F18519C7B00B15316 /* CFNetwork.framework */,
 				D069CE5D183C716D0065B65F /* libsqlite3.dylib */,
-				D069CE5B183C712E0065B65F /* libsqlite3.0.dylib */,
 				D729BCFA181C1FC600F762A3 /* Cocoa.framework */,
 				D729BD19181C1FC600F762A3 /* XCTest.framework */,
 				D729BCFC181C1FC600F762A3 /* Other Frameworks */,
@@ -179,10 +189,10 @@
 				D729BD0C181C1FC600F762A3 /* AppDelegate.h */,
 				D729BD0D181C1FC600F762A3 /* AppDelegate.m */,
 				D729BD0F181C1FC600F762A3 /* MainMenu.xib */,
+				D0969B501851C142008C4BD5 /* SQLiteWrapper.h */,
+				D0969B511851C142008C4BD5 /* SQLiteWrapper.m */,
 				D729BD12181C1FC600F762A3 /* Images.xcassets */,
 				D729BD01181C1FC600F762A3 /* Supporting Files */,
-				D069CE5F183C727C0065B65F /* SQLiteWrapper.h */,
-				D069CE60183C727C0065B65F /* SQLiteWrapper.m */,
 			);
 			path = ProjectCrystalBlueOSX;
 			sourceTree = "<group>";
@@ -352,10 +362,10 @@
 				D7A012281829D5C200CADA00 /* ViewSelector.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
 				D7A0122E1829D76600CADA00 /* NewOrExistingUserView.m in Sources */,
-				D069CE61183C727C0065B65F /* SQLiteWrapper.m in Sources */,
 				D7A012381829ECC900CADA00 /* NewUserView.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
 				D0715591183B4BFE00147694 /* Sample.m in Sources */,
+				D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,7 +498,17 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/include",
+				);
 				INFOPLIST_FILE = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Justin/Downloads/zumero_client_sdk_20130625\\ 2/mac",
+					/Users/Justin/Projects/ProjectCrystalBlueOSX/ProjectCrystalBlueOSX/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -501,7 +521,17 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/include",
+				);
 				INFOPLIST_FILE = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Justin/Downloads/zumero_client_sdk_20130625\\ 2/mac",
+					/Users/Justin/Projects/ProjectCrystalBlueOSX/ProjectCrystalBlueOSX/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

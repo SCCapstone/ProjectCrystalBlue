@@ -10,6 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import "zumero_register.h"
 #import "Sample.h"
 
 @interface SQLiteWrapper : NSObject {
@@ -30,5 +31,11 @@
 
 // Remove a sample from the SQLite database.
 -(void) deleteSample:(Sample *)sample;
+
+// Sync local database with zumero database
+-(void) sync;
+
+// Get storage usage facts from zumero database
+-(void) storageUsage;
 
 @end
