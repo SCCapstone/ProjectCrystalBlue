@@ -33,6 +33,7 @@
                         "coordinates TEXT,"
                         "isPulverized INTEGER);";
         [self performQuery:sql];
+        [self sync];
     }
     return self;
 }
@@ -118,9 +119,9 @@
 // Sync local database with zumero database
 -(void) sync {
     NSString *sql = @"SELECT zumero_sync("
-        "'test',"
+        "'main',"
         "'https://zinst7655bd1e667.s.zumero.net',"
-        "'test_db2',"
+        "'test_db4',"
         "zumero_internal_auth_scheme('zumero_users_admin'),"
         "'admin',"
         "'pcbcsce490','temp_file');";
