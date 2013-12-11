@@ -19,20 +19,21 @@
     if (self) {
         sqlite3 *dbConnection;
         // Try to open temporary database
-        if (sqlite3_open("test.db", &dbConnection) != SQLITE_OK) {
+        if (sqlite3_open("test2.db", &dbConnection) != SQLITE_OK) {
             NSLog(@"Failed to open database");
             return nil;
         }
         db = dbConnection;
         zumero_register(db);
         
-        // Create sample database
-        NSString *sql = @"CREATE VIRTUAL TABLE IF NOT EXISTS samples USING zumero("
-                        "rockType TEXT,"
-                        "rockId INTEGER PRIMARY KEY,"
-                        "coordinates TEXT,"
-                        "isPulverized INTEGER);";
-        [self performQuery:sql];
+//        // Create sample database
+//        NSString *sql = @"CREATE VIRTUAL TABLE IF NOT EXISTS samples USING zumero("
+//                        "rockType TEXT,"
+//                        "rockId INTEGER PRIMARY KEY,"
+//                        "coordinates TEXT,"
+////                        "isPulverized INTEGER);";
+//        NSString *sql = @"DROP TABLE samples;";
+//        [self performQuery:sql];
         [self sync];
     }
     return self;
@@ -121,11 +122,16 @@
     NSString *sql = @"SELECT zumero_sync("
         "'main',"
         "'https://zinst7655bd1e667.s.zumero.net',"
-        "'test_db4',"
+        "'test_db3',"
         "zumero_internal_auth_scheme('zumero_users_admin'),"
         "'admin',"
-        "'pcbcsce490','temp_file');";
-    [self performQuery:sql];
+        "'pcbcsce490');";
+    NSArray *result = [self performQuery:sql];
+    NSArray *args = [[[result objectAtIndex:0] objectAtIndex:0] componentsSeparatedByString:@";"];
+    NSInteger callsRemaining = [[args objectAtIndex:0] integerValue];
+    for (NSInteger i=0; i<callsRemaining; i++) {
+        [self performQuery:sql];
+    }
 }
 
 // Get storage usage stats from zumero database

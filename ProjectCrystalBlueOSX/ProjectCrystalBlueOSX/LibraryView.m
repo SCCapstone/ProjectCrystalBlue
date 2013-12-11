@@ -65,6 +65,7 @@
     for (Sample *sample in sampleLibrary) {
         [database updateSample:sample];
     }
+    [database sync];
 }
 
 - (void)setSampleLibrary:(NSMutableArray *) library {
