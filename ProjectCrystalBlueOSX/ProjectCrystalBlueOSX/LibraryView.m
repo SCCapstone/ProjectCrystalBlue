@@ -66,6 +66,11 @@
         [database updateSample:sample];
     }
     [database sync];
+    
+    // Update the tableview with any new data from Zumero as well.
+    sampleLibrary = [database getSamples];
+    [_arrayController setContent:sampleLibrary];
+    [_tableView reloadData];
 }
 
 - (void)setSampleLibrary:(NSMutableArray *) library {
