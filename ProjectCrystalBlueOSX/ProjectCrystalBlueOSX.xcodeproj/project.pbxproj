@@ -11,10 +11,12 @@
 		D02E874218519C8700B15316 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E874118519C8700B15316 /* libz.dylib */; };
 		D03677011857D47C002A042D /* zumero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D03677001857D47C002A042D /* zumero.a */; };
 		D069CE5E183C716D0065B65F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D069CE5D183C716D0065B65F /* libsqlite3.dylib */; };
-		D0715591183B4BFE00147694 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0715590183B4BFE00147694 /* Sample.m */; };
-		D0715596183B4EAB00147694 /* LibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0715594183B4EAB00147694 /* LibraryView.m */; };
-		D0715597183B4EAB00147694 /* LibraryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0715595183B4EAB00147694 /* LibraryView.xib */; };
 		D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0969B511851C142008C4BD5 /* SQLiteWrapper.m */; };
+		D0C076B8188AFB9200B3D48E /* OriginalSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076B7188AFB9200B3D48E /* OriginalSample.m */; };
+		D0C076BB188AFBA600B3D48E /* ChildSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076BA188AFBA600B3D48E /* ChildSample.m */; };
+		D0C076BE188AFF7A00B3D48E /* OriginalSampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076BD188AFF7A00B3D48E /* OriginalSampleConstants.m */; };
+		D0C076C1188B03C500B3D48E /* OriginalSampleConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076C0188B03C500B3D48E /* OriginalSampleConstantsTests.m */; };
+		D0C076C4188B062600B3D48E /* ChildSampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076C3188B062600B3D48E /* ChildSampleConstants.m */; };
 		D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD03181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD07181C1FC600F762A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD06181C1FC600F762A3 /* main.m */; };
@@ -26,14 +28,6 @@
 		D729BD1B181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD23181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD21181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */; };
-		D7A012281829D5C200CADA00 /* ViewSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A012271829D5C200CADA00 /* ViewSelector.m */; };
-		D7A0122E1829D76600CADA00 /* NewOrExistingUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A0122C1829D76600CADA00 /* NewOrExistingUserView.m */; };
-		D7A0122F1829D76600CADA00 /* NewOrExistingUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A0122D1829D76600CADA00 /* NewOrExistingUserView.xib */; };
-		D7A012331829E21300CADA00 /* ExistingUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A012311829E21300CADA00 /* ExistingUserView.m */; };
-		D7A012341829E21300CADA00 /* ExistingUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A012321829E21300CADA00 /* ExistingUserView.xib */; };
-		D7A012381829ECC900CADA00 /* NewUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A012361829ECC900CADA00 /* NewUserView.m */; };
-		D7A012391829ECC900CADA00 /* NewUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A012371829ECC900CADA00 /* NewUserView.xib */; };
-		D7B89483184DAE8400A1F3C6 /* SampleFieldConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B89482184DAE8400A1F3C6 /* SampleFieldConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,13 +45,17 @@
 		D02E874118519C8700B15316 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D03677001857D47C002A042D /* zumero.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = zumero.a; path = include/zumero.a; sourceTree = "<group>"; };
 		D069CE5D183C716D0065B65F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		D071558F183B4BFE00147694 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
-		D0715590183B4BFE00147694 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
-		D0715593183B4EAB00147694 /* LibraryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryView.h; sourceTree = "<group>"; };
-		D0715594183B4EAB00147694 /* LibraryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryView.m; sourceTree = "<group>"; };
-		D0715595183B4EAB00147694 /* LibraryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryView.xib; sourceTree = "<group>"; };
 		D0969B501851C142008C4BD5 /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteWrapper.h; sourceTree = "<group>"; };
 		D0969B511851C142008C4BD5 /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteWrapper.m; sourceTree = "<group>"; };
+		D0C076B6188AFB9200B3D48E /* OriginalSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalSample.h; sourceTree = "<group>"; };
+		D0C076B7188AFB9200B3D48E /* OriginalSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSample.m; sourceTree = "<group>"; };
+		D0C076B9188AFBA600B3D48E /* ChildSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildSample.h; sourceTree = "<group>"; };
+		D0C076BA188AFBA600B3D48E /* ChildSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildSample.m; sourceTree = "<group>"; };
+		D0C076BC188AFF7A00B3D48E /* OriginalSampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalSampleConstants.h; sourceTree = "<group>"; };
+		D0C076BD188AFF7A00B3D48E /* OriginalSampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSampleConstants.m; sourceTree = "<group>"; };
+		D0C076C0188B03C500B3D48E /* OriginalSampleConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSampleConstantsTests.m; sourceTree = "<group>"; };
+		D0C076C2188B062600B3D48E /* ChildSampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildSampleConstants.h; sourceTree = "<group>"; };
+		D0C076C3188B062600B3D48E /* ChildSampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildSampleConstants.m; sourceTree = "<group>"; };
 		D729BCF7181C1FC600F762A3 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BCFA181C1FC600F762A3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D729BCFD181C1FC600F762A3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -77,19 +75,6 @@
 		D729BD20181C1FC600F762A3 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
 		D729BD22181C1FC600F762A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
-		D7A012261829D5C200CADA00 /* ViewSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewSelector.h; sourceTree = "<group>"; };
-		D7A012271829D5C200CADA00 /* ViewSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewSelector.m; sourceTree = "<group>"; };
-		D7A0122B1829D76600CADA00 /* NewOrExistingUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrExistingUserView.h; sourceTree = "<group>"; };
-		D7A0122C1829D76600CADA00 /* NewOrExistingUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrExistingUserView.m; sourceTree = "<group>"; };
-		D7A0122D1829D76600CADA00 /* NewOrExistingUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewOrExistingUserView.xib; sourceTree = "<group>"; };
-		D7A012301829E21300CADA00 /* ExistingUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExistingUserView.h; sourceTree = "<group>"; };
-		D7A012311829E21300CADA00 /* ExistingUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExistingUserView.m; sourceTree = "<group>"; };
-		D7A012321829E21300CADA00 /* ExistingUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExistingUserView.xib; sourceTree = "<group>"; };
-		D7A012351829ECC900CADA00 /* NewUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserView.h; sourceTree = "<group>"; };
-		D7A012361829ECC900CADA00 /* NewUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserView.m; sourceTree = "<group>"; };
-		D7A012371829ECC900CADA00 /* NewUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewUserView.xib; sourceTree = "<group>"; };
-		D7B89481184DAE8400A1F3C6 /* SampleFieldConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleFieldConstants.h; sourceTree = "<group>"; };
-		D7B89482184DAE8400A1F3C6 /* SampleFieldConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,25 +102,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D071558E183B4BEA00147694 /* Models */ = {
+		D0C076B1188AFAC300B3D48E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D071558F183B4BFE00147694 /* Sample.h */,
-				D0715590183B4BFE00147694 /* Sample.m */,
-				D7B89481184DAE8400A1F3C6 /* SampleFieldConstants.h */,
-				D7B89482184DAE8400A1F3C6 /* SampleFieldConstants.m */,
+				D0C076B6188AFB9200B3D48E /* OriginalSample.h */,
+				D0C076B7188AFB9200B3D48E /* OriginalSample.m */,
+				D0C076B9188AFBA600B3D48E /* ChildSample.h */,
+				D0C076BA188AFBA600B3D48E /* ChildSample.m */,
+				D0C076BC188AFF7A00B3D48E /* OriginalSampleConstants.h */,
+				D0C076BD188AFF7A00B3D48E /* OriginalSampleConstants.m */,
+				D0C076C2188B062600B3D48E /* ChildSampleConstants.h */,
+				D0C076C3188B062600B3D48E /* ChildSampleConstants.m */,
 			);
-			name = Models;
+			name = Model;
 			sourceTree = "<group>";
 		};
-		D0715592183B4E8900147694 /* Library */ = {
+		D0C076B2188AFADA00B3D48E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D0715593183B4EAB00147694 /* LibraryView.h */,
-				D0715594183B4EAB00147694 /* LibraryView.m */,
-				D0715595183B4EAB00147694 /* LibraryView.xib */,
 			);
-			name = Library;
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		D0C076B3188AFAE000B3D48E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D0C076B4188AFAE400B3D48E /* Store */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		D0C076B5188AFAEB00B3D48E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				D0969B501851C142008C4BD5 /* SQLiteWrapper.h */,
+				D0969B511851C142008C4BD5 /* SQLiteWrapper.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		D0C076BF188B03A800B3D48E /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				D0C076C0188B03C500B3D48E /* OriginalSampleConstantsTests.m */,
+			);
+			name = ModelTests;
 			sourceTree = "<group>";
 		};
 		D729BCEE181C1FC600F762A3 = {
@@ -184,13 +201,14 @@
 		D729BD00181C1FC600F762A3 /* ProjectCrystalBlueOSX */ = {
 			isa = PBXGroup;
 			children = (
-				D071558E183B4BEA00147694 /* Models */,
-				D7A012291829D70100CADA00 /* Views */,
+				D0C076B3188AFAE000B3D48E /* Controller */,
+				D0C076B1188AFAC300B3D48E /* Model */,
+				D0C076B4188AFAE400B3D48E /* Store */,
+				D0C076B5188AFAEB00B3D48E /* Utility */,
+				D0C076B2188AFADA00B3D48E /* ViewController */,
 				D729BD0C181C1FC600F762A3 /* AppDelegate.h */,
 				D729BD0D181C1FC600F762A3 /* AppDelegate.m */,
 				D729BD0F181C1FC600F762A3 /* MainMenu.xib */,
-				D0969B501851C142008C4BD5 /* SQLiteWrapper.h */,
-				D0969B511851C142008C4BD5 /* SQLiteWrapper.m */,
 				D729BD12181C1FC600F762A3 /* Images.xcassets */,
 				D729BD01181C1FC600F762A3 /* Supporting Files */,
 			);
@@ -212,6 +230,7 @@
 		D729BD1E181C1FC600F762A3 /* ProjectCrystalBlueOSXTests */ = {
 			isa = PBXGroup;
 			children = (
+				D0C076BF188B03A800B3D48E /* ModelTests */,
 				D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */,
 				D729BD1F181C1FC600F762A3 /* Supporting Files */,
 			);
@@ -225,33 +244,6 @@
 				D729BD21181C1FC600F762A3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D7A012291829D70100CADA00 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D0715592183B4E8900147694 /* Library */,
-				D7A012261829D5C200CADA00 /* ViewSelector.h */,
-				D7A012271829D5C200CADA00 /* ViewSelector.m */,
-				D7A0122A1829D70A00CADA00 /* Log-in */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		D7A0122A1829D70A00CADA00 /* Log-in */ = {
-			isa = PBXGroup;
-			children = (
-				D7A0122B1829D76600CADA00 /* NewOrExistingUserView.h */,
-				D7A0122C1829D76600CADA00 /* NewOrExistingUserView.m */,
-				D7A0122D1829D76600CADA00 /* NewOrExistingUserView.xib */,
-				D7A012301829E21300CADA00 /* ExistingUserView.h */,
-				D7A012311829E21300CADA00 /* ExistingUserView.m */,
-				D7A012321829E21300CADA00 /* ExistingUserView.xib */,
-				D7A012351829ECC900CADA00 /* NewUserView.h */,
-				D7A012361829ECC900CADA00 /* NewUserView.m */,
-				D7A012371829ECC900CADA00 /* NewUserView.xib */,
-			);
-			name = "Log-in";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,11 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0715597183B4EAB00147694 /* LibraryView.xib in Resources */,
-				D7A012341829E21300CADA00 /* ExistingUserView.xib in Resources */,
 				D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */,
-				D7A0122F1829D76600CADA00 /* NewOrExistingUserView.xib in Resources */,
-				D7A012391829ECC900CADA00 /* NewUserView.xib in Resources */,
 				D729BD13181C1FC600F762A3 /* Images.xcassets in Resources */,
 				D729BD0B181C1FC600F762A3 /* Credits.rtf in Resources */,
 				D729BD11181C1FC600F762A3 /* MainMenu.xib in Resources */,
@@ -356,15 +344,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0715596183B4EAB00147694 /* LibraryView.m in Sources */,
-				D7A012331829E21300CADA00 /* ExistingUserView.m in Sources */,
-				D7B89483184DAE8400A1F3C6 /* SampleFieldConstants.m in Sources */,
-				D7A012281829D5C200CADA00 /* ViewSelector.m in Sources */,
+				D0C076C4188B062600B3D48E /* ChildSampleConstants.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
-				D7A0122E1829D76600CADA00 /* NewOrExistingUserView.m in Sources */,
-				D7A012381829ECC900CADA00 /* NewUserView.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
-				D0715591183B4BFE00147694 /* Sample.m in Sources */,
+				D0C076BE188AFF7A00B3D48E /* OriginalSampleConstants.m in Sources */,
+				D0C076B8188AFB9200B3D48E /* OriginalSample.m in Sources */,
+				D0C076BB188AFBA600B3D48E /* ChildSample.m in Sources */,
 				D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C076C1188B03C500B3D48E /* OriginalSampleConstantsTests.m in Sources */,
 				D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
