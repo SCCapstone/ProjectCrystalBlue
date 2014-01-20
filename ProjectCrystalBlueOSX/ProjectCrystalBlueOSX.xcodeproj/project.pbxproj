@@ -10,6 +10,9 @@
 		D02E874018519C7B00B15316 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E873F18519C7B00B15316 /* CFNetwork.framework */; };
 		D02E874218519C8700B15316 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E874118519C8700B15316 /* libz.dylib */; };
 		D03677011857D47C002A042D /* zumero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D03677001857D47C002A042D /* zumero.a */; };
+		D049EF43188CA61A00EF8672 /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D049EF42188CA61A00EF8672 /* ImageStore.m */; };
+		D049EF46188CA62F00EF8672 /* OriginalSampleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D049EF45188CA62F00EF8672 /* OriginalSampleStore.m */; };
+		D049EF49188CA63A00EF8672 /* ChildSampleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D049EF48188CA63A00EF8672 /* ChildSampleStore.m */; };
 		D069CE5E183C716D0065B65F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D069CE5D183C716D0065B65F /* libsqlite3.dylib */; };
 		D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0969B511851C142008C4BD5 /* SQLiteWrapper.m */; };
 		D0C076B8188AFB9200B3D48E /* OriginalSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076B7188AFB9200B3D48E /* OriginalSample.m */; };
@@ -44,6 +47,12 @@
 		D02E873F18519C7B00B15316 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D02E874118519C8700B15316 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D03677001857D47C002A042D /* zumero.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = zumero.a; path = include/zumero.a; sourceTree = "<group>"; };
+		D049EF41188CA61A00EF8672 /* ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
+		D049EF42188CA61A00EF8672 /* ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStore.m; sourceTree = "<group>"; };
+		D049EF44188CA62F00EF8672 /* OriginalSampleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalSampleStore.h; sourceTree = "<group>"; };
+		D049EF45188CA62F00EF8672 /* OriginalSampleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSampleStore.m; sourceTree = "<group>"; };
+		D049EF47188CA63A00EF8672 /* ChildSampleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildSampleStore.h; sourceTree = "<group>"; };
+		D049EF48188CA63A00EF8672 /* ChildSampleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildSampleStore.m; sourceTree = "<group>"; };
 		D069CE5D183C716D0065B65F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D0969B501851C142008C4BD5 /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteWrapper.h; sourceTree = "<group>"; };
 		D0969B511851C142008C4BD5 /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteWrapper.m; sourceTree = "<group>"; };
@@ -134,6 +143,12 @@
 		D0C076B4188AFAE400B3D48E /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				D049EF41188CA61A00EF8672 /* ImageStore.h */,
+				D049EF42188CA61A00EF8672 /* ImageStore.m */,
+				D049EF44188CA62F00EF8672 /* OriginalSampleStore.h */,
+				D049EF45188CA62F00EF8672 /* OriginalSampleStore.m */,
+				D049EF47188CA63A00EF8672 /* ChildSampleStore.h */,
+				D049EF48188CA63A00EF8672 /* ChildSampleStore.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -344,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D049EF49188CA63A00EF8672 /* ChildSampleStore.m in Sources */,
 				D0C076C4188B062600B3D48E /* ChildSampleConstants.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
@@ -351,6 +367,8 @@
 				D0C076B8188AFB9200B3D48E /* OriginalSample.m in Sources */,
 				D0C076BB188AFBA600B3D48E /* ChildSample.m in Sources */,
 				D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */,
+				D049EF43188CA61A00EF8672 /* ImageStore.m in Sources */,
+				D049EF46188CA62F00EF8672 /* OriginalSampleStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
