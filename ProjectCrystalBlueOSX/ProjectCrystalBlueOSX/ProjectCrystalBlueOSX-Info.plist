@@ -27,7 +27,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2013 Logan Hood. All rights reserved.</string>
 	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
+	<string>LibraryView</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

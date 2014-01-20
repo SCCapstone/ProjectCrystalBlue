@@ -11,7 +11,6 @@
 @implementation ChildSample
 
 @synthesize key;
-@synthesize parentKey;
 @synthesize originalKey;
 @synthesize attributes;
 

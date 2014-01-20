@@ -14,6 +14,10 @@
 		D049EF46188CA62F00EF8672 /* OriginalSampleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D049EF45188CA62F00EF8672 /* OriginalSampleStore.m */; };
 		D049EF49188CA63A00EF8672 /* ChildSampleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D049EF48188CA63A00EF8672 /* ChildSampleStore.m */; };
 		D069CE5E183C716D0065B65F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D069CE5D183C716D0065B65F /* libsqlite3.dylib */; };
+		D08A762E188DBDEC002F948C /* LibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A762D188DBDEC002F948C /* LibraryView.m */; };
+		D08A7630188DBDFB002F948C /* LibraryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08A762F188DBDFB002F948C /* LibraryView.xib */; };
+		D08A7632188DD4C5002F948C /* ChildrenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08A7631188DD4C5002F948C /* ChildrenView.xib */; };
+		D08A7635188DD4E4002F948C /* ChildrenView.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A7634188DD4E4002F948C /* ChildrenView.m */; };
 		D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0969B511851C142008C4BD5 /* SQLiteWrapper.m */; };
 		D0C076B8188AFB9200B3D48E /* OriginalSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076B7188AFB9200B3D48E /* OriginalSample.m */; };
 		D0C076BB188AFBA600B3D48E /* ChildSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076BA188AFBA600B3D48E /* ChildSample.m */; };
@@ -25,7 +29,6 @@
 		D729BD07181C1FC600F762A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD06181C1FC600F762A3 /* main.m */; };
 		D729BD0B181C1FC600F762A3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D729BD09181C1FC600F762A3 /* Credits.rtf */; };
 		D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD0D181C1FC600F762A3 /* AppDelegate.m */; };
-		D729BD11181C1FC600F762A3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D729BD0F181C1FC600F762A3 /* MainMenu.xib */; };
 		D729BD13181C1FC600F762A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D729BD12181C1FC600F762A3 /* Images.xcassets */; };
 		D729BD1A181C1FC600F762A3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BD19181C1FC600F762A3 /* XCTest.framework */; };
 		D729BD1B181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
@@ -54,6 +57,12 @@
 		D049EF47188CA63A00EF8672 /* ChildSampleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildSampleStore.h; sourceTree = "<group>"; };
 		D049EF48188CA63A00EF8672 /* ChildSampleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildSampleStore.m; sourceTree = "<group>"; };
 		D069CE5D183C716D0065B65F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		D08A762C188DBDEC002F948C /* LibraryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryView.h; sourceTree = "<group>"; };
+		D08A762D188DBDEC002F948C /* LibraryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryView.m; sourceTree = "<group>"; };
+		D08A762F188DBDFB002F948C /* LibraryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryView.xib; sourceTree = "<group>"; };
+		D08A7631188DD4C5002F948C /* ChildrenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildrenView.xib; sourceTree = "<group>"; };
+		D08A7633188DD4E4002F948C /* ChildrenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildrenView.h; sourceTree = "<group>"; };
+		D08A7634188DD4E4002F948C /* ChildrenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildrenView.m; sourceTree = "<group>"; };
 		D0969B501851C142008C4BD5 /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteWrapper.h; sourceTree = "<group>"; };
 		D0969B511851C142008C4BD5 /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteWrapper.m; sourceTree = "<group>"; };
 		D0C076B6188AFB9200B3D48E /* OriginalSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalSample.h; sourceTree = "<group>"; };
@@ -77,7 +86,6 @@
 		D729BD0A181C1FC600F762A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		D729BD0C181C1FC600F762A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D729BD0D181C1FC600F762A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D729BD10181C1FC600F762A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D729BD12181C1FC600F762A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D729BD18181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectCrystalBlueOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BD19181C1FC600F762A3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -129,6 +137,12 @@
 		D0C076B2188AFADA00B3D48E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D08A762C188DBDEC002F948C /* LibraryView.h */,
+				D08A762D188DBDEC002F948C /* LibraryView.m */,
+				D08A762F188DBDFB002F948C /* LibraryView.xib */,
+				D08A7633188DD4E4002F948C /* ChildrenView.h */,
+				D08A7634188DD4E4002F948C /* ChildrenView.m */,
+				D08A7631188DD4C5002F948C /* ChildrenView.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -223,7 +237,6 @@
 				D0C076B2188AFADA00B3D48E /* ViewController */,
 				D729BD0C181C1FC600F762A3 /* AppDelegate.h */,
 				D729BD0D181C1FC600F762A3 /* AppDelegate.m */,
-				D729BD0F181C1FC600F762A3 /* MainMenu.xib */,
 				D729BD12181C1FC600F762A3 /* Images.xcassets */,
 				D729BD01181C1FC600F762A3 /* Supporting Files */,
 			);
@@ -337,10 +350,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D08A7632188DD4C5002F948C /* ChildrenView.xib in Resources */,
 				D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */,
 				D729BD13181C1FC600F762A3 /* Images.xcassets in Resources */,
 				D729BD0B181C1FC600F762A3 /* Credits.rtf in Resources */,
-				D729BD11181C1FC600F762A3 /* MainMenu.xib in Resources */,
+				D08A7630188DBDFB002F948C /* LibraryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,9 +374,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D049EF49188CA63A00EF8672 /* ChildSampleStore.m in Sources */,
+				D08A762E188DBDEC002F948C /* LibraryView.m in Sources */,
 				D0C076C4188B062600B3D48E /* ChildSampleConstants.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
+				D08A7635188DD4E4002F948C /* ChildrenView.m in Sources */,
 				D0C076BE188AFF7A00B3D48E /* OriginalSampleConstants.m in Sources */,
 				D0C076B8188AFB9200B3D48E /* OriginalSample.m in Sources */,
 				D0C076BB188AFBA600B3D48E /* ChildSample.m in Sources */,
@@ -406,14 +422,6 @@
 				D729BD0A181C1FC600F762A3 /* en */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		D729BD0F181C1FC600F762A3 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D729BD10181C1FC600F762A3 /* Base */,
-			);
-			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 		D729BD21181C1FC600F762A3 /* InfoPlist.strings */ = {

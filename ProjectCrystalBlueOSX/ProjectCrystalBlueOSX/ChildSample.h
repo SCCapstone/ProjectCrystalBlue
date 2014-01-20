@@ -13,7 +13,6 @@
 
 @property(readonly,copy) NSString *key;
 @property(readonly,copy) NSString *originalKey;
-@property(readonly,copy) NSString *parentKey;
 @property NSDictionary *attributes;
 
 - (id) initWithAttributes:(NSArray *) attributeNames
