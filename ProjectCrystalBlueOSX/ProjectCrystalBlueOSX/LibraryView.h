@@ -10,6 +10,6 @@
 
 @interface LibraryView : NSViewController
 
-- (IBAction)doThings:(id)sender;
+- (IBAction)viewChildren:(id)sender;
 
 @end

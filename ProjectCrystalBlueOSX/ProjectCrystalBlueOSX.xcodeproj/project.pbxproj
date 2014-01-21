@@ -16,14 +16,14 @@
 		D069CE5E183C716D0065B65F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D069CE5D183C716D0065B65F /* libsqlite3.dylib */; };
 		D08A762E188DBDEC002F948C /* LibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A762D188DBDEC002F948C /* LibraryView.m */; };
 		D08A7630188DBDFB002F948C /* LibraryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08A762F188DBDFB002F948C /* LibraryView.xib */; };
-		D08A7632188DD4C5002F948C /* ChildrenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08A7631188DD4C5002F948C /* ChildrenView.xib */; };
-		D08A7635188DD4E4002F948C /* ChildrenView.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A7634188DD4E4002F948C /* ChildrenView.m */; };
 		D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0969B511851C142008C4BD5 /* SQLiteWrapper.m */; };
 		D0C076B8188AFB9200B3D48E /* OriginalSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076B7188AFB9200B3D48E /* OriginalSample.m */; };
 		D0C076BB188AFBA600B3D48E /* ChildSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076BA188AFBA600B3D48E /* ChildSample.m */; };
 		D0C076BE188AFF7A00B3D48E /* OriginalSampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076BD188AFF7A00B3D48E /* OriginalSampleConstants.m */; };
 		D0C076C1188B03C500B3D48E /* OriginalSampleConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076C0188B03C500B3D48E /* OriginalSampleConstantsTests.m */; };
 		D0C076C4188B062600B3D48E /* ChildSampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076C3188B062600B3D48E /* ChildSampleConstants.m */; };
+		D0DDDE2F188E33A30060B8C2 /* ChildrenView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDDE2D188E33A30060B8C2 /* ChildrenView.m */; };
+		D0DDDE30188E33A30060B8C2 /* ChildrenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DDDE2E188E33A30060B8C2 /* ChildrenView.xib */; };
 		D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD03181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD07181C1FC600F762A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD06181C1FC600F762A3 /* main.m */; };
@@ -60,9 +60,6 @@
 		D08A762C188DBDEC002F948C /* LibraryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryView.h; sourceTree = "<group>"; };
 		D08A762D188DBDEC002F948C /* LibraryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryView.m; sourceTree = "<group>"; };
 		D08A762F188DBDFB002F948C /* LibraryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryView.xib; sourceTree = "<group>"; };
-		D08A7631188DD4C5002F948C /* ChildrenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildrenView.xib; sourceTree = "<group>"; };
-		D08A7633188DD4E4002F948C /* ChildrenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildrenView.h; sourceTree = "<group>"; };
-		D08A7634188DD4E4002F948C /* ChildrenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildrenView.m; sourceTree = "<group>"; };
 		D0969B501851C142008C4BD5 /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteWrapper.h; sourceTree = "<group>"; };
 		D0969B511851C142008C4BD5 /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteWrapper.m; sourceTree = "<group>"; };
 		D0C076B6188AFB9200B3D48E /* OriginalSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalSample.h; sourceTree = "<group>"; };
@@ -74,6 +71,9 @@
 		D0C076C0188B03C500B3D48E /* OriginalSampleConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSampleConstantsTests.m; sourceTree = "<group>"; };
 		D0C076C2188B062600B3D48E /* ChildSampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildSampleConstants.h; sourceTree = "<group>"; };
 		D0C076C3188B062600B3D48E /* ChildSampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildSampleConstants.m; sourceTree = "<group>"; };
+		D0DDDE2C188E33A30060B8C2 /* ChildrenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildrenView.h; sourceTree = "<group>"; };
+		D0DDDE2D188E33A30060B8C2 /* ChildrenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildrenView.m; sourceTree = "<group>"; };
+		D0DDDE2E188E33A30060B8C2 /* ChildrenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildrenView.xib; sourceTree = "<group>"; };
 		D729BCF7181C1FC600F762A3 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BCFA181C1FC600F762A3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D729BCFD181C1FC600F762A3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -140,9 +140,9 @@
 				D08A762C188DBDEC002F948C /* LibraryView.h */,
 				D08A762D188DBDEC002F948C /* LibraryView.m */,
 				D08A762F188DBDFB002F948C /* LibraryView.xib */,
-				D08A7633188DD4E4002F948C /* ChildrenView.h */,
-				D08A7634188DD4E4002F948C /* ChildrenView.m */,
-				D08A7631188DD4C5002F948C /* ChildrenView.xib */,
+				D0DDDE2C188E33A30060B8C2 /* ChildrenView.h */,
+				D0DDDE2D188E33A30060B8C2 /* ChildrenView.m */,
+				D0DDDE2E188E33A30060B8C2 /* ChildrenView.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -350,7 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D08A7632188DD4C5002F948C /* ChildrenView.xib in Resources */,
+				D0DDDE30188E33A30060B8C2 /* ChildrenView.xib in Resources */,
 				D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */,
 				D729BD13181C1FC600F762A3 /* Images.xcassets in Resources */,
 				D729BD0B181C1FC600F762A3 /* Credits.rtf in Resources */,
@@ -378,7 +378,7 @@
 				D0C076C4188B062600B3D48E /* ChildSampleConstants.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
-				D08A7635188DD4E4002F948C /* ChildrenView.m in Sources */,
+				D0DDDE2F188E33A30060B8C2 /* ChildrenView.m in Sources */,
 				D0C076BE188AFF7A00B3D48E /* OriginalSampleConstants.m in Sources */,
 				D0C076B8188AFB9200B3D48E /* OriginalSample.m in Sources */,
 				D0C076BB188AFBA600B3D48E /* ChildSample.m in Sources */,

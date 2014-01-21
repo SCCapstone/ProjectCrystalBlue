@@ -10,4 +10,6 @@
 
 @interface ChildrenView : NSWindowController
 
+
+
 @end

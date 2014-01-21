@@ -25,10 +25,9 @@
     return self;
 }
 
--(IBAction)doThings:(id)sender
+- (IBAction)viewChildren:(id)sender
 {
-    ChildrenView *c = [[ChildrenView alloc] initWithWindowNibName:@"ChildrenView"];
+    ChildrenView *c = [[ChildrenView alloc] init];
     [c showWindow:self];
 }
-
 @end
