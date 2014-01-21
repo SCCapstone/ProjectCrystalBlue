@@ -2,19 +2,68 @@
 //  ImageStore.h
 //  ProjectCrystalBlueOSX
 //
-//  Created by Justin Baumgartner on 1/19/14.
+//  Generic protocol for any implementation of image storage, where each image is associated with a unique key.
+//  The ImageStore is a singleton object. It is backed by an online cloud storage, functioning both online
+//  and offline. There is eventual consistency of data across devices.
+//
+//  Created by Logan Hood on 1/20/14.
 //  Copyright (c) 2014 Logan Hood. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface ImageStore : NSObject
-{
-    NSMutableArray *allImages;
-}
+@protocol ImageStore <NSObject>
 
-+ (ImageStore *) sharedStore;
+/** Synchronize any new changes with an online database.
+ *  This should get any new images that have been created on other devices, as well as 
+ *  upload any images that have been created on this device.
+ *
+ *  When online, the ImageStore will automatically synchronize whenever images are added,
+ *  but this should also be called periodically in case images were created offline.
+ *
+ *  Returns whether the cloud storage location was reachable.
+ */
++(BOOL)synchronizeWithCloud;
 
-- (NSMutableArray *) allImages;
+/** Retrieve the image associated with a given key.
+ */
++(NSImage *)getImageForKey:(NSString *)key;
+
+/** Checks if the ImageStore already has an image for the given key.
+ *  For example, this should always be used before assigning a key to a new image.
+ */
++(BOOL)imageExistsForKey:(NSString *)key;
+
+/** Add a new image to the ImageStore with the given unique key.
+ *
+ *  The key absolutely positively *MUST* be unique across all devices.
+ *
+ *  Returns YES if the put operation is successful; NO if it is unsuccessful.
+ *  Generally, the only reason this should be unsuccessful is if the key is not unique
+ *  or the device disk cannot be written to.
+ *
+ *  This only guarantees that the image has been added to the LOCAL ImageStore; not necessarily
+ *  to the cloud storage location.
+ */
++(BOOL)putImage:(NSImage *)
+         forKey:(NSString *)key;
+
+/** Check whether the image associated with a given key is "dirty" - i.e. is not synced with the cloud ImageStore.
+ *  
+ *  Returns NO 
+ *      -if the image associated with that key has already been synced.
+ *      -if there is not an image associated with that key.
+ *
+ *  Returns YES
+ *      -if the image was collected while the device was offline, and synchronizeWithCloud has not been called since then.
+ */
++(BOOL)keyIsDirty:(NSString *)key;
+
+/** This will delete ALL local image data. No images are available until resynchronizing with the online database.
+ *
+ *  DO NOT CALL THIS METHOD LIGHTLY.
+ *  Resyncing the images will likely take a lot of time. (and will certainly eat up a metric fuckton of bandwidth)
+ */
++(void)flushLocalImageStore;
 
 @end
