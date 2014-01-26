@@ -10,9 +10,10 @@
 
 #import "S3ImageStore.h"
 #import <AWSiOSSDK/S3/AmazonS3Client.h>
+#import "S3Utils.h"
 
 NSString *const CLASS_NAME = @"S3ImageStore";
-NSString *const BUCKET = @"project-crystal-blue-test";
+NSString *const BUCKET_NAME = @"project-crystal-blue-test";
 
 BOOL singletonInstantiated = NO;
 AmazonS3Client *s3Client;
@@ -33,23 +34,22 @@ AmazonS3Client *s3Client;
     
     s3Client = [[AmazonS3Client alloc] initWithCredentials:login];
     
-    // Next, check if our bucket exists
-    NSArray *buckets = [s3Client listBuckets];
-    NSLog(@"%@: Found %lu buckets", CLASS_NAME, (unsigned long)[buckets count]);
     
-    bool bucketExists = NO;
-    for (S3Bucket *bucket in buckets) {
-        if ([[bucket name] isEqualToString:BUCKET]) {
-            bucketExists = YES;
-            break;
+    @try {
+        // Check if our bucket exists
+        S3Bucket *bucket = [S3Utils findBucketWithName:BUCKET_NAME usingClient:s3Client];
+        if (!bucket) {
+            NSLog(@"%@: Creating bucket %@", CLASS_NAME, BUCKET_NAME);
+            [s3Client createBucketWithName:BUCKET_NAME];
         }
     }
-    if (!bucketExists) {
-        NSLog(@"%@: Creating bucket %@", CLASS_NAME, BUCKET);
-        [s3Client createBucketWithName:BUCKET];
+    @catch (NSException *exception) {
+        NSLog(@"Could not completely set up the %@ singleton - probably because the device could not connect to S3.", CLASS_NAME);
+        NSLog(@"Exception: %@ \n   with reason: %@", [exception name], [exception reason]);
     }
-    
-    singletonInstantiated = YES;
+    @finally {
+        singletonInstantiated = YES;
+    }
 }
 
 +(BOOL)synchronizeWithCloud
