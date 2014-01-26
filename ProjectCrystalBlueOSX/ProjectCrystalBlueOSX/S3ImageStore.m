@@ -94,6 +94,7 @@ AmazonS3Client *s3Client;
     @catch (NSException *exception) {
         NSLog(@"%@: Exception was thrown.", CLASS_NAME);
         NSLog(@"Exception: %@ ; Reason %@", [exception name], [exception reason]);
+        return [self.class defaultImage];
     }
     @finally {
         
