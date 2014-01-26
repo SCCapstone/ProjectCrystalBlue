@@ -68,36 +68,33 @@ AmazonS3Client *s3Client;
     
     NSLog(@"%@: Retrieving image for key %@", CLASS_NAME, key);
     
-    S3GetObjectRequest *request = [[S3GetObjectRequest alloc] init];
-    [request setKey:key];
-    [request setBucket:BUCKET_NAME];
+    S3GetObjectRequest *request = [[S3GetObjectRequest alloc] initWithKey:key
+                                                               withBucket:BUCKET_NAME];
     
+    NSImage *image;
     @try {
-        NSLog(@"%@: Sending request to S3", CLASS_NAME);
+        NSLog(@"%@: Sending request for image to S3", CLASS_NAME);
         S3GetObjectResponse *response = [s3Client getObject:request];
         
         if ([response error]) {
             NSLog(@"%@: %@", CLASS_NAME, [response error]);
-            return [self.class defaultImage];
-        }
-        
-        // Verify that the content type is something we expect (for security reasons)
-        if (![S3Utils contentTypeIsImage:[response contentType]]) {
-            NSLog(@"%@: rejecting the object for key %@ because the content type was illegal: %@",
+            image = [self.class defaultImage];
+        } else if (![S3Utils contentTypeIsImage:[response contentType]]) {
+            NSLog(@"%@: rejecting the object for key %@ because the MIME content type was not a valid image: %@",
                   CLASS_NAME, key, [response contentType]);
-            return [self.class defaultImage];
+            image = [self.class defaultImage];
+        } else {
+            NSLog(@"%@: Image successfully retrieved!", CLASS_NAME);
+            image = [[NSImage alloc] initWithData:[response body]];
         }
-        
-        NSImage *image = [[NSImage alloc] initWithData:[response body]];
-        return image;
     }
     @catch (NSException *exception) {
         NSLog(@"%@: Exception was thrown.", CLASS_NAME);
         NSLog(@"Exception: %@ ; Reason %@", [exception name], [exception reason]);
-        return [self.class defaultImage];
+        image = [self.class defaultImage];
     }
     @finally {
-        
+        return image;
     }
 }
 
