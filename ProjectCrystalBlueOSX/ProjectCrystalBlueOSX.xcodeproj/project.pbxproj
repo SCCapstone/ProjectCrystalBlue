@@ -33,6 +33,7 @@
 		D729BD1B181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD23181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD21181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */; };
+		D7CB01B21894912600C7E8A8 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7CB01B11894912600C7E8A8 /* AWSiOSSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		D729BD20181C1FC600F762A3 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
 		D729BD22181C1FC600F762A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
+		D7CB01B11894912600C7E8A8 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSiOSSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				D02E874018519C7B00B15316 /* CFNetwork.framework in Frameworks */,
 				D069CE5E183C716D0065B65F /* libsqlite3.dylib in Frameworks */,
 				D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */,
+				D7CB01B21894912600C7E8A8 /* AWSiOSSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +214,7 @@
 		D729BCF9181C1FC600F762A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7CB01B11894912600C7E8A8 /* AWSiOSSDK.framework */,
 				D03677001857D47C002A042D /* zumero.a */,
 				D02E874118519C8700B15316 /* libz.dylib */,
 				D02E873F18519C7B00B15316 /* CFNetwork.framework */,
@@ -512,6 +516,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/hoodlm/Documents/ProjectCrystalBlue-OSX/Spring2014/ProjectCrystalBlueOSX",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -535,6 +543,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/hoodlm/Documents/ProjectCrystalBlue-OSX/Spring2014/ProjectCrystalBlueOSX",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
