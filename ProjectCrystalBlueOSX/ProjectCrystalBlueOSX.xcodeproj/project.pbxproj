@@ -36,6 +36,7 @@
 		D7608DB51894962F00F54869 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = D7608DB41894962F00F54869 /* no_image.png */; };
 		D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DBA189496CA00F54869 /* S3ImageStore.m */; };
 		D7608DC118949A9200F54869 /* S3ImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DC018949A9200F54869 /* S3ImageStoreTests.m */; };
+		D7608DC51894B76900F54869 /* S3Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DC41894B76900F54869 /* S3Utils.m */; };
 		D7CB01B21894912600C7E8A8 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7CB01B11894912600C7E8A8 /* AWSiOSSDK.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,8 @@
 		D7608DB9189496CA00F54869 /* S3ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3ImageStore.h; sourceTree = "<group>"; };
 		D7608DBA189496CA00F54869 /* S3ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStore.m; sourceTree = "<group>"; };
 		D7608DC018949A9200F54869 /* S3ImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStoreTests.m; sourceTree = "<group>"; };
+		D7608DC31894B76900F54869 /* S3Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3Utils.h; sourceTree = "<group>"; };
+		D7608DC41894B76900F54869 /* S3Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3Utils.m; sourceTree = "<group>"; };
 		D7CB01B11894912600C7E8A8 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSiOSSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,8 +199,7 @@
 			children = (
 				D7608DB31894961E00F54869 /* ImageStoreResources */,
 				D70122EB188E2CDB00057537 /* ImageStore.h */,
-				D7608DB9189496CA00F54869 /* S3ImageStore.h */,
-				D7608DBA189496CA00F54869 /* S3ImageStore.m */,
+				D7608DC21894B75100F54869 /* S3ImageStore */,
 			);
 			name = ImageStore;
 			sourceTree = "<group>";
@@ -318,6 +320,17 @@
 			name = "S3ImageStore Tests";
 			sourceTree = "<group>";
 		};
+		D7608DC21894B75100F54869 /* S3ImageStore */ = {
+			isa = PBXGroup;
+			children = (
+				D7608DB9189496CA00F54869 /* S3ImageStore.h */,
+				D7608DBA189496CA00F54869 /* S3ImageStore.m */,
+				D7608DC31894B76900F54869 /* S3Utils.h */,
+				D7608DC41894B76900F54869 /* S3Utils.m */,
+			);
+			name = S3ImageStore;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -423,6 +436,7 @@
 				D0C076C4188B062600B3D48E /* ChildSampleConstants.m in Sources */,
 				D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
+				D7608DC51894B76900F54869 /* S3Utils.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
 				D0DDDE2F188E33A30060B8C2 /* ChildrenView.m in Sources */,
 				D0C076BE188AFF7A00B3D48E /* OriginalSampleConstants.m in Sources */,
