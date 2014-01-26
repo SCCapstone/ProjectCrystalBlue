@@ -45,7 +45,7 @@
  *  This only guarantees that the image has been added to the LOCAL ImageStore; not necessarily
  *  to the cloud storage location.
  */
-+(BOOL)putImage:(NSImage *)
++(BOOL)putImage:(NSImage *)image
          forKey:(NSString *)key;
 
 /** Check whether the image associated with a given key is "dirty" - i.e. is not synced with the cloud ImageStore.

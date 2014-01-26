@@ -33,6 +33,8 @@
 		D729BD1B181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD23181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD21181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */; };
+		D7608DB51894962F00F54869 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = D7608DB41894962F00F54869 /* no_image.png */; };
+		D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DBA189496CA00F54869 /* S3ImageStore.m */; };
 		D7CB01B21894912600C7E8A8 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7CB01B11894912600C7E8A8 /* AWSiOSSDK.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +93,9 @@
 		D729BD20181C1FC600F762A3 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
 		D729BD22181C1FC600F762A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
+		D7608DB41894962F00F54869 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image.png; sourceTree = "<group>"; };
+		D7608DB9189496CA00F54869 /* S3ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3ImageStore.h; sourceTree = "<group>"; };
+		D7608DBA189496CA00F54869 /* S3ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStore.m; sourceTree = "<group>"; };
 		D7CB01B11894912600C7E8A8 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSiOSSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,7 +192,10 @@
 		D70122EC188E2FF000057537 /* ImageStore */ = {
 			isa = PBXGroup;
 			children = (
+				D7608DB31894961E00F54869 /* ImageStoreResources */,
 				D70122EB188E2CDB00057537 /* ImageStore.h */,
+				D7608DB9189496CA00F54869 /* S3ImageStore.h */,
+				D7608DBA189496CA00F54869 /* S3ImageStore.m */,
 			);
 			name = ImageStore;
 			sourceTree = "<group>";
@@ -283,6 +291,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D7608DB31894961E00F54869 /* ImageStoreResources */ = {
+			isa = PBXGroup;
+			children = (
+				D7608DB41894962F00F54869 /* no_image.png */,
+			);
+			name = ImageStoreResources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -363,6 +379,7 @@
 				D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */,
 				D729BD13181C1FC600F762A3 /* Images.xcassets in Resources */,
 				D729BD0B181C1FC600F762A3 /* Credits.rtf in Resources */,
+				D7608DB51894962F00F54869 /* no_image.png in Resources */,
 				D08A7630188DBDFB002F948C /* LibraryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,6 +402,7 @@
 				D049EF49188CA63A00EF8672 /* ChildSampleStore.m in Sources */,
 				D08A762E188DBDEC002F948C /* LibraryView.m in Sources */,
 				D0C076C4188B062600B3D48E /* ChildSampleConstants.m in Sources */,
+				D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
 				D0DDDE2F188E33A30060B8C2 /* ChildrenView.m in Sources */,
