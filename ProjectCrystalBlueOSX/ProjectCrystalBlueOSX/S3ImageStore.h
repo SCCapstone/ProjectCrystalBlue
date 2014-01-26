@@ -47,6 +47,11 @@
 +(BOOL)putImage:(NSImage *)image
          forKey:(NSString *)key;
 
+/** Removes an image from S3. This is mostly for testing purposes - we probably should never need
+ *  to remove images from the ImageStore.
+ */
++(BOOL)deleteImageWithKey:(NSString *)key;
+
 /** Check whether the image associated with a given key is "dirty" - i.e. is not synced with the cloud ImageStore.
  *
  *  Returns NO

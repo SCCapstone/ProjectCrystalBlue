@@ -14,6 +14,7 @@
 
 NSString *const CLASS_NAME = @"S3ImageStore";
 NSString *const BUCKET_NAME = @"project-crystal-blue-test";
+float const JPEG_COMPRESSION = 0.90f;
 
 BOOL singletonInstantiated = NO;
 AmazonS3Client *s3Client;
@@ -112,7 +113,50 @@ AmazonS3Client *s3Client;
     if (!singletonInstantiated) {
         [self.class setUpSingleton];
     }
-    return NO;
+    
+    NSLog(@"%@: Uploading image for key %@", CLASS_NAME, key);
+    
+    // Get the JPEG representation of the given image.
+    NSArray *representations = [image representations];
+    NSNumber *compressionFactor = [NSNumber numberWithFloat:JPEG_COMPRESSION];
+    NSDictionary *imageProps = [NSDictionary dictionaryWithObject:compressionFactor
+                                                           forKey:NSImageCompressionFactor];
+    NSData *imageJPEGData = [NSBitmapImageRep representationOfImageRepsInArray:representations
+                                                                     usingType:NSJPEGFileType properties:imageProps];
+    
+    // Set up and set the request.
+    S3PutObjectRequest *request = [[S3PutObjectRequest alloc] initWithKey:key inBucket:BUCKET_NAME];
+    [request setData:imageJPEGData];
+    [request setContentType:@"image/jpeg"];
+    
+    S3PutObjectResponse *response = [s3Client putObject:request];
+    if ([response error]) {
+        NSLog(@"%@: %@", CLASS_NAME, [response error]);
+        return NO;
+    } else {
+        NSLog(@"%@: Successfully uploaded image for key %@ to S3!", CLASS_NAME, key);
+        return YES;
+    }
+}
+
++(BOOL)deleteImageWithKey:(NSString *)key
+{
+    if (!singletonInstantiated) {
+        [self.class setUpSingleton];
+    }
+    
+    S3DeleteObjectRequest *request = [[S3DeleteObjectRequest alloc] init];
+    [request setKey:key];
+    [request setBucket:BUCKET_NAME];
+    
+    S3DeleteObjectResponse *response = [s3Client deleteObject:request];
+    if ([response error]) {
+        NSLog(@"%@: %@", CLASS_NAME, [response error]);
+        return NO;
+    } else {
+        NSLog(@"%@: Successfully deleted image for key %@ from S3!", CLASS_NAME, key);
+        return YES;
+    }
 }
 
 +(BOOL)keyIsDirty:(NSString *)key

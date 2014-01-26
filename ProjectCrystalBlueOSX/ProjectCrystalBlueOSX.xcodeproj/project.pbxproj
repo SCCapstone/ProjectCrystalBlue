@@ -35,6 +35,7 @@
 		D729BD1B181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD23181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD21181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */; };
+		D7527C981895A81200D87539 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7527C971895A81200D87539 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg */; };
 		D7608DB51894962F00F54869 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = D7608DB41894962F00F54869 /* no_image.png */; };
 		D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DBA189496CA00F54869 /* S3ImageStore.m */; };
 		D7608DC118949A9200F54869 /* S3ImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DC018949A9200F54869 /* S3ImageStoreTests.m */; };
@@ -98,6 +99,7 @@
 		D729BD20181C1FC600F762A3 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
 		D729BD22181C1FC600F762A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
+		D7527C971895A81200D87539 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = UNIT_TEST_UPLOAD_IMAGE_16x16.jpg; sourceTree = "<group>"; };
 		D7608DB41894962F00F54869 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image.png; sourceTree = "<group>"; };
 		D7608DB9189496CA00F54869 /* S3ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3ImageStore.h; sourceTree = "<group>"; };
 		D7608DBA189496CA00F54869 /* S3ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStore.m; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 		D7608DBF18949A7400F54869 /* S3ImageStore Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D7527C971895A81200D87539 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg */,
 				D7608DC018949A9200F54869 /* S3ImageStoreTests.m */,
 				D712AAD41894C6050093E457 /* S3UtilsTests.m */,
 			);
@@ -425,6 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7527C981895A81200D87539 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */,
 				D729BD23181C1FC600F762A3 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

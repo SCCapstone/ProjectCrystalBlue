@@ -58,4 +58,32 @@
     XCTAssertEqual([image size].height, (CGFloat)8);
 }
 
+/** Verify that we can successfully upload an image to S3.
+ *  Then, check that if we download it, we get the right image back.
+ */
+- (void)testUploadImage
+{
+    NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
+    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
+    NSImage *imageToUpload = [[NSImage alloc] initWithContentsOfFile:path];
+    XCTAssertNotNil(imageToUpload, @"Upload test image seems to have been lost!");
+    
+    // Generate a random key for upload
+    NSString *key = [[[[NSUUID alloc] init] UUIDString] stringByAppendingString:@".jpg"];
+
+    // Perform the upload
+    BOOL uploadSuccess = [S3ImageStore putImage:imageToUpload forKey:key];
+    XCTAssertTrue(uploadSuccess, @"S3ImageStore indicated that the upload was unsuccessful.");
+    
+    // Now that we've uploaded the image, let's check that we can get it back.
+    NSImage *retrievedImage = [S3ImageStore getImageForKey:key];
+    
+    XCTAssertNotNil(retrievedImage, @"Image retrieved back from S3 was nil");
+    XCTAssertEqual([retrievedImage size], [imageToUpload size]);
+    
+    // Finally, delete the image to clean up.
+    BOOL deleteSuccess = [S3ImageStore deleteImageWithKey:key];
+    XCTAssertTrue(deleteSuccess, @"S3ImageStore indicated that deletion was unsuccessful.");
+}
+
 @end
