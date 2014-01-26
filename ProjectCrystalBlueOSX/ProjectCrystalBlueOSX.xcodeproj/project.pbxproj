@@ -35,6 +35,7 @@
 		D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */; };
 		D7608DB51894962F00F54869 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = D7608DB41894962F00F54869 /* no_image.png */; };
 		D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DBA189496CA00F54869 /* S3ImageStore.m */; };
+		D7608DC118949A9200F54869 /* S3ImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DC018949A9200F54869 /* S3ImageStoreTests.m */; };
 		D7CB01B21894912600C7E8A8 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7CB01B11894912600C7E8A8 /* AWSiOSSDK.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		D7608DB41894962F00F54869 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image.png; sourceTree = "<group>"; };
 		D7608DB9189496CA00F54869 /* S3ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3ImageStore.h; sourceTree = "<group>"; };
 		D7608DBA189496CA00F54869 /* S3ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStore.m; sourceTree = "<group>"; };
+		D7608DC018949A9200F54869 /* S3ImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStoreTests.m; sourceTree = "<group>"; };
 		D7CB01B11894912600C7E8A8 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSiOSSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,6 +277,7 @@
 		D729BD1E181C1FC600F762A3 /* ProjectCrystalBlueOSXTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7608DBC18949A5400F54869 /* Store Tests */,
 				D0C076BF188B03A800B3D48E /* ModelTests */,
 				D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */,
 				D729BD1F181C1FC600F762A3 /* Supporting Files */,
@@ -297,6 +300,22 @@
 				D7608DB41894962F00F54869 /* no_image.png */,
 			);
 			name = ImageStoreResources;
+			sourceTree = "<group>";
+		};
+		D7608DBC18949A5400F54869 /* Store Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D7608DBF18949A7400F54869 /* S3ImageStore Tests */,
+			);
+			name = "Store Tests";
+			sourceTree = "<group>";
+		};
+		D7608DBF18949A7400F54869 /* S3ImageStore Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D7608DC018949A9200F54869 /* S3ImageStoreTests.m */,
+			);
+			name = "S3ImageStore Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C076C1188B03C500B3D48E /* OriginalSampleConstantsTests.m in Sources */,
+				D7608DC118949A9200F54869 /* S3ImageStoreTests.m in Sources */,
 				D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
