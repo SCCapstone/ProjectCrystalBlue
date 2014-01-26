@@ -46,4 +46,16 @@
     XCTAssertNotNil(resultDefaultImage);
 }
 
+/** Verify that a real image can be actually accessed.
+ *  Because the "image-not-found" image is 256x256, make sure the test image is not 256x256.
+ */
+- (void)testAccessRealImage
+{
+    NSString *testImageKey = @"UNIT_TEST_IMAGE_8x8.png";
+    NSImage *image = [S3ImageStore getImageForKey:testImageKey];
+    XCTAssertNotNil(image);
+    XCTAssertEqual([image size].width, (CGFloat)8);
+    XCTAssertEqual([image size].height, (CGFloat)8);
+}
+
 @end

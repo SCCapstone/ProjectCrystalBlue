@@ -20,4 +20,11 @@
 +(S3Bucket *)findBucketWithName:(NSString *)bucketName
                     usingClient:(AmazonS3Client *)client;
 
+/** Check that a string is a valid MIME Image string. Supported types:
+ *      image/jpeg
+ *      image/png
+ *      image/gif
+ */
++(BOOL)contentTypeIsImage:(NSString *)MIMEContentTypeString;
+
 @end

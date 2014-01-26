@@ -10,6 +10,10 @@
 
 #import "S3Utils.h"
 
+NSString *const MIME_JPEG = @"image/jpeg";
+NSString *const MIME_PNG = @"image/png";
+NSString *const MIME_GIF = @"image/gif";
+
 @implementation S3Utils
 
 +(S3Bucket *)findBucketWithName:(NSString *)bucketName
@@ -24,6 +28,13 @@
     }
 
     return nil;
+}
+
++(BOOL)contentTypeIsImage:(NSString *)MIMEContentTypeString
+{
+    return  [MIMEContentTypeString isEqualToString:MIME_JPEG] ||
+            [MIMEContentTypeString isEqualToString:MIME_PNG] ||
+            [MIMEContentTypeString isEqualToString:MIME_GIF];
 }
 
 @end

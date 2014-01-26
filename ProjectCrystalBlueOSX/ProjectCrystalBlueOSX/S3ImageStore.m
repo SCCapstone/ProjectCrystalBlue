@@ -65,7 +65,39 @@ AmazonS3Client *s3Client;
     if (!singletonInstantiated) {
         [self.class setUpSingleton];
     }
-    return [self.class defaultImage];
+    
+    NSLog(@"%@: Retrieving image for key %@", CLASS_NAME, key);
+    
+    S3GetObjectRequest *request = [[S3GetObjectRequest alloc] init];
+    [request setKey:key];
+    [request setBucket:BUCKET_NAME];
+    
+    @try {
+        NSLog(@"%@: Sending request to S3", CLASS_NAME);
+        S3GetObjectResponse *response = [s3Client getObject:request];
+        
+        if ([response error]) {
+            NSLog(@"%@: %@", CLASS_NAME, [response error]);
+            return [self.class defaultImage];
+        }
+        
+        // Verify that the content type is something we expect (for security reasons)
+        if (![S3Utils contentTypeIsImage:[response contentType]]) {
+            NSLog(@"%@: rejecting the object for key %@ because the content type was illegal: %@",
+                  CLASS_NAME, key, [response contentType]);
+            return [self.class defaultImage];
+        }
+        
+        NSImage *image = [[NSImage alloc] initWithData:[response body]];
+        return image;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@: Exception was thrown.", CLASS_NAME);
+        NSLog(@"Exception: %@ ; Reason %@", [exception name], [exception reason]);
+    }
+    @finally {
+        
+    }
 }
 
 +(BOOL)imageExistsForKey:(NSString *)key
