@@ -9,7 +9,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ImageStore.h"
+#import "CloudImageStore.h"
 
 @interface S3ImageStore : NSObject <CloudImageStore>
 

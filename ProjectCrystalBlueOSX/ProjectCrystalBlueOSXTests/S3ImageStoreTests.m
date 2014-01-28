@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ImageStore.h"
+#import "CloudImageStore.h"
 #import "S3ImageStore.h"
 
 @interface S3ImageStoreTests : XCTestCase

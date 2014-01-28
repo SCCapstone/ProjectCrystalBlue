@@ -11,6 +11,7 @@
 #import "S3ImageStore.h"
 #import <AWSiOSSDK/S3/AmazonS3Client.h>
 #import "S3Utils.h"
+#import "ImageUtils.h"
 
 NSString *const CLASS_NAME = @"S3ImageStore";
 NSString *const BUCKET_NAME = @"project-crystal-blue-test";
@@ -116,13 +117,7 @@ AmazonS3Client *s3Client;
     
     NSLog(@"%@: Uploading image for key %@", CLASS_NAME, key);
     
-    // Get the JPEG representation of the given image.
-    NSArray *representations = [image representations];
-    NSNumber *compressionFactor = [NSNumber numberWithFloat:JPEG_COMPRESSION];
-    NSDictionary *imageProps = [NSDictionary dictionaryWithObject:compressionFactor
-                                                           forKey:NSImageCompressionFactor];
-    NSData *imageJPEGData = [NSBitmapImageRep representationOfImageRepsInArray:representations
-                                                                     usingType:NSJPEGFileType properties:imageProps];
+    NSData *imageJPEGData = [ImageUtils JPEGDataFromImage:image withCompression:JPEG_COMPRESSION];
     
     // Set up and set the request.
     S3PutObjectRequest *request = [[S3PutObjectRequest alloc] initWithKey:key inBucket:BUCKET_NAME];
