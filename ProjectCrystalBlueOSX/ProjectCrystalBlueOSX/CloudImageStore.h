@@ -1,9 +1,9 @@
 //
-//  ImageStore.h
+//  CloudImageStore.h
 //  ProjectCrystalBlueOSX
 //
-//  Generic protocol for any implementation of image storage, where each image is associated with a unique key.
-//  The ImageStore is a singleton object. It is backed by an online cloud storage, functioning both online
+//  Generic protocol for an implementation of image storage, where each image is associated with a unique key.
+//  The CloudImageStore is a singleton object. It is backed by an online cloud storage, functioning both online
 //  and offline. There is eventual consistency of data across devices.
 //
 //  Created by Logan Hood on 1/20/14.
@@ -12,13 +12,13 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol ImageStore <NSObject>
+@protocol CloudImageStore <NSObject>
 
 /** Synchronize any new changes with an online database.
  *  This should get any new images that have been created on other devices, as well as 
  *  upload any images that have been created on this device.
  *
- *  When online, the ImageStore will automatically synchronize whenever images are added,
+ *  When online, the CloudImageStore will automatically synchronize whenever images are added,
  *  but this should also be called periodically in case images were created offline.
  *
  *  Returns whether the cloud storage location was reachable.
@@ -29,12 +29,12 @@
  */
 +(NSImage *)getImageForKey:(NSString *)key;
 
-/** Checks if the ImageStore already has an image for the given key.
+/** Checks if the CloudImageStore already has an image for the given key.
  *  For example, this should always be used before assigning a key to a new image.
  */
 +(BOOL)imageExistsForKey:(NSString *)key;
 
-/** Add a new image to the ImageStore with the given unique key.
+/** Add a new image to the CloudImageStore with the given unique key.
  *
  *  The key absolutely positively *MUST* be unique across all devices.
  *
@@ -42,13 +42,13 @@
  *  Generally, the only reason this should be unsuccessful is if the key is not unique
  *  or the device disk cannot be written to.
  *
- *  This only guarantees that the image has been added to the LOCAL ImageStore; not necessarily
+ *  This only guarantees that the image has been added to a LOCAL image storage; not necessarily
  *  to the cloud storage location.
  */
 +(BOOL)putImage:(NSImage *)image
          forKey:(NSString *)key;
 
-/** Check whether the image associated with a given key is "dirty" - i.e. is not synced with the cloud ImageStore.
+/** Check whether the image associated with a given key is "dirty" - i.e. is not synced with the online image store.
  *  
  *  Returns NO 
  *      -if the image associated with that key has already been synced.

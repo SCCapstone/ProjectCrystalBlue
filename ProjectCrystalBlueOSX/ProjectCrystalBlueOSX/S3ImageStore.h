@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 #import "ImageStore.h"
 
-@interface S3ImageStore : NSObject <ImageStore>
+@interface S3ImageStore : NSObject <CloudImageStore>
 
 /// Does all initialization of the singleton backing this class.
 +(void)setUpSingleton;

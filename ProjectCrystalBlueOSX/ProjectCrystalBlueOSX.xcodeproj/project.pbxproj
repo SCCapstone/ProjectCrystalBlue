@@ -80,7 +80,7 @@
 		D0DDDE2C188E33A30060B8C2 /* ChildrenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildrenView.h; sourceTree = "<group>"; };
 		D0DDDE2D188E33A30060B8C2 /* ChildrenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildrenView.m; sourceTree = "<group>"; };
 		D0DDDE2E188E33A30060B8C2 /* ChildrenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildrenView.xib; sourceTree = "<group>"; };
-		D70122EB188E2CDB00057537 /* ImageStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
+		D70122EB188E2CDB00057537 /* CloudImageStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudImageStore.h; sourceTree = "<group>"; };
 		D712AAD41894C6050093E457 /* S3UtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3UtilsTests.m; sourceTree = "<group>"; };
 		D729BCF7181C1FC600F762A3 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BCFA181C1FC600F762A3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -205,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				D7608DB31894961E00F54869 /* ImageStoreResources */,
-				D70122EB188E2CDB00057537 /* ImageStore.h */,
+				D70122EB188E2CDB00057537 /* CloudImageStore.h */,
 				D7608DC21894B75100F54869 /* S3ImageStore */,
 			);
 			name = ImageStore;
