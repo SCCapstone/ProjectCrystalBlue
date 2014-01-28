@@ -1,15 +1,15 @@
 //
-//  ChildSample.h
+//  Sample.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/18/14.
-//  Copyright (c) 2014 Logan Hood. All rights reserved.
+//  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "ChildSampleConstants.h"
+#import "SampleConstants.h"
 
-@interface ChildSample : NSObject
+@interface Sample : NSObject
 
 @property(readonly,copy) NSString *key;
 @property(readonly,copy) NSString *originalKey;

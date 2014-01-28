@@ -25,7 +25,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2013 Logan Hood. All rights reserved.</string>
+	<string>Copyright © 2013 Project Crystal Blue. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>LibraryView</string>
 	<key>NSPrincipalClass</key>

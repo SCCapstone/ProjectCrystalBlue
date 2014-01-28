@@ -1,15 +1,15 @@
 //
-//  OriginalSample.h
+//  Source.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/18/14.
-//  Copyright (c) 2014 Logan Hood. All rights reserved.
+//  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "OriginalSampleConstants.h"
+#import "SourceConstants.h"
 
-@interface OriginalSample : NSObject
+@interface Source : NSObject
 
 @property(readonly,copy) NSString *key;
 @property NSDictionary *attributes;
