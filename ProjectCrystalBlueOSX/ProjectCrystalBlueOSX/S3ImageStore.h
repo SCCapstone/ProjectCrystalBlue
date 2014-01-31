@@ -72,9 +72,4 @@
  */
 -(void)flushLocalImageStore;
 
-/** A default image that can be shown if no image can be retrieved.
- *
- */
-+(NSImage *)defaultImage;
-
 @end

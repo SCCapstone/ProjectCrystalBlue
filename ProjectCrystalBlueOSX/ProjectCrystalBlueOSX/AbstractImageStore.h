@@ -49,4 +49,8 @@
  */
 -(void)flushLocalImageData;
 
+/** A default image to be used if no image can be retrieved.
+ */
++(NSImage *)defaultImage;
+
 @end

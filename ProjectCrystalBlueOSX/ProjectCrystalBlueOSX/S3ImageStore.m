@@ -141,11 +141,4 @@
     
 }
 
-+(NSImage *)defaultImage
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"no_image" ofType:@"png"];
-    NSImage *defImage = [[NSImage alloc] initWithContentsOfFile:path];
-    return defImage;
-}
-
 @end
