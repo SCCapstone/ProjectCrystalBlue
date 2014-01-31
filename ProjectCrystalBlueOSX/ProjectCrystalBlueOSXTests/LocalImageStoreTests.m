@@ -7,7 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "AbstractImageStore.h"
 #import "LocalImageStore.h"
+
+#define IMAGE_DIRECTORY @"project-crystal-blue-temp"
 
 @interface LocalImageStoreTests : XCTestCase
 
@@ -30,23 +33,27 @@
 /// Verify that trying to retrieve a nonexistent image returns a nil object
 - (void)testNonexistentImageReturnsNil
 {
+    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
     NSString *nonExistentImageKey = @"NO-ONE-USE-THIS-AS-AN-IMAGE-KEY-PLEASE";
     
-    NSImage *retrievedImage = [LocalImageStore getImageForKey:nonExistentImageKey];
+    NSImage *retrievedImage = [imageStore getImageForKey:nonExistentImageKey];
     XCTAssertNil(retrievedImage, @"Image data should have been nil!");
 }
 
 - (void)testDeleteNonexistentFile
 {
+    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
     NSString *key = @"NO-ONE-USE-THIS-AS-AN-IMAGE-KEY-PLEASE";
     
-    XCTAssertFalse([LocalImageStore deleteImageWithKey:key],
+    XCTAssertFalse([imageStore deleteImageWithKey:key],
                    @"Deletion should not have been successful for a non-existent file.");
 }
 
 /// Verify that we can successfully perform basic image tasks locally: PUT, GET, and DELETE an image
 - (void)testSaveGetAndDeleteImage
 {
+    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    
     NSString *testFile = @"big_test_image_4096-4096";
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
     NSImage *imageToSave = [[NSImage alloc] initWithContentsOfFile:path];
@@ -56,31 +63,31 @@
     NSString *key = [[[[NSUUID alloc] init] UUIDString] stringByAppendingString:@".jpg"];
     
     // No image with this key should exist. (Barring considerable statistical improbability)
-    XCTAssertFalse([LocalImageStore imageExistsForKey:key],
+    XCTAssertFalse([imageStore imageExistsForKey:key],
                    @"The LocalImageStore believes that an image already exists for this key.");
     
     // Perform the upload
-    BOOL saveSuccess = [LocalImageStore putImage:imageToSave forKey:key];
+    BOOL saveSuccess = [imageStore putImage:imageToSave forKey:key];
     XCTAssertTrue(saveSuccess, @"LocalImageStore indicated that the save was unsuccessful.");
     
     // Since an image exists for the key, we should now expect ImageForKey to return true
-    XCTAssertTrue([LocalImageStore imageExistsForKey:key],
+    XCTAssertTrue([imageStore imageExistsForKey:key],
                   @"LocalImageStore should know that an image does exist for the key.");
     
     // Let's check that we can get the correct image back.
-    NSImage *retrievedImage = [LocalImageStore getImageForKey:key];
+    NSImage *retrievedImage = [imageStore getImageForKey:key];
     
     XCTAssertNotNil(retrievedImage, @"Image retrieved back from LocalImageStore was nil");
     XCTAssertEqual([retrievedImage size], [imageToSave size]);
     
     // Finally, delete the image to clean up.
-    BOOL deleteSuccess = [LocalImageStore deleteImageWithKey:key];
+    BOOL deleteSuccess = [imageStore deleteImageWithKey:key];
     XCTAssertTrue(deleteSuccess, @"LocalImageStore indicated that deletion was unsuccessful.");
     
     // Verify that the image is not present
-    XCTAssertFalse([LocalImageStore imageExistsForKey:key],
+    XCTAssertFalse([imageStore imageExistsForKey:key],
                    @"Delete image didn't work - the ImageStore thinks an image exists for the key.");
-    XCTAssertNil([LocalImageStore getImageForKey:key],
+    XCTAssertNil([imageStore getImageForKey:key],
                  @"Delete image didn't work - the ImageStore returned non-nil image data.");
 }
 

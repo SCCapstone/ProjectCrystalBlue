@@ -14,47 +14,33 @@
 
 @implementation LocalImageStore
 
-NSString *const imageDirectoryName = @"ProjectCrystalBlueImages";
-BOOL directoryCheck = NO;
-
-+(void)checkDirectoryExists
+-(id)initWithLocalDirectory:(NSString *)directory
 {
-    if (directoryCheck) {
-        return;
-    }
-    
-    BOOL imgDirectoryExists;
-    [[NSFileManager defaultManager] fileExistsAtPath:[self.class localDirectory] isDirectory:&imgDirectoryExists];
-    
-    if (!imgDirectoryExists) {
-        [[NSFileManager defaultManager] createDirectoryAtPath:[self.class localDirectory]
-                                  withIntermediateDirectories:NO
-                                                   attributes:nil
-                                                        error:nil];
+    self = [super initWithLocalDirectory:directory];
+    if (self) {
+        NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+        localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", directory];
         
+        BOOL imgDirectoryExists;
+        [[NSFileManager defaultManager] fileExistsAtPath:localDirectory isDirectory:&imgDirectoryExists];
+        if (!imgDirectoryExists) {
+            [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
+                                      withIntermediateDirectories:NO
+                                                       attributes:nil
+                                                            error:nil];
+        }
     }
-    
-    directoryCheck = YES;
+    return self;
 }
 
-+(NSString *)localDirectory
+-(NSImage *)getImageForKey:(NSString *)key
 {
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    return [documentDirectory stringByAppendingFormat:@"/%@", imageDirectoryName];
-}
-
-+(NSImage *)getImageForKey:(NSString *)key
-{
-    if (!directoryCheck) {
-        [self.class checkDirectoryExists];
-    }
-    
-    if (![self.class imageExistsForKey:key]) {
+    if (![self imageExistsForKey:key]) {
         return nil;
     }
     
-    NSString *expectedFileLocation = [[self.class localDirectory] stringByAppendingFormat:@"/%@", key];
+    NSString *expectedFileLocation = [localDirectory stringByAppendingFormat:@"/%@", key];
     NSData *retrievedData = [NSData dataWithContentsOfFile:expectedFileLocation];
     NSImage *image = [[NSImage alloc] initWithData:retrievedData];
     
@@ -65,26 +51,18 @@ BOOL directoryCheck = NO;
     return image;
 }
 
-+(BOOL)imageExistsForKey:(NSString *)key
+-(BOOL)imageExistsForKey:(NSString *)key
 {
-    if (!directoryCheck) {
-        [self.class checkDirectoryExists];
-    }
-    
-    NSString *path = [[self.class localDirectory] stringByAppendingFormat:@"/%@", key];
+    NSString *path = [localDirectory stringByAppendingFormat:@"/%@", key];
     return [[NSFileManager defaultManager] fileExistsAtPath:path];
 }
 
-+(BOOL)putImage:(NSImage *)image
+-(BOOL)putImage:(NSImage *)image
          forKey:(NSString *)key
 {
-    if (!directoryCheck) {
-        [self.class checkDirectoryExists];
-    }
-    
     NSData *imageData = [ImageUtils JPEGDataFromImage:image];
     
-    NSString *path = [[self.class localDirectory] stringByAppendingFormat:@"/%@", key];
+    NSString *path = [localDirectory stringByAppendingFormat:@"/%@", key];
     BOOL success = [[NSFileManager defaultManager] createFileAtPath:path
                                                            contents:imageData
                                                          attributes:nil];
@@ -95,28 +73,22 @@ BOOL directoryCheck = NO;
     return success;
 }
 
-+(BOOL)deleteImageWithKey:(NSString *)key
+-(BOOL)deleteImageWithKey:(NSString *)key
 {
-    if (!directoryCheck) {
-        [self.class checkDirectoryExists];
-    }
-    
-    if (![self.class imageExistsForKey:key]) {
+    if (![self imageExistsForKey:key]) {
         return NO;
     }
     
-    NSString *path = [[self.class localDirectory] stringByAppendingFormat:@"/%@", key];
+    NSString *path = [localDirectory stringByAppendingFormat:@"/%@", key];
     BOOL success = [[NSFileManager defaultManager] removeItemAtPath:path
                                                               error:nil];
     
     return success;
 }
 
-+(void)flushLocalImageStore
+-(void)flushLocalImageStore
 {
-    if (!directoryCheck) {
-        [self.class checkDirectoryExists];
-    }
+    
 }
 
 @end

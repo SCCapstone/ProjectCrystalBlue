@@ -1,20 +1,17 @@
 //
-//  LocalImageStore.h
+//  AbstractImageStore.h
 //  ProjectCrystalBlueOSX
 //
-//  Handles local image storage for a CloudImageStore.
-//  This should not be used directly by any class other than a CloudImageStore implementation.
+//  Abstract superclass for any class that handles image storage.
+//  Each image item must be associated with a unique key.
 //
-//  Created by Logan Hood on 1/28/14.
+//  Created by Logan Hood on 1/31/14.
 //  Copyright (c) 2014 Logan Hood. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "AbstractImageStore.h"
 
-@interface LocalImageStore : AbstractImageStore {
-    NSString *localDirectory;
-}
+@interface AbstractImageStore : NSObject
 
 -(id)initWithLocalDirectory:(NSString *)directory;
 
@@ -22,12 +19,16 @@
  */
 -(NSImage *)getImageForKey:(NSString *)key;
 
-/** Checks if the LocalImageStore already has an image for the given key.
+/** Delete an image from the ImageStore. Return whether the deletion is successful.
+ */
+-(BOOL)deleteImageWithKey:(NSString *)key;
+
+/** Checks if the CloudImageStore already has an image for the given key.
  *  For example, this should always be used before assigning a key to a new image.
  */
 -(BOOL)imageExistsForKey:(NSString *)key;
 
-/** Add a new image to the LocalImageStore with the given unique key.
+/** Add a new image to the CloudImageStore with the given unique key.
  *
  *  The key absolutely positively *MUST* be unique across all devices.
  *
@@ -41,17 +42,11 @@
 -(BOOL)putImage:(NSImage *)image
          forKey:(NSString *)key;
 
-/** Removes an image from local storage. This is mostly for testing purposes - we probably should never need
- *  to remove images from the ImageStore. This could cause major issues if an image is deleted locally but
- *  still exists on S3.
- */
--(BOOL)deleteImageWithKey:(NSString *)key;
-
 /** This will delete ALL local image data. No images are available until resynchronizing with the online database.
  *
  *  DO NOT CALL THIS METHOD LIGHTLY.
- *  Resyncing the images will likely take a lot of time. (and will certainly eat up a lot of bandwidth)
+ *  Resyncing the images will likely take a lot of time. (and will certainly eat up a metric fuckton of bandwidth)
  */
--(void)flushLocalImageStore;
+-(void)flushLocalImageData;
 
 @end
