@@ -1,20 +1,20 @@
 //
-//  ChildSampleStore.h
+//  SampleStore.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/19/14.
-//  Copyright (c) 2014 Logan Hood. All rights reserved.
+//  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "ChildSample.h"
+#import "Sample.h"
 
-@interface ChildSampleStore : NSObject
+@interface SampleStore : NSObject
 {
     NSMutableArray *allSamples;
 }
 
-+ (ChildSampleStore *) sharedStore;
++ (SampleStore *) sharedStore;
 
 - (NSMutableArray *) allSamples;
 

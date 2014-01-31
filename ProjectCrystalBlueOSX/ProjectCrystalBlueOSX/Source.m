@@ -1,27 +1,26 @@
 //
-//  ChildSample.m
+//  Source.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/18/14.
-//  Copyright (c) 2014 Logan Hood. All rights reserved.
+//  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "ChildSample.h"
+#import "Source.h"
 
-@implementation ChildSample
+@implementation Source
 
 @synthesize key;
-@synthesize originalKey;
 @synthesize attributes;
 
-- (id) initWithAttributes:(NSArray *) attributeNames
-     AndWithDefaultValues:(NSArray *) attributeDefaultValues;
+- (id)initWithAttributes:(NSArray *)attributeNames
+    AndWithDefaultValues:(NSArray *)attributeDefaultValues
 {
     self = [super init];
     if (self)
     {
-        NSArray *attributeNames = [ChildSampleConstants attributeNames];
-        NSArray *attributeDefaultValues = [ChildSampleConstants attributeDefaultValues];
+        NSArray *attributeNames = [SourceConstants attributeNames];
+        NSArray *attributeDefaultValues = [SourceConstants attributeDefaultValues];
         if ([attributeNames count] != [attributeDefaultValues count])
             [NSException raise:@"Invalid attribute constants."
                         format:@"attributeNames is of length %lu and attributeDefaultValues is of length %lu", [attributeNames count], [attributeDefaultValues count]];

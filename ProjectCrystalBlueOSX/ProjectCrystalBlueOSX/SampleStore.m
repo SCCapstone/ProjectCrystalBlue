@@ -1,14 +1,14 @@
 //
-//  OriginalSampleStore.m
+//  SampleStore.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/19/14.
-//  Copyright (c) 2014 Logan Hood. All rights reserved.
+//  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "OriginalSampleStore.h"
+#import "SampleStore.h"
 
-@implementation OriginalSampleStore
+@implementation SampleStore
 
 - (id)init
 {
@@ -25,9 +25,9 @@
     return [self sharedStore];
 }
 
-+ (OriginalSampleStore *)sharedStore
++ (SampleStore *)sharedStore
 {
-    static OriginalSampleStore *sharedStore = nil;
+    static SampleStore *sharedStore = nil;
     if (!sharedStore)
         sharedStore = [[super allocWithZone:nil] init];
     

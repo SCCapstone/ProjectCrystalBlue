@@ -1,22 +1,22 @@
 //
-//  ChildSampleConstants.m
+//  SourceConstants.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/18/14.
-//  Copyright (c) 2014 Logan Hood. All rights reserved.
+//  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "ChildSampleConstants.h"
+#import "SourceConstants.h"
 
 /* Attribute names
  */
-NSString *const CURRENT_LOCATION = @"CurrentLocation";
+NSString *const CONTINENT = @"Continent";
 
 /* Attribute default values
  */
-NSString *const DEF_VAL_CURRENT_LOCATION = @"USC";
+NSString *const DEF_VAL_CONTINENT = @"continent here";
 
-@implementation ChildSampleConstants
+@implementation SourceConstants
 
 + (NSArray *)attributeNames
 {
@@ -24,7 +24,7 @@ NSString *const DEF_VAL_CURRENT_LOCATION = @"USC";
     if (!attributeNames)
     {
         attributeNames = [NSArray arrayWithObjects:
-                          CURRENT_LOCATION,
+                          CONTINENT,
                           nil];
     }
     return attributeNames;
@@ -36,8 +36,8 @@ NSString *const DEF_VAL_CURRENT_LOCATION = @"USC";
     if (!attributeDefaultValues)
     {
         attributeDefaultValues = [NSArray arrayWithObjects:
-                                  DEF_VAL_CURRENT_LOCATION,
-                                  nil];
+                          DEF_VAL_CONTINENT,
+                          nil];
     }
     return attributeDefaultValues;
 }
