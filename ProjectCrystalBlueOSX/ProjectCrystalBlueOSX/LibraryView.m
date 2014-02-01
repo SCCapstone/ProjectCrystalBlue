@@ -8,6 +8,7 @@
 
 #import "LibraryView.h"
 #import "ChildrenView.h"
+#import "SourceStore.h"
 
 @interface LibraryView ()
 
@@ -27,7 +28,11 @@
 
 - (IBAction)viewChildren:(id)sender
 {
-    ChildrenView *c = [[ChildrenView alloc] init];
-    [c showWindow:self];
+    //ChildrenView *c = [[ChildrenView alloc] init];
+    //[c showWindow:self];
+    SourceStore *store = [[SourceStore alloc] init];
+    [store setupZumero];
+    [store insertObject];
+    [store synchronize];
 }
 @end

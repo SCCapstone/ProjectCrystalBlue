@@ -7,15 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SampleConstants.h"
+#import "LibraryObject.h"
 
-@interface Sample : NSObject
+@interface Sample : LibraryObject
 
-@property(readonly,copy) NSString *key;
-@property(readonly,copy) NSString *originalKey;
-@property NSDictionary *attributes;
-
-- (id) initWithAttributes:(NSArray *) attributeNames
-     AndWithDefaultValues:(NSArray *) attributeDefaultValues;
+- (NSString *)sourceKey;
 
 @end

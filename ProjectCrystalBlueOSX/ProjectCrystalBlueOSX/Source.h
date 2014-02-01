@@ -7,14 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SourceConstants.h"
+#import "LibraryObject.h"
 
-@interface Source : NSObject
-
-@property(readonly,copy) NSString *key;
-@property NSDictionary *attributes;
-
-- (id) initWithAttributes:(NSArray *) attributeNames
-     AndWithDefaultValues:(NSArray *) attributeDefaultValues;
+@interface Source : LibraryObject
 
 @end

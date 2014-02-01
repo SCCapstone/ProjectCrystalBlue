@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Source.h"
+#import <Zumero.h>
 
-@interface SourceStore : NSObject
-{
-    NSMutableArray *allSamples;
-}
+@interface SourceStore : NSObject <ZumeroDBDelegate>
 
-+ (SourceStore *) sharedStore;
-
-- (NSMutableArray *) allSamples;
+- (void)setupZumero;
+- (void)synchronize;
+- (void)createTable;
+- (void)insertObject;
+- (NSArray *)getObjects;
 
 @end
