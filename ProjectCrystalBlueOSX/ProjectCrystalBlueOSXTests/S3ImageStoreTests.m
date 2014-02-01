@@ -10,7 +10,7 @@
 #import "AbstractCloudImageStore.h"
 #import "S3ImageStore.h"
 
-#define IMAGE_DIRECTORY @"project-crystal-blue-temp"
+#define IMAGE_DIRECTORY @"project-crystal-blue-temp-test"
 
 @interface S3ImageStoreTests : XCTestCase
 

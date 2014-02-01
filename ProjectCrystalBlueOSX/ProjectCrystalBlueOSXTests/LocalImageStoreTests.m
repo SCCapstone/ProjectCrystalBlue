@@ -10,7 +10,7 @@
 #import "AbstractImageStore.h"
 #import "LocalImageStore.h"
 
-#define IMAGE_DIRECTORY @"project-crystal-blue-temp"
+#define IMAGE_DIRECTORY @"project-crystal-blue-temp-test"
 
 @interface LocalImageStoreTests : XCTestCase
 
@@ -89,6 +89,40 @@
                    @"Delete image didn't work - the ImageStore thinks an image exists for the key.");
     XCTAssertNil([imageStore getImageForKey:key],
                  @"Delete image didn't work - the ImageStore returned non-nil image data.");
+}
+
+/// Make sure that the flushImageData method removes all items
+- (void)testFlushLocalData
+{
+    int NUMBER_OF_IMAGES = 2;
+    AbstractImageStore *imageStore = [[LocalImageStore alloc]
+                                      initWithLocalDirectory:[IMAGE_DIRECTORY stringByAppendingString:@"/flushTest"]];
+    
+    NSString *testFile = @"big_test_image_4096-4096";
+    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
+    NSImage *imageToSave = [[NSImage alloc] initWithContentsOfFile:path];
+    XCTAssertNotNil(imageToSave, @"Local test image seems to have been lost!");
+    
+    NSMutableArray *keys = [[NSMutableArray alloc] init];
+    for (int i = 0; i < NUMBER_OF_IMAGES; ++i) {
+        // Generate a random key to use for the image
+        NSString *key = [[[[NSUUID alloc] init] UUIDString] stringByAppendingString:@".jpg"];
+        [keys addObject:key];
+        
+        // No image with this key should exist. (Barring considerable statistical improbability)
+        XCTAssertFalse([imageStore imageExistsForKey:key],
+                       @"The LocalImageStore believes that an image already exists for this key.");
+        
+        // Save the image
+        BOOL saveSuccess = [imageStore putImage:imageToSave forKey:key];
+        XCTAssertTrue(saveSuccess, @"LocalImageStore indicated that the save was unsuccessful.");
+    }
+    
+    [imageStore flushLocalImageData];
+    
+    for (NSString *key in keys) {
+        XCTAssertFalse([imageStore imageExistsForKey:key], @"Image for key %@ still exists!", key);
+    }
 }
 
 @end

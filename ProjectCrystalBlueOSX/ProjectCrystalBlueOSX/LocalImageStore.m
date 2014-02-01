@@ -80,15 +80,31 @@
     }
     
     NSString *path = [localDirectory stringByAppendingFormat:@"/%@", key];
+    NSError *error = [[NSError alloc] init];
     BOOL success = [[NSFileManager defaultManager] removeItemAtPath:path
-                                                              error:nil];
+                                                              error:&error];
+    if (!success) {
+        NSLog(@"%@", error);
+    }
     
     return success;
 }
 
--(void)flushLocalImageStore
+-(void)flushLocalImageData
 {
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:localDirectory error:nil];
     
+    NSLog(@"Permanently deleting %lu items in directory %@!", (unsigned long)[files count], localDirectory);
+    
+    for (NSString* file in files) {
+        NSString *path = [localDirectory stringByAppendingFormat:@"/%@", file];
+        NSError *error = [[NSError alloc] init];
+        BOOL success = [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+        
+        if (!success) {
+            NSLog(@"%@", error);
+        }
+    }
 }
 
 @end

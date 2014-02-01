@@ -14,6 +14,7 @@
 
 @interface S3ImageStore : AbstractCloudImageStore {
     AmazonS3Client *s3Client;
+    AbstractImageStore *localStore;
 }
 
 @end

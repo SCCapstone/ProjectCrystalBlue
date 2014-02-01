@@ -11,6 +11,7 @@
 #import "S3ImageStore.h"
 #import "S3Utils.h"
 #import "ImageUtils.h"
+#import "LocalImageStore.h"
 
 #define CLASS_NAME @"S3ImageStore"
 #define BUCKET_NAME @"project-crystal-blue-test"
@@ -23,6 +24,8 @@
     self = [super initWithLocalDirectory:directory];
     
     if (self) {
+        localStore = [[LocalImageStore alloc] initWithLocalDirectory:directory];
+        
         // TEMPORARILY HARD-CODING CREDENTIALS for test purposes.
         // This is obviously a huge security issue and cannot be in the Beta version.
         AmazonCredentials *login = [[AmazonCredentials alloc] initWithAccessKey:@"AKIAIAWCA532UPYBPVAA"
