@@ -27,6 +27,11 @@
 		D0DDDE2F188E33A30060B8C2 /* ChildrenView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDDE2D188E33A30060B8C2 /* ChildrenView.m */; };
 		D0DDDE30188E33A30060B8C2 /* ChildrenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DDDE2E188E33A30060B8C2 /* ChildrenView.xib */; };
 		D712AAD51894C6050093E457 /* S3UtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D712AAD41894C6050093E457 /* S3UtilsTests.m */; };
+		D7224211189B55F100832A06 /* big_test_image_4096-4096.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7224210189B55F100832A06 /* big_test_image_4096-4096.jpg */; };
+		D7224213189B844800832A06 /* LocalImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7224212189B844800832A06 /* LocalImageStoreTests.m */; };
+		D72590D9189C586E0018122D /* AbstractImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D72590D8189C586E0018122D /* AbstractImageStore.m */; };
+		D72590DD189C5A5D0018122D /* AbstractCloudImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D72590DC189C5A5D0018122D /* AbstractCloudImageStore.m */; };
+		D72590E0189C5F760018122D /* AbstractImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72590DF189C5F760018122D /* AbstractImageStoreTests.m */; };
 		D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD03181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD07181C1FC600F762A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD06181C1FC600F762A3 /* main.m */; };
@@ -37,6 +42,8 @@
 		D729BD1B181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD23181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD21181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */; };
+		D74F8D69189846010024E672 /* LocalImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D74F8D68189846010024E672 /* LocalImageStore.m */; };
+		D74F8D6C18984E680024E672 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D74F8D6B18984E680024E672 /* ImageUtils.m */; };
 		D7527C981895A81200D87539 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7527C971895A81200D87539 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg */; };
 		D7608DB51894962F00F54869 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = D7608DB41894962F00F54869 /* no_image.png */; };
 		D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DBA189496CA00F54869 /* S3ImageStore.m */; };
@@ -83,8 +90,14 @@
 		D0DDDE2C188E33A30060B8C2 /* ChildrenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildrenView.h; sourceTree = "<group>"; };
 		D0DDDE2D188E33A30060B8C2 /* ChildrenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildrenView.m; sourceTree = "<group>"; };
 		D0DDDE2E188E33A30060B8C2 /* ChildrenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildrenView.xib; sourceTree = "<group>"; };
-		D70122EB188E2CDB00057537 /* ImageStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
 		D712AAD41894C6050093E457 /* S3UtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3UtilsTests.m; sourceTree = "<group>"; };
+		D7224210189B55F100832A06 /* big_test_image_4096-4096.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "big_test_image_4096-4096.jpg"; sourceTree = "<group>"; };
+		D7224212189B844800832A06 /* LocalImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalImageStoreTests.m; sourceTree = "<group>"; };
+		D72590D7189C586E0018122D /* AbstractImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractImageStore.h; sourceTree = "<group>"; };
+		D72590D8189C586E0018122D /* AbstractImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractImageStore.m; sourceTree = "<group>"; };
+		D72590DB189C5A5D0018122D /* AbstractCloudImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCloudImageStore.h; sourceTree = "<group>"; };
+		D72590DC189C5A5D0018122D /* AbstractCloudImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractCloudImageStore.m; sourceTree = "<group>"; };
+		D72590DF189C5F760018122D /* AbstractImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractImageStoreTests.m; sourceTree = "<group>"; };
 		D729BCF7181C1FC600F762A3 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BCFA181C1FC600F762A3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D729BCFD181C1FC600F762A3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -103,6 +116,10 @@
 		D729BD20181C1FC600F762A3 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
 		D729BD22181C1FC600F762A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
+		D74F8D67189846010024E672 /* LocalImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalImageStore.h; sourceTree = "<group>"; };
+		D74F8D68189846010024E672 /* LocalImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalImageStore.m; sourceTree = "<group>"; };
+		D74F8D6A18984E680024E672 /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
+		D74F8D6B18984E680024E672 /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		D7527C971895A81200D87539 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = UNIT_TEST_UPLOAD_IMAGE_16x16.jpg; sourceTree = "<group>"; };
 		D7608DB41894962F00F54869 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image.png; sourceTree = "<group>"; };
 		D7608DB9189496CA00F54869 /* S3ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3ImageStore.h; sourceTree = "<group>"; };
@@ -193,6 +210,8 @@
 			children = (
 				D0969B501851C142008C4BD5 /* SQLiteWrapper.h */,
 				D0969B511851C142008C4BD5 /* SQLiteWrapper.m */,
+				D74F8D6A18984E680024E672 /* ImageUtils.h */,
+				D74F8D6B18984E680024E672 /* ImageUtils.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -208,11 +227,32 @@
 		D70122EC188E2FF000057537 /* ImageStore */ = {
 			isa = PBXGroup;
 			children = (
-				D7608DB31894961E00F54869 /* ImageStoreResources */,
-				D70122EB188E2CDB00057537 /* ImageStore.h */,
+				D74F8D67189846010024E672 /* LocalImageStore.h */,
+				D74F8D68189846010024E672 /* LocalImageStore.m */,
+				D72590DA189C58A30018122D /* Abstract Classes */,
 				D7608DC21894B75100F54869 /* S3ImageStore */,
+				D7608DB31894961E00F54869 /* ImageStoreResources */,
 			);
 			name = ImageStore;
+			sourceTree = "<group>";
+		};
+		D72590DA189C58A30018122D /* Abstract Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D72590D7189C586E0018122D /* AbstractImageStore.h */,
+				D72590D8189C586E0018122D /* AbstractImageStore.m */,
+				D72590DB189C5A5D0018122D /* AbstractCloudImageStore.h */,
+				D72590DC189C5A5D0018122D /* AbstractCloudImageStore.m */,
+			);
+			name = "Abstract Classes";
+			sourceTree = "<group>";
+		};
+		D72590DE189C5F630018122D /* AbstractImageStore Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D72590DF189C5F760018122D /* AbstractImageStoreTests.m */,
+			);
+			name = "AbstractImageStore Tests";
 			sourceTree = "<group>";
 		};
 		D729BCEE181C1FC600F762A3 = {
@@ -307,6 +347,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D74F8D6D189852710024E672 /* LocalImageStore Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D7224210189B55F100832A06 /* big_test_image_4096-4096.jpg */,
+				D7224212189B844800832A06 /* LocalImageStoreTests.m */,
+			);
+			name = "LocalImageStore Tests";
+			sourceTree = "<group>";
+		};
 		D7608DB31894961E00F54869 /* ImageStoreResources */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +367,8 @@
 		D7608DBC18949A5400F54869 /* Store Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D72590DE189C5F630018122D /* AbstractImageStore Tests */,
+				D74F8D6D189852710024E672 /* LocalImageStore Tests */,
 				D7608DBF18949A7400F54869 /* S3ImageStore Tests */,
 			);
 			name = "Store Tests";
@@ -434,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7527C981895A81200D87539 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */,
+				D7224211189B55F100832A06 /* big_test_image_4096-4096.jpg in Resources */,
 				D729BD23181C1FC600F762A3 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,9 +499,12 @@
 			files = (
 				D049EF49188CA63A00EF8672 /* SampleStore.m in Sources */,
 				D08A762E188DBDEC002F948C /* LibraryView.m in Sources */,
+				D74F8D6C18984E680024E672 /* ImageUtils.m in Sources */,
+				D72590D9189C586E0018122D /* AbstractImageStore.m in Sources */,
 				D0C076C4188B062600B3D48E /* SampleConstants.m in Sources */,
 				D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
+				D74F8D69189846010024E672 /* LocalImageStore.m in Sources */,
 				D7608DC51894B76900F54869 /* S3Utils.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
 				D0DDDE2F188E33A30060B8C2 /* ChildrenView.m in Sources */,
@@ -457,6 +512,7 @@
 				D0C076B8188AFB9200B3D48E /* Source.m in Sources */,
 				D0749F54189B45A200D3908B /* LibraryObject.m in Sources */,
 				D0C076BB188AFBA600B3D48E /* Sample.m in Sources */,
+				D72590DD189C5A5D0018122D /* AbstractCloudImageStore.m in Sources */,
 				D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */,
 				D049EF46188CA62F00EF8672 /* SourceStore.m in Sources */,
 			);
@@ -466,6 +522,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7224213189B844800832A06 /* LocalImageStoreTests.m in Sources */,
+				D72590E0189C5F760018122D /* AbstractImageStoreTests.m in Sources */,
 				D0C076C1188B03C500B3D48E /* OriginalSampleConstantsTests.m in Sources */,
 				D7608DC118949A9200F54869 /* S3ImageStoreTests.m in Sources */,
 				D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */,

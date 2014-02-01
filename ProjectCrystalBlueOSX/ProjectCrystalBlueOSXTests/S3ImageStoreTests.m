@@ -7,8 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ImageStore.h"
+#import "AbstractCloudImageStore.h"
 #import "S3ImageStore.h"
+
+#define IMAGE_DIRECTORY @"project-crystal-blue-temp-test"
 
 @interface S3ImageStoreTests : XCTestCase
 
@@ -37,25 +39,13 @@
 /// Verify that a default image is retrieved for an image that does not exist.
 - (void)testNonexistantImageReturnsDefaultImage
 {
-    [S3ImageStore setUpSingleton];
+    AbstractCloudImageStore *imageStore = [[S3ImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
     NSString *nonexistantImage = @"NO-ONE-USE-THIS-AS-A-KEY-PLEASE";
     
-    XCTAssertFalse([S3ImageStore imageExistsForKey:nonexistantImage]);
+    XCTAssertFalse([imageStore imageExistsForKey:nonexistantImage]);
 
-    NSImage *resultDefaultImage = [S3ImageStore getImageForKey:nonexistantImage];
+    NSImage *resultDefaultImage = [imageStore getImageForKey:nonexistantImage];
     XCTAssertNotNil(resultDefaultImage);
-}
-
-/** Verify that a real image can be actually accessed.
- *  Because the "image-not-found" image is 256x256, make sure the test image is not 256x256.
- */
-- (void)testAccessRealImage
-{
-    NSString *testImageKey = @"UNIT_TEST_IMAGE_8x8.png";
-    NSImage *image = [S3ImageStore getImageForKey:testImageKey];
-    XCTAssertNotNil(image);
-    XCTAssertEqual([image size].width, (CGFloat)8);
-    XCTAssertEqual([image size].height, (CGFloat)8);
 }
 
 /** Verify that we can successfully upload an image to S3.
@@ -63,6 +53,8 @@
  */
 - (void)testUploadImage
 {
+    AbstractCloudImageStore *imageStore = [[S3ImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+
     NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
     NSImage *imageToUpload = [[NSImage alloc] initWithContentsOfFile:path];
@@ -72,17 +64,17 @@
     NSString *key = [[[[NSUUID alloc] init] UUIDString] stringByAppendingString:@".jpg"];
 
     // Perform the upload
-    BOOL uploadSuccess = [S3ImageStore putImage:imageToUpload forKey:key];
+    BOOL uploadSuccess = [imageStore putImage:imageToUpload forKey:key];
     XCTAssertTrue(uploadSuccess, @"S3ImageStore indicated that the upload was unsuccessful.");
     
     // Now that we've uploaded the image, let's check that we can get it back.
-    NSImage *retrievedImage = [S3ImageStore getImageForKey:key];
+    NSImage *retrievedImage = [imageStore getImageForKey:key];
     
     XCTAssertNotNil(retrievedImage, @"Image retrieved back from S3 was nil");
     XCTAssertEqual([retrievedImage size], [imageToUpload size]);
     
     // Finally, delete the image to clean up.
-    BOOL deleteSuccess = [S3ImageStore deleteImageWithKey:key];
+    BOOL deleteSuccess = [imageStore deleteImageWithKey:key];
     XCTAssertTrue(deleteSuccess, @"S3ImageStore indicated that deletion was unsuccessful.");
 }
 
