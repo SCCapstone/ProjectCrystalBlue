@@ -3,7 +3,7 @@
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/30/14.
-//  Copyright (c) 2014 Library Object. All rights reserved.
+//  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,7 +13,8 @@
 @property(readonly,copy) NSString *key;
 @property NSDictionary *attributes;
 
-- (id) initWithAttributes:(NSArray *) attributeNames
-     AndWithDefaultValues:(NSArray *) attributeDefaultValues;
+- (id)initWithKey:(NSString *)aKey
+AndWithAttributes:(NSArray *)attributeNames
+AndWithDefaultValues:(NSArray *)attributeDefaultValues;
 
 @end
