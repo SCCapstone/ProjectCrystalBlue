@@ -9,6 +9,8 @@
 #import "ZumeroUtils.h"
 #import "ZumeroLibraryObjectStore.h"
 
+#define CLASS_NAME @"ZumeroUtils"
+
 @implementation ZumeroUtils
 
 + (BOOL)createZumeroTableWithName:(NSString *)tableName
@@ -23,7 +25,7 @@
     [self startZumeroTransactionUsingDatabase:database];
     
     if(![database defineTable:tableName fields:fields error:&error]) {
-        NSLog(@"Failed to create zumero table:%@ with fields:%@. Error:%@", tableName, fields, error);
+        NSLog(@"%@: Failed to create zumero table: %@. Error:%@", CLASS_NAME, tableName, error);
         return NO;
     }
     
@@ -47,11 +49,11 @@
     NSError *error = nil;
     
     if (![database open:&error]) {
-        NSLog(@"Failed to open database. Error:%@", error);
+        NSLog(@"%@: Failed to open database. Error:%@", CLASS_NAME, error);
         return NO;
     }
     if (![database beginTX:&error]) {
-        NSLog(@"Failed to begin transaction. Error:%@", error);
+        NSLog(@"%@: Failed to begin transaction. Error:%@", CLASS_NAME, error);
         return NO;
     }
     return YES;
@@ -62,11 +64,11 @@
     NSError *error = nil;
     
     if (![database close]) {
-        NSLog(@"Failed to close database");
+        NSLog(@"%@: Failed to close database", CLASS_NAME);
         return NO;
     }
     if (![database commitTX:&error]) {
-        NSLog(@"Failed to commit transaction. Error:%@", error);
+        NSLog(@"%@: Failed to commit transaction. Error:%@", CLASS_NAME, error);
         return NO;
     }
     return YES;
