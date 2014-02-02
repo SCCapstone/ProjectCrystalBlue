@@ -15,17 +15,17 @@
 
 - (id)initWithKey:(NSString *)aKey
 AndWithAttributes:(NSArray *)attributeNames
-AndWithDefaultValues:(NSArray *)attributeDefaultValues
+    AndWithValues:(NSArray *)attributeValues
 {
     self = [super init];
     if (self)
     {
-        if ([attributeNames count] != [attributeDefaultValues count])
+        if ([attributeNames count] != [attributeValues count])
             [NSException raise:@"Invalid attribute constants."
-                        format:@"attributeNames is of length %lu and attributeDefaultValues is of length %lu", (unsigned long)[attributeNames count], (unsigned long)[attributeDefaultValues count]];
+                        format:@"attributeNames is of length %lu and attributeDefaultValues is of length %lu", (unsigned long)[attributeNames count], (unsigned long)[attributeValues count]];
         key = aKey;
-        attributes = [[NSMutableDictionary alloc] initWithObjects:attributeDefaultValues
-                                                   forKeys:attributeNames];
+        attributes = [[NSMutableDictionary alloc] initWithObjects:attributeValues
+                                                          forKeys:attributeNames];
     }
     return self;
 }

@@ -7,12 +7,21 @@
 //
 
 #import "Sample.h"
+#import "SampleConstants.h"
 
 @implementation Sample
 
+- (id)initWithKey:(NSString *)key
+    AndWithValues:(NSArray *)attributeValues
+{
+    return [super initWithKey:key
+            AndWithAttributes:[SampleConstants attributeNames]
+                AndWithValues:attributeValues];
+}
+
 - (NSString *)sourceKey
 {
-    return nil;
+    return [[self attributes] objectForKey:@"SourceKey"];
 }
 
 @end

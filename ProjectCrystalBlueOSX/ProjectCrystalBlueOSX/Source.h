@@ -11,4 +11,7 @@
 
 @interface Source : LibraryObject
 
+- (id)initWithKey:(NSString *)key
+    AndWithValues:(NSArray *)attributeValues;
+
 @end

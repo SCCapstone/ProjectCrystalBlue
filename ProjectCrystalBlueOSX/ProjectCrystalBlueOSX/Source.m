@@ -7,8 +7,16 @@
 //
 
 #import "Source.h"
+#import "SourceConstants.h"
 
 @implementation Source
 
+- (id)initWithKey:(NSString *)key
+    AndWithValues:(NSArray *)attributeValues
+{
+    return [super initWithKey:key
+            AndWithAttributes:[SourceConstants attributeNames]
+                AndWithValues:attributeValues];
+}
 
 @end
