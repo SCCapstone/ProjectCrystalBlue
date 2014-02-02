@@ -32,6 +32,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     if (self) {
         localStore = [[LocalImageStore alloc] initWithLocalDirectory:directory];
+        dirtyKeys = [[NSMutableSet alloc] init];
         
         // TEMPORARILY HARD-CODING CREDENTIALS for test purposes.
         // This is obviously a huge security issue and cannot be in the Beta version.
@@ -51,8 +52,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             }
         }
         @catch (NSException *exception) {
-            DDLogError(@"Could not completely set up the %@ singleton - probably because the device could not connect to S3.", CLASS_NAME);
-            DDLogError(@"Exception: %@ \n   with reason: %@", [exception name], [exception reason]);
+            DDLogInfo(@"%@: Could not init S3Client - probably because the device could not connect to S3.", CLASS_NAME);
+            DDLogDebug(@"%@: Exception: %@ with reason: %@", CLASS_NAME, [exception name], [exception reason]);
         }
     }
     
@@ -61,13 +62,24 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(BOOL)synchronizeWithCloud
 {
-    return NO;
+    if ([dirtyKeys count] == 0) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 -(NSImage *)getImageForKey:(NSString *)key
 {
     DDLogInfo(@"%@: Retrieving image for key %@", CLASS_NAME, key);
     
+    // First check the local image database
+    if ([localStore imageExistsForKey:key]) {
+        DDLogDebug(@"%@: Image found in the local ImageStore", CLASS_NAME);
+        return [localStore getImageForKey:key];
+    }
+    
+    // Otherwise, try to retrieve image from S3.
     S3GetObjectRequest *request = [[S3GetObjectRequest alloc] initWithKey:key
                                                                withBucket:BUCKET_NAME];
     NSImage *image;
@@ -76,15 +88,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         S3GetObjectResponse *response = [s3Client getObject:request];
         
         if ([response error]) {
-            DDLogError(@"%@: %@", CLASS_NAME, [response error]);
+            DDLogInfo(@"%@: %@", CLASS_NAME, [response error]);
             image = [self.class defaultImage];
         } else if (![S3Utils contentTypeIsImage:[response contentType]]) {
             DDLogError(@"%@: rejecting the object for key %@ because the MIME content type was not a valid image: %@",
                   CLASS_NAME, key, [response contentType]);
             image = [self.class defaultImage];
         } else {
-            DDLogDebug(@"%@: Image successfully retrieved!", CLASS_NAME);
+            DDLogDebug(@"%@: Image successfully retrieved from S3!", CLASS_NAME);
             image = [[NSImage alloc] initWithData:[response body]];
+            // Store this retrieved image in the local store.
+            [localStore putImage:image forKey:key];
         }
     }
     @catch (NSException *exception) {
@@ -104,6 +118,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 -(BOOL)putImage:(NSImage *)image
          forKey:(NSString *)key
 {
+    DDLogInfo(@"%@: Putting image for key %@", CLASS_NAME, key);
+    
+    // Add the image locally.
+    [localStore putImage:image forKey:key];
     
     DDLogInfo(@"%@: Uploading image for key %@", CLASS_NAME, key);
     
@@ -114,13 +132,20 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [request setData:imageJPEGData];
     [request setContentType:@"image/jpeg"];
     
-    S3PutObjectResponse *response = [s3Client putObject:request];
-    if ([response error]) {
-        DDLogError(@"%@: %@", CLASS_NAME, [response error]);
-        return NO;
-    } else {
-        DDLogDebug(@"%@: Successfully uploaded image for key %@ to S3!", CLASS_NAME, key);
-        return YES;
+    @try {
+        S3PutObjectResponse *response = [s3Client putObject:request];
+        if ([response error]) {
+            DDLogError(@"%@: %@", CLASS_NAME, [response error]);
+            return NO;
+        } else {
+            DDLogDebug(@"%@: Successfully uploaded image for key %@ to S3!", CLASS_NAME, key);
+            return YES;
+        }
+    }
+    @catch (NSException *exception) {
+        DDLogInfo(@"%@: Couldn't upload image to S3 because of an exception. Probably the client is offline.", CLASS_NAME);
+        DDLogDebug(@"%@: Exception: %@ ; Reason %@", CLASS_NAME, [exception name], [exception reason]);
+        [dirtyKeys addObject:key];
     }
 }
 
@@ -136,18 +161,25 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     } else {
         DDLogInfo(@"%@: Successfully deleted image for key %@ from S3!", CLASS_NAME, key);
+        
+        // Now delete the image locally.
+        [localStore deleteImageWithKey:key];
         return YES;
     }
 }
 
 -(BOOL)keyIsDirty:(NSString *)key
 {
-    return NO;
+    if (![self imageExistsForKey:key]) {
+        return NO;
+    }
+    
+    return [dirtyKeys containsObject:key];
 }
 
 -(void)flushLocalImageStore
 {
-    
+    [localStore flushLocalImageData];
 }
 
 @end
