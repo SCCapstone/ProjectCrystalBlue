@@ -23,6 +23,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    DDLogInfo(@"Starting Lumberjack log at %@", [[NSDate alloc] init]);
 }
 
 @end
