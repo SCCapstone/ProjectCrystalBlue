@@ -9,6 +9,13 @@
 //
 
 #import "S3Utils.h"
+#import "DDLog.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 
 NSString *const MIME_JPEG = @"image/jpeg";
 NSString *const MIME_PNG = @"image/png";
