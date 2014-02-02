@@ -51,6 +51,10 @@
 		D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DBA189496CA00F54869 /* S3ImageStore.m */; };
 		D7608DC118949A9200F54869 /* S3ImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DC018949A9200F54869 /* S3ImageStoreTests.m */; };
 		D7608DC51894B76900F54869 /* S3Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D7608DC41894B76900F54869 /* S3Utils.m */; };
+		D771DD40189ED7960011F815 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D771DD3F189ED7960011F815 /* DDLog.m */; };
+		D771DD43189ED79D0011F815 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D771DD42189ED79D0011F815 /* DDASLLogger.m */; };
+		D771DD46189ED7A50011F815 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D771DD45189ED7A50011F815 /* DDTTYLogger.m */; };
+		D771DD49189ED7AE0011F815 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D771DD48189ED7AE0011F815 /* DDFileLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +138,14 @@
 		D7608DC018949A9200F54869 /* S3ImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStoreTests.m; sourceTree = "<group>"; };
 		D7608DC31894B76900F54869 /* S3Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3Utils.h; sourceTree = "<group>"; };
 		D7608DC41894B76900F54869 /* S3Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3Utils.m; sourceTree = "<group>"; };
+		D771DD3E189ED7960011F815 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		D771DD3F189ED7960011F815 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		D771DD41189ED79D0011F815 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		D771DD42189ED79D0011F815 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		D771DD44189ED7A50011F815 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		D771DD45189ED7A50011F815 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		D771DD47189ED7AE0011F815 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		D771DD48189ED7AE0011F815 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +248,7 @@
 		D0C076B5188AFAEB00B3D48E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D771DD3D189ED78B0011F815 /* Lumberjack */,
 				D0969B501851C142008C4BD5 /* SQLiteWrapper.h */,
 				D0969B511851C142008C4BD5 /* SQLiteWrapper.m */,
 				D74F8D6A18984E680024E672 /* ImageUtils.h */,
@@ -423,6 +436,21 @@
 			name = S3ImageStore;
 			sourceTree = "<group>";
 		};
+		D771DD3D189ED78B0011F815 /* Lumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				D771DD47189ED7AE0011F815 /* DDFileLogger.h */,
+				D771DD48189ED7AE0011F815 /* DDFileLogger.m */,
+				D771DD44189ED7A50011F815 /* DDTTYLogger.h */,
+				D771DD45189ED7A50011F815 /* DDTTYLogger.m */,
+				D771DD41189ED79D0011F815 /* DDASLLogger.h */,
+				D771DD42189ED79D0011F815 /* DDASLLogger.m */,
+				D771DD3E189ED7960011F815 /* DDLog.h */,
+				D771DD3F189ED7960011F815 /* DDLog.m */,
+			);
+			name = Lumberjack;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -525,6 +553,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D771DD40189ED7960011F815 /* DDLog.m in Sources */,
+				D771DD49189ED7AE0011F815 /* DDFileLogger.m in Sources */,
 				D049EF49188CA63A00EF8672 /* SampleStore.m in Sources */,
 				D08A762E188DBDEC002F948C /* LibraryView.m in Sources */,
 				D74F8D6C18984E680024E672 /* ImageUtils.m in Sources */,
@@ -532,12 +562,14 @@
 				D0C076C4188B062600B3D48E /* SampleConstants.m in Sources */,
 				D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
+				D771DD46189ED7A50011F815 /* DDTTYLogger.m in Sources */,
 				D0B1B745189CA50200052443 /* ZumeroLibraryObjectStore.m in Sources */,
 				D74F8D69189846010024E672 /* LocalImageStore.m in Sources */,
 				D7608DC51894B76900F54869 /* S3Utils.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
 				D0DDDE2F188E33A30060B8C2 /* ChildrenView.m in Sources */,
 				D0C076BE188AFF7A00B3D48E /* SourceConstants.m in Sources */,
+				D771DD43189ED79D0011F815 /* DDASLLogger.m in Sources */,
 				D0C076B8188AFB9200B3D48E /* Source.m in Sources */,
 				D0749F54189B45A200D3908B /* LibraryObject.m in Sources */,
 				D0C076BB188AFBA600B3D48E /* Sample.m in Sources */,

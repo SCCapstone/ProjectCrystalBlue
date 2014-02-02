@@ -7,6 +7,7 @@
 //
 
 #import "ChildrenView.h"
+#import "DDLog.h"
 
 @interface ChildrenView ()
 

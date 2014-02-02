@@ -11,6 +11,13 @@
 
 #import "LocalImageStore.h"
 #import "ImageUtils.h"
+#import "DDLog.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 
 @implementation LocalImageStore
 
@@ -67,7 +74,7 @@
                                                            contents:imageData
                                                          attributes:nil];
     if (success) {
-        NSLog(@"Wrote %@ to %@", key, path);
+        DDLogInfo(@"Wrote %@ to %@", key, path);
     }
     
     return success;
@@ -84,7 +91,7 @@
     BOOL success = [[NSFileManager defaultManager] removeItemAtPath:path
                                                               error:&error];
     if (!success) {
-        NSLog(@"%@", error);
+        DDLogError(@"%@", error);
     }
     
     return success;
@@ -94,7 +101,7 @@
 {
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:localDirectory error:nil];
     
-    NSLog(@"Permanently deleting %lu items in directory %@!", (unsigned long)[files count], localDirectory);
+    DDLogWarn(@"Permanently deleting %lu items in directory %@!", (unsigned long)[files count], localDirectory);
     
     for (NSString* file in files) {
         NSString *path = [localDirectory stringByAppendingFormat:@"/%@", file];
@@ -102,7 +109,7 @@
         BOOL success = [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
         
         if (!success) {
-            NSLog(@"%@", error);
+            DDLogError(@"%@", error);
         }
     }
 }

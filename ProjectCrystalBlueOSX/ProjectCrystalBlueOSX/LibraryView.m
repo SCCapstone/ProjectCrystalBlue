@@ -9,6 +9,7 @@
 #import "LibraryView.h"
 #import "ChildrenView.h"
 #import "SourceStore.h"
+#import "DDLog.h"
 
 @interface LibraryView ()
 

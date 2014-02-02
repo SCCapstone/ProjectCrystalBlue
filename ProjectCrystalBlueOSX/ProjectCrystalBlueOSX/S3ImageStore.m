@@ -12,6 +12,13 @@
 #import "S3Utils.h"
 #import "ImageUtils.h"
 #import "LocalImageStore.h"
+#import "DDLog.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 
 #define CLASS_NAME @"S3ImageStore"
 #define BUCKET_NAME @"project-crystal-blue-test"
@@ -39,13 +46,13 @@
                                                usingClient:s3Client];
             
             if (!bucket) {
-                NSLog(@"%@: Creating bucket %@", CLASS_NAME, BUCKET_NAME);
+                DDLogInfo(@"%@: Creating bucket %@", CLASS_NAME, BUCKET_NAME);
                 [s3Client createBucketWithName:BUCKET_NAME];
             }
         }
         @catch (NSException *exception) {
-            NSLog(@"Could not completely set up the %@ singleton - probably because the device could not connect to S3.", CLASS_NAME);
-            NSLog(@"Exception: %@ \n   with reason: %@", [exception name], [exception reason]);
+            DDLogError(@"Could not completely set up the %@ singleton - probably because the device could not connect to S3.", CLASS_NAME);
+            DDLogError(@"Exception: %@ \n   with reason: %@", [exception name], [exception reason]);
         }
     }
     
@@ -59,30 +66,29 @@
 
 -(NSImage *)getImageForKey:(NSString *)key
 {
-    NSLog(@"%@: Retrieving image for key %@", CLASS_NAME, key);
+    DDLogInfo(@"%@: Retrieving image for key %@", CLASS_NAME, key);
     
     S3GetObjectRequest *request = [[S3GetObjectRequest alloc] initWithKey:key
                                                                withBucket:BUCKET_NAME];
     NSImage *image;
     @try {
-        NSLog(@"%@: Sending request for image to S3", CLASS_NAME);
+        DDLogDebug(@"%@: Sending request for image to S3", CLASS_NAME);
         S3GetObjectResponse *response = [s3Client getObject:request];
         
         if ([response error]) {
-            NSLog(@"%@: %@", CLASS_NAME, [response error]);
+            DDLogError(@"%@: %@", CLASS_NAME, [response error]);
             image = [self.class defaultImage];
         } else if (![S3Utils contentTypeIsImage:[response contentType]]) {
-            NSLog(@"%@: rejecting the object for key %@ because the MIME content type was not a valid image: %@",
+            DDLogError(@"%@: rejecting the object for key %@ because the MIME content type was not a valid image: %@",
                   CLASS_NAME, key, [response contentType]);
             image = [self.class defaultImage];
         } else {
-            NSLog(@"%@: Image successfully retrieved!", CLASS_NAME);
+            DDLogDebug(@"%@: Image successfully retrieved!", CLASS_NAME);
             image = [[NSImage alloc] initWithData:[response body]];
         }
     }
     @catch (NSException *exception) {
-        NSLog(@"%@: Exception was thrown.", CLASS_NAME);
-        NSLog(@"Exception: %@ ; Reason %@", [exception name], [exception reason]);
+        DDLogError(@"%@: Exception: %@ ; Reason %@", CLASS_NAME, [exception name], [exception reason]);
         image = [self.class defaultImage];
     }
     @finally {
@@ -99,7 +105,7 @@
          forKey:(NSString *)key
 {
     
-    NSLog(@"%@: Uploading image for key %@", CLASS_NAME, key);
+    DDLogInfo(@"%@: Uploading image for key %@", CLASS_NAME, key);
     
     NSData *imageJPEGData = [ImageUtils JPEGDataFromImage:image withCompression:JPEG_COMPRESSION];
     
@@ -110,10 +116,10 @@
     
     S3PutObjectResponse *response = [s3Client putObject:request];
     if ([response error]) {
-        NSLog(@"%@: %@", CLASS_NAME, [response error]);
+        DDLogError(@"%@: %@", CLASS_NAME, [response error]);
         return NO;
     } else {
-        NSLog(@"%@: Successfully uploaded image for key %@ to S3!", CLASS_NAME, key);
+        DDLogDebug(@"%@: Successfully uploaded image for key %@ to S3!", CLASS_NAME, key);
         return YES;
     }
 }
@@ -126,10 +132,10 @@
     
     S3DeleteObjectResponse *response = [s3Client deleteObject:request];
     if ([response error]) {
-        NSLog(@"%@: %@", CLASS_NAME, [response error]);
+        DDLogError(@"%@: %@", CLASS_NAME, [response error]);
         return NO;
     } else {
-        NSLog(@"%@: Successfully deleted image for key %@ from S3!", CLASS_NAME, key);
+        DDLogInfo(@"%@: Successfully deleted image for key %@ from S3!", CLASS_NAME, key);
         return YES;
     }
 }
