@@ -10,7 +10,8 @@
 
 @interface SourceConstants : NSObject
 
-+ (NSArray *) attributeNames;
-+ (NSArray *) attributeDefaultValues;
++ (NSArray *)attributeNames;
++ (NSArray *)attributeDefaultValues;
++ (NSString *)sourceTableName;
 
 @end

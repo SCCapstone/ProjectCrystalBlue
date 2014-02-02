@@ -7,11 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Zumero.h>
 
 @interface ZumeroUtils : NSObject
 
-+ (BOOL)createZumeroTableWithName:(NSString *)tableName;
++ (BOOL)createZumeroTableWithName:(NSString *)tableName
+                        AndFields:(NSDictionary *)fields
+                    UsingDatabase:(ZumeroDB *)database;
 
-+ (BOOL)zumeroTableExistsWithName:(NSString *)tableName;
++ (BOOL)zumeroTableExistsWithName:(NSString *)tableName
+                    UsingDatabase:(ZumeroDB *)database;
+
++ (BOOL)startZumeroTransactionUsingDatabase:(ZumeroDB *)database;
+
++ (BOOL)finishZumeroTransactionUsingDatabase:(ZumeroDB *)database;
 
 @end

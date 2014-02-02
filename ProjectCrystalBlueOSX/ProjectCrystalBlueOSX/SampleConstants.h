@@ -10,7 +10,8 @@
 
 @interface SampleConstants : NSObject
 
-+ (NSArray *) attributeNames;
-+ (NSArray *) attributeDefaultValues;
++ (NSArray *)attributeNames;
++ (NSArray *)attributeDefaultValues;
++ (NSString *)sampleTableName;
 
 @end

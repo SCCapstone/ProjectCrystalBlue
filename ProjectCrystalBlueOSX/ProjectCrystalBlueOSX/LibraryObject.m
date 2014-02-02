@@ -24,7 +24,7 @@ AndWithDefaultValues:(NSArray *)attributeDefaultValues
             [NSException raise:@"Invalid attribute constants."
                         format:@"attributeNames is of length %lu and attributeDefaultValues is of length %lu", (unsigned long)[attributeNames count], (unsigned long)[attributeDefaultValues count]];
         key = aKey;
-        attributes = [[NSDictionary alloc] initWithObjects:attributeDefaultValues
+        attributes = [[NSMutableDictionary alloc] initWithObjects:attributeDefaultValues
                                                    forKeys:attributeNames];
     }
     return self;

@@ -11,7 +11,7 @@
 @interface LibraryObject : NSObject
 
 @property(readonly,copy) NSString *key;
-@property NSDictionary *attributes;
+@property NSMutableDictionary *attributes;
 
 - (id)initWithKey:(NSString *)aKey
 AndWithAttributes:(NSArray *)attributeNames

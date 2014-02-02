@@ -11,15 +11,19 @@
 
 @protocol LibraryObjectStore <NSObject>
 
-- (LibraryObject *)getLibraryObjectForKey:(NSString *)key;
+- (LibraryObject *)getLibraryObjectForKey:(NSString *)key
+                                FromTable:(NSString *)tableName;
 
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
-                  ForKey:(NSString *)key;
+                  ForKey:(NSString *)key
+               IntoTable:(NSString *)tableName;
 
-- (BOOL)deleteLibraryObjectForKey:(NSString *)key;
+- (BOOL)deleteLibraryObjectForKey:(NSString *)key
+                        FromTable:(NSString *)tableName;
 
-- (BOOL)libraryObjectExistsForKey:(NSString *)key;
+- (BOOL)libraryObjectExistsForKey:(NSString *)key
+                        FromTable:(NSString *)tableName;
 
-- (BOOL)synchronize;
+- (BOOL)synchronizeTable:(NSString *)tableName;
 
 @end

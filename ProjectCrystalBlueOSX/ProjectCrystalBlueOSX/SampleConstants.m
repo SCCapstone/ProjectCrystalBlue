@@ -1,6 +1,6 @@
 //
 //  SampleConstants.m
-//  ProjectCrystalBlue-iOS
+//  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/18/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
@@ -43,6 +43,10 @@ NSString *const DEF_VAL_HEAVY_LIQUID = @"Not Heavy_Liquid";
 NSString *const DEF_VAL_MAGNETIC_SEPERATOR = @"Not Magnetic_Seperator";
 NSString *const DEF_VAL_TAGS = @"";
 
+/* Sample table name
+ */
+NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
+
 @implementation SampleConstants
 
 + (NSArray *)attributeNames
@@ -66,6 +70,11 @@ NSString *const DEF_VAL_TAGS = @"";
                                   nil];
     }
     return attributeDefaultValues;
+}
+
++ (NSString *)sampleTableName
+{
+    return SAMPLE_TABLE_NAME;
 }
 
 @end

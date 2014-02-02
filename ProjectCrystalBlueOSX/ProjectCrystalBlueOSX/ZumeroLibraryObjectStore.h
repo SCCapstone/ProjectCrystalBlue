@@ -11,6 +11,6 @@
 
 @interface ZumeroLibraryObjectStore : NSObject <LibraryObjectStore>
 
-
++ (ZumeroLibraryObjectStore *)database;
 
 @end
