@@ -32,7 +32,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [self startZumeroTransactionUsingDatabase:database];
     
     if(![database defineTable:tableName fields:fields error:&error]) {
-        NSLog(@"%@: Failed to create zumero table: %@. Error:%@", CLASS_NAME, tableName, error);
+        DDLogError(@"%@: Failed to create zumero table: %@. Error:%@", CLASS_NAME, tableName, error);
         return NO;
     }
     
@@ -56,11 +56,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSError *error = nil;
     
     if (![database open:&error]) {
-        NSLog(@"%@: Failed to open database. Error:%@", CLASS_NAME, error);
+        DDLogError(@"%@: Failed to open database. Error:%@", CLASS_NAME, error);
         return NO;
     }
     if (![database beginTX:&error]) {
-        NSLog(@"%@: Failed to begin transaction. Error:%@", CLASS_NAME, error);
+        DDLogError(@"%@: Failed to begin transaction. Error:%@", CLASS_NAME, error);
         return NO;
     }
     return YES;
@@ -71,14 +71,20 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSError *error = nil;
     
     if (![database close]) {
-        NSLog(@"%@: Failed to close database", CLASS_NAME);
+        DDLogError(@"%@: Failed to close database", CLASS_NAME);
         return NO;
     }
     if (![database commitTX:&error]) {
-        NSLog(@"%@: Failed to commit transaction. Error:%@", CLASS_NAME, error);
+        DDLogError(@"%@: Failed to commit transaction. Error:%@", CLASS_NAME, error);
         return NO;
     }
     return YES;
+}
+
++ (NSDictionary *)getValuesFromLibraryObject:(LibraryObject *)libraryObject
+{
+    //NSDictionary *d = [NSDic]
+    return nil;
 }
 
 @end

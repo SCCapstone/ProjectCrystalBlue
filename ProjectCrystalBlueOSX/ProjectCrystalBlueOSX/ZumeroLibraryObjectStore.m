@@ -62,7 +62,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                 FromTable:(NSString *)tableName
 {
     if (![ZumeroUtils zumeroTableExistsWithName:tableName UsingDatabase:zumeroDatabase]) {
-        NSLog(@"%@: Table with name %@ does not exist!", CLASS_NAME, tableName);
+        DDLogError(@"%@: Table with name %@ does not exist!", CLASS_NAME, tableName);
         return nil;
     }
     
@@ -75,15 +75,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [ZumeroUtils startZumeroTransactionUsingDatabase:zumeroDatabase];
     
     if (![zumeroDatabase select:tableName criteria:criteria columns:columns orderby:nil rows:&rows error:&error]) {
-        NSLog(@"%@: Failed to get library object. Error: %@", CLASS_NAME, error);
+        DDLogError(@"%@: Failed to get library object. Error: %@", CLASS_NAME, error);
         return nil;
     }
     
     [ZumeroUtils finishZumeroTransactionUsingDatabase:zumeroDatabase];
     
-    if (!rows)
+    // LibraryObject not in database
+    if (!rows) {
+        DDLogError(@"%@: Library object not found in database.", CLASS_NAME);
         return nil;
+    }
     
+    // Initialize library object with database values
     LibraryObject *libraryObject = nil;
     if ([tableName isEqualToString:[SourceConstants sourceTableName]]) {
         libraryObject = [[Source alloc] initWithKey:key AndWithValues:[rows firstObject]];
@@ -99,13 +103,34 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                   ForKey:(NSString *)key
                IntoTable:(NSString *)tableName
 {
-    return NO;
+    if (![ZumeroUtils zumeroTableExistsWithName:tableName UsingDatabase:zumeroDatabase]) {
+        DDLogError(@"%@: Table with name %@ does not exist!", CLASS_NAME, tableName);
+        return NO;
+    }
+    
+    NSError *error = nil;
+    
+    [ZumeroUtils startZumeroTransactionUsingDatabase:zumeroDatabase];
+    
+    if (![zumeroDatabase insertRecord:tableName values:[ZumeroUtils getValuesFromLibraryObject:libraryObject] inserted:nil error:&error]) {
+        DDLogError(@"%@: Failed to insert library object. Error: %@", CLASS_NAME, error);
+        return NO;
+    }
+    
+    [ZumeroUtils finishZumeroTransactionUsingDatabase:zumeroDatabase];
+    
+    return YES;
 }
 
 - (BOOL)deleteLibraryObjectForKey:(NSString *)key
                         FromTable:(NSString *)tableName
 {
-    return NO;
+    if (![ZumeroUtils zumeroTableExistsWithName:tableName UsingDatabase:zumeroDatabase]) {
+        DDLogError(@"%@: Table with name %@ does not exist!", CLASS_NAME, tableName);
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (BOOL)libraryObjectExistsForKey:(NSString *)key

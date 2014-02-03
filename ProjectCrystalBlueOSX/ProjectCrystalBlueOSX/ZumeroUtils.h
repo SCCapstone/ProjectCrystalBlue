@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Zumero.h>
 
+@class LibraryObject;
+
 @interface ZumeroUtils : NSObject
 
 + (BOOL)createZumeroTableWithName:(NSString *)tableName
@@ -21,5 +23,7 @@
 + (BOOL)startZumeroTransactionUsingDatabase:(ZumeroDB *)database;
 
 + (BOOL)finishZumeroTransactionUsingDatabase:(ZumeroDB *)database;
+
++ (NSDictionary *)getValuesFromLibraryObject:(LibraryObject *)libraryObject;
 
 @end
