@@ -39,7 +39,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     self = [super init];
     if (self)
     {
-        
+        zumeroDatabase = [ZumeroUtils initializeZumeroDatabaseWithName:@"testdb1_v2"
+                                                       AndWithDelegate:self];
     }
     return self;
 }
@@ -67,7 +68,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     
     NSError *error = nil;
-    NSDictionary *criteria = @{ @"": key };
+    NSDictionary *criteria = @{ @"key": key };
     NSArray *columns = [tableName isEqualToString:[SourceConstants sourceTableName]] ?
         [SourceConstants attributeNames] : [SampleConstants attributeNames];
     NSArray *rows = nil;
@@ -112,7 +113,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     [ZumeroUtils startZumeroTransactionUsingDatabase:zumeroDatabase];
     
-    if (![zumeroDatabase insertRecord:tableName values:[ZumeroUtils getValuesFromLibraryObject:libraryObject] inserted:nil error:&error]) {
+    if (![zumeroDatabase insertRecord:tableName values:[libraryObject attributes] inserted:nil error:&error]) {
         DDLogError(@"%@: Failed to insert library object. Error: %@", CLASS_NAME, error);
         return NO;
     }
@@ -130,18 +131,40 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     }
     
+    NSError *error = nil;
+    NSDictionary *criteria = @{ @"key": key };
+    
+    [ZumeroUtils startZumeroTransactionUsingDatabase:zumeroDatabase];
+    
+    if (![zumeroDatabase delete:tableName criteria:criteria error:&error]) {
+        DDLogError(@"%@: Failed to delete library object. Error: %@", CLASS_NAME, error);
+        return NO;
+    }
+    
+    [ZumeroUtils finishZumeroTransactionUsingDatabase:zumeroDatabase];
+    
     return YES;
-}
-
-- (BOOL)libraryObjectExistsForKey:(NSString *)key
-                        FromTable:(NSString *)tableName
-{
-    return NO;
 }
 
 - (BOOL)synchronizeTable:(NSString *)tableName
 {
-    return NO;
+    if (![ZumeroUtils zumeroTableExistsWithName:tableName UsingDatabase:zumeroDatabase]) {
+        DDLogError(@"%@: Table with name %@ does not exist!", CLASS_NAME, tableName);
+        return NO;
+    }
+    
+    NSError *error = nil;
+    
+    [ZumeroUtils startZumeroTransactionUsingDatabase:zumeroDatabase];
+    
+    if(![zumeroDatabase sync:[ZumeroUtils syncScheme] user:@"admin" password:@"pcbcsce490" error:&error]) {
+        DDLogError(@"%@: Failed to setup sync with remote database.", CLASS_NAME);
+        return NO;
+    }
+    
+    [ZumeroUtils startZumeroTransactionUsingDatabase:zumeroDatabase];
+    
+    return YES;
 }
 
 @end

@@ -13,6 +13,9 @@
 
 @interface ZumeroUtils : NSObject
 
++ (ZumeroDB *)initializeZumeroDatabaseWithName:(NSString *)databaseName
+                               AndWithDelegate:(id)delegate;
+
 + (BOOL)createZumeroTableWithName:(NSString *)tableName
                         AndFields:(NSDictionary *)fields
                     UsingDatabase:(ZumeroDB *)database;
@@ -24,6 +27,6 @@
 
 + (BOOL)finishZumeroTransactionUsingDatabase:(ZumeroDB *)database;
 
-+ (NSDictionary *)getValuesFromLibraryObject:(LibraryObject *)libraryObject;
++ (NSDictionary *)syncScheme;
 
 @end

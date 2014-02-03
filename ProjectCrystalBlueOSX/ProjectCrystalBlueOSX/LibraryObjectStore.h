@@ -21,9 +21,6 @@
 - (BOOL)deleteLibraryObjectForKey:(NSString *)key
                         FromTable:(NSString *)tableName;
 
-- (BOOL)libraryObjectExistsForKey:(NSString *)key
-                        FromTable:(NSString *)tableName;
-
 - (BOOL)synchronizeTable:(NSString *)tableName;
 
 @end

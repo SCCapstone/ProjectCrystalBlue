@@ -9,6 +9,7 @@
 #import "ZumeroUtils.h"
 #import "ZumeroLibraryObjectStore.h"
 #import "DDLog.h"
+#import <Zumero.h>
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -19,6 +20,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #define CLASS_NAME @"ZumeroUtils"
 
 @implementation ZumeroUtils
+
++ (ZumeroDB *)initializeZumeroDatabaseWithName:(NSString *)databaseName
+                               AndWithDelegate:(id)delegate
+{
+    NSError *error = nil;
+    ZumeroDB *zumeroDB = [[ZumeroDB alloc] initWithName:databaseName
+                                                 folder:nil
+                                                   host:@"https://zinst7655bd1e667.s.zumero.net"];
+    zumeroDB.delegate = delegate;
+    
+    if (![zumeroDB exists]) {
+        if (![zumeroDB createDB:&error])
+            DDLogError(@"%@: Failed to create zumero database.", CLASS_NAME);
+    }
+    
+    return zumeroDB;
+}
 
 + (BOOL)createZumeroTableWithName:(NSString *)tableName
                         AndFields:(NSDictionary *)fields
@@ -70,21 +88,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     NSError *error = nil;
     
-    if (![database close]) {
-        DDLogError(@"%@: Failed to close database", CLASS_NAME);
-        return NO;
-    }
     if (![database commitTX:&error]) {
         DDLogError(@"%@: Failed to commit transaction. Error:%@", CLASS_NAME, error);
+        return NO;
+    }
+    if (![database close]) {
+        DDLogError(@"%@: Failed to close database", CLASS_NAME);
         return NO;
     }
     return YES;
 }
 
-+ (NSDictionary *)getValuesFromLibraryObject:(LibraryObject *)libraryObject
++ (NSDictionary *)syncScheme
 {
-    //NSDictionary *d = [NSDic]
-    return nil;
+    return @{
+             @"scheme_type": @"internal",
+             @"dbfile": @"zumero_users_admin"
+             };
 }
 
 @end
