@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "AbstractCloudImageStore.h"
+#import "LocalImageStore.h"
 #import "S3ImageStore.h"
 
 #define IMAGE_DIRECTORY @"project-crystal-blue-temp-test"
@@ -36,6 +37,27 @@
     XCTAssertNotNil([S3ImageStore defaultImage]);
 }
 
+/** Verify that the S3ImageStore will retrieve a local image before trying S3.
+ *  This test should succeed even while offline.
+ */
+- (void)testRetrieveLocalImage
+{
+    AbstractCloudImageStore *s3ImageStore = [[S3ImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractImageStore *localStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    
+    NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
+    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
+    NSImage *testImage = [[NSImage alloc] initWithContentsOfFile:path];
+    
+    NSString *testKey = [[[NSUUID alloc] init] UUIDString];
+    [localStore putImage:testImage forKey:testKey];
+    
+    // Since the image is now stored locally, the s3ImageStore should be able to retrieve it without contacting S3.
+    NSImage *retrieved = [s3ImageStore getImageForKey:testKey];
+    XCTAssertNotNil(retrieved, @"Retrieved image was nil.");
+    XCTAssertEqual([retrieved size], [testImage size]);
+}
+
 /// Verify that a default image is retrieved for an image that does not exist.
 - (void)testNonexistantImageReturnsDefaultImage
 {
@@ -53,8 +75,9 @@
  */
 - (void)testUploadImage
 {
-    AbstractCloudImageStore *imageStore = [[S3ImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
-
+    AbstractCloudImageStore *s3imageStore = [[S3ImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractImageStore *localImageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    
     NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
     NSImage *imageToUpload = [[NSImage alloc] initWithContentsOfFile:path];
@@ -64,18 +87,34 @@
     NSString *key = [[[[NSUUID alloc] init] UUIDString] stringByAppendingString:@".jpg"];
 
     // Perform the upload
-    BOOL uploadSuccess = [imageStore putImage:imageToUpload forKey:key];
+    BOOL uploadSuccess = [s3imageStore putImage:imageToUpload forKey:key];
     XCTAssertTrue(uploadSuccess, @"S3ImageStore indicated that the upload was unsuccessful.");
     
-    // Now that we've uploaded the image, let's check that we can get it back.
-    NSImage *retrievedImage = [imageStore getImageForKey:key];
+    // Make sure that it's correctly stored locally
+    NSImage *localImage = [localImageStore getImageForKey:key];
+    XCTAssertNotNil(localImage, @"Local image was nil");
+    XCTAssertEqual([localImage size], [imageToUpload size]);
     
+    // Delete the local version to force the ImageStore to get the S3 version.
+    [localImageStore deleteImageWithKey:key];
+    XCTAssertFalse([localImageStore imageExistsForKey:key]);
+    
+    // Now that we've uploaded the image, let's check that we can get it back from S3.
+    NSImage *retrievedImage = [s3imageStore getImageForKey:key];
     XCTAssertNotNil(retrievedImage, @"Image retrieved back from S3 was nil");
     XCTAssertEqual([retrievedImage size], [imageToUpload size]);
     
+    // Retrieving the image from S3 should automatically create a local version again.
+    localImage = [localImageStore getImageForKey:key];
+    XCTAssertNotNil(localImage, @"Local image was nil");
+    XCTAssertEqual([localImage size], [imageToUpload size]);
+    
     // Finally, delete the image to clean up.
-    BOOL deleteSuccess = [imageStore deleteImageWithKey:key];
+    BOOL deleteSuccess = [s3imageStore deleteImageWithKey:key];
     XCTAssertTrue(deleteSuccess, @"S3ImageStore indicated that deletion was unsuccessful.");
+    
+    // Check that the image stored locally is deleted too.
+    XCTAssertFalse([localImageStore imageExistsForKey:key]);
 }
 
 @end

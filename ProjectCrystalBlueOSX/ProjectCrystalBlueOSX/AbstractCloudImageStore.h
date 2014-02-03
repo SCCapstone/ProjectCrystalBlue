@@ -20,7 +20,12 @@
  *  When online, the CloudImageStore will automatically synchronize whenever images are added,
  *  but this should also be called periodically in case images were created offline.
  *
- *  Returns whether the cloud storage location was reachable.
+ *  Returns NO
+ *      -if items need to be synced, but the database cannot be reached
+ *
+ *  Returns YES
+ *      -if no items needed to be synced
+ *      -if items were successfully synced
  */
 -(BOOL)synchronizeWithCloud;
 
