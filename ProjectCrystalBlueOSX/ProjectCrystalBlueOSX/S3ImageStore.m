@@ -33,7 +33,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     if (self) {
         localStore = [[LocalImageStore alloc] initWithLocalDirectory:directory];
-        dirtyKeys = [[NSMutableSet alloc] init];
+        dirtyKeys = [[DirtyKeySet alloc] initInDirectory:directory];
         
         NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
         s3Client = [[AmazonS3Client alloc] initWithCredentialsProvider:credentialsProvider];
@@ -59,7 +59,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(BOOL)synchronizeWithCloud
 {
-    if ([dirtyKeys count] == 0) {
+    if ([[dirtyKeys allKeys] count] == (unsigned long)0) {
         return YES;
     } else {
         return NO;
@@ -142,7 +142,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     @catch (NSException *exception) {
         DDLogInfo(@"%@: Couldn't upload image to S3 because of an exception. Probably the client is offline.", CLASS_NAME);
         DDLogDebug(@"%@: Exception: %@ ; Reason %@", CLASS_NAME, [exception name], [exception reason]);
-        [dirtyKeys addObject:key];
+        [dirtyKeys add:key];
     }
 }
 
@@ -171,7 +171,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     }
     
-    return [dirtyKeys containsObject:key];
+    return [dirtyKeys contains:key];
 }
 
 -(void)flushLocalImageStore
