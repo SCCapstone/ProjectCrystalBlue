@@ -19,6 +19,7 @@
 		D08A762E188DBDEC002F948C /* LibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A762D188DBDEC002F948C /* LibraryView.m */; };
 		D08A7630188DBDFB002F948C /* LibraryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08A762F188DBDFB002F948C /* LibraryView.xib */; };
 		D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0969B511851C142008C4BD5 /* SQLiteWrapper.m */; };
+		D0B0B18B18A0620A00B2DE31 /* ZumeroUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B0B18A18A0620A00B2DE31 /* ZumeroUtilsTests.m */; };
 		D0B1B745189CA50200052443 /* ZumeroLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B1B744189CA50200052443 /* ZumeroLibraryObjectStore.m */; };
 		D0B1B748189CE9BE00052443 /* ZumeroUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B1B747189CE9BE00052443 /* ZumeroUtils.m */; };
 		D0C076B8188AFB9200B3D48E /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076B7188AFB9200B3D48E /* Source.m */; };
@@ -84,6 +85,7 @@
 		D08A762F188DBDFB002F948C /* LibraryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryView.xib; sourceTree = "<group>"; };
 		D0969B501851C142008C4BD5 /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteWrapper.h; sourceTree = "<group>"; };
 		D0969B511851C142008C4BD5 /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteWrapper.m; sourceTree = "<group>"; };
+		D0B0B18A18A0620A00B2DE31 /* ZumeroUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZumeroUtilsTests.m; sourceTree = "<group>"; };
 		D0B1B73F189CA38200052443 /* LibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectStore.h; sourceTree = "<group>"; };
 		D0B1B743189CA50200052443 /* ZumeroLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZumeroLibraryObjectStore.h; sourceTree = "<group>"; };
 		D0B1B744189CA50200052443 /* ZumeroLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZumeroLibraryObjectStore.m; sourceTree = "<group>"; };
@@ -175,6 +177,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0B0B18918A061CE00B2DE31 /* ZumeroLibraryObjectStore Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D0B0B18A18A0620A00B2DE31 /* ZumeroUtilsTests.m */,
+			);
+			name = "ZumeroLibraryObjectStore Tests";
+			sourceTree = "<group>";
+		};
 		D0B1B73E189CA36A00052443 /* LibraryObjectStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +418,7 @@
 		D7608DBC18949A5400F54869 /* Store Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D0B0B18918A061CE00B2DE31 /* ZumeroLibraryObjectStore Tests */,
 				D72590DE189C5F630018122D /* AbstractImageStore Tests */,
 				D74F8D6D189852710024E672 /* LocalImageStore Tests */,
 				D7608DBF18949A7400F54869 /* S3ImageStore Tests */,
@@ -585,6 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7224213189B844800832A06 /* LocalImageStoreTests.m in Sources */,
+				D0B0B18B18A0620A00B2DE31 /* ZumeroUtilsTests.m in Sources */,
 				D72590E0189C5F760018122D /* AbstractImageStoreTests.m in Sources */,
 				D0C076C1188B03C500B3D48E /* OriginalSampleConstantsTests.m in Sources */,
 				D7608DC118949A9200F54869 /* S3ImageStoreTests.m in Sources */,

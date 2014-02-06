@@ -40,7 +40,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (self)
     {
         zumeroDatabase = [ZumeroUtils initializeZumeroDatabaseWithName:@"testdb1_v2"
-                                                       AndWithDelegate:self];
+                                                       AndWithDelegate:self
+                                                 AndWithLocalDirectory:nil];
     }
     return self;
 }
@@ -75,6 +76,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     [ZumeroUtils startZumeroTransactionUsingDatabase:zumeroDatabase];
     
+    // Get libraryObject with specified key
     if (![zumeroDatabase select:tableName criteria:criteria columns:columns orderby:nil rows:&rows error:&error]) {
         DDLogError(@"%@: Failed to get library object. Error: %@", CLASS_NAME, error);
         return nil;
@@ -157,7 +159,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     [ZumeroUtils startZumeroTransactionUsingDatabase:zumeroDatabase];
     
-    if(![zumeroDatabase sync:[ZumeroUtils syncScheme] user:@"admin" password:@"pcbcsce490" error:&error]) {
+    // Sync with remote database. THESE CREDENTIALS WON'T BE HARDCODED IN RELEASE
+    if (![zumeroDatabase sync:[ZumeroUtils syncScheme] user:@"admin" password:@"pcbcsce490" error:&error]) {
         DDLogError(@"%@: Failed to setup sync with remote database.", CLASS_NAME);
         return NO;
     }

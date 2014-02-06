@@ -11,6 +11,8 @@
 
 @interface ZumeroLibraryObjectStore : NSObject <LibraryObjectStore>
 
+/** Returns the singleton instance of the ZumeroLibraryObjectStore.
+ */
 + (ZumeroLibraryObjectStore *)database;
 
 @end

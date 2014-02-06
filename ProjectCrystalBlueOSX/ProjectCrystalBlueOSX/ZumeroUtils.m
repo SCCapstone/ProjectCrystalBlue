@@ -23,16 +23,34 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 + (ZumeroDB *)initializeZumeroDatabaseWithName:(NSString *)databaseName
                                AndWithDelegate:(id)delegate
+                         AndWithLocalDirectory:(NSString *)directory
 {
-    NSError *error = nil;
+    // Setup local directory
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *localDirectory = [documentsDirectory stringByAppendingPathComponent:directory];
+    
+    BOOL directoryExists;
+    [[NSFileManager defaultManager] fileExistsAtPath:localDirectory isDirectory:&directoryExists];
+    if (!directoryExists) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
+                                  withIntermediateDirectories:NO
+                                                   attributes:nil
+                                                        error:nil];
+    }
+    
+    // HARDCODED FOR NOW BUT HOST WILL HAVE TO BE SPECIFIED FOR RELEASE
     ZumeroDB *zumeroDB = [[ZumeroDB alloc] initWithName:databaseName
-                                                 folder:nil
+                                                 folder:localDirectory
                                                    host:@"https://zinst7655bd1e667.s.zumero.net"];
     zumeroDB.delegate = delegate;
     
+    NSError *error = nil;
+    // Create new local zumero database if it doesn't exist
     if (![zumeroDB exists]) {
-        if (![zumeroDB createDB:&error])
-            DDLogError(@"%@: Failed to create zumero database.", CLASS_NAME);
+        if (![zumeroDB createDB:&error]) {
+            DDLogError(@"%@: Failed to create zumero database. Error: %@", CLASS_NAME, error);
+            return nil;
+        }
     }
     
     return zumeroDB;
@@ -49,8 +67,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     [self startZumeroTransactionUsingDatabase:database];
     
+    // Create a new Zumero table
     if(![database defineTable:tableName fields:fields error:&error]) {
-        DDLogError(@"%@: Failed to create zumero table: %@. Error:%@", CLASS_NAME, tableName, error);
+        DDLogError(@"%@: Failed to create zumero table: %@. Error: %@", CLASS_NAME, tableName, error);
         return NO;
     }
     
@@ -73,12 +92,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     NSError *error = nil;
     
+    // Open database
     if (![database open:&error]) {
-        DDLogError(@"%@: Failed to open database. Error:%@", CLASS_NAME, error);
+        DDLogError(@"%@: Failed to open database. Error: %@", CLASS_NAME, error);
         return NO;
     }
+    // Begin transaction
     if (![database beginTX:&error]) {
-        DDLogError(@"%@: Failed to begin transaction. Error:%@", CLASS_NAME, error);
+        DDLogError(@"%@: Failed to begin transaction. Error: %@", CLASS_NAME, error);
         return NO;
     }
     return YES;
@@ -88,10 +109,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     NSError *error = nil;
     
+    // Commit transaction
     if (![database commitTX:&error]) {
         DDLogError(@"%@: Failed to commit transaction. Error:%@", CLASS_NAME, error);
         return NO;
     }
+    // Close database
     if (![database close]) {
         DDLogError(@"%@: Failed to close database", CLASS_NAME);
         return NO;
