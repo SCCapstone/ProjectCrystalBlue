@@ -12,6 +12,7 @@
 #import "S3Utils.h"
 #import "ImageUtils.h"
 #import "LocalImageStore.h"
+#import "HardcodedCredentialsProvider.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -34,12 +35,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         localStore = [[LocalImageStore alloc] initWithLocalDirectory:directory];
         dirtyKeys = [[NSMutableSet alloc] init];
         
-        // TEMPORARILY HARD-CODING CREDENTIALS for test purposes.
-        // This is obviously a huge security issue and cannot be in the Beta version.
-        AmazonCredentials *login = [[AmazonCredentials alloc] initWithAccessKey:@"AKIAIAWCA532UPYBPVAA"
-                                                                  withSecretKey:@"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"];
-        
-        s3Client = [[AmazonS3Client alloc] initWithCredentials:login];
+        NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
+        s3Client = [[AmazonS3Client alloc] initWithCredentialsProvider:credentialsProvider];
         
         @try {
             // Check if our bucket exists

@@ -56,6 +56,7 @@
 		D771DD43189ED79D0011F815 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D771DD42189ED79D0011F815 /* DDASLLogger.m */; };
 		D771DD46189ED7A50011F815 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D771DD45189ED7A50011F815 /* DDTTYLogger.m */; };
 		D771DD49189ED7AE0011F815 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D771DD48189ED7AE0011F815 /* DDFileLogger.m */; };
+		D7965DA418A35D40009271FB /* HardcodedCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7965DA318A35D40009271FB /* HardcodedCredentialsProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,8 @@
 		D771DD45189ED7A50011F815 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
 		D771DD47189ED7AE0011F815 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
 		D771DD48189ED7AE0011F815 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		D7965DA218A35D40009271FB /* HardcodedCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HardcodedCredentialsProvider.h; sourceTree = "<group>"; };
+		D7965DA318A35D40009271FB /* HardcodedCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardcodedCredentialsProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -443,6 +446,8 @@
 				D7608DBA189496CA00F54869 /* S3ImageStore.m */,
 				D7608DC31894B76900F54869 /* S3Utils.h */,
 				D7608DC41894B76900F54869 /* S3Utils.m */,
+				D7965DA218A35D40009271FB /* HardcodedCredentialsProvider.h */,
+				D7965DA318A35D40009271FB /* HardcodedCredentialsProvider.m */,
 			);
 			name = S3ImageStore;
 			sourceTree = "<group>";
@@ -578,6 +583,7 @@
 				D74F8D69189846010024E672 /* LocalImageStore.m in Sources */,
 				D7608DC51894B76900F54869 /* S3Utils.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
+				D7965DA418A35D40009271FB /* HardcodedCredentialsProvider.m in Sources */,
 				D0DDDE2F188E33A30060B8C2 /* ChildrenView.m in Sources */,
 				D0C076BE188AFF7A00B3D48E /* SourceConstants.m in Sources */,
 				D771DD43189ED79D0011F815 /* DDASLLogger.m in Sources */,
