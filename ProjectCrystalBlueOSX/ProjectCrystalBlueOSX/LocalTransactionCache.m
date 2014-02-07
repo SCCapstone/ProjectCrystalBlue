@@ -79,7 +79,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(NSSet *)allTransactions
 {
-    return [[NSSet alloc] initWithSet:transactions];
+    return [transactions set];
+}
+
+-(NSOrderedSet *)allTransactionsInOrder
+{
+    NSMutableOrderedSet *orderedSet = [[NSMutableOrderedSet alloc] init];
+    for (NSString *transaction in transactions) {
+        [orderedSet addObject:transaction];
+    }
+    return orderedSet;
 }
 
 /// Save the set of transactions to the file. This completely overwrites the old file everytime.
@@ -109,7 +118,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    transactions = [[NSMutableSet alloc] init];
+    transactions = [[NSMutableOrderedSet alloc] init];
     
     if (![fileManager fileExistsAtPath:filePath]) {
         // We need to create the file.

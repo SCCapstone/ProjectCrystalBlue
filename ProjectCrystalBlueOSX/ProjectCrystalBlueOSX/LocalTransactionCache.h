@@ -16,7 +16,7 @@
  */
 
 @interface LocalTransactionCache : NSObject {
-    NSMutableSet *transactions;
+    NSMutableOrderedSet *transactions;
     NSString *filePath;
 }
 
@@ -43,7 +43,10 @@
 /// A count of the number of dirty transactions.
 -(NSUInteger)count;
 
-/// Return the set of all of the active transactions.
+/// Return the set of all of the active transactions (CONSISTENT ORDERING NOT GUARANTEED!)
 -(NSSet *)allTransactions;
+
+/// Transaction ordering IS guaranteed to be the same as the order that they were added.
+-(NSOrderedSet *)allTransactionsInOrder;
 
 @end

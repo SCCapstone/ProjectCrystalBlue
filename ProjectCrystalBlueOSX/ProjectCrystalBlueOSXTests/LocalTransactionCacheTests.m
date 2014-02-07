@@ -174,4 +174,68 @@
     [fileManager removeItemAtPath:fullPath error:nil];
 }
 
+/**
+ *  Verifies that the transactions ordering is correct when saving and re-loading.
+ */
+- (void)testTransactionOrder
+{
+    int TRANSACTION_COUNT = 50;
+    
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+    NSString *fullPath = [documentDirectory stringByAppendingFormat:@"/%@", TEST_DIRECTORY];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager createDirectoryAtPath:fullPath
+           withIntermediateDirectories:NO
+                            attributes:nil
+                                 error:nil];
+    
+    LocalTransactionCache *transactionCache = [[LocalTransactionCache alloc] initInDirectory:TEST_DIRECTORY
+                                                                            withFileName:FILE_NAME];
+    
+    // We will use a mix of AddAll and individual adds.
+    NSMutableArray *transactionArray1 = [[NSMutableArray alloc] init];
+    for (int i = 0; i < TRANSACTION_COUNT; ++i) {
+        [transactionArray1 addObject:[NSString stringWithFormat:@"TRANSACTION%3d", i]];
+    }
+    [transactionCache addAll:transactionArray1];
+    
+    for (int i = TRANSACTION_COUNT; i < TRANSACTION_COUNT * 2; ++i) {
+        [transactionCache add:[NSString stringWithFormat:@"TRANSACTION%3d", i]];
+    }
+    
+    NSMutableArray *transactionArray2 = [[NSMutableArray alloc] init];
+    for (int i = TRANSACTION_COUNT * 2; i < TRANSACTION_COUNT * 3; ++i) {
+        [transactionArray2 addObject:[NSString stringWithFormat:@"TRANSACTION%3d", i]];
+    }
+    [transactionCache addAll:transactionArray2];
+    
+    // Check that elements are in the correct order
+    NSOrderedSet *orderedSet = [transactionCache allTransactionsInOrder];
+    for (int i = 0; i < TRANSACTION_COUNT * 3; ++i) {
+        NSString *expectedValue = [NSString stringWithFormat:@"TRANSACTION%3d", i];
+        XCTAssertTrue([[orderedSet objectAtIndex:i] isEqualToString:expectedValue]);
+    }
+    
+    // Now we'll make a new transaction cache, created by reading from the file.
+    transactionCache = nil;
+    orderedSet = nil;
+    
+    transactionCache = [[LocalTransactionCache alloc] initInDirectory:TEST_DIRECTORY
+                                                         withFileName:FILE_NAME];
+    
+    // Check that elements are in the correct order after reading from the file
+    orderedSet = [transactionCache allTransactionsInOrder];
+    for (int i = 0; i < TRANSACTION_COUNT * 3; ++i) {
+        NSString *expectedValue = [NSString stringWithFormat:@"TRANSACTION%3d", i];
+        XCTAssertTrue([[orderedSet objectAtIndex:i] isEqualToString:expectedValue]);
+    }
+    
+    // Clean-up
+    NSString *expectedFilePath = [fullPath stringByAppendingFormat:@"/%@", [transactionCache fileName]];
+    [fileManager removeItemAtPath:expectedFilePath error:nil];
+    [fileManager removeItemAtPath:fullPath error:nil];
+}
+
 @end
