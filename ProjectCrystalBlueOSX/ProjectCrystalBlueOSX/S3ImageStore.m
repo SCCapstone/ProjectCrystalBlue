@@ -23,6 +23,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 #define CLASS_NAME @"S3ImageStore"
 #define BUCKET_NAME @"project-crystal-blue-test"
+#define DIRTY_KEY_FILE_NAME @"dirty_s3_image_keys.txt" // make sure this matches the filename in S3ImageStoreTests
 #define JPEG_COMPRESSION 0.90f
 
 @implementation S3ImageStore
@@ -33,7 +34,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     if (self) {
         localStore = [[LocalImageStore alloc] initWithLocalDirectory:directory];
-        dirtyKeys = [[DirtyKeySet alloc] initInDirectory:directory];
+        dirtyKeys = [[LocalTransactionCache alloc] initInDirectory:directory
+                                                      withFileName:DIRTY_KEY_FILE_NAME];
         
         NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
         s3Client = [[AmazonS3Client alloc] initWithCredentialsProvider:credentialsProvider];
@@ -63,7 +65,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return YES;
     }
     
-    NSSet *keysToSync = [dirtyKeys allKeys];
+    NSSet *keysToSync = [dirtyKeys allTransactions];
     @try {
         for (NSString *key in keysToSync) {
             NSImage *image = [localStore getImageForKey:key];

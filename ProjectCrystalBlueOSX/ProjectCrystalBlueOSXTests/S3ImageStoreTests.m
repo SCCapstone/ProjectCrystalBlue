@@ -12,6 +12,7 @@
 #import "S3ImageStore.h"
 
 #define IMAGE_DIRECTORY @"project-crystal-blue-temp-test"
+#define DIRTY_KEY_FILE_NAME @"dirty_s3_image_keys.txt" // make sure this matches the filename in S3ImageStore
 
 @interface S3ImageStoreTests : XCTestCase
 
@@ -129,7 +130,8 @@
     int NUMBER_OF_IMAGES_TO_TEST = 3; // don't set this too high since this test actually hits S3 and uses bandwidth
     
     AbstractImageStore *localImageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
-    DirtyKeySet *dirtyImageKeyStore = [[DirtyKeySet alloc] initInDirectory:IMAGE_DIRECTORY];
+    LocalTransactionCache *dirtyImageKeyStore = [[LocalTransactionCache alloc] initInDirectory:IMAGE_DIRECTORY
+                                                                                  withFileName:DIRTY_KEY_FILE_NAME];
     
     NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];

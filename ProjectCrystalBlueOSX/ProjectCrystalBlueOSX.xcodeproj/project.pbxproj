@@ -57,8 +57,8 @@
 		D771DD46189ED7A50011F815 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D771DD45189ED7A50011F815 /* DDTTYLogger.m */; };
 		D771DD49189ED7AE0011F815 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D771DD48189ED7AE0011F815 /* DDFileLogger.m */; };
 		D7965DA418A35D40009271FB /* HardcodedCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7965DA318A35D40009271FB /* HardcodedCredentialsProvider.m */; };
-		D7965DA718A3604D009271FB /* DirtyKeySet.m in Sources */ = {isa = PBXBuildFile; fileRef = D7965DA618A3604D009271FB /* DirtyKeySet.m */; };
-		D7965DAA18A3679E009271FB /* DirtyKeySetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7965DA918A3679E009271FB /* DirtyKeySetTests.m */; };
+		D7965DA718A3604D009271FB /* LocalTransactionCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D7965DA618A3604D009271FB /* LocalTransactionCache.m */; };
+		D7965DAA18A3679E009271FB /* LocalTransactionCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7965DA918A3679E009271FB /* LocalTransactionCacheTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,9 +153,9 @@
 		D771DD48189ED7AE0011F815 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
 		D7965DA218A35D40009271FB /* HardcodedCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HardcodedCredentialsProvider.h; sourceTree = "<group>"; };
 		D7965DA318A35D40009271FB /* HardcodedCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardcodedCredentialsProvider.m; sourceTree = "<group>"; };
-		D7965DA518A3604D009271FB /* DirtyKeySet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirtyKeySet.h; sourceTree = "<group>"; };
-		D7965DA618A3604D009271FB /* DirtyKeySet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirtyKeySet.m; sourceTree = "<group>"; };
-		D7965DA918A3679E009271FB /* DirtyKeySetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirtyKeySetTests.m; sourceTree = "<group>"; };
+		D7965DA518A3604D009271FB /* LocalTransactionCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalTransactionCache.h; sourceTree = "<group>"; };
+		D7965DA618A3604D009271FB /* LocalTransactionCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTransactionCache.m; sourceTree = "<group>"; };
+		D7965DA918A3679E009271FB /* LocalTransactionCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTransactionCacheTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,8 +454,8 @@
 				D7608DC41894B76900F54869 /* S3Utils.m */,
 				D7965DA218A35D40009271FB /* HardcodedCredentialsProvider.h */,
 				D7965DA318A35D40009271FB /* HardcodedCredentialsProvider.m */,
-				D7965DA518A3604D009271FB /* DirtyKeySet.h */,
-				D7965DA618A3604D009271FB /* DirtyKeySet.m */,
+				D7965DA518A3604D009271FB /* LocalTransactionCache.h */,
+				D7965DA618A3604D009271FB /* LocalTransactionCache.m */,
 			);
 			name = S3ImageStore;
 			sourceTree = "<group>";
@@ -478,7 +478,7 @@
 		D7965DA818A3678A009271FB /* DirtyKeySetStore Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D7965DA918A3679E009271FB /* DirtyKeySetTests.m */,
+				D7965DA918A3679E009271FB /* LocalTransactionCacheTests.m */,
 			);
 			name = "DirtyKeySetStore Tests";
 			sourceTree = "<group>";
@@ -594,7 +594,7 @@
 				D0C076C4188B062600B3D48E /* SampleConstants.m in Sources */,
 				D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
-				D7965DA718A3604D009271FB /* DirtyKeySet.m in Sources */,
+				D7965DA718A3604D009271FB /* LocalTransactionCache.m in Sources */,
 				D771DD46189ED7A50011F815 /* DDTTYLogger.m in Sources */,
 				D0B1B745189CA50200052443 /* ZumeroLibraryObjectStore.m in Sources */,
 				D74F8D69189846010024E672 /* LocalImageStore.m in Sources */,
@@ -619,7 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7224213189B844800832A06 /* LocalImageStoreTests.m in Sources */,
-				D7965DAA18A3679E009271FB /* DirtyKeySetTests.m in Sources */,
+				D7965DAA18A3679E009271FB /* LocalTransactionCacheTests.m in Sources */,
 				D0B0B18B18A0620A00B2DE31 /* ZumeroUtilsTests.m in Sources */,
 				D72590E0189C5F760018122D /* AbstractImageStoreTests.m in Sources */,
 				D0C076C1188B03C500B3D48E /* OriginalSampleConstantsTests.m in Sources */,
