@@ -7,6 +7,13 @@
 //
 
 #import "DirtyKeySet.h"
+#import "DDLog.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 
 /**
  *  A wrapper class for a set of dirty image keys. They are automatically loaded and written to a plaintext
@@ -29,7 +36,9 @@
 {
     self = [super init];
     if (self) {
-        filePath = [directory stringByAppendingFormat:@"/%@", [self.class fileName]];
+        NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+        filePath = [documentDirectory stringByAppendingFormat:@"/%@/%@", directory, [self.class fileName]];
         [self loadFromFile];
     }
     return self;
@@ -86,6 +95,8 @@
     [fileManager createFileAtPath:filePath
                          contents:fileData
                        attributes:nil];
+    
+    DDLogDebug(@"Successfully saved %@ to %@", NSStringFromClass(self.class), filePath);
 }
 
 /// Populates the set of dirtykeys from the file. If no file exists, create an empty file and an empty set.
@@ -114,6 +125,8 @@
                                 intoString:&key];
         [dirtyKeys addObject:key];
     }
+    
+    DDLogDebug(@"Successfully loaded %@ from %@", NSStringFromClass(self.class), filePath);
 }
 
 +(NSString *)fileName {

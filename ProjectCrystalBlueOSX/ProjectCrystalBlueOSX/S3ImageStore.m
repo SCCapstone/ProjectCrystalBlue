@@ -59,11 +59,25 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(BOOL)synchronizeWithCloud
 {
-    if ([[dirtyKeys allKeys] count] == (unsigned long)0) {
+    if ([dirtyKeys count] == (unsigned long)0) {
         return YES;
-    } else {
-        return NO;
     }
+    
+    NSSet *keysToSync = [dirtyKeys allKeys];
+    @try {
+        for (NSString *key in keysToSync) {
+            NSImage *image = [localStore getImageForKey:key];
+            [self putImage:image forKey:key];
+            [dirtyKeys remove:key];
+        }
+        return YES;
+    }
+    @catch (NSException *exception) {
+        DDLogInfo(@"%@: Could not sync with S3 - probably because the device could not connect to S3.", CLASS_NAME);
+        DDLogDebug(@"%@: Exception: %@ with reason: %@", CLASS_NAME, [exception name], [exception reason]);
+    }
+    
+    return NO;
 }
 
 -(NSImage *)getImageForKey:(NSString *)key
@@ -109,7 +123,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(BOOL)imageExistsForKey:(NSString *)key
 {
-    return NO;
+    if ([localStore imageExistsForKey:key]) {
+        return YES;
+    }
+    
+    S3GetObjectMetadataRequest *metadataRequest = [[S3GetObjectMetadataRequest alloc] initWithKey:key withBucket:BUCKET_NAME];
+    @try {
+        S3GetObjectMetadataResponse *metadataResponse = [s3Client getObjectMetadata:metadataRequest];
+        return (nil == metadataResponse);
+    }
+    @catch (NSException *exception) {
+        DDLogError(@"%@: Exception: %@ ; Reason %@", CLASS_NAME, [exception name], [exception reason]);
+        return NO;
+    }
 }
 
 -(BOOL)putImage:(NSImage *)image
@@ -174,7 +200,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [dirtyKeys contains:key];
 }
 
--(void)flushLocalImageStore
+-(void)flushLocalImageData
 {
     [localStore flushLocalImageData];
 }

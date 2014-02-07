@@ -85,12 +85,15 @@
     
     // Generate a random key for upload
     NSString *key = [[[[NSUUID alloc] init] UUIDString] stringByAppendingString:@".jpg"];
+    XCTAssertFalse([s3imageStore imageExistsForKey:key]);
 
     // Perform the upload
     BOOL uploadSuccess = [s3imageStore putImage:imageToUpload forKey:key];
     XCTAssertTrue(uploadSuccess, @"S3ImageStore indicated that the upload was unsuccessful.");
     
     // Make sure that it's correctly stored locally
+    XCTAssertTrue([localImageStore imageExistsForKey:key]);
+    XCTAssertTrue([s3imageStore imageExistsForKey:key]);
     NSImage *localImage = [localImageStore getImageForKey:key];
     XCTAssertNotNil(localImage, @"Local image was nil");
     XCTAssertEqual([localImage size], [imageToUpload size]);
@@ -115,6 +118,59 @@
     
     // Check that the image stored locally is deleted too.
     XCTAssertFalse([localImageStore imageExistsForKey:key]);
+}
+
+/**
+ *  Simulates a scenario where some images have been created while offline and added to a dirty key set.
+ *  Then we call the Sync function and verify that they get uploaded to S3.
+ */
+- (void)testSyncFunction
+{
+    int NUMBER_OF_IMAGES_TO_TEST = 3; // don't set this too high since this test actually hits S3 and uses bandwidth
+    
+    AbstractImageStore *localImageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    DirtyKeySet *dirtyImageKeyStore = [[DirtyKeySet alloc] initInDirectory:IMAGE_DIRECTORY];
+    
+    NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
+    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
+    NSImage *image = [[NSImage alloc] initWithContentsOfFile:path];
+
+    NSMutableSet *testKeySet = [[NSMutableSet alloc] init];
+    for (int i = 0; i < NUMBER_OF_IMAGES_TO_TEST; ++i) {
+        NSString *key = [[[[NSUUID alloc] init] UUIDString] stringByAppendingString:@".jpg"];
+        [testKeySet addObject:key];
+        [localImageStore putImage:image forKey:key];
+        [dirtyImageKeyStore add:key];
+    }
+    
+    XCTAssertEqual([dirtyImageKeyStore count], (unsigned long)NUMBER_OF_IMAGES_TO_TEST);
+    
+    // Now that we've set up the scenario, we can clear our instances and initialize the s3 client.
+    dirtyImageKeyStore = nil;
+    localImageStore = nil;
+    AbstractCloudImageStore *s3 = [[S3ImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    
+    // The keys should be marked as dirty.
+    for (NSString *key in testKeySet) {
+        XCTAssertTrue([s3 keyIsDirty:key]);
+    }
+    
+    // Do the sync
+    BOOL syncSuccess = [s3 synchronizeWithCloud];
+    XCTAssertTrue(syncSuccess);
+    
+    // The keys should no longer be marked as dirty.
+    for (NSString *key in testKeySet) {
+        XCTAssertFalse([s3 keyIsDirty:key]);
+    }
+    
+    // Cleanup - delete images from S3 and locally
+    for (NSString *key in testKeySet) {
+        BOOL deleteSuccess = [s3 deleteImageWithKey:key];
+        XCTAssertTrue(deleteSuccess, @"S3ImageStore indicated that deletion was unsuccessful.");
+    }
+    
+    [s3 flushLocalImageData];
 }
 
 @end

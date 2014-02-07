@@ -45,7 +45,7 @@
                                  error:nil];
     
     // Check that the file gets created correctly.
-    DirtyKeySet *dirtyKeySet = [[DirtyKeySet alloc] initInDirectory:fullPath];
+    DirtyKeySet *dirtyKeySet = [[DirtyKeySet alloc] initInDirectory:TEST_DIRECTORY];
     NSString *expectedFilePath = [fullPath stringByAppendingFormat:@"/%@", [DirtyKeySet fileName]];
     XCTAssertTrue([fileManager fileExistsAtPath:expectedFilePath]);
     XCTAssertTrue([dirtyKeySet  count] == 0);
@@ -60,7 +60,7 @@
     XCTAssertEqual([dirtyKeySet count], (unsigned long)KEYS_TO_TEST);
     
     /// We'll initialize another DirtyKeySet. It should contain the same members if it loads the file correctly.
-    DirtyKeySet *other = [[DirtyKeySet alloc] initInDirectory:fullPath];
+    DirtyKeySet *other = [[DirtyKeySet alloc] initInDirectory:TEST_DIRECTORY];
     
     XCTAssertEqual([other  count], [dirtyKeySet count]);
     
@@ -91,7 +91,7 @@
                                  error:nil];
     
     // Check that the file gets created correctly.
-    DirtyKeySet *dirtyKeySet = [[DirtyKeySet alloc] initInDirectory:fullPath];
+    DirtyKeySet *dirtyKeySet = [[DirtyKeySet alloc] initInDirectory:TEST_DIRECTORY];
     NSString *expectedFilePath = [fullPath stringByAppendingFormat:@"/%@", [DirtyKeySet fileName]];
     XCTAssertTrue([fileManager fileExistsAtPath:expectedFilePath]);
     XCTAssertTrue([dirtyKeySet  count] == 0);
@@ -112,7 +112,7 @@
     XCTAssertEqual([dirtyKeySet count], (unsigned long)(KEYS_TO_TEST / 2));
     
     // We'll initialize another DirtyKeySet. It should contain the same members if it loads the file correctly.
-    DirtyKeySet *other = [[DirtyKeySet alloc] initInDirectory:fullPath];
+    DirtyKeySet *other = [[DirtyKeySet alloc] initInDirectory:TEST_DIRECTORY];
     
     XCTAssertEqual([other count], [dirtyKeySet count]);
     
@@ -150,12 +150,12 @@
         [keys addObject:key];
     }
     
-    DirtyKeySet *firstDirtyKeySet = [[DirtyKeySet alloc] initInDirectory:fullPath];
+    DirtyKeySet *firstDirtyKeySet = [[DirtyKeySet alloc] initInDirectory:TEST_DIRECTORY];
     [firstDirtyKeySet addAll:keys];
     XCTAssertEqual([firstDirtyKeySet count], (unsigned long) KEYS_TO_TEST);
     
     // We'll initialize another DirtyKeySet. It should contain the same members if it loads the file correctly.
-    DirtyKeySet *other = [[DirtyKeySet alloc] initInDirectory:fullPath];
+    DirtyKeySet *other = [[DirtyKeySet alloc] initInDirectory:TEST_DIRECTORY];
     
     XCTAssertEqual([other count], [firstDirtyKeySet count]);
     
