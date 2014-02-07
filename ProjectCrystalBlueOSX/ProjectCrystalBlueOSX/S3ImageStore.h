@@ -11,12 +11,12 @@
 #import <Foundation/Foundation.h>
 #import "AbstractCloudImageStore.h"
 #import <AWSiOSSDK/S3/AmazonS3Client.h>
-#import "DirtyKeySet.h"
+#import "LocalTransactionCache.h"
 
 @interface S3ImageStore : AbstractCloudImageStore {
     AmazonS3Client *s3Client;
     AbstractImageStore *localStore;
-    DirtyKeySet *dirtyKeys;
+    LocalTransactionCache *dirtyKeys;
 }
 
 @end

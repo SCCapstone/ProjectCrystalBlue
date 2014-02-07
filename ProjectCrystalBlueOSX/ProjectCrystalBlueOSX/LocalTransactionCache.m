@@ -1,12 +1,12 @@
 //
-//  DirtyKeySet.m
+//  LocalTransactionCache.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 2/6/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "DirtyKeySet.h"
+#import "LocalTransactionCache.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -16,14 +16,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
 /**
- *  A wrapper class for a set of dirty image keys. They are automatically loaded and written to a plaintext
- *  file on the local filesystem.
+ *  A wrapper class for a set of "dirty" transactions that have not been applied to a central database or other cloud service.
+ *  The transactions are automatically loaded from and written to a PLAINTEXT file on the local filesystem.
+ *
+ *  DO NOT USE THIS FOR STORING ANY SENSITIVE INFORMATION, AS IT WILL BE STORED IN PLAINTEXT.
  */
 
-#define FILE_NAME @"dirty_keys.txt"
 #define DELIMITER @"\n"
 
-@implementation DirtyKeySet
+@implementation LocalTransactionCache
+
+@synthesize fileName;
 
 -(id)init
 {
@@ -33,51 +36,62 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(id)initInDirectory:(NSString *)directory
+        withFileName:(NSString *)aFilename
 {
     self = [super init];
     if (self) {
         NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-        filePath = [documentDirectory stringByAppendingFormat:@"/%@/%@", directory, [self.class fileName]];
+        fileName = aFilename;
+        filePath = [documentDirectory stringByAppendingFormat:@"/%@/%@", directory, fileName];
         [self loadFromFile];
     }
     return self;
 }
 
--(void)add:(NSString *)key
+-(void)add:(NSString *)transaction
 {
-    [dirtyKeys addObject:key];
+    [transactions addObject:transaction];
     [self saveToFile];
 }
 
--(void)addAll:(NSSet *)keys
+-(void)addAll:(NSArray *)addedTransactions
 {
-    [dirtyKeys addObjectsFromArray:[keys allObjects]];
+    [transactions addObjectsFromArray:addedTransactions];
     [self saveToFile];
 }
 
--(void)remove:(NSString *)key
+-(void)remove:(NSString *)transaction
 {
-    [dirtyKeys removeObject:key];
+    [transactions removeObject:transaction];
     [self saveToFile];
 }
 
--(BOOL)contains:(NSString *)key
+-(BOOL)contains:(NSString *)transaction
 {
-    return [dirtyKeys containsObject:key];
+    return [transactions containsObject:transaction];
 }
 
 -(NSUInteger)count
 {
-    return [dirtyKeys count];
+    return [transactions count];
 }
 
--(NSSet *)allKeys
+-(NSSet *)allTransactions
 {
-    return [[NSSet alloc] initWithSet:dirtyKeys];
+    return [transactions set];
 }
 
-/// Save the set of keys to the file. This completely overwrites the old file everytime.
+-(NSOrderedSet *)allTransactionsInOrder
+{
+    NSMutableOrderedSet *orderedSet = [[NSMutableOrderedSet alloc] init];
+    for (NSString *transaction in transactions) {
+        [orderedSet addObject:transaction];
+    }
+    return orderedSet;
+}
+
+/// Save the set of transactions to the file. This completely overwrites the old file everytime.
 -(void)saveToFile
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -87,8 +101,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [fileManager removeItemAtPath:filePath error:&fileError];
     
     NSMutableString *fileContents = [[NSMutableString alloc] init];
-    for (NSString *key in dirtyKeys) {
-        [fileContents appendFormat:@"%@%@", key, DELIMITER];
+    for (NSString *transaction in transactions) {
+        [fileContents appendFormat:@"%@%@", transaction, DELIMITER];
     }
     
     NSData *fileData = [fileContents dataUsingEncoding:NSASCIIStringEncoding];
@@ -99,12 +113,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     DDLogDebug(@"Successfully saved %@ to %@", NSStringFromClass(self.class), filePath);
 }
 
-/// Populates the set of dirtykeys from the file. If no file exists, create an empty file and an empty set.
+/// Populates the set of dirty transactions from the file. If no file exists, create an empty file and an empty set.
 -(void)loadFromFile
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    dirtyKeys = [[NSMutableSet alloc] init];
+    transactions = [[NSMutableOrderedSet alloc] init];
     
     if (![fileManager fileExistsAtPath:filePath]) {
         // We need to create the file.
@@ -120,17 +134,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     NSScanner *scanner = [NSScanner scannerWithString:fileContents];
     while (![scanner isAtEnd]) {
-        NSString *key = @"";
+        NSString *transaction = @"";
         [scanner scanUpToCharactersFromSet:[NSCharacterSet newlineCharacterSet]
-                                intoString:&key];
-        [dirtyKeys addObject:key];
+                                intoString:&transaction];
+        [transactions addObject:transaction];
     }
     
     DDLogDebug(@"Successfully loaded %@ from %@", NSStringFromClass(self.class), filePath);
-}
-
-+(NSString *)fileName {
-    return FILE_NAME;
 }
 
 @end
