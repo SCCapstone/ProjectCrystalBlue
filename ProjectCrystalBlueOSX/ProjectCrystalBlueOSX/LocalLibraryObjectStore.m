@@ -7,6 +7,9 @@
 //
 
 #import "LocalLibraryObjectStore.h"
+#import "FMDatabase.h"
+#import "FMDatabaseQueue.h"
+#import "FMResultSet.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -19,20 +22,22 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @interface LocalLibraryObjectStore()
 {
-    NSString *localDirectory;
+    //FMDatabase *localDatabase;
+    FMDatabaseQueue *localQueue;
 }
 @end
 
 
 @implementation LocalLibraryObjectStore
 
-- (id)initWithLocalDirectory:(NSString *)directory
+- (id)initInLocalDirectory:(NSString *)directory
+          WithDatabaseName:(NSString *)databaseName
 {
-    self = [super initWithLocalDirectory:directory];
+    self = [super initInLocalDirectory:directory WithDatabaseName:databaseName];
     if (self) {
         // Setup local directory
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-        localDirectory = [documentsDirectory stringByAppendingPathComponent:directory];
+        NSString *localDirectory = [documentsDirectory stringByAppendingPathComponent:directory];
         
         BOOL directoryExists;
         [[NSFileManager defaultManager] fileExistsAtPath:localDirectory isDirectory:&directoryExists];
@@ -42,8 +47,32 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                                        attributes:nil
                                                             error:nil];
         }
+        
+        //localDatabase = [FMDatabase databaseWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
+        localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
     }
     return self;
+}
+
+- (LibraryObject *)getLibraryObjectForKey:(NSString *)key
+{
+    return nil;
+}
+
+- (BOOL)putLibraryObject:(LibraryObject *)libraryObject
+                  forKey:(NSString *)key
+{
+    return NO;
+}
+
+- (BOOL)deleteLibraryObjectWithKey:(NSString *)key
+{
+    return NO;
+}
+
+- (BOOL)libraryObjectExistsForKey:(NSString *)key
+{
+    return NO;
 }
 
 @end

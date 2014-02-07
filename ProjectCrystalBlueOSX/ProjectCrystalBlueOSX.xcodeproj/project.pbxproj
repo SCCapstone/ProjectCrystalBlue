@@ -30,12 +30,13 @@
 		D0DBCB6018A478E100FAA428 /* LocalLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCB5F18A478E100FAA428 /* LocalLibraryObjectStore.m */; };
 		D0DBCB6518A4794600FAA428 /* AbstractLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCB6418A4794600FAA428 /* AbstractLibraryObjectStore.m */; };
 		D0DBCB6818A4795E00FAA428 /* AbstractCloudLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCB6718A4795E00FAA428 /* AbstractCloudLibraryObjectStore.m */; };
-		D0DBCB6B18A47D5000FAA428 /* SimpleDBSLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCB6A18A47D5000FAA428 /* SimpleDBSLibraryObjectStore.m */; };
+		D0DBCB6B18A47D5000FAA428 /* SimpleDBLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCB6A18A47D5000FAA428 /* SimpleDBLibraryObjectStore.m */; };
 		D0DBCBAA18A499D900FAA428 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCBA118A499D900FAA428 /* FMDatabase.m */; };
 		D0DBCBAB18A499D900FAA428 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCBA318A499D900FAA428 /* FMDatabaseAdditions.m */; };
 		D0DBCBAC18A499D900FAA428 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCBA518A499D900FAA428 /* FMDatabasePool.m */; };
 		D0DBCBAD18A499D900FAA428 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCBA718A499D900FAA428 /* FMDatabaseQueue.m */; };
 		D0DBCBAE18A499D900FAA428 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCBA918A499D900FAA428 /* FMResultSet.m */; };
+		D0DBCBB118A49B6200FAA428 /* SimpleDBCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCBB018A49B6200FAA428 /* SimpleDBCredentialsProvider.m */; };
 		D0DDDE2F188E33A30060B8C2 /* ChildrenView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDDE2D188E33A30060B8C2 /* ChildrenView.m */; };
 		D0DDDE30188E33A30060B8C2 /* ChildrenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DDDE2E188E33A30060B8C2 /* ChildrenView.xib */; };
 		D712AAD51894C6050093E457 /* S3UtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D712AAD41894C6050093E457 /* S3UtilsTests.m */; };
@@ -119,7 +120,7 @@
 		D0DBCB6618A4795E00FAA428 /* AbstractCloudLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCloudLibraryObjectStore.h; sourceTree = "<group>"; };
 		D0DBCB6718A4795E00FAA428 /* AbstractCloudLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractCloudLibraryObjectStore.m; sourceTree = "<group>"; };
 		D0DBCB6918A47D5000FAA428 /* SimpleDBLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBLibraryObjectStore.h; sourceTree = "<group>"; };
-		D0DBCB6A18A47D5000FAA428 /* SimpleDBSLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBSLibraryObjectStore.m; sourceTree = "<group>"; };
+		D0DBCB6A18A47D5000FAA428 /* SimpleDBLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBLibraryObjectStore.m; sourceTree = "<group>"; };
 		D0DBCBA018A499D900FAA428 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		D0DBCBA118A499D900FAA428 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		D0DBCBA218A499D900FAA428 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -130,6 +131,8 @@
 		D0DBCBA718A499D900FAA428 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		D0DBCBA818A499D900FAA428 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		D0DBCBA918A499D900FAA428 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		D0DBCBAF18A49B6200FAA428 /* SimpleDBCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBCredentialsProvider.h; sourceTree = "<group>"; };
+		D0DBCBB018A49B6200FAA428 /* SimpleDBCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBCredentialsProvider.m; sourceTree = "<group>"; };
 		D0DDDE2C188E33A30060B8C2 /* ChildrenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildrenView.h; sourceTree = "<group>"; };
 		D0DDDE2D188E33A30060B8C2 /* ChildrenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildrenView.m; sourceTree = "<group>"; };
 		D0DDDE2E188E33A30060B8C2 /* ChildrenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildrenView.xib; sourceTree = "<group>"; };
@@ -284,6 +287,8 @@
 		D0C076B4188AFAE400B3D48E /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				D7965DA518A3604D009271FB /* LocalTransactionCache.h */,
+				D7965DA618A3604D009271FB /* LocalTransactionCache.m */,
 				D0B1B73E189CA36A00052443 /* LibraryObjectStore */,
 				D70122EC188E2FF000057537 /* ImageStore */,
 				D049EF44188CA62F00EF8672 /* SourceStore.h */,
@@ -330,7 +335,9 @@
 			isa = PBXGroup;
 			children = (
 				D0DBCB6918A47D5000FAA428 /* SimpleDBLibraryObjectStore.h */,
-				D0DBCB6A18A47D5000FAA428 /* SimpleDBSLibraryObjectStore.m */,
+				D0DBCB6A18A47D5000FAA428 /* SimpleDBLibraryObjectStore.m */,
+				D0DBCBAF18A49B6200FAA428 /* SimpleDBCredentialsProvider.h */,
+				D0DBCBB018A49B6200FAA428 /* SimpleDBCredentialsProvider.m */,
 			);
 			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
@@ -523,8 +530,6 @@
 				D7608DC41894B76900F54869 /* S3Utils.m */,
 				D7965DA218A35D40009271FB /* HardcodedCredentialsProvider.h */,
 				D7965DA318A35D40009271FB /* HardcodedCredentialsProvider.m */,
-				D7965DA518A3604D009271FB /* LocalTransactionCache.h */,
-				D7965DA618A3604D009271FB /* LocalTransactionCache.m */,
 			);
 			name = S3ImageStore;
 			sourceTree = "<group>";
@@ -669,7 +674,7 @@
 				D771DD46189ED7A50011F815 /* DDTTYLogger.m in Sources */,
 				D0B1B745189CA50200052443 /* ZumeroLibraryObjectStore.m in Sources */,
 				D74F8D69189846010024E672 /* LocalImageStore.m in Sources */,
-				D0DBCB6B18A47D5000FAA428 /* SimpleDBSLibraryObjectStore.m in Sources */,
+				D0DBCB6B18A47D5000FAA428 /* SimpleDBLibraryObjectStore.m in Sources */,
 				D7608DC51894B76900F54869 /* S3Utils.m in Sources */,
 				D0DBCBAC18A499D900FAA428 /* FMDatabasePool.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
@@ -683,6 +688,7 @@
 				D771DD43189ED79D0011F815 /* DDASLLogger.m in Sources */,
 				D0C076B8188AFB9200B3D48E /* Source.m in Sources */,
 				D0749F54189B45A200D3908B /* LibraryObject.m in Sources */,
+				D0DBCBB118A49B6200FAA428 /* SimpleDBCredentialsProvider.m in Sources */,
 				D0C076BB188AFBA600B3D48E /* Sample.m in Sources */,
 				D72590DD189C5A5D0018122D /* AbstractCloudImageStore.m in Sources */,
 				D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */,

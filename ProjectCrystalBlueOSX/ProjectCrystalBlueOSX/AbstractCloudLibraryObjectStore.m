@@ -19,9 +19,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation AbstractCloudLibraryObjectStore
 
--(id)initWithLocalDirectory:(NSString *)directory
+-(id)initInLocalDirectory:(NSString *)directory
+         WithDatabaseName:(NSString *)databaseName
 {
-    return [super initWithLocalDirectory:directory];
+    return [super initInLocalDirectory:directory WithDatabaseName:databaseName];
 }
 
 -(BOOL)synchronizeWithCloud

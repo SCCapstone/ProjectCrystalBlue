@@ -12,7 +12,8 @@
 
 @interface AbstractLibraryObjectStore : NSObject
 
-- (id)initWithLocalDirectory:(NSString *)directory;
+- (id)initInLocalDirectory:(NSString *)directory
+          WithDatabaseName:(NSString *)databaseName;
 
 /** Retrieve the library object associated with a given key.
  */
