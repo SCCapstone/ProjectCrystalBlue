@@ -58,6 +58,11 @@
     return [dirtyKeys containsObject:key];
 }
 
+-(NSUInteger)count
+{
+    return [dirtyKeys count];
+}
+
 -(NSSet *)allKeys
 {
     return [[NSSet alloc] initWithSet:dirtyKeys];

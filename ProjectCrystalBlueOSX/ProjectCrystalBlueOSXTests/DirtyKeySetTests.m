@@ -48,7 +48,7 @@
     DirtyKeySet *dirtyKeySet = [[DirtyKeySet alloc] initInDirectory:fullPath];
     NSString *expectedFilePath = [fullPath stringByAppendingFormat:@"/%@", [DirtyKeySet fileName]];
     XCTAssertTrue([fileManager fileExistsAtPath:expectedFilePath]);
-    XCTAssertTrue([[dirtyKeySet allKeys] count] == 0);
+    XCTAssertTrue([dirtyKeySet  count] == 0);
     
     // Add a few items
     for (int i = 0; i < KEYS_TO_TEST; ++i) {
@@ -57,12 +57,12 @@
         XCTAssertTrue([dirtyKeySet contains:key]);
     }
     
-    XCTAssertEqual([[dirtyKeySet allKeys] count], (unsigned long)KEYS_TO_TEST);
+    XCTAssertEqual([dirtyKeySet count], (unsigned long)KEYS_TO_TEST);
     
     /// We'll initialize another DirtyKeySet. It should contain the same members if it loads the file correctly.
     DirtyKeySet *other = [[DirtyKeySet alloc] initInDirectory:fullPath];
     
-    XCTAssertEqual([[other allKeys] count], [[dirtyKeySet allKeys] count]);
+    XCTAssertEqual([other  count], [dirtyKeySet count]);
     
     for (int i = 0; i < KEYS_TO_TEST; ++i) {
         NSString *key = [NSString stringWithFormat:@"KEY_%4d", i];
@@ -94,7 +94,7 @@
     DirtyKeySet *dirtyKeySet = [[DirtyKeySet alloc] initInDirectory:fullPath];
     NSString *expectedFilePath = [fullPath stringByAppendingFormat:@"/%@", [DirtyKeySet fileName]];
     XCTAssertTrue([fileManager fileExistsAtPath:expectedFilePath]);
-    XCTAssertTrue([[dirtyKeySet allKeys] count] == 0);
+    XCTAssertTrue([dirtyKeySet  count] == 0);
     
     // Add a few items
     for (int i = 0; i < KEYS_TO_TEST; ++i) {
@@ -109,12 +109,12 @@
         XCTAssertFalse([dirtyKeySet contains:key]);
     }
     
-    XCTAssertEqual([[dirtyKeySet allKeys] count], (unsigned long)(KEYS_TO_TEST / 2));
+    XCTAssertEqual([dirtyKeySet count], (unsigned long)(KEYS_TO_TEST / 2));
     
     // We'll initialize another DirtyKeySet. It should contain the same members if it loads the file correctly.
     DirtyKeySet *other = [[DirtyKeySet alloc] initInDirectory:fullPath];
     
-    XCTAssertEqual([[other allKeys] count], [[dirtyKeySet allKeys] count]);
+    XCTAssertEqual([other count], [dirtyKeySet count]);
     
     for (NSString *key in [dirtyKeySet allKeys]) {
         XCTAssertTrue([other contains:key]);
@@ -152,12 +152,12 @@
     
     DirtyKeySet *firstDirtyKeySet = [[DirtyKeySet alloc] initInDirectory:fullPath];
     [firstDirtyKeySet addAll:keys];
-    XCTAssertEqual([[firstDirtyKeySet allKeys] count], (unsigned long) KEYS_TO_TEST);
+    XCTAssertEqual([firstDirtyKeySet count], (unsigned long) KEYS_TO_TEST);
     
     // We'll initialize another DirtyKeySet. It should contain the same members if it loads the file correctly.
     DirtyKeySet *other = [[DirtyKeySet alloc] initInDirectory:fullPath];
     
-    XCTAssertEqual([[other allKeys] count], [[firstDirtyKeySet allKeys] count]);
+    XCTAssertEqual([other count], [firstDirtyKeySet count]);
     
     for (NSString *key in [firstDirtyKeySet allKeys]) {
         XCTAssertTrue([other contains:key]);

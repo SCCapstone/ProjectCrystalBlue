@@ -32,6 +32,9 @@
 /// Check if an image key is dirty.
 -(BOOL)contains:(NSString *)key;
 
+/// A count of the number of dirty keys.
+-(NSUInteger)count;
+
 /// Return the set of all of the active keys.
 -(NSSet *)allKeys;
 
