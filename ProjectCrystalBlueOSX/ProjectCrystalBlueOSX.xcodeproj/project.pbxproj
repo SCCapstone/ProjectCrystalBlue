@@ -27,6 +27,10 @@
 		D0C076BE188AFF7A00B3D48E /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076BD188AFF7A00B3D48E /* SourceConstants.m */; };
 		D0C076C1188B03C500B3D48E /* OriginalSampleConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076C0188B03C500B3D48E /* OriginalSampleConstantsTests.m */; };
 		D0C076C4188B062600B3D48E /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076C3188B062600B3D48E /* SampleConstants.m */; };
+		D0DBCB6018A478E100FAA428 /* LocalLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCB5F18A478E100FAA428 /* LocalLibraryObjectStore.m */; };
+		D0DBCB6518A4794600FAA428 /* AbstractLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCB6418A4794600FAA428 /* AbstractLibraryObjectStore.m */; };
+		D0DBCB6818A4795E00FAA428 /* AbstractCloudLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCB6718A4795E00FAA428 /* AbstractCloudLibraryObjectStore.m */; };
+		D0DBCB6B18A47D5000FAA428 /* SimpleDBSLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DBCB6A18A47D5000FAA428 /* SimpleDBSLibraryObjectStore.m */; };
 		D0DDDE2F188E33A30060B8C2 /* ChildrenView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDDE2D188E33A30060B8C2 /* ChildrenView.m */; };
 		D0DDDE30188E33A30060B8C2 /* ChildrenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DDDE2E188E33A30060B8C2 /* ChildrenView.xib */; };
 		D712AAD51894C6050093E457 /* S3UtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D712AAD41894C6050093E457 /* S3UtilsTests.m */; };
@@ -103,6 +107,14 @@
 		D0C076C0188B03C500B3D48E /* OriginalSampleConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSampleConstantsTests.m; sourceTree = "<group>"; };
 		D0C076C2188B062600B3D48E /* SampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleConstants.h; sourceTree = "<group>"; };
 		D0C076C3188B062600B3D48E /* SampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleConstants.m; sourceTree = "<group>"; };
+		D0DBCB5E18A478E100FAA428 /* LocalLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalLibraryObjectStore.h; sourceTree = "<group>"; };
+		D0DBCB5F18A478E100FAA428 /* LocalLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStore.m; sourceTree = "<group>"; };
+		D0DBCB6318A4794600FAA428 /* AbstractLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractLibraryObjectStore.h; sourceTree = "<group>"; };
+		D0DBCB6418A4794600FAA428 /* AbstractLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractLibraryObjectStore.m; sourceTree = "<group>"; };
+		D0DBCB6618A4795E00FAA428 /* AbstractCloudLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCloudLibraryObjectStore.h; sourceTree = "<group>"; };
+		D0DBCB6718A4795E00FAA428 /* AbstractCloudLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractCloudLibraryObjectStore.m; sourceTree = "<group>"; };
+		D0DBCB6918A47D5000FAA428 /* SimpleDBLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBLibraryObjectStore.h; sourceTree = "<group>"; };
+		D0DBCB6A18A47D5000FAA428 /* SimpleDBSLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBSLibraryObjectStore.m; sourceTree = "<group>"; };
 		D0DDDE2C188E33A30060B8C2 /* ChildrenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildrenView.h; sourceTree = "<group>"; };
 		D0DDDE2D188E33A30060B8C2 /* ChildrenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildrenView.m; sourceTree = "<group>"; };
 		D0DDDE2E188E33A30060B8C2 /* ChildrenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildrenView.xib; sourceTree = "<group>"; };
@@ -196,6 +208,10 @@
 		D0B1B73E189CA36A00052443 /* LibraryObjectStore */ = {
 			isa = PBXGroup;
 			children = (
+				D0DBCB5E18A478E100FAA428 /* LocalLibraryObjectStore.h */,
+				D0DBCB5F18A478E100FAA428 /* LocalLibraryObjectStore.m */,
+				D0DBCB6118A478F500FAA428 /* Abstract Classes */,
+				D0DBCB6218A4790B00FAA428 /* SimpleDBLibraryObjectStore */,
 				D0B1B742189CA38C00052443 /* ZumeroLibraryObjectStore */,
 				D0B1B73F189CA38200052443 /* LibraryObjectStore.h */,
 			);
@@ -281,6 +297,26 @@
 				D0C076C0188B03C500B3D48E /* OriginalSampleConstantsTests.m */,
 			);
 			name = ModelTests;
+			sourceTree = "<group>";
+		};
+		D0DBCB6118A478F500FAA428 /* Abstract Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D0DBCB6318A4794600FAA428 /* AbstractLibraryObjectStore.h */,
+				D0DBCB6418A4794600FAA428 /* AbstractLibraryObjectStore.m */,
+				D0DBCB6618A4795E00FAA428 /* AbstractCloudLibraryObjectStore.h */,
+				D0DBCB6718A4795E00FAA428 /* AbstractCloudLibraryObjectStore.m */,
+			);
+			name = "Abstract Classes";
+			sourceTree = "<group>";
+		};
+		D0DBCB6218A4790B00FAA428 /* SimpleDBLibraryObjectStore */ = {
+			isa = PBXGroup;
+			children = (
+				D0DBCB6918A47D5000FAA428 /* SimpleDBLibraryObjectStore.h */,
+				D0DBCB6A18A47D5000FAA428 /* SimpleDBSLibraryObjectStore.m */,
+			);
+			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
 		};
 		D70122EC188E2FF000057537 /* ImageStore */ = {
@@ -593,16 +629,20 @@
 				D72590D9189C586E0018122D /* AbstractImageStore.m in Sources */,
 				D0C076C4188B062600B3D48E /* SampleConstants.m in Sources */,
 				D7608DBB189496CA00F54869 /* S3ImageStore.m in Sources */,
+				D0DBCB6518A4794600FAA428 /* AbstractLibraryObjectStore.m in Sources */,
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
 				D7965DA718A3604D009271FB /* DirtyKeySet.m in Sources */,
 				D771DD46189ED7A50011F815 /* DDTTYLogger.m in Sources */,
 				D0B1B745189CA50200052443 /* ZumeroLibraryObjectStore.m in Sources */,
 				D74F8D69189846010024E672 /* LocalImageStore.m in Sources */,
+				D0DBCB6B18A47D5000FAA428 /* SimpleDBSLibraryObjectStore.m in Sources */,
 				D7608DC51894B76900F54869 /* S3Utils.m in Sources */,
 				D729BD07181C1FC600F762A3 /* main.m in Sources */,
 				D7965DA418A35D40009271FB /* HardcodedCredentialsProvider.m in Sources */,
 				D0DDDE2F188E33A30060B8C2 /* ChildrenView.m in Sources */,
+				D0DBCB6818A4795E00FAA428 /* AbstractCloudLibraryObjectStore.m in Sources */,
 				D0C076BE188AFF7A00B3D48E /* SourceConstants.m in Sources */,
+				D0DBCB6018A478E100FAA428 /* LocalLibraryObjectStore.m in Sources */,
 				D771DD43189ED79D0011F815 /* DDASLLogger.m in Sources */,
 				D0C076B8188AFB9200B3D48E /* Source.m in Sources */,
 				D0749F54189B45A200D3908B /* LibraryObject.m in Sources */,
