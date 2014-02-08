@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  SourcesViewController.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 2/8/14.
@@ -8,10 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
-    NSViewController *initialViewController;
-}
+@interface SourcesViewController : NSViewController
 
-@property (assign) IBOutlet NSWindow *window;
+- (IBAction)theButton:(id)sender;
+
 
 @end

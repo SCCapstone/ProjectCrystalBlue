@@ -24,6 +24,8 @@
 		D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D724060318A6027A00EA2DD2 /* OriginalSampleConstantsTests.m */; };
 		D724060618A6028300EA2DD2 /* SimpleDBExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D724060518A6028300EA2DD2 /* SimpleDBExample.m */; };
 		D724060718A602DF00EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
+		D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7272DF418A60660003860E2 /* SourcesViewController.m */; };
+		D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7272DF518A60660003860E2 /* SourcesViewController.xib */; };
 		D7439E0F18A5FC53000EE008 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7439E0E18A5FC53000EE008 /* Cocoa.framework */; };
 		D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7439E1718A5FC53000EE008 /* InfoPlist.strings */; };
 		D7439E1B18A5FC53000EE008 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7439E1A18A5FC53000EE008 /* main.m */; };
@@ -97,6 +99,9 @@
 		D724060018A6026900EA2DD2 /* LocalTransactionCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTransactionCacheTests.m; sourceTree = "<group>"; };
 		D724060318A6027A00EA2DD2 /* OriginalSampleConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSampleConstantsTests.m; sourceTree = "<group>"; };
 		D724060518A6028300EA2DD2 /* SimpleDBExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBExample.m; sourceTree = "<group>"; };
+		D7272DF318A60660003860E2 /* SourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesViewController.h; sourceTree = "<group>"; };
+		D7272DF418A60660003860E2 /* SourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesViewController.m; sourceTree = "<group>"; };
+		D7272DF518A60660003860E2 /* SourcesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcesViewController.xib; sourceTree = "<group>"; };
 		D7439E0B18A5FC53000EE008 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7439E0E18A5FC53000EE008 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D7439E1118A5FC53000EE008 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -448,6 +453,9 @@
 		D78ACC2F18A5FD9B006084D6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D7272DF318A60660003860E2 /* SourcesViewController.h */,
+				D7272DF418A60660003860E2 /* SourcesViewController.m */,
+				D7272DF518A60660003860E2 /* SourcesViewController.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -651,6 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
+				D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */,
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
 				D7439E1F18A5FC53000EE008 /* Credits.rtf in Resources */,
 				D7439E2518A5FC53000EE008 /* MainMenu.xib in Resources */,
@@ -705,6 +714,7 @@
 				D78ACC8618A5FE8E006084D6 /* SimpleDBCredentialsProvider.m in Sources */,
 				D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */,
 				D7439E1B18A5FC53000EE008 /* main.m in Sources */,
+				D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */,
 				D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
