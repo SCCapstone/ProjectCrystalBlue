@@ -22,7 +22,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     return [super initWithKey:key
             AndWithAttributes:[SourceConstants attributeNames]
-                AndWithValues:attributeValues];
+                    AndValues:attributeValues];
 }
 
 @end
