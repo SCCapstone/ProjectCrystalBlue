@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7F29C6B0-B7E6-4260-AD27-733BB9E29A60</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ProjectCrystalBlueOSX</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C445FB7F-9B85-415D-97F5-97B780364FBF</key>
+		<string>https://github.com/SCCapstone/ProjectCrystalBlue.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ProjectCrystalBlueOSX/ProjectCrystalBlueOSX.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C445FB7F-9B85-415D-97F5-97B780364FBF</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/SCCapstone/ProjectCrystalBlue.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C445FB7F-9B85-415D-97F5-97B780364FBF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C445FB7F-9B85-415D-97F5-97B780364FBF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ProjectCrystalBlue</string>
+		</dict>
+	</array>
+</dict>
+</plist>
