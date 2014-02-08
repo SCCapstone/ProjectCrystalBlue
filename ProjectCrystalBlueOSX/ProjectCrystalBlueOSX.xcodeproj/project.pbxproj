@@ -849,8 +849,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/include",
 					"$(inherited)",
+					"$(SRCROOT)/include",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
@@ -862,7 +862,7 @@
 				INFOPLIST_FILE = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-OSX/FixingViews/ProjectCrystalBlue/ProjectCrystalBlueOSX/include",
+					"$(SRCROOT)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -875,8 +875,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/include",
 					"$(inherited)",
+					"$(SRCROOT)/include",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
@@ -888,7 +888,7 @@
 				INFOPLIST_FILE = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-OSX/FixingViews/ProjectCrystalBlue/ProjectCrystalBlueOSX/include",
+					"$(SRCROOT)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -903,8 +903,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
-					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-OSX/FixingViews/ProjectCrystalBlue/ProjectCrystalBlueOSX",
-					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-OSX/FixingViews/ProjectCrystalBlue/ProjectCrystalBlueOSX/include",
+					"$(SRCROOT)/include",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
@@ -933,8 +932,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
-					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-OSX/FixingViews/ProjectCrystalBlue/ProjectCrystalBlueOSX",
-					"/Users/hoodlm/Documents/Xcode\\ Projects/ProjectCrystalBlue-OSX/FixingViews/ProjectCrystalBlue/ProjectCrystalBlueOSX/include",
+					"$(SRCROOT)/include",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectCrystalBlueOSX/ProjectCrystalBlueOSX-Prefix.pch";
