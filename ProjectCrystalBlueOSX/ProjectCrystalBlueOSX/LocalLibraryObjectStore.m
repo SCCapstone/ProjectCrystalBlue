@@ -50,7 +50,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
         
         localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
-        
+        [self createTables];
     }
     return self;
 }
@@ -88,6 +88,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         success = [localDatabase executeUpdateWithFormat:@"INSERT INTO %@ (key,value1,value2) VALUES (%@,%@,%@)",
                    table, key, @"this", @"works"];
+        if (!success)
+            DDLogCError(@"%@", [localDatabase lastError]);
     }];
     
     return success;
@@ -103,6 +105,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                         FromTable:(NSString *)table
 {
     return NO;
+}
+
+- (BOOL)createTables
+{
+    __block BOOL success = NO;
+    [localQueue inDeferredTransaction:^(FMDatabase *localDatabase, BOOL *rollback) {
+        success = [localDatabase executeUpdateWithFormat:@"CREATE TABLE IF NOT EXISTS test_table(key TEXT PRIMARY KEY, value1 TEXT, value2 TEXT)"];
+        if (!success)
+            DDLogCError(@"%@", [localDatabase lastError]);
+    }];
+    
+    return success;
 }
 
 @end
