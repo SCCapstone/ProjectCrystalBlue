@@ -10,10 +10,11 @@
 #import "AbstractLibraryObjectStore.h"
 #import "LocalLibraryObjectStore.h"
 #import "LibraryObject.h"
+#import "Source.h"
+#import "Sample.h"
 
 #define TEST_DIRECTORY @"project-crystal-blue-test-temp"
 #define DATABASE_NAME @"test_database.db"
-#define TABLE_NAME @""
 
 @interface LocalLibraryObjectStoreTests : XCTestCase
 
