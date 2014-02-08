@@ -17,39 +17,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 /* Attribute names
  */
-NSString *const SOURCE_KEY = @"SourceKey";
-NSString *const CURRENT_LOCATION = @"CurrentLocation";
-NSString *const BULK_ROCK = @"Bulk_Rock";
-NSString *const RAINY_DAY = @"Rainy_Day";
-NSString *const HAND_SAMPLE = @"Hand_Sample";
-NSString *const DEEP_STORAGE = @"Deep_Storage";
-NSString *const ROCK_SAW = @"Rock_Saw";
-NSString *const JAW_CRUSHER = @"Jaw_Crusher";
-NSString *const PULVERIZER = @"Pulverizer";
-NSString *const SIEVES = @"Sieves";
-NSString *const GEMENI = @"Gemeni";
-NSString *const GOLD_PAN = @"Gold_Pan";
-NSString *const HEAVY_LIQUID = @"Heavy_Liquid";
-NSString *const MAGNETIC_SEPERATOR = @"Magnetic_Seperator";
-NSString *const TAGS = @"Tags";
+NSString *const KEY = @"key";
+NSString *const SOURCE_KEY = @"sourceKey";
+NSString *const CURRENT_LOCATION = @"currentLocation";
+NSString *const TAGS = @"tags";
 
 /* Attribute default values
  */
-NSString *const DEF_VAL_SOURCE_KEY = @"";
+NSString *const DEF_VAL_KEY = @"key here";
+NSString *const DEF_VAL_SOURCE_KEY = @"sourceKey here";
 NSString *const DEF_VAL_CURRENT_LOCATION = @"USC";
-NSString *const DEF_VAL_BULK_ROCK = @"Is Bulk_Rock";
-NSString *const DEF_VAL_RAINY_DAY = @"Not Rainy_Day";
-NSString *const DEF_VAL_HAND_SAMPLE = @"Not Hand_Sample";
-NSString *const DEF_VAL_DEEP_STORAGE = @"Not Deep_Storage";
-NSString *const DEF_VAL_ROCK_SAW = @"Not Rock_Saw";
-NSString *const DEF_VAL_JAW_CRUSHER = @"Not Jaw_Crusher";
-NSString *const DEF_VAL_PULVERIZER = @"Not Pulverizer";
-NSString *const DEF_VAL_SIEVES = @"Not Sieves";
-NSString *const DEF_VAL_GEMENI = @"Not Gemeni";
-NSString *const DEF_VAL_GOLD_PAN = @"Not Gold_Pan";
-NSString *const DEF_VAL_HEAVY_LIQUID = @"Not Heavy_Liquid";
-NSString *const DEF_VAL_MAGNETIC_SEPERATOR = @"Not Magnetic_Seperator";
-NSString *const DEF_VAL_TAGS = @"";
+NSString *const DEF_VAL_TAGS = @"tag here";
 
 /* Sample table name
  */
@@ -63,7 +41,7 @@ NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
     if (!attributeNames)
     {
         attributeNames = [NSArray arrayWithObjects:
-                          SOURCE_KEY, CURRENT_LOCATION, BULK_ROCK, RAINY_DAY, HAND_SAMPLE, DEEP_STORAGE, ROCK_SAW, JAW_CRUSHER, PULVERIZER, SIEVES, GEMENI, GOLD_PAN, HEAVY_LIQUID, MAGNETIC_SEPERATOR, TAGS, nil];
+                          KEY, SOURCE_KEY, CURRENT_LOCATION, TAGS, nil];
     }
     return attributeNames;
 }
@@ -74,8 +52,7 @@ NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
     if (!attributeDefaultValues)
     {
         attributeDefaultValues = [NSArray arrayWithObjects:
-                                  DEF_VAL_SOURCE_KEY, DEF_VAL_CURRENT_LOCATION, DEF_VAL_BULK_ROCK, DEF_VAL_RAINY_DAY, DEF_VAL_HAND_SAMPLE, DEF_VAL_DEEP_STORAGE, DEF_VAL_ROCK_SAW, DEF_VAL_JAW_CRUSHER, DEF_VAL_PULVERIZER, DEF_VAL_SIEVES, DEF_VAL_GEMENI, DEF_VAL_GOLD_PAN, DEF_VAL_HEAVY_LIQUID, DEF_VAL_MAGNETIC_SEPERATOR, DEF_VAL_TAGS,
-                                  nil];
+                                  DEF_VAL_KEY, DEF_VAL_SOURCE_KEY, DEF_VAL_CURRENT_LOCATION, DEF_VAL_TAGS, nil];
     }
     return attributeDefaultValues;
 }

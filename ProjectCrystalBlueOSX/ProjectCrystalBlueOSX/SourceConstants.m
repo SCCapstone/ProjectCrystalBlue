@@ -17,28 +17,30 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 /* Attribute names
  */
-NSString *const CONTINENT = @"Continent";
-NSString *const TYPE = @"Type";
-NSString *const LITHOLOGY = @"Lithology";
-NSString *const DEPOSYSTEM = @"Deposystem";
-NSString *const GROUP = @"Group";
-NSString *const FORMATION = @"Formation";
-NSString *const MEMBER = @"Member";
-NSString *const REGION = @"Region";
-NSString *const LOCALITY = @"Locality";
-NSString *const SECTION = @"Section";
-NSString *const METER_LEVEL = @"Meter_Level";
-NSString *const LATITUDE = @"Latitude";
-NSString *const LONGITUDE = @"Longitude";
-NSString *const AGE = @"Age";
-NSString *const AGE_BASIS1 = @"Age_Basis1";
-NSString *const AGE_BASIS2 = @"Age_Basis2";
-NSString *const DATE_COLLECTED = @"Date_Collected";
-NSString *const PROJECT = @"Project";
-NSString *const SUBPROJECT = @"Subproject";
+NSString *const KEY = @"key";
+NSString *const CONTINENT = @"continent";
+NSString *const TYPE = @"type";
+NSString *const LITHOLOGY = @"lithology";
+NSString *const DEPOSYSTEM = @"deposystem";
+NSString *const GROUP = @"group";
+NSString *const FORMATION = @"formation";
+NSString *const MEMBER = @"member";
+NSString *const REGION = @"region";
+NSString *const LOCALITY = @"locality";
+NSString *const SECTION = @"section";
+NSString *const METER_LEVEL = @"meterLevel";
+NSString *const LATITUDE = @"latitude";
+NSString *const LONGITUDE = @"longitude";
+NSString *const AGE = @"age";
+NSString *const AGE_BASIS1 = @"ageBasis1";
+NSString *const AGE_BASIS2 = @"ageBasis2";
+NSString *const DATE_COLLECTED = @"dateCollected";
+NSString *const PROJECT = @"project";
+NSString *const SUBPROJECT = @"subproject";
 
 /* Attribute default values
  */
+NSString *const DEF_VAL_KEY = @"key here";
 NSString *const DEF_VAL_CONTINENT = @"continent here";
 NSString *const DEF_VAL_TYPE = @"Type here";
 NSString *const DEF_VAL_LITHOLOGY = @"Lithology here";
@@ -70,11 +72,8 @@ NSString *const SOURCE_TABLE_NAME = @"test_source_table";
     static NSArray *attributeNames = nil;
     if (!attributeNames)
     {
-        //attributeNames = [NSArray arrayWithObjects:
-        //                 CONTINENT,
-        //                 nil];
-        
-        attributeNames = [NSArray arrayWithObjects:CONTINENT, TYPE, LITHOLOGY, DEPOSYSTEM, GROUP, FORMATION, MEMBER, REGION, LOCALITY, SECTION, METER_LEVEL, LATITUDE, LONGITUDE, AGE, AGE_BASIS1, AGE_BASIS2, DATE_COLLECTED, PROJECT, SUBPROJECT, nil];
+        attributeNames = [NSArray arrayWithObjects:
+                          KEY, CONTINENT, TYPE, LITHOLOGY, DEPOSYSTEM, GROUP, FORMATION, MEMBER, REGION, LOCALITY, SECTION, METER_LEVEL, LATITUDE, LONGITUDE, AGE, AGE_BASIS1, AGE_BASIS2, DATE_COLLECTED, PROJECT, SUBPROJECT, nil];
     }
     
     return attributeNames;
@@ -86,7 +85,7 @@ NSString *const SOURCE_TABLE_NAME = @"test_source_table";
     if (!attributeDefaultValues)
     {
         attributeDefaultValues = [NSArray arrayWithObjects:
-                                  DEF_VAL_CONTINENT, DEF_VAL_TYPE, DEF_VAL_LITHOLOGY, DEF_VAL_DEPOSYSTEM, DEF_VAL_GROUP, DEF_VAL_FORMATION, DEF_VAL_MEMBER, DEF_VAL_REGION, DEF_VAL_LOCALITY, DEF_VAL_SECTION, DEF_VAL_METER_LEVEL, DEF_VAL_LATITUDE, DEF_VAL_LONGITUDE, DEF_VAL_AGE, DEF_VAL_AGE_BASIS1, DEF_VAL_AGE_BASIS2, DEF_VAL_DATE_COLLECTED, DEF_VAL_PROJECT, DEF_VAL_SUBPROJECT, nil];
+                                  DEF_VAL_KEY, DEF_VAL_CONTINENT, DEF_VAL_TYPE, DEF_VAL_LITHOLOGY, DEF_VAL_DEPOSYSTEM, DEF_VAL_GROUP, DEF_VAL_FORMATION, DEF_VAL_MEMBER, DEF_VAL_REGION, DEF_VAL_LOCALITY, DEF_VAL_SECTION, DEF_VAL_METER_LEVEL, DEF_VAL_LATITUDE, DEF_VAL_LONGITUDE, DEF_VAL_AGE, DEF_VAL_AGE_BASIS1, DEF_VAL_AGE_BASIS2, DEF_VAL_DATE_COLLECTED, DEF_VAL_PROJECT, DEF_VAL_SUBPROJECT, nil];
     }
     return attributeDefaultValues;
 }

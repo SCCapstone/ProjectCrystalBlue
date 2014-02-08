@@ -7,7 +7,6 @@
 //
 
 #import "Sample.h"
-#import "SampleConstants.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -28,7 +27,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSString *)sourceKey
 {
-    return [[self attributes] objectForKey:@"SourceKey"];
+    return [[self attributes] objectForKey:@"sourceKey"];
 }
 
 @end

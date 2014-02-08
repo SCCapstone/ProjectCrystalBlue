@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LibraryObject.h"
+#import "SourceConstants.h"
 
 @interface Source : LibraryObject
 

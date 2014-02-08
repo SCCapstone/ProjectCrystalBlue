@@ -7,7 +7,6 @@
 //
 
 #import "Source.h"
-#import "SourceConstants.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
