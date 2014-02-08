@@ -57,9 +57,54 @@ static NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
     return attributeDefaultValues;
 }
 
-+ (NSString *)sampleTableName
++ (NSString *)tableName
 {
     return SAMPLE_TABLE_NAME;
+}
+
++ (NSString *)tableSchema
+{
+    static NSString *schema = nil;
+    if (!schema)
+    {
+        NSMutableArray *attrNames = [[self attributeNames] mutableCopy];
+        
+        // Append column info to each attribute name
+        for (int i=0; i<[attrNames count];  i++)
+        {
+            NSString *attr = [attrNames objectAtIndex:i];
+            [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT%@", attr, [attr isEqualToString:@"key"] ? @" PRIMARY KEY" : @""]];
+        }
+        schema = [attrNames componentsJoinedByString:@","];
+    }
+    return schema;
+}
+
++ (NSString *)tableColumns
+{
+    static NSString *columns = nil;
+    if (!columns)
+    {
+        columns = [[self attributeNames] componentsJoinedByString:@","];
+    }
+    return columns;
+}
+
++ (NSString *)tableValueKeys
+{
+    static NSString *valueKeys = nil;
+    if (!valueKeys)
+    {
+        NSMutableArray *attrNames = [[self attributeNames] mutableCopy];
+        
+        // Prepend ':' to each attribute name
+        for (int i=0; i<[attrNames count];  i++)
+        {
+            [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@":%@", [attrNames objectAtIndex:i]]];
+        }
+        valueKeys = [attrNames componentsJoinedByString:@","];
+    }
+    return valueKeys;
 }
 
 @end
