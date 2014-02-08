@@ -22,35 +22,40 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (id)init
 {
-    [NSException raise:@"Don't use default init method." format:@"Use the initWithLocalDirectory method."];
+    [NSException raise:@"Don't use default init method." format:@"Use the initInLocalDirectory:WithDatabaseName method."];
     return nil;
 }
 
-- (id)initWithLocalDirectory:(NSString *)directory
+- (id)initInLocalDirectory:(NSString *)directory
+          WithDatabaseName:(NSString *)databaseName
 {
     return [super init];
 }
 
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
+                                FromTable:(NSString *)table
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return nil;
 }
 
+- (BOOL)putLibraryObject:(LibraryObject *)image
+                  forKey:(NSString *)key
+               IntoTable:(NSString *)table
+{
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    return NO;
+}
+
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
+                         FromTable:(NSString *)table
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return NO;
 }
 
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
-{
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
-    return NO;
-}
-
-- (BOOL)putLibraryObject:(LibraryObject *)image
-                  forKey:(NSString *)key
+                        FromTable:(NSString *)table
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return NO;

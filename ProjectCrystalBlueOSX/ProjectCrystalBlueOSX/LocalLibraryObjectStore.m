@@ -10,6 +10,8 @@
 #import "FMDatabase.h"
 #import "FMDatabaseQueue.h"
 #import "FMResultSet.h"
+#import "Source.h"
+#import "Sample.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -22,7 +24,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @interface LocalLibraryObjectStore()
 {
-    //FMDatabase *localDatabase;
     FMDatabaseQueue *localQueue;
 }
 @end
@@ -48,31 +49,74 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                                             error:nil];
         }
         
-        //localDatabase = [FMDatabase databaseWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
         localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
+        [self createTables];
     }
     return self;
 }
 
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
+                                FromTable:(NSString *)table
 {
-    return nil;
+    __block NSDictionary *resultDictionary = nil;
+    [localQueue inDatabase:^(FMDatabase *localDatabase){
+        FMResultSet *results = [localDatabase executeQueryWithFormat:@"SELECT * FROM %@ WHERE key=%@", table, key];
+        if ([results next])
+            resultDictionary = [results resultDictionary];
+        [results close];
+    }];
+    
+    if (!resultDictionary)
+        return nil;
+    
+    LibraryObject *libraryObject = nil;
+    if ([table isEqualToString:[SourceConstants sourceTableName]]) {
+        libraryObject = [[Source alloc] initWithKey:key AndWithValues:nil];
+    }
+    else {
+        libraryObject = [[Sample alloc] initWithKey:key AndWithValues:nil];
+    }
+    
+    return libraryObject;
 }
 
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                   forKey:(NSString *)key
+               IntoTable:(NSString *)table
 {
-    return NO;
+    __block BOOL success = NO;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        success = [localDatabase executeUpdateWithFormat:@"INSERT INTO %@ (key,value1,value2) VALUES (%@,%@,%@)",
+                   table, key, @"this", @"works"];
+        if (!success)
+            DDLogCError(@"%@", [localDatabase lastError]);
+    }];
+    
+    return success;
 }
 
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
+                         FromTable:(NSString *)table
 {
     return NO;
 }
 
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
+                        FromTable:(NSString *)table
 {
     return NO;
+}
+
+- (BOOL)createTables
+{
+    __block BOOL success = NO;
+    [localQueue inDeferredTransaction:^(FMDatabase *localDatabase, BOOL *rollback) {
+        success = [localDatabase executeUpdateWithFormat:@"CREATE TABLE IF NOT EXISTS test_table(key TEXT PRIMARY KEY, value1 TEXT, value2 TEXT)"];
+        if (!success)
+            DDLogCError(@"%@", [localDatabase lastError]);
+    }];
+    
+    return success;
 }
 
 @end
