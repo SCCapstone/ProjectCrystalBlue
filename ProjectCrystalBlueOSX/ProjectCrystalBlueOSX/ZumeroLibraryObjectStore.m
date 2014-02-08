@@ -70,7 +70,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     NSError *error = nil;
     NSDictionary *criteria = @{ @"key": key };
-    NSArray *columns = [tableName isEqualToString:[SourceConstants sourceTableName]] ?
+    NSArray *columns = [tableName isEqualToString:[SourceConstants tableName]] ?
         [SourceConstants attributeNames] : [SampleConstants attributeNames];
     NSArray *rows = nil;
     
@@ -92,7 +92,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     // Initialize library object with database values
     LibraryObject *libraryObject = nil;
-    if ([tableName isEqualToString:[SourceConstants sourceTableName]]) {
+    if ([tableName isEqualToString:[SourceConstants tableName]]) {
         libraryObject = [[Source alloc] initWithKey:key AndWithValues:[rows firstObject]];
     }
     else {

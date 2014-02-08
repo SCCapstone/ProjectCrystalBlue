@@ -33,7 +33,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
-                                FromTable:(NSString *)table
+                                FromTable:(NSString *)tableName
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return nil;
@@ -41,21 +41,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (BOOL)putLibraryObject:(LibraryObject *)image
                   forKey:(NSString *)key
-               IntoTable:(NSString *)table
+               IntoTable:(NSString *)tableName
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return NO;
 }
 
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
-                         FromTable:(NSString *)table
+                         FromTable:(NSString *)tableName
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return NO;
 }
 
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
-                        FromTable:(NSString *)table
+                        FromTable:(NSString *)tableName
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return NO;

@@ -52,26 +52,26 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
-                                FromTable:(NSString *)table
+                                FromTable:(NSString *)tableName
 {
-    return [super getLibraryObjectForKey:key FromTable:table];
+    return [super getLibraryObjectForKey:key FromTable:tableName];
 }
 
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                   forKey:(NSString *)key
-               IntoTable:(NSString *)table
+               IntoTable:(NSString *)tableName
 {
-    return [super putLibraryObject:libraryObject forKey:key IntoTable:table];
+    return [super putLibraryObject:libraryObject forKey:key IntoTable:tableName];
 }
 
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
-                         FromTable:(NSString *)table
+                         FromTable:(NSString *)tableName
 {
     return NO;
 }
 
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
-                        FromTable:(NSString *)table
+                        FromTable:(NSString *)tableName
 {
     return NO;
 }

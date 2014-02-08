@@ -18,7 +18,7 @@
 /** Retrieve the library object associated with a given key from the table.
  */
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
-                                FromTable:(NSString *)table;
+                                FromTable:(NSString *)tableName;
 
 /** Add a new image to the CloudLibraryObjectStore with the given unique key.
  *
@@ -33,17 +33,17 @@
  */
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                   forKey:(NSString *)key
-               IntoTable:(NSString *)table;
+               IntoTable:(NSString *)tableName;
 
 /** Delete a library object from the LibraryObjectStore. Return whether the deletion is successful.
  */
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
-                         FromTable:(NSString *)table;
+                         FromTable:(NSString *)tableName;
 
 /** Checks if the CloudLibraryObjectStore already has a library object for the given key.
  *  For example, this should always be used before assigning a key to a new image.
  */
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
-                        FromTable:(NSString *)table;
+                        FromTable:(NSString *)tableName;
 
 @end
