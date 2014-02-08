@@ -45,6 +45,7 @@
 		D72590D9189C586E0018122D /* AbstractImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D72590D8189C586E0018122D /* AbstractImageStore.m */; };
 		D72590DD189C5A5D0018122D /* AbstractCloudImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D72590DC189C5A5D0018122D /* AbstractCloudImageStore.m */; };
 		D72590E0189C5F760018122D /* AbstractImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72590DF189C5F760018122D /* AbstractImageStoreTests.m */; };
+		D726DEC618A5B25600869333 /* SimpleDBExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D726DEC518A5B25600869333 /* SimpleDBExample.m */; };
 		D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729BCFA181C1FC600F762A3 /* Cocoa.framework */; };
 		D729BD05181C1FC600F762A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D729BD03181C1FC600F762A3 /* InfoPlist.strings */; };
 		D729BD07181C1FC600F762A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D729BD06181C1FC600F762A3 /* main.m */; };
@@ -144,6 +145,7 @@
 		D72590DB189C5A5D0018122D /* AbstractCloudImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCloudImageStore.h; sourceTree = "<group>"; };
 		D72590DC189C5A5D0018122D /* AbstractCloudImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractCloudImageStore.m; sourceTree = "<group>"; };
 		D72590DF189C5F760018122D /* AbstractImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractImageStoreTests.m; sourceTree = "<group>"; };
+		D726DEC518A5B25600869333 /* SimpleDBExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBExample.m; sourceTree = "<group>"; };
 		D729BCF7181C1FC600F762A3 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729BCFA181C1FC600F762A3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D729BCFD181C1FC600F762A3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -469,6 +471,7 @@
 				D0C076BF188B03A800B3D48E /* ModelTests */,
 				D729BD24181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m */,
 				D729BD1F181C1FC600F762A3 /* Supporting Files */,
+				D726DEC518A5B25600869333 /* SimpleDBExample.m */,
 			);
 			path = ProjectCrystalBlueOSXTests;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7224213189B844800832A06 /* LocalImageStoreTests.m in Sources */,
+				D726DEC618A5B25600869333 /* SimpleDBExample.m in Sources */,
 				D7965DAA18A3679E009271FB /* LocalTransactionCacheTests.m in Sources */,
 				D0B0B18B18A0620A00B2DE31 /* ZumeroUtilsTests.m in Sources */,
 				D72590E0189C5F760018122D /* AbstractImageStoreTests.m in Sources */,
