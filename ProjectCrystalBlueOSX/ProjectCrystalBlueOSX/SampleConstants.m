@@ -17,21 +17,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 /* Attribute names
  */
-NSString *const KEY = @"key";
-NSString *const SOURCE_KEY = @"sourceKey";
-NSString *const CURRENT_LOCATION = @"currentLocation";
-NSString *const TAGS = @"tags";
+static NSString *const KEY = @"key";
+static NSString *const SOURCE_KEY = @"sourceKey";
+static NSString *const CURRENT_LOCATION = @"currentLocation";
+static NSString *const TAGS = @"tags";
 
 /* Attribute default values
  */
-NSString *const DEF_VAL_KEY = @"key here";
-NSString *const DEF_VAL_SOURCE_KEY = @"sourceKey here";
-NSString *const DEF_VAL_CURRENT_LOCATION = @"USC";
-NSString *const DEF_VAL_TAGS = @"tag here";
+static NSString *const DEF_VAL_KEY = @"key here";
+static NSString *const DEF_VAL_SOURCE_KEY = @"sourceKey here";
+static NSString *const DEF_VAL_CURRENT_LOCATION = @"USC";
+static NSString *const DEF_VAL_TAGS = @"tag here";
 
 /* Sample table name
  */
-NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
+static NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
 
 @implementation SampleConstants
 

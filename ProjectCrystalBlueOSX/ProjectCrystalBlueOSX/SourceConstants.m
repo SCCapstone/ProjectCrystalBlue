@@ -17,53 +17,53 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 /* Attribute names
  */
-NSString *const KEY = @"key";
-NSString *const CONTINENT = @"continent";
-NSString *const TYPE = @"type";
-NSString *const LITHOLOGY = @"lithology";
-NSString *const DEPOSYSTEM = @"deposystem";
-NSString *const GROUP = @"group";
-NSString *const FORMATION = @"formation";
-NSString *const MEMBER = @"member";
-NSString *const REGION = @"region";
-NSString *const LOCALITY = @"locality";
-NSString *const SECTION = @"section";
-NSString *const METER_LEVEL = @"meterLevel";
-NSString *const LATITUDE = @"latitude";
-NSString *const LONGITUDE = @"longitude";
-NSString *const AGE = @"age";
-NSString *const AGE_BASIS1 = @"ageBasis1";
-NSString *const AGE_BASIS2 = @"ageBasis2";
-NSString *const DATE_COLLECTED = @"dateCollected";
-NSString *const PROJECT = @"project";
-NSString *const SUBPROJECT = @"subproject";
+static NSString *const KEY = @"key";
+static NSString *const CONTINENT = @"continent";
+static NSString *const TYPE = @"type";
+static NSString *const LITHOLOGY = @"lithology";
+static NSString *const DEPOSYSTEM = @"deposystem";
+static NSString *const GROUP = @"group";
+static NSString *const FORMATION = @"formation";
+static NSString *const MEMBER = @"member";
+static NSString *const REGION = @"region";
+static NSString *const LOCALITY = @"locality";
+static NSString *const SECTION = @"section";
+static NSString *const METER_LEVEL = @"meterLevel";
+static NSString *const LATITUDE = @"latitude";
+static NSString *const LONGITUDE = @"longitude";
+static NSString *const AGE = @"age";
+static NSString *const AGE_BASIS1 = @"ageBasis1";
+static NSString *const AGE_BASIS2 = @"ageBasis2";
+static NSString *const DATE_COLLECTED = @"dateCollected";
+static NSString *const PROJECT = @"project";
+static NSString *const SUBPROJECT = @"subproject";
 
 /* Attribute default values
  */
-NSString *const DEF_VAL_KEY = @"key here";
-NSString *const DEF_VAL_CONTINENT = @"continent here";
-NSString *const DEF_VAL_TYPE = @"Type here";
-NSString *const DEF_VAL_LITHOLOGY = @"Lithology here";
-NSString *const DEF_VAL_DEPOSYSTEM = @"Deposystem here";
-NSString *const DEF_VAL_GROUP = @"Group here";
-NSString *const DEF_VAL_FORMATION = @"Formation here";
-NSString *const DEF_VAL_MEMBER = @"Member here";
-NSString *const DEF_VAL_REGION = @"Region here";
-NSString *const DEF_VAL_LOCALITY = @"Locality here";
-NSString *const DEF_VAL_SECTION = @"Section here";
-NSString *const DEF_VAL_METER_LEVEL = @"Meter_Level here";
-NSString *const DEF_VAL_LATITUDE = @"Latitude here";
-NSString *const DEF_VAL_LONGITUDE = @"Longitude here";
-NSString *const DEF_VAL_AGE = @"Age here";
-NSString *const DEF_VAL_AGE_BASIS1 = @"Age_Basis1 here";
-NSString *const DEF_VAL_AGE_BASIS2 = @"Age_Basis2 here";
-NSString *const DEF_VAL_DATE_COLLECTED = @"Date_Collected here";
-NSString *const DEF_VAL_PROJECT = @"Project here";
-NSString *const DEF_VAL_SUBPROJECT = @"Subproject here";
+static NSString *const DEF_VAL_KEY = @"key here";
+static NSString *const DEF_VAL_CONTINENT = @"continent here";
+static NSString *const DEF_VAL_TYPE = @"Type here";
+static NSString *const DEF_VAL_LITHOLOGY = @"Lithology here";
+static NSString *const DEF_VAL_DEPOSYSTEM = @"Deposystem here";
+static NSString *const DEF_VAL_GROUP = @"Group here";
+static NSString *const DEF_VAL_FORMATION = @"Formation here";
+static NSString *const DEF_VAL_MEMBER = @"Member here";
+static NSString *const DEF_VAL_REGION = @"Region here";
+static NSString *const DEF_VAL_LOCALITY = @"Locality here";
+static NSString *const DEF_VAL_SECTION = @"Section here";
+static NSString *const DEF_VAL_METER_LEVEL = @"Meter_Level here";
+static NSString *const DEF_VAL_LATITUDE = @"Latitude here";
+static NSString *const DEF_VAL_LONGITUDE = @"Longitude here";
+static NSString *const DEF_VAL_AGE = @"Age here";
+static NSString *const DEF_VAL_AGE_BASIS1 = @"Age_Basis1 here";
+static NSString *const DEF_VAL_AGE_BASIS2 = @"Age_Basis2 here";
+static NSString *const DEF_VAL_DATE_COLLECTED = @"Date_Collected here";
+static NSString *const DEF_VAL_PROJECT = @"Project here";
+static NSString *const DEF_VAL_SUBPROJECT = @"Subproject here";
 
 /* Source table name
  */
-NSString *const SOURCE_TABLE_NAME = @"test_source_table";
+static NSString *const SOURCE_TABLE_NAME = @"test_source_table";
 
 @implementation SourceConstants
 
