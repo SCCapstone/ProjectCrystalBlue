@@ -14,6 +14,7 @@
 		D049EF49188CA63A00EF8672 /* SampleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D049EF48188CA63A00EF8672 /* SampleStore.m */; };
 		D062D9411895D24E00AEDADA /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D062D9401895D24E00AEDADA /* AWSiOSSDK.framework */; };
 		D062D9421895D26400AEDADA /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D062D9401895D24E00AEDADA /* AWSiOSSDK.framework */; };
+		D065E04118A5BD7C000F78C2 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D065E04018A5BD7C000F78C2 /* LocalLibraryObjectStoreTests.m */; };
 		D069CE5E183C716D0065B65F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D069CE5D183C716D0065B65F /* libsqlite3.dylib */; };
 		D0749F54189B45A200D3908B /* LibraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D0749F53189B45A200D3908B /* LibraryObject.m */; };
 		D08A762E188DBDEC002F948C /* LibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A762D188DBDEC002F948C /* LibraryView.m */; };
@@ -90,6 +91,7 @@
 		D049EF47188CA63A00EF8672 /* SampleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleStore.h; sourceTree = "<group>"; };
 		D049EF48188CA63A00EF8672 /* SampleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleStore.m; sourceTree = "<group>"; };
 		D062D9401895D24E00AEDADA /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = include/AWSiOSSDK.framework; sourceTree = "<group>"; };
+		D065E04018A5BD7C000F78C2 /* LocalLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D069CE5D183C716D0065B65F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D0749F52189B45A200D3908B /* LibraryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObject.h; sourceTree = "<group>"; };
 		D0749F53189B45A200D3908B /* LibraryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObject.m; sourceTree = "<group>"; };
@@ -215,6 +217,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D065E03D18A5BD23000F78C2 /* ImageStore */ = {
+			isa = PBXGroup;
+			children = (
+				D72590DE189C5F630018122D /* AbstractImageStore Tests */,
+				D74F8D6D189852710024E672 /* LocalImageStore Tests */,
+				D7608DBF18949A7400F54869 /* S3ImageStore Tests */,
+			);
+			name = ImageStore;
+			sourceTree = "<group>";
+		};
+		D065E03E18A5BD38000F78C2 /* LibraryObjectStore */ = {
+			isa = PBXGroup;
+			children = (
+				D065E03F18A5BD50000F78C2 /* LocalLibraryObjectStore */,
+				D0B0B18918A061CE00B2DE31 /* ZumeroLibraryObjectStore Tests */,
+			);
+			name = LibraryObjectStore;
+			sourceTree = "<group>";
+		};
+		D065E03F18A5BD50000F78C2 /* LocalLibraryObjectStore */ = {
+			isa = PBXGroup;
+			children = (
+				D065E04018A5BD7C000F78C2 /* LocalLibraryObjectStoreTests.m */,
+			);
+			name = LocalLibraryObjectStore;
+			sourceTree = "<group>";
+		};
 		D0B0B18918A061CE00B2DE31 /* ZumeroLibraryObjectStore Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,11 +531,9 @@
 		D7608DBC18949A5400F54869 /* Store Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D065E03E18A5BD38000F78C2 /* LibraryObjectStore */,
+				D065E03D18A5BD23000F78C2 /* ImageStore */,
 				D7965DA818A3678A009271FB /* DirtyKeySetStore Tests */,
-				D0B0B18918A061CE00B2DE31 /* ZumeroLibraryObjectStore Tests */,
-				D72590DE189C5F630018122D /* AbstractImageStore Tests */,
-				D74F8D6D189852710024E672 /* LocalImageStore Tests */,
-				D7608DBF18949A7400F54869 /* S3ImageStore Tests */,
 			);
 			name = "Store Tests";
 			sourceTree = "<group>";
@@ -710,6 +737,7 @@
 				D7608DC118949A9200F54869 /* S3ImageStoreTests.m in Sources */,
 				D729BD25181C1FC600F762A3 /* ProjectCrystalBlueOSXTests.m in Sources */,
 				D712AAD51894C6050093E457 /* S3UtilsTests.m in Sources */,
+				D065E04118A5BD7C000F78C2 /* LocalLibraryObjectStoreTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
