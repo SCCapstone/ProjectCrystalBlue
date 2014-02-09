@@ -7,11 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D0161C71189C53310032F4BE /* libLibZumeroCloudAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0161C70189C53310032F4BE /* libLibZumeroCloudAPI.a */; };
 		D02E874018519C7B00B15316 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E873F18519C7B00B15316 /* CFNetwork.framework */; };
-		D02E874218519C8700B15316 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E874118519C8700B15316 /* libz.dylib */; };
-		D049EF46188CA62F00EF8672 /* SourceStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D049EF45188CA62F00EF8672 /* SourceStore.m */; };
-		D049EF49188CA63A00EF8672 /* SampleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D049EF48188CA63A00EF8672 /* SampleStore.m */; };
 		D062D9411895D24E00AEDADA /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D062D9401895D24E00AEDADA /* AWSiOSSDK.framework */; };
 		D062D9421895D26400AEDADA /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D062D9401895D24E00AEDADA /* AWSiOSSDK.framework */; };
 		D065E04118A5BD7C000F78C2 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D065E04018A5BD7C000F78C2 /* LocalLibraryObjectStoreTests.m */; };
@@ -19,10 +15,6 @@
 		D0749F54189B45A200D3908B /* LibraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D0749F53189B45A200D3908B /* LibraryObject.m */; };
 		D08A762E188DBDEC002F948C /* LibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A762D188DBDEC002F948C /* LibraryView.m */; };
 		D08A7630188DBDFB002F948C /* LibraryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08A762F188DBDFB002F948C /* LibraryView.xib */; };
-		D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0969B511851C142008C4BD5 /* SQLiteWrapper.m */; };
-		D0B0B18B18A0620A00B2DE31 /* ZumeroUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B0B18A18A0620A00B2DE31 /* ZumeroUtilsTests.m */; };
-		D0B1B745189CA50200052443 /* ZumeroLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B1B744189CA50200052443 /* ZumeroLibraryObjectStore.m */; };
-		D0B1B748189CE9BE00052443 /* ZumeroUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B1B747189CE9BE00052443 /* ZumeroUtils.m */; };
 		D0C076B8188AFB9200B3D48E /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076B7188AFB9200B3D48E /* Source.m */; };
 		D0C076BB188AFBA600B3D48E /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076BA188AFBA600B3D48E /* Sample.m */; };
 		D0C076BE188AFF7A00B3D48E /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C076BD188AFF7A00B3D48E /* SourceConstants.m */; };
@@ -83,13 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D0161C70189C53310032F4BE /* libLibZumeroCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLibZumeroCloudAPI.a; path = include/libLibZumeroCloudAPI.a; sourceTree = "<group>"; };
 		D02E873F18519C7B00B15316 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		D02E874118519C8700B15316 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		D049EF44188CA62F00EF8672 /* SourceStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceStore.h; sourceTree = "<group>"; };
-		D049EF45188CA62F00EF8672 /* SourceStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceStore.m; sourceTree = "<group>"; };
-		D049EF47188CA63A00EF8672 /* SampleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleStore.h; sourceTree = "<group>"; };
-		D049EF48188CA63A00EF8672 /* SampleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleStore.m; sourceTree = "<group>"; };
 		D062D9401895D24E00AEDADA /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = include/AWSiOSSDK.framework; sourceTree = "<group>"; };
 		D065E04018A5BD7C000F78C2 /* LocalLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D069CE5D183C716D0065B65F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -98,14 +84,6 @@
 		D08A762C188DBDEC002F948C /* LibraryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryView.h; sourceTree = "<group>"; };
 		D08A762D188DBDEC002F948C /* LibraryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryView.m; sourceTree = "<group>"; };
 		D08A762F188DBDFB002F948C /* LibraryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryView.xib; sourceTree = "<group>"; };
-		D0969B501851C142008C4BD5 /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteWrapper.h; sourceTree = "<group>"; };
-		D0969B511851C142008C4BD5 /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteWrapper.m; sourceTree = "<group>"; };
-		D0B0B18A18A0620A00B2DE31 /* ZumeroUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZumeroUtilsTests.m; sourceTree = "<group>"; };
-		D0B1B73F189CA38200052443 /* LibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectStore.h; sourceTree = "<group>"; };
-		D0B1B743189CA50200052443 /* ZumeroLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZumeroLibraryObjectStore.h; sourceTree = "<group>"; };
-		D0B1B744189CA50200052443 /* ZumeroLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZumeroLibraryObjectStore.m; sourceTree = "<group>"; };
-		D0B1B746189CE9BE00052443 /* ZumeroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZumeroUtils.h; sourceTree = "<group>"; };
-		D0B1B747189CE9BE00052443 /* ZumeroUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZumeroUtils.m; sourceTree = "<group>"; };
 		D0C076B6188AFB9200B3D48E /* Source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
 		D0C076B7188AFB9200B3D48E /* Source.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Source.m; sourceTree = "<group>"; };
 		D0C076B9188AFBA600B3D48E /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
@@ -198,9 +176,7 @@
 				D729BCFB181C1FC600F762A3 /* Cocoa.framework in Frameworks */,
 				D02E874018519C7B00B15316 /* CFNetwork.framework in Frameworks */,
 				D062D9411895D24E00AEDADA /* AWSiOSSDK.framework in Frameworks */,
-				D02E874218519C8700B15316 /* libz.dylib in Frameworks */,
 				D069CE5E183C716D0065B65F /* libsqlite3.dylib in Frameworks */,
-				D0161C71189C53310032F4BE /* libLibZumeroCloudAPI.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				D065E03F18A5BD50000F78C2 /* LocalLibraryObjectStore */,
-				D0B0B18918A061CE00B2DE31 /* ZumeroLibraryObjectStore Tests */,
 			);
 			name = LibraryObjectStore;
 			sourceTree = "<group>";
@@ -244,14 +219,6 @@
 			name = LocalLibraryObjectStore;
 			sourceTree = "<group>";
 		};
-		D0B0B18918A061CE00B2DE31 /* ZumeroLibraryObjectStore Tests */ = {
-			isa = PBXGroup;
-			children = (
-				D0B0B18A18A0620A00B2DE31 /* ZumeroUtilsTests.m */,
-			);
-			name = "ZumeroLibraryObjectStore Tests";
-			sourceTree = "<group>";
-		};
 		D0B1B73E189CA36A00052443 /* LibraryObjectStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,21 +226,8 @@
 				D0DBCB5F18A478E100FAA428 /* LocalLibraryObjectStore.m */,
 				D0DBCB6118A478F500FAA428 /* Abstract Classes */,
 				D0DBCB6218A4790B00FAA428 /* SimpleDBLibraryObjectStore */,
-				D0B1B742189CA38C00052443 /* ZumeroLibraryObjectStore */,
-				D0B1B73F189CA38200052443 /* LibraryObjectStore.h */,
 			);
 			name = LibraryObjectStore;
-			sourceTree = "<group>";
-		};
-		D0B1B742189CA38C00052443 /* ZumeroLibraryObjectStore */ = {
-			isa = PBXGroup;
-			children = (
-				D0B1B743189CA50200052443 /* ZumeroLibraryObjectStore.h */,
-				D0B1B744189CA50200052443 /* ZumeroLibraryObjectStore.m */,
-				D0B1B746189CE9BE00052443 /* ZumeroUtils.h */,
-				D0B1B747189CE9BE00052443 /* ZumeroUtils.m */,
-			);
-			name = ZumeroLibraryObjectStore;
 			sourceTree = "<group>";
 		};
 		D0C076B1188AFAC300B3D48E /* Model */ = {
@@ -322,10 +276,6 @@
 				D7965DA318A35D40009271FB /* HardcodedCredentialsProvider.m */,
 				D0B1B73E189CA36A00052443 /* LibraryObjectStore */,
 				D70122EC188E2FF000057537 /* ImageStore */,
-				D049EF44188CA62F00EF8672 /* SourceStore.h */,
-				D049EF45188CA62F00EF8672 /* SourceStore.m */,
-				D049EF47188CA63A00EF8672 /* SampleStore.h */,
-				D049EF48188CA63A00EF8672 /* SampleStore.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -335,8 +285,6 @@
 			children = (
 				D0DBCB9F18A499C900FAA428 /* FMDB */,
 				D771DD3D189ED78B0011F815 /* Lumberjack */,
-				D0969B501851C142008C4BD5 /* SQLiteWrapper.h */,
-				D0969B511851C142008C4BD5 /* SQLiteWrapper.m */,
 				D74F8D6A18984E680024E672 /* ImageUtils.h */,
 				D74F8D6B18984E680024E672 /* ImageUtils.m */,
 			);
@@ -443,9 +391,7 @@
 		D729BCF9181C1FC600F762A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D0161C70189C53310032F4BE /* libLibZumeroCloudAPI.a */,
 				D062D9401895D24E00AEDADA /* AWSiOSSDK.framework */,
-				D02E874118519C8700B15316 /* libz.dylib */,
 				D02E873F18519C7B00B15316 /* CFNetwork.framework */,
 				D069CE5D183C716D0065B65F /* libsqlite3.dylib */,
 				D729BCFA181C1FC600F762A3 /* Cocoa.framework */,
@@ -688,7 +634,6 @@
 			files = (
 				D771DD40189ED7960011F815 /* DDLog.m in Sources */,
 				D771DD49189ED7AE0011F815 /* DDFileLogger.m in Sources */,
-				D049EF49188CA63A00EF8672 /* SampleStore.m in Sources */,
 				D08A762E188DBDEC002F948C /* LibraryView.m in Sources */,
 				D74F8D6C18984E680024E672 /* ImageUtils.m in Sources */,
 				D72590D9189C586E0018122D /* AbstractImageStore.m in Sources */,
@@ -699,7 +644,6 @@
 				D729BD0E181C1FC600F762A3 /* AppDelegate.m in Sources */,
 				D7965DA718A3604D009271FB /* LocalTransactionCache.m in Sources */,
 				D771DD46189ED7A50011F815 /* DDTTYLogger.m in Sources */,
-				D0B1B745189CA50200052443 /* ZumeroLibraryObjectStore.m in Sources */,
 				D74F8D69189846010024E672 /* LocalImageStore.m in Sources */,
 				D0DBCB6B18A47D5000FAA428 /* SimpleDBLibraryObjectStore.m in Sources */,
 				D7608DC51894B76900F54869 /* S3Utils.m in Sources */,
@@ -718,10 +662,7 @@
 				D0DBCBB118A49B6200FAA428 /* SimpleDBCredentialsProvider.m in Sources */,
 				D0C076BB188AFBA600B3D48E /* Sample.m in Sources */,
 				D72590DD189C5A5D0018122D /* AbstractCloudImageStore.m in Sources */,
-				D0969B521851C142008C4BD5 /* SQLiteWrapper.m in Sources */,
 				D0DBCBAD18A499D900FAA428 /* FMDatabaseQueue.m in Sources */,
-				D049EF46188CA62F00EF8672 /* SourceStore.m in Sources */,
-				D0B1B748189CE9BE00052443 /* ZumeroUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,7 +672,6 @@
 			files = (
 				D7224213189B844800832A06 /* LocalImageStoreTests.m in Sources */,
 				D7965DAA18A3679E009271FB /* LocalTransactionCacheTests.m in Sources */,
-				D0B0B18B18A0620A00B2DE31 /* ZumeroUtilsTests.m in Sources */,
 				D72590E0189C5F760018122D /* AbstractImageStoreTests.m in Sources */,
 				D0C076C1188B03C500B3D48E /* OriginalSampleConstantsTests.m in Sources */,
 				D7608DC118949A9200F54869 /* S3ImageStoreTests.m in Sources */,
@@ -867,7 +807,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
-					/Users/Justin/Projects/ProjectCrystalBlueOSX/ProjectCrystalBlueOSX/include,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -894,7 +833,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
-					/Users/Justin/Projects/ProjectCrystalBlueOSX/ProjectCrystalBlueOSX/include,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
