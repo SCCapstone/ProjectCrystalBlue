@@ -8,12 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
-		D72405E018A600D300EA2DD2 /* libLibZumeroCloudAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DF18A600D300EA2DD2 /* libLibZumeroCloudAPI.a */; };
 		D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E318A6010E00EA2DD2 /* CFNetwork.framework */; };
-		D72405E618A6011C00EA2DD2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E518A6011C00EA2DD2 /* libz.dylib */; };
 		D72405EB18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72405EA18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m */; };
-		D72405EE18A6020000EA2DD2 /* ZumeroUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72405ED18A6020000EA2DD2 /* ZumeroUtilsTests.m */; };
 		D72405F218A6022500EA2DD2 /* AbstractImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72405F118A6022500EA2DD2 /* AbstractImageStoreTests.m */; };
 		D72405F618A6023B00EA2DD2 /* big_test_image_4096-4096.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D72405F418A6023B00EA2DD2 /* big_test_image_4096-4096.jpg */; };
 		D72405F718A6023B00EA2DD2 /* LocalImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72405F518A6023B00EA2DD2 /* LocalImageStoreTests.m */; };
@@ -46,11 +43,8 @@
 		D78ACC4A18A5FDD9006084D6 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC4418A5FDD9006084D6 /* DDTTYLogger.m */; };
 		D78ACC4B18A5FDD9006084D6 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC4618A5FDD9006084D6 /* DDASLLogger.m */; };
 		D78ACC4C18A5FDD9006084D6 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC4818A5FDD9006084D6 /* DDLog.m */; };
-		D78ACC5118A5FDE9006084D6 /* SQLiteWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC4E18A5FDE9006084D6 /* SQLiteWrapper.m */; };
 		D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC5018A5FDE9006084D6 /* ImageUtils.m */; };
 		D78ACC5518A5FDFD006084D6 /* LocalTransactionCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC5418A5FDFD006084D6 /* LocalTransactionCache.m */; };
-		D78ACC5A18A5FE04006084D6 /* SourceStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC5718A5FE04006084D6 /* SourceStore.m */; };
-		D78ACC5B18A5FE04006084D6 /* SampleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC5918A5FE04006084D6 /* SampleStore.m */; };
 		D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC5E18A5FE13006084D6 /* LocalImageStore.m */; };
 		D78ACC6518A5FE21006084D6 /* AbstractImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC6218A5FE21006084D6 /* AbstractImageStore.m */; };
 		D78ACC6618A5FE21006084D6 /* AbstractCloudImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC6418A5FE21006084D6 /* AbstractCloudImageStore.m */; };
@@ -63,8 +57,6 @@
 		D78ACC7F18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC7D18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m */; };
 		D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC8218A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m */; };
 		D78ACC8618A5FE8E006084D6 /* SimpleDBCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC8418A5FE8E006084D6 /* SimpleDBCredentialsProvider.m */; };
-		D78ACC8C18A5FE9D006084D6 /* ZumeroLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC8918A5FE9D006084D6 /* ZumeroLibraryObjectStore.m */; };
-		D78ACC8D18A5FE9D006084D6 /* ZumeroUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC8B18A5FE9D006084D6 /* ZumeroUtils.m */; };
 		D78ACC9818A5FEB6006084D6 /* LibraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC8F18A5FEB6006084D6 /* LibraryObject.m */; };
 		D78ACC9918A5FEB6006084D6 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9118A5FEB6006084D6 /* Source.m */; };
 		D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9318A5FEB6006084D6 /* Sample.m */; };
@@ -84,12 +76,9 @@
 
 /* Begin PBXFileReference section */
 		D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = include/AWSiOSSDK.framework; sourceTree = "<group>"; };
-		D72405DF18A600D300EA2DD2 /* libLibZumeroCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLibZumeroCloudAPI.a; path = include/libLibZumeroCloudAPI.a; sourceTree = "<group>"; };
 		D72405E118A6010000EA2DD2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D72405E318A6010E00EA2DD2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		D72405E518A6011C00EA2DD2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D72405EA18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStoreTests.m; sourceTree = "<group>"; };
-		D72405ED18A6020000EA2DD2 /* ZumeroUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZumeroUtilsTests.m; sourceTree = "<group>"; };
 		D72405F118A6022500EA2DD2 /* AbstractImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractImageStoreTests.m; sourceTree = "<group>"; };
 		D72405F418A6023B00EA2DD2 /* big_test_image_4096-4096.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "big_test_image_4096-4096.jpg"; sourceTree = "<group>"; };
 		D72405F518A6023B00EA2DD2 /* LocalImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalImageStoreTests.m; sourceTree = "<group>"; };
@@ -139,16 +128,10 @@
 		D78ACC4618A5FDD9006084D6 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
 		D78ACC4718A5FDD9006084D6 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
 		D78ACC4818A5FDD9006084D6 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
-		D78ACC4D18A5FDE9006084D6 /* SQLiteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteWrapper.h; sourceTree = "<group>"; };
-		D78ACC4E18A5FDE9006084D6 /* SQLiteWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteWrapper.m; sourceTree = "<group>"; };
 		D78ACC4F18A5FDE9006084D6 /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		D78ACC5018A5FDE9006084D6 /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		D78ACC5318A5FDFD006084D6 /* LocalTransactionCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalTransactionCache.h; sourceTree = "<group>"; };
 		D78ACC5418A5FDFD006084D6 /* LocalTransactionCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTransactionCache.m; sourceTree = "<group>"; };
-		D78ACC5618A5FE04006084D6 /* SourceStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceStore.h; sourceTree = "<group>"; };
-		D78ACC5718A5FE04006084D6 /* SourceStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceStore.m; sourceTree = "<group>"; };
-		D78ACC5818A5FE04006084D6 /* SampleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleStore.h; sourceTree = "<group>"; };
-		D78ACC5918A5FE04006084D6 /* SampleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleStore.m; sourceTree = "<group>"; };
 		D78ACC5D18A5FE13006084D6 /* LocalImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalImageStore.h; sourceTree = "<group>"; };
 		D78ACC5E18A5FE13006084D6 /* LocalImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalImageStore.m; sourceTree = "<group>"; };
 		D78ACC6118A5FE21006084D6 /* AbstractImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractImageStore.h; sourceTree = "<group>"; };
@@ -164,7 +147,6 @@
 		D78ACC7218A5FE44006084D6 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image.png; sourceTree = "<group>"; };
 		D78ACC7518A5FE68006084D6 /* LocalLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalLibraryObjectStore.h; sourceTree = "<group>"; };
 		D78ACC7618A5FE68006084D6 /* LocalLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalLibraryObjectStore.m; sourceTree = "<group>"; };
-		D78ACC7818A5FE6E006084D6 /* LibraryObjectStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryObjectStore.h; sourceTree = "<group>"; };
 		D78ACC7A18A5FE7C006084D6 /* AbstractLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractLibraryObjectStore.h; sourceTree = "<group>"; };
 		D78ACC7B18A5FE7C006084D6 /* AbstractLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractLibraryObjectStore.m; sourceTree = "<group>"; };
 		D78ACC7C18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCloudLibraryObjectStore.h; sourceTree = "<group>"; };
@@ -173,10 +155,6 @@
 		D78ACC8218A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBLibraryObjectStore.m; sourceTree = "<group>"; };
 		D78ACC8318A5FE8E006084D6 /* SimpleDBCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBCredentialsProvider.h; sourceTree = "<group>"; };
 		D78ACC8418A5FE8E006084D6 /* SimpleDBCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBCredentialsProvider.m; sourceTree = "<group>"; };
-		D78ACC8818A5FE9D006084D6 /* ZumeroLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZumeroLibraryObjectStore.h; sourceTree = "<group>"; };
-		D78ACC8918A5FE9D006084D6 /* ZumeroLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZumeroLibraryObjectStore.m; sourceTree = "<group>"; };
-		D78ACC8A18A5FE9D006084D6 /* ZumeroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZumeroUtils.h; sourceTree = "<group>"; };
-		D78ACC8B18A5FE9D006084D6 /* ZumeroUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZumeroUtils.m; sourceTree = "<group>"; };
 		D78ACC8E18A5FEB6006084D6 /* LibraryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObject.h; sourceTree = "<group>"; };
 		D78ACC8F18A5FEB6006084D6 /* LibraryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObject.m; sourceTree = "<group>"; };
 		D78ACC9018A5FEB6006084D6 /* Source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
@@ -197,9 +175,7 @@
 				D7439E0F18A5FC53000EE008 /* Cocoa.framework in Frameworks */,
 				D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */,
 				D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */,
-				D72405E618A6011C00EA2DD2 /* libz.dylib in Frameworks */,
 				D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */,
-				D72405E018A600D300EA2DD2 /* libLibZumeroCloudAPI.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +205,6 @@
 		D72405E818A601D600EA2DD2 /* LibraryObjectStore */ = {
 			isa = PBXGroup;
 			children = (
-				D72405EC18A601F400EA2DD2 /* ZumeroLibraryObjectStore */,
 				D72405E918A601E200EA2DD2 /* LocalLibraryObjectStore */,
 			);
 			name = LibraryObjectStore;
@@ -241,14 +216,6 @@
 				D72405EA18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m */,
 			);
 			name = LocalLibraryObjectStore;
-			sourceTree = "<group>";
-		};
-		D72405EC18A601F400EA2DD2 /* ZumeroLibraryObjectStore */ = {
-			isa = PBXGroup;
-			children = (
-				D72405ED18A6020000EA2DD2 /* ZumeroUtilsTests.m */,
-			);
-			name = ZumeroLibraryObjectStore;
 			sourceTree = "<group>";
 		};
 		D72405EF18A6020D00EA2DD2 /* ImageStore */ = {
@@ -326,10 +293,8 @@
 		D7439E0D18A5FC53000EE008 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D72405E518A6011C00EA2DD2 /* libz.dylib */,
 				D72405E318A6010E00EA2DD2 /* CFNetwork.framework */,
 				D72405E118A6010000EA2DD2 /* libsqlite3.dylib */,
-				D72405DF18A600D300EA2DD2 /* libLibZumeroCloudAPI.a */,
 				D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */,
 				D7439E0E18A5FC53000EE008 /* Cocoa.framework */,
 				D7439E2D18A5FC53000EE008 /* XCTest.framework */,
@@ -351,11 +316,11 @@
 		D7439E1418A5FC53000EE008 /* ProjectCrystalBlueOSX */ = {
 			isa = PBXGroup;
 			children = (
-				D78ACC2F18A5FD9B006084D6 /* ViewController */,
-				D78ACC2E18A5FD97006084D6 /* Utility */,
-				D78ACC2D18A5FD92006084D6 /* Store */,
-				D78ACC2C18A5FD85006084D6 /* Model */,
 				D78ACC2B18A5FD7F006084D6 /* Controller */,
+				D78ACC2C18A5FD85006084D6 /* Model */,
+				D78ACC2D18A5FD92006084D6 /* Store */,
+				D78ACC2E18A5FD97006084D6 /* Utility */,
+				D78ACC2F18A5FD9B006084D6 /* ViewController */,
 				D7439E2018A5FC53000EE008 /* AppDelegate.h */,
 				D7439E2118A5FC53000EE008 /* AppDelegate.m */,
 				D7439E2318A5FC53000EE008 /* MainMenu.xib */,
@@ -429,10 +394,6 @@
 				D78ACC5C18A5FE06006084D6 /* ImageStore */,
 				D78ACC5318A5FDFD006084D6 /* LocalTransactionCache.h */,
 				D78ACC5418A5FDFD006084D6 /* LocalTransactionCache.m */,
-				D78ACC5618A5FE04006084D6 /* SourceStore.h */,
-				D78ACC5718A5FE04006084D6 /* SourceStore.m */,
-				D78ACC5818A5FE04006084D6 /* SampleStore.h */,
-				D78ACC5918A5FE04006084D6 /* SampleStore.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -440,8 +401,6 @@
 		D78ACC2E18A5FD97006084D6 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				D78ACC4D18A5FDE9006084D6 /* SQLiteWrapper.h */,
-				D78ACC4E18A5FDE9006084D6 /* SQLiteWrapper.m */,
 				D78ACC4F18A5FDE9006084D6 /* ImageUtils.h */,
 				D78ACC5018A5FDE9006084D6 /* ImageUtils.m */,
 				D78ACC4018A5FDC8006084D6 /* Lumberjack */,
@@ -539,10 +498,8 @@
 		D78ACC7418A5FE5F006084D6 /* LibraryObjectStore */ = {
 			isa = PBXGroup;
 			children = (
-				D78ACC8718A5FE91006084D6 /* ZumeroLibraryObjectStore */,
 				D78ACC8018A5FE83006084D6 /* SimpleDBLibraryObjectStore */,
 				D78ACC7918A5FE71006084D6 /* Abstract Classes */,
-				D78ACC7818A5FE6E006084D6 /* LibraryObjectStore.h */,
 				D78ACC7518A5FE68006084D6 /* LocalLibraryObjectStore.h */,
 				D78ACC7618A5FE68006084D6 /* LocalLibraryObjectStore.m */,
 			);
@@ -569,17 +526,6 @@
 				D78ACC8418A5FE8E006084D6 /* SimpleDBCredentialsProvider.m */,
 			);
 			name = SimpleDBLibraryObjectStore;
-			sourceTree = "<group>";
-		};
-		D78ACC8718A5FE91006084D6 /* ZumeroLibraryObjectStore */ = {
-			isa = PBXGroup;
-			children = (
-				D78ACC8818A5FE9D006084D6 /* ZumeroLibraryObjectStore.h */,
-				D78ACC8918A5FE9D006084D6 /* ZumeroLibraryObjectStore.m */,
-				D78ACC8A18A5FE9D006084D6 /* ZumeroUtils.h */,
-				D78ACC8B18A5FE9D006084D6 /* ZumeroUtils.m */,
-			);
-			name = ZumeroLibraryObjectStore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -688,7 +634,6 @@
 				D78ACC3B18A5FDC0006084D6 /* FMDatabase.m in Sources */,
 				D78ACC6F18A5FE2E006084D6 /* S3Utils.m in Sources */,
 				D78ACC5518A5FDFD006084D6 /* LocalTransactionCache.m in Sources */,
-				D78ACC8C18A5FE9D006084D6 /* ZumeroLibraryObjectStore.m in Sources */,
 				D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */,
 				D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
@@ -699,16 +644,12 @@
 				D78ACC4B18A5FDD9006084D6 /* DDASLLogger.m in Sources */,
 				D78ACC6E18A5FE2E006084D6 /* S3ImageStore.m in Sources */,
 				D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */,
-				D78ACC5118A5FDE9006084D6 /* SQLiteWrapper.m in Sources */,
 				D78ACC9818A5FEB6006084D6 /* LibraryObject.m in Sources */,
-				D78ACC5B18A5FE04006084D6 /* SampleStore.m in Sources */,
 				D78ACC7E18A5FE7C006084D6 /* AbstractLibraryObjectStore.m in Sources */,
-				D78ACC8D18A5FE9D006084D6 /* ZumeroUtils.m in Sources */,
 				D78ACC4C18A5FDD9006084D6 /* DDLog.m in Sources */,
 				D78ACC3F18A5FDC0006084D6 /* FMResultSet.m in Sources */,
 				D78ACC6518A5FE21006084D6 /* AbstractImageStore.m in Sources */,
 				D78ACC7718A5FE68006084D6 /* LocalLibraryObjectStore.m in Sources */,
-				D78ACC5A18A5FE04006084D6 /* SourceStore.m in Sources */,
 				D78ACC3D18A5FDC0006084D6 /* FMDatabasePool.m in Sources */,
 				D78ACC7F18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m in Sources */,
 				D78ACC8618A5FE8E006084D6 /* SimpleDBCredentialsProvider.m in Sources */,
@@ -731,7 +672,6 @@
 				D72405FD18A6024900EA2DD2 /* S3ImageStoreTests.m in Sources */,
 				D72405EB18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m in Sources */,
 				D724060618A6028300EA2DD2 /* SimpleDBExample.m in Sources */,
-				D72405EE18A6020000EA2DD2 /* ZumeroUtilsTests.m in Sources */,
 				D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */,
 				D72405F218A6022500EA2DD2 /* AbstractImageStoreTests.m in Sources */,
 				D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */,

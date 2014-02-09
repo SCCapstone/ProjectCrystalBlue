@@ -15,6 +15,9 @@
 
 - (id)initWithKey:(NSString *)aKey
 AndWithAttributes:(NSArray *)attributeNames
-    AndWithValues:(NSArray *)attributeValues;
+        AndValues:(NSArray *)attributeValues;
+
+- (id)initWithKey:(NSString *)aKey
+AndWithAttributeDictionary:(NSDictionary *)attr;
 
 @end
