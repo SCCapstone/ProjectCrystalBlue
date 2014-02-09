@@ -33,7 +33,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [[NSFileManager defaultManager] fileExistsAtPath:localDirectory isDirectory:&imgDirectoryExists];
         if (!imgDirectoryExists) {
             [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
-                                      withIntermediateDirectories:NO
+                                      withIntermediateDirectories:YES
                                                        attributes:nil
                                                             error:nil];
         }
