@@ -39,9 +39,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return nil;
 }
 
-- (BOOL)putLibraryObject:(LibraryObject *)image
-                  forKey:(NSString *)key
+- (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                IntoTable:(NSString *)tableName
+{
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    return NO;
+}
+
+- (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
+                  IntoTable:(NSString *)tableName
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return NO;

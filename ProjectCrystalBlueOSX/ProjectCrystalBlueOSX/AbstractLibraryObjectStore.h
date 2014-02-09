@@ -20,7 +20,7 @@
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
                                 FromTable:(NSString *)tableName;
 
-/** Add a new image to the CloudLibraryObjectStore with the given unique key.
+/** Add a new library object to the LibraryObjectStore with the given unique key.
  *
  *  The key absolutely positively *MUST* be unique across all devices.
  *
@@ -28,20 +28,30 @@
  *  Generally, the only reason this should be unsuccessful is if the key is not unique
  *  or the device disk cannot be written to.
  *
- *  This only guarantees that the library object has been added to a LOCAL image storage; not necessarily
- *  to the cloud storage location.
+ *  This only guarantees that the library object has been added to a LOCAL library object 
+ *  store; not necessarily to the cloud storage location.
  */
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
-                  forKey:(NSString *)key
                IntoTable:(NSString *)tableName;
+
+/** Updates an existing library object in the LibraryObjectStore with the given key. Returns
+ *  whether the update is successful.
+ *
+ *  Currently will update check against existing libraryObject and only update the attributes
+ *  whose value has changed.
+ *
+ *  Will return NO if the object does not exist in the specified table.
+ */
+- (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
+                  IntoTable:(NSString *)tableName;
 
 /** Delete a library object from the LibraryObjectStore. Return whether the deletion is successful.
  */
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName;
 
-/** Checks if the CloudLibraryObjectStore already has a library object for the given key.
- *  For example, this should always be used before assigning a key to a new image.
+/** Checks if the LibraryObjectStore already has a library object for the given key.
+ *  For example, this should always be used before assigning a key to a new library object.
  */
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
                         FromTable:(NSString *)tableName;

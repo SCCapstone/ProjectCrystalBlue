@@ -69,7 +69,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         FMResultSet *results = [localDatabase executeQuery:sql];
         
         if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to get library object from database. Error: %@", CLASS_NAME, [localDatabase lastError]);
+            DDLogCError(@"%@: Failed to get library object from local database. Error: %@", CLASS_NAME, [localDatabase lastError]);
         
         // Have the library object's attributes
         else if ([results next])
@@ -88,7 +88,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
-                  forKey:(NSString *)key
                IntoTable:(NSString *)tableName
 {
     // Setup sql query
@@ -104,15 +103,65 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         success = [localDatabase executeUpdate:sql withParameterDictionary:[libraryObject attributes]];
         
         if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to put library object into database. Error: %@", CLASS_NAME, [localDatabase lastError]);
+            DDLogCError(@"%@: Failed to put library object into local database. Error: %@", CLASS_NAME, [localDatabase lastError]);
     }];
     
     return success;
 }
 
+- (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
+                  IntoTable:(NSString *)tableName
+{
+    LibraryObject *oldObject = [self getLibraryObjectForKey:[libraryObject key] FromTable:tableName];
+    if (!oldObject) {
+        DDLogCError(@"%@: Cannot update non-existent object!", CLASS_NAME);
+        return NO;
+    }
+    
+    NSArray *attrKeys = [[libraryObject attributes] allKeys];
+    NSString *setSql;
+    
+    // Build the sql command, only update attributes that have changed
+    for (int i=0; i<[attrKeys count]; i++) {
+        NSString *attrValue = [[libraryObject attributes] objectForKey:[attrKeys objectAtIndex:i]];
+        NSString *oldAttrValue = [[oldObject attributes] objectForKey:[attrKeys objectAtIndex:i]];
+        
+        if (![attrValue isEqualToString:oldAttrValue]) {
+            if (!setSql)
+                setSql = [NSString stringWithFormat:@"SET %@='%@'", [attrKeys objectAtIndex:i], attrValue];
+            else
+                setSql = [setSql stringByAppendingString:[NSString stringWithFormat:@", %@='%@'",
+                                                          [attrKeys objectAtIndex:i], attrValue]];
+        }
+    }
+    
+    // No attributes have changed
+    if (!setSql) {
+        DDLogCInfo(@"%@: There were no attributes to update.", CLASS_NAME);
+        return YES;
+    }
+    
+    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ %@ WHERE key='%@'", tableName, setSql, [libraryObject key]];
+    
+    // Update the library object
+    __block BOOL isUpdated = NO;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        isUpdated = [localDatabase executeUpdate:sql];
+        
+        if ([localDatabase hadError])
+            DDLogCError(@"%@: Failed to update library object in local database. Error: %@", CLASS_NAME, [localDatabase lastError]);
+    }];
+    
+    return isUpdated;
+}
+
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName
 {
+    if (![self libraryObjectExistsForKey:key FromTable:tableName]) {
+        DDLogCError(@"%@: Library object attempting to delete does not exist in the local database", CLASS_NAME);
+        return NO;
+    }
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE key='%@'", tableName, key];
     
     // Check library object for key
@@ -121,7 +170,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         isDeleted = [localDatabase executeUpdate:sql];
         
         if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to delete library object from database. Error: %@", CLASS_NAME, [localDatabase lastError]);
+            DDLogCError(@"%@: Failed to delete library object from local database. Error: %@", CLASS_NAME, [localDatabase lastError]);
     }];
     
     return isDeleted;
@@ -138,7 +187,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         FMResultSet *results = [localDatabase executeQuery:sql];
         
         if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to get library object from database. Error: %@", CLASS_NAME, [localDatabase lastError]);
+            DDLogCError(@"%@: Failed to get library object from local database. Error: %@", CLASS_NAME, [localDatabase lastError]);
         
         // Have the library object's attributes
         else if ([results next])
@@ -151,22 +200,29 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (BOOL)setupTables
 {
-    __block BOOL success = NO;
+    __block BOOL sourceSuccess = NO;
+    __block BOOL sampleSuccess = NO;
     [localQueue inDeferredTransaction:^(FMDatabase *localDatabase, BOOL *rollback) {
         // Create source table
-        success = [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)",
+        sourceSuccess = [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)",
                                                 [SourceConstants tableName], [SourceConstants tableSchema]]];
-        // Create sample table
-        success = [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)",
-                                                [SampleConstants tableName], [SampleConstants tableSchema]]];
-        
         if ([localDatabase hadError]) {
             DDLogCError(@"%@: Failed to create source/sample tables. Error: %@", CLASS_NAME, [localDatabase lastError]);
             *rollback = YES;
+            return;
+        }
+        
+        // Create sample table
+        sampleSuccess = [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)",
+                                                [SampleConstants tableName], [SampleConstants tableSchema]]];
+        if ([localDatabase hadError]) {
+            DDLogCError(@"%@: Failed to create source/sample tables. Error: %@", CLASS_NAME, [localDatabase lastError]);
+            *rollback = YES;
+            return;
         }
     }];
     
-    return success;
+    return (sourceSuccess && sampleSuccess);
 }
 
 @end

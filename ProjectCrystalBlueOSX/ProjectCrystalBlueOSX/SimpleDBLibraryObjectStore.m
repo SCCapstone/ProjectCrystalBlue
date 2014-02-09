@@ -58,22 +58,27 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
-                  forKey:(NSString *)key
                IntoTable:(NSString *)tableName
 {
-    return [super putLibraryObject:libraryObject forKey:key IntoTable:tableName];
+    return [super putLibraryObject:libraryObject IntoTable:tableName];
+}
+
+- (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
+                  IntoTable:(NSString *)tableName
+{
+    return [super updateLibraryObject:libraryObject IntoTable:tableName];
 }
 
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName
 {
-    return NO;
+    return [super deleteLibraryObjectWithKey:key FromTable:tableName];
 }
 
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
                         FromTable:(NSString *)tableName
 {
-    return NO;
+    return [super libraryObjectExistsForKey:key FromTable:tableName];
 }
 
 - (BOOL)synchronizeWithCloud
