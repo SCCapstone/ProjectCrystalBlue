@@ -318,6 +318,8 @@
 			children = (
 				D7965DA518A3604D009271FB /* LocalTransactionCache.h */,
 				D7965DA618A3604D009271FB /* LocalTransactionCache.m */,
+				D7965DA218A35D40009271FB /* HardcodedCredentialsProvider.h */,
+				D7965DA318A35D40009271FB /* HardcodedCredentialsProvider.m */,
 				D0B1B73E189CA36A00052443 /* LibraryObjectStore */,
 				D70122EC188E2FF000057537 /* ImageStore */,
 				D049EF44188CA62F00EF8672 /* SourceStore.h */,
@@ -555,8 +557,6 @@
 				D7608DBA189496CA00F54869 /* S3ImageStore.m */,
 				D7608DC31894B76900F54869 /* S3Utils.h */,
 				D7608DC41894B76900F54869 /* S3Utils.m */,
-				D7965DA218A35D40009271FB /* HardcodedCredentialsProvider.h */,
-				D7965DA318A35D40009271FB /* HardcodedCredentialsProvider.m */,
 			);
 			name = S3ImageStore;
 			sourceTree = "<group>";

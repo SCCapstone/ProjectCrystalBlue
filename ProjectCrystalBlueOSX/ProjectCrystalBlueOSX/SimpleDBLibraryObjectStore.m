@@ -10,7 +10,7 @@
 #import "AbstractLibraryObjectStore.h"
 #import "LocalLibraryObjectStore.h"
 #import <AWSiOSSDK/SimpleDB/AmazonSimpleDBClient.h>
-#import "SimpleDBCredentialsProvider.h"
+#import "HardcodedCredentialsProvider.h"
 #import "LocalTransactionCache.h"
 #import "DDLog.h"
 
@@ -44,7 +44,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         dirtyKeys = [[LocalTransactionCache alloc] initInDirectory:directory
                                                       withFileName:@""];
         
-        NSObject<AmazonCredentialsProvider> *credentialsProvider = [[SimpleDBCredentialsProvider alloc] init];
+        NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
         simpleDBClient = [[AmazonSimpleDBClient alloc] initWithCredentialsProvider:credentialsProvider];
     }
     
