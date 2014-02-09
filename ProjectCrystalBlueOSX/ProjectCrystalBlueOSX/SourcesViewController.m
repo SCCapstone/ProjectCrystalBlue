@@ -65,4 +65,34 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return nil;
 }
 
+/*  These are methods that are called when the user clicks on the toolbar items.
+ *  Due to the way the Windows/Views are set up in the app, the toolbar is actually
+ *  part of the main menu window, not part of the SourcesView. So the AppDelegate will
+ *  actually pass messages to this ViewController.
+ */
+- (void)addNewSource
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+}
+
+- (void)removeSource
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+}
+
+- (void)editSourceMetadata
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+}
+
+- (void)viewSamples
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+}
+
+- (void)importExport
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+}
+
 @end

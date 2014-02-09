@@ -9,11 +9,22 @@
 #import <Cocoa/Cocoa.h>
 #import "AbstractLibraryObjectStore.h"
 
-@interface SourcesViewController : NSViewController <NSTableViewDataSource>
+@interface SourcesViewController : NSViewController <NSTableViewDataSource, NSToolbarDelegate>
 
 @property (weak) IBOutlet NSTableView *sourceTable;
 
 @property AbstractLibraryObjectStore *sourcesStore;
 @property AbstractLibraryObjectStore *samplesStore;
+
+/*  These are methods that are called when the user clicks on the toolbar items.
+ *  Due to the way the Windows/Views are set up in the app, the toolbar is actually
+ *  part of the main menu window, not part of the SourcesView. So the AppDelegate will
+ *  actually pass messages to this ViewController.
+ */
+- (void)addNewSource;
+- (void)removeSource;
+- (void)editSourceMetadata;
+- (void)viewSamples;
+- (void)importExport;
 
 @end

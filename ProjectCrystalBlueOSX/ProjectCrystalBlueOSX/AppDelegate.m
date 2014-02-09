@@ -34,10 +34,34 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 /// Set up and return the initial view controller for the Application.
-- (NSViewController *)getInitialViewController
+- (SourcesViewController *)getInitialViewController
 {
     SourcesViewController *libraryView = [[SourcesViewController alloc] init];
     return libraryView;
 }
 
+
+/* Since the toolbar resides in the main window (not in the libraryview) we have to pass these
+ * messages manually from the app delegate to the view controller.
+ */
+
+- (IBAction)newSource:(id)sender {
+    [initialViewController addNewSource];
+}
+
+- (IBAction)editSource:(id)sender {
+    [initialViewController editSourceMetadata];
+}
+
+- (IBAction)viewSamples:(id)sender {
+    [initialViewController viewSamples];
+}
+
+- (IBAction)importExport:(id)sender {
+    [initialViewController importExport];
+}
+
+- (IBAction)deleteSource:(id)sender {
+    [initialViewController removeSource];
+}
 @end
