@@ -50,7 +50,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (!sourcesStore) {
         return 0;
     } else {
-        return [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants sourceTableName]] count];
+        return [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] count];
     }
 }
 
@@ -59,7 +59,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     if ([tableView isEqualTo:self.sourceTable]) {
-        Source *source = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants sourceTableName]] objectAtIndex:row];
+        Source *source = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:row];
         return [source key];
     }
     return nil;
