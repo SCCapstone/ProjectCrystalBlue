@@ -11,7 +11,7 @@
 #import "LocalImageStore.h"
 #import "S3ImageStore.h"
 
-#define IMAGE_DIRECTORY @"project-crystal-blue-temp-test"
+#define IMAGE_DIRECTORY @"project-crystal-blue-test-temp"
 #define DIRTY_KEY_FILE_NAME @"dirty_s3_image_keys.txt" // make sure this matches the filename in S3ImageStore
 
 @interface S3ImageStoreTests : XCTestCase
