@@ -22,7 +22,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     return [super initWithKey:key
             AndWithAttributes:[SampleConstants attributeNames]
-                AndWithValues:attributeValues];
+                    AndValues:attributeValues];
 }
 
 - (NSString *)sourceKey

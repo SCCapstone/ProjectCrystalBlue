@@ -22,7 +22,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (id)initWithKey:(NSString *)aKey
 AndWithAttributes:(NSArray *)attributeNames
-    AndWithValues:(NSArray *)attributeValues
+        AndValues:(NSArray *)attributeValues
 {
     self = [super init];
     if (self)
@@ -30,9 +30,26 @@ AndWithAttributes:(NSArray *)attributeNames
         if ([attributeNames count] != [attributeValues count])
             [NSException raise:@"Invalid attribute constants."
                         format:@"attributeNames is of length %lu and attributeDefaultValues is of length %lu", (unsigned long)[attributeNames count], (unsigned long)[attributeValues count]];
-        key = aKey;
+        key = [aKey copy];
         attributes = [[NSMutableDictionary alloc] initWithObjects:attributeValues
                                                           forKeys:attributeNames];
+        // Make sure key is set correctly
+        [attributes setObject:key forKey:@"key"];
+    }
+    return self;
+}
+
+- (id)initWithKey:(NSString *)aKey
+AndWithAttributeDictionary:(NSDictionary *)attr
+{
+    self = [super init];
+    if (self)
+    {
+        key = [aKey copy];
+        attributes = [attr mutableCopy];
+        
+        // Make sure key is set correctly
+        [attributes setObject:key forKey:@"key"];
     }
     return self;
 }

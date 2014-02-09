@@ -10,7 +10,7 @@
 #import "AbstractLibraryObjectStore.h"
 #import "LocalLibraryObjectStore.h"
 #import <AWSiOSSDK/SimpleDB/AmazonSimpleDBClient.h>
-#import "SimpleDBCredentialsProvider.h"
+#import "HardcodedCredentialsProvider.h"
 #import "LocalTransactionCache.h"
 #import "DDLog.h"
 
@@ -44,7 +44,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         dirtyKeys = [[LocalTransactionCache alloc] initInDirectory:directory
                                                       withFileName:@""];
         
-        NSObject<AmazonCredentialsProvider> *credentialsProvider = [[SimpleDBCredentialsProvider alloc] init];
+        NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
         simpleDBClient = [[AmazonSimpleDBClient alloc] initWithCredentialsProvider:credentialsProvider];
     }
     
@@ -52,28 +52,43 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
-                                FromTable:(NSString *)table
+                                FromTable:(NSString *)tableName
 {
-    return [super getLibraryObjectForKey:key FromTable:table];
+    return [super getLibraryObjectForKey:key FromTable:tableName];
+}
+
+- (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName
+{
+    return [super getAllLibraryObjectsFromTable:tableName];
 }
 
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
-                  forKey:(NSString *)key
-               IntoTable:(NSString *)table
+               IntoTable:(NSString *)tableName
 {
-    return [super putLibraryObject:libraryObject forKey:key IntoTable:table];
+    return [super putLibraryObject:libraryObject IntoTable:tableName];
+}
+
+- (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
+                  IntoTable:(NSString *)tableName
+{
+    return [super updateLibraryObject:libraryObject IntoTable:tableName];
 }
 
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
-                         FromTable:(NSString *)table
+                         FromTable:(NSString *)tableName
 {
-    return NO;
+    return [super deleteLibraryObjectWithKey:key FromTable:tableName];
 }
 
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
-                        FromTable:(NSString *)table
+                        FromTable:(NSString *)tableName
 {
-    return NO;
+    return [super libraryObjectExistsForKey:key FromTable:tableName];
+}
+
+- (NSInteger)countInTable:(NSString *)tableName
+{
+    return [super countInTable:tableName];
 }
 
 - (BOOL)synchronizeWithCloud

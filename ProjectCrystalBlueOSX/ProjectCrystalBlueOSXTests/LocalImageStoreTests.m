@@ -10,7 +10,7 @@
 #import "AbstractImageStore.h"
 #import "LocalImageStore.h"
 
-#define IMAGE_DIRECTORY @"project-crystal-blue-temp-test"
+#define IMAGE_DIRECTORY @"project-crystal-blue-test-temp"
 
 @interface LocalImageStoreTests : XCTestCase
 

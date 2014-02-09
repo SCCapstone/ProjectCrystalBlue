@@ -33,38 +33,50 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
-                                FromTable:(NSString *)table
+                                FromTable:(NSString *)tableName
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return nil;
 }
 
-- (NSArray *)getAllLibraryObjectsFromTable:(NSString *)table
+- (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return nil;
 }
 
-- (BOOL)putLibraryObject:(LibraryObject *)image
-                  forKey:(NSString *)key
-               IntoTable:(NSString *)table
+- (BOOL)putLibraryObject:(LibraryObject *)libraryObject
+               IntoTable:(NSString *)tableName
+{
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    return NO;
+}
+
+- (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
+                  IntoTable:(NSString *)tableName
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return NO;
 }
 
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
-                         FromTable:(NSString *)table
+                         FromTable:(NSString *)tableName
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return NO;
 }
 
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
-                        FromTable:(NSString *)table
+                        FromTable:(NSString *)tableName
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
     return NO;
+}
+
+- (NSInteger)countInTable:(NSString *)tableName
+{
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    return 0;
 }
 
 @end

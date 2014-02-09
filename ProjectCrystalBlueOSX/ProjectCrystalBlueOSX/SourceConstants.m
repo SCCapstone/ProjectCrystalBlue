@@ -22,7 +22,7 @@ static NSString *const CONTINENT = @"continent";
 static NSString *const TYPE = @"type";
 static NSString *const LITHOLOGY = @"lithology";
 static NSString *const DEPOSYSTEM = @"deposystem";
-static NSString *const GROUP = @"group";
+static NSString *const GROUP = @"rockGroup";
 static NSString *const FORMATION = @"formation";
 static NSString *const MEMBER = @"member";
 static NSString *const REGION = @"region";
@@ -90,9 +90,54 @@ static NSString *const SOURCE_TABLE_NAME = @"test_source_table";
     return attributeDefaultValues;
 }
 
-+ (NSString *)sourceTableName
++ (NSString *)tableName
 {
     return SOURCE_TABLE_NAME;
+}
+
++ (NSString *)tableSchema
+{
+    static NSString *schema = nil;
+    if (!schema)
+    {
+        NSMutableArray *attrNames = [[self attributeNames] mutableCopy];
+        
+        // Append column info to each attribute name
+        for (int i=0; i<[attrNames count];  i++)
+        {
+            NSString *attr = [attrNames objectAtIndex:i];
+            [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT%@", attr, [attr isEqualToString:@"key"] ? @" PRIMARY KEY" : @""]];
+        }
+        schema = [attrNames componentsJoinedByString:@","];
+    }
+    return schema;
+}
+
++ (NSString *)tableColumns
+{
+    static NSString *columns = nil;
+    if (!columns)
+    {
+        columns = [[self attributeNames] componentsJoinedByString:@","];
+    }
+    return columns;
+}
+
++ (NSString *)tableValueKeys
+{
+    static NSString *valueKeys = nil;
+    if (!valueKeys)
+    {
+        NSMutableArray *attrNames = [[self attributeNames] mutableCopy];
+        
+        // Prepend ':' to each attribute name
+        for (int i=0; i<[attrNames count];  i++)
+        {
+            [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@":%@", [attrNames objectAtIndex:i]]];
+        }
+        valueKeys = [attrNames componentsJoinedByString:@","];
+    }
+    return valueKeys;
 }
 
 @end
