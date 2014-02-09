@@ -20,6 +20,10 @@
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
                                 FromTable:(NSString *)tableName;
 
+/** Retrieve all of the library objects from the table.
+ */
+- (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName;
+
 /** Add a new library object to the LibraryObjectStore with the given unique key.
  *
  *  The key absolutely positively *MUST* be unique across all devices.
@@ -55,5 +59,9 @@
  */
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
                         FromTable:(NSString *)tableName;
+
+/** Returns the number of rows in the table
+ */
+- (NSInteger)countInTable:(NSString *)tableName;
 
 @end

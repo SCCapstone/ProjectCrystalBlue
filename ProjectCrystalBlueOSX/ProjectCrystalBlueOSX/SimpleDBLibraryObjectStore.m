@@ -57,6 +57,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [super getLibraryObjectForKey:key FromTable:tableName];
 }
 
+- (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName
+{
+    return [super getAllLibraryObjectsFromTable:tableName];
+}
+
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                IntoTable:(NSString *)tableName
 {
@@ -79,6 +84,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                         FromTable:(NSString *)tableName
 {
     return [super libraryObjectExistsForKey:key FromTable:tableName];
+}
+
+- (NSInteger)countInTable:(NSString *)tableName
+{
+    return [super countInTable:tableName];
 }
 
 - (BOOL)synchronizeWithCloud

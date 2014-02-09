@@ -152,4 +152,44 @@
                  @"LocalLibraryObjectStore should have returned nil.");
 }
 
+- (void)testGetAllLibraryObjects
+{
+    AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
+                                                                                          WithDatabaseName:DATABASE_NAME];
+    // Setup some objects to store and make sure they don't already exist
+    NSString *sourceKey1 = @"rock1030";
+    Source *sourceObject1 = [[Source alloc] initWithKey:sourceKey1 AndWithValues:[SourceConstants attributeDefaultValues]];
+    BOOL putSuccess = [libraryObjectStore putLibraryObject:sourceObject1 IntoTable:[SourceConstants tableName]];
+    XCTAssertTrue(putSuccess, @"LibraryObjectStore failed to put the library object into the database.");
+    
+    NSString *sourceKey2 = @"rock1031";
+    Source *sourceObject2 = [[Source alloc] initWithKey:sourceKey2 AndWithValues:[SourceConstants attributeDefaultValues]];
+    putSuccess = [libraryObjectStore putLibraryObject:sourceObject2 IntoTable:[SourceConstants tableName]];
+    XCTAssertTrue(putSuccess, @"LibraryObjectStore failed to put the library object into the database.");
+    
+    // Get all of the objects
+    NSArray *allObjects = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
+    XCTAssertEqual([allObjects count], 2ul, @"All of the objects were not returned from LibraryObjectStore.");
+}
+
+- (void)testCountLibraryObjects
+{
+    AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
+                                                                                          WithDatabaseName:DATABASE_NAME];
+    // Setup some objects to store and make sure they don't already exist
+    NSString *sourceKey1 = @"rock1030";
+    Source *sourceObject1 = [[Source alloc] initWithKey:sourceKey1 AndWithValues:[SourceConstants attributeDefaultValues]];
+    BOOL putSuccess = [libraryObjectStore putLibraryObject:sourceObject1 IntoTable:[SourceConstants tableName]];
+    XCTAssertTrue(putSuccess, @"LibraryObjectStore failed to put the library object into the database.");
+    
+    NSString *sourceKey2 = @"rock1031";
+    Source *sourceObject2 = [[Source alloc] initWithKey:sourceKey2 AndWithValues:[SourceConstants attributeDefaultValues]];
+    putSuccess = [libraryObjectStore putLibraryObject:sourceObject2 IntoTable:[SourceConstants tableName]];
+    XCTAssertTrue(putSuccess, @"LibraryObjectStore failed to put the library object into the database.");
+    
+    // Get the count
+    NSInteger objectCount = [libraryObjectStore countInTable:[SourceConstants tableName]];
+    XCTAssertTrue(objectCount == 2, @"All of the objects were not returned from LibraryObjectStore.");
+}
+
 @end

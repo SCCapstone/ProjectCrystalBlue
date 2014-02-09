@@ -87,6 +87,35 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return [[Sample alloc] initWithKey:key AndWithAttributeDictionary:resultDictionary];
 }
 
+- (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@", tableName];
+    NSMutableArray *libraryObjects = [[NSMutableArray alloc] init];
+    
+    // Get all library objects from table
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        FMResultSet *results = [localDatabase executeQuery:sql];
+        
+        if ([localDatabase hadError]) {
+            DDLogCError(@"%@: Failed to get all library objects from local database. Error: %@", CLASS_NAME, [localDatabase lastError]);
+            [results close];
+            return;
+        }
+        
+        // Add all the results to the libraryObjects array
+        while ([results next]) {
+            NSString *key = [[results resultDictionary] objectForKey:@"key"];
+            if ([tableName isEqualToString:[SourceConstants tableName]])
+                [libraryObjects addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:[results resultDictionary]]];
+            else
+                [libraryObjects addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:[results resultDictionary]]];
+        }
+        [results close];
+    }];
+    
+    return libraryObjects;
+}
+
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                IntoTable:(NSString *)tableName
 {
@@ -196,6 +225,27 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }];
     
     return objectExists;
+}
+
+- (NSInteger)countInTable:(NSString *)tableName
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT count(*) FROM %@", tableName];
+    
+    // Get the number of rows in table
+    __block NSInteger count = 0;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        FMResultSet *results = [localDatabase executeQuery:sql];
+        
+        if ([localDatabase hadError])
+            DDLogCError(@"%@: Failed to get count from local database. Error: %@", CLASS_NAME, [localDatabase lastError]);
+        
+        // Have the library object's attributes
+        else if ([results next])
+            count = [[[results resultDictionary] objectForKey:@"count(*)"] integerValue];
+        [results close];
+    }];
+    
+    return count;
 }
 
 - (BOOL)setupTables
