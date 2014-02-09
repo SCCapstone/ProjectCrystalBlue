@@ -647,7 +647,7 @@
             </items>
         </menu>
         <window title="ProjectCrystalBlueOSX" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
@@ -655,6 +655,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="E68E68E5-2E5A-4C08-BAC9-30AD1CF46DFA" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="J4P-dR-7ZN">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="PKX-MR-cA5"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="beT-hw-8qx"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="ODW-9a-fUB"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="pif-mC-onD"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Dp6-sg-NoQ"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="PKX-MR-cA5"/>
+                    <toolbarItem reference="beT-hw-8qx"/>
+                    <toolbarItem reference="Dp6-sg-NoQ"/>
+                    <toolbarItem reference="ODW-9a-fUB"/>
+                </defaultToolbarItems>
+            </toolbar>
         </window>
         <customObject id="494" customClass="AppDelegate">
             <connections>

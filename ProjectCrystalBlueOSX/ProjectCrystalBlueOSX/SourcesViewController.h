@@ -7,10 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "AbstractLibraryObjectStore.h"
 
-@interface SourcesViewController : NSViewController
+@interface SourcesViewController : NSViewController <NSTableViewDataSource>
 
-- (IBAction)theButton:(id)sender;
+@property (weak) IBOutlet NSTableView *sourceTable;
 
+@property AbstractLibraryObjectStore *sourcesStore;
+@property AbstractLibraryObjectStore *samplesStore;
 
 @end

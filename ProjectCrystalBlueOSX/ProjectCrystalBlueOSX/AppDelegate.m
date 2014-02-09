@@ -28,9 +28,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSDate *now = [[NSDate alloc] init];
     DDLogInfo(@"Launched app %@", now);
     
-    initialViewController = [[SourcesViewController alloc] init];
+    initialViewController = [self getInitialViewController];
     NSView *initialView = [initialViewController view];
     [self.window setContentView:initialView];
+}
+
+/// Set up and return the initial view controller for the Application.
+- (NSViewController *)getInitialViewController
+{
+    SourcesViewController *libraryView = [[SourcesViewController alloc] init];
+    return libraryView;
 }
 
 @end
