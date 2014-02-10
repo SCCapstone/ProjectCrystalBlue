@@ -51,7 +51,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     if (!sourcesStore) {
         return 0;
     } else {
@@ -62,7 +61,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn
             row:(NSInteger)row
 {
-    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     if ([tableView isEqualTo:self.sourceTable]) {
         Source *source = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:row];
         return [source key];
@@ -70,17 +68,24 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return nil;
 }
 
+- (void)addSource:(Source *)source
+{
+    [sourcesStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
+    [self.sourceTable reloadData];
+}
+
 /*  These are methods that are called when the user clicks on the toolbar items.
  *  Due to the way the Windows/Views are set up in the app, the toolbar is actually
  *  part of the main menu window, not part of the SourcesView. So the AppDelegate will
  *  actually pass messages to this ViewController.
  */
-- (void)addNewSource
+- (void)showAddNewSourceDialog
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     
     AddNewSourceViewController *viewController = [[AddNewSourceViewController alloc] initWithNibName:@"AddNewSourceViewController"
                                                                                               bundle:nil];
+    [viewController setSourcesViewController:self];
     [activeViewControllers addObject:viewController];
     
     NSRect newWindowBounds = [[NSScreen mainScreen] visibleFrame];
@@ -89,7 +94,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     newWindowBounds.size.width *= 0.4;
     newWindowBounds.size.height *= 0.4;
 
-    int styleMask = (NSTitledWindowMask |  NSResizableWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask);
+    int styleMask = (NSTitledWindowMask | NSResizableWindowMask | NSMiniaturizableWindowMask);
     
     NSWindow *window = [[NSWindow alloc] initWithContentRect:newWindowBounds
                                                    styleMask:styleMask
@@ -105,7 +110,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
 }
 
-- (void)editSourceMetadata
+- (void)showEditSourceDialog
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     NSRect newWindowBounds = [[NSScreen mainScreen] visibleFrame];

@@ -46,11 +46,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
  */
 
 - (IBAction)newSource:(id)sender {
-    [initialViewController addNewSource];
+    [initialViewController showAddNewSourceDialog];
 }
 
 - (IBAction)editSource:(id)sender {
-    [initialViewController editSourceMetadata];
+    [initialViewController showEditSourceDialog];
 }
 
 - (IBAction)viewSamples:(id)sender {
