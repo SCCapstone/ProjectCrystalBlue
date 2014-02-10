@@ -62,6 +62,8 @@
 		D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9318A5FEB6006084D6 /* Sample.m */; };
 		D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9518A5FEB6006084D6 /* SourceConstants.m */; };
 		D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9718A5FEB6006084D6 /* SampleConstants.m */; };
+		D7EA0B8E18A84B14003D74BA /* AddNewSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */; };
+		D7EA0B8F18A84B14003D74BA /* AddNewSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +167,9 @@
 		D78ACC9518A5FEB6006084D6 /* SourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceConstants.m; sourceTree = "<group>"; };
 		D78ACC9618A5FEB6006084D6 /* SampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleConstants.h; sourceTree = "<group>"; };
 		D78ACC9718A5FEB6006084D6 /* SampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleConstants.m; sourceTree = "<group>"; };
+		D7EA0B8B18A84B14003D74BA /* AddNewSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSourceViewController.h; sourceTree = "<group>"; };
+		D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSourceViewController.m; sourceTree = "<group>"; };
+		D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewSourceViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +417,7 @@
 		D78ACC2F18A5FD9B006084D6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */,
 				D7272DF318A60660003860E2 /* SourcesViewController.h */,
 				D7272DF418A60660003860E2 /* SourcesViewController.m */,
 				D7272DF518A60660003860E2 /* SourcesViewController.xib */,
@@ -528,6 +534,16 @@
 			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
 		};
+		D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */ = {
+			isa = PBXGroup;
+			children = (
+				D7EA0B8B18A84B14003D74BA /* AddNewSourceViewController.h */,
+				D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */,
+				D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */,
+			);
+			name = AddNewSourceView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -610,6 +626,7 @@
 				D7439E1F18A5FC53000EE008 /* Credits.rtf in Resources */,
 				D7439E2518A5FC53000EE008 /* MainMenu.xib in Resources */,
 				D78ACC7318A5FE44006084D6 /* no_image.png in Resources */,
+				D7EA0B8F18A84B14003D74BA /* AddNewSourceViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +660,7 @@
 				D78ACC4A18A5FDD9006084D6 /* DDTTYLogger.m in Sources */,
 				D78ACC4B18A5FDD9006084D6 /* DDASLLogger.m in Sources */,
 				D78ACC6E18A5FE2E006084D6 /* S3ImageStore.m in Sources */,
+				D7EA0B8E18A84B14003D74BA /* AddNewSourceViewController.m in Sources */,
 				D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */,
 				D78ACC9818A5FEB6006084D6 /* LibraryObject.m in Sources */,
 				D78ACC7E18A5FE7C006084D6 /* AbstractLibraryObjectStore.m in Sources */,

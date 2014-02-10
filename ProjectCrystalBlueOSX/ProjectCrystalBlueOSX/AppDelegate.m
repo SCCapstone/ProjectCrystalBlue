@@ -36,7 +36,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 /// Set up and return the initial view controller for the Application.
 - (SourcesViewController *)getInitialViewController
 {
-    SourcesViewController *libraryView = [[SourcesViewController alloc] init];
+    SourcesViewController *libraryView = [[SourcesViewController alloc] initWithNibName:@"SourcesViewController" bundle:nil];
     return libraryView;
 }
 

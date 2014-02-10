@@ -9,7 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "AbstractLibraryObjectStore.h"
 
-@interface SourcesViewController : NSViewController <NSTableViewDataSource, NSToolbarDelegate>
+@interface SourcesViewController : NSViewController <NSTableViewDataSource, NSToolbarDelegate> {
+    // Holds any active windows that this view controller launches.
+    NSMutableArray *activeWindows;
+    
+    // Holds any active view controllers that this view controller launches.
+    NSMutableArray *activeViewControllers;
+}
 
 @property (weak) IBOutlet NSTableView *sourceTable;
 

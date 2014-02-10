@@ -10,6 +10,7 @@
 #import "LocalLibraryObjectStore.h"
 #import "SourceConstants.h"
 #import "Source.h"
+#import "AddNewSourceViewController.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -39,7 +40,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                                                                 WithDatabaseName:@"ProjectCrystalBlueSamples"];
         [self setSamplesStore:samples];
         
-        DDLogInfo(@"%@: Successfully initialized!", NSStringFromClass(self.class));
+        // Set up an empty array for active windows that the view controller launches
+        activeWindows = [[NSMutableArray alloc] init];
+        activeViewControllers = [[NSMutableArray alloc] init];
+        
+        DDLogInfo(@"%@: Successfully initialized with nibname %@ and nibbundle %@", NSStringFromClass(self.class), nibNameOrNil, nibBundleOrNil);
     }
     return self;
 }
@@ -73,6 +78,26 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)addNewSource
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    
+    AddNewSourceViewController *viewController = [[AddNewSourceViewController alloc] initWithNibName:@"AddNewSourceViewController"
+                                                                                              bundle:nil];
+    [activeViewControllers addObject:viewController];
+    
+    NSRect newWindowBounds = [[NSScreen mainScreen] visibleFrame];
+    newWindowBounds.origin.x = [[NSScreen mainScreen] visibleFrame].size.width * 0.3;
+    newWindowBounds.origin.y = [[NSScreen mainScreen] visibleFrame].size.height * 0.4 - [activeWindows count] * 30;
+    newWindowBounds.size.width *= 0.4;
+    newWindowBounds.size.height *= 0.4;
+
+    int styleMask = (NSTitledWindowMask |  NSResizableWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask);
+    
+    NSWindow *window = [[NSWindow alloc] initWithContentRect:newWindowBounds
+                                                   styleMask:styleMask
+                                                     backing:NSBackingStoreBuffered
+                                                       defer:NO];
+    [window setContentView:viewController.view];
+    [window makeKeyAndOrderFront:NSApp];
+    [activeWindows addObject:window];
 }
 
 - (void)removeSource
@@ -83,6 +108,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)editSourceMetadata
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    NSRect newWindowBounds = [[NSScreen mainScreen] visibleFrame];
+    newWindowBounds.origin.x = [[NSScreen mainScreen] visibleFrame].size.width * 0.3;
+    newWindowBounds.origin.y = [[NSScreen mainScreen] visibleFrame].size.height * 0.4 - [activeWindows count] * 30;
+    newWindowBounds.size.width *= 0.4;
+    newWindowBounds.size.height *= 0.4;
+    NSWindow *window = [[NSWindow alloc] initWithContentRect:newWindowBounds
+                                                   styleMask:NSTitledWindowMask
+                                                     backing:NSBackingStoreBuffered
+                                                       defer:NO];
+    [window makeKeyAndOrderFront:NSApp];
+    [activeWindows addObject:window];
 }
 
 - (void)viewSamples
