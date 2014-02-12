@@ -71,7 +71,10 @@ static NSString *const HISTORY_TABLE_NAME = @"test_history_table";
         for (int i=0; i<[attrNames count];  i++)
         {
             NSString *attr = [attrNames objectAtIndex:i];
-            [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT%@", attr, [attr isEqualToString:@"timestamp"] ? @" PRIMARY KEY" : @""]];
+            if ([attr isEqualToString:@"timestamp"])
+                [attrNames replaceObjectAtIndex:i withObject:@"timestamp INTEGER PRIMARY KEY"];
+            else
+                [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT", attr]];
         }
         schema = [attrNames componentsJoinedByString:@","];
     }
