@@ -8,12 +8,10 @@
 
 #import "SimpleDBLibraryObjectStore.h"
 #import "AbstractLibraryObjectStore.h"
-#import "LibraryObject.h"
 #import "LocalLibraryObjectStore.h"
+#import "TransactionStore.h"
 #import <AWSiOSSDK/SimpleDB/AmazonSimpleDBClient.h>
 #import "HardcodedCredentialsProvider.h"
-#import "Transaction.h"
-#import "TransactionStore.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -21,8 +19,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
-
-#define CLASS_NAME @"SimpleDBLibraryObjectStore"
 
 @interface SimpleDBLibraryObjectStore()
 {

@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@class Transaction;
+#import "Transaction.h"
 
 @interface TransactionStore : NSObject
 

@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@class LibraryObject;
+#import "LibraryObject.h"
 
 @interface AbstractLibraryObjectStore : NSObject
 

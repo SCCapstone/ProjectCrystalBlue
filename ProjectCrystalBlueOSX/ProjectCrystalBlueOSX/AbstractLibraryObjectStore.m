@@ -16,8 +16,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
-#define CLASS_NAME @"AbstractLibraryObjectStore"
-
 @implementation AbstractLibraryObjectStore
 
 - (id)init
@@ -35,47 +33,47 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
                                 FromTable:(NSString *)tableName
 {
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return nil;
 }
 
 - (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName
 {
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return nil;
 }
 
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                IntoTable:(NSString *)tableName
 {
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return NO;
 }
 
 - (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
                   IntoTable:(NSString *)tableName
 {
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return NO;
 }
 
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName
 {
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return NO;
 }
 
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
                         FromTable:(NSString *)tableName
 {
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return NO;
 }
 
 - (NSInteger)countInTable:(NSString *)tableName
 {
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return 0;
 }
 

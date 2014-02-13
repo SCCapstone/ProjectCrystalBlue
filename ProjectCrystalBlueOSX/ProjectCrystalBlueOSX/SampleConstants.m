@@ -73,7 +73,8 @@ static NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
         for (int i=0; i<[attrNames count];  i++)
         {
             NSString *attr = [attrNames objectAtIndex:i];
-            [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT%@", attr, [attr isEqualToString:@"key"] ? @" PRIMARY KEY" : @""]];
+            [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT%@",
+                                                          attr, [attr isEqualToString:@"key"] ? @" PRIMARY KEY" : @""]];
         }
         schema = [attrNames componentsJoinedByString:@","];
     }

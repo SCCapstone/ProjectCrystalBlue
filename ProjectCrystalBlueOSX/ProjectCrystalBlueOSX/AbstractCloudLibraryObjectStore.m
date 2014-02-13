@@ -15,8 +15,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
-#define CLASS_NAME @"AbstractCloudLibraryObjectStore"
-
 @implementation AbstractCloudLibraryObjectStore
 
 -(id)initInLocalDirectory:(NSString *)directory
@@ -27,13 +25,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(BOOL)synchronizeWithCloud
 {
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return NO;
 }
 
 -(BOOL)keyIsDirty:(NSString *)key
 {
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", CLASS_NAME];
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return NO;
 }
 
