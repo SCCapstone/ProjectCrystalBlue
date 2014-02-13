@@ -1,12 +1,12 @@
 //
-//  HistoryConstants.m
+//  TransactionConstants.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 2/11/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "HistoryConstants.h"
+#import "TransactionConstants.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -29,9 +29,9 @@ static NSString *const DEF_VAL_SQL_COMMAND_TYPE = @"PUT,UPDATE,DELETE here";
 
 /* Sample table name
  */
-static NSString *const HISTORY_TABLE_NAME = @"test_history_table";
+static NSString *const TRANSACTION_TABLE_NAME = @"test_transaction_table";
 
-@implementation HistoryConstants
+@implementation TransactionConstants
 
 + (NSArray *)attributeNames
 {
@@ -57,7 +57,7 @@ static NSString *const HISTORY_TABLE_NAME = @"test_history_table";
 
 + (NSString *)tableName
 {
-    return HISTORY_TABLE_NAME;
+    return TRANSACTION_TABLE_NAME;
 }
 
 + (NSString *)tableSchema
@@ -72,7 +72,7 @@ static NSString *const HISTORY_TABLE_NAME = @"test_history_table";
         {
             NSString *attr = [attrNames objectAtIndex:i];
             if ([attr isEqualToString:@"timestamp"])
-                [attrNames replaceObjectAtIndex:i withObject:@"timestamp INTEGER PRIMARY KEY"];
+                [attrNames replaceObjectAtIndex:i withObject:@"timestamp REAL PRIMARY KEY"];
             else
                 [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT", attr]];
         }

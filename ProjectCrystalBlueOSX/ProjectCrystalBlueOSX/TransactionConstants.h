@@ -1,5 +1,5 @@
 //
-//  HistoryConstants.h
+//  TransactionConstants.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 2/11/14.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HistoryConstants : NSObject
+@interface TransactionConstants : NSObject
 
 /// Array of all attributes stored in the database
 + (NSArray *)attributeNames;

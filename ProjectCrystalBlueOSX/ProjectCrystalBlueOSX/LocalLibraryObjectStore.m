@@ -12,7 +12,6 @@
 #import "FMResultSet.h"
 #import "Source.h"
 #import "Sample.h"
-#import "HistoryConstants.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -143,9 +142,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             DDLogCError(@"%@: Failed to put library object into local database. Error: %@", CLASS_NAME, [localDatabase lastError]);
     }];
     
-    if (success)
-        [self commitToHistoryWithKey:[libraryObject key] WithSqlCommandType:@"PUT"];
-    
     return success;
 }
 
@@ -192,9 +188,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             DDLogCError(@"%@: Failed to update library object in local database. Error: %@", CLASS_NAME, [localDatabase lastError]);
     }];
     
-    if (isUpdated)
-        [self commitToHistoryWithKey:[libraryObject key] WithSqlCommandType:@"UPDATE"];
-    
     return isUpdated;
 }
 
@@ -215,9 +208,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if ([localDatabase hadError])
             DDLogCError(@"%@: Failed to delete library object from local database. Error: %@", CLASS_NAME, [localDatabase lastError]);
     }];
-    
-    if (isDeleted)
-        [self commitToHistoryWithKey:key WithSqlCommandType:@"DELETE"];
     
     return isDeleted;
 }
@@ -265,42 +255,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return count;
 }
 
-- (BOOL)commitToHistoryWithKey:(NSString *)key
-            WithSqlCommandType:(NSString *)sqlCommand
-{
-    // Make sure sql command is a valid command to commit
-    if (![sqlCommand isEqualToString:@"PUT"] || ![sqlCommand isEqualToString:@"DELETE"] || ![sqlCommand isEqualToString:@"UPDATE"])
-        return NO;
-    
-    NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
-                     [HistoryConstants tableName], [HistoryConstants tableColumns], [HistoryConstants tableValueKeys]];
-    
-    NSNumber *currentTime = [NSNumber numberWithDouble:[[[NSDate alloc] init] timeIntervalSince1970]];
-    NSDictionary *attributes = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:currentTime, key, sqlCommand, nil]
-                                                             forKeys:[HistoryConstants attributeNames]];
-    
-    __block BOOL commitSuccess = NO;
-    [localQueue inDatabase:^(FMDatabase *localDatabase) {
-        commitSuccess = [localDatabase executeUpdate:sql withParameterDictionary:attributes];
-        
-        if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to put commit history into local database. Error: %@", CLASS_NAME, [localDatabase lastError]);
-    }];
-    
-    return commitSuccess;
-}
-
 - (BOOL)setupTables
 {
     __block BOOL sourceSuccess = NO;
     __block BOOL sampleSuccess = NO;
-    __block BOOL historySuccess = NO;
     [localQueue inDeferredTransaction:^(FMDatabase *localDatabase, BOOL *rollback) {
         // Create source table
         sourceSuccess = [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)",
                                                       [SourceConstants tableName], [SourceConstants tableSchema]]];
         if ([localDatabase hadError]) {
-            DDLogCError(@"%@: Failed to create the source tablee. Error: %@", CLASS_NAME, [localDatabase lastError]);
+            DDLogCError(@"%@: Failed to create the source table. Error: %@", CLASS_NAME, [localDatabase lastError]);
             *rollback = YES;
             return;
         }
@@ -313,18 +277,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             *rollback = YES;
             return;
         }
-        
-        // Create history table
-        historySuccess = [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)",
-                                                       [HistoryConstants tableName], [HistoryConstants tableSchema]]];
-        if ([localDatabase hadError]) {
-            DDLogCError(@"%@: Failed to create history table. Error: %@", CLASS_NAME, [localDatabase lastError]);
-            *rollback = YES;
-            return;
-        }
     }];
     
-    return (sourceSuccess && sampleSuccess && historySuccess);
+    return (sourceSuccess && sampleSuccess);
 }
 
 @end

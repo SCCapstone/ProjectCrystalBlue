@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D0C2196E18AAF73500DF9CB7 /* HistoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2196D18AAF73500DF9CB7 /* HistoryConstants.m */; };
+		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
+		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
+		D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */; };
 		D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
 		D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E318A6010E00EA2DD2 /* CFNetwork.framework */; };
@@ -78,8 +80,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D0C2196C18AAF73500DF9CB7 /* HistoryConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryConstants.h; sourceTree = "<group>"; };
-		D0C2196D18AAF73500DF9CB7 /* HistoryConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryConstants.m; sourceTree = "<group>"; };
+		D086319F18AC5ACB007A8DAA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
+		D08631A018AC5ACB007A8DAA /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
+		D08631A318AC61BA007A8DAA /* TransactionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionStore.h; sourceTree = "<group>"; };
+		D08631A418AC61BA007A8DAA /* TransactionStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStore.m; sourceTree = "<group>"; };
+		D0C2196C18AAF73500DF9CB7 /* TransactionConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionConstants.h; sourceTree = "<group>"; };
+		D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionConstants.m; sourceTree = "<group>"; };
 		D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = include/AWSiOSSDK.framework; sourceTree = "<group>"; };
 		D72405E118A6010000EA2DD2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D72405E318A6010E00EA2DD2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -200,6 +206,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D08631A218AC619D007A8DAA /* TransactionStore */ = {
+			isa = PBXGroup;
+			children = (
+				D08631A318AC61BA007A8DAA /* TransactionStore.h */,
+				D08631A418AC61BA007A8DAA /* TransactionStore.m */,
+			);
+			name = TransactionStore;
+			sourceTree = "<group>";
+		};
 		D72405E718A601CC00EA2DD2 /* Store Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,12 +402,14 @@
 				D78ACC9118A5FEB6006084D6 /* Source.m */,
 				D78ACC9218A5FEB6006084D6 /* Sample.h */,
 				D78ACC9318A5FEB6006084D6 /* Sample.m */,
+				D086319F18AC5ACB007A8DAA /* Transaction.h */,
+				D08631A018AC5ACB007A8DAA /* Transaction.m */,
 				D78ACC9418A5FEB6006084D6 /* SourceConstants.h */,
 				D78ACC9518A5FEB6006084D6 /* SourceConstants.m */,
 				D78ACC9618A5FEB6006084D6 /* SampleConstants.h */,
 				D78ACC9718A5FEB6006084D6 /* SampleConstants.m */,
-				D0C2196C18AAF73500DF9CB7 /* HistoryConstants.h */,
-				D0C2196D18AAF73500DF9CB7 /* HistoryConstants.m */,
+				D0C2196C18AAF73500DF9CB7 /* TransactionConstants.h */,
+				D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -400,6 +417,7 @@
 		D78ACC2D18A5FD92006084D6 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				D08631A218AC619D007A8DAA /* TransactionStore */,
 				D78ACC7418A5FE5F006084D6 /* LibraryObjectStore */,
 				D78ACC5C18A5FE06006084D6 /* ImageStore */,
 				D78ACC5318A5FDFD006084D6 /* LocalTransactionCache.h */,
@@ -660,6 +678,7 @@
 				D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
 				D7439E2218A5FC53000EE008 /* AppDelegate.m in Sources */,
+				D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
 				D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */,
 				D78ACC4A18A5FDD9006084D6 /* DDTTYLogger.m in Sources */,
@@ -670,6 +689,7 @@
 				D78ACC9818A5FEB6006084D6 /* LibraryObject.m in Sources */,
 				D78ACC7E18A5FE7C006084D6 /* AbstractLibraryObjectStore.m in Sources */,
 				D78ACC4C18A5FDD9006084D6 /* DDLog.m in Sources */,
+				D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */,
 				D78ACC3F18A5FDC0006084D6 /* FMResultSet.m in Sources */,
 				D78ACC6518A5FE21006084D6 /* AbstractImageStore.m in Sources */,
 				D78ACC7718A5FE68006084D6 /* LocalLibraryObjectStore.m in Sources */,
@@ -680,7 +700,7 @@
 				D7439E1B18A5FC53000EE008 /* main.m in Sources */,
 				D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */,
 				D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */,
-				D0C2196E18AAF73500DF9CB7 /* HistoryConstants.m in Sources */,
+				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
 				D78ACC6618A5FE21006084D6 /* AbstractCloudImageStore.m in Sources */,

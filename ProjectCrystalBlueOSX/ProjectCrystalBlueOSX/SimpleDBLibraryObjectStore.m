@@ -8,10 +8,12 @@
 
 #import "SimpleDBLibraryObjectStore.h"
 #import "AbstractLibraryObjectStore.h"
+#import "LibraryObject.h"
 #import "LocalLibraryObjectStore.h"
 #import <AWSiOSSDK/SimpleDB/AmazonSimpleDBClient.h>
 #import "HardcodedCredentialsProvider.h"
-#import "LocalTransactionCache.h"
+#import "Transaction.h"
+#import "TransactionStore.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -26,7 +28,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     AmazonSimpleDBClient *simpleDBClient;
     AbstractLibraryObjectStore *localStore;
-    LocalTransactionCache *dirtyKeys;
+    TransactionStore *transactionStore;
 }
 @end
 
@@ -41,54 +43,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (self) {
         localStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:directory
                                                           WithDatabaseName:databaseName];
-        dirtyKeys = [[LocalTransactionCache alloc] initInDirectory:directory
-                                                      withFileName:@""];
+        transactionStore = [[TransactionStore alloc] initInLocalDirectory:directory
+                                                         WithDatabaseName:databaseName];
         
         NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
         simpleDBClient = [[AmazonSimpleDBClient alloc] initWithCredentialsProvider:credentialsProvider];
     }
     
     return self;
-}
-
-- (LibraryObject *)getLibraryObjectForKey:(NSString *)key
-                                FromTable:(NSString *)tableName
-{
-    return [super getLibraryObjectForKey:key FromTable:tableName];
-}
-
-- (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName
-{
-    return [super getAllLibraryObjectsFromTable:tableName];
-}
-
-- (BOOL)putLibraryObject:(LibraryObject *)libraryObject
-               IntoTable:(NSString *)tableName
-{
-    return [super putLibraryObject:libraryObject IntoTable:tableName];
-}
-
-- (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
-                  IntoTable:(NSString *)tableName
-{
-    return [super updateLibraryObject:libraryObject IntoTable:tableName];
-}
-
-- (BOOL)deleteLibraryObjectWithKey:(NSString *)key
-                         FromTable:(NSString *)tableName
-{
-    return [super deleteLibraryObjectWithKey:key FromTable:tableName];
-}
-
-- (BOOL)libraryObjectExistsForKey:(NSString *)key
-                        FromTable:(NSString *)tableName
-{
-    return [super libraryObjectExistsForKey:key FromTable:tableName];
-}
-
-- (NSInteger)countInTable:(NSString *)tableName
-{
-    return [super countInTable:tableName];
 }
 
 - (BOOL)synchronizeWithCloud
@@ -99,6 +61,70 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)keyIsDirty:(NSString *)key
 {
     return NO;
+}
+
+- (LibraryObject *)getLibraryObjectForKey:(NSString *)key
+                                FromTable:(NSString *)tableName
+{
+    return [localStore getLibraryObjectForKey:key FromTable:tableName];
+}
+
+- (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName
+{
+    return [localStore getAllLibraryObjectsFromTable:tableName];
+}
+
+- (BOOL)putLibraryObject:(LibraryObject *)libraryObject
+               IntoTable:(NSString *)tableName
+{
+    if (![localStore putLibraryObject:libraryObject IntoTable:tableName])
+        return NO;
+    
+    Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:[libraryObject key]
+                                                       AndWithSqlCommandType:@"PUT"];
+    if (![transactionStore commitTransaction:transaction])
+        return NO;
+    
+    return YES;
+}
+
+- (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
+                  IntoTable:(NSString *)tableName
+{
+    if (![localStore updateLibraryObject:libraryObject IntoTable:tableName])
+        return NO;
+    
+    Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:[libraryObject key]
+                                                       AndWithSqlCommandType:@"UPDATE"];
+    if (![transactionStore commitTransaction:transaction])
+        return NO;
+    
+    return YES;
+}
+
+- (BOOL)deleteLibraryObjectWithKey:(NSString *)key
+                         FromTable:(NSString *)tableName
+{
+    if (![localStore deleteLibraryObjectWithKey:key FromTable:tableName])
+        return NO;
+    
+    Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:key
+                                                       AndWithSqlCommandType:@"DELETE"];
+    if (![transactionStore commitTransaction:transaction])
+        return NO;
+    
+    return YES;
+}
+
+- (BOOL)libraryObjectExistsForKey:(NSString *)key
+                        FromTable:(NSString *)tableName
+{
+    return [localStore libraryObjectExistsForKey:key FromTable:tableName];
+}
+
+- (NSInteger)countInTable:(NSString *)tableName
+{
+    return [localStore countInTable:tableName];
 }
 
 @end
