@@ -49,6 +49,24 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return self;
 }
 
+- (void)loadView
+{
+    [super loadView];
+    [self addColumnsToTable];
+}
+
+- (void)addColumnsToTable
+{
+    NSArray *attributeNames = [SourceConstants attributeNames];
+    for (NSString *attribute in attributeNames) {
+        NSTableColumn *column = [[NSTableColumn alloc] init];
+        NSCell *header = [[NSTableHeaderCell alloc] initTextCell:attribute];
+        [column setHeaderCell:header];
+        [self.sourceTable addTableColumn:column];
+    }
+    DDLogDebug(@"Set up the Source tableview with %lu columns.", [[self.sourceTable tableColumns] count]);
+}
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
     if (!sourcesStore) {
@@ -63,7 +81,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     if ([tableView isEqualTo:self.sourceTable]) {
         Source *source = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:row];
-        return [source key];
+        NSString *attributeKey = [[tableColumn headerCell] stringValue];
+        return [[source attributes] objectForKey:attributeKey];
     }
     return nil;
 }
