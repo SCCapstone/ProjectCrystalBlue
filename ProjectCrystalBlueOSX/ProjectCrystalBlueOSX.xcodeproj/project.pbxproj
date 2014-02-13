@@ -37,6 +37,8 @@
 		D7439E2F18A5FC53000EE008 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7439E0E18A5FC53000EE008 /* Cocoa.framework */; };
 		D7439E3718A5FC53000EE008 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7439E3518A5FC53000EE008 /* InfoPlist.strings */; };
 		D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */; };
+		D770578518AD7CC100F011E5 /* EditSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D770578318AD7CC100F011E5 /* EditSourceViewController.m */; };
+		D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D770578418AD7CC100F011E5 /* EditSourceViewController.xib */; };
 		D78ACC3B18A5FDC0006084D6 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC3218A5FDC0006084D6 /* FMDatabase.m */; };
 		D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC3418A5FDC0006084D6 /* FMDatabaseAdditions.m */; };
 		D78ACC3D18A5FDC0006084D6 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC3618A5FDC0006084D6 /* FMDatabasePool.m */; };
@@ -121,6 +123,9 @@
 		D7439E3418A5FC53000EE008 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
 		D7439E3618A5FC53000EE008 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
+		D770578218AD7CC100F011E5 /* EditSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSourceViewController.h; sourceTree = "<group>"; };
+		D770578318AD7CC100F011E5 /* EditSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSourceViewController.m; sourceTree = "<group>"; };
+		D770578418AD7CC100F011E5 /* EditSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditSourceViewController.xib; sourceTree = "<group>"; };
 		D78ACC3118A5FDC0006084D6 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		D78ACC3218A5FDC0006084D6 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		D78ACC3318A5FDC0006084D6 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -386,6 +391,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D770578118AD7C8900F011E5 /* EditSourceView */ = {
+			isa = PBXGroup;
+			children = (
+				D770578218AD7CC100F011E5 /* EditSourceViewController.h */,
+				D770578318AD7CC100F011E5 /* EditSourceViewController.m */,
+				D770578418AD7CC100F011E5 /* EditSourceViewController.xib */,
+			);
+			name = EditSourceView;
+			sourceTree = "<group>";
+		};
 		D78ACC2B18A5FD7F006084D6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +455,7 @@
 		D78ACC2F18A5FD9B006084D6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D770578118AD7C8900F011E5 /* EditSourceView */,
 				D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */,
 				D7272DF318A60660003860E2 /* SourcesViewController.h */,
 				D7272DF418A60660003860E2 /* SourcesViewController.m */,
@@ -646,6 +662,7 @@
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */,
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
+				D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */,
 				D7439E1F18A5FC53000EE008 /* Credits.rtf in Resources */,
 				D7439E2518A5FC53000EE008 /* MainMenu.xib in Resources */,
 				D78ACC7318A5FE44006084D6 /* no_image.png in Resources */,
@@ -678,6 +695,7 @@
 				D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
 				D7439E2218A5FC53000EE008 /* AppDelegate.m in Sources */,
+				D770578518AD7CC100F011E5 /* EditSourceViewController.m in Sources */,
 				D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
 				D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */,

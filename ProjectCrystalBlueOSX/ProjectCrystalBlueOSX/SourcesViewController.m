@@ -11,6 +11,7 @@
 #import "SourceConstants.h"
 #import "Source.h"
 #import "AddNewSourceViewController.h"
+#import "EditSourceViewController.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -167,6 +168,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)showEditSourceDialog
 {
+    NSInteger selectedRow = [self.sourceTable selectedRow];
+    if (selectedRow < 0) {
+        return;
+    }
+    Source *s = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    
+    EditSourceViewController *editViewController;
+    editViewController = [[EditSourceViewController alloc] initWithNibName:@"EditSourceViewController"
+                                                                     bundle:nil];
+    [editViewController setSourcesViewController:self];
+    [editViewController setSource:s];
+    [activeViewControllers addObject:editViewController];
+    
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     NSRect newWindowBounds = [[NSScreen mainScreen] visibleFrame];
     newWindowBounds.origin.x = [[NSScreen mainScreen] visibleFrame].size.width * 0.3;
@@ -174,10 +188,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     newWindowBounds.size.width *= 0.4;
     newWindowBounds.size.height *= 0.4;
     NSWindow *window = [[NSWindow alloc] initWithContentRect:newWindowBounds
-                                                   styleMask:NSTitledWindowMask
+                                                   styleMask:(NSTitledWindowMask | NSResizableWindowMask | NSMiniaturizableWindowMask)
                                                      backing:NSBackingStoreBuffered
                                                        defer:NO];
     [window makeKeyAndOrderFront:NSApp];
+    [window setContentView:editViewController.view];
     [activeWindows addObject:window];
 }
 
