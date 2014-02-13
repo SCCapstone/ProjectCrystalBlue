@@ -127,6 +127,42 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)removeSource
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    NSInteger selectedRow = [self.sourceTable selectedRow];
+    if (selectedRow < 0) {
+        return;
+    }
+    
+    Source *s = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    
+    NSAlert *confirmation = [[NSAlert alloc] init];
+    [confirmation setAlertStyle:NSWarningAlertStyle];
+    
+    NSString *message = [NSString stringWithFormat:@"Really delete Source \"%@\"?", s.key];
+    [confirmation setMessageText:message];
+                        
+    NSString *info = @"This source will be permanently deleted from the database!";
+    [confirmation setInformativeText:info];
+    
+    // If the order of buttons changes, the numerical constants below NEED to be swapped.
+    [confirmation addButtonWithTitle:@"Delete"];
+    short const DELETE_BUTTON = 1000;
+    [confirmation addButtonWithTitle:@"Cancel"];
+    short const CANCEL_BUTTON = 1001;
+    
+    [confirmation beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+        switch (returnCode) {
+            case DELETE_BUTTON:
+                DDLogInfo(@"Deleting source with key \"%@\"", s.key);
+                [sourcesStore deleteLibraryObjectWithKey:s.key FromTable:[SourceConstants tableName]];
+                break;
+            case CANCEL_BUTTON:
+                break;
+            default:
+                DDLogWarn(@"Unexpected return code %ld from DeleteSource Alert", (long)returnCode);
+                break;
+        }
+        [self.sourceTable reloadData];
+    }];
 }
 
 - (void)showEditSourceDialog
