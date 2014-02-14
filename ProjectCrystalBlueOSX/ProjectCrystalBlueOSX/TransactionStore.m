@@ -49,10 +49,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
         
-        // Setup table, if fail, try again after 2 seconds
+        // Setup table
         if (![self setupTable]) {
-            sleep(2);
-            [self setupTable];
+            return nil;
         }
     }
     return self;
