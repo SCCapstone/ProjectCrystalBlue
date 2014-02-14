@@ -22,8 +22,8 @@
         timestamp = [NSNumber numberWithDouble:[[[NSDate alloc] init] timeIntervalSince1970]];
         
         NSArray *attributeValues = [[NSArray alloc] initWithObjects:timestamp, key, sqlCommand, nil];
-        attributes = [[NSMutableDictionary alloc] initWithObjects:[TransactionConstants attributeNames]
-                                                          forKeys:attributeValues];
+        attributes = [[NSMutableDictionary alloc] initWithObjects:attributeValues
+                                                          forKeys:[TransactionConstants attributeNames]];
     }
     return self;
 }

@@ -90,7 +90,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     // Make sure sql command is a valid command to commit
     NSString *sqlCommand = [[transaction attributes] objectForKey:@"sqlCommandType"];
-    if (![sqlCommand isEqualToString:@"PUT"] || ![sqlCommand isEqualToString:@"DELETE"] || ![sqlCommand isEqualToString:@"UPDATE"]) {
+    if (!([sqlCommand isEqualToString:@"PUT"] || [sqlCommand isEqualToString:@"DELETE"] || [sqlCommand isEqualToString:@"UPDATE"])) {
         DDLogCError(@"%@: Not a valid sql command to commit the transaction.", NSStringFromClass(self.class));
         return NO;
     }

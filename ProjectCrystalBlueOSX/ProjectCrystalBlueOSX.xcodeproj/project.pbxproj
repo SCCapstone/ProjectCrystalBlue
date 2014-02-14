@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
 		D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */; };
@@ -82,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D086319F18AC5ACB007A8DAA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
 		D08631A018AC5ACB007A8DAA /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
 		D08631A318AC61BA007A8DAA /* TransactionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionStore.h; sourceTree = "<group>"; };
@@ -211,6 +213,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D024A0D518ADA05100B577E4 /* TransactionStore */ = {
+			isa = PBXGroup;
+			children = (
+				D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */,
+			);
+			name = TransactionStore;
+			sourceTree = "<group>";
+		};
 		D08631A218AC619D007A8DAA /* TransactionStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,9 +233,10 @@
 		D72405E718A601CC00EA2DD2 /* Store Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D72405FF18A6025600EA2DD2 /* LocalTransactionCache */,
-				D72405EF18A6020D00EA2DD2 /* ImageStore */,
+				D024A0D518ADA05100B577E4 /* TransactionStore */,
 				D72405E818A601D600EA2DD2 /* LibraryObjectStore */,
+				D72405EF18A6020D00EA2DD2 /* ImageStore */,
+				D72405FF18A6025600EA2DD2 /* LocalTransactionCache */,
 			);
 			name = "Store Tests";
 			sourceTree = "<group>";
@@ -735,6 +746,7 @@
 				D72405EB18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m in Sources */,
 				D724060618A6028300EA2DD2 /* SimpleDBExample.m in Sources */,
 				D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */,
+				D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */,
 				D72405F218A6022500EA2DD2 /* AbstractImageStoreTests.m in Sources */,
 				D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */,
 				D724060118A6026900EA2DD2 /* LocalTransactionCacheTests.m in Sources */,
