@@ -60,9 +60,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (NSArray *)getAllTransactions
 {
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@", [TransactionConstants tableName]];
-    NSMutableArray *transactions = [[NSMutableArray alloc] init];
     
     // Get commit history from table
+    __block NSMutableArray *transactions;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         FMResultSet *results = [localDatabase executeQuery:sql];
         
@@ -74,6 +74,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
         
         // Add all the results to the commitHistory array
+        transactions = [[NSMutableArray alloc] init];
         while ([results next]) {
             NSNumber *timestamp = [NSNumber numberWithDouble:[[[results resultDictionary] objectForKey:@"timestamp"] doubleValue]];
             [transactions addObject:[[Transaction alloc] initWithTimestamp:timestamp

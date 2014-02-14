@@ -93,9 +93,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName
 {
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@", tableName];
-    NSMutableArray *libraryObjects = [[NSMutableArray alloc] init];
     
     // Get all library objects from table
+    __block NSMutableArray *libraryObjects;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         FMResultSet *results = [localDatabase executeQuery:sql];
         
@@ -107,6 +107,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
         
         // Add all the results to the libraryObjects array
+        libraryObjects = [[NSMutableArray alloc] init];
         while ([results next]) {
             NSString *key = [[results resultDictionary] objectForKey:@"key"];
             if ([tableName isEqualToString:[SourceConstants tableName]])
