@@ -131,7 +131,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSArray *)getAllSamplesForSource:(Source *)source
 {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE sourceKey=%@", [SampleConstants tableName], [source key]];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE sourceKey='%@'", [SampleConstants tableName], [source key]];
     
     // Get all corresponding samples from table
     __block NSMutableArray *samples;
@@ -149,7 +149,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         samples = [[NSMutableArray alloc] init];
         while ([results next]) {
             NSString *key = [[results resultDictionary] objectForKey:@"key"];
-            [samples addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:[results resultDictionary]]];
+            [samples addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:[results resultDictionary]]];
         }
         [results close];
     }];
@@ -162,6 +162,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
         DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return nil;
+    }
+    if (![[sql uppercaseString] hasPrefix:@"SELECT"]) {
+        DDLogCError(@"%@: Invalid sql command type. Only use this function to execute queries!", NSStringFromClass(self.class));
         return nil;
     }
     // Get all library objects from table

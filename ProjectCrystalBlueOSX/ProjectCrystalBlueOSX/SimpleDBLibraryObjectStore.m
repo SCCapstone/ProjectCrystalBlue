@@ -110,6 +110,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [localStore getAllLibraryObjectsFromTable:tableName];
 }
 
+- (NSArray *)getAllSamplesForSource:(Source *)source
+{
+    return [localStore getAllSamplesForSource:source];
+}
+
+- (NSArray *)executeSqlQuery:(NSString *)sql
+                     OnTable:(NSString *)tableName
+{
+    return [localStore executeSqlQuery:sql OnTable:tableName];
+}
+
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                IntoTable:(NSString *)tableName
 {
