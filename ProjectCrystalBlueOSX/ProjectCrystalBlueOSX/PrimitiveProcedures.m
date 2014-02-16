@@ -133,8 +133,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     for (int newNumber = previousNumber + 1; newNumber < 1000; ++newNumber) {
         NSString *newKey = [strippedString stringByAppendingFormat:@".%03d", newNumber];
-        LibraryObject *nameCollision = [store getLibraryObjectForKey:newKey FromTable:tableName];
-        if (nil == nameCollision) {
+        if ([store libraryObjectExistsForKey:newKey FromTable:tableName]) {
             DDLogInfo(@"%@: Created new key %@ from key %@", NSStringFromClass(self.class), newKey, previousKey);
             return newKey;
         } else {
