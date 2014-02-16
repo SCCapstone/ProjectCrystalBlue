@@ -7,17 +7,15 @@
 //
 
 #import "PrimitiveProcedures.h"
+#import "ProcedureNameConstants.h"
 #import "DDLog.h"
+#import "SampleConstants.h"
+
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
-
-#define TAG_DELIMITER @", "
-
-#define KEY @"key"
-#define TAGS @"tags"
 
 @implementation PrimitiveProcedures
 
@@ -31,7 +29,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSString *key = [self.class uniqueKeyBasedOn:original.key
                                          inStore:store
                                          inTable:tableName];
-    [newAttributes setObject:key forKey:KEY];
+    [newAttributes setObject:key forKey:SMP_KEY];
     Sample *newSample = [[Sample alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
     [store putLibraryObject:newSample IntoTable:tableName];
@@ -47,8 +45,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSString *key = [self.class uniqueKeyBasedOn:original.key
                                          inStore:store
                                          inTable:tableName];
-    [newAttributes setObject:key forKey:KEY];
-    [newAttributes setObject:@"" forKey:TAGS];
+    [newAttributes setObject:key forKey:SMP_KEY];
+    [newAttributes setObject:@"" forKey:SMP_TAGS];
     Sample *newSample = [[Sample alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
     [store putLibraryObject:newSample IntoTable:tableName];
@@ -61,9 +59,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogInfo(@"%@: IN-PLACE Appending tag %@ to sample with key %@", NSStringFromClass(self.class), tag, modifiedSample.key);
     
-    NSString *oldTags = [[modifiedSample attributes] objectForKey:TAGS];
+    NSString *oldTags = [[modifiedSample attributes] objectForKey:SMP_TAGS];
     NSString *newTags = [self.class appendTagToString:oldTags tagString:tag];
-    [[modifiedSample attributes] setObject:newTags forKey:TAGS];
+    [[modifiedSample attributes] setObject:newTags forKey:SMP_TAGS];
     [store updateLibraryObject:modifiedSample IntoTable:tableName];
 }
 
@@ -74,15 +72,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogInfo(@"%@: cloning sample with key %@ and adding tag %@", NSStringFromClass(self.class), original.key, tag);
     
-    NSString *oldTags = [[original attributes] objectForKey:TAGS];
+    NSString *oldTags = [[original attributes] objectForKey:SMP_TAGS];
     NSString *newTags = [self.class appendTagToString:oldTags tagString:tag];
     
     NSMutableDictionary *newAttributes = [[NSMutableDictionary alloc] initWithDictionary:original.attributes];
     NSString *key = [self.class uniqueKeyBasedOn:original.key
                                          inStore:store
                                          inTable:tableName];
-    [newAttributes setObject:key forKey:KEY];
-    [newAttributes setObject:newTags forKey:TAGS];
+    [newAttributes setObject:key forKey:SMP_KEY];
+    [newAttributes setObject:newTags forKey:SMP_TAGS];
     Sample *newSample = [[Sample alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
     [store putLibraryObject:newSample IntoTable:tableName];
@@ -133,7 +131,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     for (int newNumber = previousNumber + 1; newNumber < 1000; ++newNumber) {
         NSString *newKey = [strippedString stringByAppendingFormat:@".%03d", newNumber];
-        if ([store libraryObjectExistsForKey:newKey FromTable:tableName]) {
+        if (![store libraryObjectExistsForKey:newKey FromTable:tableName]) {
             DDLogInfo(@"%@: Created new key %@ from key %@", NSStringFromClass(self.class), newKey, previousKey);
             return newKey;
         } else {

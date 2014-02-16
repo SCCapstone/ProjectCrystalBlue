@@ -13,6 +13,8 @@
 /**
  *  Primitive procedures are abstractions of very basic operations that are common 
  *  to "real" procedures.
+ *
+ *  These should not be directly called - primitive procedures should be wrapped in the Procedures class.
  */
 @interface PrimitiveProcedures : NSObject
 

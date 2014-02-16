@@ -27,7 +27,26 @@ static NSString *const SOURCE_TABLE_NAME = @"test_source_table";
     if (!attributeNames)
     {
         attributeNames = [NSArray arrayWithObjects:
-                          KEY, CONTINENT, TYPE, LITHOLOGY, DEPOSYSTEM, GROUP, FORMATION, MEMBER, REGION, LOCALITY, SECTION, METER_LEVEL, LATITUDE, LONGITUDE, AGE, AGE_BASIS1, AGE_BASIS2, DATE_COLLECTED, PROJECT, SUBPROJECT, nil];
+                          SRC_KEY,
+                          SRC_CONTINENT,
+                          SRC_TYPE,
+                          SRC_LITHOLOGY,
+                          SRC_DEPOSYSTEM,
+                          SRC_GROUP,
+                          SRC_FORMATION,
+                          SRC_MEMBER,
+                          SRC_REGION,
+                          SRC_LOCALITY,
+                          SRC_SECTION,
+                          SRC_METER_LEVEL,
+                          SRC_LATITUDE,
+                          SRC_LONGITUDE,
+                          SRC_AGE,
+                          SRC_AGE_BASIS1,
+                          SRC_AGE_BASIS2,
+                          SRC_DATE_COLLECTED,
+                          SRC_PROJECT,
+                          SRC_SUBPROJECT, nil];
     }
     
     return attributeNames;
@@ -39,7 +58,26 @@ static NSString *const SOURCE_TABLE_NAME = @"test_source_table";
     if (!attributeDefaultValues)
     {
         attributeDefaultValues = [NSArray arrayWithObjects:
-                                  DEF_VAL_KEY, DEF_VAL_CONTINENT, DEF_VAL_TYPE, DEF_VAL_LITHOLOGY, DEF_VAL_DEPOSYSTEM, DEF_VAL_GROUP, DEF_VAL_FORMATION, DEF_VAL_MEMBER, DEF_VAL_REGION, DEF_VAL_LOCALITY, DEF_VAL_SECTION, DEF_VAL_METER_LEVEL, DEF_VAL_LATITUDE, DEF_VAL_LONGITUDE, DEF_VAL_AGE, DEF_VAL_AGE_BASIS1, DEF_VAL_AGE_BASIS2, DEF_VAL_DATE_COLLECTED, DEF_VAL_PROJECT, DEF_VAL_SUBPROJECT, nil];
+                                  SRC_DEF_VAL_KEY,
+                                  SRC_DEF_VAL_CONTINENT,
+                                  SRC_DEF_VAL_TYPE,
+                                  SRC_DEF_VAL_LITHOLOGY,
+                                  SRC_DEF_VAL_DEPOSYSTEM,
+                                  SRC_DEF_VAL_GROUP,
+                                  SRC_DEF_VAL_FORMATION,
+                                  SRC_DEF_VAL_MEMBER,
+                                  SRC_DEF_VAL_REGION,
+                                  SRC_DEF_VAL_LOCALITY,
+                                  SRC_DEF_VAL_SECTION,
+                                  SRC_DEF_VAL_METER_LEVEL,
+                                  SRC_DEF_VAL_LATITUDE,
+                                  SRC_DEF_VAL_LONGITUDE,
+                                  SRC_DEF_VAL_AGE,
+                                  SRC_DEF_VAL_AGE_BASIS1,
+                                  SRC_DEF_VAL_AGE_BASIS2,
+                                  SRC_DEF_VAL_DATE_COLLECTED,
+                                  SRC_DEF_VAL_PROJECT,
+                                  SRC_DEF_VAL_SUBPROJECT, nil];
     }
     return attributeDefaultValues;
 }

@@ -89,11 +89,16 @@ static NSString *const PROC_TAG_MAGNET_10_AMPS          = @"M10";
 static NSString *const PROC_TAG_MAGNET_12_AMPS          = @"M12";
 static NSString *const PROC_TAG_MAGNET_14_AMPS          = @"M14";
 
+static NSString *const TAG_DELIMITER = @", ";
+
 @interface ProcedureNameConstants : NSObject
 
 /**
  *  Fetch a human-readable name that corresponds to a given tag.
  */
 +(NSString *)procedureNameForTag:(NSString *)tag;
+
++(NSOrderedSet *)allProcedureTags;
++(NSOrderedSet *)allProcedureNames;
 
 @end
