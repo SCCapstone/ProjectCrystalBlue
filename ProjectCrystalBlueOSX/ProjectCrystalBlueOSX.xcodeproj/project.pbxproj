@@ -12,6 +12,9 @@
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
 		D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */; };
 		D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */; };
+		D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */; };
+		D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */; };
+		D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */; };
 		D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
 		D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E318A6010E00EA2DD2 /* CFNetwork.framework */; };
@@ -92,6 +95,11 @@
 		D0C2196C18AAF73500DF9CB7 /* TransactionConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionConstants.h; sourceTree = "<group>"; };
 		D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionConstants.m; sourceTree = "<group>"; };
 		D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBLibraryObjectStoreTests.m; sourceTree = "<group>"; };
+		D706DDB018B0AC9D0023D2BF /* ProcedureNameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureNameConstants.h; sourceTree = "<group>"; };
+		D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureNameConstants.m; sourceTree = "<group>"; };
+		D706DDB318B0BB310023D2BF /* PrimitiveProcedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveProcedures.h; sourceTree = "<group>"; };
+		D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveProcedures.m; sourceTree = "<group>"; };
+		D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveProcedureTests.m; sourceTree = "<group>"; };
 		D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = include/AWSiOSSDK.framework; sourceTree = "<group>"; };
 		D72405E118A6010000EA2DD2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D72405E318A6010E00EA2DD2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -240,6 +248,25 @@
 			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
 		};
+		D706DDAF18B0AC550023D2BF /* Procedure */ = {
+			isa = PBXGroup;
+			children = (
+				D706DDB018B0AC9D0023D2BF /* ProcedureNameConstants.h */,
+				D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */,
+				D706DDB318B0BB310023D2BF /* PrimitiveProcedures.h */,
+				D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */,
+			);
+			name = Procedure;
+			sourceTree = "<group>";
+		};
+		D706DDB618B0C8DF0023D2BF /* Procedure Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */,
+			);
+			name = "Procedure Tests";
+			sourceTree = "<group>";
+		};
 		D72405E718A601CC00EA2DD2 /* Store Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +343,7 @@
 		D724060218A6027200EA2DD2 /* ModelTests */ = {
 			isa = PBXGroup;
 			children = (
+				D706DDB618B0C8DF0023D2BF /* Procedure Tests */,
 				D724060318A6027A00EA2DD2 /* OriginalSampleConstantsTests.m */,
 			);
 			name = ModelTests;
@@ -433,6 +461,7 @@
 		D78ACC2C18A5FD85006084D6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D706DDAF18B0AC550023D2BF /* Procedure */,
 				D78ACC8E18A5FEB6006084D6 /* LibraryObject.h */,
 				D78ACC8F18A5FEB6006084D6 /* LibraryObject.m */,
 				D78ACC9018A5FEB6006084D6 /* Source.h */,
@@ -715,9 +744,11 @@
 				D78ACC5518A5FDFD006084D6 /* LocalTransactionCache.m in Sources */,
 				D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */,
 				D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */,
+				D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
 				D7439E2218A5FC53000EE008 /* AppDelegate.m in Sources */,
 				D770578518AD7CC100F011E5 /* EditSourceViewController.m in Sources */,
+				D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */,
 				D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
 				D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */,
@@ -756,6 +787,7 @@
 				D72405F718A6023B00EA2DD2 /* LocalImageStoreTests.m in Sources */,
 				D72405FD18A6024900EA2DD2 /* S3ImageStoreTests.m in Sources */,
 				D72405EB18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m in Sources */,
+				D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */,
 				D724060618A6028300EA2DD2 /* SimpleDBExample.m in Sources */,
 				D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */,
 				D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */,
