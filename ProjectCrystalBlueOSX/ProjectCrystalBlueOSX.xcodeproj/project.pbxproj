@@ -15,6 +15,8 @@
 		D704E1A718B15C5B00170B7E /* ProcedureTagDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A618B15C5B00170B7E /* ProcedureTagDecoder.m */; };
 		D704E1A918B162CE00170B7E /* ProcedureNameConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A818B162CE00170B7E /* ProcedureNameConstantsTests.m */; };
 		D704E1AB18B1654200170B7E /* ProcedureTagDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AA18B1654200170B7E /* ProcedureTagDecoderTests.m */; };
+		D704E1AE18B16C4700170B7E /* Procedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AD18B16C4700170B7E /* Procedures.m */; };
+		D704E1B018B16F6200170B7E /* ProceduresTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AF18B16F6200170B7E /* ProceduresTests.m */; };
 		D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */; };
 		D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */; };
 		D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */; };
@@ -102,6 +104,9 @@
 		D704E1A618B15C5B00170B7E /* ProcedureTagDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureTagDecoder.m; sourceTree = "<group>"; };
 		D704E1A818B162CE00170B7E /* ProcedureNameConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureNameConstantsTests.m; sourceTree = "<group>"; };
 		D704E1AA18B1654200170B7E /* ProcedureTagDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureTagDecoderTests.m; sourceTree = "<group>"; };
+		D704E1AC18B16C4700170B7E /* Procedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Procedures.h; sourceTree = "<group>"; };
+		D704E1AD18B16C4700170B7E /* Procedures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Procedures.m; sourceTree = "<group>"; };
+		D704E1AF18B16F6200170B7E /* ProceduresTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresTests.m; sourceTree = "<group>"; };
 		D706DDB018B0AC9D0023D2BF /* ProcedureNameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureNameConstants.h; sourceTree = "<group>"; };
 		D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureNameConstants.m; sourceTree = "<group>"; };
 		D706DDB318B0BB310023D2BF /* PrimitiveProcedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveProcedures.h; sourceTree = "<group>"; };
@@ -264,6 +269,8 @@
 				D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */,
 				D704E1A518B15C5B00170B7E /* ProcedureTagDecoder.h */,
 				D704E1A618B15C5B00170B7E /* ProcedureTagDecoder.m */,
+				D704E1AC18B16C4700170B7E /* Procedures.h */,
+				D704E1AD18B16C4700170B7E /* Procedures.m */,
 			);
 			name = Procedure;
 			sourceTree = "<group>";
@@ -274,6 +281,7 @@
 				D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */,
 				D704E1A818B162CE00170B7E /* ProcedureNameConstantsTests.m */,
 				D704E1AA18B1654200170B7E /* ProcedureTagDecoderTests.m */,
+				D704E1AF18B16F6200170B7E /* ProceduresTests.m */,
 			);
 			name = "Procedure Tests";
 			sourceTree = "<group>";
@@ -779,6 +787,7 @@
 				D78ACC3D18A5FDC0006084D6 /* FMDatabasePool.m in Sources */,
 				D78ACC7F18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m in Sources */,
 				D78ACC8618A5FE8E006084D6 /* SimpleDBCredentialsProvider.m in Sources */,
+				D704E1AE18B16C4700170B7E /* Procedures.m in Sources */,
 				D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */,
 				D7439E1B18A5FC53000EE008 /* main.m in Sources */,
 				D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */,
@@ -801,6 +810,7 @@
 				D72405EB18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m in Sources */,
 				D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */,
 				D724060618A6028300EA2DD2 /* SimpleDBExample.m in Sources */,
+				D704E1B018B16F6200170B7E /* ProceduresTests.m in Sources */,
 				D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */,
 				D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */,
 				D72405F218A6022500EA2DD2 /* AbstractImageStoreTests.m in Sources */,
