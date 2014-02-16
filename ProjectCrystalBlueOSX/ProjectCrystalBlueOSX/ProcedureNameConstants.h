@@ -98,4 +98,7 @@ static NSString *const TAG_DELIMITER = @", ";
  */
 +(NSString *)procedureNameForTag:(NSString *)tag;
 
++(NSOrderedSet *)allProcedureTags;
++(NSOrderedSet *)allProcedureNames;
+
 @end

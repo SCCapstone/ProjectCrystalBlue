@@ -16,6 +16,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
 static NSDictionary *procedureTagToNameMap;
+static NSOrderedSet *tags;
+static NSOrderedSet *names;
 
 @implementation ProcedureNameConstants
 
@@ -28,9 +30,25 @@ static NSDictionary *procedureTagToNameMap;
     return [procedureTagToNameMap objectForKey:tag];
 }
 
++(NSSet *)allProcedureTags
+{
+    if (!tags) {
+        [self.class setupTagToNameMap];
+    }
+    return [tags set];
+}
+
++(NSSet *)allProcedureNames
+{
+    if (!names) {
+        [self.class setupTagToNameMap];
+    }
+    return [names set];
+}
+
 +(void)setupTagToNameMap
 {
-    NSArray *tags = [[NSArray alloc] initWithObjects:
+    tags = [[NSOrderedSet alloc] initWithObjects:
                      PROC_TAG_SLAB,
                      PROC_TAG_BILLET,
                      PROC_TAG_THIN_SECTION,
@@ -62,7 +80,7 @@ static NSDictionary *procedureTagToNameMap;
                      PROC_TAG_MAGNET_14_AMPS,
                      nil];
     
-    NSArray *names = [[NSArray alloc] initWithObjects:
+    names = [[NSOrderedSet alloc] initWithObjects:
                       PROC_NAME_SLAB,
                       PROC_NAME_BILLET,
                       PROC_NAME_THIN_SECTION,
@@ -101,8 +119,8 @@ static NSDictionary *procedureTagToNameMap;
                   (unsigned long)tags.count);
     }
     
-    procedureTagToNameMap = [[NSDictionary alloc] initWithObjects:names
-                                                          forKeys:tags];
+    procedureTagToNameMap = [[NSDictionary alloc] initWithObjects:names.array
+                                                          forKeys:tags.array];
 }
 
 @end
