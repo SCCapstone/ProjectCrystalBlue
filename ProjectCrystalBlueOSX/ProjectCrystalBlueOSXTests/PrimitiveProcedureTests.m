@@ -16,8 +16,6 @@
 #define TEST_DIR @"pcb-procedures-tests"
 #define DATABASE_NAME @"procedures-test-db"
 
-#define KEY @"key"
-
 @interface PrimitiveProcedureTests : XCTestCase
 
 @end
@@ -58,7 +56,7 @@ LocalLibraryObjectStore *testStore;
                           AndWithAttributes:[SampleConstants attributeNames]
                                   AndValues:[SampleConstants attributeDefaultValues]];
     
-    [s.attributes setObject:key forKey:KEY];
+    [s.attributes setObject:key forKey:SMP_KEY];
     
     [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
     

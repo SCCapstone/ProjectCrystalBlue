@@ -32,28 +32,28 @@
 
 - (void)initializeTextFieldValues
 {
-    [self.keyTextField          setStringValue:DEF_VAL_KEY];
-    [self.continentTextField    setStringValue:DEF_VAL_CONTINENT];
-    [self.typeTextField         setStringValue:DEF_VAL_TYPE];
-    [self.lithologyTextField    setStringValue:DEF_VAL_LITHOLOGY];
-    [self.deposystemTextField   setStringValue:DEF_VAL_DEPOSYSTEM];
-    [self.groupTextField        setStringValue:DEF_VAL_GROUP];
-    [self.formationTextField    setStringValue:DEF_VAL_FORMATION];
-    [self.memberTextField       setStringValue:DEF_VAL_MEMBER];
-    [self.regionTextField       setStringValue:DEF_VAL_REGION];
-    [self.localityTextField     setStringValue:DEF_VAL_LOCALITY];
-    [self.sectionTextField      setStringValue:DEF_VAL_SECTION];
-    [self.meterLevelTextField   setStringValue:DEF_VAL_METER_LEVEL];
-    [self.latitudeTextField     setStringValue:DEF_VAL_LATITUDE];
-    [self.longitudeTextField    setStringValue:DEF_VAL_LONGITUDE];
-    [self.ageTextField          setStringValue:DEF_VAL_AGE];
-    [self.ageBasis1TextField    setStringValue:DEF_VAL_AGE_BASIS1];
-    [self.ageBasis2TextField    setStringValue:DEF_VAL_AGE_BASIS2];
+    [self.keyTextField          setStringValue:SRC_DEF_VAL_KEY];
+    [self.continentTextField    setStringValue:SRC_DEF_VAL_CONTINENT];
+    [self.typeTextField         setStringValue:SRC_DEF_VAL_TYPE];
+    [self.lithologyTextField    setStringValue:SRC_DEF_VAL_LITHOLOGY];
+    [self.deposystemTextField   setStringValue:SRC_DEF_VAL_DEPOSYSTEM];
+    [self.groupTextField        setStringValue:SRC_DEF_VAL_GROUP];
+    [self.formationTextField    setStringValue:SRC_DEF_VAL_FORMATION];
+    [self.memberTextField       setStringValue:SRC_DEF_VAL_MEMBER];
+    [self.regionTextField       setStringValue:SRC_DEF_VAL_REGION];
+    [self.localityTextField     setStringValue:SRC_DEF_VAL_LOCALITY];
+    [self.sectionTextField      setStringValue:SRC_DEF_VAL_SECTION];
+    [self.meterLevelTextField   setStringValue:SRC_DEF_VAL_METER_LEVEL];
+    [self.latitudeTextField     setStringValue:SRC_DEF_VAL_LATITUDE];
+    [self.longitudeTextField    setStringValue:SRC_DEF_VAL_LONGITUDE];
+    [self.ageTextField          setStringValue:SRC_DEF_VAL_AGE];
+    [self.ageBasis1TextField    setStringValue:SRC_DEF_VAL_AGE_BASIS1];
+    [self.ageBasis2TextField    setStringValue:SRC_DEF_VAL_AGE_BASIS2];
     
     NSString *now = [NSString stringWithFormat:@"%@", [[NSDate alloc] init]];
     [self.dateCollectedTextField setStringValue:now];
-    [self.projectTextField setStringValue:DEF_VAL_PROJECT];
-    [self.subProjectTextField setStringValue:DEF_VAL_SUBPROJECT];
+    [self.projectTextField setStringValue:SRC_DEF_VAL_PROJECT];
+    [self.subProjectTextField setStringValue:SRC_DEF_VAL_SUBPROJECT];
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
@@ -66,26 +66,26 @@
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] initWithObjects:[SourceConstants attributeDefaultValues]
                                                                            forKeys:[SourceConstants attributeNames]];
     
-    [attributes setObject:self.keyTextField.stringValue             forKey:KEY];
-    [attributes setObject:self.continentTextField.stringValue       forKey:CONTINENT];
-    [attributes setObject:self.typeTextField.stringValue            forKey:TYPE];
-    [attributes setObject:self.lithologyTextField.stringValue       forKey:LITHOLOGY];
-    [attributes setObject:self.deposystemTextField.stringValue      forKey:DEPOSYSTEM];
-    [attributes setObject:self.groupTextField.stringValue           forKey:GROUP];
-    [attributes setObject:self.formationTextField.stringValue       forKey:FORMATION];
-    [attributes setObject:self.memberTextField.stringValue          forKey:MEMBER];
-    [attributes setObject:self.regionTextField.stringValue          forKey:REGION];
-    [attributes setObject:self.localityTextField.stringValue        forKey:LOCALITY];
-    [attributes setObject:self.sectionTextField.stringValue         forKey:SECTION];
-    [attributes setObject:self.meterLevelTextField.stringValue      forKey:METER_LEVEL];
-    [attributes setObject:self.latitudeTextField.stringValue        forKey:LATITUDE];
-    [attributes setObject:self.longitudeTextField.stringValue       forKey:LONGITUDE];
-    [attributes setObject:self.ageTextField.stringValue             forKey:AGE];
-    [attributes setObject:self.ageBasis1TextField.stringValue       forKey:AGE_BASIS1];
-    [attributes setObject:self.ageBasis2TextField.stringValue       forKey:AGE_BASIS2];
-    [attributes setObject:self.dateCollectedTextField.stringValue   forKey:DATE_COLLECTED];
-    [attributes setObject:self.projectTextField.stringValue         forKey:PROJECT];
-    [attributes setObject:self.subProjectTextField.stringValue      forKey:SUBPROJECT];
+    [attributes setObject:self.keyTextField.stringValue             forKey:SRC_KEY];
+    [attributes setObject:self.continentTextField.stringValue       forKey:SRC_CONTINENT];
+    [attributes setObject:self.typeTextField.stringValue            forKey:SRC_TYPE];
+    [attributes setObject:self.lithologyTextField.stringValue       forKey:SRC_LITHOLOGY];
+    [attributes setObject:self.deposystemTextField.stringValue      forKey:SRC_DEPOSYSTEM];
+    [attributes setObject:self.groupTextField.stringValue           forKey:SRC_GROUP];
+    [attributes setObject:self.formationTextField.stringValue       forKey:SRC_FORMATION];
+    [attributes setObject:self.memberTextField.stringValue          forKey:SRC_MEMBER];
+    [attributes setObject:self.regionTextField.stringValue          forKey:SRC_REGION];
+    [attributes setObject:self.localityTextField.stringValue        forKey:SRC_LOCALITY];
+    [attributes setObject:self.sectionTextField.stringValue         forKey:SRC_SECTION];
+    [attributes setObject:self.meterLevelTextField.stringValue      forKey:SRC_METER_LEVEL];
+    [attributes setObject:self.latitudeTextField.stringValue        forKey:SRC_LATITUDE];
+    [attributes setObject:self.longitudeTextField.stringValue       forKey:SRC_LONGITUDE];
+    [attributes setObject:self.ageTextField.stringValue             forKey:SRC_AGE];
+    [attributes setObject:self.ageBasis1TextField.stringValue       forKey:SRC_AGE_BASIS1];
+    [attributes setObject:self.ageBasis2TextField.stringValue       forKey:SRC_AGE_BASIS2];
+    [attributes setObject:self.dateCollectedTextField.stringValue   forKey:SRC_DATE_COLLECTED];
+    [attributes setObject:self.projectTextField.stringValue         forKey:SRC_PROJECT];
+    [attributes setObject:self.subProjectTextField.stringValue      forKey:SRC_SUBPROJECT];
     
     Source* s = [[Source alloc] initWithKey:key AndWithAttributeDictionary:attributes];
     [self.sourcesViewController addSource:s];
