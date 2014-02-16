@@ -75,6 +75,6 @@
 
 /** Returns the number of rows in the table
  */
-- (NSInteger)countInTable:(NSString *)tableName;
+- (NSUInteger)countInTable:(NSString *)tableName;
 
 @end

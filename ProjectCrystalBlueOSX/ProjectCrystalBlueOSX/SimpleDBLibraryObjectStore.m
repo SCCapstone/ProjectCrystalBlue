@@ -158,7 +158,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [localStore libraryObjectExistsForKey:key FromTable:tableName];
 }
 
-- (NSInteger)countInTable:(NSString *)tableName
+- (NSUInteger)countInTable:(NSString *)tableName
 {
     return [localStore countInTable:tableName];
 }

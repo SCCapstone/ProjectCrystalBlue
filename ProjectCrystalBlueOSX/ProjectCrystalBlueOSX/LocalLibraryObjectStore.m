@@ -63,6 +63,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
                                 FromTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return nil;
+    }
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE key='%@'", tableName, key];
     
     // Get library object with key
@@ -92,6 +96,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return nil;
+    }
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@", tableName];
     
     // Get all library objects from table
@@ -152,6 +160,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (NSArray *)executeSqlQuery:(NSString *)sql
                      OnTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return nil;
+    }
     // Get all library objects from table
     __block NSMutableArray *libraryObjects;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
@@ -182,6 +194,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                IntoTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return NO;
+    }
     // Setup sql query
     NSString *sql;
     if ([tableName isEqualToString:[SourceConstants tableName]])
@@ -207,6 +223,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)updateLibraryObject:(LibraryObject *)libraryObject
                   IntoTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return NO;
+    }
     LibraryObject *oldObject = [self getLibraryObjectForKey:[libraryObject key] FromTable:tableName];
     if (!oldObject) {
         DDLogCError(@"%@: Cannot update non-existent object!", NSStringFromClass(self.class));
@@ -254,6 +274,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return NO;
+    }
     if (![self libraryObjectExistsForKey:key FromTable:tableName]) {
         DDLogCError(@"%@: Library object attempting to delete does not exist in the local database",
                     NSStringFromClass(self.class));
@@ -277,6 +301,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)libraryObjectExistsForKey:(NSString *)key
                         FromTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return NO;
+    }
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE key='%@'", tableName, key];
     
     // Check library object for key
@@ -297,8 +325,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return objectExists;
 }
 
-- (NSInteger)countInTable:(NSString *)tableName
+- (NSUInteger)countInTable:(NSString *)tableName
 {
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return 0;
+    }
     NSString *sql = [NSString stringWithFormat:@"SELECT count(*) FROM %@", tableName];
     
     // Get the number of rows in table

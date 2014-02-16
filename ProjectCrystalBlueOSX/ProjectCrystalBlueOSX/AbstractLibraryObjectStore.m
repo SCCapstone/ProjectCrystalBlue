@@ -84,7 +84,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return NO;
 }
 
-- (NSInteger)countInTable:(NSString *)tableName
+- (NSUInteger)countInTable:(NSString *)tableName
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return 0;
