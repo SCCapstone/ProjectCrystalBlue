@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "LibraryObject.h"
 
+@class Source;
+
 @interface AbstractLibraryObjectStore : NSObject
 
 - (id)initInLocalDirectory:(NSString *)directory
@@ -22,6 +24,18 @@
 /** Retrieve all of the library objects from the table.
  */
 - (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName;
+
+/** Retrieve all the samples that originated from the source object.
+ */
+- (NSArray *)getAllSamplesForSource:(Source *)source;
+
+/** Execute a query on the table.
+ *
+ *  This should only be a SELECT query to get library objects, do not attempt 
+ *  to use this method to make changes to the database.
+ */
+- (NSArray *)executeSqlQuery:(NSString *)sql
+                     OnTable:(NSString *)tableName;
 
 /** Add a new library object to the LibraryObjectStore with the given unique key.
  *

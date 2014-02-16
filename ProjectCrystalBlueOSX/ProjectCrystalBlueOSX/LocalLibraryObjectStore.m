@@ -121,6 +121,64 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return libraryObjects;
 }
 
+- (NSArray *)getAllSamplesForSource:(Source *)source
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE sourceKey=%@", [SampleConstants tableName], [source key]];
+    
+    // Get all corresponding samples from table
+    __block NSMutableArray *samples;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        FMResultSet *results = [localDatabase executeQuery:sql];
+        
+        if ([localDatabase hadError]) {
+            DDLogCError(@"%@: Failed to get all library objects from local database. Error: %@",
+                        NSStringFromClass(self.class), [localDatabase lastError]);
+            [results close];
+            return;
+        }
+        
+        // Add all the results to the samples array
+        samples = [[NSMutableArray alloc] init];
+        while ([results next]) {
+            NSString *key = [[results resultDictionary] objectForKey:@"key"];
+            [samples addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:[results resultDictionary]]];
+        }
+        [results close];
+    }];
+    
+    return samples;
+}
+
+- (NSArray *)executeSqlQuery:(NSString *)sql
+                     OnTable:(NSString *)tableName
+{
+    // Get all library objects from table
+    __block NSMutableArray *libraryObjects;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        FMResultSet *results = [localDatabase executeQuery:sql];
+        
+        if ([localDatabase hadError]) {
+            DDLogCError(@"%@: Failed to execute query on database. Error: %@",
+                        NSStringFromClass(self.class), [localDatabase lastError]);
+            [results close];
+            return;
+        }
+        
+        // Add all the results to the libraryObjects array
+        libraryObjects = [[NSMutableArray alloc] init];
+        while ([results next]) {
+            NSString *key = [[results resultDictionary] objectForKey:@"key"];
+            if ([tableName isEqualToString:[SourceConstants tableName]])
+                [libraryObjects addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:[results resultDictionary]]];
+            else
+                [libraryObjects addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:[results resultDictionary]]];
+        }
+        [results close];
+    }];
+    
+    return libraryObjects;
+}
+
 - (BOOL)putLibraryObject:(LibraryObject *)libraryObject
                IntoTable:(NSString *)tableName
 {
