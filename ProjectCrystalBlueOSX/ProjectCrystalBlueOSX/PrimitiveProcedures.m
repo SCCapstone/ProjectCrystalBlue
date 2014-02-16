@@ -7,6 +7,7 @@
 //
 
 #import "PrimitiveProcedures.h"
+#import "ProcedureNameConstants.h"
 #import "DDLog.h"
 #import "SampleConstants.h"
 
@@ -15,8 +16,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
-
-#define TAG_DELIMITER @", "
 
 @implementation PrimitiveProcedures
 
