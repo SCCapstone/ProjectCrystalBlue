@@ -7,6 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "AbstractCloudLibraryObjectStore.h"
+#import "SimpleDBLibraryObjectStore.h"
+
+#define TEST_DIRECTORY @"project-crystal-blue-test-temp"
+#define DATABASE_NAME @"test_database.db"
 
 @interface SimpleDBLibraryObjectStoreTests : XCTestCase
 
@@ -28,7 +33,9 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    AbstractCloudLibraryObjectStore *simpleDBStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
+                                                                                             WithDatabaseName:DATABASE_NAME];
+    
 }
 
 @end

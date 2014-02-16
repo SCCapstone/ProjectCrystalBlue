@@ -10,6 +10,8 @@
 #import "AbstractLibraryObjectStore.h"
 #import "LocalLibraryObjectStore.h"
 #import "TransactionStore.h"
+#import "Source.h"
+#import "Sample.h"
 #import <AWSiOSSDK/SimpleDB/AmazonSimpleDBClient.h>
 #import "HardcodedCredentialsProvider.h"
 #import "DDLog.h"
@@ -44,6 +46,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
         simpleDBClient = [[AmazonSimpleDBClient alloc] initWithCredentialsProvider:credentialsProvider];
+        
+        //if (![self setupDomains])
+        //    return nil;
     }
     
     return self;
@@ -51,12 +56,47 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (BOOL)synchronizeWithCloud
 {
+    // Get remote history since last update
+    
+    
+    // Compare remote with local.  For each transaction, conflicting key? Resolve conflicts
+    
+    // Push modified local history and corresponding library objects
+    
     return NO;
 }
 
-- (BOOL)keyIsDirty:(NSString *)key
+- (BOOL)setupDomains
 {
-    return NO;
+    @try {
+        SimpleDBListDomainsResponse *listResponse = [simpleDBClient listDomains:[[SimpleDBListDomainsRequest alloc] init]];
+        SimpleDBCreateDomainRequest *createRequest;
+        SimpleDBCreateDomainResponse *createResponse;
+        
+        // Source domain
+        if (![listResponse.domainNames containsObject:[SourceConstants tableName]]) {
+            createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SourceConstants tableName]];
+            createResponse = [simpleDBClient createDomain:createRequest];
+        }
+        
+        // Sample domain
+        if (![listResponse.domainNames containsObject:[SampleConstants tableName]]) {
+            createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SampleConstants tableName]];
+            createResponse = [simpleDBClient createDomain:createRequest];
+        }
+        
+        // Transaction domain
+        if (![listResponse.domainNames containsObject:[TransactionConstants tableName]]) {
+            createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[TransactionConstants tableName]];
+            createResponse = [simpleDBClient createDomain:createRequest];
+        }
+    }
+    @catch (NSException *exception) {
+        DDLogCError(@"%@: Failed to create the domains. Error: %@", NSStringFromClass(self.class), exception);
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key

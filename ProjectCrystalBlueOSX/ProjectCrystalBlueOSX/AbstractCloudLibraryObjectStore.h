@@ -27,16 +27,4 @@
  */
 - (BOOL)synchronizeWithCloud;
 
-
-/** Check whether the library object associated with a given key is "dirty" - i.e. is not synced with the online store.
- *
- *  Returns NO
- *      -if the library object associated with that key has already been synced.
- *      -if there is not an library object associated with that key.
- *
- *  Returns YES
- *      -if the library object was collected while the device was offline, and synchronizeWithCloud has not been called since then.
- */
-- (BOOL)keyIsDirty:(NSString *)key;
-
 @end

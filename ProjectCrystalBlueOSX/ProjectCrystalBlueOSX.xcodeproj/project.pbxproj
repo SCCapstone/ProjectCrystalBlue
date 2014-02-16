@@ -11,6 +11,7 @@
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
 		D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */; };
+		D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */; };
 		D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
 		D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E318A6010E00EA2DD2 /* CFNetwork.framework */; };
@@ -90,6 +91,7 @@
 		D08631A418AC61BA007A8DAA /* TransactionStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStore.m; sourceTree = "<group>"; };
 		D0C2196C18AAF73500DF9CB7 /* TransactionConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionConstants.h; sourceTree = "<group>"; };
 		D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionConstants.m; sourceTree = "<group>"; };
+		D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = include/AWSiOSSDK.framework; sourceTree = "<group>"; };
 		D72405E118A6010000EA2DD2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D72405E318A6010E00EA2DD2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -230,6 +232,14 @@
 			name = TransactionStore;
 			sourceTree = "<group>";
 		};
+		D0C9F1E518AEF5CD00885DB4 /* SimpleDBLibraryObjectStore */ = {
+			isa = PBXGroup;
+			children = (
+				D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */,
+			);
+			name = SimpleDBLibraryObjectStore;
+			sourceTree = "<group>";
+		};
 		D72405E718A601CC00EA2DD2 /* Store Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +254,7 @@
 		D72405E818A601D600EA2DD2 /* LibraryObjectStore */ = {
 			isa = PBXGroup;
 			children = (
+				D0C9F1E518AEF5CD00885DB4 /* SimpleDBLibraryObjectStore */,
 				D72405E918A601E200EA2DD2 /* LocalLibraryObjectStore */,
 			);
 			name = LibraryObjectStore;
@@ -448,6 +459,8 @@
 				D78ACC5C18A5FE06006084D6 /* ImageStore */,
 				D78ACC5318A5FDFD006084D6 /* LocalTransactionCache.h */,
 				D78ACC5418A5FDFD006084D6 /* LocalTransactionCache.m */,
+				D78ACC6C18A5FE2E006084D6 /* HardcodedCredentialsProvider.h */,
+				D78ACC6D18A5FE2E006084D6 /* HardcodedCredentialsProvider.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -537,8 +550,6 @@
 				D78ACC6918A5FE2E006084D6 /* S3ImageStore.m */,
 				D78ACC6A18A5FE2E006084D6 /* S3Utils.h */,
 				D78ACC6B18A5FE2E006084D6 /* S3Utils.m */,
-				D78ACC6C18A5FE2E006084D6 /* HardcodedCredentialsProvider.h */,
-				D78ACC6D18A5FE2E006084D6 /* HardcodedCredentialsProvider.m */,
 			);
 			name = S3ImageStore;
 			sourceTree = "<group>";
@@ -741,6 +752,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */,
+				D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */,
 				D72405F718A6023B00EA2DD2 /* LocalImageStoreTests.m in Sources */,
 				D72405FD18A6024900EA2DD2 /* S3ImageStoreTests.m in Sources */,
 				D72405EB18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m in Sources */,

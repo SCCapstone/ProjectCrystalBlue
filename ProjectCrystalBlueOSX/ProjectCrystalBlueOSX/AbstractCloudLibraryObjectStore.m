@@ -29,10 +29,4 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return NO;
 }
 
--(BOOL)keyIsDirty:(NSString *)key
-{
-    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
-    return NO;
-}
-
 @end
