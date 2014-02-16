@@ -15,7 +15,8 @@
 
 #define TEST_DIR @"pcb-procedures-tests"
 #define DATABASE_NAME @"procedures-test-db"
-#define TEST_TABLE @"sample-procedures-test-table"
+
+#define KEY @"key"
 
 @interface PrimitiveProcedureTests : XCTestCase
 
@@ -57,14 +58,16 @@ LocalLibraryObjectStore *testStore;
                           AndWithAttributes:[SampleConstants attributeNames]
                                   AndValues:[SampleConstants attributeDefaultValues]];
     
-    [testStore putLibraryObject:s IntoTable:TEST_TABLE];
+    [s.attributes setObject:key forKey:KEY];
+    
+    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
     
     [PrimitiveProcedures cloneSample:s
                            intoStore:testStore
-                      intoTableNamed:TEST_TABLE];
+                      intoTableNamed:[SampleConstants tableName]];
     
     NSString *expectedKey = @"A_ROCK.002";
-    LibraryObject *clone = [testStore getLibraryObjectForKey:expectedKey FromTable:TEST_TABLE];
+    LibraryObject *clone = [testStore getLibraryObjectForKey:expectedKey FromTable:[SampleConstants tableName]];
     
     XCTAssertNotNil(clone, @"No sample with expected key %@ was found!", expectedKey);
 }

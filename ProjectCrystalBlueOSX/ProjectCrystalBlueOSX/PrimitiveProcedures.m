@@ -118,17 +118,27 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSScanner *scanner = [NSScanner scannerWithString:previousKey];
     
     NSString *strippedString;
+    NSString *previousNumberAsString;
     int previousNumber = -1;
     
     [scanner scanUpToString:@"." intoString:&strippedString];
-    [scanner scanInt:&previousNumber];
     
-    for (int newNumber = previousNumber + 1; newNumber < 1000; ++previousNumber) {
-        NSString *newKey = [strippedString stringByAppendingFormat:@".%3d", newNumber];
+    [scanner scanCharactersFromSet:[NSCharacterSet punctuationCharacterSet]
+                        intoString:NULL];
+    
+    [scanner scanCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet]
+                        intoString:&previousNumberAsString];
+    
+    previousNumber = [previousNumberAsString intValue];
+    
+    for (int newNumber = previousNumber + 1; newNumber < 1000; ++newNumber) {
+        NSString *newKey = [strippedString stringByAppendingFormat:@".%03d", newNumber];
         LibraryObject *nameCollision = [store getLibraryObjectForKey:newKey FromTable:tableName];
-        if (nil != nameCollision) {
+        if (nil == nameCollision) {
             DDLogInfo(@"%@: Created new key %@ from key %@", NSStringFromClass(self.class), newKey, previousKey);
             return newKey;
+        } else {
+            DDLogDebug(@"%@: A sample with key %@ already exists...", NSStringFromClass(self.class), newKey);
         }
     }
     
