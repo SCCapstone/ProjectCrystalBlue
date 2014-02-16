@@ -153,6 +153,7 @@
     XCTAssertNil([libraryObjectStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]], @"LocalLibraryObjectStore should have returned nil.");
 }
 
+/// Verify all library objects from table are returned
 - (void)testGetAllLibraryObjects
 {
     AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
@@ -174,6 +175,7 @@
     XCTAssertEqual([allObjects count], 2ul, @"All of the objects were not returned from LibraryObjectStore.");
 }
 
+/// Verify the correct number of library objects from table is returned
 - (void)testCountLibraryObjects
 {
     AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
@@ -194,6 +196,7 @@
     XCTAssertTrue(objectCount == 2, @"All of the objects were not returned from LibraryObjectStore.");
 }
 
+/// Verify can get all samples that originated from a source
 - (void)testGetSamplesFromSource
 {
     AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
@@ -222,11 +225,13 @@
     putSuccess = [libraryObjectStore putLibraryObject:sampleObject3 IntoTable:[SampleConstants tableName]];
     XCTAssertTrue(putSuccess, @"LibraryObjectStore failed to put the library object into the database.");
     
+    // Make sure all corresponding samples are returned
     NSArray *samples = [libraryObjectStore getAllSamplesForSource:sourceObject];
     XCTAssertNotNil(samples, @"LibraryObjectStore failed to get the samples.");
     XCTAssertEqual([samples count], 2ul, @"LibraryObjectStore should have returned 2 samples.");
 }
 
+/// Verify that executing a custom sql query returns the correct library objects
 - (void)testExecuteSqlQuery
 {
     AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
@@ -253,6 +258,7 @@
     putSuccess = [libraryObjectStore putLibraryObject:sampleObject3 IntoTable:[SampleConstants tableName]];
     XCTAssertTrue(putSuccess, @"LibraryObjectStore failed to put the library object into the database.");
     
+    // Execute some commands and make sure they return the correct objects
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE sourceKey='rock1030'", [SampleConstants tableName]];
     NSArray *libraryObjects = [libraryObjectStore executeSqlQuery:sql OnTable:[SampleConstants tableName]];
     XCTAssertNotNil(libraryObjects, @"LibraryObjectStore failed to execute the query.");
@@ -263,6 +269,7 @@
     XCTAssertNotNil(libraryObjects, @"LibraryObjectStore failed to execute the query.");
     XCTAssertEqual([libraryObjects count], 1ul, @"LibraryObjectStore should have returned 2 samples.");
     
+    // Make sure invalid command type returns nil
     sql = [NSString stringWithFormat:@"DELETE * FROM %@", [SampleConstants tableName]];
     libraryObjects = [libraryObjectStore executeSqlQuery:sql OnTable:[SampleConstants tableName]];
     XCTAssertNil(libraryObjects, @"executeSqlQuery: should only execute queries that do not change values in the database.");
