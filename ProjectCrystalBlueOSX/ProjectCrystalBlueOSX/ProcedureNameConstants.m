@@ -27,7 +27,13 @@ static NSOrderedSet *names;
         [self.class setupTagToNameMap];
     }
     
-    return [procedureTagToNameMap objectForKey:tag];
+    NSString *name = [procedureTagToNameMap objectForKey:tag];
+    
+    if (nil == name) {
+        name = [NSString stringWithFormat:PROC_NAME_CUSTOM, tag];
+    }
+    
+    return name;
 }
 
 +(NSSet *)allProcedureTags
