@@ -20,8 +20,7 @@
 
 @property (weak) IBOutlet NSTableView *sourceTable;
 
-@property AbstractLibraryObjectStore *sourcesStore;
-@property AbstractLibraryObjectStore *samplesStore;
+@property AbstractLibraryObjectStore *dataStore;
 
 /// Add a new Source and reload the data table.
 - (void)addSource:(Source *)source;

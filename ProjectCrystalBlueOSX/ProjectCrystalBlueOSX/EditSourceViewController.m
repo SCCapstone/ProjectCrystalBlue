@@ -87,7 +87,7 @@
     [attributes setObject:self.subProjectTextField.stringValue      forKey:SRC_SUBPROJECT];
     
     Source *newSource = [[Source alloc] initWithKey:key AndWithAttributeDictionary:attributes];
-    [[self.sourcesViewController sourcesStore] updateLibraryObject:newSource IntoTable:[SourceConstants tableName]];
+    [[self.sourcesViewController dataStore] updateLibraryObject:newSource IntoTable:[SourceConstants tableName]];
     [self.view.window close];
 }
 

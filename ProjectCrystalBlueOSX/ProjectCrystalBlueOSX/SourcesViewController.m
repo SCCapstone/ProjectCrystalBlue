@@ -10,8 +10,11 @@
 #import "LocalLibraryObjectStore.h"
 #import "SourceConstants.h"
 #import "Source.h"
+#import "SampleConstants.h"
+#import "Sample.h"
 #import "AddNewSourceViewController.h"
 #import "EditSourceViewController.h"
+#import "SamplesViewController.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -26,21 +29,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SourcesViewController
 
-@synthesize sourcesStore;
-@synthesize samplesStore;
+@synthesize dataStore;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Using local library object store for testing purposes right now - will switch to SimpleDB implementation eventually.
-        LocalLibraryObjectStore *sources = [[LocalLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
-                                                                                WithDatabaseName:@"ProjectCrystalBlueSources"];
-        [self setSourcesStore:sources];
-        LocalLibraryObjectStore *samples = [[LocalLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
-                                                                                WithDatabaseName:@"ProjectCrystalBlueSamples"];
-        [self setSamplesStore:samples];
-        
+        dataStore =  [[LocalLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
+                                                          WithDatabaseName:@"ProjectCrystalBlueLocalData"];
         // Set up an empty array for active windows that the view controller launches
         activeWindows = [[NSMutableArray alloc] init];
         activeViewControllers = [[NSMutableArray alloc] init];
@@ -70,10 +67,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    if (!sourcesStore) {
+    if (!dataStore) {
         return 0;
     } else {
-        return [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] count];
+        return [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] count];
     }
 }
 
@@ -81,7 +78,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             row:(NSInteger)row
 {
     if ([tableView isEqualTo:self.sourceTable]) {
-        Source *source = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:row];
+        Source *source = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:row];
         NSString *attributeKey = [[tableColumn headerCell] stringValue];
         return [[source attributes] objectForKey:attributeKey];
     }
@@ -90,8 +87,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)addSource:(Source *)source
 {
-    [sourcesStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
+    [dataStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
     [self.sourceTable reloadData];
+    
+    // We also need to add a starting sample for this Source.
+    NSString *sampleKey = [NSString stringWithFormat:@"%@.%03d", source.key, 1];
+    Sample *sample = [[Sample alloc] initWithKey:sampleKey
+                               AndWithAttributes:[SampleConstants attributeNames]
+                                       AndValues:[SampleConstants attributeDefaultValues]];
+    [sample.attributes setObject:source.key forKey:SMP_SOURCE_KEY];
+    [dataStore putLibraryObject:sample IntoTable:[SampleConstants tableName]];
 }
 
 /*  These are methods that are called when the user clicks on the toolbar items.
@@ -133,7 +138,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
     
-    Source *s = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    Source *s = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
     
     NSAlert *confirmation = [[NSAlert alloc] init];
     [confirmation setAlertStyle:NSWarningAlertStyle];
@@ -154,7 +159,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         switch (returnCode) {
             case DELETE_BUTTON:
                 DDLogInfo(@"Deleting source with key \"%@\"", s.key);
-                [sourcesStore deleteLibraryObjectWithKey:s.key FromTable:[SourceConstants tableName]];
+                [dataStore deleteLibraryObjectWithKey:s.key FromTable:[SourceConstants tableName]];
                 break;
             case CANCEL_BUTTON:
                 break;
@@ -168,11 +173,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)showEditSourceDialog
 {
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    
     NSInteger selectedRow = [self.sourceTable selectedRow];
     if (selectedRow < 0) {
         return;
     }
-    Source *s = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    Source *s = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
     
     EditSourceViewController *editViewController;
     editViewController = [[EditSourceViewController alloc] initWithNibName:@"EditSourceViewController"
@@ -181,7 +188,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [editViewController setSource:s];
     [activeViewControllers addObject:editViewController];
     
-    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     NSRect newWindowBounds = [[NSScreen mainScreen] visibleFrame];
     newWindowBounds.origin.x = [[NSScreen mainScreen] visibleFrame].size.width * 0.3;
     newWindowBounds.origin.y = [[NSScreen mainScreen] visibleFrame].size.height * 0.4 - [activeWindows count] * 30;
@@ -199,6 +205,36 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)viewSamples
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    
+    NSInteger selectedRow = [self.sourceTable selectedRow];
+    if (selectedRow < 0) {
+        return;
+    }
+    
+    Source *source = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    SamplesViewController *samplesViewController;
+    samplesViewController = [[SamplesViewController alloc] initWithNibName:@"SamplesViewController"
+                                                                    bundle:nil];
+    [samplesViewController setSource:source];
+    [samplesViewController setDataStore:dataStore];
+    [activeViewControllers addObject:samplesViewController];
+    
+    NSRect newWindowBounds = [[NSScreen mainScreen] visibleFrame];
+    newWindowBounds.origin.x = [[NSScreen mainScreen] visibleFrame].size.width * 0.3;
+    newWindowBounds.origin.y = [[NSScreen mainScreen] visibleFrame].size.height * 0.4 - [activeWindows count] * 30;
+    newWindowBounds.size.width *= 0.4;
+    newWindowBounds.size.height *= 0.4;
+    NSWindow *window = [[NSWindow alloc] initWithContentRect:newWindowBounds
+                                                   styleMask:(NSTitledWindowMask |
+                                                              NSResizableWindowMask |
+                                                              NSMiniaturizableWindowMask |
+                                                              NSClosableWindowMask)
+                                                     backing:NSBackingStoreBuffered
+                                                       defer:NO];
+    
+    [window makeKeyAndOrderFront:NSApp];
+    [window setContentView:samplesViewController.view];
+    [activeWindows addObject:window];
 }
 
 - (void)importExport
