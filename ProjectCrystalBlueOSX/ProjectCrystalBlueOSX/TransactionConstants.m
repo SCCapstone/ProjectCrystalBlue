@@ -15,18 +15,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
-/* Attribute names
- */
-static NSString *const TIMESTAMP = @"timestamp";
-static NSString *const LIBRARY_OBJECT_KEY = @"libraryObjectKey";
-static NSString *const SQL_COMMAND_TYPE = @"sqlCommandType";
-
-/* Attribute default values
- */
-static NSString *const DEF_VAL_TIMESTAMP = @"unique timestamp";
-static NSString *const DEF_VAL_LIBRARY_OBJECT_KEY = @"library object key here";
-static NSString *const DEF_VAL_SQL_COMMAND_TYPE = @"PUT,UPDATE,DELETE here";
-
 /* Sample table name
  */
 static NSString *const TRANSACTION_TABLE_NAME = @"test_transaction_table";
@@ -39,7 +27,7 @@ static NSString *const TRANSACTION_TABLE_NAME = @"test_transaction_table";
     if (!attributeNames)
     {
         attributeNames = [NSArray arrayWithObjects:
-                          TIMESTAMP, LIBRARY_OBJECT_KEY, SQL_COMMAND_TYPE, nil];
+                          TRN_TIMESTAMP, TRN_LIBRARY_OBJECT_KEY, TRN_SQL_COMMAND_TYPE, nil];
     }
     return attributeNames;
 }
@@ -50,7 +38,7 @@ static NSString *const TRANSACTION_TABLE_NAME = @"test_transaction_table";
     if (!attributeDefaultValues)
     {
         attributeDefaultValues = [NSArray arrayWithObjects:
-                                  DEF_VAL_TIMESTAMP, DEF_VAL_LIBRARY_OBJECT_KEY, DEF_VAL_SQL_COMMAND_TYPE, nil];
+                                  TRN_DEF_VAL_TIMESTAMP, TRN_DEF_VAL_LIBRARY_OBJECT_KEY, TRN_DEF_VAL_SQL_COMMAND_TYPE, nil];
     }
     return attributeDefaultValues;
 }
@@ -71,8 +59,8 @@ static NSString *const TRANSACTION_TABLE_NAME = @"test_transaction_table";
         for (int i=0; i<[attrNames count];  i++)
         {
             NSString *attr = [attrNames objectAtIndex:i];
-            if ([attr isEqualToString:@"timestamp"])
-                [attrNames replaceObjectAtIndex:i withObject:@"timestamp REAL PRIMARY KEY"];
+            if ([attr isEqualToString:TRN_TIMESTAMP])
+                [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ REAL PRIMARY KEY", TRN_TIMESTAMP]];
             else
                 [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT", attr]];
         }

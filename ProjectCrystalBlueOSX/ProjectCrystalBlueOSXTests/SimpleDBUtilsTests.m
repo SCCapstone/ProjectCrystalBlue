@@ -104,7 +104,7 @@
 - (void)testSelectQuery
 {
     [self populateWithTestObjects];
-    NSString *query = [NSString stringWithFormat:@"select * from '%@' where timestamp >= '100' order by timestamp limit 250", TEST_DOMAIN_NAME];
+    NSString *query = [NSString stringWithFormat:@"select * from %@ where timestamp >= '100' order by timestamp limit 250", TEST_DOMAIN_NAME];
     NSArray *transactions = [SimpleDBUtils executeSelectQuery:query
                                       WithReturnedObjectClass:[Transaction class]
                                                   UsingClient:simpleDBClient];

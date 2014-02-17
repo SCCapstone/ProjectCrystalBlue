@@ -75,7 +75,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // Add all the results to the commitHistory array
         transactions = [[NSMutableArray alloc] init];
         while ([results next]) {
-            NSNumber *timestamp = [NSNumber numberWithDouble:[[[results resultDictionary] objectForKey:@"timestamp"] doubleValue]];
+            NSNumber *timestamp = [NSNumber numberWithDouble:[[[results resultDictionary] objectForKey:TRN_TIMESTAMP] doubleValue]];
             [transactions addObject:[[Transaction alloc] initWithTimestamp:timestamp
                                                 AndWithAttributeDictionary:[results resultDictionary]]];
         }
@@ -88,7 +88,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)commitTransaction:(Transaction *)transaction
 {
     // Make sure sql command is a valid command to commit
-    NSString *sqlCommand = [[transaction attributes] objectForKey:@"sqlCommandType"];
+    NSString *sqlCommand = [[transaction attributes] objectForKey:TRN_SQL_COMMAND_TYPE];
     if (!([sqlCommand isEqualToString:@"PUT"] || [sqlCommand isEqualToString:@"DELETE"] || [sqlCommand isEqualToString:@"UPDATE"])) {
         DDLogCError(@"%@: Not a valid sql command to commit the transaction.", NSStringFromClass(self.class));
         return NO;
@@ -139,7 +139,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
         
         [results next];
-        syncTime = [[[results resultDictionary] objectForKey:@"timestamp"] doubleValue];
+        syncTime = [[[results resultDictionary] objectForKey:TRN_TIMESTAMP] doubleValue];
         [results close];
     }];
     

@@ -58,11 +58,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     
     if (objectClass == [Source class])
-        return [[Source alloc] initWithKey:[objectAttributes objectForKey:@"key"] AndWithAttributeDictionary:objectAttributes];
+        return [[Source alloc] initWithKey:[objectAttributes objectForKey:SRC_KEY] AndWithAttributeDictionary:objectAttributes];
     else if (objectClass == [Sample class])
-        return [[Sample alloc] initWithKey:[objectAttributes objectForKey:@"key"] AndWithAttributeDictionary:objectAttributes];
+        return [[Sample alloc] initWithKey:[objectAttributes objectForKey:SMP_KEY] AndWithAttributeDictionary:objectAttributes];
     else if (objectClass == [Transaction class])
-        return [[Transaction alloc] initWithTimestamp:[objectAttributes objectForKey:@"timestamp"] AndWithAttributeDictionary:objectAttributes];
+        return [[Transaction alloc] initWithTimestamp:[objectAttributes objectForKey:TRN_TIMESTAMP] AndWithAttributeDictionary:objectAttributes];
     else {
         DDLogCError(@"%@: objectClass must be of type Source, Sample, or Transaction.", NSStringFromClass(self.class));
         return nil;
@@ -96,7 +96,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSMutableArray *objectAttributes = [[NSMutableArray alloc] init];
     
     for (NSString *key in attributeKeys) {
-        if ([key isEqualToString:@"key"] || [key isEqualToString:@"timestamp"])
+        if ([key isEqualToString:@"key"] || [key isEqualToString:TRN_TIMESTAMP])
             itemName = [attributes objectForKey:key];
         SimpleDBReplaceableAttribute *keyValuePair = [[SimpleDBReplaceableAttribute alloc] initWithName:key
                                                                                                andValue:[attributes objectForKey:key]

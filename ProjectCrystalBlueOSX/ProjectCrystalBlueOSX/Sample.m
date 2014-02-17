@@ -27,7 +27,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSString *)sourceKey
 {
-    return [[self attributes] objectForKey:@"sourceKey"];
+    return [[self attributes] objectForKey:SMP_SOURCE_KEY];
 }
 
 @end
