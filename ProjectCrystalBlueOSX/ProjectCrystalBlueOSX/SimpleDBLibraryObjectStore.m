@@ -14,6 +14,7 @@
 #import "Sample.h"
 #import <AWSiOSSDK/SimpleDB/AmazonSimpleDBClient.h>
 #import "HardcodedCredentialsProvider.h"
+#import "SimpleDBUtils.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -57,9 +58,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)synchronizeWithCloud
 {
     // Get remote history since last update
-    
+    NSTimeInterval lastSyncTime = [transactionStore timeOfLastSync];
+    NSString *query = [NSString stringWithFormat:@"select * from %@ where timestamp >= '%f' order by timestamp limit 250", [TransactionConstants tableName], lastSyncTime];
+    NSArray *remoteTransactions = [SimpleDBUtils executeSelectQuery:query
+                                            WithReturnedObjectClass:[Transaction class]
+                                                        UsingClient:simpleDBClient];
+    if (!remoteTransactions)
+        return NO;
     
     // Compare remote with local.  For each transaction, conflicting key? Resolve conflicts
+    
     
     // Push modified local history and corresponding library objects
     

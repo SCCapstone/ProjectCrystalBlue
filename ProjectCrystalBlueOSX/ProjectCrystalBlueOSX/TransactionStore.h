@@ -32,4 +32,9 @@
  */
 - (BOOL)clearLocalTransactions;
 
+/**
+ *
+ */
+- (NSTimeInterval)timeOfLastSync;
+
 @end
