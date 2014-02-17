@@ -10,8 +10,11 @@
 #import "LocalLibraryObjectStore.h"
 #import "SourceConstants.h"
 #import "Source.h"
+#import "SampleConstants.h"
+#import "Sample.h"
 #import "AddNewSourceViewController.h"
 #import "EditSourceViewController.h"
+#import "SamplesViewController.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -86,6 +89,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     [dataStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
     [self.sourceTable reloadData];
+    
+    // We also need to add a starting sample for this Source.
+    NSString *sampleKey = [NSString stringWithFormat:@"%@.%03d", source.key, 1];
+    Sample *sample = [[Sample alloc] initWithKey:sampleKey
+                               AndWithAttributes:[SampleConstants attributeNames]
+                                       AndValues:[SampleConstants attributeDefaultValues]];
+    [sample.attributes setObject:source.key forKey:SMP_SOURCE_KEY];
+    [dataStore putLibraryObject:sample IntoTable:[SampleConstants tableName]];
 }
 
 /*  These are methods that are called when the user clicks on the toolbar items.
@@ -162,6 +173,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)showEditSourceDialog
 {
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    
     NSInteger selectedRow = [self.sourceTable selectedRow];
     if (selectedRow < 0) {
         return;
@@ -175,7 +188,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [editViewController setSource:s];
     [activeViewControllers addObject:editViewController];
     
-    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     NSRect newWindowBounds = [[NSScreen mainScreen] visibleFrame];
     newWindowBounds.origin.x = [[NSScreen mainScreen] visibleFrame].size.width * 0.3;
     newWindowBounds.origin.y = [[NSScreen mainScreen] visibleFrame].size.height * 0.4 - [activeWindows count] * 30;
@@ -193,6 +205,36 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)viewSamples
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    
+    NSInteger selectedRow = [self.sourceTable selectedRow];
+    if (selectedRow < 0) {
+        return;
+    }
+    
+    Source *source = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    SamplesViewController *samplesViewController;
+    samplesViewController = [[SamplesViewController alloc] initWithNibName:@"SamplesViewController"
+                                                                    bundle:nil];
+    [samplesViewController setSource:source];
+    [samplesViewController setDataStore:dataStore];
+    [activeViewControllers addObject:samplesViewController];
+    
+    NSRect newWindowBounds = [[NSScreen mainScreen] visibleFrame];
+    newWindowBounds.origin.x = [[NSScreen mainScreen] visibleFrame].size.width * 0.3;
+    newWindowBounds.origin.y = [[NSScreen mainScreen] visibleFrame].size.height * 0.4 - [activeWindows count] * 30;
+    newWindowBounds.size.width *= 0.4;
+    newWindowBounds.size.height *= 0.4;
+    NSWindow *window = [[NSWindow alloc] initWithContentRect:newWindowBounds
+                                                   styleMask:(NSTitledWindowMask |
+                                                              NSResizableWindowMask |
+                                                              NSMiniaturizableWindowMask |
+                                                              NSClosableWindowMask)
+                                                     backing:NSBackingStoreBuffered
+                                                       defer:NO];
+    
+    [window makeKeyAndOrderFront:NSApp];
+    [window setContentView:samplesViewController.view];
+    [activeWindows addObject:window];
 }
 
 - (void)importExport
