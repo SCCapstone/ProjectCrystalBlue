@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03AE34DA18B1B991006AD856 /* libqrencode.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AE34D918B1B991006AD856 /* libqrencode.3.dylib */; };
 		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
@@ -94,6 +95,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03AE34D918B1B991006AD856 /* libqrencode.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqrencode.3.dylib; path = include/libqrencode.3.dylib; sourceTree = "<group>"; };
 		D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D086319F18AC5ACB007A8DAA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
 		D08631A018AC5ACB007A8DAA /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */,
 				D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */,
 				D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */,
+				03AE34DA18B1B991006AD856 /* libqrencode.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +398,7 @@
 		D7439E0D18A5FC53000EE008 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03AE34D918B1B991006AD856 /* libqrencode.3.dylib */,
 				D72405E318A6010E00EA2DD2 /* CFNetwork.framework */,
 				D72405E118A6010000EA2DD2 /* libsqlite3.dylib */,
 				D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */,
@@ -973,6 +977,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
+					/Users/josh/ProjectCrystalBlue/ProjectCrystalBlueOSX/include,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -999,6 +1004,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
+					/Users/josh/ProjectCrystalBlue/ProjectCrystalBlueOSX/include,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
