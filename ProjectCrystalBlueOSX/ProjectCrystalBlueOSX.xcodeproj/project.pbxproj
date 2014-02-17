@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03AE34DA18B1B991006AD856 /* libqrencode.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AE34D918B1B991006AD856 /* libqrencode.3.dylib */; };
 		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
+		D0655A0518B207F7008947B5 /* SamplesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F822BD18B199450017548F /* SamplesViewController.m */; };
+		D0655A0718B209CB008947B5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
 		D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C7E9718B1A72A001B98AF /* SimpleDBUtils.m */; };
@@ -81,7 +82,6 @@
 		D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9718A5FEB6006084D6 /* SampleConstants.m */; };
 		D7EA0B8E18A84B14003D74BA /* AddNewSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */; };
 		D7EA0B8F18A84B14003D74BA /* AddNewSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */; };
-		D7F822BF18B199450017548F /* SamplesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F822BD18B199450017548F /* SamplesViewController.m */; };
 		D7F822C018B199450017548F /* SamplesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F822BE18B199450017548F /* SamplesViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -228,7 +228,6 @@
 				D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */,
 				D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */,
 				D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */,
-				03AE34DA18B1B991006AD856 /* libqrencode.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +238,7 @@
 				D7439E2F18A5FC53000EE008 /* Cocoa.framework in Frameworks */,
 				D7439E2E18A5FC53000EE008 /* XCTest.framework in Frameworks */,
 				D724060718A602DF00EA2DD2 /* AWSiOSSDK.framework in Frameworks */,
+				D0655A0718B209CB008947B5 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,6 +820,7 @@
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
 				D78ACC6618A5FE21006084D6 /* AbstractCloudImageStore.m in Sources */,
 				D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */,
+				D0655A0518B207F7008947B5 /* SamplesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -980,7 +981,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
-					/Users/josh/ProjectCrystalBlue/ProjectCrystalBlueOSX/include,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1007,7 +1007,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
-					/Users/josh/ProjectCrystalBlue/ProjectCrystalBlueOSX/include,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1036,7 +1035,10 @@
 					"$(SRCROOT)/include",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlueOSXTests/ProjectCrystalBlueOSXTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/include",
+					/Users/Justin/Projects/ProjectCrystalBlueOSX/ProjectCrystalBlueOSX/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -1061,7 +1063,10 @@
 					"$(SRCROOT)/include",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlueOSXTests/ProjectCrystalBlueOSXTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/include",
+					/Users/Justin/Projects/ProjectCrystalBlueOSX/ProjectCrystalBlueOSX/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
