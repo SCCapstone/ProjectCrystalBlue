@@ -67,7 +67,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     
     // Compare remote with local.  For each transaction, conflicting key? Resolve conflicts
-    
+    for (Transaction *remoteTransaction in remoteTransactions) {
+        
+    }
     
     // Push modified local history and corresponding library objects
     
