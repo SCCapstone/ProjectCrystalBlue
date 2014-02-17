@@ -26,21 +26,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SourcesViewController
 
-@synthesize sourcesStore;
-@synthesize samplesStore;
+@synthesize dataStore;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Using local library object store for testing purposes right now - will switch to SimpleDB implementation eventually.
-        LocalLibraryObjectStore *sources = [[LocalLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
-                                                                                WithDatabaseName:@"ProjectCrystalBlueSources"];
-        [self setSourcesStore:sources];
-        LocalLibraryObjectStore *samples = [[LocalLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
-                                                                                WithDatabaseName:@"ProjectCrystalBlueSamples"];
-        [self setSamplesStore:samples];
-        
+        dataStore =  [[LocalLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
+                                                          WithDatabaseName:@"ProjectCrystalBlueLocalData"];
         // Set up an empty array for active windows that the view controller launches
         activeWindows = [[NSMutableArray alloc] init];
         activeViewControllers = [[NSMutableArray alloc] init];
@@ -70,10 +64,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    if (!sourcesStore) {
+    if (!dataStore) {
         return 0;
     } else {
-        return [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] count];
+        return [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] count];
     }
 }
 
@@ -81,7 +75,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             row:(NSInteger)row
 {
     if ([tableView isEqualTo:self.sourceTable]) {
-        Source *source = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:row];
+        Source *source = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:row];
         NSString *attributeKey = [[tableColumn headerCell] stringValue];
         return [[source attributes] objectForKey:attributeKey];
     }
@@ -90,7 +84,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)addSource:(Source *)source
 {
-    [sourcesStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
+    [dataStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
     [self.sourceTable reloadData];
 }
 
@@ -133,7 +127,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
     
-    Source *s = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    Source *s = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
     
     NSAlert *confirmation = [[NSAlert alloc] init];
     [confirmation setAlertStyle:NSWarningAlertStyle];
@@ -154,7 +148,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         switch (returnCode) {
             case DELETE_BUTTON:
                 DDLogInfo(@"Deleting source with key \"%@\"", s.key);
-                [sourcesStore deleteLibraryObjectWithKey:s.key FromTable:[SourceConstants tableName]];
+                [dataStore deleteLibraryObjectWithKey:s.key FromTable:[SourceConstants tableName]];
                 break;
             case CANCEL_BUTTON:
                 break;
@@ -172,7 +166,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (selectedRow < 0) {
         return;
     }
-    Source *s = [[sourcesStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    Source *s = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
     
     EditSourceViewController *editViewController;
     editViewController = [[EditSourceViewController alloc] initWithNibName:@"EditSourceViewController"

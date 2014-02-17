@@ -79,6 +79,8 @@
 		D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9718A5FEB6006084D6 /* SampleConstants.m */; };
 		D7EA0B8E18A84B14003D74BA /* AddNewSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */; };
 		D7EA0B8F18A84B14003D74BA /* AddNewSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */; };
+		D7F822BF18B199450017548F /* SamplesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F822BD18B199450017548F /* SamplesViewController.m */; };
+		D7F822C018B199450017548F /* SamplesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F822BE18B199450017548F /* SamplesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,6 +210,9 @@
 		D7EA0B8B18A84B14003D74BA /* AddNewSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSourceViewController.h; sourceTree = "<group>"; };
 		D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSourceViewController.m; sourceTree = "<group>"; };
 		D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewSourceViewController.xib; sourceTree = "<group>"; };
+		D7F822BC18B199450017548F /* SamplesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesViewController.h; sourceTree = "<group>"; };
+		D7F822BD18B199450017548F /* SamplesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesViewController.m; sourceTree = "<group>"; };
+		D7F822BE18B199450017548F /* SamplesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -527,6 +532,7 @@
 		D78ACC2F18A5FD9B006084D6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D7F822BB18B199290017548F /* SamplesView */,
 				D770578118AD7C8900F011E5 /* EditSourceView */,
 				D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */,
 				D7272DF318A60660003860E2 /* SourcesViewController.h */,
@@ -653,6 +659,16 @@
 			name = AddNewSourceView;
 			sourceTree = "<group>";
 		};
+		D7F822BB18B199290017548F /* SamplesView */ = {
+			isa = PBXGroup;
+			children = (
+				D7F822BC18B199450017548F /* SamplesViewController.h */,
+				D7F822BD18B199450017548F /* SamplesViewController.m */,
+				D7F822BE18B199450017548F /* SamplesViewController.xib */,
+			);
+			name = SamplesView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -729,6 +745,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7F822C018B199450017548F /* SamplesViewController.xib in Resources */,
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */,
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
@@ -787,6 +804,7 @@
 				D78ACC3D18A5FDC0006084D6 /* FMDatabasePool.m in Sources */,
 				D78ACC7F18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m in Sources */,
 				D78ACC8618A5FE8E006084D6 /* SimpleDBCredentialsProvider.m in Sources */,
+				D7F822BF18B199450017548F /* SamplesViewController.m in Sources */,
 				D704E1AE18B16C4700170B7E /* Procedures.m in Sources */,
 				D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */,
 				D7439E1B18A5FC53000EE008 /* main.m in Sources */,
