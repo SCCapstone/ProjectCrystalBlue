@@ -63,7 +63,7 @@ AndWithAttributeDictionary:(NSDictionary *)attr
         return NO;
     }
     
-    if (![object isKindOfClass:self.class]) {
+    if (![object isKindOfClass:[LibraryObject class]]) {
         return NO;
     }
     
@@ -73,7 +73,7 @@ AndWithAttributeDictionary:(NSDictionary *)attr
         return NO;
     }
     
-    if (![self.attributes.allKeys isEqualToArray:other.attributes.allKeys]) {
+    if (self.attributes.count != other.attributes.count) {
         return NO;
     }
     

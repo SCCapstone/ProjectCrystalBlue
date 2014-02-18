@@ -81,6 +81,10 @@
 		D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9518A5FEB6006084D6 /* SourceConstants.m */; };
 		D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9718A5FEB6006084D6 /* SampleConstants.m */; };
 		D7C8732D18B2F9F800F2976F /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8732C18B2F9F800F2976F /* CHCSVParser.m */; };
+		D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733018B2FA4D00F2976F /* LibraryObjectCSVWriter.m */; };
+		D7C8733718B2FB0B00F2976F /* LibraryObjectCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */; };
+		D7C8733D18B3031800F2976F /* CSVReadWriteUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */; };
+		D7C8733F18B31CF400F2976F /* samples_reordered_columns.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */; };
 		D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */; };
 		D7EA0B8E18A84B14003D74BA /* AddNewSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */; };
 		D7EA0B8F18A84B14003D74BA /* AddNewSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */; };
@@ -215,6 +219,14 @@
 		D78ACC9718A5FEB6006084D6 /* SampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleConstants.m; sourceTree = "<group>"; };
 		D7C8732B18B2F9F800F2976F /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 		D7C8732C18B2F9F800F2976F /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
+		D7C8733018B2FA4D00F2976F /* LibraryObjectCSVWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectCSVWriter.m; sourceTree = "<group>"; };
+		D7C8733118B2FA4D00F2976F /* LibraryObjectCSVWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectCSVWriter.h; sourceTree = "<group>"; };
+		D7C8733218B2FA4D00F2976F /* LibraryObjectFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectFileReader.h; sourceTree = "<group>"; };
+		D7C8733318B2FA4D00F2976F /* LibraryObjectFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectFileWriter.h; sourceTree = "<group>"; };
+		D7C8733518B2FB0B00F2976F /* LibraryObjectCSVReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectCSVReader.h; sourceTree = "<group>"; };
+		D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectCSVReader.m; sourceTree = "<group>"; };
+		D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVReadWriteUnitTests.m; sourceTree = "<group>"; };
+		D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_reordered_columns.csv; sourceTree = "<group>"; };
 		D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectEqualsAndHashcodeTests.m; sourceTree = "<group>"; };
 		D7EA0B8B18A84B14003D74BA /* AddNewSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSourceViewController.h; sourceTree = "<group>"; };
 		D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSourceViewController.m; sourceTree = "<group>"; };
@@ -460,6 +472,7 @@
 		D7439E3218A5FC53000EE008 /* ProjectCrystalBlueOSXTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7C8733818B302D900F2976F /* ReadWrite */,
 				D724060218A6027200EA2DD2 /* ModelTests */,
 				D72405E718A601CC00EA2DD2 /* Store Tests */,
 				D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */,
@@ -666,8 +679,31 @@
 		D7C8732A18B2F9DB00F2976F /* ReadWrite */ = {
 			isa = PBXGroup;
 			children = (
+				D7C8733518B2FB0B00F2976F /* LibraryObjectCSVReader.h */,
+				D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */,
+				D7C8733118B2FA4D00F2976F /* LibraryObjectCSVWriter.h */,
+				D7C8733018B2FA4D00F2976F /* LibraryObjectCSVWriter.m */,
+				D7C8733218B2FA4D00F2976F /* LibraryObjectFileReader.h */,
+				D7C8733318B2FA4D00F2976F /* LibraryObjectFileWriter.h */,
+				D7C8732E18B2FA1000F2976F /* CHCSVParser */,
+			);
+			name = ReadWrite;
+			sourceTree = "<group>";
+		};
+		D7C8732E18B2FA1000F2976F /* CHCSVParser */ = {
+			isa = PBXGroup;
+			children = (
 				D7C8732B18B2F9F800F2976F /* CHCSVParser.h */,
 				D7C8732C18B2F9F800F2976F /* CHCSVParser.m */,
+			);
+			name = CHCSVParser;
+			sourceTree = "<group>";
+		};
+		D7C8733818B302D900F2976F /* ReadWrite */ = {
+			isa = PBXGroup;
+			children = (
+				D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */,
+				D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */,
 			);
 			name = ReadWrite;
 			sourceTree = "<group>";
@@ -787,6 +823,7 @@
 				D72405FC18A6024900EA2DD2 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */,
 				D72405F618A6023B00EA2DD2 /* big_test_image_4096-4096.jpg in Resources */,
 				D7439E3718A5FC53000EE008 /* InfoPlist.strings in Resources */,
+				D7C8733F18B31CF400F2976F /* samples_reordered_columns.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,9 +843,11 @@
 				D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
 				D7439E2218A5FC53000EE008 /* AppDelegate.m in Sources */,
+				D7C8733718B2FB0B00F2976F /* LibraryObjectCSVReader.m in Sources */,
 				D770578518AD7CC100F011E5 /* EditSourceViewController.m in Sources */,
 				D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */,
 				D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */,
+				D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
 				D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */,
 				D78ACC4A18A5FDD9006084D6 /* DDTTYLogger.m in Sources */,
@@ -856,6 +895,7 @@
 				D704E1B018B16F6200170B7E /* ProceduresTests.m in Sources */,
 				D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */,
 				D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */,
+				D7C8733D18B3031800F2976F /* CSVReadWriteUnitTests.m in Sources */,
 				D72405F218A6022500EA2DD2 /* AbstractImageStoreTests.m in Sources */,
 				D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */,
 				D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */,
