@@ -54,4 +54,46 @@ AndWithAttributeDictionary:(NSDictionary *)attr
     return self;
 }
 
+/**
+ *  Compares this LibraryObject to another object. LibraryObjects are considered equal if they have the same key and all the same attributes.
+ */
+- (BOOL)isEqual:(id)object
+{
+    if (nil == object) {
+        return NO;
+    }
+    
+    if (![object isKindOfClass:self.class]) {
+        return NO;
+    }
+    
+    LibraryObject *other = (LibraryObject *)object;
+    
+    if (![self.key isEqualToString:other.key]) {
+        return NO;
+    }
+    
+    if (![self.attributes.allKeys isEqualToArray:other.attributes.allKeys]) {
+        return NO;
+    }
+    
+    for (NSString *attributeKey in self.attributes.allKeys) {
+        NSString *ours = [self.attributes objectForKey:attributeKey];
+        NSString *theirs = [other.attributes objectForKey:attributeKey];
+        
+        if (![ours isEqualToString:theirs]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+/**
+ *  Returns a hash generated for this LibraryObject. The hash is generated purely from the key.
+ */
+- (NSUInteger)hash
+{
+    return [self.key hash];
+}
+
 @end

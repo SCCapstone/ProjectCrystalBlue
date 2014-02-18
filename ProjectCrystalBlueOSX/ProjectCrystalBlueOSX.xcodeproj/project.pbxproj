@@ -77,6 +77,7 @@
 		D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9318A5FEB6006084D6 /* Sample.m */; };
 		D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9518A5FEB6006084D6 /* SourceConstants.m */; };
 		D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9718A5FEB6006084D6 /* SampleConstants.m */; };
+		D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */; };
 		D7EA0B8E18A84B14003D74BA /* AddNewSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */; };
 		D7EA0B8F18A84B14003D74BA /* AddNewSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */; };
 		D7F822BF18B199450017548F /* SamplesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F822BD18B199450017548F /* SamplesViewController.m */; };
@@ -207,6 +208,7 @@
 		D78ACC9518A5FEB6006084D6 /* SourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceConstants.m; sourceTree = "<group>"; };
 		D78ACC9618A5FEB6006084D6 /* SampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleConstants.h; sourceTree = "<group>"; };
 		D78ACC9718A5FEB6006084D6 /* SampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleConstants.m; sourceTree = "<group>"; };
+		D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectEqualsAndHashcodeTests.m; sourceTree = "<group>"; };
 		D7EA0B8B18A84B14003D74BA /* AddNewSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSourceViewController.h; sourceTree = "<group>"; };
 		D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSourceViewController.m; sourceTree = "<group>"; };
 		D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewSourceViewController.xib; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			children = (
 				D706DDB618B0C8DF0023D2BF /* Procedure Tests */,
 				D724060318A6027A00EA2DD2 /* OriginalSampleConstantsTests.m */,
+				D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */,
 			);
 			name = ModelTests;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */,
 				D72405F218A6022500EA2DD2 /* AbstractImageStoreTests.m in Sources */,
 				D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */,
+				D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */,
 				D704E1AB18B1654200170B7E /* ProcedureTagDecoderTests.m in Sources */,
 				D724060118A6026900EA2DD2 /* LocalTransactionCacheTests.m in Sources */,
 				D704E1A918B162CE00170B7E /* ProcedureNameConstantsTests.m in Sources */,
