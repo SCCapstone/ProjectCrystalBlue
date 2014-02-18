@@ -99,7 +99,7 @@ static NSString *const SOURCE_TABLE_NAME = @"test_source_table";
         {
             NSString *attr = [attrNames objectAtIndex:i];
             [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT%@",
-                                                          attr, [attr isEqualToString:@"key"] ? @" PRIMARY KEY" : @""]];
+                                                          attr, [attr isEqualToString:SRC_KEY] ? @" PRIMARY KEY" : @""]];
         }
         schema = [attrNames componentsJoinedByString:@","];
     }

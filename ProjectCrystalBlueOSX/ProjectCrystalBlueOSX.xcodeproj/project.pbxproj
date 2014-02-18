@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
+		D0655A0518B207F7008947B5 /* SamplesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F822BD18B199450017548F /* SamplesViewController.m */; };
+		D0655A0718B209CB008947B5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
+		D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C7E9718B1A72A001B98AF /* SimpleDBUtils.m */; };
+		D09C7E9A18B1ABFE001B98AF /* SimpleDBUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */; };
 		D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */; };
 		D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */; };
 		D704E1A718B15C5B00170B7E /* ProcedureTagDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A618B15C5B00170B7E /* ProcedureTagDecoder.m */; };
@@ -71,7 +75,6 @@
 		D78ACC7E18A5FE7C006084D6 /* AbstractLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC7B18A5FE7C006084D6 /* AbstractLibraryObjectStore.m */; };
 		D78ACC7F18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC7D18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m */; };
 		D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC8218A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m */; };
-		D78ACC8618A5FE8E006084D6 /* SimpleDBCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC8418A5FE8E006084D6 /* SimpleDBCredentialsProvider.m */; };
 		D78ACC9818A5FEB6006084D6 /* LibraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC8F18A5FEB6006084D6 /* LibraryObject.m */; };
 		D78ACC9918A5FEB6006084D6 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9118A5FEB6006084D6 /* Source.m */; };
 		D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9318A5FEB6006084D6 /* Sample.m */; };
@@ -80,7 +83,6 @@
 		D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */; };
 		D7EA0B8E18A84B14003D74BA /* AddNewSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */; };
 		D7EA0B8F18A84B14003D74BA /* AddNewSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */; };
-		D7F822BF18B199450017548F /* SamplesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F822BD18B199450017548F /* SamplesViewController.m */; };
 		D7F822C018B199450017548F /* SamplesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F822BE18B199450017548F /* SamplesViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -95,11 +97,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03AE34D918B1B991006AD856 /* libqrencode.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqrencode.3.dylib; path = include/libqrencode.3.dylib; sourceTree = "<group>"; };
 		D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D086319F18AC5ACB007A8DAA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
 		D08631A018AC5ACB007A8DAA /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
 		D08631A318AC61BA007A8DAA /* TransactionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionStore.h; sourceTree = "<group>"; };
 		D08631A418AC61BA007A8DAA /* TransactionStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStore.m; sourceTree = "<group>"; };
+		D09C7E9618B1A72A001B98AF /* SimpleDBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBUtils.h; sourceTree = "<group>"; };
+		D09C7E9718B1A72A001B98AF /* SimpleDBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtils.m; sourceTree = "<group>"; };
+		D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtilsTests.m; sourceTree = "<group>"; };
 		D0C2196C18AAF73500DF9CB7 /* TransactionConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionConstants.h; sourceTree = "<group>"; };
 		D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionConstants.m; sourceTree = "<group>"; };
 		D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBLibraryObjectStoreTests.m; sourceTree = "<group>"; };
@@ -196,8 +202,6 @@
 		D78ACC7D18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractCloudLibraryObjectStore.m; sourceTree = "<group>"; };
 		D78ACC8118A5FE8E006084D6 /* SimpleDBLibraryObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBLibraryObjectStore.h; sourceTree = "<group>"; };
 		D78ACC8218A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBLibraryObjectStore.m; sourceTree = "<group>"; };
-		D78ACC8318A5FE8E006084D6 /* SimpleDBCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBCredentialsProvider.h; sourceTree = "<group>"; };
-		D78ACC8418A5FE8E006084D6 /* SimpleDBCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBCredentialsProvider.m; sourceTree = "<group>"; };
 		D78ACC8E18A5FEB6006084D6 /* LibraryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObject.h; sourceTree = "<group>"; };
 		D78ACC8F18A5FEB6006084D6 /* LibraryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObject.m; sourceTree = "<group>"; };
 		D78ACC9018A5FEB6006084D6 /* Source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 				D7439E2F18A5FC53000EE008 /* Cocoa.framework in Frameworks */,
 				D7439E2E18A5FC53000EE008 /* XCTest.framework in Frameworks */,
 				D724060718A602DF00EA2DD2 /* AWSiOSSDK.framework in Frameworks */,
+				D0655A0718B209CB008947B5 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */,
+				D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */,
 			);
 			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
@@ -398,6 +404,7 @@
 		D7439E0D18A5FC53000EE008 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03AE34D918B1B991006AD856 /* libqrencode.3.dylib */,
 				D72405E318A6010E00EA2DD2 /* CFNetwork.framework */,
 				D72405E118A6010000EA2DD2 /* libsqlite3.dylib */,
 				D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */,
@@ -646,8 +653,8 @@
 			children = (
 				D78ACC8118A5FE8E006084D6 /* SimpleDBLibraryObjectStore.h */,
 				D78ACC8218A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m */,
-				D78ACC8318A5FE8E006084D6 /* SimpleDBCredentialsProvider.h */,
-				D78ACC8418A5FE8E006084D6 /* SimpleDBCredentialsProvider.m */,
+				D09C7E9618B1A72A001B98AF /* SimpleDBUtils.h */,
+				D09C7E9718B1A72A001B98AF /* SimpleDBUtils.m */,
 			);
 			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
@@ -806,8 +813,6 @@
 				D78ACC7718A5FE68006084D6 /* LocalLibraryObjectStore.m in Sources */,
 				D78ACC3D18A5FDC0006084D6 /* FMDatabasePool.m in Sources */,
 				D78ACC7F18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m in Sources */,
-				D78ACC8618A5FE8E006084D6 /* SimpleDBCredentialsProvider.m in Sources */,
-				D7F822BF18B199450017548F /* SamplesViewController.m in Sources */,
 				D704E1AE18B16C4700170B7E /* Procedures.m in Sources */,
 				D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */,
 				D7439E1B18A5FC53000EE008 /* main.m in Sources */,
@@ -817,6 +822,8 @@
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
 				D78ACC6618A5FE21006084D6 /* AbstractCloudImageStore.m in Sources */,
+				D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */,
+				D0655A0518B207F7008947B5 /* SamplesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,6 +834,7 @@
 				D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */,
 				D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */,
 				D72405F718A6023B00EA2DD2 /* LocalImageStoreTests.m in Sources */,
+				D09C7E9A18B1ABFE001B98AF /* SimpleDBUtilsTests.m in Sources */,
 				D72405FD18A6024900EA2DD2 /* S3ImageStoreTests.m in Sources */,
 				D72405EB18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m in Sources */,
 				D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */,
@@ -1031,7 +1039,10 @@
 					"$(SRCROOT)/include",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlueOSXTests/ProjectCrystalBlueOSXTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/include",
+					/Users/Justin/Projects/ProjectCrystalBlueOSX/ProjectCrystalBlueOSX/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -1056,7 +1067,10 @@
 					"$(SRCROOT)/include",
 				);
 				INFOPLIST_FILE = "ProjectCrystalBlueOSXTests/ProjectCrystalBlueOSXTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/include",
+					/Users/Justin/Projects/ProjectCrystalBlueOSX/ProjectCrystalBlueOSX/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

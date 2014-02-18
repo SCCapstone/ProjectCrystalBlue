@@ -67,8 +67,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         FMResultSet *results = [localDatabase executeQuery:sql];
         
         if ([localDatabase hadError]) {
-            DDLogCError(@"%@: Failed to get unsynced transactions from local database. Error: %@",
-                        NSStringFromClass(self.class), [localDatabase lastError]);
+            DDLogCError(@"%@: Failed to get unsynced transactions from local database. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
             [results close];
             return;
         }
@@ -76,7 +75,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // Add all the results to the commitHistory array
         transactions = [[NSMutableArray alloc] init];
         while ([results next]) {
-            NSNumber *timestamp = [NSNumber numberWithDouble:[[[results resultDictionary] objectForKey:@"timestamp"] doubleValue]];
+            NSNumber *timestamp = [NSNumber numberWithDouble:[[[results resultDictionary] objectForKey:TRN_TIMESTAMP] doubleValue]];
             [transactions addObject:[[Transaction alloc] initWithTimestamp:timestamp
                                                 AndWithAttributeDictionary:[results resultDictionary]]];
         }
@@ -89,7 +88,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)commitTransaction:(Transaction *)transaction
 {
     // Make sure sql command is a valid command to commit
-    NSString *sqlCommand = [[transaction attributes] objectForKey:@"sqlCommandType"];
+    NSString *sqlCommand = [[transaction attributes] objectForKey:TRN_SQL_COMMAND_TYPE];
     if (!([sqlCommand isEqualToString:@"PUT"] || [sqlCommand isEqualToString:@"DELETE"] || [sqlCommand isEqualToString:@"UPDATE"])) {
         DDLogCError(@"%@: Not a valid sql command to commit the transaction.", NSStringFromClass(self.class));
         return NO;
@@ -103,8 +102,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         commitSuccess = [localDatabase executeUpdate:sql withParameterDictionary:[transaction attributes]];
         
         if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to commit transaction to local database. Error: %@",
-                        NSStringFromClass(self.class), [localDatabase lastError]);
+            DDLogCError(@"%@: Failed to commit transaction to local database. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
     }];
     
     return commitSuccess;
@@ -119,11 +117,33 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         clearSuccess = [localDatabase executeUpdate:sql];
         
         if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to clear local transactions. Error: %@",
-                        NSStringFromClass(self.class), [localDatabase lastError]);
+            DDLogCError(@"%@: Failed to clear local transactions. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
     }];
     
     return clearSuccess;
+}
+
+- (NSTimeInterval)timeOfLastSync
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT timestamp FROM %@ ORDER BY ROWID ASC LIMIT 1", [TransactionConstants tableName]];
+    
+    // Get first row of transactions table which holds last sync time
+    __block NSTimeInterval syncTime;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        FMResultSet *results = [localDatabase executeQuery:sql];
+        
+        if ([localDatabase hadError]) {
+            DDLogCError(@"%@: Failed to get last sync time from database. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+            [results close];
+            return;
+        }
+        
+        [results next];
+        syncTime = [[[results resultDictionary] objectForKey:TRN_TIMESTAMP] doubleValue];
+        [results close];
+    }];
+    
+    return syncTime;
 }
 
 - (BOOL)setupTable
@@ -134,8 +154,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         setupSuccess = [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)",
                                                       [TransactionConstants tableName], [TransactionConstants tableSchema]]];
         if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to create the transaction table. Error: %@",
-                        NSStringFromClass(self.class), [localDatabase lastError]);
+            DDLogCError(@"%@: Failed to create the transaction table. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
     }];
     
     return setupSuccess;

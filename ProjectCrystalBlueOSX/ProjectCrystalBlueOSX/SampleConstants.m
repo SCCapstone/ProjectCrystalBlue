@@ -66,7 +66,7 @@ static NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
         {
             NSString *attr = [attrNames objectAtIndex:i];
             [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT%@",
-                                                          attr, [attr isEqualToString:@"key"] ? @" PRIMARY KEY" : @""]];
+                                                          attr, [attr isEqualToString:SMP_KEY] ? @" PRIMARY KEY" : @""]];
         }
         schema = [attrNames componentsJoinedByString:@","];
     }

@@ -23,6 +23,7 @@ static NSString *const SMP_DEF_VAL_CURRENT_LOCATION = @"USC";
 
 // default tags is intentionally empty string, since a fresh sample has had no procedures performed on it.
 static NSString *const SMP_DEF_VAL_TAGS = @"";
+
 @interface SampleConstants : NSObject
 
 /// Array of all attributes stored in the database

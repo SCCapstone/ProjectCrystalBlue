@@ -38,7 +38,7 @@ AndWithAttributeDictionary:(NSDictionary *)attr
         attributes = [attr mutableCopy];
         
         // Make sure key is set correctly
-        [attributes setObject:timestamp forKey:@"timestamp"];
+        [attributes setObject:timestamp forKey:TRN_TIMESTAMP];
     }
     return self;
 }

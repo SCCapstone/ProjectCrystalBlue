@@ -8,12 +8,77 @@
 
 #import "AddNewSourceViewController.h"
 #import "SourceConstants.h"
+#import "qrencode.h"
 
 @interface AddNewSourceViewController ()
 
 @end
 
 @implementation AddNewSourceViewController
+
+//const char bmpHeader[]={
+//    0x42, 0x4d,                 // ID field ("BM")
+//    0xa2, 0x07, 0x00, 0x00,     // Size of the BMP file (1954 bytes)
+//    0x00, 0x00, 0x00, 0x00,     // App specific (unused)
+//    0x36, 0x00, 0x00, 0x00,     // Offset where the pixel array can be found (54 bytes)
+//    0x28, 0x00, 0x00, 0x00,     // Number of bytes in DIB header (40 bytes)
+//    0x19, 0x00, 0x00, 0x00,     // Width of the bitmap in pixels (25)
+//    0x19, 0x00, 0x00, 0x00,     // Height of the bitmap in pixels (25)
+//    0x01, 0x00,                 // Number of color planes (1)
+//    0x18, 0x00,                 // Number of bits per pixel (24 bits)
+//    0x00, 0x00, 0x00, 0x00,     // BI_RGB, no pixel array compression
+//    0x6c, 0x07, 0x00, 0x00,     // Size of raw data in pixel array including padding (1900 bytes)
+//    0x13, 0x0b, 0x00, 0x00,     // Horizontal resolution of image (2835 pixels/meter)
+//    0x13, 0x0b, 0x00, 0x00,     // Vertical resolution of image (2835 pixels/meter)
+//    0x00, 0x00, 0x00, 0x00,     // Number of colors in the palette (0 colors)
+//    0x00, 0x00, 0x00, 0x00      // Number of important colors in palette (all important)
+//};
+//
+//const int bmp_length=1900;
+//
+//- (void)writeQRCode:(NSString *)qrData
+//{
+//    QRcode *qrcode;
+//    const char *string=[qrData cStringUsingEncoding:NSASCIIStringEncoding];
+//    qrcode = QRcode_encodeString(string, 0, QR_ECLEVEL_H, QR_MODE_8, 0);
+//    int width = qrcode->width;
+//    
+//    char bitmap[bmp_length]={0};
+//    
+//    unsigned char *data = qrcode->data;
+//    
+//    int k=0;
+//    for (int i = width-1; i >= 0; --i) {
+//        for (int j = i*width; j < i*width+width; ++j) {
+//            NSNumber *number = [[NSNumber alloc] initWithUnsignedChar:data[j]];
+//            if ([number intValue] % 2 == 0) {
+//                bitmap[k] = 0xFF;
+//                bitmap[k+1] = 0xFF;
+//                bitmap[k+2] = 0xFF;
+//            } else {
+//                bitmap[k] = 0x00;
+//                bitmap[k+1] = 0x00;
+//                bitmap[k+2] = 0x00;
+//            }
+//            k+=3;
+//        }
+//        bitmap[k] = 0x00;
+//        k++;
+//    }
+//    
+//    NSMutableData *bmp = [[NSMutableData alloc] init];
+//    [bmp appendBytes:bmpHeader length:sizeof(bmpHeader)];
+//    [bmp appendBytes:bitmap length:sizeof(bitmap)];
+//    
+//    NSArray *dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documents = [dirs objectAtIndex:0];
+//    NSString *path = [documents stringByAppendingString:@"/"];
+//    path = [path stringByAppendingString:[qrData stringByAppendingString:@".bmp"]];
+//    
+//    [[NSFileManager defaultManager] createFileAtPath:path
+//                                            contents:bmp
+//                                          attributes:nil];
+//}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -86,6 +151,8 @@
     [attributes setObject:self.dateCollectedTextField.stringValue   forKey:SRC_DATE_COLLECTED];
     [attributes setObject:self.projectTextField.stringValue         forKey:SRC_PROJECT];
     [attributes setObject:self.subProjectTextField.stringValue      forKey:SRC_SUBPROJECT];
+    
+    //[self writeQRCode:self.keyTextField.stringValue]; // Writes a qr code to a bitmap file with value of key
     
     Source* s = [[Source alloc] initWithKey:key AndWithAttributeDictionary:attributes];
     [self.sourcesViewController addSource:s];

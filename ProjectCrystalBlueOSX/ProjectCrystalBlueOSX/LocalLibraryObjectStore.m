@@ -75,8 +75,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         FMResultSet *results = [localDatabase executeQuery:sql];
         
         if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to get library object from local database. Error: %@",
-                        NSStringFromClass(self.class), [localDatabase lastError]);
+            DDLogCError(@"%@: Failed to get library object from local database. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
         
         // Have the library object's attributes
         else if ([results next])
