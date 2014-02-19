@@ -40,6 +40,7 @@
 		D724060718A602DF00EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
 		D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7272DF418A60660003860E2 /* SourcesViewController.m */; };
 		D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7272DF518A60660003860E2 /* SourcesViewController.xib */; };
+		D72FE4A018B5641A00C6452F /* ProcedureTag.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE49F18B5641A00C6452F /* ProcedureTag.m */; };
 		D7439E0F18A5FC53000EE008 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7439E0E18A5FC53000EE008 /* Cocoa.framework */; };
 		D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7439E1718A5FC53000EE008 /* InfoPlist.strings */; };
 		D7439E1B18A5FC53000EE008 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7439E1A18A5FC53000EE008 /* main.m */; };
@@ -142,6 +143,8 @@
 		D7272DF318A60660003860E2 /* SourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesViewController.h; sourceTree = "<group>"; };
 		D7272DF418A60660003860E2 /* SourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesViewController.m; sourceTree = "<group>"; };
 		D7272DF518A60660003860E2 /* SourcesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcesViewController.xib; sourceTree = "<group>"; };
+		D72FE49E18B5641A00C6452F /* ProcedureTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureTag.h; sourceTree = "<group>"; };
+		D72FE49F18B5641A00C6452F /* ProcedureTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureTag.m; sourceTree = "<group>"; };
 		D7439E0B18A5FC53000EE008 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7439E0E18A5FC53000EE008 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D7439E1118A5FC53000EE008 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -299,6 +302,8 @@
 				D704E1A618B15C5B00170B7E /* ProcedureTagDecoder.m */,
 				D704E1AC18B16C4700170B7E /* Procedures.h */,
 				D704E1AD18B16C4700170B7E /* Procedures.m */,
+				D72FE49E18B5641A00C6452F /* ProcedureTag.h */,
+				D72FE49F18B5641A00C6452F /* ProcedureTag.m */,
 			);
 			name = Procedure;
 			sourceTree = "<group>";
@@ -852,6 +857,7 @@
 				D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */,
 				D78ACC4A18A5FDD9006084D6 /* DDTTYLogger.m in Sources */,
 				D704E1A718B15C5B00170B7E /* ProcedureTagDecoder.m in Sources */,
+				D72FE4A018B5641A00C6452F /* ProcedureTag.m in Sources */,
 				D78ACC4B18A5FDD9006084D6 /* DDASLLogger.m in Sources */,
 				D78ACC6E18A5FE2E006084D6 /* S3ImageStore.m in Sources */,
 				D7EA0B8E18A84B14003D74BA /* AddNewSourceViewController.m in Sources */,
