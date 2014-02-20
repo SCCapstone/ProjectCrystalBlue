@@ -11,6 +11,7 @@
 #import "LocalLibraryObjectStore.h"
 #import "PrimitiveProcedures.h"
 #import "ProcedureNameConstants.h"
+#import "ProcedureRecord.h"
 #import "SampleConstants.h"
 #import "Sample.h"
 
@@ -145,74 +146,92 @@ LocalLibraryObjectStore *testStore;
 - (void)testAppendTagInPlace
 {
     NSString *key = @"A_ROCK.001";
+    NSString *aInitials = @"AAA";
+    NSString *bInitials = @"BBB";
     
-    NSString *originalTags = [NSString stringWithFormat:@"%@%@%@%@%@",
-                              PROC_TAG_PULVERIZE,
-                              TAG_DELIMITER,
-                              PROC_TAG_GEMINI_DOWN,
-                              TAG_DELIMITER,
-                              PROC_TAG_HAND_MAGNET_UP];
+    ProcedureRecord *pulvRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_PULVERIZE andInitials:aInitials];
+    ProcedureRecord *gemRecord  = [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMINI_DOWN andInitials:bInitials];
+    ProcedureRecord *magRecord  = [[ProcedureRecord alloc] initWithTag:PROC_TAG_HAND_MAGNET_UP andInitials:bInitials];
+    
+    NSString *originalProcedureRecords = [NSString stringWithFormat:@"%@%@%@%@%@",
+                                          pulvRecord,
+                                          TAG_DELIMITER,
+                                          gemRecord,
+                                          TAG_DELIMITER,
+                                          magRecord];
                               
     Sample *s = [[Sample alloc] initWithKey:key
                           AndWithAttributes:[SampleConstants attributeNames]
                                   AndValues:[SampleConstants attributeDefaultValues]];
     
     [s.attributes setObject:key forKey:SMP_KEY];
-    [s.attributes setObject:originalTags forKey:SMP_TAGS];
+    [s.attributes setObject:originalProcedureRecords forKey:SMP_TAGS];
     
     [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
     
     [PrimitiveProcedures appendToSampleInPlace:s
                                      tagString:PROC_TAG_JAWCRUSH
+                                  withInitials:aInitials
                                      intoStore:testStore
                                 intoTableNamed:[SampleConstants tableName]];
     
+    ProcedureRecord *expectedJawRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_JAWCRUSH andInitials:aInitials];
     s = nil;
     
     LibraryObject *retrievedObject = [testStore getLibraryObjectForKey:key FromTable:[SampleConstants tableName]];
     Sample *retrievedSample = (Sample*)retrievedObject;
     
-    NSString *expectedTags = [NSString stringWithFormat:@"%@%@%@", originalTags, TAG_DELIMITER, PROC_TAG_JAWCRUSH];
-    NSString *actualTags = [retrievedSample.attributes objectForKey:SMP_TAGS];
+    NSString *expectedProcedures = [NSString stringWithFormat:@"%@%@%@", originalProcedureRecords, TAG_DELIMITER, expectedJawRecord];
+    NSString *actualProcedures = [retrievedSample.attributes objectForKey:SMP_TAGS];
     
-    XCTAssertEqualObjects(expectedTags, actualTags, @"Expected tags: %@ \nActual tags: %@", expectedTags, actualTags);
+    XCTAssertEqualObjects(expectedProcedures, actualProcedures,
+                          @"Expected procedures: %@ \nActual procedures: %@", expectedProcedures, actualProcedures);
 }
 
 /// Tests that the appendTagToClone method correctly appends a tag to a clone of a sample.
 - (void)testAppendTagToClone
 {
     NSString *originalKey = @"A_ROCK.001";
+    NSString *aInitials = @"AAA";
+    NSString *bInitials = @"BBB";
     
-    NSString *originalTags = [NSString stringWithFormat:@"%@%@%@%@%@",
-                              PROC_TAG_PULVERIZE,
-                              TAG_DELIMITER,
-                              PROC_TAG_GEMINI_DOWN,
-                              TAG_DELIMITER,
-                              PROC_TAG_HAND_MAGNET_UP];
+    ProcedureRecord *pulvRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_PULVERIZE andInitials:aInitials];
+    ProcedureRecord *gemRecord  = [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMINI_DOWN andInitials:bInitials];
+    ProcedureRecord *magRecord  = [[ProcedureRecord alloc] initWithTag:PROC_TAG_HAND_MAGNET_UP andInitials:bInitials];
+    
+    NSString *originalProcedureRecords = [NSString stringWithFormat:@"%@%@%@%@%@",
+                                          pulvRecord,
+                                          TAG_DELIMITER,
+                                          gemRecord,
+                                          TAG_DELIMITER,
+                                          magRecord];
     
     Sample *originalSample = [[Sample alloc] initWithKey:originalKey
                                        AndWithAttributes:[SampleConstants attributeNames]
                                                AndValues:[SampleConstants attributeDefaultValues]];
     
     [originalSample.attributes setObject:originalKey forKey:SMP_KEY];
-    [originalSample.attributes setObject:originalTags forKey:SMP_TAGS];
+    [originalSample.attributes setObject:originalProcedureRecords forKey:SMP_TAGS];
     
     [testStore putLibraryObject:originalSample IntoTable:[SampleConstants tableName]];
-    
     [PrimitiveProcedures appendToCloneOfSample:originalSample
                                      tagString:PROC_TAG_JAWCRUSH
+                                  withInitials:aInitials
                                      intoStore:testStore
                                 intoTableNamed:[SampleConstants tableName]];
+    
+    ProcedureRecord *expectedJawRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_JAWCRUSH andInitials:aInitials];
     
     NSString *expectedKey = @"A_ROCK.002";
     
     LibraryObject *retrievedObject = [testStore getLibraryObjectForKey:expectedKey FromTable:[SampleConstants tableName]];
     Sample *retrievedSample = (Sample*)retrievedObject;
     
-    NSString *expectedTags = [NSString stringWithFormat:@"%@%@%@", originalTags, TAG_DELIMITER, PROC_TAG_JAWCRUSH];
-    NSString *actualTags = [retrievedSample.attributes objectForKey:SMP_TAGS];
+    NSString *expectedProcedures = [NSString stringWithFormat:@"%@%@%@", originalProcedureRecords, TAG_DELIMITER, expectedJawRecord];
+    NSString *actualProcedures = [retrievedSample.attributes objectForKey:SMP_TAGS];
     
-    XCTAssertEqualObjects(expectedTags, actualTags, @"Expected tags: %@ \nActual tags: %@", expectedTags, actualTags);
+    XCTAssertEqualObjects(expectedProcedures, actualProcedures,
+                          @"Expected records: %@ \nActual records: %@", expectedProcedures, actualProcedures);
 }
 
 @end

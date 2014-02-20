@@ -10,6 +10,7 @@
 #import "ProcedureNameConstants.h"
 #import "DDLog.h"
 #import "SampleConstants.h"
+#import "ProcedureRecord.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -54,33 +55,44 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 +(void)appendToSampleInPlace:(Sample *)modifiedSample
                    tagString:(NSString *)tag
+                withInitials:(NSString *)initials
                    intoStore:(AbstractLibraryObjectStore *)store
               intoTableNamed:(NSString *)tableName
 {
     DDLogInfo(@"%@: IN-PLACE Appending tag %@ to sample with key %@", NSStringFromClass(self.class), tag, modifiedSample.key);
     
-    NSString *oldTags = [[modifiedSample attributes] objectForKey:SMP_TAGS];
-    NSString *newTags = [self.class appendTagToString:oldTags tagString:tag];
-    [[modifiedSample attributes] setObject:newTags forKey:SMP_TAGS];
+    NSString *oldTagList = [[modifiedSample attributes] objectForKey:SMP_TAGS];
+    ProcedureRecord *newProcedureRecord = [[ProcedureRecord alloc] initWithTag:tag
+                                                       andInitials:initials];
+    
+    NSString *newTagList = [self.class appendTagToString:oldTagList
+                                               tagString:[newProcedureRecord description]];
+    
+    [[modifiedSample attributes] setObject:newTagList forKey:SMP_TAGS];
     [store updateLibraryObject:modifiedSample IntoTable:tableName];
 }
 
 +(void)appendToCloneOfSample:(Sample *)original
                    tagString:(NSString *)tag
+                withInitials:(NSString *)initials
                    intoStore:(AbstractLibraryObjectStore *)store
               intoTableNamed:(NSString *)tableName
 {
     DDLogInfo(@"%@: cloning sample with key %@ and adding tag %@", NSStringFromClass(self.class), original.key, tag);
     
-    NSString *oldTags = [[original attributes] objectForKey:SMP_TAGS];
-    NSString *newTags = [self.class appendTagToString:oldTags tagString:tag];
+    NSString *oldTagList = [[original attributes] objectForKey:SMP_TAGS];
+    ProcedureRecord *newProcedureRecord = [[ProcedureRecord alloc] initWithTag:tag
+                                                                   andInitials:initials];
+    
+    NSString *newTagList = [self.class appendTagToString:oldTagList
+                                               tagString:[newProcedureRecord description]];
     
     NSMutableDictionary *newAttributes = [[NSMutableDictionary alloc] initWithDictionary:original.attributes];
     NSString *key = [self.class uniqueKeyBasedOn:original.key
                                          inStore:store
                                          inTable:tableName];
     [newAttributes setObject:key forKey:SMP_KEY];
-    [newAttributes setObject:newTags forKey:SMP_TAGS];
+    [newAttributes setObject:newTagList forKey:SMP_TAGS];
     Sample *newSample = [[Sample alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
     [store putLibraryObject:newSample IntoTable:tableName];

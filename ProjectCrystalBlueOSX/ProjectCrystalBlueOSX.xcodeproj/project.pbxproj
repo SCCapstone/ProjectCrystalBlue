@@ -16,9 +16,9 @@
 		D09C7E9A18B1ABFE001B98AF /* SimpleDBUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */; };
 		D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */; };
 		D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */; };
-		D704E1A718B15C5B00170B7E /* ProcedureTagDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A618B15C5B00170B7E /* ProcedureTagDecoder.m */; };
+		D704E1A718B15C5B00170B7E /* ProcedureRecordParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A618B15C5B00170B7E /* ProcedureRecordParser.m */; };
 		D704E1A918B162CE00170B7E /* ProcedureNameConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A818B162CE00170B7E /* ProcedureNameConstantsTests.m */; };
-		D704E1AB18B1654200170B7E /* ProcedureTagDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AA18B1654200170B7E /* ProcedureTagDecoderTests.m */; };
+		D704E1AB18B1654200170B7E /* ProcedureRecordParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AA18B1654200170B7E /* ProcedureRecordParserTests.m */; };
 		D704E1AE18B16C4700170B7E /* Procedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AD18B16C4700170B7E /* Procedures.m */; };
 		D704E1B018B16F6200170B7E /* ProceduresTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AF18B16F6200170B7E /* ProceduresTests.m */; };
 		D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */; };
@@ -116,10 +116,10 @@
 		D0C2196C18AAF73500DF9CB7 /* TransactionConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionConstants.h; sourceTree = "<group>"; };
 		D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionConstants.m; sourceTree = "<group>"; };
 		D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBLibraryObjectStoreTests.m; sourceTree = "<group>"; };
-		D704E1A518B15C5B00170B7E /* ProcedureTagDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureTagDecoder.h; sourceTree = "<group>"; };
-		D704E1A618B15C5B00170B7E /* ProcedureTagDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureTagDecoder.m; sourceTree = "<group>"; };
+		D704E1A518B15C5B00170B7E /* ProcedureRecordParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureRecordParser.h; sourceTree = "<group>"; };
+		D704E1A618B15C5B00170B7E /* ProcedureRecordParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecordParser.m; sourceTree = "<group>"; };
 		D704E1A818B162CE00170B7E /* ProcedureNameConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureNameConstantsTests.m; sourceTree = "<group>"; };
-		D704E1AA18B1654200170B7E /* ProcedureTagDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureTagDecoderTests.m; sourceTree = "<group>"; };
+		D704E1AA18B1654200170B7E /* ProcedureRecordParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecordParserTests.m; sourceTree = "<group>"; };
 		D704E1AC18B16C4700170B7E /* Procedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Procedures.h; sourceTree = "<group>"; };
 		D704E1AD18B16C4700170B7E /* Procedures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Procedures.m; sourceTree = "<group>"; };
 		D704E1AF18B16F6200170B7E /* ProceduresTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresTests.m; sourceTree = "<group>"; };
@@ -300,8 +300,8 @@
 				D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */,
 				D706DDB318B0BB310023D2BF /* PrimitiveProcedures.h */,
 				D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */,
-				D704E1A518B15C5B00170B7E /* ProcedureTagDecoder.h */,
-				D704E1A618B15C5B00170B7E /* ProcedureTagDecoder.m */,
+				D704E1A518B15C5B00170B7E /* ProcedureRecordParser.h */,
+				D704E1A618B15C5B00170B7E /* ProcedureRecordParser.m */,
 				D704E1AC18B16C4700170B7E /* Procedures.h */,
 				D704E1AD18B16C4700170B7E /* Procedures.m */,
 				D72FE49E18B5641A00C6452F /* ProcedureRecord.h */,
@@ -315,7 +315,7 @@
 			children = (
 				D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */,
 				D704E1A818B162CE00170B7E /* ProcedureNameConstantsTests.m */,
-				D704E1AA18B1654200170B7E /* ProcedureTagDecoderTests.m */,
+				D704E1AA18B1654200170B7E /* ProcedureRecordParserTests.m */,
 				D704E1AF18B16F6200170B7E /* ProceduresTests.m */,
 				D72FE4A118B57B0F00C6452F /* ProcedureRecordTests.m */,
 			);
@@ -859,7 +859,7 @@
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
 				D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */,
 				D78ACC4A18A5FDD9006084D6 /* DDTTYLogger.m in Sources */,
-				D704E1A718B15C5B00170B7E /* ProcedureTagDecoder.m in Sources */,
+				D704E1A718B15C5B00170B7E /* ProcedureRecordParser.m in Sources */,
 				D72FE4A018B5641A00C6452F /* ProcedureRecord.m in Sources */,
 				D78ACC4B18A5FDD9006084D6 /* DDASLLogger.m in Sources */,
 				D78ACC6E18A5FE2E006084D6 /* S3ImageStore.m in Sources */,
@@ -909,7 +909,7 @@
 				D72405F218A6022500EA2DD2 /* AbstractImageStoreTests.m in Sources */,
 				D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */,
 				D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */,
-				D704E1AB18B1654200170B7E /* ProcedureTagDecoderTests.m in Sources */,
+				D704E1AB18B1654200170B7E /* ProcedureRecordParserTests.m in Sources */,
 				D724060118A6026900EA2DD2 /* LocalTransactionCacheTests.m in Sources */,
 				D704E1A918B162CE00170B7E /* ProcedureNameConstantsTests.m in Sources */,
 			);

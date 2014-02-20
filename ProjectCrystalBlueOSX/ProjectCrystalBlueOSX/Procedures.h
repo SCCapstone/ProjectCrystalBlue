@@ -23,6 +23,7 @@
  *  Jawcrush the given sample. This is an IN-PLACE operation, destroying the previous sample.
  */
 + (void)jawCrushSample:(Sample *)sample
+          withInitials:(NSString *)initials
                inStore:(AbstractLibraryObjectStore *)store;
 
 /**
@@ -31,6 +32,7 @@
  */
 + (void)addCustomTagToSample:(Sample *)sample
                          tag:(NSString *)tag
+                withInitials:(NSString *)initials
                      inStore:(AbstractLibraryObjectStore *)store;
 
 @end
