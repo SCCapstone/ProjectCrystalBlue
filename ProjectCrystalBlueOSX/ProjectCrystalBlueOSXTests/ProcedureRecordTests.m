@@ -7,16 +7,16 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ProcedureTag.h"
+#import "ProcedureRecord.h"
 
-@interface ProcedureTagTests : XCTestCase
+@interface ProcedureRecordTests : XCTestCase
 
 @end
 
 /**
  *  Test functionality of the ProcedureTag class.
  */
-@implementation ProcedureTagTests
+@implementation ProcedureRecordTests
 
 - (void)setUp
 {
@@ -38,25 +38,25 @@
     NSDate *now = [[NSDate alloc] init];
     NSDate *notNow = [NSDate distantFuture];
     
-    ProcedureTag *original = [[ProcedureTag alloc] initWithTag:testTag
+    ProcedureRecord *original = [[ProcedureRecord alloc] initWithTag:testTag
                                             andInitials:testInitials
                                                 andDate:now];
     
-    ProcedureTag *diffDate = [[ProcedureTag alloc] initWithTag:testTag
+    ProcedureRecord *diffDate = [[ProcedureRecord alloc] initWithTag:testTag
                                             andInitials:testInitials
                                                 andDate:notNow];
     
-    ProcedureTag *diffTag = [[ProcedureTag alloc] initWithTag:[[[NSUUID alloc] init] UUIDString]
+    ProcedureRecord *diffTag = [[ProcedureRecord alloc] initWithTag:[[[NSUUID alloc] init] UUIDString]
                                             andInitials:testInitials
                                                 andDate:now];
     
-    ProcedureTag *diffInitials = [[ProcedureTag alloc] initWithTag:testTag
+    ProcedureRecord *diffInitials = [[ProcedureRecord alloc] initWithTag:testTag
                                             andInitials:[[[NSUUID alloc] init] UUIDString]
                                                 andDate:now];
     
     XCTAssertEqualObjects(original, original, @"A single object should be equal to itself.");
     XCTAssertEqual([original hash], [original hash], @"A single object should have generated the same hash.");
-    XCTAssertEqualObjects(original, diffDate, @"The two procedure tags should be equal");
+    XCTAssertEqualObjects(original, diffDate, @"The two procedure records should be equal");
     XCTAssertEqual([original hash], [diffDate hash], @"The two objects should have generated the same hash.");
     
     XCTAssertNotEqualObjects(original, diffTag,
@@ -65,7 +65,7 @@
                              @"The procedure with different initials should not be equal.");
 }
 
-/// Create a ProcedureTag, convert it to a string, then initial another one from that string.
+/// Create a ProcedureRecord, convert it to a string, then initial another one from that string.
 /// The new one should be equal to the old one.
 - (void)testReadWrite
 {
@@ -73,15 +73,15 @@
     NSString *testInitials = @"AAA";
     NSDate *now = [[NSDate alloc] init];
     
-    ProcedureTag *original = [[ProcedureTag alloc] initWithTag:testTag
+    ProcedureRecord *original = [[ProcedureRecord alloc] initWithTag:testTag
                                                    andInitials:testInitials
                                                        andDate:now];
     
     NSString *originalAsString = [NSString stringWithFormat:@"%@", original];
     
-    ProcedureTag *fromString = [[ProcedureTag alloc] initFromString:originalAsString];
+    ProcedureRecord *fromString = [[ProcedureRecord alloc] initFromString:originalAsString];
     
-    XCTAssertEqualObjects(original, fromString, @"The two tags should be equal.");
+    XCTAssertEqualObjects(original, fromString, @"The two records should be equal.");
 }
 
 @end

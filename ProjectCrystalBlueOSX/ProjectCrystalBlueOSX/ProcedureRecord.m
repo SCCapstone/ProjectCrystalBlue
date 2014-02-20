@@ -1,15 +1,15 @@
 //
-//  ProcedureTag.m
+//  ProcedureRecord.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 2/19/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "ProcedureTag.h"
+#import "ProcedureRecord.h"
 #define INTERNAL_DELIMITER @"|"
 
-@implementation ProcedureTag
+@implementation ProcedureRecord
 
 @synthesize tag = tag;
 @synthesize initials = initials;
@@ -80,11 +80,11 @@
         return NO;
     }
     
-    if (![object isKindOfClass:[ProcedureTag class]]) {
+    if (![object isKindOfClass:[ProcedureRecord class]]) {
         return NO;
     }
     
-    ProcedureTag *other = (ProcedureTag *)object;
+    ProcedureRecord *other = (ProcedureRecord *)object;
     
     return ([self.tag isEqualToString:other.tag] && [self.initials isEqualToString:other.initials]);
 }

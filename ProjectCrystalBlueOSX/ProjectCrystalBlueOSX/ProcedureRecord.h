@@ -1,5 +1,5 @@
 //
-//  ProcedureTag.h
+//  ProcedureRecord.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 2/19/14.
@@ -11,7 +11,7 @@
 /**
  *  Serializable object that records information about a single procedure instance.
  */
-@interface ProcedureTag : NSObject
+@interface ProcedureRecord : NSObject
 
 /// The tag associated with the procedure that was performed.
 /// Generally this is one of the constants defined in ProcedureNameConstants.h
@@ -38,10 +38,10 @@
 /// String representation of the object, in the form {TAG|INITIALS|DATE}
 -(NSString *)description;
 
-/// Compare this ProcedureTag to another. The equality is based only on TAG and INITIALS, not date.
+/// Compare this ProcedureRecord to another. The equality is based only on TAG and INITIALS, not date.
 -(BOOL)isEqual:(id)object;
 
-/// Generate a hashcode for this ProcedureTag. The hashcode is based only on TAG and INITIALS, not date.
+/// Generate a hashcode for this ProcedureRecord. The hashcode is based only on TAG and INITIALS, not date.
 -(NSUInteger)hash;
 
 @end
