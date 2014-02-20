@@ -61,7 +61,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSArray *)getAllTransactions
 {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@", [TransactionConstants tableName]];
+    // Don't include the lastSyncUpdate
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY ROWID ASC LIMIT -1 OFFSET 1", [TransactionConstants tableName]];
     
     // Get commit history from table
     __block NSMutableArray *transactions;
@@ -152,6 +153,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }];
     
     return syncTime;
+}
+
+- (void)resolveConflicts:(Transaction *)transaction
+{
+    
 }
 
 - (BOOL)optimizeTransactionsForLibraryObjectKey:(NSString *)key

@@ -46,8 +46,8 @@
     
     // Make sure transaction store is empty
     NSArray *transactions = [transactionStore getAllTransactions];
-    XCTAssertNotNil(transactions, @"TransactionStore should have returned the transaction list.");
-    XCTAssertEqual([transactions count], 1ul, @"TransactionStore should only contain last sync time transaction.");
+    XCTAssertNotNil(transactions, @"TransactionStore should have returned an empty transaction list.");
+    XCTAssertEqual([transactions count], 0ul, @"TransactionStore should be empty.");
 }
 
 - (void)testLastSyncTime
@@ -75,8 +75,8 @@
                                                                        WithDatabaseName:DATABASE_NAME];
     // Make sure transaction store is empty
     NSArray *transactions = [transactionStore getAllTransactions];
-    XCTAssertNotNil(transactions, @"TransactionStore should have returned the transaction list.");
-    XCTAssertEqual([transactions count], 1ul, @"TransactionStore should only contain last sync time transaction.");
+    XCTAssertNotNil(transactions, @"TransactionStore should have returned an empty transaction list.");
+    XCTAssertEqual([transactions count], 0ul, @"TransactionStore should be empty.");
     
     // Initialize some transaction objects
     Transaction *putTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"PUT"];
@@ -93,7 +93,7 @@
     // Get all the transactions and make sure they exist and they were optimized correctly
     transactions = [transactionStore getAllTransactions];
     XCTAssertNotNil(transactions, @"TransactionStore should have returned a valid transaction list.");
-    XCTAssertEqual([transactions count], 3ul, @"TransactionStore should contain 3 transactions.");
+    XCTAssertEqual([transactions count], 2ul, @"TransactionStore should contain 2 transactions.");
     XCTAssertTrue([transactions containsObject:putTransaction], @"The put transaction should have been returned.");
     XCTAssertFalse([transactions containsObject:updateTransaction], @"The update transaction should have been overwritten by the delete transaction.");
     XCTAssertTrue([transactions containsObject:deleteTransaction], @"The delete transaction should have been returned.");
@@ -102,8 +102,8 @@
     // Clear the TransactionStore
     XCTAssertTrue([transactionStore clearLocalTransactions], @"TransactionStore failed to clear the local transactions.");
     transactions = [transactionStore getAllTransactions];
-    XCTAssertNotNil(transactions, @"TransactionStore should have returned the transaction list.");
-    XCTAssertEqual([transactions count], 1ul, @"TransactionStore should only contain last sync time transaction.");
+    XCTAssertNotNil(transactions, @"TransactionStore should have returned an empty transaction list.");
+    XCTAssertEqual([transactions count], 0ul, @"TransactionStore should be empty.");
 }
 
 @end
