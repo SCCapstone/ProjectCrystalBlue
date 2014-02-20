@@ -44,7 +44,7 @@ AndWithAttributeDictionary:(NSDictionary *)attr
 }
 
 /**
- *  Compares this LibraryObject to another object. LibraryObjects are considered equal if they have the same key and all the same attributes.
+ *  Compares this Transaction to another object. Transactions are considered equal if they have the same key and all the same attributes.
  */
 - (BOOL)isEqual:(id)object
 {
@@ -58,7 +58,7 @@ AndWithAttributeDictionary:(NSDictionary *)attr
     
     Transaction *other = (Transaction *)object;
     
-    if (![self.timestamp isEqualTo:other.timestamp]) {
+    if ([self.timestamp doubleValue] != [other.timestamp doubleValue]) {
         return NO;
     }
     
@@ -78,7 +78,7 @@ AndWithAttributeDictionary:(NSDictionary *)attr
 }
 
 /**
- *  Returns a hash generated for this LibraryObject. The hash is generated purely from the key.
+ *  Returns a hash generated for this Transaction. The hash is generated purely from the key.
  */
 - (NSUInteger)hash
 {

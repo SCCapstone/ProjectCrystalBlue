@@ -69,6 +69,59 @@
     XCTAssertTrue(lastSyncTime > now, @"The last sync time should be earlier than the current time.");
 }
 
+- (void)testGetTransactionFromKey
+{
+    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:TEST_DIRECTORY
+                                                                       WithDatabaseName:DATABASE_NAME];
+    // Initialize some transaction objects
+    Transaction *putTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"PUT"];
+    XCTAssertTrue([transactionStore commitTransaction:putTransaction], @"TransactionStore failed to commit the transaction.");
+    
+    Transaction *retrievedTransaction = [transactionStore getTransactionWithLibraryObjectKey:[putTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
+    XCTAssertNotNil(retrievedTransaction, @"TransactionStore failed to retrieve the transaction.");
+    XCTAssertEqualObjects(putTransaction, retrievedTransaction, @"The two objects are not equal!");
+}
+
+- (void)testOptimizeTransaction
+{
+    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:TEST_DIRECTORY
+                                                                       WithDatabaseName:DATABASE_NAME];
+    // Initialize some transaction objects
+    Transaction *putTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"PUT"];
+    Transaction *updateTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"UPDATE"];
+    Transaction *updateTransaction2 = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"UPDATE"];
+    Transaction *deleteTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"DELETE"];
+    
+    // PUT + UPDATE -> PUT
+    XCTAssertTrue([transactionStore commitTransaction:putTransaction], @"TransactionStore failed to commit the transaction.");
+    XCTAssertTrue([transactionStore commitTransaction:updateTransaction], @"TransactionStore failed to commit the transaction.");
+    NSArray *transactions = [transactionStore getAllTransactions];
+    XCTAssertNotNil(transactions, @"TransactionStore should have returned a valid transaction list.");
+    XCTAssertEqual([transactions count], 1ul, @"TransactionStore should contain 1 transaction.");
+    XCTAssertTrue([transactions containsObject:putTransaction], @"The put transaction should have been returned.");
+    
+    // PUT + DELETE -> None
+    XCTAssertTrue([transactionStore commitTransaction:deleteTransaction], @"TransactionStore failed to commit the transaction.");
+    transactions = [transactionStore getAllTransactions];
+    XCTAssertNotNil(transactions, @"TransactionStore should have returned a valid transaction list.");
+    XCTAssertEqual([transactions count], 0ul, @"TransactionStore should contain 1 transaction.");
+    
+    // UPDATE1 + UPDATE2 -> UPDATE2
+    XCTAssertTrue([transactionStore commitTransaction:updateTransaction], @"TransactionStore failed to commit the transaction.");
+    XCTAssertTrue([transactionStore commitTransaction:updateTransaction2], @"TransactionStore failed to commit the transaction.");
+    transactions = [transactionStore getAllTransactions];
+    XCTAssertNotNil(transactions, @"TransactionStore should have returned a valid transaction list.");
+    XCTAssertEqual([transactions count], 1ul, @"TransactionStore should contain 1 transaction.");
+    XCTAssertTrue([transactions containsObject:updateTransaction2], @"The update2 transaction should have been returned.");
+    
+    // UPDATE2 + DELETE -> DELETE
+    XCTAssertTrue([transactionStore commitTransaction:deleteTransaction], @"TransactionStore failed to commit the transaction.");
+    transactions = [transactionStore getAllTransactions];
+    XCTAssertNotNil(transactions, @"TransactionStore should have returned a valid transaction list.");
+    XCTAssertEqual([transactions count], 1ul, @"TransactionStore should contain 1 transaction.");
+    XCTAssertTrue([transactions containsObject:deleteTransaction], @"The delete transaction should have been returned.");
+}
+
 - (void)testGetCommitAndClearTransactions
 {
     TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:TEST_DIRECTORY
@@ -93,11 +146,7 @@
     // Get all the transactions and make sure they exist and they were optimized correctly
     transactions = [transactionStore getAllTransactions];
     XCTAssertNotNil(transactions, @"TransactionStore should have returned a valid transaction list.");
-    XCTAssertEqual([transactions count], 2ul, @"TransactionStore should contain 2 transactions.");
-    XCTAssertTrue([transactions containsObject:putTransaction], @"The put transaction should have been returned.");
-    XCTAssertFalse([transactions containsObject:updateTransaction], @"The update transaction should have been overwritten by the delete transaction.");
-    XCTAssertTrue([transactions containsObject:deleteTransaction], @"The delete transaction should have been returned.");
-    XCTAssertFalse([transactions containsObject:getTransaction], @"The get transaction should have never been committed.");
+    XCTAssertEqual([transactions count], 0ul, @"TransactionStore should contain 2 transactions.");
     
     // Clear the TransactionStore
     XCTAssertTrue([transactionStore clearLocalTransactions], @"TransactionStore failed to clear the local transactions.");

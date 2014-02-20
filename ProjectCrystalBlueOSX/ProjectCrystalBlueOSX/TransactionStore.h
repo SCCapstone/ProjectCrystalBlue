@@ -18,6 +18,11 @@
  */
 - (NSArray *)getAllTransactions;
 
+/** Retrieve transaction that associated with the library object key that has not be 
+ *  pushed to the remote database.
+ */
+- (Transaction *)getTransactionWithLibraryObjectKey:(NSString *)key;
+
 /** Add a new transaction to the TransactionStore. The timestamp attribute is used as the
  *  primary key and should represent the time the operation was executed locally.
  *
