@@ -102,6 +102,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     CsvParserDelegate *parserDelegate = [[CsvParserDelegate alloc] init];
     
     csvParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:filePath delimiter:','];
+    [csvParser setSanitizesFields:YES];
     [csvParser setDelegate:parserDelegate];
     [csvParser parse];
     

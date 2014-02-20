@@ -125,6 +125,48 @@ NSString* filePath;
     }
 }
 
+/// Populates an array of sources, writes them to a file, then parses them again.
+/// This time some of the attributes contain commas.
+/// The results from the parser should match the original array.
+- (void)testWriteAndReadAttributesContainingCommas
+{
+    filePath = [localDirectory stringByAppendingFormat:@"/%@", @"testWriteSourcesWithCommas.csv"];
+    
+    NSMutableArray *sources = [[NSMutableArray alloc] init];
+    
+    const int numberOfSources = 100;
+    for (int i = 0; i < numberOfSources; ++i) {
+        NSString *key = [NSString stringWithFormat:@"artichoke,eggplant,key%05d", i];
+        Source *s = [[Source alloc] initWithKey:key
+                              AndWithAttributes:[SourceConstants attributeNames]
+                                      AndValues:[SourceConstants attributeDefaultValues]];
+        
+        for (NSString *attribute in [SourceConstants attributeNames]) {
+            NSString *attributeValue = [NSString stringWithFormat:@"artichoke,eggplant,%@%05d", attribute, i];
+            [s.attributes setObject:attributeValue forKey:attribute];
+        }
+        
+        [sources addObject:s];
+    }
+    
+    // Write to the file
+    LibraryObjectCSVWriter *writer = [[LibraryObjectCSVWriter alloc] init];
+    [writer writeObjects:sources
+            ToFileAtPath:filePath];
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:filePath]);
+    
+    // Read from the file
+    LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
+    NSArray *readSources = [reader readFromFileAtPath:filePath];
+    
+    XCTAssertEqual(readSources.count, sources.count);
+    for (int i = 0; i < numberOfSources; ++i) {
+        LibraryObject *expected = (LibraryObject *)[sources objectAtIndex:i];
+        LibraryObject *actual = [readSources objectAtIndex:i];
+        XCTAssertEqualObjects(expected, actual);
+    }
+}
+
 /// Order should not matter when parsing CSV files
 - (void)testReadFileWithReorderedColumns
 {
