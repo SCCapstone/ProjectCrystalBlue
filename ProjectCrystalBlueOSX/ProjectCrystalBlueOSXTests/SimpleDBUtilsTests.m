@@ -75,10 +75,7 @@
     XCTAssertEqual(item.attributes.count, convertedTransaction.attributes.count, @"convertedTransaction does not contain the correct number of attributes.");
     
     // Ensure the converted transaction object is equal to the original transaction object
-    XCTAssertEqual(convertedTransaction.attributes.count, transaction.attributes.count, @"The two transaction objects do not contain equals number of attributes");
-    for (NSString *key in [transaction.attributes allKeys]) {
-        XCTAssertEqual([transaction.attributes objectForKey:key], [convertedTransaction.attributes objectForKey:key], @"All attributes are not equal.");
-    }
+    XCTAssertEqualObjects(convertedTransaction, transaction, @"The two transaction objects are not equal.");
     
     // Convert source object to SimpleDBReplaceableItem
     Source *source = [[Source alloc] initWithKey:@"rock1030"
@@ -95,10 +92,7 @@
     XCTAssertEqual(item.attributes.count, convertedSource.attributes.count, @"convertedSource does not contain the correct number of attributes.");
     
     // Ensure the converted transaction object is equal to the original transaction object
-    XCTAssertEqual(convertedSource.attributes.count, source.attributes.count, @"The two source objects do not contain equals number of attributes");
-    for (NSString *key in [source.attributes allKeys]) {
-        XCTAssertEqual([source.attributes objectForKey:key], [convertedSource.attributes objectForKey:key], @"All attributes are not equal.");
-    }
+    XCTAssertEqualObjects(convertedSource, source, @"The two source objects are not equal.");
 }
 
 - (void)testSelectQuery

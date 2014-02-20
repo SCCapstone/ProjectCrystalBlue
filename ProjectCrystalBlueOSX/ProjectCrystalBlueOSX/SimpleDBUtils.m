@@ -62,7 +62,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     else if (objectClass == [Sample class])
         return [[Sample alloc] initWithKey:[objectAttributes objectForKey:SMP_KEY] AndWithAttributeDictionary:objectAttributes];
     else if (objectClass == [Transaction class])
-        return [[Transaction alloc] initWithTimestamp:[objectAttributes objectForKey:TRN_TIMESTAMP] AndWithAttributeDictionary:objectAttributes];
+        return [[Transaction alloc] initWithTimestamp:[NSNumber numberWithDouble:[[objectAttributes objectForKey:TRN_TIMESTAMP] doubleValue]] AndWithAttributeDictionary:objectAttributes];
     else {
         DDLogCError(@"%@: objectClass must be of type Source, Sample, or Transaction.", NSStringFromClass(self.class));
         return nil;
