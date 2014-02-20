@@ -21,7 +21,7 @@
     {
         timestamp = [NSNumber numberWithDouble:[[[NSDate alloc] init] timeIntervalSince1970]];
         
-        NSArray *attributeValues = [[NSArray alloc] initWithObjects:timestamp, key, sqlCommand, nil];
+        NSArray *attributeValues = [[NSArray alloc] initWithObjects:[timestamp stringValue], key, sqlCommand, nil];
         attributes = [[NSMutableDictionary alloc] initWithObjects:attributeValues
                                                           forKeys:[TransactionConstants attributeNames]];
     }
@@ -38,9 +38,51 @@ AndWithAttributeDictionary:(NSDictionary *)attr
         attributes = [attr mutableCopy];
         
         // Make sure key is set correctly
-        [attributes setObject:timestamp forKey:TRN_TIMESTAMP];
+        [attributes setObject:[timestamp stringValue] forKey:TRN_TIMESTAMP];
     }
     return self;
+}
+
+/**
+ *  Compares this LibraryObject to another object. LibraryObjects are considered equal if they have the same key and all the same attributes.
+ */
+- (BOOL)isEqual:(id)object
+{
+    if (nil == object) {
+        return NO;
+    }
+    
+    if (![object isKindOfClass:[Transaction class]]) {
+        return NO;
+    }
+    
+    Transaction *other = (Transaction *)object;
+    
+    if (![self.timestamp isEqualTo:other.timestamp]) {
+        return NO;
+    }
+    
+    if (self.attributes.count != other.attributes.count) {
+        return NO;
+    }
+    
+    for (NSString *attributeKey in self.attributes.allKeys) {
+        NSString *ours = [self.attributes objectForKey:attributeKey];
+        NSString *theirs = [other.attributes objectForKey:attributeKey];
+        
+        if (![ours isEqualToString:theirs]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+/**
+ *  Returns a hash generated for this LibraryObject. The hash is generated purely from the key.
+ */
+- (NSUInteger)hash
+{
+    return [self.timestamp hash];
 }
 
 @end
