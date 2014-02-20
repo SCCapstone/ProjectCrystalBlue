@@ -161,4 +161,82 @@ NSString* filePath;
     }
 }
 
+/// If an item has an extra attribute, it should be ignored.
+- (void)testReadFileWithExtraAttribute
+{
+    NSString *testFile = @"samples_extra_attribute";
+    NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
+    
+    NSMutableArray *samples = [[NSMutableArray alloc] init];
+    
+    const int numberOfSamples = 3; // Do not change this value unless you create a new test file.
+    
+    for (int i = 0; i < numberOfSamples; ++i) {
+        NSString *key = [NSString stringWithFormat:@"key%05d", i];
+        Sample *s = [[Sample alloc] initWithKey:key
+                              AndWithAttributes:[SampleConstants attributeNames]
+                                      AndValues:[SampleConstants attributeDefaultValues]];
+        
+        for (NSString *attribute in [SampleConstants attributeNames]) {
+            NSString *attributeValue = [NSString stringWithFormat:@"%@%05d", attribute, i];
+            [s.attributes setObject:attributeValue forKey:attribute];
+        }
+        
+        [samples addObject:s];
+    }
+    
+    // Read from the file
+    LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
+    NSArray *readSamples = [reader readFromFileAtPath:testPath];
+    
+    XCTAssertEqual(readSamples.count, samples.count);
+    for (int i = 0; i < numberOfSamples; ++i) {
+        LibraryObject *expected = (LibraryObject *)[samples objectAtIndex:i];
+        LibraryObject *actual = [readSamples objectAtIndex:i];
+        XCTAssertEqualObjects(expected, actual);
+    }
+}
+
+/// If an item is missing any attributes, they should be populated with empty string.
+- (void)testReadFileWithMissingAttribute
+{
+    NSString *testFile = @"samples_missing_attribute";
+    NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
+    
+    NSMutableArray *samples = [[NSMutableArray alloc] init];
+    
+    const int numberOfSamples = 3; // Do not change this value unless you need to modify the test file.
+    
+    for (int i = 0; i < numberOfSamples; ++i) {
+        NSString *key = [NSString stringWithFormat:@"key%05d", i];
+        Sample *s = [[Sample alloc] initWithKey:key
+                              AndWithAttributes:[SampleConstants attributeNames]
+                                      AndValues:[SampleConstants attributeDefaultValues]];
+        
+        for (NSString *attribute in [SampleConstants attributeNames]) {
+            NSString *attributeValue;
+            if ([attribute isEqualToString:SMP_KEY]) {
+                attributeValue = key;
+            } else {
+                attributeValue = @"";
+            }
+            
+            [s.attributes setObject:attributeValue forKey:attribute];
+        }
+        
+        [samples addObject:s];
+    }
+    
+    // Read from the file
+    LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
+    NSArray *readSamples = [reader readFromFileAtPath:testPath];
+    
+    XCTAssertEqual(readSamples.count, samples.count);
+    for (int i = 0; i < numberOfSamples; ++i) {
+        LibraryObject *expected = (LibraryObject *)[samples objectAtIndex:i];
+        LibraryObject *actual = [readSamples objectAtIndex:i];
+        XCTAssertEqualObjects(expected, actual);
+    }
+}
+
 @end
