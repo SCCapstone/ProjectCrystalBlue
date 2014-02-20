@@ -23,6 +23,9 @@
 /// The date & time that the procedure was performed.
 @property (readonly) NSDate* date;
 
+/// Initialize this object from a String (as created by the description method)
+-(id)initFromString:(NSString *)stringRepresentation;
+
 /// Initialize this object with a specified tag and initials. Uses the current date.
 -(id)initWithTag:(NSString *)tag
      andInitials:(NSString *)initials;
@@ -34,5 +37,11 @@
 
 /// String representation of the object, in the form {TAG|INITIALS|DATE}
 -(NSString *)description;
+
+/// Compare this ProcedureTag to another. The equality is based only on TAG and INITIALS, not date.
+-(BOOL)isEqual:(id)object;
+
+/// Generate a hashcode for this ProcedureTag. The hashcode is based only on TAG and INITIALS, not date.
+-(NSUInteger)hash;
 
 @end
