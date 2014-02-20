@@ -9,7 +9,8 @@
 #import <XCTest/XCTest.h>
 #import "Procedures.h"
 #import "ProcedureNameConstants.h"
-#import "ProcedureTagDecoder.h"
+#import "ProcedureRecordParser.h"
+#import "ProcedureRecord.h"
 #import "AbstractLibraryObjectStore.h"
 #import "LocalLibraryObjectStore.h"
 
@@ -51,28 +52,36 @@ AbstractLibraryObjectStore *testStore;
 - (void)testJawCrush
 {
     NSString *originalKey = @"Rock.001";
+    NSString *initials = @"AAA";
     Sample *s = [[Sample alloc] initWithKey:originalKey
                           AndWithAttributes:[SampleConstants attributeNames]
                                   AndValues:[SampleConstants attributeDefaultValues]];
     
-    NSString *originalTags = @"TAG01, TAG02";
-    NSArray *originalTagArray = [ProcedureTagDecoder tagArrayFromCommaSeparatedTagString:originalTags];
+    ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
+    ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
     
-    [s.attributes setValue:originalTags forKey:SMP_TAGS];
+    NSString *originalRecords = [NSString stringWithFormat:@"%@%@%@", proc1, TAG_DELIMITER, proc2];
+    
+    NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
+    
+    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
     [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
     
     [Procedures jawCrushSample:s
+                  withInitials:initials
                        inStore:testStore];
     
     LibraryObject *retrievedSample = [testStore getLibraryObjectForKey:originalKey
                                                              FromTable:[SampleConstants tableName]];
     
-    NSString *newTags = [[retrievedSample attributes] objectForKey:SMP_TAGS];
-    NSArray *newTagArray = [ProcedureTagDecoder tagArrayFromCommaSeparatedTagString:newTags];
+    NSString *newRecords = [[retrievedSample attributes] objectForKey:SMP_TAGS];
+    NSArray *newRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
     
-    XCTAssertEqualObjects([originalTagArray objectAtIndex:0],  [newTagArray objectAtIndex:0]);
-    XCTAssertEqualObjects([originalTagArray objectAtIndex:1],  [newTagArray objectAtIndex:1]);
-    XCTAssertEqualObjects(PROC_TAG_JAWCRUSH,                   [newTagArray objectAtIndex:2]);
+    ProcedureRecord *expectedJawCrushRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_JAWCRUSH andInitials:initials];
+    
+    XCTAssertEqualObjects([originalRecordArray objectAtIndex:0],    [newRecordArray objectAtIndex:0]);
+    XCTAssertEqualObjects([originalRecordArray objectAtIndex:1],    [newRecordArray objectAtIndex:1]);
+    XCTAssertEqualObjects(expectedJawCrushRecord,                   [newRecordArray objectAtIndex:2]);
 }
 
 @end

@@ -39,6 +39,7 @@
  */
 +(void)appendToSampleInPlace:(Sample *)modifiedSample
                    tagString:(NSString *)tag
+                withInitials:(NSString *)initials
                    intoStore:(AbstractLibraryObjectStore *)store
               intoTableNamed:(NSString *)tableName;
 
@@ -47,6 +48,7 @@
  */
 +(void)appendToCloneOfSample:(Sample *)original
                    tagString:(NSString *)tag
+                withInitials:(NSString *)initials
                    intoStore:(AbstractLibraryObjectStore *)store
               intoTableNamed:(NSString *)tableName;
 
