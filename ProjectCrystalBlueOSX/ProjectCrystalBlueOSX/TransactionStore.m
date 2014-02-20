@@ -23,6 +23,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     FMDatabaseQueue *localQueue;
 }
 
+- (BOOL)optimizeTransactionsForLibraryObjectKey:(NSString *)key;
+- (BOOL)updateTimeOfSync;
 - (BOOL)setupTable;
 
 @end
@@ -94,6 +96,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     }
     
+    // Only keep latest change to a single library object
+    [self optimizeTransactionsForLibraryObjectKey:[transaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
+    
     NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
                      [TransactionConstants tableName], [TransactionConstants tableColumns], [TransactionConstants tableValueKeys]];
     
@@ -119,6 +124,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if ([localDatabase hadError])
             DDLogCError(@"%@: Failed to clear local transactions. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
     }];
+    
+    // Add current time to top of transaction table as last sync time
+    [self updateTimeOfSync];
     
     return clearSuccess;
 }
@@ -146,6 +154,39 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return syncTime;
 }
 
+- (BOOL)optimizeTransactionsForLibraryObjectKey:(NSString *)key
+{
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@='%@' AND %@!='PUT'", [TransactionConstants tableName], TRN_LIBRARY_OBJECT_KEY, key, TRN_SQL_COMMAND_TYPE];
+    
+    __block BOOL deleteSuccess = NO;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        deleteSuccess = [localDatabase executeUpdate:sql];
+        
+        if ([localDatabase hadError])
+            DDLogCError(@"%@: Failed to optimize transaction. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+    }];
+    
+    return deleteSuccess;
+}
+
+- (BOOL)updateTimeOfSync
+{
+    // Create a new transaction object with current time and everything else nil
+    Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:@"" AndWithSqlCommandType:@""];
+    NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
+                     [TransactionConstants tableName], [TransactionConstants tableColumns], [TransactionConstants tableValueKeys]];
+    
+    __block BOOL updateSuccess = NO;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        updateSuccess = [localDatabase executeUpdate:sql withParameterDictionary:[transaction attributes]];
+        
+        if ([localDatabase hadError])
+            DDLogCError(@"%@: Failed to update time of sync to local database. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+    }];
+    
+    return updateSuccess;
+}
+
 - (BOOL)setupTable
 {
     __block BOOL setupSuccess = NO;
@@ -156,6 +197,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if ([localDatabase hadError])
             DDLogCError(@"%@: Failed to create the transaction table. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
     }];
+    
+    [self updateTimeOfSync];
     
     return setupSuccess;
 }
