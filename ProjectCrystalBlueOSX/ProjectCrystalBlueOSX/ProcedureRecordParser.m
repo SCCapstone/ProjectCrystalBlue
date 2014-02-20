@@ -35,6 +35,17 @@
     return parsedRecords;
 }
 
++(NSString *)mostRecentProcedurePerformedOnSample:(Sample *)sample
+{
+    NSString *records = [sample.attributes objectForKey:SMP_TAGS];
+    NSArray *tagList = [self.class tagArrayFromRecordList:records];
+    if (tagList.count > 0) {
+        return [ProcedureNameConstants procedureNameForTag:[tagList lastObject]];
+    } else {
+        return @"None";
+    }
+}
+
 +(NSArray *)tagArrayFromRecordList:(NSString *)records
 {
     NSArray *parsedRecords = [self.class procedureRecordArrayFromList:records];

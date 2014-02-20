@@ -107,6 +107,33 @@
     XCTAssertEqualObjects([nameArray objectAtIndex:3], PROC_NAME_GEMINI_DOWN);
 }
 
+- (void)testMostRecentProcedure
+{
+    NSString *key = @"MY_SAMPLE.001";
+    NSString *initials = @"ABC";
+    ProcedureRecord *jc = [[ProcedureRecord alloc] initWithTag:PROC_TAG_JAWCRUSH andInitials:initials];
+    ProcedureRecord *pv = [[ProcedureRecord alloc] initWithTag:PROC_TAG_PULVERIZE andInitials:initials];
+    
+    Sample *sample = [[Sample alloc] initWithKey:key
+                               AndWithAttributes:[SampleConstants attributeNames]
+                                       AndValues:[SampleConstants attributeDefaultValues]];
+    
+    NSString *mostRecent;
+    
+    mostRecent = [ProcedureRecordParser mostRecentProcedurePerformedOnSample:sample];
+    XCTAssertTrue([@"None" isEqualToString:mostRecent]);
+    
+    [sample.attributes setObject:[NSString stringWithFormat:@"%@", jc]
+                          forKey:SMP_TAGS];
+    mostRecent = [ProcedureRecordParser mostRecentProcedurePerformedOnSample:sample];
+    XCTAssertTrue([PROC_NAME_JAWCRUSH isEqualToString:mostRecent]);
+    
+    [sample.attributes setObject:[NSString stringWithFormat:@"%@%@%@", jc, TAG_DELIMITER, pv]
+                          forKey:SMP_TAGS];
+    mostRecent = [ProcedureRecordParser mostRecentProcedurePerformedOnSample:sample];
+    XCTAssertTrue([PROC_NAME_PULVERIZE isEqualToString:mostRecent]);
+}
+
 /// Checks that all the methods give expected results for empty string or empty array as args
 - (void)testEmptyStringArguments
 {

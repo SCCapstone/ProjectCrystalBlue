@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Sample.h"
 
 /**
  *  Class for decoding a list of tags into a user readable form.
@@ -28,6 +29,12 @@
  *  e.g. "{PR1|ME|1/1/00},{PR2|ME|1/1/00}" would return an array with the appropriate ProcedureRecord objects.
  */
 +(NSArray *)procedureRecordArrayFromList:(NSString *)recordList;
+
+/**
+ *  Return the most recent procedure performed on this sample.
+ *  If no procedures have been performed, returns the string "None".
+ */
++(NSString *)mostRecentProcedurePerformedOnSample:(Sample *)sample;
 
 /**
  *  Parses an array of Procedure TAGS,
