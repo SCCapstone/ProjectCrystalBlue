@@ -461,6 +461,7 @@
 		D7439E1418A5FC53000EE008 /* ProjectCrystalBlueOSX */ = {
 			isa = PBXGroup;
 			children = (
+				D7C8732A18B2F9DB00F2976F /* ReadWrite */,
 				D78ACC2B18A5FD7F006084D6 /* Controller */,
 				D78ACC2C18A5FD85006084D6 /* Model */,
 				D78ACC2D18A5FD92006084D6 /* Store */,
@@ -565,7 +566,6 @@
 		D78ACC2E18A5FD97006084D6 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				D7C8732A18B2F9DB00F2976F /* ReadWrite */,
 				D78ACC4F18A5FDE9006084D6 /* ImageUtils.h */,
 				D78ACC5018A5FDE9006084D6 /* ImageUtils.m */,
 				D78ACC4018A5FDC8006084D6 /* Lumberjack */,
@@ -694,7 +694,7 @@
 			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
 		};
-		D7C8732A18B2F9DB00F2976F /* ReadWrite */ = {
+		D7A41E3818B711D800653B3E /* LibraryObjectReadWrite */ = {
 			isa = PBXGroup;
 			children = (
 				D7C8733518B2FB0B00F2976F /* LibraryObjectCSVReader.h */,
@@ -703,6 +703,14 @@
 				D7C8733018B2FA4D00F2976F /* LibraryObjectCSVWriter.m */,
 				D7C8733218B2FA4D00F2976F /* LibraryObjectFileReader.h */,
 				D7C8733318B2FA4D00F2976F /* LibraryObjectFileWriter.h */,
+			);
+			name = LibraryObjectReadWrite;
+			sourceTree = "<group>";
+		};
+		D7C8732A18B2F9DB00F2976F /* ReadWrite */ = {
+			isa = PBXGroup;
+			children = (
+				D7A41E3818B711D800653B3E /* LibraryObjectReadWrite */,
 				D7C8732E18B2FA1000F2976F /* CHCSVParser */,
 				D7A41E3518B6F60000653B3E /* OSXFileSelector.h */,
 				D7A41E3618B6F60000653B3E /* OSXFileSelector.m */,
