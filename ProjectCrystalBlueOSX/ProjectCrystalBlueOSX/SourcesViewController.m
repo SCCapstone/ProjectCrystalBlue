@@ -12,6 +12,7 @@
 #import "Source.h"
 #import "SampleConstants.h"
 #import "Sample.h"
+#import "OSXFileSelector.h"
 #import "AddNewSourceViewController.h"
 #import "EditSourceViewController.h"
 #import "SamplesViewController.h"
@@ -155,7 +156,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [confirmation addButtonWithTitle:@"Cancel"];
     short const CANCEL_BUTTON = 1001;
     
-    [confirmation beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+    [confirmation beginSheetModalForWindow:self.view.window
+                         completionHandler:^(NSModalResponse returnCode) {
         switch (returnCode) {
             case DELETE_BUTTON:
                 DDLogInfo(@"Deleting source with key \"%@\"", s.key);
@@ -240,6 +242,42 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)importExport
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    
+    NSAlert *importExportOptions = [[NSAlert alloc] init];
+    [importExportOptions setAlertStyle:NSInformationalAlertStyle];
+    
+    NSString *message = [NSString stringWithFormat:@"Import/Export Sources"];
+    [importExportOptions setMessageText:message];
+    
+    NSString *info = @"Choose an option below:";
+    [importExportOptions setInformativeText:info];
+    
+    // If the order of buttons changes, the numerical constants below NEED to be swapped.
+    [importExportOptions addButtonWithTitle:@"Import CSV"];
+    short __block const IMPORT_BUTTON = 1000;
+    [importExportOptions addButtonWithTitle:@"Export CSV"];
+    short __block const EXPORT_BUTTON = 1001;
+    [importExportOptions addButtonWithTitle:@"Cancel"];
+    short __block const CANCEL_BUTTON = 1002;
+    
+    void (^modalHandler)(NSModalResponse) = ^(NSModalResponse returnCode){
+        switch (returnCode) {
+            case IMPORT_BUTTON:
+                [[OSXFileSelector CSVFileSelector] presentFileSelectorToUser];
+                break;
+            case EXPORT_BUTTON:
+                break;
+            case CANCEL_BUTTON:
+                break;
+            default:
+                DDLogWarn(@"Unexpected return code %ld from DeleteSource Alert", (long)returnCode);
+                break;
+        }
+        [self.sourceTable reloadData];
+    };
+    
+    [importExportOptions beginSheetModalForWindow:self.view.window
+                                completionHandler:modalHandler];
 }
 
 @end
