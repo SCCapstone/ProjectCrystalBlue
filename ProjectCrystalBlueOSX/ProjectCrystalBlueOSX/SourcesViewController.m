@@ -13,9 +13,11 @@
 #import "SampleConstants.h"
 #import "Sample.h"
 #import "OSXFileSelector.h"
+#import "LibraryObjectCSVWriter.h"
 #import "AddNewSourceViewController.h"
 #import "EditSourceViewController.h"
 #import "SamplesViewController.h"
+#import "SourceImportController.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -261,17 +263,35 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     short __block const CANCEL_BUTTON = 1002;
     
     void (^modalHandler)(NSModalResponse) = ^(NSModalResponse returnCode){
-        switch (returnCode) {
-            case IMPORT_BUTTON:
-                [[OSXFileSelector CSVFileSelector] presentFileSelectorToUser];
-                break;
-            case EXPORT_BUTTON:
-                break;
-            case CANCEL_BUTTON:
-                break;
-            default:
-                DDLogWarn(@"Unexpected return code %ld from DeleteSource Alert", (long)returnCode);
-                break;
+        
+        if (returnCode == IMPORT_BUTTON) {
+            LibraryObjectImportController *importController = [[SourceImportController alloc] init];
+            [importController setLibraryObjectStore:dataStore];
+            
+            OSXFileSelector *importFileChooser = [OSXFileSelector CSVFileSelector];
+            [importFileChooser setDelegate:importController];
+            [importFileChooser presentFileSelectorToUser];
+            
+        } else if (returnCode == EXPORT_BUTTON) {
+            
+            // Temporarily hard-coding file name and destination.
+            NSDate *now = [[NSDate alloc] init];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateStyle:NSDateFormatterMediumStyle];
+            [formatter setTimeStyle:NSDateFormatterMediumStyle];
+            NSString *filename = [[formatter stringFromDate:now] stringByAppendingString:@".csv"];
+            LibraryObjectCSVWriter *writer = [[LibraryObjectCSVWriter alloc] init];
+            
+            NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+            
+            [writer writeObjects:[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]]
+                    ToFileAtPath:[documentDirectory stringByAppendingFormat:@"/%@", filename]];
+            
+        } else if (returnCode == CANCEL_BUTTON) {
+            
+        } else {
+            DDLogWarn(@"Unexpected return code %ld from ImportExport Dialog", (long)returnCode);
         }
         [self.sourceTable reloadData];
     };
