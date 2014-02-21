@@ -7,7 +7,7 @@
 //
 
 #import "SourcesViewController.h"
-#import "LocalLibraryObjectStore.h"
+#import "SimpleDBLibraryObjectStore.h"
 #import "SourceConstants.h"
 #import "Source.h"
 #import "SampleConstants.h"
@@ -37,8 +37,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Using local library object store for testing purposes right now - will switch to SimpleDB implementation eventually.
-        dataStore =  [[LocalLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
-                                                          WithDatabaseName:@"ProjectCrystalBlueLocalData"];
+        dataStore =  [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
+                                                             WithDatabaseName:@"ProjectCrystalBlueLocalData"];
         // Set up an empty array for active windows that the view controller launches
         activeWindows = [[NSMutableArray alloc] init];
         activeViewControllers = [[NSMutableArray alloc] init];
@@ -278,6 +278,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     [importExportOptions beginSheetModalForWindow:self.view.window
                                 completionHandler:modalHandler];
+}
+
+- (void)sync
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    [dataStore synchronizeWithCloud];
 }
 
 @end

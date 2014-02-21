@@ -649,10 +649,10 @@
         <window title="ProjectCrystalBlueOSX" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="639" height="397"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="639" height="397"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
             <toolbar key="toolbar" implicitIdentifier="E68E68E5-2E5A-4C08-BAC9-30AD1CF46DFA" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="J4P-dR-7ZN">
@@ -682,6 +682,11 @@
                             <action selector="deleteSource:" target="494" id="uSd-qI-61L"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="F102EBD6-C6B6-4EE6-9E62-601826809442" label="Sync" paletteLabel="Sync" tag="-1" image="NSBonjour" id="b6f-YW-UZq">
+                        <connections>
+                            <action selector="sync:" target="494" id="BFP-BR-0Yc"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="8k3-nB-kxL"/>
@@ -689,6 +694,7 @@
                     <toolbarItem reference="uX8-mb-BOS"/>
                     <toolbarItem reference="TWr-tk-99k"/>
                     <toolbarItem reference="LpF-N8-Oaq"/>
+                    <toolbarItem reference="b6f-YW-UZq"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
@@ -702,6 +708,7 @@
     </objects>
     <resources>
         <image name="NSAddTemplate" width="8" height="8"/>
+        <image name="NSBonjour" width="32" height="32"/>
         <image name="NSBookmarksTemplate" width="17" height="12"/>
         <image name="NSListViewTemplate" width="11" height="10"/>
         <image name="NSShareTemplate" width="18" height="16"/>

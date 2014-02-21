@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "AbstractLibraryObjectStore.h"
+#import "AbstractCloudLibraryObjectStore.h"
 #import "Source.h"
 
 @interface SourcesViewController : NSViewController <NSTableViewDataSource, NSToolbarDelegate> {
@@ -20,7 +20,7 @@
 
 @property (weak) IBOutlet NSTableView *sourceTable;
 
-@property AbstractLibraryObjectStore *dataStore;
+@property AbstractCloudLibraryObjectStore *dataStore;
 
 /// Add a new Source and reload the data table.
 - (void)addSource:(Source *)source;
@@ -35,5 +35,6 @@
 - (void)showEditSourceDialog;
 - (void)viewSamples;
 - (void)importExport;
+- (void)sync;
 
 @end

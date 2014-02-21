@@ -64,4 +64,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (IBAction)deleteSource:(id)sender {
     [initialViewController removeSource];
 }
+
+- (IBAction)sync:(id)sender {
+    [initialViewController sync];
+}
 @end

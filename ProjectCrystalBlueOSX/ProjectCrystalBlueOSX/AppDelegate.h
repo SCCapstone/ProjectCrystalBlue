@@ -23,5 +23,6 @@
 - (IBAction)viewSamples:(id)sender;
 - (IBAction)importExport:(id)sender;
 - (IBAction)deleteSource:(id)sender;
+- (IBAction)sync:(id)sender;
 
 @end
