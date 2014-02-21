@@ -83,6 +83,9 @@
 		D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9318A5FEB6006084D6 /* Sample.m */; };
 		D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9518A5FEB6006084D6 /* SourceConstants.m */; };
 		D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9718A5FEB6006084D6 /* SampleConstants.m */; };
+		D7A41E3218B6A4E200653B3E /* samples_extra_attribute.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */; };
+		D7A41E3318B6A4E200653B3E /* samples_missing_attribute.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */; };
+		D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A41E3618B6F60000653B3E /* OSXFileSelector.m */; };
 		D7C8732D18B2F9F800F2976F /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8732C18B2F9F800F2976F /* CHCSVParser.m */; };
 		D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733018B2FA4D00F2976F /* LibraryObjectCSVWriter.m */; };
 		D7C8733718B2FB0B00F2976F /* LibraryObjectCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */; };
@@ -224,6 +227,10 @@
 		D78ACC9518A5FEB6006084D6 /* SourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceConstants.m; sourceTree = "<group>"; };
 		D78ACC9618A5FEB6006084D6 /* SampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleConstants.h; sourceTree = "<group>"; };
 		D78ACC9718A5FEB6006084D6 /* SampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleConstants.m; sourceTree = "<group>"; };
+		D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_extra_attribute.csv; sourceTree = "<group>"; };
+		D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_missing_attribute.csv; sourceTree = "<group>"; };
+		D7A41E3518B6F60000653B3E /* OSXFileSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXFileSelector.h; sourceTree = "<group>"; };
+		D7A41E3618B6F60000653B3E /* OSXFileSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXFileSelector.m; sourceTree = "<group>"; };
 		D7C8732B18B2F9F800F2976F /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 		D7C8732C18B2F9F800F2976F /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		D7C8733018B2FA4D00F2976F /* LibraryObjectCSVWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectCSVWriter.m; sourceTree = "<group>"; };
@@ -454,6 +461,7 @@
 		D7439E1418A5FC53000EE008 /* ProjectCrystalBlueOSX */ = {
 			isa = PBXGroup;
 			children = (
+				D7C8732A18B2F9DB00F2976F /* ReadWrite */,
 				D78ACC2B18A5FD7F006084D6 /* Controller */,
 				D78ACC2C18A5FD85006084D6 /* Model */,
 				D78ACC2D18A5FD92006084D6 /* Store */,
@@ -558,7 +566,6 @@
 		D78ACC2E18A5FD97006084D6 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				D7C8732A18B2F9DB00F2976F /* ReadWrite */,
 				D78ACC4F18A5FDE9006084D6 /* ImageUtils.h */,
 				D78ACC5018A5FDE9006084D6 /* ImageUtils.m */,
 				D78ACC4018A5FDC8006084D6 /* Lumberjack */,
@@ -687,7 +694,7 @@
 			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
 		};
-		D7C8732A18B2F9DB00F2976F /* ReadWrite */ = {
+		D7A41E3818B711D800653B3E /* LibraryObjectReadWrite */ = {
 			isa = PBXGroup;
 			children = (
 				D7C8733518B2FB0B00F2976F /* LibraryObjectCSVReader.h */,
@@ -696,7 +703,17 @@
 				D7C8733018B2FA4D00F2976F /* LibraryObjectCSVWriter.m */,
 				D7C8733218B2FA4D00F2976F /* LibraryObjectFileReader.h */,
 				D7C8733318B2FA4D00F2976F /* LibraryObjectFileWriter.h */,
+			);
+			name = LibraryObjectReadWrite;
+			sourceTree = "<group>";
+		};
+		D7C8732A18B2F9DB00F2976F /* ReadWrite */ = {
+			isa = PBXGroup;
+			children = (
+				D7A41E3818B711D800653B3E /* LibraryObjectReadWrite */,
 				D7C8732E18B2FA1000F2976F /* CHCSVParser */,
+				D7A41E3518B6F60000653B3E /* OSXFileSelector.h */,
+				D7A41E3618B6F60000653B3E /* OSXFileSelector.m */,
 			);
 			name = ReadWrite;
 			sourceTree = "<group>";
@@ -713,6 +730,8 @@
 		D7C8733818B302D900F2976F /* ReadWrite */ = {
 			isa = PBXGroup;
 			children = (
+				D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */,
+				D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */,
 				D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */,
 				D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */,
 			);
@@ -831,9 +850,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7A41E3318B6A4E200653B3E /* samples_missing_attribute.csv in Resources */,
 				D72405FC18A6024900EA2DD2 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */,
 				D72405F618A6023B00EA2DD2 /* big_test_image_4096-4096.jpg in Resources */,
 				D7439E3718A5FC53000EE008 /* InfoPlist.strings in Resources */,
+				D7A41E3218B6A4E200653B3E /* samples_extra_attribute.csv in Resources */,
 				D7C8733F18B31CF400F2976F /* samples_reordered_columns.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -859,6 +880,7 @@
 				D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */,
 				D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */,
 				D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */,
+				D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
 				D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */,
 				D78ACC4A18A5FDD9006084D6 /* DDTTYLogger.m in Sources */,

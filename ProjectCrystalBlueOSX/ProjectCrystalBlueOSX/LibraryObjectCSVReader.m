@@ -62,6 +62,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         header = [[NSMutableArray alloc] init];
         [header addObjectsFromArray:currentFields];
     } else {
+        // make sure all fields at least have empty string
+        while (currentFields.count < header.count) {
+            [currentFields addObject:@""];
+        }
+        
         NSUInteger keyIndex = [header indexOfObject:@"key"];
         LibraryObject *object = [[LibraryObject alloc] initWithKey:[currentFields objectAtIndex:keyIndex]
                                                  AndWithAttributes:header
@@ -72,6 +77,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)parser:(CHCSVParser *)parser didReadField:(NSString *)field atIndex:(NSInteger)fieldIndex
 {
+    if (header && fieldIndex >= header.count) {
+        // In case there are extra fields in the file, we should ignore them.
+        return;
+    }
     [currentFields addObject:field];
 }
 
@@ -93,6 +102,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     CsvParserDelegate *parserDelegate = [[CsvParserDelegate alloc] init];
     
     csvParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:filePath delimiter:','];
+    [csvParser setSanitizesFields:YES];
     [csvParser setDelegate:parserDelegate];
     [csvParser parse];
     
