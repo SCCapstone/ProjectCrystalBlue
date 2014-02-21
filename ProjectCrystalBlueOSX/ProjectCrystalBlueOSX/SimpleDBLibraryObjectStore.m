@@ -48,8 +48,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
         simpleDBClient = [[AmazonSimpleDBClient alloc] initWithCredentialsProvider:credentialsProvider];
         
-        //if (![self setupDomains])
-        //    return nil;
+        if (![self setupDomains])
+            return nil;
     }
     
     return self;
@@ -66,14 +66,57 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (!remoteTransactions)
         return NO;
     
-    // Compare remote with local.  For each transaction, conflicting key? Resolve conflicts
-    for (Transaction *remoteTransaction in remoteTransactions) {
+    // Upload local changes to remote database
+    @try {
+        NSArray *localTransactions = [SimpleDBUtils convertObjectArrayToSimpleDBItemArray:[transactionStore getAllTransactions]];
+        NSInteger remainingItems = localTransactions.count;
+        int count = 0;
+        
+        while (remainingItems > 0) {
+            NSMutableArray *putItems = [[localTransactions subarrayWithRange:NSMakeRange(count*25, MIN(remainingItems, 25))] mutableCopy];
+            
+            SimpleDBBatchPutAttributesRequest *batchPutRequest = [[SimpleDBBatchPutAttributesRequest alloc] initWithDomainName:[TransactionConstants tableName]
+                                                                                                                 andItems:putItems];
+            [simpleDBClient batchPutAttributes:batchPutRequest];
+            
+            remainingItems = remainingItems - 25;
+            count++;
+        }
         
     }
+    @catch (NSException *exception) {
+        DDLogCError(@"%@: Failed to upload local transactions to the remote database. Error: %@", NSStringFromClass(self.class), exception);
+        return NO;
+    }
     
-    // Push modified local history and corresponding library objects
+    // Get changed objects from remote database
+    @try {
+        NSArray *unsyncedTransactions = [SimpleDBUtils convertObjectArrayToSimpleDBItemArray:[transactionStore resolveConflicts:remoteTransactions]];
+        
+        for (Transaction *unsyncedTransaction in unsyncedTransactions) {
+            NSString *tableName = [unsyncedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE];
+            NSString *sqlCommandType = [unsyncedTransaction.attributes objectForKey:TRN_SQL_COMMAND_TYPE];
+            SimpleDBGetAttributesRequest *getRequest = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:tableName
+                                                                                                    andItemName:[unsyncedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
+            SimpleDBGetAttributesResponse *getResponse = [simpleDBClient getAttributes:getRequest];
+            LibraryObject *libraryObject = [SimpleDBUtils convertSimpleDBAttributes:getResponse.attributes
+                                                                    ToObjectOfClass:[tableName isEqualToString:[SourceConstants tableName]] ? [Source class] : [Sample class]];
+            
+            if ([sqlCommandType isEqualToString:@"PUT"])
+                [localStore putLibraryObject:libraryObject IntoTable:tableName];
+            else if ([sqlCommandType isEqualToString:@"UPDATE"])
+                [localStore updateLibraryObject:libraryObject IntoTable:tableName];
+            else if ([sqlCommandType isEqualToString:@"DELETE"])
+                [localStore deleteLibraryObjectWithKey:libraryObject.key FromTable:tableName];
+        }
+    }
+    @catch (NSException *exception) {
+        DDLogCError(@"%@: Failed while putting local transactions to the remote database. Error: %@", NSStringFromClass(self.class), exception);
+        return NO;
+    }
     
-    return NO;
+    [transactionStore clearLocalTransactions];
+    return YES;
 }
 
 - (BOOL)setupDomains
@@ -81,24 +124,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     @try {
         SimpleDBListDomainsResponse *listResponse = [simpleDBClient listDomains:[[SimpleDBListDomainsRequest alloc] init]];
         SimpleDBCreateDomainRequest *createRequest;
-        SimpleDBCreateDomainResponse *createResponse;
         
         // Source domain
         if (![listResponse.domainNames containsObject:[SourceConstants tableName]]) {
             createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SourceConstants tableName]];
-            createResponse = [simpleDBClient createDomain:createRequest];
+            [simpleDBClient createDomain:createRequest];
         }
         
         // Sample domain
         if (![listResponse.domainNames containsObject:[SampleConstants tableName]]) {
             createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SampleConstants tableName]];
-            createResponse = [simpleDBClient createDomain:createRequest];
+            [simpleDBClient createDomain:createRequest];
         }
         
         // Transaction domain
         if (![listResponse.domainNames containsObject:[TransactionConstants tableName]]) {
             createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[TransactionConstants tableName]];
-            createResponse = [simpleDBClient createDomain:createRequest];
+            [simpleDBClient createDomain:createRequest];
         }
     }
     @catch (NSException *exception) {
@@ -138,6 +180,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     
     Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:[libraryObject key]
+                                                            AndWithTableName:tableName
                                                        AndWithSqlCommandType:@"PUT"];
     if (![transactionStore commitTransaction:transaction])
         return NO;
@@ -152,6 +195,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     
     Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:[libraryObject key]
+                                                            AndWithTableName:tableName
                                                        AndWithSqlCommandType:@"UPDATE"];
     if (![transactionStore commitTransaction:transaction])
         return NO;
@@ -166,6 +210,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     
     Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:key
+                                                            AndWithTableName:tableName
                                                        AndWithSqlCommandType:@"DELETE"];
     if (![transactionStore commitTransaction:transaction])
         return NO;

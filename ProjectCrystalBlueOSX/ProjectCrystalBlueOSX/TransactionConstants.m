@@ -27,7 +27,7 @@ static NSString *const TRANSACTION_TABLE_NAME = @"test_transaction_table";
     if (!attributeNames)
     {
         attributeNames = [NSArray arrayWithObjects:
-                          TRN_TIMESTAMP, TRN_LIBRARY_OBJECT_KEY, TRN_SQL_COMMAND_TYPE, nil];
+                          TRN_TIMESTAMP, TRN_LIBRARY_OBJECT_KEY, TRN_LIBRARY_OBJECT_TABLE, TRN_SQL_COMMAND_TYPE, nil];
     }
     return attributeNames;
 }
@@ -38,7 +38,7 @@ static NSString *const TRANSACTION_TABLE_NAME = @"test_transaction_table";
     if (!attributeDefaultValues)
     {
         attributeDefaultValues = [NSArray arrayWithObjects:
-                                  TRN_DEF_VAL_TIMESTAMP, TRN_DEF_VAL_LIBRARY_OBJECT_KEY, TRN_DEF_VAL_SQL_COMMAND_TYPE, nil];
+                                  TRN_DEF_VAL_TIMESTAMP, TRN_DEF_VAL_LIBRARY_OBJECT_KEY, TRN_DEF_VAL_LIBRARY_OBJECT_TABLE, TRN_DEF_VAL_SQL_COMMAND_TYPE, nil];
     }
     return attributeDefaultValues;
 }

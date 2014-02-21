@@ -182,13 +182,22 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return syncTime;
 }
 
-- (void)resolveConflicts:(Transaction *)transaction
+- (NSArray *)resolveConflicts:(NSArray *)transactions
 {
-    Transaction *conflictingTransaction = [self getTransactionWithLibraryObjectKey:[transaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
-    if (!conflictingTransaction)
-        return;
+    NSMutableArray *remoteTransactionsNeeded = [[NSMutableArray alloc] init];
     
+    for (Transaction *transaction in transactions) {
+        Transaction *conflictingTransaction = [self getTransactionWithLibraryObjectKey:[transaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
+        if (!conflictingTransaction)
+            continue;
+        
+        // Remote is more recent than local - need to make remote call
+        if ([conflictingTransaction.timestamp doubleValue] < [transaction.timestamp doubleValue]) {
+            [remoteTransactionsNeeded addObject:transaction];
+        }
+    }
     
+    return remoteTransactionsNeeded;
 }
 
 - (Transaction *)optimizeTransaction:(Transaction *)newTransaction
@@ -247,7 +256,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)updateTimeOfSync
 {
     // Create a new transaction object with current time and everything else nil
-    Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:@"" AndWithSqlCommandType:@""];
+    Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:@"" AndWithTableName:@"" AndWithSqlCommandType:@""];
     NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
                      [TransactionConstants tableName], [TransactionConstants tableColumns], [TransactionConstants tableValueKeys]];
     

@@ -41,7 +41,7 @@
     TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:TEST_DIRECTORY
                                                                        WithDatabaseName:DATABASE_NAME];
     // Get is not a transaction we want to store
-    Transaction *getTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"GET"];
+    Transaction *getTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"GET"];
     XCTAssertFalse([transactionStore commitTransaction:getTransaction], @"TransactionStore should not commit a get sql command.");
     
     // Make sure transaction store is empty
@@ -74,7 +74,7 @@
     TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:TEST_DIRECTORY
                                                                        WithDatabaseName:DATABASE_NAME];
     // Initialize some transaction objects
-    Transaction *putTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"PUT"];
+    Transaction *putTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"PUT"];
     XCTAssertTrue([transactionStore commitTransaction:putTransaction], @"TransactionStore failed to commit the transaction.");
     
     Transaction *retrievedTransaction = [transactionStore getTransactionWithLibraryObjectKey:[putTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
@@ -87,10 +87,10 @@
     TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:TEST_DIRECTORY
                                                                        WithDatabaseName:DATABASE_NAME];
     // Initialize some transaction objects
-    Transaction *putTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"PUT"];
-    Transaction *updateTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"UPDATE"];
-    Transaction *updateTransaction2 = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"UPDATE"];
-    Transaction *deleteTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"DELETE"];
+    Transaction *putTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"PUT"];
+    Transaction *updateTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"UPDATE"];
+    Transaction *updateTransaction2 = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"UPDATE"];
+    Transaction *deleteTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"DELETE"];
     
     // PUT + UPDATE -> PUT
     XCTAssertTrue([transactionStore commitTransaction:putTransaction], @"TransactionStore failed to commit the transaction.");
@@ -132,10 +132,10 @@
     XCTAssertEqual([transactions count], 0ul, @"TransactionStore should be empty.");
     
     // Initialize some transaction objects
-    Transaction *putTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"PUT"];
-    Transaction *updateTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"UPDATE"];
-    Transaction *deleteTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"DELETE"];
-    Transaction *getTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithSqlCommandType:@"GET"];
+    Transaction *putTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"PUT"];
+    Transaction *updateTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"UPDATE"];
+    Transaction *deleteTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"DELETE"];
+    Transaction *getTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"GET"];
     
     // Commit the transactions to the store
     XCTAssertTrue([transactionStore commitTransaction:putTransaction], @"TransactionStore failed to commit the transaction.");

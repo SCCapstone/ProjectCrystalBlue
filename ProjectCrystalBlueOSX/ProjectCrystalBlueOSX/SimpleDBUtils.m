@@ -49,11 +49,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [self convertSimpleDBItemArray:objects ToObjectsOfClass:objectClass];
 }
 
-+ (id)convertSimpleDBItem:(SimpleDBItem *)simpleDBItem
-          ToObjectOfClass:(Class)objectClass
++ (id)convertSimpleDBAttributes:(NSArray *)simpleDBAttributes
+                ToObjectOfClass:(Class)objectClass
 {
-    NSMutableDictionary *objectAttributes = [[NSMutableDictionary alloc] initWithCapacity:simpleDBItem.attributes.count];
-    for (SimpleDBAttribute *attribute in simpleDBItem.attributes) {
+    NSMutableDictionary *objectAttributes = [[NSMutableDictionary alloc] initWithCapacity:simpleDBAttributes.count];
+    for (SimpleDBAttribute *attribute in simpleDBAttributes) {
         [objectAttributes setObject:attribute.value forKey:attribute.name];
     }
     
@@ -74,7 +74,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     NSMutableArray *convertedObjects = [[NSMutableArray alloc] initWithCapacity:simpleDBItems.count];
     for (SimpleDBItem *item in simpleDBItems) {
-        [convertedObjects addObject:[self convertSimpleDBItem:item ToObjectOfClass:objectClass]];
+        [convertedObjects addObject:[self convertSimpleDBAttributes:item.attributes
+                                                    ToObjectOfClass:objectClass]];
     }
     return convertedObjects;
 }
@@ -106,6 +107,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     return [[SimpleDBReplaceableItem alloc] initWithName:itemName
                                            andAttributes:objectAttributes];
+}
+
++ (NSArray *)convertObjectArrayToSimpleDBItemArray:(NSArray *)objectArray
+{
+    NSMutableArray *convertedObjects = [[NSMutableArray alloc] initWithCapacity:objectArray.count];
+    for (NSObject *object in objectArray) {
+        [convertedObjects addObject:[self convertObjectToSimpleDBItem:object]];
+    }
+    return convertedObjects;
 }
 
 @end

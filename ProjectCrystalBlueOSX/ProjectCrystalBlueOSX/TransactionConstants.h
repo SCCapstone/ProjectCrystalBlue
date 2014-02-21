@@ -12,12 +12,14 @@
  */
 static NSString *const TRN_TIMESTAMP = @"timestamp";
 static NSString *const TRN_LIBRARY_OBJECT_KEY = @"libraryObjectKey";
+static NSString *const TRN_LIBRARY_OBJECT_TABLE = @"tableName";
 static NSString *const TRN_SQL_COMMAND_TYPE = @"sqlCommandType";
 
 /* Attribute default values
  */
 static NSString *const TRN_DEF_VAL_TIMESTAMP = @"unique timestamp";
 static NSString *const TRN_DEF_VAL_LIBRARY_OBJECT_KEY = @"library object key here";
+static NSString *const TRN_DEF_VAL_LIBRARY_OBJECT_TABLE = @"tableName here";
 static NSString *const TRN_DEF_VAL_SQL_COMMAND_TYPE = @"PUT,UPDATE,DELETE here";
 
 @interface TransactionConstants : NSObject

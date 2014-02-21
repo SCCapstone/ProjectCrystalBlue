@@ -62,6 +62,7 @@
 {
     // Convert transaction object to SimpleDBReplaceableItem
     Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:@"rock1030"
+                                                            AndWithTableName:@"tableName"
                                                        AndWithSqlCommandType:@"PUT"];
     SimpleDBReplaceableItem *replaceableItem = [SimpleDBUtils convertObjectToSimpleDBItem:transaction];
     XCTAssertNotNil(replaceableItem, @"SimpleDBUtils failed to convert the transaction object.");
@@ -70,7 +71,7 @@
     // Convert SimpleDBReplaceableItem to transaction object
     SimpleDBItem *item = [[SimpleDBItem alloc] initWithName:replaceableItem.name
                                               andAttributes:replaceableItem.attributes];
-    Transaction *convertedTransaction = [SimpleDBUtils convertSimpleDBItem:item ToObjectOfClass:[Transaction class]];
+    Transaction *convertedTransaction = [SimpleDBUtils convertSimpleDBAttributes:item.attributes ToObjectOfClass:[Transaction class]];
     XCTAssertNotNil(convertedTransaction, @"SimpleDBUtils failed to convert the simpleDBItem.");
     XCTAssertEqual(item.attributes.count, convertedTransaction.attributes.count, @"convertedTransaction does not contain the correct number of attributes.");
     
@@ -87,7 +88,7 @@
     // Convert SimpleDBReplaceableItem to transaction object
     item = [[SimpleDBItem alloc] initWithName:replaceableItem.name
                                 andAttributes:replaceableItem.attributes];
-    Source *convertedSource = [SimpleDBUtils convertSimpleDBItem:item ToObjectOfClass:[Source class]];
+    Source *convertedSource = [SimpleDBUtils convertSimpleDBAttributes:item.attributes ToObjectOfClass:[Source class]];
     XCTAssertNotNil(convertedSource, @"SimpleDBUtils failed to convert the simpleDBItem.");
     XCTAssertEqual(item.attributes.count, convertedSource.attributes.count, @"convertedSource does not contain the correct number of attributes.");
     
