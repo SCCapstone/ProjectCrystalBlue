@@ -15,12 +15,14 @@
         WithReturnedObjectClass:(Class)objectClass
                     UsingClient:(AmazonSimpleDBClient *)simpleDBClient;
 
-+ (id)convertSimpleDBItem:(SimpleDBItem *)simpleDBItem
-          ToObjectOfClass:(Class)objectClass;
++ (id)convertSimpleDBAttributes:(NSArray *)simpleDBAttributes
+                ToObjectOfClass:(Class)objectClass;
 
 + (NSArray *)convertSimpleDBItemArray:(NSArray *)simpleDBItems
                      ToObjectsOfClass:(Class)objectClass;
 
 + (SimpleDBReplaceableItem *)convertObjectToSimpleDBItem:(NSObject *)object;
+
++ (NSArray *)convertObjectArrayToSimpleDBItemArray:(NSArray *)objectArray;
 
 @end
