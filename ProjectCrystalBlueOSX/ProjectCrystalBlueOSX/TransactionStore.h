@@ -42,4 +42,9 @@
  */
 - (NSTimeInterval)timeOfLastSync;
 
+/**
+ *
+ */
+- (NSArray *)resolveConflicts:(NSArray *)transactions;
+
 @end
