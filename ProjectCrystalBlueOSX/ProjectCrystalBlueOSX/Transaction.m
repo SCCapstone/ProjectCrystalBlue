@@ -14,6 +14,7 @@
 @synthesize attributes;
 
 - (id)initWithLibraryObjectKey:(NSString *)key
+              AndWithTableName:(NSString *)tableName
          AndWithSqlCommandType:(NSString *)sqlCommand
 {
     self = [super init];
@@ -21,7 +22,7 @@
     {
         timestamp = [NSNumber numberWithDouble:[[[NSDate alloc] init] timeIntervalSince1970]];
         
-        NSArray *attributeValues = [[NSArray alloc] initWithObjects:[timestamp stringValue], key, sqlCommand, nil];
+        NSArray *attributeValues = [[NSArray alloc] initWithObjects:[timestamp stringValue], key, tableName, sqlCommand, nil];
         attributes = [[NSMutableDictionary alloc] initWithObjects:attributeValues
                                                           forKeys:[TransactionConstants attributeNames]];
     }

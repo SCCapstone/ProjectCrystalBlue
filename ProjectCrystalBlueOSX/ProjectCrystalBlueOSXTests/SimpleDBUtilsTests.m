@@ -62,6 +62,7 @@
 {
     // Convert transaction object to SimpleDBReplaceableItem
     Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:@"rock1030"
+                                                            AndWithTableName:@"tableName"
                                                        AndWithSqlCommandType:@"PUT"];
     SimpleDBReplaceableItem *replaceableItem = [SimpleDBUtils convertObjectToSimpleDBItem:transaction];
     XCTAssertNotNil(replaceableItem, @"SimpleDBUtils failed to convert the transaction object.");
