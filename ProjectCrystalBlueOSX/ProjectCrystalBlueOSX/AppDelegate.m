@@ -28,13 +28,27 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSDate *now = [[NSDate alloc] init];
     DDLogInfo(@"Launched app %@", now);
     
-    initialViewController = [self getInitialViewController];
-    NSView *initialView = [initialViewController view];
-    [self.window setContentView:initialView];
+    leftViewController = [self getSourcesViewController];
+    NSView *leftView = [leftViewController view];
+    
+    rightViewController = [self getDetailViewController];
+    NSView *rightView = [rightViewController view];
+    
+    NSSplitView *splitView = [[NSSplitView alloc] init];
+    [splitView setVertical:YES];
+    [splitView setSubviews:[[NSArray alloc] initWithObjects:leftView, rightView, nil]];
+    [self.window setContentView:splitView];
 }
 
-/// Set up and return the initial view controller for the Application.
-- (SourcesViewController *)getInitialViewController
+/// Set up and return a detailPanelViewController
+- (DetailPanelViewController *)getDetailViewController
+{
+    DetailPanelViewController *detailView = [[DetailPanelViewController alloc] initWithNibName:@"DetailPanelViewController" bundle:nil];
+    return detailView;
+}
+
+/// Set up and return a sourcesViewController for the Application.
+- (SourcesViewController *)getSourcesViewController
 {
     SourcesViewController *libraryView = [[SourcesViewController alloc] initWithNibName:@"SourcesViewController" bundle:nil];
     return libraryView;
@@ -46,26 +60,26 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
  */
 
 - (IBAction)newSource:(id)sender {
-    [initialViewController showAddNewSourceDialog];
+    [leftViewController showAddNewSourceDialog];
 }
 
 - (IBAction)editSource:(id)sender {
-    [initialViewController showEditSourceDialog];
+    [leftViewController showEditSourceDialog];
 }
 
 - (IBAction)viewSamples:(id)sender {
-    [initialViewController viewSamples];
+    [leftViewController viewSamples];
 }
 
 - (IBAction)importExport:(id)sender {
-    [initialViewController importExport];
+    [leftViewController importExport];
 }
 
 - (IBAction)deleteSource:(id)sender {
-    [initialViewController removeSource];
+    [leftViewController removeSource];
 }
 
 - (IBAction)sync:(id)sender {
-    [initialViewController sync];
+    [leftViewController sync];
 }
 @end

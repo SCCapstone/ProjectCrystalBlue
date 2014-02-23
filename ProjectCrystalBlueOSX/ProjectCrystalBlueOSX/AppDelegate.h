@@ -8,9 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "SourcesViewController.h"
+#import "DetailPanelViewController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-    SourcesViewController *initialViewController;
+    SourcesViewController *leftViewController;
+    DetailPanelViewController *rightViewController;
 }
 
 @property (assign) IBOutlet NSWindow *window;

@@ -49,6 +49,8 @@
 		D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7272DF518A60660003860E2 /* SourcesViewController.xib */; };
 		D72FE4A018B5641A00C6452F /* ProcedureRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE49F18B5641A00C6452F /* ProcedureRecord.m */; };
 		D72FE4A218B57B0F00C6452F /* ProcedureRecordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE4A118B57B0F00C6452F /* ProcedureRecordTests.m */; };
+		D738D55618BAA52600A777E2 /* DetailPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D738D55418BAA52600A777E2 /* DetailPanelViewController.m */; };
+		D738D55718BAA52600A777E2 /* DetailPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D738D55518BAA52600A777E2 /* DetailPanelViewController.xib */; };
 		D7439E0F18A5FC53000EE008 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7439E0E18A5FC53000EE008 /* Cocoa.framework */; };
 		D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7439E1718A5FC53000EE008 /* InfoPlist.strings */; };
 		D7439E1B18A5FC53000EE008 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7439E1A18A5FC53000EE008 /* main.m */; };
@@ -168,6 +170,9 @@
 		D72FE49E18B5641A00C6452F /* ProcedureRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureRecord.h; sourceTree = "<group>"; };
 		D72FE49F18B5641A00C6452F /* ProcedureRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecord.m; sourceTree = "<group>"; };
 		D72FE4A118B57B0F00C6452F /* ProcedureRecordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecordTests.m; sourceTree = "<group>"; };
+		D738D55318BAA52600A777E2 /* DetailPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPanelViewController.h; sourceTree = "<group>"; };
+		D738D55418BAA52600A777E2 /* DetailPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailPanelViewController.m; sourceTree = "<group>"; };
+		D738D55518BAA52600A777E2 /* DetailPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailPanelViewController.xib; sourceTree = "<group>"; };
 		D7439E0B18A5FC53000EE008 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7439E0E18A5FC53000EE008 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D7439E1118A5FC53000EE008 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -451,6 +456,16 @@
 			name = LibraryObjectImportController;
 			sourceTree = "<group>";
 		};
+		D738D55818BAA52A00A777E2 /* DetailPanelView */ = {
+			isa = PBXGroup;
+			children = (
+				D738D55318BAA52600A777E2 /* DetailPanelViewController.h */,
+				D738D55418BAA52600A777E2 /* DetailPanelViewController.m */,
+				D738D55518BAA52600A777E2 /* DetailPanelViewController.xib */,
+			);
+			name = DetailPanelView;
+			sourceTree = "<group>";
+		};
 		D7439E0218A5FC53000EE008 = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +634,7 @@
 				D7272DF318A60660003860E2 /* SourcesViewController.h */,
 				D7272DF418A60660003860E2 /* SourcesViewController.m */,
 				D7272DF518A60660003860E2 /* SourcesViewController.xib */,
+				D738D55818BAA52A00A777E2 /* DetailPanelView */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -878,6 +894,7 @@
 			files = (
 				D7F822C018B199450017548F /* SamplesViewController.xib in Resources */,
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
+				D738D55718BAA52600A777E2 /* DetailPanelViewController.xib in Resources */,
 				D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */,
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
 				D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */,
@@ -924,6 +941,7 @@
 				D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */,
 				D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
+				D738D55618BAA52600A777E2 /* DetailPanelViewController.m in Sources */,
 				D72465DD18B71F03002EDE5B /* LibraryObjectImportController.m in Sources */,
 				D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */,
 				D78ACC4A18A5FDD9006084D6 /* DDTTYLogger.m in Sources */,
