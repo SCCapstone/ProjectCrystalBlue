@@ -33,6 +33,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 @implementation SourcesViewController
 
 @synthesize dataStore;
+@synthesize detailPanel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -100,6 +101,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                        AndValues:[SampleConstants attributeDefaultValues]];
     [sample.attributes setObject:source.key forKey:SMP_SOURCE_KEY];
     [dataStore putLibraryObject:sample IntoTable:[SampleConstants tableName]];
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    NSInteger selectedRow = [self.sourceTable selectedRow];
+    if (selectedRow < 0) {
+        [detailPanel clear];
+        return;
+    }
+    LibraryObject *object = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    
+    [detailPanel displayInformationAboutLibraryObject:object];
 }
 
 /*  These are methods that are called when the user clicks on the toolbar items.

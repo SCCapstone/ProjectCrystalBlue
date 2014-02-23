@@ -32,6 +32,7 @@
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <outlet property="dataSource" destination="-2" id="xcU-Yi-q9Y"/>
+                                    <outlet property="delegate" destination="-2" id="p9L-bC-3tk"/>
                                 </connections>
                             </tableView>
                         </subviews>

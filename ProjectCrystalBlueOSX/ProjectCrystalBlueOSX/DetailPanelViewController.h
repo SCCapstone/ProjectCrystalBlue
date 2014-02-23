@@ -13,10 +13,9 @@
 
 @interface DetailPanelViewController : NSViewController
 
-@property (weak) IBOutlet NSTextField *objectNameLabel;
+@property (weak) IBOutlet NSTextField *objectInfoLabel;
+@property (weak) IBOutlet NSImageView *image;
 
--(void)displayInformationAboutSource:(Source *)source;
--(void)displayInformationAboutSample:(Sample *)sample;
 -(void)displayInformationAboutLibraryObject:(LibraryObject *)libraryObject;
 -(void)clear;
 

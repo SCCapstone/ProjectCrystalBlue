@@ -29,24 +29,19 @@
     [self clear];
 }
 
--(void)displayInformationAboutSource:(Source *)source
-{
-    self.objectNameLabel.stringValue = source.key;
-}
-
--(void)displayInformationAboutSample:(Sample *)sample
-{
-    self.objectNameLabel.stringValue = sample.key;
-}
-
 -(void)displayInformationAboutLibraryObject:(LibraryObject *)libraryObject
 {
-    self.objectNameLabel.stringValue = libraryObject.key;
+    NSMutableString *infoString = [[NSMutableString alloc] init];
+    for (NSString *attribute in libraryObject.attributes.allKeys) {
+        NSString *attributeVal = [libraryObject.attributes objectForKey:attribute];
+        [infoString appendFormat:@"%@: %@\n", attribute, attributeVal];
+    }
+    [self.objectInfoLabel setStringValue:infoString];
 }
 
 -(void)clear
 {
-    self.objectNameLabel.stringValue = @"No object selected";
+    self.objectInfoLabel.stringValue = @"No object selected";
 }
 
 @end

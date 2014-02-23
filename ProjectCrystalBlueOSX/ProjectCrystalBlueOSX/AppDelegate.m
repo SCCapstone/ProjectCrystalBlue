@@ -34,6 +34,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     rightViewController = [self getDetailViewController];
     NSView *rightView = [rightViewController view];
     
+    [leftViewController setDetailPanel:rightViewController];
+    
     NSSplitView *splitView = [[NSSplitView alloc] init];
     [splitView setVertical:YES];
     [splitView setSubviews:[[NSArray alloc] initWithObjects:leftView, rightView, nil]];
