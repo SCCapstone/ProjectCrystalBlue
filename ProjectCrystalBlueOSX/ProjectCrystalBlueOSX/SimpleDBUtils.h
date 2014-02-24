@@ -11,9 +11,22 @@
 
 @interface SimpleDBUtils : NSObject
 
++ (NSObject *)executeGetWithItemName:(NSString *)itemName
+                   AndWithDomainName:(NSString *)domainName
+                         UsingClient:(AmazonSimpleDBClient *)simpleDBClient
+                     ToObjectOfClass:(Class)objectClass;
+
 + (NSArray *)executeSelectQuery:(NSString *)query
         WithReturnedObjectClass:(Class)objectClass
                     UsingClient:(AmazonSimpleDBClient *)simpleDBClient;
+
++ (BOOL)executeBatchPut:(NSArray *)objects
+         WithDomainName:(NSString *)domainName
+            UsingClient:(AmazonSimpleDBClient *)simpleDBClient;
+
++ (BOOL)executeBatchDelete:(NSArray *)itemNames
+            WithDomainName:(NSString *)domainName
+               UsingClient:(AmazonSimpleDBClient *)simpleDBClient;
 
 + (id)convertSimpleDBAttributes:(NSArray *)simpleDBAttributes
                 ToObjectOfClass:(Class)objectClass;

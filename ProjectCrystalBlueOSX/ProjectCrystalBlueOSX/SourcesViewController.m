@@ -284,6 +284,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     [dataStore synchronizeWithCloud];
+    [self.sourceTable reloadData];
 }
 
 @end

@@ -20,6 +20,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SimpleDBUtils
 
++ (NSObject *)executeGetWithItemName:(NSString *)itemName
+                   AndWithDomainName:(NSString *)domainName
+                         UsingClient:(AmazonSimpleDBClient *)simpleDBClient
+                     ToObjectOfClass:(Class)objectClass
+{
+    @try {
+        SimpleDBGetAttributesRequest *getRequest = [[SimpleDBGetAttributesRequest alloc] initWithDomainName:domainName
+                                                                                                andItemName:itemName];
+        SimpleDBGetAttributesResponse *getResponse = [simpleDBClient getAttributes:getRequest];
+        return [self convertSimpleDBAttributes:getResponse.attributes ToObjectOfClass:objectClass];
+    }
+    @catch (NSException *exception) {
+        DDLogCError(@"%@: Failed to get object from the remote database. Error: %@", NSStringFromClass(self.class), exception);
+        return nil;
+    }
+}
+
 + (NSArray *)executeSelectQuery:(NSString *)query
         WithReturnedObjectClass:(Class)objectClass
                     UsingClient:(AmazonSimpleDBClient *)simpleDBClient
@@ -47,6 +64,64 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     
     return [self convertSimpleDBItemArray:objects ToObjectsOfClass:objectClass];
+}
+
++ (BOOL)executeBatchPut:(NSArray *)objects
+         WithDomainName:(NSString *)domainName
+            UsingClient:(AmazonSimpleDBClient *)simpleDBClient
+{
+    @try {
+        NSArray *simpleDBItems = [self convertObjectArrayToSimpleDBItemArray:objects];
+        NSInteger remainingItems = simpleDBItems.count;
+        int count = 0;
+        
+        while (remainingItems > 0) {
+            NSMutableArray *putItems = [[simpleDBItems subarrayWithRange:NSMakeRange(count*25, MIN(remainingItems, 25))] mutableCopy];
+            
+            SimpleDBBatchPutAttributesRequest *batchPutRequest = [[SimpleDBBatchPutAttributesRequest alloc] initWithDomainName:domainName
+                                                                                                                      andItems:putItems];
+            [simpleDBClient batchPutAttributes:batchPutRequest];
+            
+            remainingItems = remainingItems - 25;
+            count++;
+        }
+        
+    }
+    @catch (NSException *exception) {
+        DDLogCError(@"%@: Failed to batch put to the remote database. Error: %@", NSStringFromClass(self.class), exception);
+        return NO;
+    }
+
+    return YES;
+}
+
++ (BOOL)executeBatchDelete:(NSArray *)itemNames
+            WithDomainName:(NSString *)domainName
+               UsingClient:(AmazonSimpleDBClient *)simpleDBClient
+{
+    @try {
+        NSArray *simpleDBItems = [self convertItemNameArrayToSimpleDBDeleteableArray:itemNames];
+        NSInteger remainingItems = simpleDBItems.count;
+        int count = 0;
+        
+        while (remainingItems > 0) {
+            NSMutableArray *deleteItems = [[simpleDBItems subarrayWithRange:NSMakeRange(count*25, MIN(remainingItems, 25))] mutableCopy];
+            
+            SimpleDBBatchDeleteAttributesRequest *batchDeleteRequest = [[SimpleDBBatchDeleteAttributesRequest alloc] initWithDomainName:domainName
+                                                                                                                               andItems:deleteItems];
+            [simpleDBClient batchDeleteAttributes:batchDeleteRequest];
+            
+            remainingItems = remainingItems - 25;
+            count++;
+        }
+        
+    }
+    @catch (NSException *exception) {
+        DDLogCError(@"%@: Failed to batch delete to the remote database. Error: %@", NSStringFromClass(self.class), exception);
+        return NO;
+    }
+    
+    return YES;
 }
 
 + (id)convertSimpleDBAttributes:(NSArray *)simpleDBAttributes
@@ -116,6 +191,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [convertedObjects addObject:[self convertObjectToSimpleDBItem:object]];
     }
     return convertedObjects;
+}
+
++ (NSArray *)convertItemNameArrayToSimpleDBDeleteableArray:(NSArray *)itemNameArray
+{
+    NSMutableArray *simpleDBDeleteableItems = [[NSMutableArray alloc] init];
+    for (NSString *itemName in itemNameArray) {
+        SimpleDBDeletableItem *deleteableItem = [[SimpleDBDeletableItem alloc] init];
+        deleteableItem.name = itemName;
+        [simpleDBDeleteableItems addObject:deleteableItem];
+    }
+    return simpleDBDeleteableItems;
 }
 
 @end

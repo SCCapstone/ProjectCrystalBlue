@@ -7,6 +7,7 @@
 //
 
 #import "TransactionStore.h"
+#import "ConflictResolution.h"
 #import "FMDatabase.h"
 #import "FMDatabaseQueue.h"
 #import "FMResultSet.h"
@@ -24,7 +25,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (Transaction *)optimizeTransaction:(Transaction *)newTransaction;
-- (BOOL)updateTimeOfSync;
+- (BOOL)updateTimeOfSync:(NSNumber *)syncTime;
 - (BOOL)setupTable;
 
 @end
@@ -47,14 +48,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                       withIntermediateDirectories:YES
                                                        attributes:nil
                                                             error:nil];
+            
+            localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
+            
+            // Setup table
+            if (![self setupTable]) {
+                return nil;
+            }
         }
-        
-        localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
-        
-        // Setup table
-        if (![self setupTable]) {
-            return nil;
-        }
+        else
+            localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
     }
     return self;
 }
@@ -154,9 +157,24 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }];
     
     // Add current time to top of transaction table as last sync time
-    [self updateTimeOfSync];
+    [self updateTimeOfSync:[NSNumber numberWithDouble:[[[NSDate alloc] init] timeIntervalSince1970]]];
     
     return clearSuccess;
+}
+
+- (BOOL)deleteLocalTransactionWithLibraryObjectKey:(NSString *)key
+{
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@='%@'", [TransactionConstants tableName], TRN_LIBRARY_OBJECT_KEY, key];
+    
+    __block BOOL deleteSuccess;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        deleteSuccess = [localDatabase executeUpdate:sql];
+        
+        if ([localDatabase hadError])
+            DDLogCError(@"%@: Failed to optimize transaction. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+    }];
+    
+    return deleteSuccess;
 }
 
 - (NSTimeInterval)timeOfLastSync
@@ -182,22 +200,31 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return syncTime;
 }
 
-- (NSArray *)resolveConflicts:(NSArray *)transactions
+- (NSArray *)resolveConflicts:(NSArray *)remoteTransactions
 {
-    NSMutableArray *remoteTransactionsNeeded = [[NSMutableArray alloc] init];
+    NSMutableArray *resolvedConflicts = [[NSMutableArray alloc] init];
     
-    for (Transaction *transaction in transactions) {
-        Transaction *conflictingTransaction = [self getTransactionWithLibraryObjectKey:[transaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
-        if (!conflictingTransaction)
-            continue;
+    for (Transaction *remoteTransaction in remoteTransactions) {
+        Transaction *localTransaction = [self getTransactionWithLibraryObjectKey:[remoteTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
         
-        // Remote is more recent than local - need to make remote call
-        if ([conflictingTransaction.timestamp doubleValue] < [transaction.timestamp doubleValue]) {
-            [remoteTransactionsNeeded addObject:transaction];
+        // No conflict, remote is more recent
+        if (!localTransaction)
+            [resolvedConflicts addObject:[[ConflictResolution alloc] initWithTransaction:remoteTransaction
+                                                                  AndIfLocalIsMoreRecent:false]];
+        // Conflict exists, remote is more recent
+        else if ([localTransaction.timestamp doubleValue] < [remoteTransaction.timestamp doubleValue]) {
+            // Delete outdated local version to not sync with remote
+            [self deleteLocalTransactionWithLibraryObjectKey:[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
+            [resolvedConflicts addObject:[[ConflictResolution alloc] initWithTransaction:remoteTransaction
+                                                                  AndIfLocalIsMoreRecent:false]];
         }
+        // Conflict exists, local is more recent
+        else
+            [resolvedConflicts addObject:[[ConflictResolution alloc] initWithTransaction:localTransaction
+                                                                  AndIfLocalIsMoreRecent:true]];
     }
     
-    return remoteTransactionsNeeded;
+    return resolvedConflicts;
 }
 
 - (Transaction *)optimizeTransaction:(Transaction *)newTransaction
@@ -211,7 +238,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSString *existingCommandType = [existingTransaction.attributes objectForKey:TRN_SQL_COMMAND_TYPE];
     
     // Delete all existing transactions
-    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@='%@'", [TransactionConstants tableName], TRN_LIBRARY_OBJECT_KEY, [newTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];;
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@='%@'", [TransactionConstants tableName], TRN_LIBRARY_OBJECT_KEY, [newTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
     __block BOOL deleteSuccess = NO;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         deleteSuccess = [localDatabase executeUpdate:sql];
@@ -253,10 +280,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return nil;
 }
 
-- (BOOL)updateTimeOfSync
+- (BOOL)updateTimeOfSync:(NSNumber *)syncTime
 {
     // Create a new transaction object with current time and everything else nil
-    Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:@"" AndWithTableName:@"" AndWithSqlCommandType:@""];
+    Transaction *transaction = [[Transaction alloc] initWithTimestamp:syncTime
+                                           AndWithAttributeDictionary:[[NSDictionary alloc] initWithObjects:[TransactionConstants attributeDefaultValues]
+                                                                                                    forKeys:[TransactionConstants attributeNames]]];
     NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
                      [TransactionConstants tableName], [TransactionConstants tableColumns], [TransactionConstants tableValueKeys]];
     
@@ -282,7 +311,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             DDLogCError(@"%@: Failed to create the transaction table. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
     }];
     
-    [self updateTimeOfSync];
+    [self updateTimeOfSync:[NSNumber numberWithInt:0]];
     
     return setupSuccess;
 }
