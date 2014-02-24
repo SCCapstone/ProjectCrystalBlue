@@ -11,7 +11,7 @@
 
 @interface Transaction : NSObject
 
-@property(readonly) NSNumber *timestamp;
+@property NSNumber *timestamp;
 @property NSMutableDictionary *attributes;
 
 - (id)initWithLibraryObjectKey:(NSString *)key
@@ -20,5 +20,7 @@
 
 - (id)initWithTimestamp:(NSNumber *)aTimestamp
 AndWithAttributeDictionary:(NSDictionary *)attr;
+
+- (void)resetTimestamp;
 
 @end

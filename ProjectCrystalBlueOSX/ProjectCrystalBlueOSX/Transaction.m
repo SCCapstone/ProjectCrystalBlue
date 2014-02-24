@@ -44,6 +44,12 @@ AndWithAttributeDictionary:(NSDictionary *)attr
     return self;
 }
 
+- (void)resetTimestamp
+{
+    timestamp = [NSNumber numberWithDouble:[[[NSDate alloc] init] timeIntervalSince1970]];
+    [attributes setObject:[timestamp stringValue] forKey:TRN_TIMESTAMP];
+}
+
 /**
  *  Compares this Transaction to another object. Transactions are considered equal if they have the same key and all the same attributes.
  */
