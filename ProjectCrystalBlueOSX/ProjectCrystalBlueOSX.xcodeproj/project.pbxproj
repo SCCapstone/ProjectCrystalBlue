@@ -40,10 +40,18 @@
 		D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D724060318A6027A00EA2DD2 /* OriginalSampleConstantsTests.m */; };
 		D724060618A6028300EA2DD2 /* SimpleDBExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D724060518A6028300EA2DD2 /* SimpleDBExample.m */; };
 		D724060718A602DF00EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
+		D72465D418B71C99002EDE5B /* SampleImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465D318B71C99002EDE5B /* SampleImportController.m */; };
+		D72465D718B71CA6002EDE5B /* SourceImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465D618B71CA6002EDE5B /* SourceImportController.m */; };
+		D72465DA18B71E32002EDE5B /* ImportResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465D918B71E32002EDE5B /* ImportResult.m */; };
+		D72465DD18B71F03002EDE5B /* LibraryObjectImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */; };
+		D72465E118B7320C002EDE5B /* SampleImportControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */; };
+		D72465E318B73D9F002EDE5B /* SourceImportControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */; };
 		D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7272DF418A60660003860E2 /* SourcesViewController.m */; };
 		D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7272DF518A60660003860E2 /* SourcesViewController.xib */; };
 		D72FE4A018B5641A00C6452F /* ProcedureRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE49F18B5641A00C6452F /* ProcedureRecord.m */; };
 		D72FE4A218B57B0F00C6452F /* ProcedureRecordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE4A118B57B0F00C6452F /* ProcedureRecordTests.m */; };
+		D738D55618BAA52600A777E2 /* DetailPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D738D55418BAA52600A777E2 /* DetailPanelViewController.m */; };
+		D738D55718BAA52600A777E2 /* DetailPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D738D55518BAA52600A777E2 /* DetailPanelViewController.xib */; };
 		D7439E0F18A5FC53000EE008 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7439E0E18A5FC53000EE008 /* Cocoa.framework */; };
 		D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7439E1718A5FC53000EE008 /* InfoPlist.strings */; };
 		D7439E1B18A5FC53000EE008 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7439E1A18A5FC53000EE008 /* main.m */; };
@@ -149,12 +157,25 @@
 		D724060018A6026900EA2DD2 /* LocalTransactionCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTransactionCacheTests.m; sourceTree = "<group>"; };
 		D724060318A6027A00EA2DD2 /* OriginalSampleConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSampleConstantsTests.m; sourceTree = "<group>"; };
 		D724060518A6028300EA2DD2 /* SimpleDBExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBExample.m; sourceTree = "<group>"; };
+		D72465D218B71C99002EDE5B /* SampleImportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleImportController.h; sourceTree = "<group>"; };
+		D72465D318B71C99002EDE5B /* SampleImportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleImportController.m; sourceTree = "<group>"; };
+		D72465D518B71CA6002EDE5B /* SourceImportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceImportController.h; sourceTree = "<group>"; };
+		D72465D618B71CA6002EDE5B /* SourceImportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImportController.m; sourceTree = "<group>"; };
+		D72465D818B71E32002EDE5B /* ImportResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportResult.h; sourceTree = "<group>"; };
+		D72465D918B71E32002EDE5B /* ImportResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportResult.m; sourceTree = "<group>"; };
+		D72465DB18B71F03002EDE5B /* LibraryObjectImportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectImportController.h; sourceTree = "<group>"; };
+		D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectImportController.m; sourceTree = "<group>"; };
+		D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleImportControllerTests.m; sourceTree = "<group>"; };
+		D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImportControllerTests.m; sourceTree = "<group>"; };
 		D7272DF318A60660003860E2 /* SourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesViewController.h; sourceTree = "<group>"; };
 		D7272DF418A60660003860E2 /* SourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesViewController.m; sourceTree = "<group>"; };
 		D7272DF518A60660003860E2 /* SourcesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcesViewController.xib; sourceTree = "<group>"; };
 		D72FE49E18B5641A00C6452F /* ProcedureRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureRecord.h; sourceTree = "<group>"; };
 		D72FE49F18B5641A00C6452F /* ProcedureRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecord.m; sourceTree = "<group>"; };
 		D72FE4A118B57B0F00C6452F /* ProcedureRecordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecordTests.m; sourceTree = "<group>"; };
+		D738D55318BAA52600A777E2 /* DetailPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPanelViewController.h; sourceTree = "<group>"; };
+		D738D55418BAA52600A777E2 /* DetailPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailPanelViewController.m; sourceTree = "<group>"; };
+		D738D55518BAA52600A777E2 /* DetailPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailPanelViewController.xib; sourceTree = "<group>"; };
 		D7439E0B18A5FC53000EE008 /* ProjectCrystalBlueOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectCrystalBlueOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7439E0E18A5FC53000EE008 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D7439E1118A5FC53000EE008 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -418,6 +439,36 @@
 			name = ModelTests;
 			sourceTree = "<group>";
 		};
+		D72465DE18B731EC002EDE5B /* CSV */ = {
+			isa = PBXGroup;
+			children = (
+				D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */,
+				D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */,
+				D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */,
+				D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */,
+			);
+			name = CSV;
+			sourceTree = "<group>";
+		};
+		D72465DF18B731F0002EDE5B /* LibraryObjectImportController */ = {
+			isa = PBXGroup;
+			children = (
+				D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */,
+				D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */,
+			);
+			name = LibraryObjectImportController;
+			sourceTree = "<group>";
+		};
+		D738D55818BAA52A00A777E2 /* DetailPanelView */ = {
+			isa = PBXGroup;
+			children = (
+				D738D55318BAA52600A777E2 /* DetailPanelViewController.h */,
+				D738D55418BAA52600A777E2 /* DetailPanelViewController.m */,
+				D738D55518BAA52600A777E2 /* DetailPanelViewController.xib */,
+			);
+			name = DetailPanelView;
+			sourceTree = "<group>";
+		};
 		D7439E0218A5FC53000EE008 = {
 			isa = PBXGroup;
 			children = (
@@ -588,6 +639,7 @@
 				D7272DF318A60660003860E2 /* SourcesViewController.h */,
 				D7272DF418A60660003860E2 /* SourcesViewController.m */,
 				D7272DF518A60660003860E2 /* SourcesViewController.xib */,
+				D738D55818BAA52A00A777E2 /* DetailPanelView */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -702,12 +754,18 @@
 		D7A41E3818B711D800653B3E /* LibraryObjectReadWrite */ = {
 			isa = PBXGroup;
 			children = (
+				D72465DB18B71F03002EDE5B /* LibraryObjectImportController.h */,
+				D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */,
+				D72465D518B71CA6002EDE5B /* SourceImportController.h */,
+				D72465D618B71CA6002EDE5B /* SourceImportController.m */,
+				D72465D218B71C99002EDE5B /* SampleImportController.h */,
+				D72465D318B71C99002EDE5B /* SampleImportController.m */,
+				D7C8733218B2FA4D00F2976F /* LibraryObjectFileReader.h */,
 				D7C8733518B2FB0B00F2976F /* LibraryObjectCSVReader.h */,
 				D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */,
+				D7C8733318B2FA4D00F2976F /* LibraryObjectFileWriter.h */,
 				D7C8733118B2FA4D00F2976F /* LibraryObjectCSVWriter.h */,
 				D7C8733018B2FA4D00F2976F /* LibraryObjectCSVWriter.m */,
-				D7C8733218B2FA4D00F2976F /* LibraryObjectFileReader.h */,
-				D7C8733318B2FA4D00F2976F /* LibraryObjectFileWriter.h */,
 			);
 			name = LibraryObjectReadWrite;
 			sourceTree = "<group>";
@@ -715,6 +773,8 @@
 		D7C8732A18B2F9DB00F2976F /* ReadWrite */ = {
 			isa = PBXGroup;
 			children = (
+				D72465D818B71E32002EDE5B /* ImportResult.h */,
+				D72465D918B71E32002EDE5B /* ImportResult.m */,
 				D7A41E3818B711D800653B3E /* LibraryObjectReadWrite */,
 				D7C8732E18B2FA1000F2976F /* CHCSVParser */,
 				D7A41E3518B6F60000653B3E /* OSXFileSelector.h */,
@@ -735,10 +795,8 @@
 		D7C8733818B302D900F2976F /* ReadWrite */ = {
 			isa = PBXGroup;
 			children = (
-				D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */,
-				D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */,
-				D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */,
-				D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */,
+				D72465DF18B731F0002EDE5B /* LibraryObjectImportController */,
+				D72465DE18B731EC002EDE5B /* CSV */,
 			);
 			name = ReadWrite;
 			sourceTree = "<group>";
@@ -841,6 +899,7 @@
 			files = (
 				D7F822C018B199450017548F /* SamplesViewController.xib in Resources */,
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
+				D738D55718BAA52600A777E2 /* DetailPanelViewController.xib in Resources */,
 				D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */,
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
 				D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */,
@@ -887,11 +946,14 @@
 				D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */,
 				D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
+				D738D55618BAA52600A777E2 /* DetailPanelViewController.m in Sources */,
+				D72465DD18B71F03002EDE5B /* LibraryObjectImportController.m in Sources */,
 				D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */,
 				D78ACC4A18A5FDD9006084D6 /* DDTTYLogger.m in Sources */,
 				D704E1A718B15C5B00170B7E /* ProcedureRecordParser.m in Sources */,
 				D72FE4A018B5641A00C6452F /* ProcedureRecord.m in Sources */,
 				D78ACC4B18A5FDD9006084D6 /* DDASLLogger.m in Sources */,
+				D72465D718B71CA6002EDE5B /* SourceImportController.m in Sources */,
 				D78ACC6E18A5FE2E006084D6 /* S3ImageStore.m in Sources */,
 				D7EA0B8E18A84B14003D74BA /* AddNewSourceViewController.m in Sources */,
 				D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */,
@@ -901,9 +963,11 @@
 				D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */,
 				D78ACC3F18A5FDC0006084D6 /* FMResultSet.m in Sources */,
 				D78ACC6518A5FE21006084D6 /* AbstractImageStore.m in Sources */,
+				D72465D418B71C99002EDE5B /* SampleImportController.m in Sources */,
 				D78ACC7718A5FE68006084D6 /* LocalLibraryObjectStore.m in Sources */,
 				D78ACC3D18A5FDC0006084D6 /* FMDatabasePool.m in Sources */,
 				D78ACC7F18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m in Sources */,
+				D72465DA18B71E32002EDE5B /* ImportResult.m in Sources */,
 				D704E1AE18B16C4700170B7E /* Procedures.m in Sources */,
 				D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */,
 				D7439E1B18A5FC53000EE008 /* main.m in Sources */,
@@ -929,6 +993,7 @@
 				D72405F718A6023B00EA2DD2 /* LocalImageStoreTests.m in Sources */,
 				D09C7E9A18B1ABFE001B98AF /* SimpleDBUtilsTests.m in Sources */,
 				D72405FD18A6024900EA2DD2 /* S3ImageStoreTests.m in Sources */,
+				D72465E118B7320C002EDE5B /* SampleImportControllerTests.m in Sources */,
 				D72405EB18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m in Sources */,
 				D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */,
 				D724060618A6028300EA2DD2 /* SimpleDBExample.m in Sources */,
@@ -938,6 +1003,7 @@
 				D72FE4A218B57B0F00C6452F /* ProcedureRecordTests.m in Sources */,
 				D7C8733D18B3031800F2976F /* CSVReadWriteUnitTests.m in Sources */,
 				D72405F218A6022500EA2DD2 /* AbstractImageStoreTests.m in Sources */,
+				D72465E318B73D9F002EDE5B /* SourceImportControllerTests.m in Sources */,
 				D0B410FA18B590F000017FAC /* TransactionEqualsAndHashcodeTests.m in Sources */,
 				D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */,
 				D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */,

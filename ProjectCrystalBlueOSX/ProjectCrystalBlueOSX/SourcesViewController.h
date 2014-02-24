@@ -8,9 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "AbstractCloudLibraryObjectStore.h"
+#import "DetailPanelViewController.h"
 #import "Source.h"
 
-@interface SourcesViewController : NSViewController <NSTableViewDataSource, NSToolbarDelegate> {
+@interface SourcesViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSToolbarDelegate> {
     // Holds any active windows that this view controller launches.
     NSMutableArray *activeWindows;
     
@@ -19,11 +20,14 @@
 }
 
 @property (weak) IBOutlet NSTableView *sourceTable;
-
+@property (weak) DetailPanelViewController *detailPanel;
 @property AbstractCloudLibraryObjectStore *dataStore;
 
 /// Add a new Source and reload the data table.
 - (void)addSource:(Source *)source;
+
+//
+- (void)tableViewSelectionDidChange:(NSNotification *)notification;
 
 /*  These are methods that are called when the user clicks on the toolbar items.
  *  Due to the way the Windows/Views are set up in the app, the toolbar is actually
