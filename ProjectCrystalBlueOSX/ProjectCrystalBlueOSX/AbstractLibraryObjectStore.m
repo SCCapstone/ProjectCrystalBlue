@@ -43,7 +43,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return nil;
 }
 
-- (NSArray *)getAllSamplesForSource:(Source *)source
+- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return nil;
@@ -72,6 +72,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName
+{
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
+    return NO;
+}
+
+- (BOOL)deleteAllSamplesForSourceKey:(NSString *)sourceKey
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return NO;

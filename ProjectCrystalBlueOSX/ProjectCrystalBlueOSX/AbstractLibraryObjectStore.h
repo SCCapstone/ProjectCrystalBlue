@@ -27,7 +27,7 @@
 
 /** Retrieve all the samples that originated from the source object.
  */
-- (NSArray *)getAllSamplesForSource:(Source *)source;
+- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey;
 
 /** Execute a query on the table.
  *
@@ -66,6 +66,10 @@
  */
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName;
+
+/** Deletes all samples of a source from the LibraryObjectStore. Return whether the deletion is successful.
+ */
+- (BOOL)deleteAllSamplesForSourceKey:(NSString *)sourceKey;
 
 /** Checks if the LibraryObjectStore already has a library object for the given key.
  *  For example, this should always be used before assigning a key to a new library object.

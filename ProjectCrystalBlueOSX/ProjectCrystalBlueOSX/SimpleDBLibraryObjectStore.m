@@ -243,9 +243,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [localStore getAllLibraryObjectsFromTable:tableName];
 }
 
-- (NSArray *)getAllSamplesForSource:(Source *)source
+- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
 {
-    return [localStore getAllSamplesForSource:source];
+    return [localStore getAllSamplesForSourceKey:sourceKey];
 }
 
 - (NSArray *)executeSqlQuery:(NSString *)sql
@@ -287,6 +287,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName
 {
+    NSArray *samples;
+    if ([tableName isEqualToString:[SourceConstants tableName]])
+        samples = [localStore getAllSamplesForSourceKey:key];
+    
     if (![localStore deleteLibraryObjectWithKey:key FromTable:tableName])
         return NO;
     
@@ -295,6 +299,35 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                                        AndWithSqlCommandType:@"DELETE"];
     if (![transactionStore commitTransaction:transaction])
         return NO;
+    
+    // Need to add sample deletions to transaction table too
+    if (samples) {
+        for (Sample *sample in samples) {
+            Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:sample.key
+                                                                    AndWithTableName:[SampleConstants tableName]
+                                                               AndWithSqlCommandType:@"DELETE"];
+            if (![transactionStore commitTransaction:transaction])
+                return NO;
+        }
+    }
+    
+    return YES;
+}
+
+- (BOOL)deleteAllSamplesForSourceKey:(NSString *)sourceKey
+{
+    NSArray *samples = [localStore getAllSamplesForSourceKey:sourceKey];
+    
+    if (![localStore deleteAllSamplesForSourceKey:sourceKey])
+        return NO;
+    
+    for (Sample *sample in samples) {
+        Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:sample.key
+                                                                AndWithTableName:[SampleConstants tableName]
+                                                           AndWithSqlCommandType:@"DELETE"];
+        if (![transactionStore commitTransaction:transaction])
+            return NO;
+    }
     
     return YES;
 }

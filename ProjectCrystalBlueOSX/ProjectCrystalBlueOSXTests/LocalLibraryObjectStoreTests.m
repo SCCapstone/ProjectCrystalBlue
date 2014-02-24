@@ -197,7 +197,7 @@
 }
 
 /// Verify can get all samples that originated from a source
-- (void)testGetSamplesFromSource
+- (void)testGetSamplesForSourceKey
 {
     AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
                                                                                           WithDatabaseName:DATABASE_NAME];
@@ -226,7 +226,7 @@
     XCTAssertTrue(putSuccess, @"LibraryObjectStore failed to put the library object into the database.");
     
     // Make sure all corresponding samples are returned
-    NSArray *samples = [libraryObjectStore getAllSamplesForSource:sourceObject];
+    NSArray *samples = [libraryObjectStore getAllSamplesForSourceKey:sourceObject.key];
     XCTAssertNotNil(samples, @"LibraryObjectStore failed to get the samples.");
     XCTAssertEqual([samples count], 2ul, @"LibraryObjectStore should have returned 2 samples.");
 }
@@ -273,6 +273,42 @@
     sql = [NSString stringWithFormat:@"DELETE * FROM %@", [SampleConstants tableName]];
     libraryObjects = [libraryObjectStore executeSqlQuery:sql OnTable:[SampleConstants tableName]];
     XCTAssertNil(libraryObjects, @"executeSqlQuery: should only execute queries that do not change values in the database.");
+}
+
+/// Verify all samples are deleted when deleting its source
+- (void)testDeleteSourceWithSamples
+{
+    AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
+                                                                                          WithDatabaseName:DATABASE_NAME];
+    // Setup some objects to store
+    NSString *sourceKey = @"rock1030";
+    Source *sourceObject = [[Source alloc] initWithKey:sourceKey AndWithValues:[SourceConstants attributeDefaultValues]];
+    BOOL putSuccess = [libraryObjectStore putLibraryObject:sourceObject IntoTable:[SourceConstants tableName]];
+    XCTAssertTrue(putSuccess, @"LibraryObjectStore failed to put the library object into the database.");
+    
+    NSString *sampleKey1 = @"rock1030.001";
+    Sample *sampleObject1 = [[Sample alloc] initWithKey:sampleKey1 AndWithValues:[SampleConstants attributeDefaultValues]];
+    [sampleObject1.attributes setObject:sourceKey forKey:SMP_SOURCE_KEY];
+    putSuccess = [libraryObjectStore putLibraryObject:sampleObject1 IntoTable:[SampleConstants tableName]];
+    XCTAssertTrue(putSuccess, @"LibraryObjectStore failed to put the library object into the database.");
+    
+    NSString *sampleKey2 = @"rock1030.002";
+    Sample *sampleObject2 = [[Sample alloc] initWithKey:sampleKey2 AndWithValues:[SampleConstants attributeDefaultValues]];
+    [sampleObject2.attributes setObject:sourceKey forKey:SMP_SOURCE_KEY];
+    putSuccess = [libraryObjectStore putLibraryObject:sampleObject2 IntoTable:[SampleConstants tableName]];
+    XCTAssertTrue(putSuccess, @"LibraryObjectStore failed to put the library object into the database.");
+    
+    NSString *sampleKey3 = @"rock9999.001";
+    Sample *sampleObject3 = [[Sample alloc] initWithKey:sampleKey3 AndWithValues:[SampleConstants attributeDefaultValues]];
+    [sampleObject3.attributes setObject:@"rock9999" forKey:SMP_SOURCE_KEY];
+    putSuccess = [libraryObjectStore putLibraryObject:sampleObject3 IntoTable:[SampleConstants tableName]];
+    XCTAssertTrue(putSuccess, @"LibraryObjectStore failed to put the library object into the database.");
+    
+    BOOL deleteSuccess = [libraryObjectStore deleteLibraryObjectWithKey:sourceKey FromTable:[SourceConstants tableName]];
+    XCTAssertTrue(deleteSuccess, @"LibraryObjectStore failed to delete the library object and its samples from the database.");
+    NSArray *samples = [libraryObjectStore getAllLibraryObjectsFromTable:[SampleConstants tableName]];
+    XCTAssertNotNil(samples, @"LibraryObjectStore failed to get samples from table.");
+    XCTAssertEqual(samples.count, 1ul, @"LibraryObjectStore should have returned 1 sample.");
 }
 
 @end

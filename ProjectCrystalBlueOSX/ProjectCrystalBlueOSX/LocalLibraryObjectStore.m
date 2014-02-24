@@ -128,9 +128,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return libraryObjects;
 }
 
-- (NSArray *)getAllSamplesForSource:(Source *)source
+- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
 {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE sourceKey='%@'", [SampleConstants tableName], [source key]];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE sourceKey='%@'", [SampleConstants tableName], sourceKey];
     
     // Get all corresponding samples from table
     __block NSMutableArray *samples;
@@ -288,13 +288,33 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE key='%@'", tableName, key];
     
-    // Check library object for key
+    // Delete library object
     __block BOOL isDeleted = NO;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         isDeleted = [localDatabase executeUpdate:sql];
         
         if ([localDatabase hadError])
             DDLogCError(@"%@: Failed to delete library object from local database. Error: %@",
+                        NSStringFromClass(self.class), [localDatabase lastError]);
+    }];
+    
+    if ([tableName isEqualToString:[SourceConstants tableName]])
+        [self deleteAllSamplesForSourceKey:key];
+    
+    return isDeleted;
+}
+
+- (BOOL)deleteAllSamplesForSourceKey:(NSString *)sourceKey
+{
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE sourceKey='%@'", [SampleConstants tableName], sourceKey];
+    
+    // Delete samples with sourceKey
+    __block BOOL isDeleted = NO;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        isDeleted = [localDatabase executeUpdate:sql];
+        
+        if ([localDatabase hadError])
+            DDLogCError(@"%@: Failed to delete samples with sourceKey. Error: %@",
                         NSStringFromClass(self.class), [localDatabase lastError]);
     }];
     

@@ -9,6 +9,7 @@
 #import "SamplesViewController.h"
 #import "SampleConstants.h"
 #import "Sample.h"
+#import "Source.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -58,7 +59,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (!dataStore || !source) {
         return 0;
     } else {
-        return [dataStore getAllSamplesForSource:source].count;
+        return [dataStore getAllSamplesForSourceKey:source.key].count;
     }
 }
 
@@ -66,7 +67,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             row:(NSInteger)row
 {
     if ([tableView isEqualTo:self.sampleTable]) {
-        Sample *sample = [[dataStore getAllSamplesForSource:source] objectAtIndex:row];
+        Sample *sample = [[dataStore getAllSamplesForSourceKey:source.key] objectAtIndex:row];
         NSString *attributeKey = [[tableColumn headerCell] stringValue];
         return [[sample attributes] objectForKey:attributeKey];
     }
