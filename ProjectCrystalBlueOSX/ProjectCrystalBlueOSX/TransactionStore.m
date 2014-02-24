@@ -48,16 +48,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                       withIntermediateDirectories:YES
                                                        attributes:nil
                                                             error:nil];
-            
-            localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
-            
-            // Setup table
-            if (![self setupTable]) {
-                return nil;
-            }
         }
-        else
-            localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
+        
+        localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
+        
+        // Setup table
+        if (![self setupTable]) {
+            return nil;
+        }
     }
     return self;
 }
@@ -303,15 +301,29 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)setupTable
 {
     __block BOOL setupSuccess = NO;
+    __block NSInteger count;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         // Create transaction table
         setupSuccess = [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)",
                                                       [TransactionConstants tableName], [TransactionConstants tableSchema]]];
         if ([localDatabase hadError])
             DDLogCError(@"%@: Failed to create the transaction table. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+        
+        FMResultSet *results = [localDatabase executeQuery:[NSString stringWithFormat:@"SELECT count(*) FROM %@", [TransactionConstants tableName]]];
+        
+        if ([localDatabase hadError])
+            DDLogCError(@"%@: Failed to get count from local database. Error: %@",
+                        NSStringFromClass(self.class), [localDatabase lastError]);
+        
+        // Have the library object's attributes
+        else if ([results next])
+            count = [[[results resultDictionary] objectForKey:@"count(*)"] integerValue];
+        [results close];
     }];
     
-    [self updateTimeOfSync:[NSNumber numberWithInt:0]];
+    // Add iniital time to database
+    if (count == 0)
+        [self updateTimeOfSync:[NSNumber numberWithInt:0]];
     
     return setupSuccess;
 }

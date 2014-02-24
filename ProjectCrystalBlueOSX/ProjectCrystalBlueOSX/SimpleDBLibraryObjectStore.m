@@ -41,10 +41,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     self = [super initInLocalDirectory:directory WithDatabaseName:databaseName];
     
     if (self) {
-        transactionStore = [[TransactionStore alloc] initInLocalDirectory:directory
-                                                         WithDatabaseName:databaseName];
         localStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:directory
                                                           WithDatabaseName:databaseName];
+        transactionStore = [[TransactionStore alloc] initInLocalDirectory:directory
+                                                         WithDatabaseName:databaseName];
         
         NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
         simpleDBClient = [[AmazonSimpleDBClient alloc] initWithCredentialsProvider:credentialsProvider];
