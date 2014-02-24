@@ -16,6 +16,7 @@
 		D09C7E9A18B1ABFE001B98AF /* SimpleDBUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */; };
 		D0B410FA18B590F000017FAC /* TransactionEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B410F918B590F000017FAC /* TransactionEqualsAndHashcodeTests.m */; };
 		D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */; };
+		D0C51DCA18BABF0C001B3929 /* ConflictResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C51DC918BABF0C001B3929 /* ConflictResolution.m */; };
 		D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */; };
 		D704E1A718B15C5B00170B7E /* ProcedureRecordParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A618B15C5B00170B7E /* ProcedureRecordParser.m */; };
 		D704E1A918B162CE00170B7E /* ProcedureNameConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A818B162CE00170B7E /* ProcedureNameConstantsTests.m */; };
@@ -120,6 +121,8 @@
 		D0B410F918B590F000017FAC /* TransactionEqualsAndHashcodeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionEqualsAndHashcodeTests.m; sourceTree = "<group>"; };
 		D0C2196C18AAF73500DF9CB7 /* TransactionConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionConstants.h; sourceTree = "<group>"; };
 		D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionConstants.m; sourceTree = "<group>"; };
+		D0C51DC818BABF0C001B3929 /* ConflictResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConflictResolution.h; sourceTree = "<group>"; };
+		D0C51DC918BABF0C001B3929 /* ConflictResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConflictResolution.m; sourceTree = "<group>"; };
 		D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D704E1A518B15C5B00170B7E /* ProcedureRecordParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureRecordParser.h; sourceTree = "<group>"; };
 		D704E1A618B15C5B00170B7E /* ProcedureRecordParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecordParser.m; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 				D78ACC9718A5FEB6006084D6 /* SampleConstants.m */,
 				D0C2196C18AAF73500DF9CB7 /* TransactionConstants.h */,
 				D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */,
+				D0C51DC818BABF0C001B3929 /* ConflictResolution.h */,
+				D0C51DC918BABF0C001B3929 /* ConflictResolution.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -903,6 +908,7 @@
 				D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */,
 				D7439E1B18A5FC53000EE008 /* main.m in Sources */,
 				D7C8732D18B2F9F800F2976F /* CHCSVParser.m in Sources */,
+				D0C51DCA18BABF0C001B3929 /* ConflictResolution.m in Sources */,
 				D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */,
 				D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */,
 				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
