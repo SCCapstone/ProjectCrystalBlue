@@ -101,7 +101,7 @@
 - (void)testPutSelectDelete
 {
     // Populate database with test objects
-    NSArray *testObjects = [self getTestObjects];
+    NSArray *testObjects = [self getTestObjectsWithCapacity:5];
     BOOL putSuccess = [SimpleDBUtils executeBatchPut:testObjects
                                       WithDomainName:TEST_DOMAIN_NAME
                                          UsingClient:simpleDBClient];
@@ -143,7 +143,7 @@
 - (void)testPutGet
 {
     // Populate database with test objects
-    NSArray *testObjects = [self getTestObjects];
+    NSArray *testObjects = [self getTestObjectsWithCapacity:5];
     BOOL putSuccess = [SimpleDBUtils executeBatchPut:testObjects
                                       WithDomainName:TEST_DOMAIN_NAME
                                          UsingClient:simpleDBClient];
@@ -162,11 +162,53 @@
     }
 }
 
-- (NSArray *)getTestObjects
+- (void)testLargeBatchPutDelete
+{
+    // Populate database with test objects
+    NSArray *testObjects = [self getTestObjectsWithCapacity:250];
+    BOOL putSuccess = [SimpleDBUtils executeBatchPut:testObjects
+                                      WithDomainName:TEST_DOMAIN_NAME
+                                         UsingClient:simpleDBClient];
+    XCTAssertTrue(putSuccess, @"SimpleDBUtils failed to put the test objects to the remote database.");
+    
+    // Wait for put to complete
+    sleep(1);
+    
+    // Make sure objects have been put
+    NSString *query = [NSString stringWithFormat:@"select * from %@ limit 250", TEST_DOMAIN_NAME];
+    NSArray *transactions = [SimpleDBUtils executeSelectQuery:query
+                                      WithReturnedObjectClass:[Transaction class]
+                                                  UsingClient:simpleDBClient];
+    XCTAssertNotNil(transactions, @"The query to SimpleDB was unsuccessful.");
+    XCTAssertTrue(transactions.count == 250ul, @"SimpleDB returned the incorrect number of transactions.");
+    
+    // Delete test objects
+    NSMutableArray *objectNames = [[NSMutableArray alloc] initWithCapacity:testObjects.count];
+    for (Transaction *transaction in testObjects) {
+        [objectNames addObject:[transaction.timestamp stringValue]];
+    }
+    BOOL deleteSuccess = [SimpleDBUtils executeBatchDelete:objectNames
+                                            WithDomainName:TEST_DOMAIN_NAME
+                                               UsingClient:simpleDBClient];
+    XCTAssertTrue(deleteSuccess, @"SimpleDBUtils failed to delete the objects from the remote database.");
+    
+    // Wait for delete to complete
+    sleep(1);
+    
+    // Make sure objects have been deleted
+    query = [NSString stringWithFormat:@"select * from %@", TEST_DOMAIN_NAME];
+    transactions = [SimpleDBUtils executeSelectQuery:query
+                             WithReturnedObjectClass:[Transaction class]
+                                         UsingClient:simpleDBClient];
+    XCTAssertNotNil(transactions, @"The query to SimpleDB was unsuccessful.");
+    XCTAssertTrue(transactions.count == 0ul, @"SimpleDB returned the incorrect number of transactions.");
+}
+
+- (NSArray *)getTestObjectsWithCapacity:(NSUInteger)capacity
 {
     NSMutableArray *testTransactions = [[NSMutableArray alloc] init];
     
-    for (int i=1; i<6; i++) {
+    for (int i=1; i<capacity+1; i++) {
         NSDictionary *attributes = [[NSDictionary alloc] initWithObjects:[TransactionConstants attributeDefaultValues]
                                                                  forKeys:[TransactionConstants attributeNames]];
         
