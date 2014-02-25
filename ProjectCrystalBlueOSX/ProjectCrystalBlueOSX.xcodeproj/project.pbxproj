@@ -91,6 +91,8 @@
 		D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9318A5FEB6006084D6 /* Sample.m */; };
 		D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9518A5FEB6006084D6 /* SourceConstants.m */; };
 		D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9718A5FEB6006084D6 /* SampleConstants.m */; };
+		D7A0CB7818BC57A900A61E32 /* OSXSaveSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A0CB7718BC57A900A61E32 /* OSXSaveSelector.m */; };
+		D7A0CB7B18BC596900A61E32 /* LibraryObjectExportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A0CB7A18BC596900A61E32 /* LibraryObjectExportController.m */; };
 		D7A41E3218B6A4E200653B3E /* samples_extra_attribute.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */; };
 		D7A41E3318B6A4E200653B3E /* samples_missing_attribute.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */; };
 		D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A41E3618B6F60000653B3E /* OSXFileSelector.m */; };
@@ -249,6 +251,10 @@
 		D78ACC9518A5FEB6006084D6 /* SourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceConstants.m; sourceTree = "<group>"; };
 		D78ACC9618A5FEB6006084D6 /* SampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleConstants.h; sourceTree = "<group>"; };
 		D78ACC9718A5FEB6006084D6 /* SampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleConstants.m; sourceTree = "<group>"; };
+		D7A0CB7618BC57A900A61E32 /* OSXSaveSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXSaveSelector.h; sourceTree = "<group>"; };
+		D7A0CB7718BC57A900A61E32 /* OSXSaveSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXSaveSelector.m; sourceTree = "<group>"; };
+		D7A0CB7918BC596900A61E32 /* LibraryObjectExportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectExportController.h; sourceTree = "<group>"; };
+		D7A0CB7A18BC596900A61E32 /* LibraryObjectExportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectExportController.m; sourceTree = "<group>"; };
 		D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_extra_attribute.csv; sourceTree = "<group>"; };
 		D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_missing_attribute.csv; sourceTree = "<group>"; };
 		D7A41E3518B6F60000653B3E /* OSXFileSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXFileSelector.h; sourceTree = "<group>"; };
@@ -748,7 +754,18 @@
 			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
 		};
-		D7A41E3818B711D800653B3E /* LibraryObjectReadWrite */ = {
+		D7A0CB7518BC572600A61E32 /* OSX Filesystem */ = {
+			isa = PBXGroup;
+			children = (
+				D7A41E3518B6F60000653B3E /* OSXFileSelector.h */,
+				D7A41E3618B6F60000653B3E /* OSXFileSelector.m */,
+				D7A0CB7618BC57A900A61E32 /* OSXSaveSelector.h */,
+				D7A0CB7718BC57A900A61E32 /* OSXSaveSelector.m */,
+			);
+			name = "OSX Filesystem";
+			sourceTree = "<group>";
+		};
+		D7A0CB7C18BC597100A61E32 /* ImportControllers */ = {
 			isa = PBXGroup;
 			children = (
 				D72465DB18B71F03002EDE5B /* LibraryObjectImportController.h */,
@@ -757,6 +774,24 @@
 				D72465D618B71CA6002EDE5B /* SourceImportController.m */,
 				D72465D218B71C99002EDE5B /* SampleImportController.h */,
 				D72465D318B71C99002EDE5B /* SampleImportController.m */,
+			);
+			name = ImportControllers;
+			sourceTree = "<group>";
+		};
+		D7A0CB7D18BC597B00A61E32 /* Exportcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				D7A0CB7918BC596900A61E32 /* LibraryObjectExportController.h */,
+				D7A0CB7A18BC596900A61E32 /* LibraryObjectExportController.m */,
+			);
+			name = Exportcontrollers;
+			sourceTree = "<group>";
+		};
+		D7A41E3818B711D800653B3E /* LibraryObjectReadWrite */ = {
+			isa = PBXGroup;
+			children = (
+				D7A0CB7D18BC597B00A61E32 /* Exportcontrollers */,
+				D7A0CB7C18BC597100A61E32 /* ImportControllers */,
 				D7C8733218B2FA4D00F2976F /* LibraryObjectFileReader.h */,
 				D7C8733518B2FB0B00F2976F /* LibraryObjectCSVReader.h */,
 				D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */,
@@ -774,8 +809,7 @@
 				D72465D918B71E32002EDE5B /* ImportResult.m */,
 				D7A41E3818B711D800653B3E /* LibraryObjectReadWrite */,
 				D7C8732E18B2FA1000F2976F /* CHCSVParser */,
-				D7A41E3518B6F60000653B3E /* OSXFileSelector.h */,
-				D7A41E3618B6F60000653B3E /* OSXFileSelector.m */,
+				D7A0CB7518BC572600A61E32 /* OSX Filesystem */,
 			);
 			name = ReadWrite;
 			sourceTree = "<group>";
@@ -933,6 +967,7 @@
 				D78ACC5518A5FDFD006084D6 /* LocalTransactionCache.m in Sources */,
 				D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */,
 				D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */,
+				D7A0CB7818BC57A900A61E32 /* OSXSaveSelector.m in Sources */,
 				D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
 				D7439E2218A5FC53000EE008 /* AppDelegate.m in Sources */,
@@ -952,6 +987,7 @@
 				D78ACC4B18A5FDD9006084D6 /* DDASLLogger.m in Sources */,
 				D72465D718B71CA6002EDE5B /* SourceImportController.m in Sources */,
 				D78ACC6E18A5FE2E006084D6 /* S3ImageStore.m in Sources */,
+				D7A0CB7B18BC596900A61E32 /* LibraryObjectExportController.m in Sources */,
 				D7EA0B8E18A84B14003D74BA /* AddNewSourceViewController.m in Sources */,
 				D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */,
 				D78ACC9818A5FEB6006084D6 /* LibraryObject.m in Sources */,

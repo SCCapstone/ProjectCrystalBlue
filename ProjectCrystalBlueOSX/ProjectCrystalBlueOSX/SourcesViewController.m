@@ -6,18 +6,26 @@
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
+// Model
 #import "SourcesViewController.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "SourceConstants.h"
 #import "Source.h"
 #import "SampleConstants.h"
 #import "Sample.h"
+
+// File I/O
 #import "OSXFileSelector.h"
+#import "OSXSaveSelector.h"
+#import "SourceImportController.h"
+#import "LibraryObjectExportController.h"
 #import "LibraryObjectCSVWriter.h"
+
+// Subviews
 #import "AddNewSourceViewController.h"
 #import "EditSourceViewController.h"
 #import "SamplesViewController.h"
-#import "SourceImportController.h"
+
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -288,20 +296,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             [importFileChooser presentFileSelectorToUser];
             
         } else if (returnCode == EXPORT_BUTTON) {
+            LibraryObjectExportController *exportController = [[LibraryObjectExportController alloc] init];
+            [exportController setWriter:[[LibraryObjectCSVWriter alloc] init]];
+            [exportController setObjectsToWrite:[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]]];
             
-            // Temporarily hard-coding file name and destination.
-            NSDate *now = [[NSDate alloc] init];
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateStyle:NSDateFormatterMediumStyle];
-            [formatter setTimeStyle:NSDateFormatterMediumStyle];
-            NSString *filename = [[formatter stringFromDate:now] stringByAppendingString:@".csv"];
-            LibraryObjectCSVWriter *writer = [[LibraryObjectCSVWriter alloc] init];
-            
-            NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-            
-            [writer writeObjects:[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]]
-                    ToFileAtPath:[documentDirectory stringByAppendingFormat:@"/%@", filename]];
+            OSXSaveSelector *saveSelector = [[OSXSaveSelector alloc] init];
+            [saveSelector setDelegate:exportController];
+            [saveSelector presentSaveSelectorToUser];
             
         } else if (returnCode == CANCEL_BUTTON) {
             
