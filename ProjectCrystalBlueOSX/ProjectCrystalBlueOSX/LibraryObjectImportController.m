@@ -28,10 +28,11 @@
     
     NSArray* libraryObjects = [fileReader readFromFileAtPath:filePath];
     ImportResult *result = [self validateObjects:libraryObjects];
-    [importResultReporter displayResults:result];
+    
     if (![result hasError]) {
         [self addLibraryObjectsToStore:libraryObjects];
     }
+    [importResultReporter displayResults:result];
 }
 
 -(ImportResult *)validateObjects:(NSArray *)libraryObjects
