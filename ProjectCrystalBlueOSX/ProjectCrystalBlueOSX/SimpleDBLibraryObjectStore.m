@@ -153,19 +153,22 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             if (!resolvedConflict.isLocalMoreRecent) {
                 NSString *tableName = [resolvedConflict.transaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE];
                 NSString *sqlCommandType = [resolvedConflict.transaction.attributes objectForKey:TRN_SQL_COMMAND_TYPE];
+                NSString *libraryObjectKey = [resolvedConflict.transaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY];
                 
-                // Get library object from remote database
-                LibraryObject *remoteObject = (LibraryObject *)[SimpleDBUtils executeGetWithItemName:[resolvedConflict.transaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]
-                                                                                   AndWithDomainName:tableName
-                                                                                         UsingClient:simpleDBClient
-                                                                                     ToObjectOfClass:[tableName isEqualToString:[SourceConstants tableName]] ? [Source class] : [Sample class]];
                 // Update changes to remote object with local database
-                if ([sqlCommandType isEqualToString:@"PUT"])
-                    [localStore putLibraryObject:remoteObject IntoTable:tableName];
-                else if ([sqlCommandType isEqualToString:@"UPDATE"])
-                    [localStore updateLibraryObject:remoteObject IntoTable:tableName];
-                else if ([sqlCommandType isEqualToString:@"DELETE"])
-                    [localStore deleteLibraryObjectWithKey:remoteObject.key FromTable:tableName];
+                if ([sqlCommandType isEqualToString:@"DELETE"])
+                    [localStore deleteLibraryObjectWithKey:libraryObjectKey FromTable:tableName];
+                else {
+                    // Get library object from remote database
+                    LibraryObject *remoteObject = (LibraryObject *)[SimpleDBUtils executeGetWithItemName:libraryObjectKey
+                                                                                       AndWithDomainName:tableName
+                                                                                             UsingClient:simpleDBClient
+                                                                                         ToObjectOfClass:[tableName isEqualToString:[SourceConstants tableName]] ? [Source class] : [Sample class]];
+                    if ([sqlCommandType isEqualToString:@"PUT"])
+                        [localStore putLibraryObject:remoteObject IntoTable:tableName];
+                    else if ([sqlCommandType isEqualToString:@"UPDATE"])
+                        [localStore updateLibraryObject:remoteObject IntoTable:tableName];
+                }
             }
         }
     }
