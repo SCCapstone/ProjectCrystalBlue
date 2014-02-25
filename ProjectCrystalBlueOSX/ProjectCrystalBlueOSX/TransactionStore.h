@@ -14,7 +14,9 @@
 - (id)initInLocalDirectory:(NSString *)directory
           WithDatabaseName:(NSString *)databaseName;
 
-/** Retrieve all of the transactions that have not been pushed to the remote database.
+/** Retrieve all of the transactions that have not been pushed to the remote database. 
+ *
+ *  The time of last sync will not be included.
  */
 - (NSArray *)getAllTransactions;
 
@@ -37,13 +39,17 @@
  */
 - (BOOL)clearLocalTransactions;
 
-/**
+/** Returns the last sync time from the transaction table.
  *
+ *  This is always stored as the first row in the database.
  */
 - (NSTimeInterval)timeOfLastSync;
 
-/**
+/** Returns an array of ConflictResolution objects which represents whether the remote or local
+ *  version of an object is more recent.
  *
+ *  This should only be called by a AbstractCloudLibraryObjectStore when syncing as this method
+ *  changes data stored in the table.
  */
 - (NSArray *)resolveConflicts:(NSArray *)transactions;
 

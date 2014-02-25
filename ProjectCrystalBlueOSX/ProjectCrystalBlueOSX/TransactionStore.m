@@ -24,8 +24,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     FMDatabaseQueue *localQueue;
 }
 
+/*  This method will guarantee that only a single Transaction will reference a LibraryObject in the
+ *  Transaction table.  Reduces overhead and simplifies network calls to the remote database.
+ */
 - (Transaction *)optimizeTransaction:(Transaction *)newTransaction;
+
+/*  Inserts the specified time into the Transaction table.  
+ *
+ *  This should only be called if the table is empty! (after syncing or on table setup)
+ */
 - (BOOL)updateTimeOfSync:(NSNumber *)syncTime;
+
+/*  Creates the sqlite Transaction table if it does not already exist.
+ */
 - (BOOL)setupTable;
 
 @end

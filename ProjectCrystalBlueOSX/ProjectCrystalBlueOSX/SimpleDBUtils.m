@@ -18,6 +18,14 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
+@interface SimpleDBUtils()
+
+/*  Converts an array of item names (unique object keys) to an array of SimpleDBDeleteableItems.
+ */
++ (NSArray *)convertItemNameArrayToSimpleDBDeleteableArray:(NSArray *)itemNameArray;
+
+@end
+
 @implementation SimpleDBUtils
 
 + (NSObject *)executeGetWithItemName:(NSString *)itemName
@@ -49,6 +57,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     @try {
         do {
             selectRequest = [[SimpleDBSelectRequest alloc] initWithSelectExpression:query andConsistentRead:YES];
+            
+            // Check if there is another page
             if (nextToken)
                 selectRequest.nextToken = nextToken;
             
@@ -75,6 +85,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         NSInteger remainingItems = simpleDBItems.count;
         int count = 0;
         
+        // Batch put is limited by 25 items so must make separate requests if larger than 25 items
         while (remainingItems > 0) {
             NSMutableArray *putItems = [[simpleDBItems subarrayWithRange:NSMakeRange(count*25, MIN(remainingItems, 25))] mutableCopy];
             
@@ -104,6 +115,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         NSInteger remainingItems = simpleDBItems.count;
         int count = 0;
         
+        // Batch delete is limited by 25 items so must make separate requests if larger than 25 items
         while (remainingItems > 0) {
             NSMutableArray *deleteItems = [[simpleDBItems subarrayWithRange:NSMakeRange(count*25, MIN(remainingItems, 25))] mutableCopy];
             

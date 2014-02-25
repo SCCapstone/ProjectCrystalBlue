@@ -60,6 +60,7 @@
     [super tearDown];
 }
 
+/// Verify conversion from object to SimpleDBItem and back is correct
 - (void)testSimpleDBItemConversions
 {
     // Convert transaction object to SimpleDBReplaceableItem
@@ -98,6 +99,7 @@
     XCTAssertEqualObjects(convertedSource, source, @"The two source objects are not equal.");
 }
 
+/// Verify batchPut, selectQuery, and batchDelete operations work correctly
 - (void)testPutSelectDelete
 {
     // Populate database with test objects
@@ -140,6 +142,7 @@
     XCTAssertTrue(transactions.count == 0ul, @"SimpleDB returned the incorrect number of transactions.");
 }
 
+/// Veryify Get works correctly
 - (void)testPutGet
 {
     // Populate database with test objects
@@ -162,6 +165,7 @@
     }
 }
 
+/// Verify a request with more than 25 items (maximum for single request) is handled correctly
 - (void)testLargeBatchPutDelete
 {
     // Populate database with test objects
@@ -204,6 +208,7 @@
     XCTAssertTrue(transactions.count == 0ul, @"SimpleDB returned the incorrect number of transactions.");
 }
 
+/// Creates an array of Transaction test objects
 - (NSArray *)getTestObjectsWithCapacity:(NSUInteger)capacity
 {
     NSMutableArray *testTransactions = [[NSMutableArray alloc] init];

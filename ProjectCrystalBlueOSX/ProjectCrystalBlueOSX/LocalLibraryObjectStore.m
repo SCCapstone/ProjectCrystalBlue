@@ -25,6 +25,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     FMDatabaseQueue *localQueue;
 }
 
+/*  Creates the sqlite Source and Sample tables if they do not already exist.
+ */
 - (BOOL)setupTables;
 
 @end

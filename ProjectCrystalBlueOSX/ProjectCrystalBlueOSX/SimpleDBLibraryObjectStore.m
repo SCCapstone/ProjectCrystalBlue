@@ -214,27 +214,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return YES;
 }
 
-- (BOOL)deleteDomains
-{
-    @try {
-        SimpleDBDeleteDomainRequest *request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:[SourceConstants tableName]];
-        [simpleDBClient deleteDomain:request];
-        
-        request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:[SampleConstants tableName]];
-        [simpleDBClient deleteDomain:request];
-        
-        request = [[SimpleDBDeleteDomainRequest alloc] initWithDomainName:[TransactionConstants tableName]];
-        [simpleDBClient deleteDomain:request];
-    }
-    @catch (NSException *exception) {
-        DDLogCError(@"%@: Failed to create the domains. Error: %@", NSStringFromClass(self.class), exception);
-        return NO;
-    }
-    
-    DDLogCInfo(@"%@: Deleted the remote domains.", NSStringFromClass(self.class));
-    return YES;
-}
-
 - (LibraryObject *)getLibraryObjectForKey:(NSString *)key
                                 FromTable:(NSString *)tableName
 {

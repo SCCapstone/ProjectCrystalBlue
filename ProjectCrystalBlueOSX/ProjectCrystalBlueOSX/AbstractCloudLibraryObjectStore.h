@@ -15,9 +15,6 @@
  *  This should get any new library objects that have been created on other devices, as well as
  *  upload any library objects that have been created on this device.
  *
- *  When online, the CloudLibraryObjectStore will automatically synchronize whenever library
- *  objects are added, but this should also be called periodically in case objects were created offline.
- *
  *  Returns NO
  *      -if items need to be synced, but the database cannot be reached
  *
