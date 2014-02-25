@@ -38,7 +38,6 @@
 		D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72405FB18A6024900EA2DD2 /* S3UtilsTests.m */; };
 		D724060118A6026900EA2DD2 /* LocalTransactionCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D724060018A6026900EA2DD2 /* LocalTransactionCacheTests.m */; };
 		D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D724060318A6027A00EA2DD2 /* OriginalSampleConstantsTests.m */; };
-		D724060618A6028300EA2DD2 /* SimpleDBExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D724060518A6028300EA2DD2 /* SimpleDBExample.m */; };
 		D724060718A602DF00EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
 		D72465D418B71C99002EDE5B /* SampleImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465D318B71C99002EDE5B /* SampleImportController.m */; };
 		D72465D718B71CA6002EDE5B /* SourceImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465D618B71CA6002EDE5B /* SourceImportController.m */; };
@@ -156,7 +155,6 @@
 		D72405FB18A6024900EA2DD2 /* S3UtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3UtilsTests.m; sourceTree = "<group>"; };
 		D724060018A6026900EA2DD2 /* LocalTransactionCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTransactionCacheTests.m; sourceTree = "<group>"; };
 		D724060318A6027A00EA2DD2 /* OriginalSampleConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSampleConstantsTests.m; sourceTree = "<group>"; };
-		D724060518A6028300EA2DD2 /* SimpleDBExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBExample.m; sourceTree = "<group>"; };
 		D72465D218B71C99002EDE5B /* SampleImportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleImportController.h; sourceTree = "<group>"; };
 		D72465D318B71C99002EDE5B /* SampleImportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleImportController.m; sourceTree = "<group>"; };
 		D72465D518B71CA6002EDE5B /* SourceImportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceImportController.h; sourceTree = "<group>"; };
@@ -549,7 +547,6 @@
 				D724060218A6027200EA2DD2 /* ModelTests */,
 				D72405E718A601CC00EA2DD2 /* Store Tests */,
 				D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */,
-				D724060518A6028300EA2DD2 /* SimpleDBExample.m */,
 				D7439E3318A5FC53000EE008 /* Supporting Files */,
 			);
 			path = ProjectCrystalBlueOSXTests;
@@ -996,7 +993,6 @@
 				D72465E118B7320C002EDE5B /* SampleImportControllerTests.m in Sources */,
 				D72405EB18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m in Sources */,
 				D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */,
-				D724060618A6028300EA2DD2 /* SimpleDBExample.m in Sources */,
 				D704E1B018B16F6200170B7E /* ProceduresTests.m in Sources */,
 				D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */,
 				D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */,

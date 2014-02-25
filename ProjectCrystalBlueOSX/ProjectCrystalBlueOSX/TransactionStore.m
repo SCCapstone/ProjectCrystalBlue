@@ -125,6 +125,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     // Only keep latest change to a single library object
     Transaction *optimizedTransaction = [self optimizeTransaction:transaction];
+    
+    // PUT + DELETE -> no commit
     if (!optimizedTransaction)
         return YES;
     
@@ -209,17 +211,20 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if (!localTransaction)
             [resolvedConflicts addObject:[[ConflictResolution alloc] initWithTransaction:remoteTransaction
                                                                   AndIfLocalIsMoreRecent:false]];
-        // Conflict exists, remote is more recent
-        else if ([localTransaction.timestamp doubleValue] < [remoteTransaction.timestamp doubleValue]) {
-            // Delete outdated local version to not sync with remote
+        // Conflict exists
+        else {
+            // Prevent duplicate uploads
             [self deleteLocalTransactionWithLibraryObjectKey:[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
-            [resolvedConflicts addObject:[[ConflictResolution alloc] initWithTransaction:remoteTransaction
-                                                                  AndIfLocalIsMoreRecent:false]];
+            
+            // Conflict exists, remote is more recent
+            if ([localTransaction.timestamp doubleValue] < [remoteTransaction.timestamp doubleValue]) 
+                [resolvedConflicts addObject:[[ConflictResolution alloc] initWithTransaction:remoteTransaction
+                                                                      AndIfLocalIsMoreRecent:false]];
+            // Conflict exists, local is more recent
+            else
+                [resolvedConflicts addObject:[[ConflictResolution alloc] initWithTransaction:localTransaction
+                                                                      AndIfLocalIsMoreRecent:true]];
         }
-        // Conflict exists, local is more recent
-        else
-            [resolvedConflicts addObject:[[ConflictResolution alloc] initWithTransaction:localTransaction
-                                                                  AndIfLocalIsMoreRecent:true]];
     }
     
     return resolvedConflicts;

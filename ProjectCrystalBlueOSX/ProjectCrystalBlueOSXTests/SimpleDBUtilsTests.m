@@ -55,6 +55,8 @@
         XCTFail(@"Failed to clear the test domain. Error: %@", exception);
     }
     
+    // Make sure deletion propogates before more tests could be run
+    sleep(2);
     [super tearDown];
 }
 
@@ -96,38 +98,83 @@
     XCTAssertEqualObjects(convertedSource, source, @"The two source objects are not equal.");
 }
 
-- (void)testSelectQuery
+- (void)testPutSelectDelete
 {
-    [self populateWithTestObjects];
-    NSString *query = [NSString stringWithFormat:@"select * from %@ where timestamp >= '100' order by timestamp limit 250", TEST_DOMAIN_NAME];
+    // Populate database with test objects
+    NSArray *testObjects = [self getTestObjects];
+    BOOL putSuccess = [SimpleDBUtils executeBatchPut:testObjects
+                                      WithDomainName:TEST_DOMAIN_NAME
+                                         UsingClient:simpleDBClient];
+    XCTAssertTrue(putSuccess, @"SimpleDBUtils failed to put the test objects to the remote database.");
+    
+    // Wait for put to complete
+    sleep(1);
+    
+    // Make sure objects have been put
+    NSString *query = [NSString stringWithFormat:@"select * from %@ where timestamp >= '200' order by timestamp limit 250", TEST_DOMAIN_NAME];
     NSArray *transactions = [SimpleDBUtils executeSelectQuery:query
                                       WithReturnedObjectClass:[Transaction class]
                                                   UsingClient:simpleDBClient];
     XCTAssertNotNil(transactions, @"The query to SimpleDB was unsuccessful.");
     XCTAssertTrue(transactions.count == 4ul, @"SimpleDB returned the incorrect number of transactions.");
+    
+    // Delete test objects
+    NSMutableArray *objectNames = [[NSMutableArray alloc] initWithCapacity:testObjects.count];
+    for (Transaction *transaction in testObjects) {
+        [objectNames addObject:[transaction.timestamp stringValue]];
+    }
+    BOOL deleteSuccess = [SimpleDBUtils executeBatchDelete:objectNames
+                                            WithDomainName:TEST_DOMAIN_NAME
+                                               UsingClient:simpleDBClient];
+    XCTAssertTrue(deleteSuccess, @"SimpleDBUtils failed to delete the objects from the remote database.");
+    
+    // Wait for delete to complete
+    sleep(1);
+    
+    // Make sure objects have been deleted
+    query = [NSString stringWithFormat:@"select * from %@", TEST_DOMAIN_NAME];
+    transactions = [SimpleDBUtils executeSelectQuery:query
+                                      WithReturnedObjectClass:[Transaction class]
+                                                  UsingClient:simpleDBClient];
+    XCTAssertNotNil(transactions, @"The query to SimpleDB was unsuccessful.");
+    XCTAssertTrue(transactions.count == 0ul, @"SimpleDB returned the incorrect number of transactions.");
 }
 
-- (void)populateWithTestObjects
+- (void)testPutGet
+{
+    // Populate database with test objects
+    NSArray *testObjects = [self getTestObjects];
+    BOOL putSuccess = [SimpleDBUtils executeBatchPut:testObjects
+                                      WithDomainName:TEST_DOMAIN_NAME
+                                         UsingClient:simpleDBClient];
+    XCTAssertTrue(putSuccess, @"SimpleDBUtils failed to put the test objects to the remote database.");
+    
+    // Wait for put to complete
+    sleep(1);
+    
+    for (Transaction *transaction in testObjects) {
+        Transaction *remoteTransaction = (Transaction *)[SimpleDBUtils executeGetWithItemName:[transaction.timestamp stringValue]
+                                                                            AndWithDomainName:TEST_DOMAIN_NAME
+                                                                                  UsingClient:simpleDBClient
+                                                                              ToObjectOfClass:[Transaction class]];
+        XCTAssertNotNil(remoteTransaction, @"SimpleDBUtils failed to get the remote transaction.");
+        XCTAssertEqualObjects(transaction, remoteTransaction, @"Retrieved object is not equal to the committed object.");
+    }
+}
+
+- (NSArray *)getTestObjects
 {
     NSMutableArray *testTransactions = [[NSMutableArray alloc] init];
     
-    for (int i=0; i<5; i++) {
+    for (int i=1; i<6; i++) {
         NSDictionary *attributes = [[NSDictionary alloc] initWithObjects:[TransactionConstants attributeDefaultValues]
                                                                  forKeys:[TransactionConstants attributeNames]];
         
-        Transaction *transaction = [[Transaction alloc] initWithTimestamp:[NSNumber numberWithInt:i*1000]
-                                               AndWithAttributeDictionary:attributes];
-        [testTransactions addObject:[SimpleDBUtils convertObjectToSimpleDBItem:transaction]];
+        [testTransactions addObject:[[Transaction alloc] initWithTimestamp:[NSNumber numberWithInt:i*1000]
+                                                AndWithAttributeDictionary:attributes]];
     }
     
-    @try {
-        SimpleDBBatchPutAttributesRequest *putRequest = [[SimpleDBBatchPutAttributesRequest alloc] initWithDomainName:TEST_DOMAIN_NAME
-                                                                                                             andItems:testTransactions];
-        [simpleDBClient batchPutAttributes:putRequest];
-    }
-    @catch (NSException *exception) {
-        XCTFail(@"Failed to populate the test domain with test objects. Error: %@", exception);
-    }
+    return testTransactions;
 }
 
 @end
