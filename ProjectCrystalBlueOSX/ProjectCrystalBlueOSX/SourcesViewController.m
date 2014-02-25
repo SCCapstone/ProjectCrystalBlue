@@ -281,6 +281,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if (returnCode == IMPORT_BUTTON) {
             LibraryObjectImportController *importController = [[SourceImportController alloc] init];
             [importController setLibraryObjectStore:dataStore];
+            [importController setImportResultReporter:self];
             
             OSXFileSelector *importFileChooser = [OSXFileSelector CSVFileSelector];
             [importFileChooser setDelegate:importController];
@@ -312,6 +313,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     [importExportOptions beginSheetModalForWindow:self.view.window
                                 completionHandler:modalHandler];
+}
+
+-(void) displayResults:(ImportResult *)result
+{
+    [self.sourceTable reloadData];
 }
 
 - (void)sync
