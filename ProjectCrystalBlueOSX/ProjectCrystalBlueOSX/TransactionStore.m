@@ -37,7 +37,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 /*  Creates the sqlite Transaction table if it does not already exist.
  */
-- (BOOL)setupTable;
+- (void)setupTable;
 
 @end
 
@@ -64,9 +64,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
         
         // Setup table
-        if (![self setupTable]) {
-            return nil;
-        }
+        [self setupTable];
     }
     return self;
 }
@@ -81,18 +79,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         FMResultSet *results = [localDatabase executeQuery:sql];
         
-        if ([localDatabase hadError]) {
-            DDLogCError(@"%@: Failed to get unsynced transactions from local database. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to get unsynced transactions from local database. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
             [results close];
-            return;
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to get all unsynced transactions." userInfo:nil] raise];
         }
         
         // Add all the results to the commitHistory array
         transactions = [[NSMutableArray alloc] init];
-        while ([results next]) {
-            NSNumber *timestamp = [NSNumber numberWithDouble:[[[results resultDictionary] objectForKey:TRN_TIMESTAMP] doubleValue]];
+        while (results.next) {
+            NSNumber *timestamp = [NSNumber numberWithDouble:[[results.resultDictionary objectForKey:TRN_TIMESTAMP] doubleValue]];
             [transactions addObject:[[Transaction alloc] initWithTimestamp:timestamp
-                                                AndWithAttributeDictionary:[results resultDictionary]]];
+                                                AndWithAttributeDictionary:results.resultDictionary]];
         }
         [results close];
     }];
@@ -109,12 +107,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         FMResultSet *results = [localDatabase executeQuery:sql];
         
-        if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to get transaction from local database. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to get transaction from local database. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to get transaction with library object key." userInfo:nil] raise];
+        }
         
         // Have the transaction's attributes
-        else if ([results next])
-            resultDictionary = [results resultDictionary];
+        else if (results.next)
+            resultDictionary = results.resultDictionary;
         [results close];
     }];
     
@@ -128,7 +128,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)commitTransaction:(Transaction *)transaction
 {
     // Make sure sql command is a valid command to commit
-    NSString *sqlCommand = [[transaction attributes] objectForKey:TRN_SQL_COMMAND_TYPE];
+    NSString *sqlCommand = [transaction.attributes objectForKey:TRN_SQL_COMMAND_TYPE];
     if (!([sqlCommand isEqualToString:@"PUT"] || [sqlCommand isEqualToString:@"DELETE"] || [sqlCommand isEqualToString:@"UPDATE"])) {
         DDLogCError(@"%@: Not a valid sql command to commit the transaction.", NSStringFromClass(self.class));
         return NO;
@@ -146,10 +146,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     __block BOOL commitSuccess = NO;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
-        commitSuccess = [localDatabase executeUpdate:sql withParameterDictionary:[optimizedTransaction attributes]];
+        commitSuccess = [localDatabase executeUpdate:sql withParameterDictionary:optimizedTransaction.attributes];
         
-        if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to commit transaction to local database. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to commit transaction to local database. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to add transaction to table." userInfo:nil] raise];
+        }
     }];
     
     return commitSuccess;
@@ -163,8 +165,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         clearSuccess = [localDatabase executeUpdate:sql];
         
-        if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to clear local transactions. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to clear local transactions. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to clear the transaction table." userInfo:nil] raise];
+        }
     }];
     
     // Add current time to top of transaction table as last sync time
@@ -181,8 +185,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         deleteSuccess = [localDatabase executeUpdate:sql];
         
-        if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to optimize transaction. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to delete the local transaction with library key. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to delete the local transaction with library key." userInfo:nil] raise];
+        }
     }];
     
     return deleteSuccess;
@@ -193,18 +199,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSString *sql = [NSString stringWithFormat:@"SELECT timestamp FROM %@ ORDER BY ROWID ASC LIMIT 1", [TransactionConstants tableName]];
     
     // Get first row of transactions table which holds last sync time
-    __block NSTimeInterval syncTime;
+    __block NSTimeInterval syncTime = 0;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         FMResultSet *results = [localDatabase executeQuery:sql];
         
-        if ([localDatabase hadError]) {
-            DDLogCError(@"%@: Failed to get last sync time from database. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to get last sync time from database. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
             [results close];
-            return;
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to get last time of sync." userInfo:nil] raise];
         }
         
-        [results next];
-        syncTime = [[[results resultDictionary] objectForKey:TRN_TIMESTAMP] doubleValue];
+        if (results.next)
+            syncTime = [[results.resultDictionary objectForKey:TRN_TIMESTAMP] doubleValue];
         [results close];
     }];
     
@@ -257,13 +263,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         deleteSuccess = [localDatabase executeUpdate:sql];
         
-        if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to optimize transaction. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to optimize the transaction. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to optimize the transaction." userInfo:nil] raise];
+        }
     }];
-    
-    if (!deleteSuccess)
-        [NSException raise:@"Failed to optimize transaction." format:@"Optimiazation failed. Raising this exception is a temporary solution."];
-    
     
     // No optimizations possible with PUT
     if ([newCommandType isEqualToString:@"PUT"])
@@ -305,43 +309,45 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     __block BOOL updateSuccess = NO;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
-        updateSuccess = [localDatabase executeUpdate:sql withParameterDictionary:[transaction attributes]];
+        updateSuccess = [localDatabase executeUpdate:sql withParameterDictionary:transaction.attributes];
         
-        if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to update time of sync to local database. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to update time of sync to local database. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to update time of sync." userInfo:nil] raise];
+        }
     }];
     
     return updateSuccess;
 }
 
-- (BOOL)setupTable
+- (void)setupTable
 {
-    __block BOOL setupSuccess = NO;
     __block NSInteger count;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
         // Create transaction table
-        setupSuccess = [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)",
-                                                      [TransactionConstants tableName], [TransactionConstants tableSchema]]];
-        if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to create the transaction table. Error: %@", NSStringFromClass(self.class), [localDatabase lastError]);
+        [localDatabase executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (%@)", [TransactionConstants tableName], [TransactionConstants tableSchema]]];
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to create the transaction table. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed create the transaction table." userInfo:nil] raise];
+        }
         
+        // Check if this is the initial setup
         FMResultSet *results = [localDatabase executeQuery:[NSString stringWithFormat:@"SELECT count(*) FROM %@", [TransactionConstants tableName]]];
         
-        if ([localDatabase hadError])
-            DDLogCError(@"%@: Failed to get count from local database. Error: %@",
-                        NSStringFromClass(self.class), [localDatabase lastError]);
+        if (localDatabase.hadError){
+            DDLogCError(@"%@: Failed to get count of transaction table. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to get count of transaction table." userInfo:nil] raise];
+        }
         
-        // Have the library object's attributes
-        else if ([results next])
-            count = [[[results resultDictionary] objectForKey:@"count(*)"] integerValue];
+        // Get the count
+        else if (results.next)
+            count = [[results.resultDictionary objectForKey:@"count(*)"] integerValue];
         [results close];
     }];
     
-    // Add iniital time to database
+    // Add initial time to database
     if (count == 0)
         [self updateTimeOfSync:[NSNumber numberWithInt:0]];
-    
-    return setupSuccess;
 }
 
 @end

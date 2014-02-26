@@ -34,8 +34,7 @@
     // Delete the test_database.db file after each test
     NSError *error = nil;
     NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *databasePath = [[documentsDirectory stringByAppendingPathComponent:TEST_DIRECTORY]
-                              stringByAppendingPathComponent:DATABASE_NAME];
+    NSString *databasePath = [[documentsDirectory stringByAppendingPathComponent:TEST_DIRECTORY] stringByAppendingPathComponent:DATABASE_NAME];
     [[NSFileManager defaultManager] removeItemAtPath:databasePath error:&error];
     XCTAssertNil(error, @"Error removing database file!");
 }
@@ -59,6 +58,7 @@
     NSString *nonexistentKey = @"this-key-doesnt-exist";
     
     LibraryObject *libraryObject = [libraryObjectStore getLibraryObjectForKey:nonexistentKey FromTable:[SourceConstants tableName]];
+    [libraryObjectStore libraryObjectExistsForKey:nonexistentKey FromTable:[SourceConstants tableName]];
     XCTAssertNil(libraryObject, @"Object returned should have been nil.");
 }
 
