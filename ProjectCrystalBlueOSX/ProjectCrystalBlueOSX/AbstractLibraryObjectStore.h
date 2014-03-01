@@ -29,6 +29,13 @@
  */
 - (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey;
 
+/** Retrieve all library objects where the attribute is equal to the
+ *  specified attribute value.
+ */
+- (NSArray *)getAllLibraryObjectsForAttributeName:(NSString *)attributeName
+                               WithAttributeValue:(NSString *)attributeValue
+                                        FromTable:(NSString *)tableName;
+
 /** Execute a query on the table.
  *
  *  This should only be a SELECT query to get library objects, do not attempt 

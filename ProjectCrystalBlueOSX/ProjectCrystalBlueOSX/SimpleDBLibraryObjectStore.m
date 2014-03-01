@@ -230,6 +230,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [localStore getAllSamplesForSourceKey:sourceKey];
 }
 
+- (NSArray *)getAllLibraryObjectsForAttributeName:(NSString *)attributeName
+                               WithAttributeValue:(NSString *)attributeValue
+                                        FromTable:(NSString *)tableName
+{
+    return [localStore getAllLibraryObjectsForAttributeName:attributeName WithAttributeValue:attributeValue FromTable:tableName];
+}
+
 - (NSArray *)executeSqlQuery:(NSString *)sql
                      OnTable:(NSString *)tableName
 {

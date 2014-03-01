@@ -155,6 +155,41 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return samples;
 }
 
+- (NSArray *)getAllLibraryObjectsForAttributeName:(NSString *)attributeName
+                               WithAttributeValue:(NSString *)attributeValue
+                                        FromTable:(NSString *)tableName
+{
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return nil;
+    }
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ LIKE '%%%@%%'", tableName, attributeName, attributeValue];
+    
+    // Get all corresponding samples from table
+    __block NSMutableArray *libraryObjects = [[NSMutableArray alloc] init];;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        FMResultSet *results = [localDatabase executeQuery:sql];
+        
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to get all library objects for attributeName. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [results close];
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to get all library objects for attributeName." userInfo:nil] raise];
+        }
+        
+        // Add all the results to the samples array
+        while (results.next) {
+            NSString *key = [results.resultDictionary objectForKey:@"key"];
+            if ([tableName isEqualToString:[SourceConstants tableName]])
+                [libraryObjects addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
+            else
+                [libraryObjects addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
+        }
+        [results close];
+    }];
+    
+    return libraryObjects;
+}
+
 - (NSArray *)executeSqlQuery:(NSString *)sql
                      OnTable:(NSString *)tableName
 {
