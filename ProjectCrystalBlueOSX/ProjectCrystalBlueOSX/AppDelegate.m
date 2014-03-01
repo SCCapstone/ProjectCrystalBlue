@@ -40,6 +40,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [splitView setVertical:YES];
     [splitView setSubviews:[[NSArray alloc] initWithObjects:leftView, rightView, nil]];
     [self.window setContentView:splitView];
+    
+    NSMenu *attrMenu = [[NSMenu alloc] initWithTitle:@"Search Menu"];
+    NSArray *attrNames = [SourceConstants attributeNames];
+    for (int i=0; i<attrNames.count; i++) {
+        NSMenuItem *attrItem = [[NSMenuItem alloc] initWithTitle:[attrNames objectAtIndex:i]
+                                                          action:@selector(setSearchCategoryFrom:)
+                                                   keyEquivalent:@""];
+        [attrItem setTarget:self];
+        [attrItem setTag:i];
+        [attrMenu insertItem:attrItem atIndex:i];
+    }
+    [self.searchField.cell setSearchMenuTemplate:attrMenu];
+    searchCategoryIndex = 0;
 }
 
 /// Set up and return a detailPanelViewController
@@ -84,4 +97,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (IBAction)sync:(id)sender {
     [leftViewController sync];
 }
+
+- (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem {
+    self.searchField.tag = menuItem.tag;
+    [self.searchField.cell setPlaceholderString:menuItem.title];
+}
+
+- (IBAction)searchSources:(id)sender {
+    [leftViewController updateDisplayedSources];
+}
+
+
 @end

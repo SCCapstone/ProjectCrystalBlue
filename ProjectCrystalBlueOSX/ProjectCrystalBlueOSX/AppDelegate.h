@@ -16,6 +16,7 @@
 }
 
 @property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSSearchField *searchField;
 
 /* Since the toolbar resides in the main window (not in the libraryview) we have to pass these
  * messages manually from the app delegate to the view controller.
@@ -26,5 +27,7 @@
 - (IBAction)importExport:(id)sender;
 - (IBAction)deleteSource:(id)sender;
 - (IBAction)sync:(id)sender;
+- (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem;
+- (IBAction)searchSources:(id)sender;
 
 @end

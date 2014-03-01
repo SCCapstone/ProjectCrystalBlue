@@ -25,6 +25,7 @@
 #import "AddNewSourceViewController.h"
 #import "EditSourceViewController.h"
 #import "SamplesViewController.h"
+#import "AppDelegate.h"
 
 #import "DDLog.h"
 
@@ -53,6 +54,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // Set up an empty array for active windows that the view controller launches
         activeWindows = [[NSMutableArray alloc] init];
         activeViewControllers = [[NSMutableArray alloc] init];
+        displayedSources = [dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
         
         DDLogInfo(@"%@: Successfully initialized with nibname %@ and nibbundle %@", NSStringFromClass(self.class), nibNameOrNil, nibBundleOrNil);
     }
@@ -79,28 +81,29 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    if (!dataStore) {
+    if (!dataStore)
         return 0;
-    } else {
-        return [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] count];
-    }
+    else
+        return displayedSources.count;
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn
             row:(NSInteger)row
 {
     if ([tableView isEqualTo:self.sourceTable]) {
-        Source *source = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:row];
+        Source *source = [displayedSources objectAtIndex:row];
         NSString *attributeKey = [[tableColumn headerCell] stringValue];
         return [[source attributes] objectForKey:attributeKey];
     }
     return nil;
 }
 
+
+
 - (void)addSource:(Source *)source
 {
     [dataStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
-    [self.sourceTable reloadData];
+    [self updateDisplayedSources];
     
     // We also need to add a starting sample for this Source.
     NSString *sampleKey = [NSString stringWithFormat:@"%@.%03d", source.key, 1];
@@ -119,7 +122,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [detailPanel clear];
         return;
     }
-    LibraryObject *object = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    LibraryObject *object = [displayedSources objectAtIndex:selectedRow];
     
     [detailPanel displayInformationAboutLibraryObject:object];
 }
@@ -163,7 +166,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
     
-    Source *s = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    Source *s = [displayedSources objectAtIndex:selectedRow];
     
     NSAlert *confirmation = [[NSAlert alloc] init];
     [confirmation setAlertStyle:NSWarningAlertStyle];
@@ -193,7 +196,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                 DDLogWarn(@"Unexpected return code %ld from DeleteSource Alert", (long)returnCode);
                 break;
         }
-        [self.sourceTable reloadData];
+        [self updateDisplayedSources];
     }];
 }
 
@@ -205,7 +208,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (selectedRow < 0) {
         return;
     }
-    Source *s = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    Source *s = [displayedSources objectAtIndex:selectedRow];
     
     EditSourceViewController *editViewController;
     editViewController = [[EditSourceViewController alloc] initWithNibName:@"EditSourceViewController"
@@ -237,7 +240,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
     
-    Source *source = [[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] objectAtIndex:selectedRow];
+    Source *source = [displayedSources objectAtIndex:selectedRow];
     SamplesViewController *samplesViewController;
     samplesViewController = [[SamplesViewController alloc] initWithNibName:@"SamplesViewController"
                                                                     bundle:nil];
@@ -309,22 +312,36 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         } else {
             DDLogWarn(@"Unexpected return code %ld from ImportExport Dialog", (long)returnCode);
         }
-        [self.sourceTable reloadData];
+        [self updateDisplayedSources];
     };
     
     [importExportOptions beginSheetModalForWindow:self.view.window
                                 completionHandler:modalHandler];
 }
 
--(void) displayResults:(ImportResult *)result
+- (void) displayResults:(ImportResult *)result
 {
-    [self.sourceTable reloadData];
+    [self updateDisplayedSources];
 }
 
 - (void)sync
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     [dataStore synchronizeWithCloud];
+    [self updateDisplayedSources];
+}
+
+- (void)updateDisplayedSources
+{
+    NSSearchField *searchField = [(AppDelegate *)[NSApplication sharedApplication].delegate searchField];
+    NSString *attrName = [[SourceConstants attributeNames] objectAtIndex:searchField.tag];
+    
+    if ([searchField.stringValue isEqualToString:@""])
+        displayedSources = [dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
+    else
+        displayedSources = [dataStore getAllLibraryObjectsForAttributeName:attrName
+                                                        WithAttributeValue:searchField.stringValue
+                                                                 FromTable:[SourceConstants tableName]];
     [self.sourceTable reloadData];
 }
 

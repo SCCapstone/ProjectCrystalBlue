@@ -649,10 +649,10 @@
         <window title="ProjectCrystalBlueOSX" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="639" height="397"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="contentRect" x="335" y="390" width="737" height="397"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="639" height="397"/>
+                <rect key="frame" x="0.0" y="0.0" width="737" height="397"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
             <toolbar key="toolbar" implicitIdentifier="E68E68E5-2E5A-4C08-BAC9-30AD1CF46DFA" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="J4P-dR-7ZN">
@@ -687,6 +687,24 @@
                             <action selector="sync:" target="494" id="BFP-BR-0Yc"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="VcE-hS-Qt8"/>
+                    <toolbarItem implicitItemIdentifier="B8725959-D9B2-442C-8162-8D8912AEAC9C" label="Search" paletteLabel="Search" id="kXE-fT-tHT">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="96" height="22"/>
+                        <size key="maxSize" width="96" height="22"/>
+                        <searchField key="view" verticalHuggingPriority="750" id="VMx-Lq-gJE">
+                            <rect key="frame" x="0.0" y="14" width="96" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="key" usesSingleLineMode="YES" bezelStyle="round" id="40y-r3-xpj">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </searchFieldCell>
+                            <connections>
+                                <action selector="searchSources:" target="494" id="xj9-5l-8aV"/>
+                            </connections>
+                        </searchField>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="8k3-nB-kxL"/>
@@ -695,12 +713,15 @@
                     <toolbarItem reference="TWr-tk-99k"/>
                     <toolbarItem reference="LpF-N8-Oaq"/>
                     <toolbarItem reference="b6f-YW-UZq"/>
+                    <toolbarItem reference="VcE-hS-Qt8"/>
+                    <toolbarItem reference="kXE-fT-tHT"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
         <customObject id="494" customClass="AppDelegate">
             <connections>
                 <outlet property="importExport" destination="LpF-N8-Oaq" id="sQl-ao-rO1"/>
+                <outlet property="searchField" destination="VMx-Lq-gJE" id="JQh-6o-Asw"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>
         </customObject>

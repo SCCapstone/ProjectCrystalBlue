@@ -18,6 +18,9 @@
     
     // Holds any active view controllers that this view controller launches.
     NSMutableArray *activeViewControllers;
+    
+    // Holds all sources currently displayed
+    NSArray *displayedSources;
 }
 
 @property (weak) IBOutlet NSTableView *sourceTable;
@@ -38,5 +41,6 @@
 - (void)viewSamples;
 - (void)importExport;
 - (void)sync;
+- (void)updateDisplayedSources;
 
 @end
