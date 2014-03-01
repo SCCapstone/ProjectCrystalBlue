@@ -52,7 +52,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [attrMenu insertItem:attrItem atIndex:i];
     }
     [self.searchField.cell setSearchMenuTemplate:attrMenu];
-    searchCategoryIndex = 0;
+    [self setSearchCategoryFrom:[attrMenu itemAtIndex:0]];
 }
 
 /// Set up and return a detailPanelViewController
