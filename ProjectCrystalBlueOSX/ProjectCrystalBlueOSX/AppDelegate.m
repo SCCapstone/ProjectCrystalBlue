@@ -41,7 +41,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [splitView setSubviews:[[NSArray alloc] initWithObjects:leftView, rightView, nil]];
     [self.window setContentView:splitView];
     
-    NSMenu *attrMenu = [[NSMenu alloc] initWithTitle:@"Search Menu"];
+    NSMenu *attrMenu = [[NSMenu alloc] initWithTitle:@"Attribute Names"];
     NSArray *attrNames = [SourceConstants attributeNames];
     for (int i=0; i<attrNames.count; i++) {
         NSMenuItem *attrItem = [[NSMenuItem alloc] initWithTitle:[attrNames objectAtIndex:i]
