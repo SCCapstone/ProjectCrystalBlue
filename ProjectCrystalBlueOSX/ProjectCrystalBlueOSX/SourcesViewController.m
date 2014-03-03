@@ -22,10 +22,9 @@
 #import "LibraryObjectCSVWriter.h"
 
 // Subviews
-#import "AddNewSourceViewController.h"
 #import "AddNewSourceWindowController.h"
 #import "EditSourceViewController.h"
-#import "SamplesViewController.h"
+#import "SamplesWindowController.h"
 #import "AppDelegate.h"
 
 #import "DDLog.h"
@@ -225,29 +224,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     
     Source *source = [displayedSources objectAtIndex:selectedRow];
-    SamplesViewController *samplesViewController;
-    samplesViewController = [[SamplesViewController alloc] initWithNibName:@"SamplesViewController"
-                                                                    bundle:nil];
-    [samplesViewController setSource:source];
-    [samplesViewController setDataStore:dataStore];
-    [activeViewControllers addObject:samplesViewController];
-    
-    NSRect newWindowBounds = [[NSScreen mainScreen] visibleFrame];
-    newWindowBounds.origin.x = [[NSScreen mainScreen] visibleFrame].size.width * 0.3;
-    newWindowBounds.origin.y = [[NSScreen mainScreen] visibleFrame].size.height * 0.4 - [activeWindows count] * 30;
-    newWindowBounds.size.width *= 0.4;
-    newWindowBounds.size.height *= 0.4;
-    NSWindow *window = [[NSWindow alloc] initWithContentRect:newWindowBounds
-                                                   styleMask:(NSTitledWindowMask |
-                                                              NSResizableWindowMask |
-                                                              NSMiniaturizableWindowMask |
-                                                              NSClosableWindowMask)
-                                                     backing:NSBackingStoreBuffered
-                                                       defer:NO];
-    
-    [window makeKeyAndOrderFront:NSApp];
-    [window setContentView:samplesViewController.view];
-    [activeWindows addObject:window];
+
+    SamplesWindowController *windowController = [[SamplesWindowController alloc] initWithWindowNibName:@"SamplesWindowController"];
+    [windowController setSource:source];
+    [windowController setDataStore:dataStore];
+    [windowController showWindow:self];
+    [activeViewControllers addObject:windowController];
 }
 
 - (void)importExport

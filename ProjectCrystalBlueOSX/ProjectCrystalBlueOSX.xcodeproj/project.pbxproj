@@ -28,6 +28,8 @@
 		D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */; };
 		D711C94D18C42CC300D637D7 /* AddNewSourceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711C94B18C42CC300D637D7 /* AddNewSourceWindowController.m */; };
 		D711C94E18C42CC300D637D7 /* AddNewSourceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */; };
+		D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711C95018C44B3E00D637D7 /* SamplesWindowController.m */; };
+		D711C95318C44B3E00D637D7 /* SamplesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D711C95118C44B3E00D637D7 /* SamplesWindowController.xib */; };
 		D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
 		D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E318A6010E00EA2DD2 /* CFNetwork.framework */; };
@@ -150,6 +152,9 @@
 		D711C94A18C42CC300D637D7 /* AddNewSourceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSourceWindowController.h; sourceTree = "<group>"; };
 		D711C94B18C42CC300D637D7 /* AddNewSourceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSourceWindowController.m; sourceTree = "<group>"; };
 		D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewSourceWindowController.xib; sourceTree = "<group>"; };
+		D711C94F18C44B3E00D637D7 /* SamplesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesWindowController.h; sourceTree = "<group>"; };
+		D711C95018C44B3E00D637D7 /* SamplesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesWindowController.m; sourceTree = "<group>"; };
+		D711C95118C44B3E00D637D7 /* SamplesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesWindowController.xib; sourceTree = "<group>"; };
 		D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = include/AWSiOSSDK.framework; sourceTree = "<group>"; };
 		D72405E118A6010000EA2DD2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D72405E318A6010E00EA2DD2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -856,6 +861,9 @@
 				D7F822BC18B199450017548F /* SamplesViewController.h */,
 				D7F822BD18B199450017548F /* SamplesViewController.m */,
 				D7F822BE18B199450017548F /* SamplesViewController.xib */,
+				D711C94F18C44B3E00D637D7 /* SamplesWindowController.h */,
+				D711C95018C44B3E00D637D7 /* SamplesWindowController.m */,
+				D711C95118C44B3E00D637D7 /* SamplesWindowController.xib */,
 			);
 			name = SamplesView;
 			sourceTree = "<group>";
@@ -937,6 +945,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7F822C018B199450017548F /* SamplesViewController.xib in Resources */,
+				D711C95318C44B3E00D637D7 /* SamplesWindowController.xib in Resources */,
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D738D55718BAA52600A777E2 /* DetailPanelViewController.xib in Resources */,
 				D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */,
@@ -1020,6 +1029,7 @@
 				D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */,
 				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
+				D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
 				D78ACC6618A5FE21006084D6 /* AbstractCloudImageStore.m in Sources */,
 				D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */,
