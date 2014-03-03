@@ -52,4 +52,14 @@
                    intoStore:(AbstractLibraryObjectStore *)store
               intoTableNamed:(NSString *)tableName;
 
+/**
+ *  Helper method to generate a new unique key for a sample. This key is guaranteed to be unique within the given table.
+ *  Recall that samples are generally named something like 'SUPER_AWESOME_SAMPLE.001'. This method would generate the key
+ *  'SUPER_AWESOME_SAMPLE.002' and, assuming no other sample exists with that name, return it. If 'SUPER_AWESOME_SAMPLE.002'
+ *  already exists, then we try '*.003' '*.004' etc. until we find an open name.
+ */
++(NSString *)uniqueKeyBasedOn:(NSString *)previousKey
+                      inStore:(AbstractLibraryObjectStore *)store
+                      inTable:(NSString *)tableName;
+
 @end

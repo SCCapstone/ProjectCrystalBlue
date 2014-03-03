@@ -30,6 +30,8 @@
 		D711C94E18C42CC300D637D7 /* AddNewSourceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */; };
 		D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711C95018C44B3E00D637D7 /* SamplesWindowController.m */; };
 		D711C95318C44B3E00D637D7 /* SamplesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D711C95118C44B3E00D637D7 /* SamplesWindowController.xib */; };
+		D7125EF118C4630B00BBCD3E /* ProceduresWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */; };
+		D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */; };
 		D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
 		D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E318A6010E00EA2DD2 /* CFNetwork.framework */; };
@@ -155,6 +157,9 @@
 		D711C94F18C44B3E00D637D7 /* SamplesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesWindowController.h; sourceTree = "<group>"; };
 		D711C95018C44B3E00D637D7 /* SamplesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesWindowController.m; sourceTree = "<group>"; };
 		D711C95118C44B3E00D637D7 /* SamplesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesWindowController.xib; sourceTree = "<group>"; };
+		D7125EEE18C4630B00BBCD3E /* ProceduresWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProceduresWindowController.h; sourceTree = "<group>"; };
+		D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresWindowController.m; sourceTree = "<group>"; };
+		D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProceduresWindowController.xib; sourceTree = "<group>"; };
 		D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = include/AWSiOSSDK.framework; sourceTree = "<group>"; };
 		D72405E118A6010000EA2DD2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D72405E318A6010E00EA2DD2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -367,6 +372,16 @@
 				D72FE4A118B57B0F00C6452F /* ProcedureRecordTests.m */,
 			);
 			name = "Procedure Tests";
+			sourceTree = "<group>";
+		};
+		D7125EED18C462EC00BBCD3E /* ProceduresWindow */ = {
+			isa = PBXGroup;
+			children = (
+				D7125EEE18C4630B00BBCD3E /* ProceduresWindowController.h */,
+				D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */,
+				D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */,
+			);
+			name = ProceduresWindow;
 			sourceTree = "<group>";
 		};
 		D72405E718A601CC00EA2DD2 /* Store Tests */ = {
@@ -646,6 +661,7 @@
 		D78ACC2F18A5FD9B006084D6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D7125EED18C462EC00BBCD3E /* ProceduresWindow */,
 				D7F822BB18B199290017548F /* SamplesView */,
 				D770578118AD7C8900F011E5 /* EditSourceView */,
 				D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */,
@@ -951,6 +967,7 @@
 				D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */,
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
 				D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */,
+				D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */,
 				D7439E1F18A5FC53000EE008 /* Credits.rtf in Resources */,
 				D711C94E18C42CC300D637D7 /* AddNewSourceWindowController.xib in Resources */,
 				D7439E2518A5FC53000EE008 /* MainMenu.xib in Resources */,
@@ -986,6 +1003,7 @@
 				D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */,
 				D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */,
 				D7A0CB7818BC57A900A61E32 /* OSXSaveSelector.m in Sources */,
+				D7125EF118C4630B00BBCD3E /* ProceduresWindowController.m in Sources */,
 				D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
 				D7439E2218A5FC53000EE008 /* AppDelegate.m in Sources */,

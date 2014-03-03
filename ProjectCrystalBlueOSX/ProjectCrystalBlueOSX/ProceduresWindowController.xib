@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ProceduresWindowController">
+            <connections>
+                <outlet property="initialsTextField" destination="V36-jg-BF1" id="Tlq-2n-b5F"/>
+                <outlet property="instructionsText" destination="jWP-wp-kiJ" id="Ay9-M0-lg4"/>
+                <outlet property="procedureSelector" destination="HPk-eh-12N" id="TaV-Fw-4xC"/>
+                <outlet property="window" destination="1" id="3"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Procedures" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" wantsToBeColor="NO" animationBehavior="default" id="1">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <view key="contentView" id="2">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rzn-bw-0rr">
+                        <rect key="frame" x="348" y="18" width="112" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="squareTextured" title="Apply Procedure" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Mpe-Qu-MtB">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="applyProcedure:" target="-2" id="idh-Fi-bFK"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V36-jg-BF1">
+                        <rect key="frame" x="377" y="50" width="83" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="83" id="HBN-Jy-FdK"/>
+                            <constraint firstAttribute="height" constant="22" id="pFW-qr-sVm"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Your Initials" drawsBackground="YES" id="u7p-4X-yJn">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPk-eh-12N">
+                        <rect key="frame" x="109" y="138" width="263" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="260" id="E4R-JH-puK"/>
+                        </constraints>
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="9D8-vt-gmC">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" title="OtherViews" id="6cB-Gf-9zu"/>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWP-wp-kiJ">
+                        <rect key="frame" x="18" y="175" width="444" height="75"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="75" id="WUS-2J-ZoC"/>
+                        </constraints>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="kr8-v3-MAg">
+                            <font key="font" metaFont="system"/>
+                            <string key="title">Select a procedure to apply to SAMPLE_NAME. Please triple-check that you are applying the correct procedure, enter your initials, then click Apply Procedure.</string>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yib-q0-DxT">
+                        <rect key="frame" x="14" y="13" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3c6-t9-fNl">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelButton:" target="-2" id="7Hb-Az-uaS"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerX" secondItem="HPk-eh-12N" secondAttribute="centerX" id="6eG-RD-8sC"/>
+                    <constraint firstItem="HPk-eh-12N" firstAttribute="top" secondItem="jWP-wp-kiJ" secondAttribute="bottom" constant="15" id="FZS-WT-l1V"/>
+                    <constraint firstItem="jWP-wp-kiJ" firstAttribute="top" secondItem="2" secondAttribute="top" constant="20" id="FpF-h5-GA9"/>
+                    <constraint firstItem="jWP-wp-kiJ" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20" id="Qh8-YC-27L"/>
+                    <constraint firstItem="Rzn-bw-0rr" firstAttribute="top" secondItem="V36-jg-BF1" secondAttribute="bottom" constant="8" id="ZTB-5Q-yKx"/>
+                    <constraint firstAttribute="bottom" secondItem="Rzn-bw-0rr" secondAttribute="bottom" constant="20" id="cE3-Id-fhT"/>
+                    <constraint firstAttribute="trailing" secondItem="Rzn-bw-0rr" secondAttribute="trailing" constant="20" id="hC3-4m-I3v"/>
+                    <constraint firstItem="yib-q0-DxT" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20" id="jlb-Zf-Ruv"/>
+                    <constraint firstAttribute="trailing" secondItem="jWP-wp-kiJ" secondAttribute="trailing" constant="20" id="kpZ-uh-Dvm"/>
+                    <constraint firstAttribute="trailing" secondItem="V36-jg-BF1" secondAttribute="trailing" constant="20" id="wte-e4-Hzq"/>
+                    <constraint firstAttribute="bottom" secondItem="yib-q0-DxT" secondAttribute="bottom" constant="20" id="xFB-iM-zVf"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="4"/>
+            </connections>
+        </window>
+    </objects>
+</document>
