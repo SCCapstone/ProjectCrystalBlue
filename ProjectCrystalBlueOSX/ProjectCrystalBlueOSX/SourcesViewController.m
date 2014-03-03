@@ -23,6 +23,7 @@
 
 // Subviews
 #import "AddNewSourceViewController.h"
+#import "AddNewSourceWindowController.h"
 #import "EditSourceViewController.h"
 #import "SamplesViewController.h"
 #import "AppDelegate.h"
@@ -135,27 +136,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)showAddNewSourceDialog
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
-    
-    AddNewSourceViewController *viewController = [[AddNewSourceViewController alloc] initWithNibName:@"AddNewSourceViewController"
-                                                                                              bundle:nil];
-    [viewController setSourcesViewController:self];
-    [activeViewControllers addObject:viewController];
-    
-    NSRect newWindowBounds = [[NSScreen mainScreen] visibleFrame];
-    newWindowBounds.origin.x = [[NSScreen mainScreen] visibleFrame].size.width * 0.3;
-    newWindowBounds.origin.y = [[NSScreen mainScreen] visibleFrame].size.height * 0.4 - [activeWindows count] * 30;
-    newWindowBounds.size.width *= 0.4;
-    newWindowBounds.size.height *= 0.4;
-
-    int styleMask = (NSTitledWindowMask | NSResizableWindowMask | NSMiniaturizableWindowMask);
-    
-    NSWindow *window = [[NSWindow alloc] initWithContentRect:newWindowBounds
-                                                   styleMask:styleMask
-                                                     backing:NSBackingStoreBuffered
-                                                       defer:NO];
-    [window setContentView:viewController.view];
-    [window makeKeyAndOrderFront:NSApp];
-    [activeWindows addObject:window];
+    AddNewSourceWindowController *addNewSourceWindowController = [[AddNewSourceWindowController alloc] initWithWindowNibName:@"AddNewSourceWindowController"];
+    [addNewSourceWindowController setSourcesViewController:self];
+    [addNewSourceWindowController showWindow:self];
+    [activeViewControllers addObject:addNewSourceWindowController];
 }
 
 - (void)removeSource

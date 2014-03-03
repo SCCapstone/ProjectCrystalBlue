@@ -26,6 +26,8 @@
 		D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */; };
 		D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */; };
 		D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */; };
+		D711C94D18C42CC300D637D7 /* AddNewSourceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711C94B18C42CC300D637D7 /* AddNewSourceWindowController.m */; };
+		D711C94E18C42CC300D637D7 /* AddNewSourceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */; };
 		D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
 		D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E318A6010E00EA2DD2 /* CFNetwork.framework */; };
@@ -145,6 +147,9 @@
 		D706DDB318B0BB310023D2BF /* PrimitiveProcedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveProcedures.h; sourceTree = "<group>"; };
 		D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveProcedures.m; sourceTree = "<group>"; };
 		D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveProcedureTests.m; sourceTree = "<group>"; };
+		D711C94A18C42CC300D637D7 /* AddNewSourceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSourceWindowController.h; sourceTree = "<group>"; };
+		D711C94B18C42CC300D637D7 /* AddNewSourceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSourceWindowController.m; sourceTree = "<group>"; };
+		D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewSourceWindowController.xib; sourceTree = "<group>"; };
 		D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = include/AWSiOSSDK.framework; sourceTree = "<group>"; };
 		D72405E118A6010000EA2DD2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D72405E318A6010E00EA2DD2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -838,6 +843,9 @@
 				D7EA0B8B18A84B14003D74BA /* AddNewSourceViewController.h */,
 				D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */,
 				D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */,
+				D711C94A18C42CC300D637D7 /* AddNewSourceWindowController.h */,
+				D711C94B18C42CC300D637D7 /* AddNewSourceWindowController.m */,
+				D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */,
 			);
 			name = AddNewSourceView;
 			sourceTree = "<group>";
@@ -935,6 +943,7 @@
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
 				D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */,
 				D7439E1F18A5FC53000EE008 /* Credits.rtf in Resources */,
+				D711C94E18C42CC300D637D7 /* AddNewSourceWindowController.xib in Resources */,
 				D7439E2518A5FC53000EE008 /* MainMenu.xib in Resources */,
 				D78ACC7318A5FE44006084D6 /* no_image.png in Resources */,
 				D7EA0B8F18A84B14003D74BA /* AddNewSourceViewController.xib in Resources */,
@@ -994,6 +1003,7 @@
 				D78ACC7E18A5FE7C006084D6 /* AbstractLibraryObjectStore.m in Sources */,
 				D78ACC4C18A5FDD9006084D6 /* DDLog.m in Sources */,
 				D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */,
+				D711C94D18C42CC300D637D7 /* AddNewSourceWindowController.m in Sources */,
 				D78ACC3F18A5FDC0006084D6 /* FMResultSet.m in Sources */,
 				D78ACC6518A5FE21006084D6 /* AbstractImageStore.m in Sources */,
 				D72465D418B71C99002EDE5B /* SampleImportController.m in Sources */,
