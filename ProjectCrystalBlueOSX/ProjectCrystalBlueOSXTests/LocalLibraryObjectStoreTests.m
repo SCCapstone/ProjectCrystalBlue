@@ -204,18 +204,18 @@
     
     // Execute some commands and make sure they return the correct objects
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@='rock1'", [SampleConstants tableName], SMP_SOURCE_KEY];
-    NSArray *libraryObjects = [libraryObjectStore executeSqlQuery:sql OnTable:[SampleConstants tableName]];
+    NSArray *libraryObjects = [libraryObjectStore getLibraryObjectsWithSqlQuery:sql OnTable:[SampleConstants tableName]];
     XCTAssertNotNil(libraryObjects, @"LibraryObjectStore failed to execute the query.");
     XCTAssertTrue(libraryObjects.count == 5, @"LibraryObjectStore should have returned 5 samples.");
     
     sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@='rock4'", [SampleConstants tableName], SMP_SOURCE_KEY];
-    libraryObjects = [libraryObjectStore executeSqlQuery:sql OnTable:[SampleConstants tableName]];
+    libraryObjects = [libraryObjectStore getLibraryObjectsWithSqlQuery:sql OnTable:[SampleConstants tableName]];
     XCTAssertNotNil(libraryObjects, @"LibraryObjectStore failed to execute the query.");
     XCTAssertTrue(libraryObjects.count == 5, @"LibraryObjectStore should have returned 5 samples.");
     
     // Make sure invalid command type returns nil
     sql = [NSString stringWithFormat:@"DELETE * FROM %@", [SampleConstants tableName]];
-    libraryObjects = [libraryObjectStore executeSqlQuery:sql OnTable:[SampleConstants tableName]];
+    libraryObjects = [libraryObjectStore getLibraryObjectsWithSqlQuery:sql OnTable:[SampleConstants tableName]];
     XCTAssertNil(libraryObjects, @"executeSqlQuery: should only execute queries that do not change values in the database.");
 }
 
@@ -235,6 +235,7 @@
     XCTAssertTrue(samples.count == 20, @"LibraryObjectStore should have returned 1 sample.");
 }
 
+/// Verify all library objects are returned for a specified attribute value
 - (void)testGetAllLibraryObjectsForAttributeValue
 {
     AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
@@ -257,6 +258,7 @@
     XCTAssertTrue(samples.count == 0, @"LibraryObjectStore failed to return the correct number of objects.");
 }
 
+/// Verify a unique list of attribute values is returned for a attribute name
 - (void)testGetUniqueAttributeValues
 {
     AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
@@ -276,6 +278,7 @@
     XCTAssertTrue(uniqueValues.count == 5, @"LibraryObjectStore returned the incorrect number of items.");
 }
 
+/// Populate database with 5 sources and 5 samples for each source
 - (void)populateDatabaseWithLibraryObjectStore:(AbstractLibraryObjectStore *)libraryObjectStore
 {
     for (int i=0; i<5; i++)

@@ -220,8 +220,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return attributeValues;
 }
 
-- (NSArray *)executeSqlQuery:(NSString *)sql
-                     OnTable:(NSString *)tableName
+- (NSArray *)getLibraryObjectsWithSqlQuery:(NSString *)sql
+                                   OnTable:(NSString *)tableName
 {
     if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
         DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
