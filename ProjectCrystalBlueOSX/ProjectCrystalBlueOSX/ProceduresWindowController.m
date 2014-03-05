@@ -84,6 +84,66 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [Procedures jawCrushSample:sample
                       withInitials:initialsTextField.stringValue
                            inStore:dataStore];
+    } else if ([longNameGemini isEqualToString:selectedProcedureName]) {
+        [Procedures geminiSample:sample
+                    withInitials:initialsTextField.stringValue
+                         inStore:dataStore];
+    } else if ([longNamePan isEqualToString:selectedProcedureName]) {
+        [Procedures panSample:sample
+                 withInitials:initialsTextField.stringValue
+                      inStore:dataStore];
+    } else if ([longNameSieve10 isEqualToString:selectedProcedureName]) {
+        [Procedures sievesTenSample:sample
+                       withInitials:initialsTextField.stringValue
+                            inStore:dataStore];
+    } else if ([longNameHL330 isEqualToString:selectedProcedureName]) {
+        [Procedures heavyLiquid_330_Sample:sample
+                      withInitials:initialsTextField.stringValue
+                           inStore:dataStore];
+    } else if ([longNameHL290 isEqualToString:selectedProcedureName]) {
+        [Procedures heavyLiquid_290_Sample:sample
+                              withInitials:initialsTextField.stringValue
+                                   inStore:dataStore];
+    } else if ([longNameHL265 isEqualToString:selectedProcedureName]) {
+        [Procedures heavyLiquid_265_Sample:sample
+                              withInitials:initialsTextField.stringValue
+                                   inStore:dataStore];
+    } else if ([longNameHL255 isEqualToString:selectedProcedureName]) {
+        [Procedures heavyLiquid_255_Sample:sample
+                              withInitials:initialsTextField.stringValue
+                                   inStore:dataStore];
+    } else if ([longNameHandMagnet isEqualToString:selectedProcedureName]) {
+        [Procedures handMagnetSample:sample
+                        withInitials:initialsTextField.stringValue
+                             inStore:dataStore];
+    } else if ([longNameMagnet02A isEqualToString:selectedProcedureName]) {
+        [Procedures magnet02AmpsSample:sample
+                          withInitials:initialsTextField.stringValue
+                               inStore:dataStore];
+    } else if ([longNameMagnet04A isEqualToString:selectedProcedureName]) {
+        [Procedures magnet04AmpsSample:sample
+                          withInitials:initialsTextField.stringValue
+                               inStore:dataStore];
+    } else if ([longNameMagnet06A isEqualToString:selectedProcedureName]) {
+        [Procedures magnet06AmpsSample:sample
+                          withInitials:initialsTextField.stringValue
+                               inStore:dataStore];
+    } else if ([longNameMagnet08A isEqualToString:selectedProcedureName]) {
+        [Procedures magnet08AmpsSample:sample
+                          withInitials:initialsTextField.stringValue
+                               inStore:dataStore];
+    } else if ([longNameMagnet10A isEqualToString:selectedProcedureName]) {
+        [Procedures magnet10AmpsSample:sample
+                          withInitials:initialsTextField.stringValue
+                               inStore:dataStore];
+    } else if ([longNameMagnet12A isEqualToString:selectedProcedureName]) {
+        [Procedures magnet12AmpsSample:sample
+                          withInitials:initialsTextField.stringValue
+                               inStore:dataStore];
+    } else if ([longNameMagnet14A isEqualToString:selectedProcedureName]) {
+        [Procedures magnet12AmpsSample:sample
+                          withInitials:initialsTextField.stringValue
+                               inStore:dataStore];
     }
     [samplesWindow reloadSamples];
     [self.window close];

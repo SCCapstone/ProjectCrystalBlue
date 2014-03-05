@@ -31,6 +31,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                      intoTableNamed:[SampleConstants tableName]];
 }
 
++ (void)moveSample:(Sample *)sample
+        toLocation:(NSString *) newLocation
+           inStore:(AbstractLibraryObjectStore *)store
+{
+    DDLogDebug(@"%s", __func__);
+    [[sample attributes] setObject:newLocation forKey:SMP_CURRENT_LOCATION];
+    [store updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
+}
 
 /**
  Procedures that append to a clone of a tag only
@@ -118,326 +126,159 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
  is created with the up. For down procedures the current sample gets the up and a new sample is created with the down
  **/
 
-+ (void)geminiUpSample:(Sample *)sample
-          withInitials:(NSString *)initials
-               inStore:(AbstractLibraryObjectStore *)store
++ (void)geminiSample:(Sample *)sample
+        withInitials:(NSString *)initials
+             inStore:(AbstractLibraryObjectStore *)store
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_GEMINI_UP
+                                     tagString:PROC_TAG_GEMINI_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
 
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_GEMINI_DOWN
+                                     tagString:PROC_TAG_GEMINI_UP
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+}
++ (void)panSample:(Sample *)sample
+     withInitials:(NSString *)initials
+          inStore:(AbstractLibraryObjectStore *)store
+{
+    DDLogDebug(@"%s", __func__);
+    [PrimitiveProcedures appendToCloneOfSample:sample
+                                     tagString:PROC_TAG_PAN_DOWN
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+
+    [PrimitiveProcedures appendToSampleInPlace:sample
+                                     tagString:PROC_TAG_PAN_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
 }
 
-+ (void)geminiDownSample:(Sample *)sample
++ (void)sievesTenSample:(Sample *)sample
+           withInitials:(NSString *)initials
+                inStore:(AbstractLibraryObjectStore *)store
+{
+    DDLogDebug(@"%s", __func__);
+    [PrimitiveProcedures appendToCloneOfSample:sample
+                                     tagString:PROC_TAG_SIEVE_10_DOWN
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+
+    [PrimitiveProcedures appendToSampleInPlace:sample
+                                     tagString:PROC_TAG_SIEVE_10_UP
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+}
+
+/** specifically the heavy liquid up/down methods **/
+
++ (void)heavyLiquid_330_Sample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store
+{
+    DDLogDebug(@"%s", __func__);
+    [PrimitiveProcedures appendToCloneOfSample:sample
+                                     tagString:PROC_TAG_HEAVY_LIQUID_330_DOWN
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+
+    [PrimitiveProcedures appendToSampleInPlace:sample
+                                     tagString:PROC_TAG_HEAVY_LIQUID_330_UP
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+}
+
++ (void)heavyLiquid_290_Sample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store
+{
+    DDLogDebug(@"%s", __func__);
+    [PrimitiveProcedures appendToCloneOfSample:sample
+                                     tagString:PROC_TAG_HEAVY_LIQUID_290_DOWN
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+
+    [PrimitiveProcedures appendToSampleInPlace:sample
+                                     tagString:PROC_TAG_HEAVY_LIQUID_290_UP
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+}
+
++ (void)heavyLiquid_265_Sample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store
+{
+    DDLogDebug(@"%s", __func__);
+    [PrimitiveProcedures appendToCloneOfSample:sample
+                                     tagString:PROC_TAG_HEAVY_LIQUID_265_DOWN
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+
+    [PrimitiveProcedures appendToSampleInPlace:sample
+                                     tagString:PROC_TAG_HEAVY_LIQUID_265_UP
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+}
+
++ (void)heavyLiquid_255_Sample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store
+{
+    DDLogDebug(@"%s", __func__);
+    [PrimitiveProcedures appendToCloneOfSample:sample
+                                     tagString:PROC_TAG_HEAVY_LIQUID_255_DOWN
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+
+    [PrimitiveProcedures appendToSampleInPlace:sample
+                                     tagString:PROC_TAG_HEAVY_LIQUID_255_UP
+                                  withInitials:initials
+                                     intoStore:store
+                                intoTableNamed:[SampleConstants tableName]];
+}
+
+
++ (void)handMagnetSample:(Sample *)sample
             withInitials:(NSString *)initials
                  inStore:(AbstractLibraryObjectStore *)store
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_GEMINI_DOWN
+                                     tagString:PROC_TAG_HAND_MAGNET_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
 
     [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_GEMINI_UP
+                                     tagString:PROC_TAG_HAND_MAGNET_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
 }
 
 
-
-
-+ (void)panUpSample:(Sample *)sample
-       withInitials:(NSString *)initials
-            inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_PAN_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_PAN_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)panDownSample:(Sample *)sample
-         withInitials:(NSString *)initials
-              inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_PAN_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_PAN_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-
-
-+ (void)sievesTenUpSample:(Sample *)sample
-             withInitials:(NSString *)initials
-                  inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_SIEVE_10_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_SIEVE_10_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)sievesTenDownSample:(Sample *)sample
-               withInitials:(NSString *)initials
-                    inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_SIEVE_10_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_SIEVE_10_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-
-/** specifically the heavy liquid up/down methods **/
-
-+ (void)heavyLiquid_330_UpSample:(Sample *)sample
-                    withInitials:(NSString *)initials
-                         inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_330_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_330_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)heavyLiquid_330_DownSample:(Sample *)sample
-                      withInitials:(NSString *)initials
-                           inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_330_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_330_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)heavyLiquid_290_UpSample:(Sample *)sample
-                    withInitials:(NSString *)initials
-                         inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_290_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_290_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)heavyLiquid_290_DownSample:(Sample *)sample
-                      withInitials:(NSString *)initials
-                           inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_290_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_290_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)heavyLiquid_265_UpSample:(Sample *)sample
-                    withInitials:(NSString *)initials
-                         inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_265_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_265_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)heavyLiquid_265_DownSample:(Sample *)sample
-                      withInitials:(NSString *)initials
-                           inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_265_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_265_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)heavyLiquid_255_UpSample:(Sample *)sample
-                    withInitials:(NSString *)initials
-                         inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_255_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_255_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)heavyLiquid_255_DownSample:(Sample *)sample
-                      withInitials:(NSString *)initials
-                           inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_255_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HEAVY_LIQUID_255_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)handMagnetUpSample:(Sample *)sample
++ (void)magnet02AmpsSample:(Sample *)sample
               withInitials:(NSString *)initials
                    inStore:(AbstractLibraryObjectStore *)store
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HAND_MAGNET_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HAND_MAGNET_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)handMagnetDownSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_HAND_MAGNET_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_HAND_MAGNET_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)magnet02AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_02_AMPS_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_02_AMPS_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)magnet02AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
                                      tagString:PROC_TAG_MAGNET_02_AMPS_DOWN
                                   withInitials:initials
                                      intoStore:store
@@ -450,27 +291,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                 intoTableNamed:[SampleConstants tableName]];
 }
 
-+ (void)magnet04AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_04_AMPS_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
 
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_04_AMPS_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)magnet04AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store
++ (void)magnet04AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
@@ -486,27 +310,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                 intoTableNamed:[SampleConstants tableName]];
 }
 
-+ (void)magnet06AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_06_AMPS_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
 
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_06_AMPS_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)magnet06AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store
++ (void)magnet06AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
@@ -522,27 +329,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                 intoTableNamed:[SampleConstants tableName]];
 }
 
-+ (void)magnet08AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_08_AMPS_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_08_AMPS_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)magnet08AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store
++ (void)magnet08AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
@@ -558,27 +347,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                 intoTableNamed:[SampleConstants tableName]];
 }
 
-+ (void)magnet10AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_10_AMPS_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
 
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_10_AMPS_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)magnet10AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store
++ (void)magnet10AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
@@ -594,27 +366,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                 intoTableNamed:[SampleConstants tableName]];
 }
 
-+ (void)magnet12AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_12_AMPS_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
 
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_12_AMPS_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)magnet12AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store
++ (void)magnet12AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
@@ -630,27 +385,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                 intoTableNamed:[SampleConstants tableName]];
 }
 
-+ (void)magnet14AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store
-{
-    DDLogDebug(@"%s", __func__);
-    [PrimitiveProcedures appendToCloneOfSample:sample
-                                     tagString:PROC_TAG_MAGNET_14_AMPS_UP
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
 
-    [PrimitiveProcedures appendToSampleInPlace:sample
-                                     tagString:PROC_TAG_MAGNET_14_AMPS_DOWN
-                                  withInitials:initials
-                                     intoStore:store
-                                intoTableNamed:[SampleConstants tableName]];
-}
-
-+ (void)magnet14AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store
++ (void)magnet14AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSample:sample
@@ -665,6 +403,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                      intoStore:store
                                 intoTableNamed:[SampleConstants tableName]];
 }
+
 
 /**
  Customized Tag method

@@ -172,6 +172,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     proceduresWindowController = [[ProceduresWindowController alloc] initWithWindowNibName:@"ProceduresWindowController"];
     [proceduresWindowController setSample:s];
     [proceduresWindowController setDataStore:dataStore];
+    [proceduresWindowController setSamplesWindow:self];
     [proceduresWindowController showWindow:self];
     [[proceduresWindowController window] makeKeyAndOrderFront:self];
     self.proceduresWindowController = proceduresWindowController;
