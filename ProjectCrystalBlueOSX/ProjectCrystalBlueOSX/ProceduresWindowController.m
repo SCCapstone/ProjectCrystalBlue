@@ -141,7 +141,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     } else if ([longNameMagnet14A isEqualToString:selectedProcedureName]) {
-        [Procedures magnet12AmpsSample:sample
+        [Procedures magnet14AmpsSample:sample
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     }
