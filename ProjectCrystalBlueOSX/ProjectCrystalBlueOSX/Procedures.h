@@ -27,6 +27,13 @@
                inStore:(AbstractLibraryObjectStore *)store;
 
 /**
+ * Used to change location of a sample
+ **/
++ (void)moveSample:(Sample *)sample
+        toLocation:(NSString *) newLocation
+           inStore:(AbstractLibraryObjectStore *)store;
+
+/**
  * Make a slab from a sample. This creates a new sample and adds slab to its procedures
  **/
 + (void)makeSlabfromSample:(Sample *)sample
@@ -72,243 +79,132 @@
  *  Sample was considered gemeni up. This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)geminiUpSample:(Sample *)sample
-          withInitials:(NSString *)initials
-               inStore:(AbstractLibraryObjectStore *)store;
-
-/**
- *  Sample was considered gemeni up. This creates a new sample and adds this attribute and appends down
- *  to the current sample.
- */
-+ (void)geminiDownSample:(Sample *)sample
-            withInitials:(NSString *)initials
-                 inStore:(AbstractLibraryObjectStore *)store;
++ (void)geminiSample:(Sample *)sample
+        withInitials:(NSString *)initials
+             inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered pan up. This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)panUpSample:(Sample *)sample
-       withInitials:(NSString *)initials
-            inStore:(AbstractLibraryObjectStore *)store;
++ (void)panSample:(Sample *)sample
+     withInitials:(NSString *)initials
+          inStore:(AbstractLibraryObjectStore *)store;
 
-/**
- *  Sample was considered pan down. This creates a new sample and adds this attribute and appends up
- *  to the current sample.
- */
-+ (void)panDownSample:(Sample *)sample
-         withInitials:(NSString *)initials
-              inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered sieves up. This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)sievesTenUpSample:(Sample *)sample
-             withInitials:(NSString *)initials
-                  inStore:(AbstractLibraryObjectStore *)store;
++ (void)sievesTenSample:(Sample *)sample
+           withInitials:(NSString *)initials
+                inStore:(AbstractLibraryObjectStore *)store;
 
-/**
- *  Sample was considered sieves down. This creates a new sample and adds this attribute and appends up
- *  to the current sample.
- */
-+ (void)sievesTenDownSample:(Sample *)sample
-               withInitials:(NSString *)initials
-                    inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered hL330 up. This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)heavyLiquid_330_UpSample:(Sample *)sample
-                    withInitials:(NSString *)initials
-                         inStore:(AbstractLibraryObjectStore *)store;
++ (void)heavyLiquid_330_Sample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store;
 
-/**
- *  Sample was considered hL330 down. This creates a new sample and adds this attribute and appends up
- *  to the current sample.
- */
-+ (void)heavyLiquid_330_DownSample:(Sample *)sample
-                      withInitials:(NSString *)initials
-                           inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered hL290 up. This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)heavyLiquid_290_UpSample:(Sample *)sample
-                    withInitials:(NSString *)initials
-                         inStore:(AbstractLibraryObjectStore *)store;
++ (void)heavyLiquid_290_Sample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store;
 
-/**
- *  Sample was considered hL290 down. This creates a new sample and adds this attribute and appends up
- *  to the current sample.
- */
-+ (void)heavyLiquid_290_DownSample:(Sample *)sample
-                      withInitials:(NSString *)initials
-                           inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered hL265 up. This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)heavyLiquid_265_UpSample:(Sample *)sample
-                    withInitials:(NSString *)initials
-                         inStore:(AbstractLibraryObjectStore *)store;
++ (void)heavyLiquid_265_Sample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store;
 
-
-/**
- *  Sample was considered hL265 down. This creates a new sample and adds this attribute and appends up
- *  to the current sample.
- */
-+ (void)heavyLiquid_265_DownSample:(Sample *)sample
-                      withInitials:(NSString *)initials
-                           inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered hL255 up. This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)heavyLiquid_255_UpSample:(Sample *)sample
-                    withInitials:(NSString *)initials
-                         inStore:(AbstractLibraryObjectStore *)store;
-
-/**
- *  Sample was considered hL255 down. This creates a new sample and adds this attribute and appends up
- *  to the current sample.
- */
-+ (void)heavyLiquid_255_DownSample:(Sample *)sample
-                      withInitials:(NSString *)initials
-                           inStore:(AbstractLibraryObjectStore *)store;
++ (void)heavyLiquid_255_Sample:(Sample *)sample
+                  withInitials:(NSString *)initials
+                       inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered handMagnet up.This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)handMagnetUpSample:(Sample *)sample
-              withInitials:(NSString *)initials
-                   inStore:(AbstractLibraryObjectStore *)store;
-
-/**
- *  Sample was considered handMagnet up.This creates a new sample and adds this attribute and appends down
- *  to the current sample.
- */
-+ (void)handMagnetDownSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store;
++ (void)handMagnetSample:(Sample *)sample
+            withInitials:(NSString *)initials
+                 inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered Magnet .2 up.This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)magnet02AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store;
++ (void)magnet02AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store;
 
-/**
- *  Sample was considered Magnet .2 down.This creates a new sample and adds this attribute and appends down
- *  to the current sample.
- */
-+ (void)magnet02AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered Magnet .4 up.This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)magnet04AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store;
++ (void)magnet04AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store;
 
-/**
- *  Sample was considered Magnet 4 down.This creates a new sample and adds this attribute and appends down
- *  to the current sample.
- */
-+ (void)magnet04AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered Magnet .6 up.This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)magnet06AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store;
++ (void)magnet06AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store;
 
-/**
- *  Sample was considered Magnet .6 down.This creates a new sample and adds this attribute and appends down
- *  to the current sample.
- */
-+ (void)magnet06AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered Magnet .8 up.This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)magnet08AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store;
++ (void)magnet08AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store;
 
-/**
- *  Sample was considered Magnet .8 down.This creates a new sample and adds this attribute and appends down
- *  to the current sample.
- */
-+ (void)magnet08AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered Magnet 1.0 up.This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)magnet10AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store;
++ (void)magnet10AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store;
 
-/**
- *  Sample was considered Magnet 1.0 down.This creates a new sample and adds this attribute and appends down
- *  to the current sample.
- */
-+ (void)magnet10AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered Magnet 1.2 up.This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)magnet12AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store;
++ (void)magnet12AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store;
 
-/**
- *  Sample was considered Magnet 1.2 down.This creates a new sample and adds this attribute and appends down
- *  to the current sample.
- */
-+ (void)magnet12AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store;
 
 /**
  *  Sample was considered Magnet 1.4 up.This creates a new sample and adds this attribute and appends down
  *  to the current sample.
  */
-+ (void)magnet14AmpsUpSample:(Sample *)sample
-                withInitials:(NSString *)initials
-                     inStore:(AbstractLibraryObjectStore *)store;
-
-/**
- *  Sample was considered Magnet 1.4 down.This creates a new sample and adds this attribute and appends down
- *  to the current sample.
- */
-+ (void)magnet14AmpsDownSample:(Sample *)sample
-                  withInitials:(NSString *)initials
-                       inStore:(AbstractLibraryObjectStore *)store;
-
++ (void)magnet14AmpsSample:(Sample *)sample
+              withInitials:(NSString *)initials
+                   inStore:(AbstractLibraryObjectStore *)store;
 
 
 /**
