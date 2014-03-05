@@ -31,17 +31,22 @@
 
 -(void)displayInformationAboutLibraryObject:(LibraryObject *)libraryObject
 {
-    NSMutableString *infoString = [[NSMutableString alloc] init];
+    NSMutableString *attributeLabels = [[NSMutableString alloc] init];
+    NSMutableString *attributeValues = [[NSMutableString alloc] init];
     for (NSString *attribute in libraryObject.attributes.allKeys) {
+        NSString *attributeLabel = [SourceConstants humanReadableLabelForAttribute:attribute];
         NSString *attributeVal = [libraryObject.attributes objectForKey:attribute];
-        [infoString appendFormat:@"%@: %@\n", attribute, attributeVal];
+        [attributeLabels appendFormat:@"%@: \n", attributeLabel];
+        [attributeValues appendFormat:@" %@\n", attributeVal];
     }
-    [self.objectInfoLabel setStringValue:infoString];
+    [self.objectAttributeLabels setStringValue:attributeLabels];
+    [self.objectAttributeValues setStringValue:attributeValues];
 }
 
 -(void)clear
 {
-    self.objectInfoLabel.stringValue = @"No object selected";
+    self.objectAttributeLabels.stringValue = @"No object selected";
+    self.objectAttributeValues.stringValue = @"";
 }
 
 @end
