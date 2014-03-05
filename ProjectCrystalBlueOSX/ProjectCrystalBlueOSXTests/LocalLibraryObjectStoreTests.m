@@ -227,6 +227,7 @@
     // Setup some objects to store
     [self populateDatabaseWithLibraryObjectStore:libraryObjectStore];
     
+    // Delete a source and make sure its samples are deleted too
     BOOL deleteSuccess = [libraryObjectStore deleteLibraryObjectWithKey:@"rock1" FromTable:[SourceConstants tableName]];
     XCTAssertTrue(deleteSuccess, @"LibraryObjectStore failed to delete the library object and its samples from the database.");
     NSArray *samples = [libraryObjectStore getAllLibraryObjectsFromTable:[SampleConstants tableName]];
@@ -234,6 +235,27 @@
     XCTAssertTrue(samples.count == 20, @"LibraryObjectStore should have returned 1 sample.");
 }
 
+- (void)testGetAllLibraryObjectsForAttributeValue
+{
+    AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
+                                                                                          WithDatabaseName:DATABASE_NAME];
+    // Setup some objects to store
+    [self populateDatabaseWithLibraryObjectStore:libraryObjectStore];
+    
+    // Ensure all objects with attribute value are retrieved
+    NSArray *samples = [libraryObjectStore getAllLibraryObjectsForAttributeName:SMP_SOURCE_KEY
+                                                             WithAttributeValue:@"rock1"
+                                                                      FromTable:[SampleConstants tableName]];
+    XCTAssertNotNil(samples, @"LibraryObjectStore failed to get objects from store.");
+    XCTAssertTrue(samples.count == 5, @"LibraryObjectStore failed to return the correct number of objects.");
+    
+    // Ensure if no values apply, empty array is returned
+    samples = [libraryObjectStore getAllLibraryObjectsForAttributeName:SMP_SOURCE_KEY
+                                                    WithAttributeValue:@"rock7"
+                                                             FromTable:[SampleConstants tableName]];
+    XCTAssertNotNil(samples, @"LibraryObjectStore failed to get objects from store.");
+    XCTAssertTrue(samples.count == 0, @"LibraryObjectStore failed to return the correct number of objects.");
+}
 
 - (void)populateDatabaseWithLibraryObjectStore:(AbstractLibraryObjectStore *)libraryObjectStore
 {
@@ -252,6 +274,7 @@
         }
     }
     
+    // Make sure objects were put into the store correctly
     NSArray *sources = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
     XCTAssertNotNil(sources, @"LibraryObjectStore faied to get sources from table.");
     XCTAssertTrue(sources.count == 5, @"LibraryObjectStore failed to put all source objects.");
