@@ -57,6 +57,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return nil;
 }
 
+- (NSArray *)getUniqueAttributeValuesForAttributeName:(NSString *)attributeName
+                                            FromTable:(NSString *)tableName
+{
+    [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
+    return nil;
+}
+
 - (NSArray *)executeSqlQuery:(NSString *)sql
                      OnTable:(NSString *)tableName
 {

@@ -203,12 +203,12 @@
     [self populateDatabaseWithLibraryObjectStore:libraryObjectStore];
     
     // Execute some commands and make sure they return the correct objects
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE sourceKey='rock1'", [SampleConstants tableName]];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@='rock1'", [SampleConstants tableName], SMP_SOURCE_KEY];
     NSArray *libraryObjects = [libraryObjectStore executeSqlQuery:sql OnTable:[SampleConstants tableName]];
     XCTAssertNotNil(libraryObjects, @"LibraryObjectStore failed to execute the query.");
     XCTAssertTrue(libraryObjects.count == 5, @"LibraryObjectStore should have returned 5 samples.");
     
-    sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE sourceKey='rock4'", [SampleConstants tableName]];
+    sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@='rock4'", [SampleConstants tableName], SMP_SOURCE_KEY];
     libraryObjects = [libraryObjectStore executeSqlQuery:sql OnTable:[SampleConstants tableName]];
     XCTAssertNotNil(libraryObjects, @"LibraryObjectStore failed to execute the query.");
     XCTAssertTrue(libraryObjects.count == 5, @"LibraryObjectStore should have returned 5 samples.");
@@ -257,12 +257,32 @@
     XCTAssertTrue(samples.count == 0, @"LibraryObjectStore failed to return the correct number of objects.");
 }
 
+- (void)testGetUniqueAttributeValues
+{
+    AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
+                                                                                          WithDatabaseName:DATABASE_NAME];
+    // Setup some objects to store
+    [self populateDatabaseWithLibraryObjectStore:libraryObjectStore];
+    
+    // Try to get unique values and make sure the correct number is returned
+    NSArray *uniqueValues = [libraryObjectStore getUniqueAttributeValuesForAttributeName:SRC_AGE
+                                                                               FromTable:[SourceConstants tableName]];
+    XCTAssertNotNil(uniqueValues, @"LibraryObjectStore failed to get unique values from store.");
+    XCTAssertTrue(uniqueValues.count == 1, @"LibraryObjectStore returned the incorrect number of items.");
+    
+    uniqueValues = [libraryObjectStore getUniqueAttributeValuesForAttributeName:SRC_KEY
+                                                                      FromTable:[SourceConstants tableName]];
+    XCTAssertNotNil(uniqueValues, @"LibraryObjectStore failed to get unique values from store.");
+    XCTAssertTrue(uniqueValues.count == 5, @"LibraryObjectStore returned the incorrect number of items.");
+}
+
 - (void)populateDatabaseWithLibraryObjectStore:(AbstractLibraryObjectStore *)libraryObjectStore
 {
     for (int i=0; i<5; i++)
     {
         NSString *sourceKey = [NSString stringWithFormat:@"rock%d", i];
         Source *source = [[Source alloc] initWithKey:sourceKey AndWithValues:[SourceConstants attributeDefaultValues]];
+        [source.attributes setObject:@"really old..." forKey:SRC_AGE];
         [libraryObjectStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
         
         for (int j=0; j<5; j++)

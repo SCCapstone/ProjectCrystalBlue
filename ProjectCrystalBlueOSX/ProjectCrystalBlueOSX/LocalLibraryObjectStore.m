@@ -190,6 +190,36 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return libraryObjects;
 }
 
+- (NSArray *)getUniqueAttributeValuesForAttributeName:(NSString *)attributeName
+                                            FromTable:(NSString *)tableName
+{
+    if (![tableName isEqualToString:[SourceConstants tableName]] && ![tableName isEqualToString:[SampleConstants tableName]]) {
+        DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
+        return nil;
+    }
+    NSString *sql = [NSString stringWithFormat:@"SELECT DISTINCT %@ FROM %@", attributeName, tableName];
+    
+    // Get all corresponding samples from table
+    __block NSMutableArray *attributeValues = [[NSMutableArray alloc] init];;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        FMResultSet *results = [localDatabase executeQuery:sql];
+        
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: SQLite failed to get all distinct attribute values for attributeName. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [results close];
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to get all distinct attribute values for attributeName." userInfo:nil] raise];
+        }
+        
+        // Add all the results to the samples array
+        while (results.next) {
+            [attributeValues addObject:[results.resultDictionary objectForKey:attributeName]];
+        }
+        [results close];
+    }];
+    
+    return attributeValues;
+}
+
 - (NSArray *)executeSqlQuery:(NSString *)sql
                      OnTable:(NSString *)tableName
 {
