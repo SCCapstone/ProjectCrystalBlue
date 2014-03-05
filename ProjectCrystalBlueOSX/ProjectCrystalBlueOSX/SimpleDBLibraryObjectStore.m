@@ -237,6 +237,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [localStore getAllLibraryObjectsForAttributeName:attributeName WithAttributeValue:attributeValue FromTable:tableName];
 }
 
+- (NSArray *)getUniqueAttributeValuesForAttributeName:(NSString *)attributeName
+                                            FromTable:(NSString *)tableName
+{
+    return [localStore getUniqueAttributeValuesForAttributeName:attributeName FromTable:tableName];
+}
+
 - (NSArray *)executeSqlQuery:(NSString *)sql
                      OnTable:(NSString *)tableName
 {

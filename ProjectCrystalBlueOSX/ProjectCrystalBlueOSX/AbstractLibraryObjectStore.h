@@ -36,6 +36,13 @@
                                WithAttributeValue:(NSString *)attributeValue
                                         FromTable:(NSString *)tableName;
 
+/** Retrieve an array of unique attribute values for the specified attribute name.
+ *
+ *  Use case of autocomplete a field based on previous entries.
+ */
+- (NSArray *)getUniqueAttributeValuesForAttributeName:(NSString *)attributeName
+                                            FromTable:(NSString *)tableName;
+
 /** Execute a query on the table.
  *
  *  This should only be a SELECT query to get library objects, do not attempt 
