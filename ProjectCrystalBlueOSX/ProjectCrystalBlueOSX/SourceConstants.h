@@ -54,6 +54,29 @@ static NSString *const SRC_DEF_VAL_DATE_COLLECTED = @"Date_Collected here";
 static NSString *const SRC_DEF_VAL_PROJECT      = @"Project here";
 static NSString *const SRC_DEF_VAL_SUBPROJECT   = @"Subproject here";
 
+/*  Human-readable attribute names
+ */
+static NSString *const SRC_DISPLAY_KEY          = @"Key";
+static NSString *const SRC_DISPLAY_CONTINENT    = @"Continent";
+static NSString *const SRC_DISPLAY_TYPE         = @"Type";
+static NSString *const SRC_DISPLAY_LITHOLOGY    = @"Lithology";
+static NSString *const SRC_DISPLAY_DEPOSYSTEM   = @"Deposystem";
+static NSString *const SRC_DISPLAY_GROUP        = @"Group";
+static NSString *const SRC_DISPLAY_FORMATION    = @"Formation";
+static NSString *const SRC_DISPLAY_MEMBER       = @"Member";
+static NSString *const SRC_DISPLAY_REGION       = @"Region";
+static NSString *const SRC_DISPLAY_LOCALITY     = @"Locality";
+static NSString *const SRC_DISPLAY_SECTION      = @"Section";
+static NSString *const SRC_DISPLAY_METER_LEVEL  = @"Meter level";
+static NSString *const SRC_DISPLAY_LATITUDE     = @"Latitude";
+static NSString *const SRC_DISPLAY_LONGITUDE    = @"Longitude";
+static NSString *const SRC_DISPLAY_AGE          = @"Age";
+static NSString *const SRC_DISPLAY_AGE_BASIS1   = @"Age Basis 1";
+static NSString *const SRC_DISPLAY_AGE_BASIS2   = @"Age Basis 2";
+static NSString *const SRC_DISPLAY_DATE_COLLECTED = @"Date Collected";
+static NSString *const SRC_DISPLAY_PROJECT      = @"Project";
+static NSString *const SRC_DISPLAY_SUBPROJECT   = @"Subproject";
+
 @interface SourceConstants : NSObject
 
 /// Array of all attributes stored in the database
@@ -61,6 +84,12 @@ static NSString *const SRC_DEF_VAL_SUBPROJECT   = @"Subproject here";
 
 /// Array of default values for each attribute
 + (NSArray *)attributeDefaultValues;
+
+/// Array of human-readable labels for each attribute
++ (NSArray *)humanReadableLabels;
+
+/// Return the human-readable label corresponding to an attribute name
++ (NSString *)humanReadableLabelForAttribute:(NSString *)attributeName;
 
 /// Returns the name of the local and remote table name for Source
 + (NSString *)tableName;

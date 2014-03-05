@@ -82,6 +82,48 @@ static NSString *const SOURCE_TABLE_NAME = @"test_source_table";
     return attributeDefaultValues;
 }
 
++ (NSArray *)humanReadableLabels
+{
+    static NSArray *attributeLabelValues = nil;
+    if (!attributeLabelValues)
+    {
+        attributeLabelValues = [NSArray arrayWithObjects:
+                                SRC_DISPLAY_KEY,
+                                SRC_DISPLAY_CONTINENT,
+                                SRC_DISPLAY_TYPE,
+                                SRC_DISPLAY_LITHOLOGY,
+                                SRC_DISPLAY_DEPOSYSTEM,
+                                SRC_DISPLAY_GROUP,
+                                SRC_DISPLAY_FORMATION,
+                                SRC_DISPLAY_MEMBER,
+                                SRC_DISPLAY_REGION,
+                                SRC_DISPLAY_LOCALITY,
+                                SRC_DISPLAY_SECTION,
+                                SRC_DISPLAY_METER_LEVEL,
+                                SRC_DISPLAY_LATITUDE,
+                                SRC_DISPLAY_LONGITUDE,
+                                SRC_DISPLAY_AGE,
+                                SRC_DISPLAY_AGE_BASIS1,
+                                SRC_DISPLAY_AGE_BASIS2,
+                                SRC_DISPLAY_DATE_COLLECTED,
+                                SRC_DISPLAY_PROJECT,
+                                SRC_DISPLAY_SUBPROJECT, nil];
+    }
+    return attributeLabelValues;
+}
+
++ (NSString *)humanReadableLabelForAttribute:(NSString *)attributeName
+{
+    NSUInteger index = [[self.class attributeNames] indexOfObject:attributeName];
+    if (index == NSNotFound) {
+        DDLogWarn(@"%@: %@ attribute is unknown.", NSStringFromClass(self.class), attributeName);
+        return attributeName;
+    }
+
+    NSString *label = [[self.class humanReadableLabels] objectAtIndex:index];
+    return label;
+}
+
 + (NSString *)tableName
 {
     return SOURCE_TABLE_NAME;
