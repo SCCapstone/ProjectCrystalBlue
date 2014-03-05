@@ -7,6 +7,11 @@
 //
 
 #import "DetailPanelViewController.h"
+#import "ProcedureRecordParser.h"
+
+#define DISPLAYING_SOURCE 1
+#define DISPLAYING_SAMPLE 2
+#define DISPLAYING_OTHER -1
 
 @interface DetailPanelViewController ()
 
@@ -31,14 +36,34 @@
 
 -(void)displayInformationAboutLibraryObject:(LibraryObject *)libraryObject
 {
+    NSUInteger kind = DISPLAYING_OTHER;
+    if ([libraryObject isKindOfClass:[Source class]]) {
+        kind = DISPLAYING_SOURCE;
+    } else if ([libraryObject isKindOfClass:[Sample class]]) {
+        kind = DISPLAYING_SAMPLE;
+    }
+
     NSMutableString *attributeLabels = [[NSMutableString alloc] init];
     NSMutableString *attributeValues = [[NSMutableString alloc] init];
     for (NSString *attribute in libraryObject.attributes.allKeys) {
-        NSString *attributeLabel = [SourceConstants humanReadableLabelForAttribute:attribute];
+        NSString *attributeLabel;
+        if (kind == DISPLAYING_SOURCE) {
+            attributeLabel = [SourceConstants humanReadableLabelForAttribute:attribute];
+        } else if (kind == DISPLAYING_SAMPLE) {
+            attributeLabel = [SampleConstants humanReadableLabelForAttribute:attribute];
+        } else {
+            attributeLabel = attribute;
+        }
         NSString *attributeVal = [libraryObject.attributes objectForKey:attribute];
         [attributeLabels appendFormat:@"%@: \n", attributeLabel];
         [attributeValues appendFormat:@" %@\n", attributeVal];
     }
+    if (kind == DISPLAYING_SAMPLE) {
+        NSString *mostRecent = [ProcedureRecordParser mostRecentProcedurePerformedOnSample:(Sample *)libraryObject];
+        [attributeLabels appendFormat:@"\nMost Recent Procedure:\n"];
+        [attributeValues appendFormat:@"\n %@\n", mostRecent];
+    }
+
     [self.objectAttributeLabels setStringValue:attributeLabels];
     [self.objectAttributeValues setStringValue:attributeValues];
 }

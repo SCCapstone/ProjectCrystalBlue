@@ -24,6 +24,13 @@ static NSString *const SMP_DEF_VAL_CURRENT_LOCATION = @"USC";
 // default tags is intentionally empty string, since a fresh sample has had no procedures performed on it.
 static NSString *const SMP_DEF_VAL_TAGS = @"";
 
+/*  Human readable attribute labels
+ */
+static NSString *const SMP_DISPLAY_KEY = @"Sample Key";
+static NSString *const SMP_DISPLAY_SOURCE_KEY = @"Original Source";
+static NSString *const SMP_DISPLAY_CURRENT_LOCATION = @"Current Location";
+static NSString *const SMP_DISPLAY_TAGS = @"Procedure Log";
+
 @interface SampleConstants : NSObject
 
 /// Array of all attributes stored in the database
@@ -31,6 +38,12 @@ static NSString *const SMP_DEF_VAL_TAGS = @"";
 
 /// Array of default values for each attribute
 + (NSArray *)attributeDefaultValues;
+
+/// Array of human-readable labels for each attribute
++ (NSArray *)humanReadableLabels;
+
+/// Return the human-readable label corresponding to an attribute name
++ (NSString *)humanReadableLabelForAttribute:(NSString *)attributeName;
 
 /// Returns the name of the local and remote table name for Sample
 + (NSString *)tableName;

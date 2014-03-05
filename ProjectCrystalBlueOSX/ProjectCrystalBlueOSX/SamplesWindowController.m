@@ -26,6 +26,7 @@
 
 // Views
 #import "ProceduresWindowController.h"
+#import "DetailPanelViewController.h"
 
 // Logging
 #import "DDLog.h"
@@ -43,12 +44,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @synthesize dataStore;
 @synthesize source;
+@synthesize detailPanelViewController;
 
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
     if (self) {
-        // Initialization code here.
+        detailPanelViewController = [[DetailPanelViewController alloc] initWithNibName:@"DetailPanelViewController"
+                                                                                bundle:nil];
     }
     return self;
 }
@@ -59,6 +62,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [self addColumnsToSamplesTable];
     NSString *windowTitle = [NSString stringWithFormat:@"Samples for %@", source.key];
     [self.window setTitle:windowTitle];
+    [self.splitView addSubview:[detailPanelViewController view]];
 }
 
 - (void)addColumnsToSamplesTable
@@ -91,6 +95,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return [[sample attributes] objectForKey:attributeKey];
     }
     return nil;
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    NSInteger selectedRow = [self.sampleTable selectedRow];
+    if (selectedRow < 0) {
+        [detailPanelViewController clear];
+        return;
+    }
+
+    LibraryObject *object = [[dataStore getAllSamplesForSourceKey:source.key]
+                                                    objectAtIndex:selectedRow];
+
+    [detailPanelViewController displayInformationAboutLibraryObject:object];
 }
 
 - (IBAction)newBlankSample:(id)sender {
