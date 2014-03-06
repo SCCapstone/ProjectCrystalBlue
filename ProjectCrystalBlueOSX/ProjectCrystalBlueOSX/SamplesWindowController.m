@@ -112,6 +112,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [detailPanelViewController displayInformationAboutLibraryObject:object];
 }
 
+- (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn
+              row:(NSInteger)row
+{
+    return NO;
+}
+
 - (IBAction)newBlankSample:(id)sender {
     DDLogDebug(@"%s", __PRETTY_FUNCTION__);
     NSInteger selectedRow = self.sampleTable.selectedRow;

@@ -127,6 +127,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [detailPanel displayInformationAboutLibraryObject:object];
 }
 
+- (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn
+              row:(NSInteger)row
+{
+    return NO;
+}
+
 /*  These are methods that are called when the user clicks on the toolbar items.
  *  Due to the way the Windows/Views are set up in the app, the toolbar is actually
  *  part of the main menu window, not part of the SourcesView. So the AppDelegate will
