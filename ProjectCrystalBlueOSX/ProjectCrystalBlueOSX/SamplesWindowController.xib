@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SamplesWindowController">
             <connections>
+                <outlet property="changeLocation" destination="4a7-0P-Z0S" id="V9k-bg-obK"/>
                 <outlet property="sampleTable" destination="um7-yf-qXf" id="U1R-ff-nhF"/>
                 <outlet property="splitView" destination="vwj-It-SN5" id="3I8-wH-uOp"/>
                 <outlet property="window" destination="1" id="3"/>
@@ -80,7 +81,7 @@
                             <action selector="newBlankSample:" target="-2" id="09q-5f-sDL"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="CEA823AF-C6F2-4628-A274-69FA1D101699" label="Delete Sample" paletteLabel="Delete Sample" tag="-1" image="NSRemoveTemplate" id="5TY-yF-SSD">
+                    <toolbarItem implicitItemIdentifier="CEA823AF-C6F2-4628-A274-69FA1D101699" label="Delete Sample" paletteLabel="Delete Sample" tag="-1" image="NSTrashEmpty" id="5TY-yF-SSD">
                         <connections>
                             <action selector="deleteSample:" target="-2" id="374-7Q-rhJ"/>
                         </connections>
@@ -95,11 +96,17 @@
                             <action selector="importExport:" target="-2" id="tDE-Mx-zUD"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="A6218AFC-4996-4F44-A78E-35EC551DD97B" label="Change Location" paletteLabel="Change Location" tag="-1" image="NSFollowLinkFreestandingTemplate" id="4a7-0P-Z0S">
+                        <connections>
+                            <action selector="changeLocation:" target="-2" id="c7A-D0-JaO"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="DPG-fu-3ch"/>
                     <toolbarItem reference="5TY-yF-SSD"/>
                     <toolbarItem reference="P2Q-9b-ZzZ"/>
+                    <toolbarItem reference="4a7-0P-Z0S"/>
                     <toolbarItem reference="VOz-dN-1mK"/>
                 </defaultToolbarItems>
             </toolbar>
@@ -111,7 +118,8 @@
     <resources>
         <image name="NSAddTemplate" width="8" height="8"/>
         <image name="NSAdvanced" width="32" height="32"/>
-        <image name="NSRemoveTemplate" width="8" height="8"/>
+        <image name="NSFollowLinkFreestandingTemplate" width="10" height="10"/>
         <image name="NSShareTemplate" width="18" height="16"/>
+        <image name="NSTrashEmpty" width="32" height="32"/>
     </resources>
 </document>

@@ -27,6 +27,7 @@
 // Views
 #import "ProceduresWindowController.h"
 #import "DetailPanelViewController.h"
+#import "ChangeLocationWindowController.h"
 
 // Logging
 #import "DDLog.h"
@@ -45,6 +46,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 @synthesize dataStore;
 @synthesize source;
 @synthesize detailPanelViewController;
+@synthesize changeLocationController;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -201,6 +203,29 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [proceduresWindowController showWindow:self];
     [[proceduresWindowController window] makeKeyAndOrderFront:self];
     self.proceduresWindowController = proceduresWindowController;
+}
+
+
+- (IBAction)changeLocation:(id)sender
+{
+    DDLogDebug(@"%s", __PRETTY_FUNCTION__);
+    NSInteger selectedRow = [self.sampleTable selectedRow];
+    if (selectedRow < 0) {
+        return;
+    }
+
+    Sample *s = [[dataStore getAllSamplesForSourceKey:source.key ] objectAtIndex:selectedRow];
+
+    changeLocationController = [[ChangeLocationWindowController alloc] initWithWindowNibName:@"ChangeLocationWindowController"];
+    [changeLocationController setSample:s];
+    [changeLocationController setDataStore:dataStore];
+    [changeLocationController setSamplesWindow:self];
+
+    NSRect contentRect = self.window.frame;
+    contentRect.size.height *= 0.5;
+    [changeLocationController.window setFrame:contentRect display:NO];
+    [changeLocationController showWindow:self];
+    [[changeLocationController window] makeKeyAndOrderFront:self];
 }
 
 - (IBAction)importExport:(id)sender {

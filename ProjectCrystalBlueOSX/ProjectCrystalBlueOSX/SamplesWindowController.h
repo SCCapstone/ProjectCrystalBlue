@@ -10,6 +10,7 @@
 #import "ImportResult.h"
 @class AbstractLibraryObjectStore;
 @class DetailPanelViewController;
+@class ChangeLocationWindowController;
 @class Source;
 
 @interface SamplesWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, ImportResultReporter>
@@ -22,12 +23,14 @@
 @property (weak) IBOutlet NSSplitView *splitView;
 @property (weak) IBOutlet NSTableView *sampleTable;
 @property (strong) NSWindowController *proceduresWindowController;
+@property (strong) ChangeLocationWindowController *changeLocationController;
 @property (strong) DetailPanelViewController *detailPanelViewController;
 
 - (IBAction)newBlankSample:(id)sender;
 - (IBAction)deleteSample:(id)sender;
 - (IBAction)performProcedure:(id)sender;
 - (IBAction)importExport:(id)sender;
+- (IBAction)changeLocation:(id)sender;
 
 - (void)reloadSamples;
 

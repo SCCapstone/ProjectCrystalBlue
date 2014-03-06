@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
-		D0655A0518B207F7008947B5 /* SamplesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F822BD18B199450017548F /* SamplesViewController.m */; };
 		D0655A0718B209CB008947B5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
@@ -70,6 +69,8 @@
 		D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */; };
 		D770578518AD7CC100F011E5 /* EditSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D770578318AD7CC100F011E5 /* EditSourceViewController.m */; };
 		D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D770578418AD7CC100F011E5 /* EditSourceViewController.xib */; };
+		D780E1F318C83812003F3D92 /* ChangeLocationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D780E1F118C83812003F3D92 /* ChangeLocationWindowController.m */; };
+		D780E1F418C83812003F3D92 /* ChangeLocationWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D780E1F218C83812003F3D92 /* ChangeLocationWindowController.xib */; };
 		D78ACC3B18A5FDC0006084D6 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC3218A5FDC0006084D6 /* FMDatabase.m */; };
 		D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC3418A5FDC0006084D6 /* FMDatabaseAdditions.m */; };
 		D78ACC3D18A5FDC0006084D6 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC3618A5FDC0006084D6 /* FMDatabasePool.m */; };
@@ -110,7 +111,6 @@
 		D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */; };
 		D7EA0B8E18A84B14003D74BA /* AddNewSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */; };
 		D7EA0B8F18A84B14003D74BA /* AddNewSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */; };
-		D7F822C018B199450017548F /* SamplesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F822BE18B199450017548F /* SamplesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +213,9 @@
 		D770578218AD7CC100F011E5 /* EditSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSourceViewController.h; sourceTree = "<group>"; };
 		D770578318AD7CC100F011E5 /* EditSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSourceViewController.m; sourceTree = "<group>"; };
 		D770578418AD7CC100F011E5 /* EditSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditSourceViewController.xib; sourceTree = "<group>"; };
+		D780E1F018C83812003F3D92 /* ChangeLocationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeLocationWindowController.h; sourceTree = "<group>"; };
+		D780E1F118C83812003F3D92 /* ChangeLocationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeLocationWindowController.m; sourceTree = "<group>"; };
+		D780E1F218C83812003F3D92 /* ChangeLocationWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeLocationWindowController.xib; sourceTree = "<group>"; };
 		D78ACC3118A5FDC0006084D6 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		D78ACC3218A5FDC0006084D6 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		D78ACC3318A5FDC0006084D6 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -288,9 +291,6 @@
 		D7EA0B8B18A84B14003D74BA /* AddNewSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSourceViewController.h; sourceTree = "<group>"; };
 		D7EA0B8C18A84B14003D74BA /* AddNewSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSourceViewController.m; sourceTree = "<group>"; };
 		D7EA0B8D18A84B14003D74BA /* AddNewSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewSourceViewController.xib; sourceTree = "<group>"; };
-		D7F822BC18B199450017548F /* SamplesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesViewController.h; sourceTree = "<group>"; };
-		D7F822BD18B199450017548F /* SamplesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesViewController.m; sourceTree = "<group>"; };
-		D7F822BE18B199450017548F /* SamplesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -602,6 +602,16 @@
 			name = EditSourceView;
 			sourceTree = "<group>";
 		};
+		D780E1EF18C837FC003F3D92 /* ChangeLocationWindow */ = {
+			isa = PBXGroup;
+			children = (
+				D780E1F018C83812003F3D92 /* ChangeLocationWindowController.h */,
+				D780E1F118C83812003F3D92 /* ChangeLocationWindowController.m */,
+				D780E1F218C83812003F3D92 /* ChangeLocationWindowController.xib */,
+			);
+			name = ChangeLocationWindow;
+			sourceTree = "<group>";
+		};
 		D78ACC2B18A5FD7F006084D6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +671,7 @@
 		D78ACC2F18A5FD9B006084D6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D780E1EF18C837FC003F3D92 /* ChangeLocationWindow */,
 				D7125EED18C462EC00BBCD3E /* ProceduresWindow */,
 				D7F822BB18B199290017548F /* SamplesView */,
 				D770578118AD7C8900F011E5 /* EditSourceView */,
@@ -874,9 +885,6 @@
 		D7F822BB18B199290017548F /* SamplesView */ = {
 			isa = PBXGroup;
 			children = (
-				D7F822BC18B199450017548F /* SamplesViewController.h */,
-				D7F822BD18B199450017548F /* SamplesViewController.m */,
-				D7F822BE18B199450017548F /* SamplesViewController.xib */,
 				D711C94F18C44B3E00D637D7 /* SamplesWindowController.h */,
 				D711C95018C44B3E00D637D7 /* SamplesWindowController.m */,
 				D711C95118C44B3E00D637D7 /* SamplesWindowController.xib */,
@@ -960,7 +968,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7F822C018B199450017548F /* SamplesViewController.xib in Resources */,
 				D711C95318C44B3E00D637D7 /* SamplesWindowController.xib in Resources */,
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D738D55718BAA52600A777E2 /* DetailPanelViewController.xib in Resources */,
@@ -968,6 +975,7 @@
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
 				D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */,
 				D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */,
+				D780E1F418C83812003F3D92 /* ChangeLocationWindowController.xib in Resources */,
 				D7439E1F18A5FC53000EE008 /* Credits.rtf in Resources */,
 				D711C94E18C42CC300D637D7 /* AddNewSourceWindowController.xib in Resources */,
 				D7439E2518A5FC53000EE008 /* MainMenu.xib in Resources */,
@@ -1000,6 +1008,7 @@
 				D78ACC3B18A5FDC0006084D6 /* FMDatabase.m in Sources */,
 				D78ACC6F18A5FE2E006084D6 /* S3Utils.m in Sources */,
 				D78ACC5518A5FDFD006084D6 /* LocalTransactionCache.m in Sources */,
+				D780E1F318C83812003F3D92 /* ChangeLocationWindowController.m in Sources */,
 				D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */,
 				D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */,
 				D7A0CB7818BC57A900A61E32 /* OSXSaveSelector.m in Sources */,
@@ -1051,7 +1060,6 @@
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
 				D78ACC6618A5FE21006084D6 /* AbstractCloudImageStore.m in Sources */,
 				D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */,
-				D0655A0518B207F7008947B5 /* SamplesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
