@@ -17,7 +17,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 /* Sample table name
  */
+#ifdef DEBUG
 static NSString *const TRANSACTION_TABLE_NAME = @"test_transaction_table";
+#else
+static NSString *const TRANSACTION_TABLE_NAME = @"prod_transaction_table";
+#endif
 
 @implementation TransactionConstants
 

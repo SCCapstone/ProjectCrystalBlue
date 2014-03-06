@@ -17,7 +17,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 /* Sample table name
  */
+#ifdef DEBUG
 static NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
+#else
+static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
+#endif
 
 @implementation SampleConstants
 

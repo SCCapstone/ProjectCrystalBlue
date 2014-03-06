@@ -17,7 +17,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 /* Source table name
  */
+#ifdef DEBUG
 static NSString *const SOURCE_TABLE_NAME = @"test_source_table";
+#else
+static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
+#endif
 
 @implementation SourceConstants
 
