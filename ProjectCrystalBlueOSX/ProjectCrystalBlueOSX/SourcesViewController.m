@@ -150,20 +150,25 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)removeSource
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
-    NSInteger selectedRow = [self.sourceTable selectedRow];
-    if (selectedRow < 0) {
+    NSIndexSet *selectedRows = [self.sourceTable selectedRowIndexes];
+    if (selectedRows.count <= 0) {
         return;
     }
-    
-    Source *s = [displayedSources objectAtIndex:selectedRow];
+
+    NSArray *selectedSources = [displayedSources objectsAtIndexes:selectedRows];
     
     NSAlert *confirmation = [[NSAlert alloc] init];
     [confirmation setAlertStyle:NSWarningAlertStyle];
     
-    NSString *message = [NSString stringWithFormat:@"Really delete Source \"%@\"?", s.key];
+    NSString *message = [NSString stringWithFormat:@"Really delete %lu source(s)?",
+                         selectedSources.count];
     [confirmation setMessageText:message];
                         
-    NSString *info = @"This source will be permanently deleted from the database!";
+    NSMutableString *info = [NSMutableString stringWithString:
+                             @"These source(s) will be permanently deleted from the database:"];
+    for (Source *s in selectedSources) {
+        [info appendFormat:@"\n\t%@", s.key];
+    }
     [confirmation setInformativeText:info];
     
     // If the order of buttons changes, the numerical constants below NEED to be swapped.
@@ -176,8 +181,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                          completionHandler:^(NSModalResponse returnCode) {
         switch (returnCode) {
             case DELETE_BUTTON:
-                DDLogInfo(@"Deleting source with key \"%@\"", s.key);
-                [dataStore deleteLibraryObjectWithKey:s.key FromTable:[SourceConstants tableName]];
+                for (Source *s in selectedSources) {
+                    DDLogInfo(@"Deleting source with key \"%@\"", s.key);
+                    [dataStore deleteLibraryObjectWithKey:s.key FromTable:[SourceConstants tableName]];
+                }
                 break;
             case CANCEL_BUTTON:
                 break;
