@@ -13,7 +13,11 @@
 @class ChangeLocationWindowController;
 @class Source;
 
-@interface SamplesWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, ImportResultReporter>
+@interface SamplesWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, ImportResultReporter> {
+
+    // Holds all samples currently displayed
+    NSArray *displayedSamples;
+}
 
 @property AbstractLibraryObjectStore *dataStore;
 

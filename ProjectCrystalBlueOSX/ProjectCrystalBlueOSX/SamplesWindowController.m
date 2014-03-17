@@ -61,6 +61,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    displayedSamples = [dataStore getAllSamplesForSourceKey:source.key];
     [self addColumnsToSamplesTable];
     NSString *windowTitle = [NSString stringWithFormat:@"Samples for %@", source.key];
     [self.window setTitle:windowTitle];
@@ -92,7 +93,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             row:(NSInteger)row
 {
     if ([tableView isEqualTo:self.sampleTable]) {
-        Sample *sample = [[dataStore getAllSamplesForSourceKey:source.key] objectAtIndex:row];
+        Sample *sample = [displayedSamples objectAtIndex:row];
         NSString *attributeKey = [[tableColumn headerCell] stringValue];
         return [[sample attributes] objectForKey:attributeKey];
     }
@@ -108,8 +109,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
 
-    LibraryObject *object = [[dataStore getAllSamplesForSourceKey:source.key]
-                                                    objectAtIndex:selectedRow];
+    LibraryObject *object = [displayedSamples objectAtIndex:selectedRow];
 
     [detailPanelViewController displayInformationAboutLibraryObject:object];
 }
@@ -126,7 +126,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
     Sample *sample;
     if (selectedRow >= 0) {
-        sample = [[dataStore getAllSamplesForSourceKey:source.key ] objectAtIndex:selectedRow];
+        sample = [displayedSamples objectAtIndex:selectedRow];
     } else {
         // If nothing is selected, we create a sample with default values.
         NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:[NSString stringWithFormat:@"%@.001", source.key]
@@ -141,7 +141,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
 
     [Procedures addFreshSample:sample inStore:dataStore];
-    [self.sampleTable reloadData];
+    [self reloadSamples];
 }
 
 - (IBAction)deleteSample:(id)sender {
@@ -151,7 +151,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
 
-    Sample *s = [[dataStore getAllSamplesForSourceKey:source.key ] objectAtIndex:selectedRow];
+    Sample *s = [displayedSamples objectAtIndex:selectedRow];
 
     NSAlert *confirmation = [[NSAlert alloc] init];
     [confirmation setAlertStyle:NSWarningAlertStyle];
@@ -214,7 +214,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
 
-    Sample *s = [[dataStore getAllSamplesForSourceKey:source.key ] objectAtIndex:selectedRow];
+    Sample *s = [displayedSamples objectAtIndex:selectedRow];
 
     changeLocationController = [[ChangeLocationWindowController alloc] initWithWindowNibName:@"ChangeLocationWindowController"];
     [changeLocationController setSample:s];
@@ -286,6 +286,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)reloadSamples
 {
+    displayedSamples = [dataStore getAllSamplesForSourceKey:source.key];
     [self.sampleTable reloadData];
 }
 
