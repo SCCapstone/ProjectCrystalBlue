@@ -31,6 +31,7 @@
 		D711C95318C44B3E00D637D7 /* SamplesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D711C95118C44B3E00D637D7 /* SamplesWindowController.xib */; };
 		D7125EF118C4630B00BBCD3E /* ProceduresWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */; };
 		D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */; };
+		D71BE30C18D7A85A00B7572F /* samples_non_ascii_chars.csv in Resources */ = {isa = PBXBuildFile; fileRef = D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */; };
 		D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
 		D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E318A6010E00EA2DD2 /* CFNetwork.framework */; };
@@ -160,6 +161,7 @@
 		D7125EEE18C4630B00BBCD3E /* ProceduresWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProceduresWindowController.h; sourceTree = "<group>"; };
 		D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresWindowController.m; sourceTree = "<group>"; };
 		D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProceduresWindowController.xib; sourceTree = "<group>"; };
+		D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_non_ascii_chars.csv; sourceTree = "<group>"; };
 		D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = include/AWSiOSSDK.framework; sourceTree = "<group>"; };
 		D72405E118A6010000EA2DD2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D72405E318A6010E00EA2DD2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -474,6 +476,7 @@
 				D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */,
 				D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */,
 				D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */,
+				D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */,
 				D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */,
 			);
 			name = CSV;
@@ -993,6 +996,7 @@
 				D72405F618A6023B00EA2DD2 /* big_test_image_4096-4096.jpg in Resources */,
 				D7439E3718A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D7A41E3218B6A4E200653B3E /* samples_extra_attribute.csv in Resources */,
+				D71BE30C18D7A85A00B7572F /* samples_non_ascii_chars.csv in Resources */,
 				D7C8733F18B31CF400F2976F /* samples_reordered_columns.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

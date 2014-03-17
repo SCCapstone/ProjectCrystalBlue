@@ -281,4 +281,74 @@ NSString* filePath;
     }
 }
 
+/// Verify that a file with non-ascii characters is correctly parsed.
+- (void)testReadFileWithNonAsciiChars
+{
+    NSString *testFile = @"samples_non_ascii_chars";
+    NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
+
+    // Do not change these values unless you change the test file
+    Sample *expected = [[Sample alloc] initWithKey:@"key00000"
+                                 AndWithAttributes:[SampleConstants attributeNames]
+                                         AndValues:[SampleConstants attributeDefaultValues]];
+
+    [expected.attributes setValue:@"key00000"       forKey:SMP_KEY];
+    [expected.attributes setValue:@"98°"            forKey:SMP_SOURCE_KEY];
+    [expected.attributes setValue:@"≥_≤"            forKey:SMP_CURRENT_LOCATION];
+    [expected.attributes setValue:@"¡™£¢∞§¶•ªº–≠"   forKey:SMP_TAGS];
+
+    LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
+    NSArray *readSamples = [reader readFromFileAtPath:testPath];
+
+    XCTAssertTrue(readSamples.count == 1);
+    XCTAssertEqualObjects([readSamples objectAtIndex:0], expected);
+}
+
+/// Populates an array of sources (containing non-ascii characters in some fields), writes them to a
+/// file, then parses them again.
+/// The results from the parser should match the original array.
+- (void)testWriteAndReadSourcesWithNonAsciiCharacters
+{
+    filePath = [localDirectory stringByAppendingFormat:@"/%@", @"testWriteSources.csv"];
+
+    NSMutableArray *sources = [[NSMutableArray alloc] init];
+
+    const int numberOfSources = 100;
+    for (int i = 0; i < numberOfSources; ++i) {
+        NSString *key = [NSString stringWithFormat:@"˚®ˆø∂ƒøˆ∆ƒ%05d", i];
+        Source *s = [[Source alloc] initWithKey:key
+                              AndWithAttributes:[SourceConstants attributeNames]
+                                      AndValues:[SourceConstants attributeDefaultValues]];
+
+        for (NSString *attribute in [SourceConstants attributeNames]) {
+            NSString *attributeValue;
+            if ([attribute isEqualToString:SRC_KEY]) {
+                attributeValue = s.key;
+            } else {
+                attributeValue = [NSString stringWithFormat:@"ø∑øˆ´øˆˆø∑ˆø´ˆø∑•ªª•%@%05d", attribute, i];
+            }
+            [s.attributes setObject:attributeValue forKey:attribute];
+        }
+
+        [sources addObject:s];
+    }
+
+    // Write to the file
+    LibraryObjectCSVWriter *writer = [[LibraryObjectCSVWriter alloc] init];
+    [writer writeObjects:sources
+            ToFileAtPath:filePath];
+    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:filePath]);
+
+    // Read from the file
+    LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
+    NSArray *readSources = [reader readFromFileAtPath:filePath];
+
+    XCTAssertEqual(readSources.count, sources.count);
+    for (int i = 0; i < numberOfSources; ++i) {
+        LibraryObject *expected = (LibraryObject *)[sources objectAtIndex:i];
+        LibraryObject *actual = [readSources objectAtIndex:i];
+        XCTAssertEqualObjects(expected, actual);
+    }
+}
+
 @end
