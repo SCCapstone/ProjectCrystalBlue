@@ -146,20 +146,27 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (IBAction)deleteSample:(id)sender {
     DDLogDebug(@"%s", __PRETTY_FUNCTION__);
-    NSInteger selectedRow = [self.sampleTable selectedRow];
-    if (selectedRow < 0) {
+    NSIndexSet *selectedRows = [self.sampleTable selectedRowIndexes];
+    if (selectedRows.count <= 0) {
         return;
     }
 
-    Sample *s = [displayedSamples objectAtIndex:selectedRow];
+    NSArray *selectedSamples = [displayedSamples objectsAtIndexes:selectedRows];
 
     NSAlert *confirmation = [[NSAlert alloc] init];
     [confirmation setAlertStyle:NSWarningAlertStyle];
 
-    NSString *message = [NSString stringWithFormat:@"Really delete Sample \"%@\"?", s.key];
+    NSString *message = [NSString stringWithFormat:@"Really delete %lu sample(s)?",
+                         selectedSamples.count];
     [confirmation setMessageText:message];
 
-    NSString *info = @"This sample will be permanently deleted from the database!";
+    NSMutableString *info = [NSMutableString stringWithString:
+                             @"These samples will be permanently deleted from the database:"];
+
+    for (Sample *s in selectedSamples) {
+        [info appendFormat:@"\n\t%@", s.key];
+    }
+
     [confirmation setInformativeText:info];
 
     // If the order of buttons changes, the numerical constants below NEED to be swapped.
@@ -172,8 +179,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                          completionHandler:^(NSModalResponse returnCode) {
                              switch (returnCode) {
                                  case DELETE_BUTTON:
-                                     DDLogInfo(@"Deleting source with key \"%@\"", s.key);
-                                     [dataStore deleteLibraryObjectWithKey:s.key FromTable:[SampleConstants tableName]];
+                                     for (Sample *s in selectedSamples) {
+                                         DDLogInfo(@"Deleting source with key \"%@\"", s.key);
+                                         [dataStore deleteLibraryObjectWithKey:s.key FromTable:[SampleConstants tableName]];
+                                     }
                                      break;
                                  case CANCEL_BUTTON:
                                      break;
