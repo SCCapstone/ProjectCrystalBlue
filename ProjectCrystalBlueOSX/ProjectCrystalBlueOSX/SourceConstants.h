@@ -21,20 +21,18 @@ static NSString *const SRC_MEMBER           = @"member";
 static NSString *const SRC_REGION           = @"region";
 static NSString *const SRC_LOCALITY         = @"locality";
 static NSString *const SRC_SECTION          = @"section";
-static NSString *const SRC_METER_LEVEL      = @"meterLevel";
+static NSString *const SRC_METER            = @"meterLevel";
 static NSString *const SRC_LATITUDE         = @"latitude";
 static NSString *const SRC_LONGITUDE        = @"longitude";
 static NSString *const SRC_AGE              = @"age";
-static NSString *const SRC_AGE_BASIS1       = @"ageBasis1";
-static NSString *const SRC_AGE_BASIS2       = @"ageBasis2";
+static NSString *const SRC_AGE_METHOD       = @"ageMethod";
+static NSString *const SRC_AGE_DATATYPE     = @"ageDataType";
 static NSString *const SRC_DATE_COLLECTED   = @"dateCollected";
-static NSString *const SRC_PROJECT          = @"project";
-static NSString *const SRC_SUBPROJECT       = @"subproject";
 
 /* Attribute default values
  */
-static NSString *const SRC_DEF_VAL_KEY          = @"key here";
-static NSString *const SRC_DEF_VAL_CONTINENT    = @"continent here";
+static NSString *const SRC_DEF_VAL_KEY          = @"Key here";
+static NSString *const SRC_DEF_VAL_CONTINENT    = @"Continent here";
 static NSString *const SRC_DEF_VAL_TYPE         = @"Type here";
 static NSString *const SRC_DEF_VAL_LITHOLOGY    = @"Lithology here";
 static NSString *const SRC_DEF_VAL_DEPOSYSTEM   = @"Deposystem here";
@@ -44,15 +42,13 @@ static NSString *const SRC_DEF_VAL_MEMBER       = @"Member here";
 static NSString *const SRC_DEF_VAL_REGION       = @"Region here";
 static NSString *const SRC_DEF_VAL_LOCALITY     = @"Locality here";
 static NSString *const SRC_DEF_VAL_SECTION      = @"Section here";
-static NSString *const SRC_DEF_VAL_METER_LEVEL  = @"Meter_Level here";
+static NSString *const SRC_DEF_VAL_METER        = @"Meter here";
 static NSString *const SRC_DEF_VAL_LATITUDE     = @"Latitude here";
 static NSString *const SRC_DEF_VAL_LONGITUDE    = @"Longitude here";
 static NSString *const SRC_DEF_VAL_AGE          = @"Age here";
-static NSString *const SRC_DEF_VAL_AGE_BASIS1   = @"Age_Basis1 here";
-static NSString *const SRC_DEF_VAL_AGE_BASIS2   = @"Age_Basis2 here";
-static NSString *const SRC_DEF_VAL_DATE_COLLECTED = @"Date_Collected here";
-static NSString *const SRC_DEF_VAL_PROJECT      = @"Project here";
-static NSString *const SRC_DEF_VAL_SUBPROJECT   = @"Subproject here";
+static NSString *const SRC_DEF_VAL_AGE_METHOD   = @"Age method here";
+static NSString *const SRC_DEF_VAL_AGE_DATATYPE = @"Age data type here";
+static NSString *const SRC_DEF_VAL_DATE_COLLECTED = @"Date collected here";
 
 /*  Human-readable attribute names
  */
@@ -67,15 +63,13 @@ static NSString *const SRC_DISPLAY_MEMBER       = @"Member";
 static NSString *const SRC_DISPLAY_REGION       = @"Region";
 static NSString *const SRC_DISPLAY_LOCALITY     = @"Locality";
 static NSString *const SRC_DISPLAY_SECTION      = @"Section";
-static NSString *const SRC_DISPLAY_METER_LEVEL  = @"Meter level";
+static NSString *const SRC_DISPLAY_METER        = @"Meter";
 static NSString *const SRC_DISPLAY_LATITUDE     = @"Latitude";
 static NSString *const SRC_DISPLAY_LONGITUDE    = @"Longitude";
 static NSString *const SRC_DISPLAY_AGE          = @"Age";
-static NSString *const SRC_DISPLAY_AGE_BASIS1   = @"Age Basis 1";
-static NSString *const SRC_DISPLAY_AGE_BASIS2   = @"Age Basis 2";
+static NSString *const SRC_DISPLAY_AGE_METHOD   = @"Age Method";
+static NSString *const SRC_DISPLAY_AGE_DATATYPE = @"Age Data Type";
 static NSString *const SRC_DISPLAY_DATE_COLLECTED = @"Date Collected";
-static NSString *const SRC_DISPLAY_PROJECT      = @"Project";
-static NSString *const SRC_DISPLAY_SUBPROJECT   = @"Subproject";
 
 @interface SourceConstants : NSObject
 
@@ -90,6 +84,9 @@ static NSString *const SRC_DISPLAY_SUBPROJECT   = @"Subproject";
 
 /// Return the human-readable label corresponding to an attribute name
 + (NSString *)humanReadableLabelForAttribute:(NSString *)attributeName;
+
+/// Returns the attribute name corresponding to a human-readable label
++ (NSString *)attributeNameForHumanReadableLabel:(NSString *)label;
 
 /// Returns the name of the local and remote table name for Source
 + (NSString *)tableName;

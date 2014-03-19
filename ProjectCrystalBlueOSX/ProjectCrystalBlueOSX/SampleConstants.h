@@ -42,8 +42,11 @@ static NSString *const SMP_DISPLAY_TAGS = @"Procedure Log";
 /// Array of human-readable labels for each attribute
 + (NSArray *)humanReadableLabels;
 
-/// Return the human-readable label corresponding to an attribute name
+/// Returns the human-readable label corresponding to an attribute name
 + (NSString *)humanReadableLabelForAttribute:(NSString *)attributeName;
+
+/// Returns the attribute name corresponding to a human-readable label
++ (NSString *)attributeNameForHumanReadableLabel:(NSString *)label;
 
 /// Returns the name of the local and remote table name for Sample
 + (NSString *)tableName;

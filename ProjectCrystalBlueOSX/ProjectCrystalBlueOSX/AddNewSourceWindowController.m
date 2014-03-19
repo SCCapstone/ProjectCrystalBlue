@@ -55,14 +55,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [self.regionTextField       setStringValue:SRC_DEF_VAL_REGION];
     [self.localityTextField     setStringValue:SRC_DEF_VAL_LOCALITY];
     [self.sectionTextField      setStringValue:SRC_DEF_VAL_SECTION];
-    [self.meterLevelTextField   setStringValue:SRC_DEF_VAL_METER_LEVEL];
+    [self.meterTextField        setStringValue:SRC_DEF_VAL_METER];
     [self.latitudeTextField     setStringValue:SRC_DEF_VAL_LATITUDE];
     [self.longitudeTextField    setStringValue:SRC_DEF_VAL_LONGITUDE];
     [self.ageTextField          setStringValue:SRC_DEF_VAL_AGE];
-    [self.ageBasis1TextField    setStringValue:SRC_DEF_VAL_AGE_BASIS1];
-    [self.ageBasis2TextField    setStringValue:SRC_DEF_VAL_AGE_BASIS2];
-    [self.projectTextField      setStringValue:SRC_DEF_VAL_PROJECT];
-    [self.subProjectTextField   setStringValue:SRC_DEF_VAL_SUBPROJECT];
+    [self.ageMethodTextField    setStringValue:SRC_DEF_VAL_AGE_METHOD];
+    [self.ageDataTypeTextField  setStringValue:SRC_DEF_VAL_AGE_DATATYPE];
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
@@ -86,14 +84,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [attributes setObject:self.regionTextField.stringValue      forKey:SRC_REGION];
     [attributes setObject:self.localityTextField.stringValue    forKey:SRC_LOCALITY];
     [attributes setObject:self.sectionTextField.stringValue     forKey:SRC_SECTION];
-    [attributes setObject:self.meterLevelTextField.stringValue  forKey:SRC_METER_LEVEL];
+    [attributes setObject:self.meterTextField.stringValue       forKey:SRC_METER];
     [attributes setObject:self.latitudeTextField.stringValue    forKey:SRC_LATITUDE];
     [attributes setObject:self.longitudeTextField.stringValue   forKey:SRC_LONGITUDE];
     [attributes setObject:self.ageTextField.stringValue         forKey:SRC_AGE];
-    [attributes setObject:self.ageBasis1TextField.stringValue   forKey:SRC_AGE_BASIS1];
-    [attributes setObject:self.ageBasis2TextField.stringValue   forKey:SRC_AGE_BASIS2];
-    [attributes setObject:self.projectTextField.stringValue     forKey:SRC_PROJECT];
-    [attributes setObject:self.subProjectTextField.stringValue  forKey:SRC_SUBPROJECT];
+    [attributes setObject:self.ageMethodTextField.stringValue   forKey:SRC_AGE_METHOD];
+    [attributes setObject:self.ageDataTypeTextField.stringValue forKey:SRC_AGE_DATATYPE];
 
     NSDate *dateCollected = self.dateCollectedPicker.dateValue;
 

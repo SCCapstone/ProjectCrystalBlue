@@ -77,8 +77,18 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
         return attributeName;
     }
 
-    NSString *label = [[self.class humanReadableLabels] objectAtIndex:index];
-    return label;
+    return [[self.class humanReadableLabels] objectAtIndex:index];
+}
+
++ (NSString *)attributeNameForHumanReadableLabel:(NSString *)label
+{
+    NSUInteger index = [[self.class humanReadableLabels] indexOfObject:label];
+    if (index == NSNotFound) {
+        DDLogWarn(@"%@: %@ attribute is unknown.", NSStringFromClass(self.class), label);
+        return label;
+    }
+    
+    return [[self.class attributeNames] objectAtIndex:index];
 }
 
 + (NSString *)tableName

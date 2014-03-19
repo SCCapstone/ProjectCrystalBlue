@@ -69,7 +69,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)addColumnsToTable
 {
-    NSArray *attributeNames = [SourceConstants attributeNames];
+    NSArray *attributeNames = [SourceConstants humanReadableLabels];
     for (NSString *attribute in attributeNames) {
         NSTableColumn *column = [[NSTableColumn alloc] init];
         NSCell *header = [[NSTableHeaderCell alloc] initTextCell:attribute];
@@ -92,8 +92,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     if ([tableView isEqualTo:self.sourceTable]) {
         Source *source = [displayedSources objectAtIndex:row];
-        NSString *attributeKey = [[tableColumn headerCell] stringValue];
-        return [[source attributes] objectForKey:attributeKey];
+        NSString *attributeKey = [SourceConstants attributeNameForHumanReadableLabel:[tableColumn.headerCell stringValue]];
+        return [source.attributes objectForKey:attributeKey];
     }
     return nil;
 }

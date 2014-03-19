@@ -43,15 +43,13 @@
     [self.regionTextField       setStringValue:[source.attributes objectForKey:SRC_REGION]];
     [self.localityTextField     setStringValue:[source.attributes objectForKey:SRC_LOCALITY]];
     [self.sectionTextField      setStringValue:[source.attributes objectForKey:SRC_SECTION]];
-    [self.meterLevelTextField   setStringValue:[source.attributes objectForKey:SRC_METER_LEVEL]];
+    [self.meterTextField        setStringValue:[source.attributes objectForKey:SRC_METER]];
     [self.latitudeTextField     setStringValue:[source.attributes objectForKey:SRC_LATITUDE]];
     [self.longitudeTextField    setStringValue:[source.attributes objectForKey:SRC_LONGITUDE]];
     [self.ageTextField          setStringValue:[source.attributes objectForKey:SRC_AGE]];
-    [self.ageBasis1TextField    setStringValue:[source.attributes objectForKey:SRC_AGE_BASIS1]];
-    [self.ageBasis2TextField    setStringValue:[source.attributes objectForKey:SRC_AGE_BASIS2]];
+    [self.ageMethodTextField    setStringValue:[source.attributes objectForKey:SRC_AGE_METHOD]];
+    [self.ageDataTypeTextField  setStringValue:[source.attributes objectForKey:SRC_AGE_DATATYPE]];
     [self.dateCollectedTextField setStringValue:[source.attributes objectForKey:SRC_DATE_COLLECTED]];
-    [self.projectTextField      setStringValue:[source.attributes objectForKey:SRC_PROJECT]];
-    [self.subProjectTextField   setStringValue:[source.attributes objectForKey:SRC_SUBPROJECT]];
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
@@ -76,15 +74,13 @@
     [attributes setObject:self.regionTextField.stringValue          forKey:SRC_REGION];
     [attributes setObject:self.localityTextField.stringValue        forKey:SRC_LOCALITY];
     [attributes setObject:self.sectionTextField.stringValue         forKey:SRC_SECTION];
-    [attributes setObject:self.meterLevelTextField.stringValue      forKey:SRC_METER_LEVEL];
+    [attributes setObject:self.meterTextField.stringValue           forKey:SRC_METER];
     [attributes setObject:self.latitudeTextField.stringValue        forKey:SRC_LATITUDE];
     [attributes setObject:self.longitudeTextField.stringValue       forKey:SRC_LONGITUDE];
     [attributes setObject:self.ageTextField.stringValue             forKey:SRC_AGE];
-    [attributes setObject:self.ageBasis1TextField.stringValue       forKey:SRC_AGE_BASIS1];
-    [attributes setObject:self.ageBasis2TextField.stringValue       forKey:SRC_AGE_BASIS2];
+    [attributes setObject:self.ageMethodTextField.stringValue       forKey:SRC_AGE_METHOD];
+    [attributes setObject:self.ageDataTypeTextField.stringValue     forKey:SRC_AGE_DATATYPE];
     [attributes setObject:self.dateCollectedTextField.stringValue   forKey:SRC_DATE_COLLECTED];
-    [attributes setObject:self.projectTextField.stringValue         forKey:SRC_PROJECT];
-    [attributes setObject:self.subProjectTextField.stringValue      forKey:SRC_SUBPROJECT];
     
     Source *newSource = [[Source alloc] initWithKey:key AndWithAttributeDictionary:attributes];
     [[self.sourcesViewController dataStore] updateLibraryObject:newSource IntoTable:[SourceConstants tableName]];

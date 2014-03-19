@@ -24,15 +24,13 @@
 @property (weak) IBOutlet NSTextField *regionTextField;
 @property (weak) IBOutlet NSTextField *localityTextField;
 @property (weak) IBOutlet NSTextField *sectionTextField;
-@property (weak) IBOutlet NSTextField *meterLevelTextField;
+@property (weak) IBOutlet NSTextField *meterTextField;
 @property (weak) IBOutlet NSTextField *latitudeTextField;
 @property (weak) IBOutlet NSTextField *longitudeTextField;
 @property (weak) IBOutlet NSTextField *ageTextField;
-@property (weak) IBOutlet NSTextField *ageBasis1TextField;
-@property (weak) IBOutlet NSTextField *ageBasis2TextField;
+@property (weak) IBOutlet NSTextField *ageMethodTextField;
+@property (weak) IBOutlet NSTextField *ageDataTypeTextField;
 @property (weak) IBOutlet NSDatePicker *dateCollectedPicker;
-@property (weak) IBOutlet NSTextField *projectTextField;
-@property (weak) IBOutlet NSTextField *subProjectTextField;
 
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)saveButtonPressed:(id)sender;

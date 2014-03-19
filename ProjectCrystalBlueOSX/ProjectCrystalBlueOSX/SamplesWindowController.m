@@ -70,7 +70,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)addColumnsToSamplesTable
 {
-    NSArray *attributeNames = [SampleConstants attributeNames];
+    NSArray *attributeNames = [SampleConstants humanReadableLabels];
     for (NSString *attribute in attributeNames) {
         NSTableColumn *column = [[NSTableColumn alloc] init];
         NSCell *header = [[NSTableHeaderCell alloc] initTextCell:attribute];
@@ -94,8 +94,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     if ([tableView isEqualTo:self.sampleTable]) {
         Sample *sample = [displayedSamples objectAtIndex:row];
-        NSString *attributeKey = [[tableColumn headerCell] stringValue];
-        return [[sample attributes] objectForKey:attributeKey];
+        NSString *attributeKey = [SampleConstants attributeNameForHumanReadableLabel:[tableColumn.headerCell stringValue]];
+        return [sample.attributes objectForKey:attributeKey];
     }
     return nil;
 }

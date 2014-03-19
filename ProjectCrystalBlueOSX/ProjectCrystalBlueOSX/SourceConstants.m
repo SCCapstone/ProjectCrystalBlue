@@ -42,15 +42,13 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
                           SRC_REGION,
                           SRC_LOCALITY,
                           SRC_SECTION,
-                          SRC_METER_LEVEL,
+                          SRC_METER,
                           SRC_LATITUDE,
                           SRC_LONGITUDE,
                           SRC_AGE,
-                          SRC_AGE_BASIS1,
-                          SRC_AGE_BASIS2,
-                          SRC_DATE_COLLECTED,
-                          SRC_PROJECT,
-                          SRC_SUBPROJECT, nil];
+                          SRC_AGE_METHOD,
+                          SRC_AGE_DATATYPE,
+                          SRC_DATE_COLLECTED, nil];
     }
     
     return attributeNames;
@@ -73,15 +71,13 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
                                   SRC_DEF_VAL_REGION,
                                   SRC_DEF_VAL_LOCALITY,
                                   SRC_DEF_VAL_SECTION,
-                                  SRC_DEF_VAL_METER_LEVEL,
+                                  SRC_DEF_VAL_METER,
                                   SRC_DEF_VAL_LATITUDE,
                                   SRC_DEF_VAL_LONGITUDE,
                                   SRC_DEF_VAL_AGE,
-                                  SRC_DEF_VAL_AGE_BASIS1,
-                                  SRC_DEF_VAL_AGE_BASIS2,
-                                  SRC_DEF_VAL_DATE_COLLECTED,
-                                  SRC_DEF_VAL_PROJECT,
-                                  SRC_DEF_VAL_SUBPROJECT, nil];
+                                  SRC_DEF_VAL_AGE_METHOD,
+                                  SRC_DEF_VAL_AGE_DATATYPE,
+                                  SRC_DEF_VAL_DATE_COLLECTED, nil];
     }
     return attributeDefaultValues;
 }
@@ -103,15 +99,13 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
                                 SRC_DISPLAY_REGION,
                                 SRC_DISPLAY_LOCALITY,
                                 SRC_DISPLAY_SECTION,
-                                SRC_DISPLAY_METER_LEVEL,
+                                SRC_DISPLAY_METER,
                                 SRC_DISPLAY_LATITUDE,
                                 SRC_DISPLAY_LONGITUDE,
                                 SRC_DISPLAY_AGE,
-                                SRC_DISPLAY_AGE_BASIS1,
-                                SRC_DISPLAY_AGE_BASIS2,
-                                SRC_DISPLAY_DATE_COLLECTED,
-                                SRC_DISPLAY_PROJECT,
-                                SRC_DISPLAY_SUBPROJECT, nil];
+                                SRC_DISPLAY_AGE_METHOD,
+                                SRC_DISPLAY_AGE_DATATYPE,
+                                SRC_DISPLAY_DATE_COLLECTED, nil];
     }
     return attributeLabelValues;
 }
@@ -124,8 +118,18 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
         return attributeName;
     }
 
-    NSString *label = [[self.class humanReadableLabels] objectAtIndex:index];
-    return label;
+    return [[self.class humanReadableLabels] objectAtIndex:index];
+}
+
++ (NSString *)attributeNameForHumanReadableLabel:(NSString *)label
+{
+    NSUInteger index = [[self.class humanReadableLabels] indexOfObject:label];
+    if (index == NSNotFound) {
+        DDLogWarn(@"%@: %@ attribute is unknown.", NSStringFromClass(self.class), label);
+        return label;
+    }
+    
+    return [[self.class attributeNames] objectAtIndex:index];
 }
 
 + (NSString *)tableName
