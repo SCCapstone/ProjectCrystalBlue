@@ -98,8 +98,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return nil;
 }
 
-
-
 - (void)addSource:(Source *)source
 {
     [dataStore putLibraryObject:source IntoTable:[SourceConstants tableName]];

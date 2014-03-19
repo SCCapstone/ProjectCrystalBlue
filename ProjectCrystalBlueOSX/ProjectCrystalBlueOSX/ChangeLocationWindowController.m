@@ -44,7 +44,7 @@
     NSString *newLocation = [updatedLocation stringValue];
     [sample.attributes setValue:newLocation forKey:SMP_CURRENT_LOCATION];
     [dataStore updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
-    [self.samplesWindow reloadSamples];
+    [self.samplesWindow updateDisplayedSamples];
     [self.window close];
 }
 

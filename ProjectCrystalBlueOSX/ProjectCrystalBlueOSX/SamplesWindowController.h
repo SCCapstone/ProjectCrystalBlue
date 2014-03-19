@@ -26,6 +26,7 @@
 
 @property (weak) IBOutlet NSSplitView *splitView;
 @property (weak) IBOutlet NSTableView *sampleTable;
+@property (weak) IBOutlet NSSearchField *searchField;
 @property (strong) NSWindowController *proceduresWindowController;
 @property (strong) ChangeLocationWindowController *changeLocationController;
 @property (strong) DetailPanelViewController *detailPanelViewController;
@@ -35,7 +36,8 @@
 - (IBAction)performProcedure:(id)sender;
 - (IBAction)importExport:(id)sender;
 - (IBAction)changeLocation:(id)sender;
+- (IBAction)searchSamples:(id)sender;
 
-- (void)reloadSamples;
+- (void)updateDisplayedSamples;
 
 @end

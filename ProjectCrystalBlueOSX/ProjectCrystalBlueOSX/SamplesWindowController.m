@@ -43,10 +43,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SamplesWindowController
 
-@synthesize dataStore;
-@synthesize source;
-@synthesize detailPanelViewController;
-@synthesize changeLocationController;
+@synthesize dataStore, source, searchField, detailPanelViewController, changeLocationController;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -61,11 +58,27 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    displayedSamples = [dataStore getAllSamplesForSourceKey:source.key];
+    
     [self addColumnsToSamplesTable];
     NSString *windowTitle = [NSString stringWithFormat:@"Samples for %@", source.key];
     [self.window setTitle:windowTitle];
     [self.splitView addSubview:[detailPanelViewController view]];
+    
+    // Setup search menu
+    NSMenu *attrMenu = [[NSMenu alloc] initWithTitle:@"Attribute Names"];
+    NSArray *attrNames = [SampleConstants attributeNames];
+    for (int i=0; i<attrNames.count; i++) {
+        NSMenuItem *attrItem = [[NSMenuItem alloc] initWithTitle:[attrNames objectAtIndex:i]
+                                                          action:@selector(setSearchCategoryFrom:)
+                                                   keyEquivalent:@""];
+        [attrItem setTarget:self];
+        [attrItem setTag:i];
+        [attrMenu insertItem:attrItem atIndex:i];
+    }
+    [self.searchField.cell setSearchMenuTemplate:attrMenu];
+    [self setSearchCategoryFrom:[attrMenu itemAtIndex:0]];
+    
+    [self updateDisplayedSamples];
 }
 
 - (void)addColumnsToSamplesTable
@@ -82,11 +95,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    if (!dataStore || !source) {
+    if (!dataStore || !source)
         return 0;
-    } else {
-        return [dataStore getAllSamplesForSourceKey:source.key].count;
-    }
+    else
+        return displayedSamples.count;
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn
@@ -102,7 +114,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    //DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     NSInteger selectedRow = [self.sampleTable selectedRow];
     if (selectedRow < 0) {
         [detailPanelViewController clear];
@@ -141,7 +153,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
 
     [Procedures addFreshSample:sample inStore:dataStore];
-    [self reloadSamples];
+    [self updateDisplayedSamples];
 }
 
 - (IBAction)deleteSample:(id)sender {
@@ -190,7 +202,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                      DDLogWarn(@"Unexpected return code %ld from DeleteSource Alert", (long)returnCode);
                                      break;
                              }
-                             [self.sampleTable reloadData];
+                             [self updateDisplayedSamples];
                          }];
 
 }
@@ -202,7 +214,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
 
-    Sample *s = [[dataStore getAllSamplesForSourceKey:source.key ] objectAtIndex:selectedRow];
+    Sample *s = [displayedSamples objectAtIndex:selectedRow];
 
     ProceduresWindowController *proceduresWindowController;
     proceduresWindowController = [[ProceduresWindowController alloc] initWithWindowNibName:@"ProceduresWindowController"];
@@ -280,22 +292,40 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         } else {
             DDLogWarn(@"Unexpected return code %ld from ImportExport Dialog", (long)returnCode);
         }
-        [self.sampleTable reloadData];
+        [self updateDisplayedSamples];
     };
 
     [importExportOptions beginSheetModalForWindow:self.window
                                 completionHandler:modalHandler];
 }
 
+- (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem
+{
+    self.searchField.tag = menuItem.tag;
+    [self.searchField.cell setPlaceholderString:menuItem.title];
+}
+
+- (IBAction)searchSamples:(id)sender
+{
+    [self updateDisplayedSamples];
+}
+
 -(void) displayResults:(ImportResult *)result
 {
     // to-do
-    [self.sampleTable reloadData];
+    [self updateDisplayedSamples];
 }
 
-- (void)reloadSamples
+- (void)updateDisplayedSamples
 {
-    displayedSamples = [dataStore getAllSamplesForSourceKey:source.key];
+    NSString *attrName = [[SampleConstants attributeNames] objectAtIndex:searchField.tag];
+    
+    if ([searchField.stringValue isEqualToString:@""])
+        displayedSamples = [dataStore getAllLibraryObjectsFromTable:[SampleConstants tableName]];
+    else
+        displayedSamples = [dataStore getAllLibraryObjectsForAttributeName:attrName
+                                                        WithAttributeValue:searchField.stringValue
+                                                                 FromTable:[SampleConstants tableName]];
     [self.sampleTable reloadData];
 }
 

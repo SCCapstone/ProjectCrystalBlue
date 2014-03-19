@@ -145,7 +145,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     }
-    [samplesWindow reloadSamples];
+    [samplesWindow updateDisplayedSamples];
     [self.window close];
 }
 
