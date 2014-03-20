@@ -28,6 +28,8 @@ static NSString *const SRC_AGE              = @"age";
 static NSString *const SRC_AGE_METHOD       = @"ageMethod";
 static NSString *const SRC_AGE_DATATYPE     = @"ageDataType";
 static NSString *const SRC_DATE_COLLECTED   = @"dateCollected";
+static NSString *const SRC_NOTES            = @"notes";
+static NSString *const SRC_HYPERLINKS       = @"hyperlinks";
 
 /* Attribute default values
  */
@@ -49,6 +51,8 @@ static NSString *const SRC_DEF_VAL_AGE          = @"Age here";
 static NSString *const SRC_DEF_VAL_AGE_METHOD   = @"Age method here";
 static NSString *const SRC_DEF_VAL_AGE_DATATYPE = @"Age data type here";
 static NSString *const SRC_DEF_VAL_DATE_COLLECTED = @"Date collected here";
+static NSString *const SRC_DEF_VAL_NOTES        = @"Notes here";
+static NSString *const SRC_DEF_VAL_HYPERLINKS   = @"Hyperlinks here";
 
 /*  Human-readable attribute names
  */
@@ -70,6 +74,8 @@ static NSString *const SRC_DISPLAY_AGE          = @"Age";
 static NSString *const SRC_DISPLAY_AGE_METHOD   = @"Age Method";
 static NSString *const SRC_DISPLAY_AGE_DATATYPE = @"Age Data Type";
 static NSString *const SRC_DISPLAY_DATE_COLLECTED = @"Date Collected";
+static NSString *const SRC_DISPLAY_NOTES        = @"Notes";
+static NSString *const SRC_DISPLAY_HYPERLINKS   = @"Hyperlinks";
 
 @interface SourceConstants : NSObject
 
