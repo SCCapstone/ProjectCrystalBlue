@@ -78,7 +78,8 @@
     NSImage *retrievedImage = [imageStore getImageForKey:key];
     
     XCTAssertNotNil(retrievedImage, @"Image retrieved back from LocalImageStore was nil");
-    XCTAssertEqual([retrievedImage size], [imageToSave size]);
+    XCTAssertTrue([retrievedImage size].height == [imageToSave size].height);
+    XCTAssertTrue([retrievedImage size].width  == [imageToSave size].width);
     
     // Finally, delete the image to clean up.
     BOOL deleteSuccess = [imageStore deleteImageWithKey:key];

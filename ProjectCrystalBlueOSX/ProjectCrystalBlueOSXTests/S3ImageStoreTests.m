@@ -56,7 +56,8 @@
     // Since the image is now stored locally, the s3ImageStore should be able to retrieve it without contacting S3.
     NSImage *retrieved = [s3ImageStore getImageForKey:testKey];
     XCTAssertNotNil(retrieved, @"Retrieved image was nil.");
-    XCTAssertEqual([retrieved size], [testImage size]);
+    XCTAssertTrue([retrieved size].height == [testImage size].height);
+    XCTAssertTrue([retrieved size].width  == [testImage size].width);
 }
 
 /// Verify that a default image is retrieved for an image that does not exist.
@@ -97,7 +98,8 @@
     XCTAssertTrue([s3imageStore imageExistsForKey:key]);
     NSImage *localImage = [localImageStore getImageForKey:key];
     XCTAssertNotNil(localImage, @"Local image was nil");
-    XCTAssertEqual([localImage size], [imageToUpload size]);
+    XCTAssertEqual([localImage size].width, [imageToUpload size].width);
+    XCTAssertEqual([localImage size].height, [imageToUpload size].height);
     
     // Delete the local version to force the ImageStore to get the S3 version.
     [localImageStore deleteImageWithKey:key];
@@ -106,12 +108,14 @@
     // Now that we've uploaded the image, let's check that we can get it back from S3.
     NSImage *retrievedImage = [s3imageStore getImageForKey:key];
     XCTAssertNotNil(retrievedImage, @"Image retrieved back from S3 was nil");
-    XCTAssertEqual([retrievedImage size], [imageToUpload size]);
+    XCTAssertEqual([retrievedImage size].width, [imageToUpload size].width);
+    XCTAssertEqual([retrievedImage size].height, [imageToUpload size].height);
     
     // Retrieving the image from S3 should automatically create a local version again.
     localImage = [localImageStore getImageForKey:key];
     XCTAssertNotNil(localImage, @"Local image was nil");
-    XCTAssertEqual([localImage size], [imageToUpload size]);
+    XCTAssertEqual([localImage size].width, [imageToUpload size].width);
+    XCTAssertEqual([localImage size].height, [imageToUpload size].height);
     
     // Finally, delete the image to clean up.
     BOOL deleteSuccess = [s3imageStore deleteImageWithKey:key];
