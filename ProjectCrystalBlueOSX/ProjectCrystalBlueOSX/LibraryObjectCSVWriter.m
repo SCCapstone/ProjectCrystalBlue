@@ -9,6 +9,10 @@
 #import "LibraryObjectCSVWriter.h"
 #import "LibraryObject.h"
 #import "DDLog.h"
+#import "Source.h"
+#import "SourceConstants.h"
+#import "Sample.h"
+#import "SampleConstants.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -54,17 +58,34 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     // Write header line
     LibraryObject *representativeLibraryObject = [libraryObjects firstObject];
-    NSArray *header = [representativeLibraryObject.attributes allKeys];
+    NSArray *headers;
+
+    // Identify which type of LibraryObject we are exporting.
+    if ([representativeLibraryObject isKindOfClass:[Sample class]]) {
+        headers = [SampleConstants attributeNames];
+    } else if ([representativeLibraryObject isKindOfClass:[Source class]]) {
+        headers = [SourceConstants attributeNames];
+    } else {
+        headers = [representativeLibraryObject.attributes allKeys];
+    }
+
+    // Create a set for for error checking.
+    NSSet *headerSet = [NSSet setWithArray:headers];
     
-    [csvWriter writeLineOfFields:header];
+    [csvWriter writeLineOfFields:headers];
     
     // Now write all objects
     for (LibraryObject *libraryObject in libraryObjects) {
-        if (![libraryObject.attributes.allKeys isEqualToArray:header]) {
+        if (![headerSet isEqualToSet:[NSSet setWithArray:libraryObject.attributes.allKeys]]) {
             DDLogWarn(@"Attributes for object with key %@ did not match header!", libraryObject.key);
         }
-        
-        [csvWriter writeLineOfFields:libraryObject.attributes.allValues];
+
+        NSMutableArray *orderedAttributeValues = [[NSMutableArray alloc] initWithCapacity:headers.count];
+        for (NSString *header in headers) {
+            NSString *value = [libraryObject.attributes objectForKey:header];
+            [orderedAttributeValues addObject:value];
+        }
+        [csvWriter writeLineOfFields:orderedAttributeValues];
     }
 }
 
