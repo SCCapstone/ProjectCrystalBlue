@@ -68,6 +68,7 @@
 		D7439E2F18A5FC53000EE008 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7439E0E18A5FC53000EE008 /* Cocoa.framework */; };
 		D7439E3718A5FC53000EE008 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7439E3518A5FC53000EE008 /* InfoPlist.strings */; };
 		D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */; };
+		D75BA1FA18DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv in Resources */ = {isa = PBXBuildFile; fileRef = D75BA1F918DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv */; };
 		D770578518AD7CC100F011E5 /* EditSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D770578318AD7CC100F011E5 /* EditSourceViewController.m */; };
 		D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D770578418AD7CC100F011E5 /* EditSourceViewController.xib */; };
 		D780E1F318C83812003F3D92 /* ChangeLocationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D780E1F118C83812003F3D92 /* ChangeLocationWindowController.m */; };
@@ -210,6 +211,7 @@
 		D7439E3418A5FC53000EE008 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
 		D7439E3618A5FC53000EE008 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
+		D75BA1F918DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = source_with_western_europe_apple_encoding.csv; sourceTree = "<group>"; };
 		D770578218AD7CC100F011E5 /* EditSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSourceViewController.h; sourceTree = "<group>"; };
 		D770578318AD7CC100F011E5 /* EditSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSourceViewController.m; sourceTree = "<group>"; };
 		D770578418AD7CC100F011E5 /* EditSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditSourceViewController.xib; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 		D72465DE18B731EC002EDE5B /* CSV */ = {
 			isa = PBXGroup;
 			children = (
+				D75BA1F918DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv */,
 				D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */,
 				D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */,
 				D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */,
@@ -982,6 +985,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D75BA1FA18DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv in Resources */,
 				D7A41E3318B6A4E200653B3E /* samples_missing_attribute.csv in Resources */,
 				D72405FC18A6024900EA2DD2 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */,
 				D72405F618A6023B00EA2DD2 /* big_test_image_4096-4096.jpg in Resources */,
