@@ -304,10 +304,10 @@ NSString* filePath;
     XCTAssertEqualObjects([readSamples objectAtIndex:0], expected);
 }
 
-/// Populates an array of sources (containing non-ascii characters in some fields), writes them to a
+/// Populates an array of sources (containing UTF8 characters in some fields), writes them to a
 /// file, then parses them again.
 /// The results from the parser should match the original array.
-- (void)testWriteAndReadSourcesWithNonAsciiCharacters
+- (void)testWriteAndReadSourcesWithUTF8Characters
 {
     filePath = [localDirectory stringByAppendingFormat:@"/%@", @"testWriteSources.csv"];
 
@@ -349,6 +349,67 @@ NSString* filePath;
         LibraryObject *actual = [readSources objectAtIndex:i];
         XCTAssertEqualObjects(expected, actual);
     }
+}
+
+/// Reads a test CSV file with Apple's Western Europe encoding.
+- (void)testReadSourcesFromAppleWesternEuropeEncoding
+{
+    NSString *testFile = @"source_with_western_europe_apple_encoding";
+    NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
+
+    NSString *key           = @"å∫ç∂";
+    NSString *continent     = @"´ƒ©˙";
+    NSString *locality      = @"ÇÎ";
+    NSString *region        = @"Åı";
+    NSString *hyperlinks    = @"Hyperlinks here";
+    NSString *member        = @"¥Ω";
+    NSString *latitude      = @"ˆÔ";
+    NSString *ageDataType   = @"˛Á¸";
+    NSString *type          = @"ˆ∆˚";
+    NSString *ageMethod     = @"Œ‰";
+    NSString *lithology     = @"¬µ˜øπ";
+    NSString *deposystem    = @"œ®ß";
+    NSString *meter         = @"˝Ó";
+    NSString *longitude     = @"-64° 13.334";
+    NSString *rockGroup     = @"†¨√°";
+    NSString *age           = @"Ø∏";
+    NSString *notes         = @"Notes here";
+    NSString *section       = @"´Ï";
+    NSString *formation     = @"∑≈";
+
+    Source *expected = [[Source alloc] initWithKey:key
+                                 AndWithAttributes:[SourceConstants attributeNames]
+                                         AndValues:[SourceConstants attributeDefaultValues]];
+
+    [expected.attributes setObject:key          forKey:SRC_KEY];
+    [expected.attributes setObject:continent    forKey:SRC_CONTINENT];
+    [expected.attributes setObject:locality     forKey:SRC_LOCALITY];
+    [expected.attributes setObject:region       forKey:SRC_REGION];
+    [expected.attributes setObject:hyperlinks   forKey:SRC_HYPERLINKS];
+    [expected.attributes setObject:member       forKey:SRC_MEMBER];
+    [expected.attributes setObject:latitude     forKey:SRC_LATITUDE];
+    [expected.attributes setObject:longitude    forKey:SRC_LONGITUDE];
+    [expected.attributes setObject:ageDataType  forKey:SRC_AGE_DATATYPE];
+    [expected.attributes setObject:type         forKey:SRC_TYPE];
+    [expected.attributes setObject:ageMethod    forKey:SRC_AGE_METHOD];
+    [expected.attributes setObject:lithology    forKey:SRC_LITHOLOGY];
+    [expected.attributes setObject:deposystem   forKey:SRC_DEPOSYSTEM];
+    [expected.attributes setObject:meter        forKey:SRC_METER];
+    [expected.attributes setObject:rockGroup    forKey:SRC_GROUP];
+    [expected.attributes setObject:age          forKey:SRC_AGE];
+    [expected.attributes setObject:notes        forKey:SRC_NOTES];
+    [expected.attributes setObject:section      forKey:SRC_SECTION];
+    [expected.attributes setObject:formation    forKey:SRC_FORMATION];
+
+    LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
+    NSArray *readSamples = [reader readFromFileAtPath:testPath];
+
+    Source *actual = [readSamples objectAtIndex:0];
+    // We don't care about the dates matching
+    [actual.attributes setObject:[expected.attributes objectForKey:SRC_DATE_COLLECTED]
+                          forKey:SRC_DATE_COLLECTED];
+
+    XCTAssertEqualObjects(expected, actual);
 }
 
 @end
