@@ -44,6 +44,17 @@ isNoMoreThanMaxLength:(const NSUInteger)maxLength
     return (field.length <= maxLength);
 }
 
+/// Verify that a field is contained in a list of valid values.
++ (BOOL)validateField:(const NSString *)field
+   isOneOfValidValues:(const NSArray *)listOfValidValues
+{
+    if (nil == field || [listOfValidValues count] <= 0) {
+        return NO;
+    }
+
+    return ([listOfValidValues containsObject:field]);
+}
+
 /// Verify that a key (for a LibraryObject) is unique within a provided data store.
 + (BOOL)validateKey:(const NSString *)key
 isUniqueInDataStore:(const AbstractLibraryObjectStore *)store

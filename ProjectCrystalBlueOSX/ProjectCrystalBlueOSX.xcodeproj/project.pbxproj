@@ -113,6 +113,7 @@
 		D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */; };
 		D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */; };
 		D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */; };
+		D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,6 +296,8 @@
 		D7FAAD7218DE10AD003A9A13 /* PrimitiveFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveFieldValidator.h; sourceTree = "<group>"; };
 		D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveFieldValidator.m; sourceTree = "<group>"; };
 		D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveValidatorTests.m; sourceTree = "<group>"; };
+		D7FAAD7818DE1A1B003A9A13 /* SampleFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleFieldValidator.h; sourceTree = "<group>"; };
+		D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -902,6 +905,8 @@
 			children = (
 				D7FAAD7218DE10AD003A9A13 /* PrimitiveFieldValidator.h */,
 				D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */,
+				D7FAAD7818DE1A1B003A9A13 /* SampleFieldValidator.h */,
+				D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */,
 			);
 			name = Validation;
 			sourceTree = "<group>";
@@ -1043,6 +1048,7 @@
 				D770578518AD7CC100F011E5 /* EditSourceViewController.m in Sources */,
 				D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */,
 				D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */,
+				D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */,
 				D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */,
 				D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,

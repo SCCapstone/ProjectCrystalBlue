@@ -70,4 +70,20 @@
                                      containsOnlyCharSet:alphaNumericAndWhitespace]);
 }
 
+- (void)testStringWithinListOfValidOptions
+{
+    NSString *option1 = @"aardvark";
+    NSString *option2 = @"bonobo";
+    NSString *option3 = @"cheetah";
+    NSString *notAnOption = @"dingo";
+
+    NSArray *validOptions = [NSArray arrayWithObjects:option1, option2, option3, nil];
+
+    XCTAssertTrue([PrimitiveFieldValidator validateField:option1
+                                      isOneOfValidValues:validOptions]);
+
+    XCTAssertFalse([PrimitiveFieldValidator validateField:notAnOption
+                                       isOneOfValidValues:validOptions]);
+}
+
 @end
