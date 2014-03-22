@@ -67,7 +67,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             [currentFields addObject:@""];
         }
         
-        NSUInteger keyIndex = [header indexOfObject:@"key"];
+        NSUInteger keyIndex = [header indexOfObject:@"KEY"];
         LibraryObject *object = [[LibraryObject alloc] initWithKey:[currentFields objectAtIndex:keyIndex]
                                                  AndWithAttributes:header
                                                          AndValues:currentFields];

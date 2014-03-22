@@ -184,7 +184,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSMutableArray *objectAttributes = [[NSMutableArray alloc] init];
     
     for (NSString *key in attributeKeys) {
-        if ([key isEqualToString:@"key"] || [key isEqualToString:TRN_TIMESTAMP])
+        if ([key isEqualToString:@"KEY"] || [key isEqualToString:TRN_TIMESTAMP])
             itemName = [attributes objectForKey:key];
         SimpleDBReplaceableAttribute *keyValuePair = [[SimpleDBReplaceableAttribute alloc] initWithName:key
                                                                                                andValue:[attributes objectForKey:key]
