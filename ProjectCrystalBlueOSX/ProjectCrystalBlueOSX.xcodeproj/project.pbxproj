@@ -72,6 +72,7 @@
 		D7439E2F18A5FC53000EE008 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7439E0E18A5FC53000EE008 /* Cocoa.framework */; };
 		D7439E3718A5FC53000EE008 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7439E3518A5FC53000EE008 /* InfoPlist.strings */; };
 		D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */; };
+		D75BA1FA18DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv in Resources */ = {isa = PBXBuildFile; fileRef = D75BA1F918DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv */; };
 		D770578518AD7CC100F011E5 /* EditSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D770578318AD7CC100F011E5 /* EditSourceViewController.m */; };
 		D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D770578418AD7CC100F011E5 /* EditSourceViewController.xib */; };
 		D780E1F318C83812003F3D92 /* ChangeLocationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D780E1F118C83812003F3D92 /* ChangeLocationWindowController.m */; };
@@ -114,6 +115,10 @@
 		D7C8733D18B3031800F2976F /* CSVReadWriteUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */; };
 		D7C8733F18B31CF400F2976F /* samples_reordered_columns.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */; };
 		D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */; };
+		D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */; };
+		D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */; };
+		D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */; };
+		D7FAAD7C18DE1D1B003A9A13 /* SampleFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +225,7 @@
 		D7439E3418A5FC53000EE008 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
 		D7439E3618A5FC53000EE008 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
+		D75BA1F918DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = source_with_western_europe_apple_encoding.csv; sourceTree = "<group>"; };
 		D770578218AD7CC100F011E5 /* EditSourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSourceViewController.h; sourceTree = "<group>"; };
 		D770578318AD7CC100F011E5 /* EditSourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSourceViewController.m; sourceTree = "<group>"; };
 		D770578418AD7CC100F011E5 /* EditSourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditSourceViewController.xib; sourceTree = "<group>"; };
@@ -298,6 +304,12 @@
 		D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVReadWriteUnitTests.m; sourceTree = "<group>"; };
 		D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_reordered_columns.csv; sourceTree = "<group>"; };
 		D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectEqualsAndHashcodeTests.m; sourceTree = "<group>"; };
+		D7FAAD7218DE10AD003A9A13 /* PrimitiveFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveFieldValidator.h; sourceTree = "<group>"; };
+		D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveFieldValidator.m; sourceTree = "<group>"; };
+		D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveValidatorTests.m; sourceTree = "<group>"; };
+		D7FAAD7818DE1A1B003A9A13 /* SampleFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleFieldValidator.h; sourceTree = "<group>"; };
+		D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidator.m; sourceTree = "<group>"; };
+		D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidatorTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -498,6 +510,7 @@
 		D72465DE18B731EC002EDE5B /* CSV */ = {
 			isa = PBXGroup;
 			children = (
+				D75BA1F918DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv */,
 				D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */,
 				D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */,
 				D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */,
@@ -602,6 +615,7 @@
 		D7439E3218A5FC53000EE008 /* ProjectCrystalBlueOSXTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7FAAD7518DE1323003A9A13 /* ValidatorTests */,
 				D7C8733818B302D900F2976F /* ReadWrite */,
 				D724060218A6027200EA2DD2 /* ModelTests */,
 				D72405E718A601CC00EA2DD2 /* Store Tests */,
@@ -688,6 +702,7 @@
 		D78ACC2E18A5FD97006084D6 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D7FAAD7118DE1040003A9A13 /* Validation */,
 				D78ACC4F18A5FDE9006084D6 /* ImageUtils.h */,
 				D78ACC5018A5FDE9006084D6 /* ImageUtils.m */,
 				D78ACC4018A5FDC8006084D6 /* Lumberjack */,
@@ -919,6 +934,26 @@
 			name = SamplesView;
 			sourceTree = "<group>";
 		};
+		D7FAAD7118DE1040003A9A13 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				D7FAAD7218DE10AD003A9A13 /* PrimitiveFieldValidator.h */,
+				D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */,
+				D7FAAD7818DE1A1B003A9A13 /* SampleFieldValidator.h */,
+				D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */,
+			);
+			name = Validation;
+			sourceTree = "<group>";
+		};
+		D7FAAD7518DE1323003A9A13 /* ValidatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */,
+				D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */,
+			);
+			name = ValidatorTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1016,6 +1051,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D75BA1FA18DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv in Resources */,
 				D7A41E3318B6A4E200653B3E /* samples_missing_attribute.csv in Resources */,
 				D72405FC18A6024900EA2DD2 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */,
 				D72405F618A6023B00EA2DD2 /* big_test_image_4096-4096.jpg in Resources */,
@@ -1049,6 +1085,7 @@
 				D770578518AD7CC100F011E5 /* EditSourceViewController.m in Sources */,
 				D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */,
 				D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */,
+				D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */,
 				D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */,
 				D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
@@ -1087,6 +1124,7 @@
 				D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */,
 				D038CBCC18DBFBF400635442 /* SourcesWindowController.m in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
+				D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */,
 				D78ACC6618A5FE21006084D6 /* AbstractCloudImageStore.m in Sources */,
 				D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */,
 				D038CBD318DC072400635442 /* SourcesTableViewController.m in Sources */,
@@ -1113,7 +1151,9 @@
 				D72405F218A6022500EA2DD2 /* AbstractImageStoreTests.m in Sources */,
 				D72465E318B73D9F002EDE5B /* SourceImportControllerTests.m in Sources */,
 				D0B410FA18B590F000017FAC /* TransactionEqualsAndHashcodeTests.m in Sources */,
+				D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */,
 				D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */,
+				D7FAAD7C18DE1D1B003A9A13 /* SampleFieldValidatorTests.m in Sources */,
 				D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */,
 				D704E1AB18B1654200170B7E /* ProcedureRecordParserTests.m in Sources */,
 				D724060118A6026900EA2DD2 /* LocalTransactionCacheTests.m in Sources */,

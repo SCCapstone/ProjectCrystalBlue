@@ -10,10 +10,10 @@
 
 /* Attribute names
  */
-static NSString *const SMP_KEY = @"key";
-static NSString *const SMP_SOURCE_KEY = @"sourceKey";
-static NSString *const SMP_CURRENT_LOCATION = @"currentLocation";
-static NSString *const SMP_TAGS = @"tags";
+static NSString *const SMP_KEY = @"KEY";
+static NSString *const SMP_SOURCE_KEY = @"SOURCE_KEY";
+static NSString *const SMP_CURRENT_LOCATION = @"CURRENT_LOCATION";
+static NSString *const SMP_TAGS = @"TAGS";
 
 /* Attribute default values
  */

@@ -67,7 +67,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
         return nil;
     }
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE key='%@'", tableName, key];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE KEY='%@'", tableName, key];
     
     // Get library object with key
     __block NSDictionary *resultDictionary = nil;
@@ -117,7 +117,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         // Add all the results to the libraryObjects array
         while (results.next) {
-            NSString *key = [results.resultDictionary objectForKey:@"key"];
+            NSString *key = [results.resultDictionary objectForKey:@"KEY"];
             if ([tableName isEqualToString:[SourceConstants tableName]])
                 [libraryObjects addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
             else
@@ -131,7 +131,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
 {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE sourceKey='%@'", [SampleConstants tableName], sourceKey];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE SOURCE_KEY='%@'", [SampleConstants tableName], sourceKey];
     
     // Get all corresponding samples from table
     __block NSMutableArray *samples = [[NSMutableArray alloc] init];;
@@ -146,7 +146,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         // Add all the results to the samples array
         while (results.next) {
-            NSString *key = [results.resultDictionary objectForKey:@"key"];
+            NSString *key = [results.resultDictionary objectForKey:@"KEY"];
             [samples addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
         }
         [results close];
@@ -178,7 +178,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         // Add all the results to the samples array
         while (results.next) {
-            NSString *key = [results.resultDictionary objectForKey:@"key"];
+            NSString *key = [results.resultDictionary objectForKey:@"KEY"];
             if ([tableName isEqualToString:[SourceConstants tableName]])
                 [libraryObjects addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
             else
@@ -244,7 +244,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         
         // Add all the results to the libraryObjects array
         while (results.next) {
-            NSString *key = [results.resultDictionary objectForKey:@"key"];
+            NSString *key = [results.resultDictionary objectForKey:@"KEY"];
             if ([tableName isEqualToString:[SourceConstants tableName]])
                 [libraryObjects addObject:[[Source alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
             else
@@ -321,7 +321,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return YES;
     }
     
-    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ %@ WHERE key='%@'", tableName, setSql, libraryObject.key];
+    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ %@ WHERE KEY='%@'", tableName, setSql, libraryObject.key];
     
     // Update the library object
     __block BOOL isUpdated = NO;
@@ -348,7 +348,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         DDLogCError(@"%@: Library object attempting to delete does not exist in the local database", NSStringFromClass(self.class));
         return NO;
     }
-    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE key='%@'", tableName, key];
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE KEY='%@'", tableName, key];
     
     // Delete library object
     __block BOOL isDeleted = NO;
@@ -369,7 +369,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (BOOL)deleteAllSamplesForSourceKey:(NSString *)sourceKey
 {
-    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE sourceKey='%@'", [SampleConstants tableName], sourceKey];
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE SOURCE_KEY='%@'", [SampleConstants tableName], sourceKey];
     
     // Delete samples with sourceKey
     __block BOOL isDeleted = NO;
@@ -392,7 +392,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
         return NO;
     }
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE key='%@'", tableName, key];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE KEY='%@'", tableName, key];
     
     // Check library object for key
     __block BOOL objectExists = NO;

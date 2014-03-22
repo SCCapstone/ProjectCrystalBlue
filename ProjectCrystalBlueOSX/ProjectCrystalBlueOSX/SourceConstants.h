@@ -10,26 +10,27 @@
 
 /* Attribute names
  */
-static NSString *const SRC_KEY              = @"key";
-static NSString *const SRC_CONTINENT        = @"continent";
-static NSString *const SRC_TYPE             = @"type";
-static NSString *const SRC_LITHOLOGY        = @"lithology";
-static NSString *const SRC_DEPOSYSTEM       = @"deposystem";
-static NSString *const SRC_GROUP            = @"rockGroup";
-static NSString *const SRC_FORMATION        = @"formation";
-static NSString *const SRC_MEMBER           = @"member";
-static NSString *const SRC_REGION           = @"region";
-static NSString *const SRC_LOCALITY         = @"locality";
-static NSString *const SRC_SECTION          = @"section";
-static NSString *const SRC_METER            = @"meterLevel";
-static NSString *const SRC_LATITUDE         = @"latitude";
-static NSString *const SRC_LONGITUDE        = @"longitude";
-static NSString *const SRC_AGE              = @"age";
-static NSString *const SRC_AGE_METHOD       = @"ageMethod";
-static NSString *const SRC_AGE_DATATYPE     = @"ageDataType";
-static NSString *const SRC_DATE_COLLECTED   = @"dateCollected";
-static NSString *const SRC_NOTES            = @"notes";
-static NSString *const SRC_HYPERLINKS       = @"hyperlinks";
+static NSString *const SRC_KEY              = @"KEY";
+static NSString *const SRC_CONTINENT        = @"CONTINENT";
+static NSString *const SRC_TYPE             = @"TYPE";
+static NSString *const SRC_LITHOLOGY        = @"LITHOLOGY";
+static NSString *const SRC_DEPOSYSTEM       = @"DEPOSYSTEM";
+static NSString *const SRC_GROUP            = @"ROCK_GROUP";
+static NSString *const SRC_FORMATION        = @"FORMATION";
+static NSString *const SRC_MEMBER           = @"MEMBER";
+static NSString *const SRC_REGION           = @"REGION";
+static NSString *const SRC_LOCALITY         = @"LOCALITY";
+static NSString *const SRC_SECTION          = @"SECTION";
+static NSString *const SRC_METER            = @"METER_LEVEL";
+static NSString *const SRC_LATITUDE         = @"LATITUDE";
+static NSString *const SRC_LONGITUDE        = @"LONGITUDE";
+static NSString *const SRC_AGE              = @"AGE";
+static NSString *const SRC_AGE_METHOD       = @"AGE_METHOD";
+static NSString *const SRC_AGE_DATATYPE     = @"AGE_DATA_TYPE";
+static NSString *const SRC_DATE_COLLECTED   = @"DATE_COLLECTED";
+static NSString *const SRC_NOTES            = @"NOTES";
+static NSString *const SRC_HYPERLINKS       = @"HYPERLINKS";
+static NSString *const SRC_IMAGES           = @"IMAGES";
 
 /* Attribute default values
  */
@@ -53,6 +54,7 @@ static NSString *const SRC_DEF_VAL_AGE_DATATYPE = @"Age data type here";
 static NSString *const SRC_DEF_VAL_DATE_COLLECTED = @"Date collected here";
 static NSString *const SRC_DEF_VAL_NOTES        = @"Notes here";
 static NSString *const SRC_DEF_VAL_HYPERLINKS   = @"Hyperlinks here";
+static NSString *const SRC_DEF_VAL_IMAGES       = @"Images here";
 
 /*  Human-readable attribute names
  */
@@ -76,6 +78,7 @@ static NSString *const SRC_DISPLAY_AGE_DATATYPE = @"Age Data Type";
 static NSString *const SRC_DISPLAY_DATE_COLLECTED = @"Date Collected";
 static NSString *const SRC_DISPLAY_NOTES        = @"Notes";
 static NSString *const SRC_DISPLAY_HYPERLINKS   = @"Hyperlinks";
+static NSString *const SRC_DISPLAY_IMAGES       = @"Images";
 
 @interface SourceConstants : NSObject
 

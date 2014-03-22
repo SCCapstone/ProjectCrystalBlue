@@ -34,7 +34,7 @@ AndWithAttributes:(NSArray *)attributeNames
         attributes = [[NSMutableDictionary alloc] initWithObjects:attributeValues
                                                           forKeys:attributeNames];
         // Make sure key is set correctly
-        [attributes setObject:key forKey:@"key"];
+        [attributes setObject:key forKey:@"KEY"];
     }
     return self;
 }
@@ -49,7 +49,7 @@ AndWithAttributeDictionary:(NSDictionary *)attr
         attributes = [attr mutableCopy];
         
         // Make sure key is set correctly
-        [attributes setObject:key forKey:@"key"];
+        [attributes setObject:key forKey:@"KEY"];
     }
     return self;
 }
