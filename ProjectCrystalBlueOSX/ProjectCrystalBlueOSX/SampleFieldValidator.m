@@ -13,10 +13,10 @@
 
 + (BOOL)validateCurrentLocation:(NSString *)currentLocationValue
 {
-    BOOL valid = !(nil == currentLocationValue);
-
     const NSUInteger maxLength = 90;
     const NSUInteger minlength = 1;
+
+    BOOL valid = !(nil == currentLocationValue);
 
     valid = valid && [PrimitiveFieldValidator validateField:currentLocationValue
                                       isNoMoreThanMaxLength:maxLength];
