@@ -10,10 +10,10 @@
 
 /* Attribute names
  */
-static NSString *const TRN_TIMESTAMP = @"timestamp";
-static NSString *const TRN_LIBRARY_OBJECT_KEY = @"libraryObjectKey";
-static NSString *const TRN_LIBRARY_OBJECT_TABLE = @"tableName";
-static NSString *const TRN_SQL_COMMAND_TYPE = @"sqlCommandType";
+static NSString *const TRN_TIMESTAMP = @"TIMESTAMP";
+static NSString *const TRN_LIBRARY_OBJECT_KEY = @"LIBRARY_OBJECT_KEY";
+static NSString *const TRN_LIBRARY_OBJECT_TABLE = @"TABLE_NAME";
+static NSString *const TRN_SQL_COMMAND_TYPE = @"SQL_COMMAND_TYPE";
 
 /* Attribute default values
  */
