@@ -28,6 +28,9 @@
 /// Return an instance of this class that selects CSV files.
 +(OSXFileSelector *)CSVFileSelector;
 
+/// Return an instance of this class that selects JPG and PNG files.
++(OSXFileSelector *)ImageFileSelector;
+
 /// Present a file selector to the user. The path to the file will be sent to the delegate.
 -(void)presentFileSelectorToUser;
 

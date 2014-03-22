@@ -50,7 +50,9 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
                           SRC_AGE_DATATYPE,
                           SRC_DATE_COLLECTED,
                           SRC_NOTES,
-                          SRC_HYPERLINKS, nil];
+                          SRC_HYPERLINKS,
+                          SRC_IMAGES,
+                          nil];
     }
     
     return attributeNames;
@@ -81,7 +83,9 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
                                   SRC_DEF_VAL_AGE_DATATYPE,
                                   SRC_DEF_VAL_DATE_COLLECTED,
                                   SRC_DEF_VAL_NOTES,
-                                  SRC_DEF_VAL_HYPERLINKS, nil];
+                                  SRC_DEF_VAL_HYPERLINKS,
+                                  SRC_DEF_VAL_IMAGES,
+                                  nil];
     }
     return attributeDefaultValues;
 }
@@ -111,7 +115,9 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
                                 SRC_DISPLAY_AGE_DATATYPE,
                                 SRC_DISPLAY_DATE_COLLECTED,
                                 SRC_DISPLAY_NOTES,
-                                SRC_DISPLAY_HYPERLINKS, nil];
+                                SRC_DISPLAY_HYPERLINKS,
+                                SRC_DISPLAY_IMAGES,
+                                nil];
     }
     return attributeLabelValues;
 }

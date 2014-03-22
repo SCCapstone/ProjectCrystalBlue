@@ -115,6 +115,7 @@
 		D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */; };
 		D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */; };
 		D7FAAD7C18DE1D1B003A9A13 /* SampleFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */; };
+		D7FAAD8018DE23BF003A9A13 /* OSXImageUploadHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7F18DE23BF003A9A13 /* OSXImageUploadHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +301,8 @@
 		D7FAAD7818DE1A1B003A9A13 /* SampleFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleFieldValidator.h; sourceTree = "<group>"; };
 		D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidator.m; sourceTree = "<group>"; };
 		D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidatorTests.m; sourceTree = "<group>"; };
+		D7FAAD7E18DE23BF003A9A13 /* OSXImageUploadHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXImageUploadHandler.h; sourceTree = "<group>"; };
+		D7FAAD7F18DE23BF003A9A13 /* OSXImageUploadHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXImageUploadHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -737,6 +740,8 @@
 				D78ACC6018A5FE16006084D6 /* Abstract Classes */,
 				D78ACC5D18A5FE13006084D6 /* LocalImageStore.h */,
 				D78ACC5E18A5FE13006084D6 /* LocalImageStore.m */,
+				D7FAAD7E18DE23BF003A9A13 /* OSXImageUploadHandler.h */,
+				D7FAAD7F18DE23BF003A9A13 /* OSXImageUploadHandler.m */,
 			);
 			name = ImageStore;
 			sourceTree = "<group>";
@@ -1091,6 +1096,7 @@
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
 				D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */,
 				D78ACC6618A5FE21006084D6 /* AbstractCloudImageStore.m in Sources */,
+				D7FAAD8018DE23BF003A9A13 /* OSXImageUploadHandler.m in Sources */,
 				D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
