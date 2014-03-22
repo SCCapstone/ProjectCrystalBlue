@@ -12,6 +12,9 @@
 /// Protocol for an object that receives a file path from the OSXFileSelector.
 @protocol OSXFileSelectorDelegate <NSObject>
 
+/// Callback that is triggered when the user selects a file. Implementations of this method should
+/// carry out the necessary action for the filepath. It's reasonable to assume that the filepath
+/// is to a valid file of the correct format, but it wouldn't hurt to do extra validation to be sure.
 -(void)fileSelector:(id)selector
   didOpenFileAtPath:(NSString *)filePath;
 
