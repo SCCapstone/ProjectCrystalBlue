@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SourcesWindowController">
+            <connections>
+                <outlet property="splitView" destination="cem-R6-0O1" id="irL-eM-zXA"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="TtF-1Q-LVI"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="978" height="451"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <view key="contentView" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="978" height="451"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <splitView dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cem-R6-0O1">
+                        <rect key="frame" x="0.0" y="0.0" width="978" height="451"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <customView fixedFrame="YES" id="CFf-oo-bZt">
+                                <rect key="frame" x="0.0" y="0.0" width="483" height="451"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </customView>
+                            <customView fixedFrame="YES" id="89V-Oh-Gxy">
+                                <rect key="frame" x="493" y="0.0" width="485" height="451"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </customView>
+                        </subviews>
+                        <holdingPriorities>
+                            <real value="250"/>
+                            <real value="250"/>
+                        </holdingPriorities>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="tLq-Qs-U1S"/>
+                        </connections>
+                    </splitView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="cem-R6-0O1" secondAttribute="trailing" id="0ck-A4-5y7"/>
+                    <constraint firstAttribute="bottom" secondItem="cem-R6-0O1" secondAttribute="bottom" id="9aG-Jw-vY1"/>
+                    <constraint firstItem="cem-R6-0O1" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="Qta-yM-kYo"/>
+                    <constraint firstItem="cem-R6-0O1" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="kL5-rD-yws"/>
+                </constraints>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="38B69A90-12EB-4EA2-8CFF-CF1F409D0DE8" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="tM3-3E-2HV">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="Ibe-LF-qPW"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="PMY-3Z-ptF"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="UR0-2l-SrQ"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="B2j-yM-74A"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="VRf-l3-kVK"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="Ibe-LF-qPW"/>
+                    <toolbarItem reference="PMY-3Z-ptF"/>
+                    <toolbarItem reference="VRf-l3-kVK"/>
+                    <toolbarItem reference="UR0-2l-SrQ"/>
+                </defaultToolbarItems>
+            </toolbar>
+        </window>
+    </objects>
+</document>

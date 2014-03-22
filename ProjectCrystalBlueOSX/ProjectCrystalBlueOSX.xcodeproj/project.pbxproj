@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
+		D038CBCC18DBFBF400635442 /* SourcesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D038CBCB18DBFBF400635442 /* SourcesWindowController.m */; };
+		D038CBCE18DBFC0E00635442 /* SourcesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D038CBCD18DBFC0E00635442 /* SourcesWindowController.xib */; };
+		D038CBD318DC072400635442 /* SourcesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D038CBD118DC072400635442 /* SourcesTableViewController.m */; };
+		D038CBD418DC072400635442 /* SourcesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D038CBD218DC072400635442 /* SourcesTableViewController.xib */; };
 		D0655A0718B209CB008947B5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
@@ -125,6 +129,12 @@
 /* Begin PBXFileReference section */
 		03AE34D918B1B991006AD856 /* libqrencode.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqrencode.3.dylib; path = include/libqrencode.3.dylib; sourceTree = "<group>"; };
 		D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
+		D038CBCA18DBFBF400635442 /* SourcesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesWindowController.h; sourceTree = "<group>"; };
+		D038CBCB18DBFBF400635442 /* SourcesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesWindowController.m; sourceTree = "<group>"; };
+		D038CBCD18DBFC0E00635442 /* SourcesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcesWindowController.xib; sourceTree = "<group>"; };
+		D038CBD018DC072400635442 /* SourcesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesTableViewController.h; sourceTree = "<group>"; };
+		D038CBD118DC072400635442 /* SourcesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesTableViewController.m; sourceTree = "<group>"; };
+		D038CBD218DC072400635442 /* SourcesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcesTableViewController.xib; sourceTree = "<group>"; };
 		D086319F18AC5ACB007A8DAA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
 		D08631A018AC5ACB007A8DAA /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
 		D08631A318AC61BA007A8DAA /* TransactionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionStore.h; sourceTree = "<group>"; };
@@ -322,6 +332,26 @@
 				D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */,
 			);
 			name = TransactionStore;
+			sourceTree = "<group>";
+		};
+		D038CBC918DBFBBF00635442 /* SourcesWindowController */ = {
+			isa = PBXGroup;
+			children = (
+				D038CBCA18DBFBF400635442 /* SourcesWindowController.h */,
+				D038CBCB18DBFBF400635442 /* SourcesWindowController.m */,
+				D038CBCD18DBFC0E00635442 /* SourcesWindowController.xib */,
+			);
+			name = SourcesWindowController;
+			sourceTree = "<group>";
+		};
+		D038CBCF18DC06EE00635442 /* SourcesTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D038CBD018DC072400635442 /* SourcesTableViewController.h */,
+				D038CBD118DC072400635442 /* SourcesTableViewController.m */,
+				D038CBD218DC072400635442 /* SourcesTableViewController.xib */,
+			);
+			name = SourcesTableViewController;
 			sourceTree = "<group>";
 		};
 		D08631A218AC619D007A8DAA /* TransactionStore */ = {
@@ -669,6 +699,8 @@
 		D78ACC2F18A5FD9B006084D6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D038CBC918DBFBBF00635442 /* SourcesWindowController */,
+				D038CBCF18DC06EE00635442 /* SourcesTableViewController */,
 				D780E1EF18C837FC003F3D92 /* ChangeLocationWindow */,
 				D7125EED18C462EC00BBCD3E /* ProceduresWindow */,
 				D7F822BB18B199290017548F /* SamplesView */,
@@ -967,11 +999,13 @@
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D738D55718BAA52600A777E2 /* DetailPanelViewController.xib in Resources */,
 				D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */,
+				D038CBD418DC072400635442 /* SourcesTableViewController.xib in Resources */,
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
 				D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */,
 				D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */,
 				D780E1F418C83812003F3D92 /* ChangeLocationWindowController.xib in Resources */,
 				D7439E1F18A5FC53000EE008 /* Credits.rtf in Resources */,
+				D038CBCE18DBFC0E00635442 /* SourcesWindowController.xib in Resources */,
 				D711C94E18C42CC300D637D7 /* AddNewSourceWindowController.xib in Resources */,
 				D7439E2518A5FC53000EE008 /* MainMenu.xib in Resources */,
 				D78ACC7318A5FE44006084D6 /* no_image.png in Resources */,
@@ -1051,9 +1085,11 @@
 				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
 				D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */,
+				D038CBCC18DBFBF400635442 /* SourcesWindowController.m in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
 				D78ACC6618A5FE21006084D6 /* AbstractCloudImageStore.m in Sources */,
 				D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */,
+				D038CBD318DC072400635442 /* SourcesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

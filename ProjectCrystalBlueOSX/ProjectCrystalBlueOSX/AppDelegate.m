@@ -12,6 +12,7 @@
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
 #import "DDFileLogger.h"
+#import "SourcesWindowController.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -27,6 +28,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     NSDate *now = [[NSDate alloc] init];
     DDLogInfo(@"Launched app %@", now);
+    
+    if (!sourcesWindowController)
+        sourcesWindowController = [[SourcesWindowController alloc] initWithWindowNibName:@"SourcesWindowController"];
+    [sourcesWindowController showWindow:self];
     
     leftViewController = [self getSourcesViewController];
     NSView *leftView = [leftViewController view];

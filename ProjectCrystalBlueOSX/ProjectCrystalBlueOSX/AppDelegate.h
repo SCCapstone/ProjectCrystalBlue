@@ -10,9 +10,13 @@
 #import "SourcesViewController.h"
 #import "DetailPanelViewController.h"
 
+@class SourcesWindowController;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     SourcesViewController *leftViewController;
     DetailPanelViewController *rightViewController;
+    
+    SourcesWindowController *sourcesWindowController;
 }
 
 @property (assign) IBOutlet NSWindow *window;
