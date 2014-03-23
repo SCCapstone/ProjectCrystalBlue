@@ -116,6 +116,8 @@
 		D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */; };
 		D7FAAD7C18DE1D1B003A9A13 /* SampleFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */; };
 		D7FAAD8018DE23BF003A9A13 /* OSXImageUploadHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7F18DE23BF003A9A13 /* OSXImageUploadHandler.m */; };
+		D7FAAD8318DE2EDD003A9A13 /* SourceImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD8218DE2EDD003A9A13 /* SourceImageUtils.m */; };
+		D7FAAD8618DE42FA003A9A13 /* SourceImageUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD8518DE42FA003A9A13 /* SourceImageUtilsTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -303,6 +305,9 @@
 		D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidatorTests.m; sourceTree = "<group>"; };
 		D7FAAD7E18DE23BF003A9A13 /* OSXImageUploadHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXImageUploadHandler.h; sourceTree = "<group>"; };
 		D7FAAD7F18DE23BF003A9A13 /* OSXImageUploadHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXImageUploadHandler.m; sourceTree = "<group>"; };
+		D7FAAD8118DE2EDD003A9A13 /* SourceImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceImageUtils.h; sourceTree = "<group>"; };
+		D7FAAD8218DE2EDD003A9A13 /* SourceImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImageUtils.m; sourceTree = "<group>"; };
+		D7FAAD8518DE42FA003A9A13 /* SourceImageUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImageUtilsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -427,6 +432,7 @@
 		D72405EF18A6020D00EA2DD2 /* ImageStore */ = {
 			isa = PBXGroup;
 			children = (
+				D7FAAD8418DE42D9003A9A13 /* SourceImageUtils */,
 				D72405F818A6023F00EA2DD2 /* S3ImageStore */,
 				D72405F318A6022900EA2DD2 /* LocalImageStore */,
 				D72405F018A6021C00EA2DD2 /* AbstractImageStore */,
@@ -740,6 +746,8 @@
 				D78ACC6018A5FE16006084D6 /* Abstract Classes */,
 				D78ACC5D18A5FE13006084D6 /* LocalImageStore.h */,
 				D78ACC5E18A5FE13006084D6 /* LocalImageStore.m */,
+				D7FAAD8118DE2EDD003A9A13 /* SourceImageUtils.h */,
+				D7FAAD8218DE2EDD003A9A13 /* SourceImageUtils.m */,
 				D7FAAD7E18DE23BF003A9A13 /* OSXImageUploadHandler.h */,
 				D7FAAD7F18DE23BF003A9A13 /* OSXImageUploadHandler.m */,
 			);
@@ -927,6 +935,14 @@
 			name = ValidatorTests;
 			sourceTree = "<group>";
 		};
+		D7FAAD8418DE42D9003A9A13 /* SourceImageUtils */ = {
+			isa = PBXGroup;
+			children = (
+				D7FAAD8518DE42FA003A9A13 /* SourceImageUtilsTests.m */,
+			);
+			name = SourceImageUtils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1041,6 +1057,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D78ACC7018A5FE2E006084D6 /* HardcodedCredentialsProvider.m in Sources */,
+				D7FAAD8318DE2EDD003A9A13 /* SourceImageUtils.m in Sources */,
 				D78ACC3B18A5FDC0006084D6 /* FMDatabase.m in Sources */,
 				D78ACC6F18A5FE2E006084D6 /* S3Utils.m in Sources */,
 				D78ACC5518A5FDFD006084D6 /* LocalTransactionCache.m in Sources */,
@@ -1107,6 +1124,7 @@
 			files = (
 				D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */,
 				D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */,
+				D7FAAD8618DE42FA003A9A13 /* SourceImageUtilsTests.m in Sources */,
 				D72405F718A6023B00EA2DD2 /* LocalImageStoreTests.m in Sources */,
 				D09C7E9A18B1ABFE001B98AF /* SimpleDBUtilsTests.m in Sources */,
 				D72405FD18A6024900EA2DD2 /* S3ImageStoreTests.m in Sources */,
