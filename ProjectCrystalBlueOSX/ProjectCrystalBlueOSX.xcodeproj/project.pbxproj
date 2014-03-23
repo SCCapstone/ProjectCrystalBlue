@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0347660A18DF7A950005F8CA /* GenerateQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0347660918DF7A950005F8CA /* GenerateQRCode.m */; };
+		0347660B18DF7ACE0005F8CA /* libqrencode.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AE34D918B1B991006AD856 /* libqrencode.3.dylib */; };
 		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
 		D0655A0718B209CB008947B5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
@@ -131,6 +133,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0347660818DF7A950005F8CA /* GenerateQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateQRCode.h; sourceTree = "<group>"; };
+		0347660918DF7A950005F8CA /* GenerateQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateQRCode.m; sourceTree = "<group>"; };
 		03AE34D918B1B991006AD856 /* libqrencode.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqrencode.3.dylib; path = include/libqrencode.3.dylib; sourceTree = "<group>"; };
 		D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D086319F18AC5ACB007A8DAA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0347660B18DF7ACE0005F8CA /* libqrencode.3.dylib in Frameworks */,
 				D7439E0F18A5FC53000EE008 /* Cocoa.framework in Frameworks */,
 				D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */,
 				D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */,
@@ -898,6 +903,8 @@
 		D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */ = {
 			isa = PBXGroup;
 			children = (
+				0347660818DF7A950005F8CA /* GenerateQRCode.h */,
+				0347660918DF7A950005F8CA /* GenerateQRCode.m */,
 				D711C94A18C42CC300D637D7 /* AddNewSourceWindowController.h */,
 				D711C94B18C42CC300D637D7 /* AddNewSourceWindowController.m */,
 				D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */,
@@ -1108,6 +1115,7 @@
 				D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */,
 				D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */,
 				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
+				0347660A18DF7A950005F8CA /* GenerateQRCode.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
 				D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
@@ -1283,6 +1291,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
+					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1309,6 +1318,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
+					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

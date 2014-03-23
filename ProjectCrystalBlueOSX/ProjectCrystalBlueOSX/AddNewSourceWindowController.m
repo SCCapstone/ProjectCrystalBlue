@@ -10,6 +10,7 @@
 #import "SourcesViewController.h"
 #import "SourceConstants.h"
 #import "Source.h"
+#import "GenerateQRCode.h"
 
 #import "DDLog.h"
 
@@ -69,7 +70,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (IBAction)saveButtonPressed:(id)sender {
     NSString *key = self.keyTextField.stringValue;
-
+    [GenerateQRCode writeQRCode:self.keyTextField.stringValue];
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] initWithObjects:[SourceConstants attributeDefaultValues]
                                                                            forKeys:[SourceConstants attributeNames]];
 
