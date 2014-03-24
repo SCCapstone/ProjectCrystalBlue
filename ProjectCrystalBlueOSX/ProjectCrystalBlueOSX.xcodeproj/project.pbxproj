@@ -686,11 +686,13 @@
 		D78ACC2E18A5FD97006084D6 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D78ACC3018A5FDAE006084D6 /* FMDB */,
+				D78ACC4018A5FDC8006084D6 /* Lumberjack */,
 				D7FAAD7118DE1040003A9A13 /* Validation */,
+				0347660818DF7A950005F8CA /* GenerateQRCode.h */,
+				0347660918DF7A950005F8CA /* GenerateQRCode.m */,
 				D78ACC4F18A5FDE9006084D6 /* ImageUtils.h */,
 				D78ACC5018A5FDE9006084D6 /* ImageUtils.m */,
-				D78ACC4018A5FDC8006084D6 /* Lumberjack */,
-				D78ACC3018A5FDAE006084D6 /* FMDB */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -903,8 +905,6 @@
 		D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */ = {
 			isa = PBXGroup;
 			children = (
-				0347660818DF7A950005F8CA /* GenerateQRCode.h */,
-				0347660918DF7A950005F8CA /* GenerateQRCode.m */,
 				D711C94A18C42CC300D637D7 /* AddNewSourceWindowController.h */,
 				D711C94B18C42CC300D637D7 /* AddNewSourceWindowController.m */,
 				D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */,
