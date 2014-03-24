@@ -12,4 +12,6 @@
 
 @property (weak) IBOutlet NSSplitView *splitView;
 
+- (IBAction)openAddNewSourcesWindow:(id)sender;
+
 @end

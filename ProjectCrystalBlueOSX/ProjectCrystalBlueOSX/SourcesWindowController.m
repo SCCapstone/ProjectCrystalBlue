@@ -8,11 +8,22 @@
 
 #import "SourcesWindowController.h"
 #import "SourcesTableViewController.h"
+#import "AddNewSourceWindowController.h"
+#import "SamplesWindowController.h"
+#import "DDLog.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 
 @interface SourcesWindowController ()
 {
     SourcesTableViewController *tableViewController;
     enum subviews { tableSubview, detailPanelSubview };
+    
+    NSMutableArray *activeWindowControllers;
 }
 
 @end
@@ -22,9 +33,11 @@
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
+    
     if (self) {
-        // Initialization code here.
+        activeWindowControllers = [[NSMutableArray alloc] init];
     }
+    
     return self;
 }
 
@@ -52,6 +65,20 @@
         return YES;
     else
         return NO;
+}
+
+
+/*  Toolbar actions
+ */
+
+- (void)openAddNewSourcesWindow:(id)sender
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    
+    AddNewSourceWindowController *addNewSourceWindowController = [[AddNewSourceWindowController alloc] initWithWindowNibName:@"AddNewSourceWindowController"];
+    [addNewSourceWindowController setSourcesTableViewController:tableViewController];
+    [addNewSourceWindowController showWindow:self];
+    [activeWindowControllers addObject:addNewSourceWindowController];
 }
 
 @end

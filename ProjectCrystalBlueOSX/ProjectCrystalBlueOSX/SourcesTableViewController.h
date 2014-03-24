@@ -8,6 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SourcesTableViewController : NSViewController
+@class AbstractLibraryObjectStore, Source;
+
+@interface SourcesTableViewController : NSViewController <NSTableViewDelegate>
+
+@property NSMutableArray *sources;
+@property (strong) IBOutlet NSArrayController *arrayController;
+@property (weak) IBOutlet NSTableView *tableView;
+@property AbstractLibraryObjectStore *dataStore;
+
+- (IBAction)addSource:(Source *)source;
 
 @end

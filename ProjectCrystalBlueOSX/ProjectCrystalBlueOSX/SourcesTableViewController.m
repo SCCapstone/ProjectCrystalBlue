@@ -7,20 +7,37 @@
 //
 
 #import "SourcesTableViewController.h"
+#import "Source.h"
 
 @interface SourcesTableViewController ()
-
+{
+    
+}
 @end
 
 @implementation SourcesTableViewController
 
+@synthesize sources, tableView, arrayController;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
-        // Initialization code here.
+        sources = [[NSMutableArray alloc] init];
     }
+    
     return self;
+}
+
+- (void)awakeFromNib
+{
+    
+}
+
+- (void)addSource:(Source *)source
+{
+    [arrayController addObject:source];
 }
 
 @end

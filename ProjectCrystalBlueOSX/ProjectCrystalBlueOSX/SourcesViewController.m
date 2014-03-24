@@ -131,6 +131,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return NO;
 }
 
+- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    
+}
+
 /*  These are methods that are called when the user clicks on the toolbar items.
  *  Due to the way the Windows/Views are set up in the app, the toolbar is actually
  *  part of the main menu window, not part of the SourcesView. So the AppDelegate will
@@ -140,7 +145,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     AddNewSourceWindowController *addNewSourceWindowController = [[AddNewSourceWindowController alloc] initWithWindowNibName:@"AddNewSourceWindowController"];
-    [addNewSourceWindowController setSourcesViewController:self];
+    //[addNewSourceWindowController setSourcesViewController:self];
     [addNewSourceWindowController showWindow:self];
     [activeViewControllers addObject:addNewSourceWindowController];
 }
