@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0347660A18DF7A950005F8CA /* GenerateQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0347660918DF7A950005F8CA /* GenerateQRCode.m */; };
+		0347660B18DF7ACE0005F8CA /* libqrencode.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AE34D918B1B991006AD856 /* libqrencode.3.dylib */; };
 		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
 		D038CBCC18DBFBF400635442 /* SourcesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D038CBCB18DBFBF400635442 /* SourcesWindowController.m */; };
 		D038CBCE18DBFC0E00635442 /* SourcesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D038CBCD18DBFC0E00635442 /* SourcesWindowController.xib */; };
@@ -119,6 +121,9 @@
 		D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */; };
 		D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */; };
 		D7FAAD7C18DE1D1B003A9A13 /* SampleFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */; };
+		D7FAAD8018DE23BF003A9A13 /* OSXImageUploadHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7F18DE23BF003A9A13 /* OSXImageUploadHandler.m */; };
+		D7FAAD8318DE2EDD003A9A13 /* SourceImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD8218DE2EDD003A9A13 /* SourceImageUtils.m */; };
+		D7FAAD8618DE42FA003A9A13 /* SourceImageUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD8518DE42FA003A9A13 /* SourceImageUtilsTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +137,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0347660818DF7A950005F8CA /* GenerateQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateQRCode.h; sourceTree = "<group>"; };
+		0347660918DF7A950005F8CA /* GenerateQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateQRCode.m; sourceTree = "<group>"; };
 		03AE34D918B1B991006AD856 /* libqrencode.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqrencode.3.dylib; path = include/libqrencode.3.dylib; sourceTree = "<group>"; };
 		D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D038CBCA18DBFBF400635442 /* SourcesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesWindowController.h; sourceTree = "<group>"; };
@@ -310,6 +317,11 @@
 		D7FAAD7818DE1A1B003A9A13 /* SampleFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleFieldValidator.h; sourceTree = "<group>"; };
 		D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidator.m; sourceTree = "<group>"; };
 		D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidatorTests.m; sourceTree = "<group>"; };
+		D7FAAD7E18DE23BF003A9A13 /* OSXImageUploadHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXImageUploadHandler.h; sourceTree = "<group>"; };
+		D7FAAD7F18DE23BF003A9A13 /* OSXImageUploadHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXImageUploadHandler.m; sourceTree = "<group>"; };
+		D7FAAD8118DE2EDD003A9A13 /* SourceImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceImageUtils.h; sourceTree = "<group>"; };
+		D7FAAD8218DE2EDD003A9A13 /* SourceImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImageUtils.m; sourceTree = "<group>"; };
+		D7FAAD8518DE42FA003A9A13 /* SourceImageUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImageUtilsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +329,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0347660B18DF7ACE0005F8CA /* libqrencode.3.dylib in Frameworks */,
 				D7439E0F18A5FC53000EE008 /* Cocoa.framework in Frameworks */,
 				D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */,
 				D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */,
@@ -454,6 +467,7 @@
 		D72405EF18A6020D00EA2DD2 /* ImageStore */ = {
 			isa = PBXGroup;
 			children = (
+				D7FAAD8418DE42D9003A9A13 /* SourceImageUtils */,
 				D72405F818A6023F00EA2DD2 /* S3ImageStore */,
 				D72405F318A6022900EA2DD2 /* LocalImageStore */,
 				D72405F018A6021C00EA2DD2 /* AbstractImageStore */,
@@ -702,11 +716,13 @@
 		D78ACC2E18A5FD97006084D6 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D78ACC3018A5FDAE006084D6 /* FMDB */,
+				D78ACC4018A5FDC8006084D6 /* Lumberjack */,
 				D7FAAD7118DE1040003A9A13 /* Validation */,
+				0347660818DF7A950005F8CA /* GenerateQRCode.h */,
+				0347660918DF7A950005F8CA /* GenerateQRCode.m */,
 				D78ACC4F18A5FDE9006084D6 /* ImageUtils.h */,
 				D78ACC5018A5FDE9006084D6 /* ImageUtils.m */,
-				D78ACC4018A5FDC8006084D6 /* Lumberjack */,
-				D78ACC3018A5FDAE006084D6 /* FMDB */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -769,6 +785,10 @@
 				D78ACC6018A5FE16006084D6 /* Abstract Classes */,
 				D78ACC5D18A5FE13006084D6 /* LocalImageStore.h */,
 				D78ACC5E18A5FE13006084D6 /* LocalImageStore.m */,
+				D7FAAD8118DE2EDD003A9A13 /* SourceImageUtils.h */,
+				D7FAAD8218DE2EDD003A9A13 /* SourceImageUtils.m */,
+				D7FAAD7E18DE23BF003A9A13 /* OSXImageUploadHandler.h */,
+				D7FAAD7F18DE23BF003A9A13 /* OSXImageUploadHandler.m */,
 			);
 			name = ImageStore;
 			sourceTree = "<group>";
@@ -954,6 +974,14 @@
 			name = ValidatorTests;
 			sourceTree = "<group>";
 		};
+		D7FAAD8418DE42D9003A9A13 /* SourceImageUtils */ = {
+			isa = PBXGroup;
+			children = (
+				D7FAAD8518DE42FA003A9A13 /* SourceImageUtilsTests.m */,
+			);
+			name = SourceImageUtils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1070,6 +1098,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D78ACC7018A5FE2E006084D6 /* HardcodedCredentialsProvider.m in Sources */,
+				D7FAAD8318DE2EDD003A9A13 /* SourceImageUtils.m in Sources */,
 				D78ACC3B18A5FDC0006084D6 /* FMDatabase.m in Sources */,
 				D78ACC6F18A5FE2E006084D6 /* S3Utils.m in Sources */,
 				D78ACC5518A5FDFD006084D6 /* LocalTransactionCache.m in Sources */,
@@ -1120,12 +1149,14 @@
 				D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */,
 				D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */,
 				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
+				0347660A18DF7A950005F8CA /* GenerateQRCode.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
 				D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */,
 				D038CBCC18DBFBF400635442 /* SourcesWindowController.m in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
 				D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */,
 				D78ACC6618A5FE21006084D6 /* AbstractCloudImageStore.m in Sources */,
+				D7FAAD8018DE23BF003A9A13 /* OSXImageUploadHandler.m in Sources */,
 				D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */,
 				D038CBD318DC072400635442 /* SourcesTableViewController.m in Sources */,
 			);
@@ -1137,6 +1168,7 @@
 			files = (
 				D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */,
 				D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */,
+				D7FAAD8618DE42FA003A9A13 /* SourceImageUtilsTests.m in Sources */,
 				D72405F718A6023B00EA2DD2 /* LocalImageStoreTests.m in Sources */,
 				D09C7E9A18B1ABFE001B98AF /* SimpleDBUtilsTests.m in Sources */,
 				D72405FD18A6024900EA2DD2 /* S3ImageStoreTests.m in Sources */,
@@ -1295,6 +1327,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
+					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1321,6 +1354,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/include",
+					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

@@ -27,6 +27,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return csvFileSelector;
 }
 
++(OSXFileSelector *)ImageFileSelector
+{
+    OSXFileSelector *imageSelector = [[OSXFileSelector alloc] init];
+    [imageSelector setAllowedFileTypes:[[NSArray alloc] initWithObjects:@"JPG", @"jpg",
+                                                                        @"PNG", @"png",
+                                                                        nil]];
+    return imageSelector;
+}
+
 -(void)presentFileSelectorToUser
 {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
