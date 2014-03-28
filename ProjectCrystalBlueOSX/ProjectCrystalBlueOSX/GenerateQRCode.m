@@ -17,7 +17,7 @@ const unsigned int max_size = 10000;
 {
     QRcode *qrcode;
     const char *string=[qrData cStringUsingEncoding:NSASCIIStringEncoding];
-    qrcode = QRcode_encodeString(string, 0, QR_ECLEVEL_H, QR_MODE_8, 0);
+    qrcode = QRcode_encodeString(string, 0, QR_ECLEVEL_H, QR_MODE_8, 1); // case-sensitivy is 5th argument
     unsigned int width = qrcode->width;
     
     const unsigned int bmp_length=width*width+width;
