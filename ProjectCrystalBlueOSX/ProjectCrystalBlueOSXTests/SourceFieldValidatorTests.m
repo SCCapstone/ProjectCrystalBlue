@@ -65,24 +65,6 @@
     XCTAssertFalse([[SourceFieldValidator validateContinent:tooLong] isValid]);
 }
 
-- (void)testValidateType
-{
-    // TO-DO
-    XCTAssertTrue(NO);
-}
-
-- (void)testValidateDeposystem
-{
-    // TO-DO
-    XCTAssertTrue(NO);
-}
-
-- (void)testValidateGroup
-{
-    // TO-DO
-    XCTAssertTrue(NO);
-}
-
 - (void)testValidateFormation
 {
     NSString *valid = @"Some Formation Somewhere 2";
@@ -196,18 +178,6 @@
     NSString *unixTimeInString = [NSString stringWithFormat:@"%f", unixTime];
 
     XCTAssertTrue([[SourceFieldValidator validateAge:unixTimeInString] isValid]);
-}
-
-- (void)testValidateAgeMethod
-{
-    // TO-DO
-    XCTAssertTrue(NO);
-}
-
-- (void)testValidateAgeDatatype
-{
-    // TO-DO
-    XCTAssertTrue(NO);
 }
 
 - (void)testValidateDateCollected
