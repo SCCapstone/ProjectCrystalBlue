@@ -8,12 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Source.h"
-#import "SourcesViewController.h"
 
 @interface EditSourceViewController : NSViewController
 
 @property Source *source;
-@property SourcesViewController *sourcesViewController;
+//@property SourcesViewController *sourcesViewController;
 
 @property (weak) IBOutlet NSTextField *keyTextField;
 @property (weak) IBOutlet NSTextField *continentTextField;
