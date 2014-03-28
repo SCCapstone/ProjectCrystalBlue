@@ -81,7 +81,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // In case there are extra fields in the file, we should ignore them.
         return;
     }
-    [currentFields addObject:field];
+
+    if (!header) {
+        // If we are currently parsing the header, we should save an *uppercase* version of
+        // the field. This is to maintain caps-insensitivity.
+        [currentFields addObject:[field uppercaseString]];
+    } else {
+        // Otherwise just add the field as-is.
+        [currentFields addObject:field];
+    }
+
 }
 
 @end

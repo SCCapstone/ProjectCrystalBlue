@@ -203,6 +203,42 @@ NSString* filePath;
     }
 }
 
+/// Capitalization of headers should not matter when parsing CSV files
+- (void)testReadFileWithDifferentCapitalization
+{
+    NSString *testFile = @"samples_different_capitalization";
+    NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
+
+    NSMutableArray *samples = [[NSMutableArray alloc] init];
+
+    const int numberOfSamples = 3; // Do not change this value unless you create a new test file.
+
+    for (int i = 0; i < numberOfSamples; ++i) {
+        NSString *key = [NSString stringWithFormat:@"%@%05d", SRC_KEY, i];
+        Sample *s = [[Sample alloc] initWithKey:key
+                              AndWithAttributes:[SampleConstants attributeNames]
+                                      AndValues:[SampleConstants attributeDefaultValues]];
+
+        for (NSString *attribute in [SampleConstants attributeNames]) {
+            NSString *attributeValue = [NSString stringWithFormat:@"%@%05d", attribute, i];
+            [s.attributes setObject:attributeValue forKey:attribute];
+        }
+
+        [samples addObject:s];
+    }
+
+    // Read from the file
+    LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
+    NSArray *readSamples = [reader readFromFileAtPath:testPath];
+
+    XCTAssertEqual(readSamples.count, samples.count);
+    for (int i = 0; i < numberOfSamples; ++i) {
+        LibraryObject *expected = (LibraryObject *)[samples objectAtIndex:i];
+        LibraryObject *actual = [readSamples objectAtIndex:i];
+        XCTAssertEqualObjects(expected, actual);
+    }
+}
+
 /// If an item has an extra attribute, it should be ignored.
 - (void)testReadFileWithExtraAttribute
 {
