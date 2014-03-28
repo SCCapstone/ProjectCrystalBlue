@@ -7,11 +7,22 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ImportResult.h"
 
-@interface SourcesWindowController : NSWindowController <NSSplitViewDelegate>
+@interface SourcesWindowController : NSWindowController <NSSplitViewDelegate, ImportResultReporter>
 
 @property (weak) IBOutlet NSSplitView *splitView;
+@property (weak) IBOutlet NSSearchField *searchField;
 
+// Toolbar buttons
 - (IBAction)openAddNewSourcesWindow:(id)sender;
+- (IBAction)deleteSource:(id)sender;
+- (IBAction)viewSamples:(id)sender;
+- (IBAction)importExport:(id)sender;
+- (IBAction)sync:(id)sender;
+
+// Search functionality
+- (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem;
+- (IBAction)searchSources:(id)sender;
 
 @end

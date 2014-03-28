@@ -6,7 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SourcesTableViewController">
             <connections>
-                <outlet property="arrayController" destination="HuF-wB-40k" id="yfW-mH-ueP"/>
                 <outlet property="tableView" destination="UTf-Bo-kV3" id="2cA-Wp-eoi"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -32,8 +31,8 @@
                                 <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="96.87109375" minWidth="40" maxWidth="1000" id="N1J-U8-rbT">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Key">
+                                    <tableColumn editable="NO" width="96.87109375" minWidth="40" maxWidth="1000" id="N1J-U8-rbT">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="SOURCE">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,6 +46,27 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
                                             <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.key" id="bk3-GN-ZRx">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn width="113.734375" minWidth="10" maxWidth="3.4028234663852886e+38" id="5cw-Ej-mH1">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Region">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="i4L-xR-l0u">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.REGION"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.REGION" id="FAf-ww-pli">
                                                 <dictionary key="options">
                                                     <bool key="NSValidatesImmediately" value="YES"/>
                                                 </dictionary>
@@ -82,13 +102,14 @@
                                         </tableHeaderCell>
                                         <popUpButtonCell key="dataCell" type="bevel" title="Pop Up" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="03U-XX-drO" id="fMQ-LV-u7E">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="menu"/>
                                             <menu key="menu" title="OtherViews" id="ehn-Ql-dSz">
                                                 <items>
                                                     <menuItem title="Pop Up" state="on" id="03U-XX-drO"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.TYPE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
                                     <tableColumn width="91.77734375" minWidth="10" maxWidth="3.4028234663852886e+38" id="dgi-ny-oQe">
@@ -97,76 +118,16 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="yR0-0u-lU2">
+                                        <popUpButtonCell key="dataCell" type="bevel" title="Pop Up" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="ONx-VO-5Gu" id="ivb-CJ-eKc">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                    </tableColumn>
-                                    <tableColumn width="109.38671875" minWidth="10" maxWidth="3.4028234663852886e+38" id="c2H-v2-P3h">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Deposystem">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="GEt-8z-fj6">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                    </tableColumn>
-                                    <tableColumn width="109.75390625" minWidth="10" maxWidth="3.4028234663852886e+38" id="0lW-tB-rEf">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Group">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="HJR-nK-C5Y">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                    </tableColumn>
-                                    <tableColumn width="105.69140625" minWidth="10" maxWidth="3.4028234663852886e+38" id="3aU-wv-mjM">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Formation">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="50C-02-AB2">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                    </tableColumn>
-                                    <tableColumn width="113.60546875" minWidth="10" maxWidth="3.4028234663852886e+38" id="UYT-l0-LYQ">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Member">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="wg7-yG-vKe">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                    </tableColumn>
-                                    <tableColumn width="113.734375" minWidth="10" maxWidth="3.4028234663852886e+38" id="5cw-Ej-mH1">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Region">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="i4L-xR-l0u">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
+                                            <menu key="menu" title="OtherViews" id="AVQ-G5-rBD">
+                                                <items>
+                                                    <menuItem title="Pop Up" state="on" id="ONx-VO-5Gu"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.LITHOLOGY"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
                                     <tableColumn width="106.43359375" minWidth="10" maxWidth="3.4028234663852886e+38" id="60M-v2-M4s">
@@ -180,33 +141,11 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.LOCALITY"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                    </tableColumn>
-                                    <tableColumn width="108.8203125" minWidth="10" maxWidth="3.4028234663852886e+38" id="RtU-1K-rS3">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Section">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Text" id="HSA-v8-hGj">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                    </tableColumn>
-                                    <tableColumn width="107.43359375" minWidth="10" maxWidth="3.4028234663852886e+38" id="8cC-2P-uPB">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Meter">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="VAP-Kp-9l0">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.LOCALITY" id="PcE-Db-yy0"/>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn width="112.34375" minWidth="10" maxWidth="3.4028234663852886e+38" id="WGZ-2B-Gsu">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Latitude">
@@ -219,7 +158,11 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.LATITUDE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.LATITUDE" id="7hn-J9-iXC"/>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn width="108.82421875" minWidth="10" maxWidth="3.4028234663852886e+38" id="Pab-9j-oFh">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Longitude">
@@ -232,7 +175,28 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.LONGITUDE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.LONGITUDE" id="Ug2-mF-GnC"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn width="109.69140625" minWidth="10" maxWidth="3.4028234663852886e+38" id="zrD-He-Yd3">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Date Collected">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="NtT-t5-a8V">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.DATE_COLLECTED"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.DATE_COLLECTED" id="84K-Qb-eT6"/>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn width="101.26171875" minWidth="10" maxWidth="3.4028234663852886e+38" id="pdq-ru-REb">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Age">
@@ -245,7 +209,11 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.AGE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.AGE" id="P4V-uI-l2C"/>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn width="104.21484375" minWidth="10" maxWidth="3.4028234663852886e+38" id="RKa-aM-FUC">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Age Method">
@@ -253,11 +221,16 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Hj8-WC-ytL">
+                                        <popUpButtonCell key="dataCell" type="bevel" title="Pop Up" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="Tr8-0r-c0M" id="WTg-KI-jq8">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
+                                            <menu key="menu" title="OtherViews" id="mFw-Ih-eUs">
+                                                <items>
+                                                    <menuItem title="Pop Up" state="on" id="Tr8-0r-c0M"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.AGE_METHOD"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
                                     <tableColumn width="110.95703125" minWidth="10" maxWidth="3.4028234663852886e+38" id="kiD-0K-b6b">
@@ -271,20 +244,114 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.AGE_DATA_TYPE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.AGE_DATA_TYPE" id="Vh3-gc-cKx"/>
+                                        </connections>
                                     </tableColumn>
-                                    <tableColumn width="109.69140625" minWidth="10" maxWidth="3.4028234663852886e+38" id="zrD-He-Yd3">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Date Collected">
+                                    <tableColumn width="109.75390625" minWidth="10" maxWidth="3.4028234663852886e+38" id="0lW-tB-rEf">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Group">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="NtT-t5-a8V">
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="HJR-nK-C5Y">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.ROCK_GROUP"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.GROUP" id="cbQ-Hf-ebm"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn width="105.69140625" minWidth="10" maxWidth="3.4028234663852886e+38" id="3aU-wv-mjM">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Formation">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="50C-02-AB2">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.FORMATION"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.FORMATION" id="rQI-Ex-I6A"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn width="113.60546875" minWidth="10" maxWidth="3.4028234663852886e+38" id="UYT-l0-LYQ">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Member">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="wg7-yG-vKe">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.MEMBER"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.MEMBER" id="8Zg-4f-0Xt"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn width="109.38671875" minWidth="10" maxWidth="3.4028234663852886e+38" id="c2H-v2-P3h">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Deposystem">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <popUpButtonCell key="dataCell" type="bevel" title="Pop Up" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="lsa-of-zSF" id="Ml4-CC-ix8">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <menu key="menu" title="OtherViews" id="FkN-DG-AKd">
+                                                <items>
+                                                    <menuItem title="Pop Up" state="on" id="lsa-of-zSF"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.DEPOSYSTEM"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                    </tableColumn>
+                                    <tableColumn width="108.8203125" minWidth="10" maxWidth="3.4028234663852886e+38" id="RtU-1K-rS3">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Section">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Text" id="HSA-v8-hGj">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.SECTION"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.SECTION" id="SR3-uS-jf0"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn width="107.43359375" minWidth="10" maxWidth="3.4028234663852886e+38" id="8cC-2P-uPB">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Meter">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="VAP-Kp-9l0">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.METER"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.METER" id="sFo-6h-UtF"/>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn width="136.6875" minWidth="10" maxWidth="3.4028234663852886e+38" id="b0R-eI-wfA">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Notes">
@@ -297,7 +364,11 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.NOTES"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.NOTES" id="XoP-oe-7v7"/>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn width="150" minWidth="150" maxWidth="3.4028234663852886e+38" id="vcn-Eo-A3d">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Hyperlinks">
@@ -310,7 +381,11 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="attributes.HYPERLINKS"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.HYPERLINKS" id="YjM-cX-eLK"/>
+                                        </connections>
                                     </tableColumn>
                                 </tableColumns>
                             </tableView>
@@ -341,10 +416,28 @@
         <arrayController objectClassName="Source" id="HuF-wB-40k">
             <declaredKeys>
                 <string>key</string>
+                <string>attributes.REGION</string>
                 <string>attributes.CONTINENT</string>
+                <string>attributes.TYPE</string>
+                <string>attributes.LITHOLOGY</string>
+                <string>attributes.LOCALITY</string>
+                <string>attributes.LATITUDE</string>
+                <string>attributes.LONGITUDE</string>
+                <string>attributes.DATE_COLLECTED</string>
+                <string>attributes.AGE</string>
+                <string>attributes.AGE_METHOD</string>
+                <string>attributes.AGE_DATA_TYPE</string>
+                <string>attributes.ROCK_GROUP</string>
+                <string>attributes.FORMATION</string>
+                <string>attributes.MEMBER</string>
+                <string>attributes.DEPOSYSTEM</string>
+                <string>attributes.SECTION</string>
+                <string>attributes.METER</string>
+                <string>attributes.NOTES</string>
+                <string>attributes.HYPERLINKS</string>
             </declaredKeys>
             <connections>
-                <binding destination="-2" name="contentArray" keyPath="sources" id="z3d-gO-PeP"/>
+                <binding destination="-2" name="contentArray" keyPath="displayedSources" id="jkg-co-wWK"/>
             </connections>
         </arrayController>
     </objects>
