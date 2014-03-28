@@ -32,7 +32,7 @@
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn editable="NO" width="96.87109375" minWidth="40" maxWidth="1000" id="N1J-U8-rbT">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="SOURCE">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Source">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -95,7 +95,7 @@
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="95.296875" minWidth="10" maxWidth="3.4028234663852886e+38" id="8Uw-KP-gIQ">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Type">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Rock Type">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -120,7 +120,7 @@
                                         </tableHeaderCell>
                                         <popUpButtonCell key="dataCell" type="bevel" title="Pop Up" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="ONx-VO-5Gu" id="ivb-CJ-eKc">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="menu"/>
                                             <menu key="menu" title="OtherViews" id="AVQ-G5-rBD">
                                                 <items>
                                                     <menuItem title="Pop Up" state="on" id="ONx-VO-5Gu"/>
@@ -223,7 +223,7 @@
                                         </tableHeaderCell>
                                         <popUpButtonCell key="dataCell" type="bevel" title="Pop Up" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="Tr8-0r-c0M" id="WTg-KI-jq8">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="menu"/>
                                             <menu key="menu" title="OtherViews" id="mFw-Ih-eUs">
                                                 <items>
                                                     <menuItem title="Pop Up" state="on" id="Tr8-0r-c0M"/>
@@ -309,7 +309,7 @@
                                         </tableHeaderCell>
                                         <popUpButtonCell key="dataCell" type="bevel" title="Pop Up" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="lsa-of-zSF" id="Ml4-CC-ix8">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="menu"/>
                                             <menu key="menu" title="OtherViews" id="FkN-DG-AKd">
                                                 <items>
                                                     <menuItem title="Pop Up" state="on" id="lsa-of-zSF"/>
@@ -388,6 +388,9 @@
                                         </connections>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="kRb-KH-G40"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

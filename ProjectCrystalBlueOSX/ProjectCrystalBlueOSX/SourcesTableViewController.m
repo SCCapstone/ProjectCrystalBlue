@@ -7,6 +7,7 @@
 //
 
 #import "SourcesTableViewController.h"
+#import "SourcesDetailPanelViewController.h"
 #import "Source.h"
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
@@ -26,7 +27,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SourcesTableViewController
 
-@synthesize displayedSources, tableView, searchField, dataStore;
+@synthesize displayedSources, tableView, searchField, dataStore, detailPanel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +43,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)awakeFromNib
 {
     [self updateDisplayedSources];
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    NSInteger selectedRow = [self.tableView selectedRow];
+    if (selectedRow == -1) {
+        //[detailPanel clear];
+        return;
+    }
+    
+    Source *source = [displayedSources objectAtIndex:selectedRow];
+    [self.detailPanel setSource:source];
 }
 
 - (void)addSource:(Source *)source

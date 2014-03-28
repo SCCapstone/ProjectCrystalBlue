@@ -14,6 +14,8 @@
 		D038CBCE18DBFC0E00635442 /* SourcesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D038CBCD18DBFC0E00635442 /* SourcesWindowController.xib */; };
 		D038CBD318DC072400635442 /* SourcesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D038CBD118DC072400635442 /* SourcesTableViewController.m */; };
 		D038CBD418DC072400635442 /* SourcesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D038CBD218DC072400635442 /* SourcesTableViewController.xib */; };
+		D059F8EF18E547100024AA58 /* SourcesDetailPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D059F8ED18E547100024AA58 /* SourcesDetailPanelViewController.m */; };
+		D059F8F018E547100024AA58 /* SourcesDetailPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D059F8EE18E547100024AA58 /* SourcesDetailPanelViewController.xib */; };
 		D0655A0718B209CB008947B5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
@@ -147,6 +149,9 @@
 		D038CBD018DC072400635442 /* SourcesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesTableViewController.h; sourceTree = "<group>"; };
 		D038CBD118DC072400635442 /* SourcesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesTableViewController.m; sourceTree = "<group>"; };
 		D038CBD218DC072400635442 /* SourcesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcesTableViewController.xib; sourceTree = "<group>"; };
+		D059F8EC18E547100024AA58 /* SourcesDetailPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesDetailPanelViewController.h; sourceTree = "<group>"; };
+		D059F8ED18E547100024AA58 /* SourcesDetailPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesDetailPanelViewController.m; sourceTree = "<group>"; };
+		D059F8EE18E547100024AA58 /* SourcesDetailPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcesDetailPanelViewController.xib; sourceTree = "<group>"; };
 		D086319F18AC5ACB007A8DAA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
 		D08631A018AC5ACB007A8DAA /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
 		D08631A318AC61BA007A8DAA /* TransactionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionStore.h; sourceTree = "<group>"; };
@@ -366,6 +371,7 @@
 				D038CBCB18DBFBF400635442 /* SourcesWindowController.m */,
 				D038CBCD18DBFC0E00635442 /* SourcesWindowController.xib */,
 				D038CBCF18DC06EE00635442 /* SourcesTableViewController */,
+				D059F8EB18E546A90024AA58 /* SourcesDetailPanel */,
 			);
 			name = SourcesWindowController;
 			sourceTree = "<group>";
@@ -378,6 +384,16 @@
 				D038CBD218DC072400635442 /* SourcesTableViewController.xib */,
 			);
 			name = SourcesTableViewController;
+			sourceTree = "<group>";
+		};
+		D059F8EB18E546A90024AA58 /* SourcesDetailPanel */ = {
+			isa = PBXGroup;
+			children = (
+				D059F8EC18E547100024AA58 /* SourcesDetailPanelViewController.h */,
+				D059F8ED18E547100024AA58 /* SourcesDetailPanelViewController.m */,
+				D059F8EE18E547100024AA58 /* SourcesDetailPanelViewController.xib */,
+			);
+			name = SourcesDetailPanel;
 			sourceTree = "<group>";
 		};
 		D08631A218AC619D007A8DAA /* TransactionStore */ = {
@@ -1062,6 +1078,7 @@
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D738D55718BAA52600A777E2 /* DetailPanelViewController.xib in Resources */,
 				D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */,
+				D059F8F018E547100024AA58 /* SourcesDetailPanelViewController.xib in Resources */,
 				D038CBD418DC072400635442 /* SourcesTableViewController.xib in Resources */,
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
 				D770578618AD7CC100F011E5 /* EditSourceViewController.xib in Resources */,
@@ -1107,6 +1124,7 @@
 				D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */,
 				D7A0CB7818BC57A900A61E32 /* OSXSaveSelector.m in Sources */,
 				D7125EF118C4630B00BBCD3E /* ProceduresWindowController.m in Sources */,
+				D059F8EF18E547100024AA58 /* SourcesDetailPanelViewController.m in Sources */,
 				D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
 				D7439E2218A5FC53000EE008 /* AppDelegate.m in Sources */,

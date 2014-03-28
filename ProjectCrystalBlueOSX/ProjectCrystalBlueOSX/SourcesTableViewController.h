@@ -8,14 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class AbstractCloudLibraryObjectStore, Source;
+@class AbstractCloudLibraryObjectStore, Source, SourcesDetailPanelViewController;
 
 @interface SourcesTableViewController : NSViewController <NSTableViewDelegate>
 
-@property NSMutableArray *displayedSources;
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) NSSearchField *searchField;
 @property AbstractCloudLibraryObjectStore *dataStore;
+@property NSMutableArray *displayedSources;
+@property SourcesDetailPanelViewController *detailPanel;
 
 - (void)addSource:(Source *)source;
 - (void)deleteSourceWithKey:(NSString *)key;

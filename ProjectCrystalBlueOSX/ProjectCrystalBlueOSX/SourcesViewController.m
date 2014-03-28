@@ -315,16 +315,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)updateDisplayedSources
 {
-    NSSearchField *searchField = [(AppDelegate *)[NSApplication sharedApplication].delegate searchField];
-    NSString *attrName = [[SourceConstants attributeNames] objectAtIndex:searchField.tag];
-    
-    if ([searchField.stringValue isEqualToString:@""])
-        displayedSources = [dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
-    else
-        displayedSources = [dataStore getAllLibraryObjectsForAttributeName:attrName
-                                                        WithAttributeValue:searchField.stringValue
-                                                                 FromTable:[SourceConstants tableName]];
-    [self.sourceTable reloadData];
+    //NSSearchField *searchField = [(AppDelegate *)[NSApplication sharedApplication].delegate searchField];
+//    NSString *attrName = [[SourceConstants attributeNames] objectAtIndex:searchField.tag];
+//    
+//    if ([searchField.stringValue isEqualToString:@""])
+//        displayedSources = [dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
+//    else
+//        displayedSources = [dataStore getAllLibraryObjectsForAttributeName:attrName
+//                                                        WithAttributeValue:searchField.stringValue
+//                                                                 FromTable:[SourceConstants tableName]];
+//    [self.sourceTable reloadData];
 }
 
 @end

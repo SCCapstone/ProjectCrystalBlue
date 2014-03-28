@@ -8,6 +8,7 @@
 
 #import "SourcesWindowController.h"
 #import "SourcesTableViewController.h"
+#import "SourcesDetailPanelViewController.h"
 #import "AddNewSourceWindowController.h"
 #import "SamplesWindowController.h"
 #import "SimpleDBLibraryObjectStore.h"
@@ -26,6 +27,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 @interface SourcesWindowController ()
 {
     SourcesTableViewController *tableViewController;
+    SourcesDetailPanelViewController *detailPanelController;
     enum subviews { tableSubview, detailPanelSubview };
     
     AbstractCloudLibraryObjectStore *dataStore;
@@ -55,14 +57,20 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     [super windowDidLoad];
     
+    if (!detailPanelController) {
+        detailPanelController = [[SourcesDetailPanelViewController alloc] initWithNibName:@"SourcesDetailPanelViewController" bundle:nil];
+    }
+    
     if (!tableViewController) {
         tableViewController = [[SourcesTableViewController alloc] initWithNibName:@"SourcesTableViewController" bundle:nil];
         [tableViewController setDataStore:dataStore];
         [tableViewController setSearchField:self.searchField];
-    }
+        [tableViewController setDetailPanel:detailPanelController];
+    }    
     
     // Setup split view
     [self.splitView replaceSubview:[self.splitView.subviews objectAtIndex:tableSubview] with:tableViewController.view];
+    [self.splitView replaceSubview:[self.splitView.subviews objectAtIndex:detailPanelSubview] with:detailPanelController.view];
     CGFloat dividerPosition = [self.splitView maxPossiblePositionOfDividerAtIndex:0] - 250;
     [self.splitView setPosition:dividerPosition ofDividerAtIndex:0];
     

@@ -7,31 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SourcesViewController.h"
-#import "DetailPanelViewController.h"
 
 @class SourcesWindowController;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
-    SourcesViewController *leftViewController;
-    DetailPanelViewController *rightViewController;
-    
+@interface AppDelegate : NSObject <NSApplicationDelegate>
+{
     SourcesWindowController *sourcesWindowController;
 }
-
-@property (assign) IBOutlet NSWindow *window;
-@property (weak) IBOutlet NSSearchField *searchField;
-
-/* Since the toolbar resides in the main window (not in the libraryview) we have to pass these
- * messages manually from the app delegate to the view controller.
- */
-- (IBAction)newSource:(id)sender;
-- (IBAction)editSource:(id)sender;
-- (IBAction)viewSamples:(id)sender;
-- (IBAction)importExport:(id)sender;
-- (IBAction)deleteSource:(id)sender;
-- (IBAction)sync:(id)sender;
-- (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem;
-- (IBAction)searchSources:(id)sender;
 
 @end
