@@ -1247,6 +1247,7 @@
 				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
 				D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */,
+				D038CBCC18DBFBF400635442 /* SourcesWindowController.m in Sources */,
 				D7CCCEBD18E538EE009D0308 /* ValidationResponse.m in Sources */,
 				0352274018E51F0C00AD8D51 /* mmask.c in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,

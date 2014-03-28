@@ -53,7 +53,7 @@ NSString* filePath;
     
     const int numberOfSamples = 100;
     for (int i = 0; i < numberOfSamples; ++i) {
-        NSString *key = [NSString stringWithFormat:@"key%05d", i];
+        NSString *key = [NSString stringWithFormat:@"%@%05d", SMP_KEY, i];
         Sample *s = [[Sample alloc] initWithKey:key
                               AndWithAttributes:[SampleConstants attributeNames]
                                       AndValues:[SampleConstants attributeDefaultValues]];
@@ -94,7 +94,7 @@ NSString* filePath;
     
     const int numberOfSources = 100;
     for (int i = 0; i < numberOfSources; ++i) {
-        NSString *key = [NSString stringWithFormat:@"key%05d", i];
+        NSString *key = [NSString stringWithFormat:@"%@%05d", SRC_KEY, i];
         Source *s = [[Source alloc] initWithKey:key
                               AndWithAttributes:[SourceConstants attributeNames]
                                       AndValues:[SourceConstants attributeDefaultValues]];
@@ -136,7 +136,7 @@ NSString* filePath;
     
     const int numberOfSources = 100;
     for (int i = 0; i < numberOfSources; ++i) {
-        NSString *key = [NSString stringWithFormat:@"artichoke,eggplant,key%05d", i];
+        NSString *key = [NSString stringWithFormat:@"artichoke,eggplant,%@%05d", SRC_KEY, i];
         Source *s = [[Source alloc] initWithKey:key
                               AndWithAttributes:[SourceConstants attributeNames]
                                       AndValues:[SourceConstants attributeDefaultValues]];
@@ -178,7 +178,7 @@ NSString* filePath;
     const int numberOfSamples = 3; // Do not change this value unless you create a new test file.
     
     for (int i = 0; i < numberOfSamples; ++i) {
-        NSString *key = [NSString stringWithFormat:@"key%05d", i];
+        NSString *key = [NSString stringWithFormat:@"%@%05d", SRC_KEY, i];
         Sample *s = [[Sample alloc] initWithKey:key
                               AndWithAttributes:[SampleConstants attributeNames]
                                       AndValues:[SampleConstants attributeDefaultValues]];
@@ -214,7 +214,7 @@ NSString* filePath;
     const int numberOfSamples = 3; // Do not change this value unless you create a new test file.
     
     for (int i = 0; i < numberOfSamples; ++i) {
-        NSString *key = [NSString stringWithFormat:@"key%05d", i];
+        NSString *key = [NSString stringWithFormat:@"%@%05d", SMP_KEY, i];
         Sample *s = [[Sample alloc] initWithKey:key
                               AndWithAttributes:[SampleConstants attributeNames]
                                       AndValues:[SampleConstants attributeDefaultValues]];
@@ -376,6 +376,7 @@ NSString* filePath;
     NSString *notes         = @"Notes here";
     NSString *section       = @"´Ï";
     NSString *formation     = @"∑≈";
+    NSString *images        = @"ÏÔ˚ÒÅ˚Ò";
 
     Source *expected = [[Source alloc] initWithKey:key
                                  AndWithAttributes:[SourceConstants attributeNames]
@@ -400,6 +401,7 @@ NSString* filePath;
     [expected.attributes setObject:notes        forKey:SRC_NOTES];
     [expected.attributes setObject:section      forKey:SRC_SECTION];
     [expected.attributes setObject:formation    forKey:SRC_FORMATION];
+    [expected.attributes setObject:images       forKey:SRC_IMAGES];
 
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
     NSArray *readSamples = [reader readFromFileAtPath:testPath];
