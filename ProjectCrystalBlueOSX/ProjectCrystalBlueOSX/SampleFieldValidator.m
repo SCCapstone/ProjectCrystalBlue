@@ -8,21 +8,37 @@
 
 #import "SampleFieldValidator.h"
 #import "PrimitiveFieldValidator.h"
+#import "ValidationResponse.h"
 
 @implementation SampleFieldValidator
 
-+ (BOOL)validateCurrentLocation:(NSString *)currentLocationValue
++ (ValidationResponse *)validateCurrentLocation:(NSString *)currentLocationValue
 {
     const NSUInteger maxLength = 90;
     const NSUInteger minlength = 1;
 
-    BOOL valid = !(nil == currentLocationValue);
+    ValidationResponse *valid = [[ValidationResponse alloc] init];
+    [valid setIsValid:YES];
 
-    valid = valid && [PrimitiveFieldValidator validateField:currentLocationValue
-                                      isNoMoreThanMaxLength:maxLength];
+    if (![PrimitiveFieldValidator validateField:currentLocationValue
+                          isNoMoreThanMaxLength:maxLength])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
+                                                         maxLength,
+                                                         currentLocationValue.length];
+        [valid.errors addObject:errorStr];
+    }
 
-    valid = valid && [PrimitiveFieldValidator validateField:currentLocationValue
-                                         isAtLeastMinLength:minlength];
+    if (![PrimitiveFieldValidator validateField:currentLocationValue
+                             isAtLeastMinLength:minlength])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MIN_CHARS copy],
+                                                         minlength,
+                                                         currentLocationValue.length];
+        [valid.errors addObject:errorStr];
+    }
 
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
 
@@ -30,8 +46,14 @@
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
 
-    valid = valid && [PrimitiveFieldValidator validateField:currentLocationValue
-                                        containsOnlyCharSet:validCharacters];
+    if (![PrimitiveFieldValidator validateField:currentLocationValue
+                                  containsOnlyCharSet:validCharacters])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_INVALID_CHARACTERS copy],
+                              @"letters, numbers, spaces, and punctuation"];
+        [valid.errors addObject:errorStr];
+    }
 
     return valid;
 }

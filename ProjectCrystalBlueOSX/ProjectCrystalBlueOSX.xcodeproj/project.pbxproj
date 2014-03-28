@@ -120,6 +120,7 @@
 		D7C8733718B2FB0B00F2976F /* LibraryObjectCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */; };
 		D7C8733D18B3031800F2976F /* CSVReadWriteUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */; };
 		D7C8733F18B31CF400F2976F /* samples_reordered_columns.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */; };
+		D7CCCEBD18E538EE009D0308 /* ValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */; };
 		D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */; };
 		D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */; };
 		D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */; };
@@ -329,6 +330,8 @@
 		D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectCSVReader.m; sourceTree = "<group>"; };
 		D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVReadWriteUnitTests.m; sourceTree = "<group>"; };
 		D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_reordered_columns.csv; sourceTree = "<group>"; };
+		D7CCCEBB18E538EE009D0308 /* ValidationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidationResponse.h; sourceTree = "<group>"; };
+		D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidationResponse.m; sourceTree = "<group>"; };
 		D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectEqualsAndHashcodeTests.m; sourceTree = "<group>"; };
 		D7FAAD7218DE10AD003A9A13 /* PrimitiveFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveFieldValidator.h; sourceTree = "<group>"; };
 		D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveFieldValidator.m; sourceTree = "<group>"; };
@@ -986,6 +989,8 @@
 				D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */,
 				D7FAAD7818DE1A1B003A9A13 /* SampleFieldValidator.h */,
 				D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */,
+				D7CCCEBB18E538EE009D0308 /* ValidationResponse.h */,
+				D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */,
 			);
 			name = Validation;
 			sourceTree = "<group>";
@@ -1183,6 +1188,7 @@
 				0347660A18DF7A950005F8CA /* GenerateQRCode.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
 				D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */,
+				D7CCCEBD18E538EE009D0308 /* ValidationResponse.m in Sources */,
 				0352274018E51F0C00AD8D51 /* mmask.c in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
 				D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */,

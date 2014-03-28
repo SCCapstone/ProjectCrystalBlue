@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "SampleFieldValidator.h"
+#import "ValidationResponse.h"
 
 @interface SampleFieldValidatorTests : XCTestCase
 
@@ -36,9 +37,9 @@
         [tooLong appendString:@"a"];
     }
 
-    XCTAssertTrue([SampleFieldValidator validateCurrentLocation:valid]);
-    XCTAssertFalse([SampleFieldValidator validateCurrentLocation:tooShort]);
-    XCTAssertFalse([SampleFieldValidator validateCurrentLocation:tooLong]);
+    XCTAssertTrue([[SampleFieldValidator validateCurrentLocation:valid] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateCurrentLocation:tooShort] isValid]);
+    XCTAssertFalse([[SampleFieldValidator validateCurrentLocation:tooLong] isValid]);
 }
 
 @end

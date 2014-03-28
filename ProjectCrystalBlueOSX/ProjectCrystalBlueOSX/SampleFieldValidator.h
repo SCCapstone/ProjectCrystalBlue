@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+@class ValidationResponse;
 
 @interface SampleFieldValidator : NSObject
 
 /// Verify that a CurrentLocation value contains only alphanumeric, punctuation, and whitespace
 /// characters, and its length is between 1 and 90 characters.
-+ (BOOL)validateCurrentLocation:(NSString *)currentLocationValue;
++ (ValidationResponse *)validateCurrentLocation:(NSString *)currentLocationValue;
 
 @end
