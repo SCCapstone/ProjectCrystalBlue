@@ -12,8 +12,7 @@
 
 const unsigned int max_size = 10000;
 
-+
-(void)writeQRCode:(NSString *)qrData
++ (void)writeQRCode:(NSString *)qrData
 {
     QRcode *qrcode;
     const char *string=[qrData cStringUsingEncoding:NSASCIIStringEncoding];
@@ -68,7 +67,17 @@ const unsigned int max_size = 10000;
 
     NSArray *dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documents = [dirs objectAtIndex:0];
-    NSString *path = [documents stringByAppendingString:@"/qrcodesfrompcb/"];
+    
+    NSString *path = [documents stringByAppendingString:@"/ProjectCrystalBlue/QRCodes/"];
+    BOOL directoryExists;
+    [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&directoryExists];
+    if (!directoryExists) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:nil];
+    }
+    
     path = [path stringByAppendingString:qrData];
     path = [path stringByAppendingString:@".bmp"];
 

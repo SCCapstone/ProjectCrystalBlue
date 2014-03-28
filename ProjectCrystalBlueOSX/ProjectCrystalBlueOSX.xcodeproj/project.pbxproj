@@ -405,6 +405,16 @@
 			name = TransactionStore;
 			sourceTree = "<group>";
 		};
+		D059F8F118E55C470024AA58 /* QR Code Generator */ = {
+			isa = PBXGroup;
+			children = (
+				0352272818E51F0C00AD8D51 /* qrlib */,
+				0347660818DF7A950005F8CA /* GenerateQRCode.h */,
+				0347660918DF7A950005F8CA /* GenerateQRCode.m */,
+			);
+			name = "QR Code Generator";
+			sourceTree = "<group>";
+		};
 		D08631A218AC619D007A8DAA /* TransactionStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -742,12 +752,10 @@
 		D78ACC2E18A5FD97006084D6 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				0352272818E51F0C00AD8D51 /* qrlib */,
 				D78ACC3018A5FDAE006084D6 /* FMDB */,
 				D78ACC4018A5FDC8006084D6 /* Lumberjack */,
+				D059F8F118E55C470024AA58 /* QR Code Generator */,
 				D7FAAD7118DE1040003A9A13 /* Validation */,
-				0347660818DF7A950005F8CA /* GenerateQRCode.h */,
-				0347660918DF7A950005F8CA /* GenerateQRCode.m */,
 				D78ACC4F18A5FDE9006084D6 /* ImageUtils.h */,
 				D78ACC5018A5FDE9006084D6 /* ImageUtils.m */,
 			);
