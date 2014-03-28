@@ -83,7 +83,7 @@
     [attributes setObject:self.dateCollectedTextField.stringValue   forKey:SRC_DATE_COLLECTED];
     
     Source *newSource = [[Source alloc] initWithKey:key AndWithAttributeDictionary:attributes];
-    [[self.sourcesViewController dataStore] updateLibraryObject:newSource IntoTable:[SourceConstants tableName]];
+    //[[self.sourcesViewController dataStore] updateLibraryObject:newSource IntoTable:[SourceConstants tableName]];
     [self.view.window close];
 }
 

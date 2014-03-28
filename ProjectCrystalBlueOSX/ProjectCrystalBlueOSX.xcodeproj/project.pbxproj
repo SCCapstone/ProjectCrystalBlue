@@ -7,16 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0347660A18DF7A950005F8CA /* GenerateQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0347660918DF7A950005F8CA /* GenerateQRCode.m */; };
-		0352273E18E51F0C00AD8D51 /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 0352272918E51F0C00AD8D51 /* bitstream.c */; };
-		0352273F18E51F0C00AD8D51 /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = 0352272D18E51F0C00AD8D51 /* mask.c */; };
-		0352274018E51F0C00AD8D51 /* mmask.c in Sources */ = {isa = PBXBuildFile; fileRef = 0352272F18E51F0C00AD8D51 /* mmask.c */; };
-		0352274118E51F0C00AD8D51 /* mqrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 0352273118E51F0C00AD8D51 /* mqrspec.c */; };
-		0352274218E51F0C00AD8D51 /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = 0352273318E51F0C00AD8D51 /* qrencode.c */; };
-		0352274318E51F0C00AD8D51 /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = 0352273618E51F0C00AD8D51 /* qrinput.c */; };
-		0352274418E51F0C00AD8D51 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 0352273818E51F0C00AD8D51 /* qrspec.c */; };
-		0352274518E51F0C00AD8D51 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 0352273A18E51F0C00AD8D51 /* rscode.c */; };
-		0352274618E51F0C00AD8D51 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 0352273C18E51F0C00AD8D51 /* split.c */; };
 		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
 		D038CBCC18DBFBF400635442 /* SourcesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D038CBCB18DBFBF400635442 /* SourcesWindowController.m */; };
 		D038CBCE18DBFC0E00635442 /* SourcesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D038CBCD18DBFC0E00635442 /* SourcesWindowController.xib */; };
@@ -24,6 +14,16 @@
 		D038CBD418DC072400635442 /* SourcesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D038CBD218DC072400635442 /* SourcesTableViewController.xib */; };
 		D059F8EF18E547100024AA58 /* SourcesDetailPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D059F8ED18E547100024AA58 /* SourcesDetailPanelViewController.m */; };
 		D059F8F018E547100024AA58 /* SourcesDetailPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D059F8EE18E547100024AA58 /* SourcesDetailPanelViewController.xib */; };
+		D059F92C18E560160024AA58 /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F91718E560160024AA58 /* bitstream.c */; };
+		D059F92D18E560160024AA58 /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F91B18E560160024AA58 /* mask.c */; };
+		D059F92E18E560160024AA58 /* mmask.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F91D18E560160024AA58 /* mmask.c */; };
+		D059F92F18E560160024AA58 /* mqrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F91F18E560160024AA58 /* mqrspec.c */; };
+		D059F93018E560160024AA58 /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F92118E560160024AA58 /* qrencode.c */; };
+		D059F93118E560160024AA58 /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F92418E560160024AA58 /* qrinput.c */; };
+		D059F93218E560160024AA58 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F92618E560160024AA58 /* qrspec.c */; };
+		D059F93318E560160024AA58 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F92818E560160024AA58 /* rscode.c */; };
+		D059F93418E560160024AA58 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F92A18E560160024AA58 /* split.c */; };
+		D059F93718E560200024AA58 /* GenerateQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = D059F93618E560200024AA58 /* GenerateQRCode.m */; };
 		D0655A0718B209CB008947B5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
@@ -145,29 +145,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0347660818DF7A950005F8CA /* GenerateQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateQRCode.h; sourceTree = "<group>"; };
-		0347660918DF7A950005F8CA /* GenerateQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateQRCode.m; sourceTree = "<group>"; };
-		0352272918E51F0C00AD8D51 /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
-		0352272A18E51F0C00AD8D51 /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
-		0352272B18E51F0C00AD8D51 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
-		0352272C18E51F0C00AD8D51 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		0352272D18E51F0C00AD8D51 /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mask.c; sourceTree = "<group>"; };
-		0352272E18E51F0C00AD8D51 /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mask.h; sourceTree = "<group>"; };
-		0352272F18E51F0C00AD8D51 /* mmask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mmask.c; sourceTree = "<group>"; };
-		0352273018E51F0C00AD8D51 /* mmask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mmask.h; sourceTree = "<group>"; };
-		0352273118E51F0C00AD8D51 /* mqrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mqrspec.c; sourceTree = "<group>"; };
-		0352273218E51F0C00AD8D51 /* mqrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mqrspec.h; sourceTree = "<group>"; };
-		0352273318E51F0C00AD8D51 /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrencode.c; sourceTree = "<group>"; };
-		0352273418E51F0C00AD8D51 /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode.h; sourceTree = "<group>"; };
-		0352273518E51F0C00AD8D51 /* qrencode_inner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode_inner.h; sourceTree = "<group>"; };
-		0352273618E51F0C00AD8D51 /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrinput.c; sourceTree = "<group>"; };
-		0352273718E51F0C00AD8D51 /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrinput.h; sourceTree = "<group>"; };
-		0352273818E51F0C00AD8D51 /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrspec.c; sourceTree = "<group>"; };
-		0352273918E51F0C00AD8D51 /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrspec.h; sourceTree = "<group>"; };
-		0352273A18E51F0C00AD8D51 /* rscode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rscode.c; sourceTree = "<group>"; };
-		0352273B18E51F0C00AD8D51 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
-		0352273C18E51F0C00AD8D51 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
-		0352273D18E51F0C00AD8D51 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		03AE34D918B1B991006AD856 /* libqrencode.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqrencode.3.dylib; path = include/libqrencode.3.dylib; sourceTree = "<group>"; };
 		D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D038CBCA18DBFBF400635442 /* SourcesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesWindowController.h; sourceTree = "<group>"; };
@@ -179,6 +156,29 @@
 		D059F8EC18E547100024AA58 /* SourcesDetailPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesDetailPanelViewController.h; sourceTree = "<group>"; };
 		D059F8ED18E547100024AA58 /* SourcesDetailPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesDetailPanelViewController.m; sourceTree = "<group>"; };
 		D059F8EE18E547100024AA58 /* SourcesDetailPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcesDetailPanelViewController.xib; sourceTree = "<group>"; };
+		D059F91718E560160024AA58 /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
+		D059F91818E560160024AA58 /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
+		D059F91918E560160024AA58 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		D059F91A18E560160024AA58 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		D059F91B18E560160024AA58 /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mask.c; sourceTree = "<group>"; };
+		D059F91C18E560160024AA58 /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mask.h; sourceTree = "<group>"; };
+		D059F91D18E560160024AA58 /* mmask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mmask.c; sourceTree = "<group>"; };
+		D059F91E18E560160024AA58 /* mmask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mmask.h; sourceTree = "<group>"; };
+		D059F91F18E560160024AA58 /* mqrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mqrspec.c; sourceTree = "<group>"; };
+		D059F92018E560160024AA58 /* mqrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mqrspec.h; sourceTree = "<group>"; };
+		D059F92118E560160024AA58 /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrencode.c; sourceTree = "<group>"; };
+		D059F92218E560160024AA58 /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode.h; sourceTree = "<group>"; };
+		D059F92318E560160024AA58 /* qrencode_inner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode_inner.h; sourceTree = "<group>"; };
+		D059F92418E560160024AA58 /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrinput.c; sourceTree = "<group>"; };
+		D059F92518E560160024AA58 /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrinput.h; sourceTree = "<group>"; };
+		D059F92618E560160024AA58 /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrspec.c; sourceTree = "<group>"; };
+		D059F92718E560160024AA58 /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrspec.h; sourceTree = "<group>"; };
+		D059F92818E560160024AA58 /* rscode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rscode.c; sourceTree = "<group>"; };
+		D059F92918E560160024AA58 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
+		D059F92A18E560160024AA58 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
+		D059F92B18E560160024AA58 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		D059F93518E560200024AA58 /* GenerateQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateQRCode.h; sourceTree = "<group>"; };
+		D059F93618E560200024AA58 /* GenerateQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateQRCode.m; sourceTree = "<group>"; };
 		D086319F18AC5ACB007A8DAA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
 		D08631A018AC5ACB007A8DAA /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
 		D08631A318AC61BA007A8DAA /* TransactionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionStore.h; sourceTree = "<group>"; };
@@ -379,34 +379,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0352272818E51F0C00AD8D51 /* qrlib */ = {
-			isa = PBXGroup;
-			children = (
-				0352272918E51F0C00AD8D51 /* bitstream.c */,
-				0352272A18E51F0C00AD8D51 /* bitstream.h */,
-				0352272B18E51F0C00AD8D51 /* common.h */,
-				0352272C18E51F0C00AD8D51 /* config.h */,
-				0352272D18E51F0C00AD8D51 /* mask.c */,
-				0352272E18E51F0C00AD8D51 /* mask.h */,
-				0352272F18E51F0C00AD8D51 /* mmask.c */,
-				0352273018E51F0C00AD8D51 /* mmask.h */,
-				0352273118E51F0C00AD8D51 /* mqrspec.c */,
-				0352273218E51F0C00AD8D51 /* mqrspec.h */,
-				0352273318E51F0C00AD8D51 /* qrencode.c */,
-				0352273418E51F0C00AD8D51 /* qrencode.h */,
-				0352273518E51F0C00AD8D51 /* qrencode_inner.h */,
-				0352273618E51F0C00AD8D51 /* qrinput.c */,
-				0352273718E51F0C00AD8D51 /* qrinput.h */,
-				0352273818E51F0C00AD8D51 /* qrspec.c */,
-				0352273918E51F0C00AD8D51 /* qrspec.h */,
-				0352273A18E51F0C00AD8D51 /* rscode.c */,
-				0352273B18E51F0C00AD8D51 /* rscode.h */,
-				0352273C18E51F0C00AD8D51 /* split.c */,
-				0352273D18E51F0C00AD8D51 /* split.h */,
-			);
-			path = qrlib;
-			sourceTree = "<group>";
-		};
 		D024A0D518ADA05100B577E4 /* TransactionStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,14 +387,74 @@
 			name = TransactionStore;
 			sourceTree = "<group>";
 		};
-		D059F8F118E55C470024AA58 /* QR Code Generator */ = {
+		D038CBC918DBFBBF00635442 /* SourcesWindowController */ = {
 			isa = PBXGroup;
 			children = (
-				0352272818E51F0C00AD8D51 /* qrlib */,
-				0347660818DF7A950005F8CA /* GenerateQRCode.h */,
-				0347660918DF7A950005F8CA /* GenerateQRCode.m */,
+				D038CBCA18DBFBF400635442 /* SourcesWindowController.h */,
+				D038CBCB18DBFBF400635442 /* SourcesWindowController.m */,
+				D038CBCD18DBFC0E00635442 /* SourcesWindowController.xib */,
+				D038CBCF18DC06EE00635442 /* SourcesTableViewController */,
+				D059F8EB18E546A90024AA58 /* SourcesDetailPanel */,
+			);
+			name = SourcesWindowController;
+			sourceTree = "<group>";
+		};
+		D038CBCF18DC06EE00635442 /* SourcesTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D038CBD018DC072400635442 /* SourcesTableViewController.h */,
+				D038CBD118DC072400635442 /* SourcesTableViewController.m */,
+				D038CBD218DC072400635442 /* SourcesTableViewController.xib */,
+			);
+			name = SourcesTableViewController;
+			sourceTree = "<group>";
+		};
+		D059F8EB18E546A90024AA58 /* SourcesDetailPanel */ = {
+			isa = PBXGroup;
+			children = (
+				D059F8EC18E547100024AA58 /* SourcesDetailPanelViewController.h */,
+				D059F8ED18E547100024AA58 /* SourcesDetailPanelViewController.m */,
+				D059F8EE18E547100024AA58 /* SourcesDetailPanelViewController.xib */,
+			);
+			name = SourcesDetailPanel;
+			sourceTree = "<group>";
+		};
+		D059F91518E5600F0024AA58 /* QR Code Generator */ = {
+			isa = PBXGroup;
+			children = (
+				D059F91618E560160024AA58 /* qrlib */,
+				D059F93518E560200024AA58 /* GenerateQRCode.h */,
+				D059F93618E560200024AA58 /* GenerateQRCode.m */,
 			);
 			name = "QR Code Generator";
+			sourceTree = "<group>";
+		};
+		D059F91618E560160024AA58 /* qrlib */ = {
+			isa = PBXGroup;
+			children = (
+				D059F91718E560160024AA58 /* bitstream.c */,
+				D059F91818E560160024AA58 /* bitstream.h */,
+				D059F91918E560160024AA58 /* common.h */,
+				D059F91A18E560160024AA58 /* config.h */,
+				D059F91B18E560160024AA58 /* mask.c */,
+				D059F91C18E560160024AA58 /* mask.h */,
+				D059F91D18E560160024AA58 /* mmask.c */,
+				D059F91E18E560160024AA58 /* mmask.h */,
+				D059F91F18E560160024AA58 /* mqrspec.c */,
+				D059F92018E560160024AA58 /* mqrspec.h */,
+				D059F92118E560160024AA58 /* qrencode.c */,
+				D059F92218E560160024AA58 /* qrencode.h */,
+				D059F92318E560160024AA58 /* qrencode_inner.h */,
+				D059F92418E560160024AA58 /* qrinput.c */,
+				D059F92518E560160024AA58 /* qrinput.h */,
+				D059F92618E560160024AA58 /* qrspec.c */,
+				D059F92718E560160024AA58 /* qrspec.h */,
+				D059F92818E560160024AA58 /* rscode.c */,
+				D059F92918E560160024AA58 /* rscode.h */,
+				D059F92A18E560160024AA58 /* split.c */,
+				D059F92B18E560160024AA58 /* split.h */,
+			);
+			path = qrlib;
 			sourceTree = "<group>";
 		};
 		D08631A218AC619D007A8DAA /* TransactionStore */ = {
@@ -764,7 +796,7 @@
 			children = (
 				D78ACC3018A5FDAE006084D6 /* FMDB */,
 				D78ACC4018A5FDC8006084D6 /* Lumberjack */,
-				D059F8F118E55C470024AA58 /* QR Code Generator */,
+				D059F91518E5600F0024AA58 /* QR Code Generator */,
 				D7FAAD7118DE1040003A9A13 /* Validation */,
 				D78ACC4F18A5FDE9006084D6 /* ImageUtils.h */,
 				D78ACC5018A5FDE9006084D6 /* ImageUtils.m */,
@@ -1152,22 +1184,18 @@
 				D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
 				D7439E2218A5FC53000EE008 /* AppDelegate.m in Sources */,
-				0352273F18E51F0C00AD8D51 /* mask.c in Sources */,
-				0352273E18E51F0C00AD8D51 /* bitstream.c in Sources */,
 				D7C8733718B2FB0B00F2976F /* LibraryObjectCSVReader.m in Sources */,
 				D770578518AD7CC100F011E5 /* EditSourceViewController.m in Sources */,
-				0352274218E51F0C00AD8D51 /* qrencode.c in Sources */,
+				D059F93118E560160024AA58 /* qrinput.c in Sources */,
 				D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */,
 				D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */,
 				D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */,
-				0352274518E51F0C00AD8D51 /* rscode.c in Sources */,
 				D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */,
-				0352274118E51F0C00AD8D51 /* mqrspec.c in Sources */,
 				D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
 				D738D55618BAA52600A777E2 /* DetailPanelViewController.m in Sources */,
 				D72465DD18B71F03002EDE5B /* LibraryObjectImportController.m in Sources */,
-				0352274418E51F0C00AD8D51 /* qrspec.c in Sources */,
+				D059F93318E560160024AA58 /* rscode.c in Sources */,
 				D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */,
 				D78ACC4A18A5FDD9006084D6 /* DDTTYLogger.m in Sources */,
 				D704E1A718B15C5B00170B7E /* ProcedureRecordParser.m in Sources */,
@@ -1175,6 +1203,7 @@
 				D78ACC4B18A5FDD9006084D6 /* DDASLLogger.m in Sources */,
 				D72465D718B71CA6002EDE5B /* SourceImportController.m in Sources */,
 				D78ACC6E18A5FE2E006084D6 /* S3ImageStore.m in Sources */,
+				D059F93718E560200024AA58 /* GenerateQRCode.m in Sources */,
 				D7A0CB7B18BC596900A61E32 /* LibraryObjectExportController.m in Sources */,
 				D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */,
 				D78ACC9818A5FEB6006084D6 /* LibraryObject.m in Sources */,
@@ -1182,10 +1211,13 @@
 				D78ACC4C18A5FDD9006084D6 /* DDLog.m in Sources */,
 				D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */,
 				D711C94D18C42CC300D637D7 /* AddNewSourceWindowController.m in Sources */,
+				D059F93218E560160024AA58 /* qrspec.c in Sources */,
 				D78ACC3F18A5FDC0006084D6 /* FMResultSet.m in Sources */,
 				D78ACC6518A5FE21006084D6 /* AbstractImageStore.m in Sources */,
 				D72465D418B71C99002EDE5B /* SampleImportController.m in Sources */,
 				D78ACC7718A5FE68006084D6 /* LocalLibraryObjectStore.m in Sources */,
+				D059F93018E560160024AA58 /* qrencode.c in Sources */,
+				D059F92F18E560160024AA58 /* mqrspec.c in Sources */,
 				D78ACC3D18A5FDC0006084D6 /* FMDatabasePool.m in Sources */,
 				D78ACC7F18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m in Sources */,
 				D72465DA18B71E32002EDE5B /* ImportResult.m in Sources */,
@@ -1193,21 +1225,21 @@
 				D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */,
 				D7439E1B18A5FC53000EE008 /* main.m in Sources */,
 				D7C8732D18B2F9F800F2976F /* CHCSVParser.m in Sources */,
+				D059F92E18E560160024AA58 /* mmask.c in Sources */,
+				D059F92C18E560160024AA58 /* bitstream.c in Sources */,
 				D0C51DCA18BABF0C001B3929 /* ConflictResolution.m in Sources */,
-				0352274318E51F0C00AD8D51 /* qrinput.c in Sources */,
-				D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */,
-				0352274618E51F0C00AD8D51 /* split.c in Sources */,
 				D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */,
 				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
-				0347660A18DF7A950005F8CA /* GenerateQRCode.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
 				D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */,
-				0352274018E51F0C00AD8D51 /* mmask.c in Sources */,
+				D038CBCC18DBFBF400635442 /* SourcesWindowController.m in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
 				D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */,
 				D78ACC6618A5FE21006084D6 /* AbstractCloudImageStore.m in Sources */,
 				D7FAAD8018DE23BF003A9A13 /* OSXImageUploadHandler.m in Sources */,
+				D059F92D18E560160024AA58 /* mask.c in Sources */,
 				D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */,
+				D059F93418E560160024AA58 /* split.c in Sources */,
 				D038CBD318DC072400635442 /* SourcesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
