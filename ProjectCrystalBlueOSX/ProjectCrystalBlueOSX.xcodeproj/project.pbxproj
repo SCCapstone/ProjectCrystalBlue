@@ -59,8 +59,6 @@
 		D72465DD18B71F03002EDE5B /* LibraryObjectImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */; };
 		D72465E118B7320C002EDE5B /* SampleImportControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */; };
 		D72465E318B73D9F002EDE5B /* SourceImportControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */; };
-		D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7272DF418A60660003860E2 /* SourcesViewController.m */; };
-		D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7272DF518A60660003860E2 /* SourcesViewController.xib */; };
 		D72FE4A018B5641A00C6452F /* ProcedureRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE49F18B5641A00C6452F /* ProcedureRecord.m */; };
 		D72FE4A218B57B0F00C6452F /* ProcedureRecordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE4A118B57B0F00C6452F /* ProcedureRecordTests.m */; };
 		D738D55618BAA52600A777E2 /* DetailPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D738D55418BAA52600A777E2 /* DetailPanelViewController.m */; };
@@ -209,9 +207,6 @@
 		D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectImportController.m; sourceTree = "<group>"; };
 		D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleImportControllerTests.m; sourceTree = "<group>"; };
 		D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImportControllerTests.m; sourceTree = "<group>"; };
-		D7272DF318A60660003860E2 /* SourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesViewController.h; sourceTree = "<group>"; };
-		D7272DF418A60660003860E2 /* SourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesViewController.m; sourceTree = "<group>"; };
-		D7272DF518A60660003860E2 /* SourcesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcesViewController.xib; sourceTree = "<group>"; };
 		D72FE49E18B5641A00C6452F /* ProcedureRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureRecord.h; sourceTree = "<group>"; };
 		D72FE49F18B5641A00C6452F /* ProcedureRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecord.m; sourceTree = "<group>"; };
 		D72FE4A118B57B0F00C6452F /* ProcedureRecordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecordTests.m; sourceTree = "<group>"; };
@@ -753,9 +748,6 @@
 				D7125EED18C462EC00BBCD3E /* ProceduresWindow */,
 				D7F822BB18B199290017548F /* SamplesView */,
 				D770578118AD7C8900F011E5 /* EditSourceView */,
-				D7272DF318A60660003860E2 /* SourcesViewController.h */,
-				D7272DF418A60660003860E2 /* SourcesViewController.m */,
-				D7272DF518A60660003860E2 /* SourcesViewController.xib */,
 				D738D55818BAA52A00A777E2 /* DetailPanelView */,
 			);
 			name = ViewController;
@@ -1077,7 +1069,6 @@
 				D711C95318C44B3E00D637D7 /* SamplesWindowController.xib in Resources */,
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D738D55718BAA52600A777E2 /* DetailPanelViewController.xib in Resources */,
-				D7272DF718A60660003860E2 /* SourcesViewController.xib in Resources */,
 				D059F8F018E547100024AA58 /* SourcesDetailPanelViewController.xib in Resources */,
 				D038CBD418DC072400635442 /* SourcesTableViewController.xib in Resources */,
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
@@ -1164,7 +1155,6 @@
 				D7439E1B18A5FC53000EE008 /* main.m in Sources */,
 				D7C8732D18B2F9F800F2976F /* CHCSVParser.m in Sources */,
 				D0C51DCA18BABF0C001B3929 /* ConflictResolution.m in Sources */,
-				D7272DF618A60660003860E2 /* SourcesViewController.m in Sources */,
 				D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */,
 				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
 				0347660A18DF7A950005F8CA /* GenerateQRCode.m in Sources */,
