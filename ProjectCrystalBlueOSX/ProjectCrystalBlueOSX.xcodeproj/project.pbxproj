@@ -32,6 +32,7 @@
 		D704E1AB18B1654200170B7E /* ProcedureRecordParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AA18B1654200170B7E /* ProcedureRecordParserTests.m */; };
 		D704E1AE18B16C4700170B7E /* Procedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AD18B16C4700170B7E /* Procedures.m */; };
 		D704E1B018B16F6200170B7E /* ProceduresTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AF18B16F6200170B7E /* ProceduresTests.m */; };
+		D706CCA618E60B7000F7762E /* SourceFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D706CCA518E60B7000F7762E /* SourceFieldValidatorTests.m */; };
 		D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */; };
 		D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */; };
 		D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */; };
@@ -121,6 +122,7 @@
 		D7C8733D18B3031800F2976F /* CSVReadWriteUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */; };
 		D7C8733F18B31CF400F2976F /* samples_reordered_columns.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */; };
 		D7CCCEBD18E538EE009D0308 /* ValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */; };
+		D7CCCEC018E54C3A009D0308 /* SourceFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CCCEBF18E54C3A009D0308 /* SourceFieldValidator.m */; };
 		D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */; };
 		D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */; };
 		D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */; };
@@ -187,6 +189,7 @@
 		D704E1AC18B16C4700170B7E /* Procedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Procedures.h; sourceTree = "<group>"; };
 		D704E1AD18B16C4700170B7E /* Procedures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Procedures.m; sourceTree = "<group>"; };
 		D704E1AF18B16F6200170B7E /* ProceduresTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresTests.m; sourceTree = "<group>"; };
+		D706CCA518E60B7000F7762E /* SourceFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceFieldValidatorTests.m; sourceTree = "<group>"; };
 		D706DDB018B0AC9D0023D2BF /* ProcedureNameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureNameConstants.h; sourceTree = "<group>"; };
 		D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureNameConstants.m; sourceTree = "<group>"; };
 		D706DDB318B0BB310023D2BF /* PrimitiveProcedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveProcedures.h; sourceTree = "<group>"; };
@@ -332,6 +335,8 @@
 		D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_reordered_columns.csv; sourceTree = "<group>"; };
 		D7CCCEBB18E538EE009D0308 /* ValidationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidationResponse.h; sourceTree = "<group>"; };
 		D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidationResponse.m; sourceTree = "<group>"; };
+		D7CCCEBE18E54C3A009D0308 /* SourceFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceFieldValidator.h; sourceTree = "<group>"; };
+		D7CCCEBF18E54C3A009D0308 /* SourceFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceFieldValidator.m; sourceTree = "<group>"; };
 		D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectEqualsAndHashcodeTests.m; sourceTree = "<group>"; };
 		D7FAAD7218DE10AD003A9A13 /* PrimitiveFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveFieldValidator.h; sourceTree = "<group>"; };
 		D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveFieldValidator.m; sourceTree = "<group>"; };
@@ -991,6 +996,8 @@
 				D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */,
 				D7CCCEBB18E538EE009D0308 /* ValidationResponse.h */,
 				D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */,
+				D7CCCEBE18E54C3A009D0308 /* SourceFieldValidator.h */,
+				D7CCCEBF18E54C3A009D0308 /* SourceFieldValidator.m */,
 			);
 			name = Validation;
 			sourceTree = "<group>";
@@ -1000,6 +1007,7 @@
 			children = (
 				D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */,
 				D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */,
+				D706CCA518E60B7000F7762E /* SourceFieldValidatorTests.m */,
 			);
 			name = ValidatorTests;
 			sourceTree = "<group>";
@@ -1148,6 +1156,7 @@
 				D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */,
 				0352274518E51F0C00AD8D51 /* rscode.c in Sources */,
 				D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */,
+				D7CCCEC018E54C3A009D0308 /* SourceFieldValidator.m in Sources */,
 				0352274118E51F0C00AD8D51 /* mqrspec.c in Sources */,
 				D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
@@ -1203,6 +1212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */,
+				D706CCA618E60B7000F7762E /* SourceFieldValidatorTests.m in Sources */,
 				D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */,
 				D7FAAD8618DE42FA003A9A13 /* SourceImageUtilsTests.m in Sources */,
 				D72405F718A6023B00EA2DD2 /* LocalImageStoreTests.m in Sources */,

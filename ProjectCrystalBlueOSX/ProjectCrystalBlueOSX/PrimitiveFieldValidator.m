@@ -24,6 +24,25 @@
     return ([charSet isSupersetOfSet:fieldCharSet]);
 }
 
++ (BOOL)validateFieldIsDecimal:(const NSString *)field
+{
+    NSScanner *scanner = [NSScanner scannerWithString:[field copy]];
+    double d;
+    BOOL parsedAsDouble = [scanner scanDouble:&d];
+    BOOL parsedEntireStr = [scanner isAtEnd];
+
+    return parsedAsDouble && parsedEntireStr;
+}
+
++ (BOOL)validateFieldIsIntegral:(const NSString *)field
+{
+    NSScanner *scanner = [NSScanner scannerWithString:[field copy]];
+    long long l;
+    BOOL parsedAsLongLong = [scanner scanLongLong:&l];
+
+    return parsedAsLongLong;
+}
+
 /// Verify that the field's length is greater than or equal to minLength.
 + (BOOL)validateField:(const NSString *)field
    isAtLeastMinLength:(const NSUInteger)minLength

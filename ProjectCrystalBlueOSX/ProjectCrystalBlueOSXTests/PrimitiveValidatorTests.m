@@ -86,4 +86,34 @@
                                        isOneOfValidValues:validOptions]);
 }
 
+- (void)testDecimalString
+{
+    NSString *positiveDecimal = @"10.450239";
+    NSString *negativeDecimal = @"-5289.39092";
+    NSString *integer = @"420";
+    NSString *zero = @"0";
+    NSString *notValid = @"230adfjgs085208";
+
+    XCTAssertTrue([PrimitiveFieldValidator validateFieldIsDecimal:positiveDecimal]);
+    XCTAssertTrue([PrimitiveFieldValidator validateFieldIsDecimal:negativeDecimal]);
+    XCTAssertTrue([PrimitiveFieldValidator validateFieldIsDecimal:integer]);
+    XCTAssertTrue([PrimitiveFieldValidator validateFieldIsDecimal:zero]);
+
+    XCTAssertFalse([PrimitiveFieldValidator validateFieldIsDecimal:notValid]);
+}
+
+- (void)testIntegerString
+{
+    NSString *positiveNumber = @"12380510";
+    NSString *negativeNumber = @"-258032805";
+    NSString *invalid = @"xcvbijoijo";
+    NSString *zero = @"0";
+
+    XCTAssertTrue([PrimitiveFieldValidator validateFieldIsIntegral:positiveNumber]);
+    XCTAssertTrue([PrimitiveFieldValidator validateFieldIsIntegral:negativeNumber]);
+    XCTAssertTrue([PrimitiveFieldValidator validateFieldIsIntegral:zero]);
+
+    XCTAssertFalse([PrimitiveFieldValidator validateFieldIsIntegral:invalid]);
+}
+
 @end

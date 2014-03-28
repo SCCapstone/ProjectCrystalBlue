@@ -18,6 +18,12 @@
 + (BOOL)validateField:(const NSString *)field
   containsOnlyCharSet:(const NSCharacterSet *)charSet;
 
+/// Verify that this field is properly formatted as a decimal value.
++ (BOOL)validateFieldIsDecimal:(const NSString *)field;
+
+/// Verify that the field is properly formatted as an integral value (e.g. a long).
++ (BOOL)validateFieldIsIntegral:(const NSString *)field;
+
 /// Verify that the field's length is greater than or equal to minLength.
 + (BOOL)validateField:(const NSString *)field
    isAtLeastMinLength:(const NSUInteger)minLength;
