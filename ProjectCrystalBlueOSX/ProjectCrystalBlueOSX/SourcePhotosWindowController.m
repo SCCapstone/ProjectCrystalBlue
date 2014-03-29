@@ -50,6 +50,7 @@
 
 - (void)reloadImageKeys
 {
+    [imageSelectionPopupButton removeAllItems];
     imageKeys = [SourceImageUtils imageKeysForSource:source];
     currentPhotoIndex = 0;
 
@@ -91,7 +92,12 @@
 }
 
 - (IBAction)removePhoto:(id)sender {
-
+    NSString *imageKeyToRemove = [imageKeys objectAtIndex:currentPhotoIndex];
+    [SourceImageUtils removeImage:imageKeyToRemove
+                        forSource:source
+                      inDataStore:dataStore
+                     inImageStore:[SourceImageUtils defaultImageStore]];
+    [self reloadImageKeys];
 }
 
 - (IBAction)previousPhoto:(id)sender {
