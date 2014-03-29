@@ -72,7 +72,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     // Setup split view
     [self.splitView replaceSubview:[self.splitView.subviews objectAtIndex:tableSubview] with:tableViewController.view];
     [self.splitView replaceSubview:[self.splitView.subviews objectAtIndex:detailPanelSubview] with:detailPanelController.view];
-    CGFloat dividerPosition = [self.splitView maxPossiblePositionOfDividerAtIndex:0] - 250;
+    CGFloat dividerPosition = [self.splitView maxPossiblePositionOfDividerAtIndex:0] - 275;
     [self.splitView setPosition:dividerPosition ofDividerAtIndex:0];
     
     // Setup search field
@@ -93,7 +93,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition
          ofSubviewAt:(NSInteger)dividerIndex
 {
-    return proposedMaximumPosition - 250;
+    return proposedMaximumPosition - 275;
 }
 
 - (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview
