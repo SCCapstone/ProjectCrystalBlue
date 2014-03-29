@@ -80,6 +80,57 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return images;
 }
 
++ (BOOL)removeImage:(NSString *)imageKey
+          forSource:(Source *)source
+        inDataStore:(AbstractLibraryObjectStore *)dataStore
+       inImageStore:(AbstractImageStore *)imageStore
+{
+    NSMutableArray *imageKeysForSource;
+    imageKeysForSource = [NSMutableArray arrayWithArray:[self.class imageKeysForSource:source]];
+
+    if (![imageKeysForSource containsObject:imageKey]) {
+        return NO;
+    }
+
+    [imageKeysForSource removeObject:imageKey];
+    NSMutableString *newImagesString = [[NSMutableString alloc] init];
+
+    for (int i = 0; i < imageKeysForSource.count; ++i) {
+        if (i == 0) {
+            // For the first image, we don't want to separate with a comma.
+            [newImagesString appendFormat:@"%@", [imageKeysForSource objectAtIndex:i]];
+        } else {
+            [newImagesString appendFormat:@"%@%@", IMAGE_LIST_DELIMITER,
+                                                   [imageKeysForSource objectAtIndex:i]];
+        }
+    }
+
+    [source.attributes setObject:newImagesString forKey:SRC_IMAGES];
+
+    BOOL success = YES;
+    success = success && [imageStore deleteImageWithKey:imageKey];
+    success = success && [dataStore updateLibraryObject:source
+                                              IntoTable:[SourceConstants tableName]];
+
+    return success;
+}
+
++ (BOOL)removeAllImagesForSource:(Source *)source
+                     inDataStore:(AbstractLibraryObjectStore *)dataStore
+                    inImageStore:(AbstractImageStore *)imageStore
+{
+    NSArray *imageKeys = [self.class imageKeysForSource:source];
+    BOOL success = YES;
+    for (NSString *imageKey in imageKeys) {
+        success = success && [imageStore deleteImageWithKey:imageKey];
+    }
+    [source.attributes setObject:@"" forKey:SRC_IMAGES];
+
+    success = success && [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
+
+    return success;
+}
+
 + (BOOL)addImage:(NSImage *)image
        forSource:(Source *)source
      inDataStore:(AbstractLibraryObjectStore *)dataStore

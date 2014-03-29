@@ -100,6 +100,121 @@
     [imageStore flushLocalImageData];
 }
 
+- (void)testRemoveAllImagesForSource
+{
+    AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:DATABASE_DIRECTORY
+                                                                                 WithDatabaseName:DATABASE_NAME];
+
+
+    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+
+    NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
+    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
+    NSImage *imageToUpload = [[NSImage alloc] initWithContentsOfFile:path];
+    XCTAssertNotNil(imageToUpload, @"Upload test image seems to have been lost!");
+
+    // Set up the source object to add images to
+    NSString *sourceKey = @"SourceKey";
+    Source *source = [[Source alloc] initWithKey:sourceKey
+                                   AndWithValues:[SourceConstants attributeDefaultValues]];
+
+    BOOL successPutLibObject = [dataStore putLibraryObject:source
+                                                 IntoTable:[SourceConstants tableName]];
+    XCTAssertTrue(successPutLibObject);
+
+    // Add some images to the source
+    const int imagesToAdd = 5;
+    for (int i = 0; i < imagesToAdd; ++i) {
+        [SourceImageUtils addImage:imageToUpload
+                         forSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]]
+                       inDataStore:dataStore
+                    intoImageStore:imageStore];
+    }
+
+    // Retrieving the imageKeys for later.
+    NSArray *imageKeys = [SourceImageUtils imageKeysForSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey
+                                                                                                FromTable:[SourceConstants tableName]]];
+    XCTAssertTrue(imageKeys.count == imagesToAdd);
+
+    // Now remove them
+    BOOL returnSuccessValue =
+        [SourceImageUtils removeAllImagesForSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]]
+                                       inDataStore:dataStore
+                                      inImageStore:imageStore];
+    XCTAssertTrue(returnSuccessValue);
+
+    // Check that the sources database doesn't contain the images
+    Source *retrievedSource = (Source *)[dataStore getLibraryObjectForKey:sourceKey
+                                                                FromTable:[SourceConstants tableName]];
+
+    NSString *imageDbValue = [retrievedSource.attributes objectForKey:SRC_IMAGES];
+    XCTAssertTrue([imageDbValue isEqualToString:@""]);
+
+    // Check that the images were really deleted from the image store
+    for (NSString *imageKey in imageKeys) {
+        XCTAssertFalse([imageStore imageExistsForKey:imageKey]);
+    }
+
+    // clean up data
+    [dataStore deleteLibraryObjectWithKey:sourceKey FromTable:[SourceConstants tableName]];
+    [imageStore flushLocalImageData];
+}
+
+/// Removal of a single image from a source.
+- (void)testRemoveSingleImage
+{
+    AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:DATABASE_DIRECTORY
+                                                                                 WithDatabaseName:DATABASE_NAME];
+
+    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+
+    NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
+    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
+    NSImage *imageToUpload = [[NSImage alloc] initWithContentsOfFile:path];
+    XCTAssertNotNil(imageToUpload, @"Upload test image seems to have been lost!");
+
+    // Set up the source object to add images to
+    NSString *sourceKey = @"SourceKey";
+    Source *source = [[Source alloc] initWithKey:sourceKey
+                                   AndWithValues:[SourceConstants attributeDefaultValues]];
+
+    BOOL successPutLibObject = [dataStore putLibraryObject:source
+                                                 IntoTable:[SourceConstants tableName]];
+    XCTAssertTrue(successPutLibObject);
+
+    // Add some images to the source
+    const int imagesToAdd = 5;
+    for (int i = 0; i < imagesToAdd; ++i) {
+        [SourceImageUtils addImage:imageToUpload
+                         forSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]]
+                       inDataStore:dataStore
+                    intoImageStore:imageStore];
+    }
+
+    NSArray *imageKeys = [SourceImageUtils imageKeysForSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]]];
+    const int indexToRemove = 2;
+
+    // Now actually remove the image
+    NSString *imageKeyToRemove = [imageKeys objectAtIndex:indexToRemove];
+
+    [SourceImageUtils removeImage:imageKeyToRemove
+                        forSource:(Source *)[dataStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]]
+                      inDataStore:dataStore
+                     inImageStore:imageStore];
+
+    // check that the image was removed
+    Source *retrievedSource = (Source *)[dataStore getLibraryObjectForKey:sourceKey
+                                                                FromTable:[SourceConstants tableName]];
+    XCTAssertTrue([SourceImageUtils imageKeysForSource:retrievedSource].count == imagesToAdd - 1);
+    XCTAssertFalse([[SourceImageUtils imageKeysForSource:retrievedSource] containsObject:imageKeyToRemove]);
+
+    XCTAssertFalse([imageStore imageExistsForKey:imageKeyToRemove]);
+
+    // clean up data
+    [dataStore deleteLibraryObjectWithKey:sourceKey FromTable:[SourceConstants tableName]];
+    [imageStore flushLocalImageData];
+}
+
 /// Tests the "appendImageKey/toSource" method
 - (void)testAppendImageKey
 {
