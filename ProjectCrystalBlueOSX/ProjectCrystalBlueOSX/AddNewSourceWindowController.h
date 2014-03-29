@@ -31,6 +31,8 @@
 @property (weak) IBOutlet NSPopUpButton *ageMethodDropDownField;
 @property (weak) IBOutlet NSTextField *ageDataTypeTextField;
 @property (weak) IBOutlet NSDatePicker *dateCollectedPicker;
+@property (unsafe_unretained) IBOutlet NSTextView *hyperlinkTextView;
+@property (unsafe_unretained) IBOutlet NSTextView *notesTextView;
 
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)saveButtonPressed:(id)sender;
