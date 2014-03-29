@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class ValidationResponse;
+#import "ValidationResponse.h"
 
 @interface SampleFieldValidator : NSObject
 
