@@ -7,6 +7,7 @@
 //
 
 #import "OSXImageUploadHandler.h"
+#import "SourcePhotosWindowController.h"
 #import "AbstractImageStore.h"
 #import "SourceImageUtils.h"
 
@@ -15,6 +16,7 @@
 @synthesize source;
 @synthesize dataStore;
 @synthesize tag;
+@synthesize photosWindow;
 
 -(void)fileSelector:(id)selector
   didOpenFileAtPath:(NSString *)filePath
@@ -34,6 +36,10 @@
                    inDataStore:dataStore
                   withImageTag:tag
                 intoImageStore:[SourceImageUtils defaultImageStore]];
+
+    if (photosWindow) {
+        [photosWindow reloadImageKeys];
+    }
 }
 
 @end

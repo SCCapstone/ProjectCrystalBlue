@@ -10,6 +10,7 @@
 #import "OSXFileSelector.h"
 @class Source;
 @class AbstractLibraryObjectStore;
+@class SourcePhotosWindowController;
 
 /// Delegate to handle image uploads from an OSXFileSelector.
 @interface OSXImageUploadHandler : NSObject <OSXFileSelectorDelegate>
@@ -17,5 +18,6 @@
 @property Source *source;
 @property AbstractLibraryObjectStore *dataStore;
 @property NSString *tag;
+@property SourcePhotosWindowController *photosWindow;
 
 @end

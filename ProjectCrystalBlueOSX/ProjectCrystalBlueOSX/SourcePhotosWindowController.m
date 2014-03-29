@@ -48,7 +48,6 @@
     [self reloadImageKeys];
 }
 
-/// Reloads the image keys for the source.
 - (void)reloadImageKeys
 {
     imageKeys = [SourceImageUtils imageKeysForSource:source];
@@ -85,6 +84,7 @@
 
     [imageUploadHandler setSource:source];
     [imageUploadHandler setDataStore:dataStore];
+    [imageUploadHandler setPhotosWindow:self];
     [imageSelector setDelegate:imageUploadHandler];
     [imageSelector presentFileSelectorToUser];
 }
