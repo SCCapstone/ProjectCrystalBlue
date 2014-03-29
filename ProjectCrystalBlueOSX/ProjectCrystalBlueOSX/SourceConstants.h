@@ -12,7 +12,7 @@
  */
 static NSString *const SRC_KEY              = @"KEY";
 static NSString *const SRC_CONTINENT        = @"CONTINENT";
-static NSString *const SRC_TYPE             = @"TYPE";
+static NSString *const SRC_TYPE             = @"ROCK_TYPE";
 static NSString *const SRC_LITHOLOGY        = @"LITHOLOGY";
 static NSString *const SRC_DEPOSYSTEM       = @"DEPOSYSTEM";
 static NSString *const SRC_GROUP            = @"ROCK_GROUP";
@@ -36,7 +36,7 @@ static NSString *const SRC_IMAGES           = @"IMAGES";
  */
 static NSString *const SRC_DEF_VAL_KEY          = @"Key here";
 static NSString *const SRC_DEF_VAL_CONTINENT    = @"Continent here";
-static NSString *const SRC_DEF_VAL_TYPE         = @"Type here";
+static NSString *const SRC_DEF_VAL_TYPE         = @"Rock type here";
 static NSString *const SRC_DEF_VAL_LITHOLOGY    = @"Lithology here";
 static NSString *const SRC_DEF_VAL_DEPOSYSTEM   = @"Deposystem here";
 static NSString *const SRC_DEF_VAL_GROUP        = @"Group here";
@@ -61,7 +61,7 @@ static NSString *const SRC_DEF_VAL_IMAGES       = @"";
  */
 static NSString *const SRC_DISPLAY_KEY          = @"Key";
 static NSString *const SRC_DISPLAY_CONTINENT    = @"Continent";
-static NSString *const SRC_DISPLAY_TYPE         = @"Type";
+static NSString *const SRC_DISPLAY_TYPE         = @"Rock Type";
 static NSString *const SRC_DISPLAY_LITHOLOGY    = @"Lithology";
 static NSString *const SRC_DISPLAY_DEPOSYSTEM   = @"Deposystem";
 static NSString *const SRC_DISPLAY_GROUP        = @"Group";
