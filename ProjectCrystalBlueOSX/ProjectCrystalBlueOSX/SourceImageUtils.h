@@ -32,6 +32,18 @@ static const NSString *IMAGE_LIST_DELIMITER = @",";
 + (NSArray *)imagesForSource:(Source *)source
                 inImageStore:(AbstractImageStore *)imageStore;
 
+/// Deletes an image with the specified key and source. This action cannot be undone.
++ (BOOL)removeImage:(NSString *)imageKey
+          forSource:(Source *)source
+        inDataStore:(AbstractLibraryObjectStore *)dataStore
+       inImageStore:(AbstractImageStore *)imageStore;
+
+/// Deletes ALL images associated with a source and clears the images field in the database.
+/// This action cannot be undone.
++ (BOOL)removeAllImagesForSource:(Source *)source
+                     inDataStore:(AbstractLibraryObjectStore *)dataStore
+                    inImageStore:(AbstractImageStore *)imageStore;
+
 /// Adds an image for the given source. This both uploads the image and updates the dataStore.
 /// Generally, [SourceImageutils defaultImageStore] should be used for the imageStore argument.
 + (BOOL)addImage:(NSImage *)image
