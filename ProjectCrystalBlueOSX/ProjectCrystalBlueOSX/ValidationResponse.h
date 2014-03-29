@@ -19,6 +19,11 @@
 /// If there were errors, list the error strings in a user-readable form.
 @property NSMutableArray *errors;
 
+/// Generates an NSAlert containing the information from this ValidationResponse.
+/// Returns nil if there are no errors.
+-(NSAlert *)alertWithFieldName:(NSString *)fieldName
+                    fieldValue:(NSString *)fieldValue;
+
 @end
 
 /// Format string for an error message about a field being too short. The format args are

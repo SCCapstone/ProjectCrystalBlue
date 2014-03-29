@@ -10,6 +10,9 @@
 
 @implementation ValidationResponse
 
+@synthesize isValid;
+@synthesize errors;
+
 - (instancetype)init
 {
     self = [super init];
@@ -20,7 +23,27 @@
     return self;
 }
 
-@synthesize isValid;
-@synthesize errors;
+-(NSAlert *)alertWithFieldName:(NSString *)fieldName
+                    fieldValue:(NSString *)fieldValue
+{
+    if (self.isValid) {
+        return nil;
+    }
+
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setAlertStyle:NSWarningAlertStyle];
+
+    NSString *message = [NSString stringWithFormat:@"Invalid %@ \"%@\"", fieldName, fieldValue];
+    [alert setMessageText:message];
+
+    NSMutableString *info = [[NSMutableString alloc] init];
+    for (NSString *validationError in self.errors) {
+        [info appendFormat:@"- %@\n", validationError];
+    }
+    [alert setInformativeText:info];
+
+    return alert;
+}
+
 
 @end

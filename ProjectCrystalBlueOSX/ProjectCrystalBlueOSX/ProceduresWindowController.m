@@ -61,17 +61,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
     if (!response.isValid) {
 
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setAlertStyle:NSWarningAlertStyle];
-
-        NSString *message = [NSString stringWithFormat:@"Invalid initials \"%@\"", initialsTextField.stringValue];
-        [alert setMessageText:message];
-
-        NSMutableString *info = [[NSMutableString alloc] init];
-        for (NSString *validationError in response.errors) {
-            [info appendFormat:@"- %@\n", validationError];
-        }
-        [alert setInformativeText:info];
+        NSAlert *alert = [response alertWithFieldName:@"initials"
+                                           fieldValue:initialsTextField.stringValue];
 
         [alert runModal];
     }
