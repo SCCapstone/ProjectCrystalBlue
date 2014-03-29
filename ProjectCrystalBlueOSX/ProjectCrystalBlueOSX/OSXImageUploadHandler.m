@@ -8,26 +8,32 @@
 
 #import "OSXImageUploadHandler.h"
 #import "AbstractImageStore.h"
+#import "SourceImageUtils.h"
 
 @implementation OSXImageUploadHandler
 
-@synthesize imageStore;
-@synthesize key;
+@synthesize source;
+@synthesize dataStore;
+@synthesize tag;
 
 -(void)fileSelector:(id)selector
   didOpenFileAtPath:(NSString *)filePath
 {
     // Make sure properties are correctly set
-    if (!key || !imageStore)
+    if (!source)
     {
         [NSException raise:@"Null properties"
-                    format:@"The key and imagestore properties must be set!"];
+                    format:@"The source and datastore property must be set!"];
         return;
     }
 
     NSImage *imageToUpload = [[NSImage alloc] initWithData:[NSData dataWithContentsOfFile:filePath]];
 
-    [imageStore putImage:imageToUpload forKey:key];
+    [SourceImageUtils addImage:imageToUpload
+                     forSource:source
+                   inDataStore:dataStore
+                  withImageTag:tag
+                intoImageStore:[SourceImageUtils defaultImageStore]];
 }
 
 @end

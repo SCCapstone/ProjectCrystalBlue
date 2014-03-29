@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 @class Source;
+@class AbstractLibraryObjectStore;
 
 /**
  *  Controller for a window to display, add, and delete photos for a 
@@ -16,9 +17,11 @@
 @interface SourcePhotosWindowController : NSWindowController
 
 @property Source *source;
+@property AbstractLibraryObjectStore *dataStore;
+
 @property NSUInteger currentPhotoIndex;
-@property NSArray *photoKeys;
-@property NSMutableDictionary *loadedPhotos;
+@property NSArray *imageKeys;
+@property NSArray *images;
 
 @property (weak) IBOutlet NSPopUpButton *imageSelectionPopupButton;
 @property (weak) IBOutlet NSTextField *currentImageKey;

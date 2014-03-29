@@ -195,6 +195,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
     SourcePhotosWindowController *photosWindowController = [[SourcePhotosWindowController alloc] initWithWindowNibName:@"SourcePhotosWindowController"];
     [photosWindowController setSource:source];
+    [photosWindowController setDataStore:dataStore];
     [photosWindowController showWindow:self];
     [activeWindowControllers addObject:photosWindowController];
 }
