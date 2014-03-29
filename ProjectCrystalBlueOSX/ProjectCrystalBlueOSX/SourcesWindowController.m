@@ -126,7 +126,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (selectedRows.count == -1)
         return;
     
-    NSArray *selectedSources = [tableViewController.displayedSources objectsAtIndexes:selectedRows];
+    NSArray *selectedSources = [tableViewController.arrayController.arrangedObjects objectsAtIndexes:selectedRows];
     
     NSAlert *confirmation = [[NSAlert alloc] init];
     [confirmation setAlertStyle:NSWarningAlertStyle];
@@ -174,7 +174,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (selectedRow < 0)
         return;
     
-    Source *source = [tableViewController.displayedSources objectAtIndex:selectedRow];
+    Source *source = [tableViewController.arrayController.arrangedObjects objectAtIndex:selectedRow];
     
     SamplesWindowController *windowController = [[SamplesWindowController alloc] initWithWindowNibName:@"SamplesWindowController"];
     [windowController setSource:source];
@@ -191,7 +191,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
 
-    Source *source = [tableViewController.displayedSources objectAtIndex:selectedRow];
+    Source *source = [tableViewController.arrayController.arrangedObjects objectAtIndex:selectedRow];
 
     SourcePhotosWindowController *photosWindowController = [[SourcePhotosWindowController alloc] initWithWindowNibName:@"SourcePhotosWindowController"];
     [photosWindowController setSource:source];

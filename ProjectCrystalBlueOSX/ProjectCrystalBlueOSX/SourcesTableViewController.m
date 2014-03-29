@@ -27,7 +27,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SourcesTableViewController
 
-@synthesize displayedSources, tableView, searchField, dataStore, detailPanel;
+@synthesize displayedSources, tableView, searchField, dataStore, detailPanel, arrayController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,8 +53,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
     
-    Source *source = [displayedSources objectAtIndex:selectedRow];
+    Source *source = [self.arrayController.arrangedObjects objectAtIndex:selectedRow];
     [self.detailPanel setSource:source];
+}
+
+- (void)tableView:(NSTableView *)tableView
+   setObjectValue:(id)object
+   forTableColumn:(NSTableColumn *)tableColumn
+              row:(NSInteger)row
+{
+    // Update database when value is changed
+    [dataStore updateLibraryObject:[self.arrayController.arrangedObjects objectAtIndex:row]
+                         IntoTable:[SourceConstants tableName]];
 }
 
 - (void)addSource:(Source *)source

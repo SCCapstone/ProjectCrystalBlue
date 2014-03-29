@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SourcesTableViewController">
             <connections>
+                <outlet property="arrayController" destination="HuF-wB-40k" id="pSi-c5-9Pm"/>
                 <outlet property="tableView" destination="UTf-Bo-kV3" id="2cA-Wp-eoi"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -441,6 +442,7 @@
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
+                                    <outlet property="dataSource" destination="-2" id="Ofv-Zo-3Q9"/>
                                     <outlet property="delegate" destination="-2" id="kRb-KH-G40"/>
                                 </connections>
                             </tableView>
