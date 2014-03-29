@@ -13,5 +13,6 @@
 @interface SourcesDetailPanelViewController : NSViewController
 
 @property Source *source;
+@property (weak) IBOutlet NSTextField *googleMapsLink;
 
 @end
