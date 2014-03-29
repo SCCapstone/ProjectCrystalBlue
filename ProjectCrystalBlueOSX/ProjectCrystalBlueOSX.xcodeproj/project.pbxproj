@@ -40,6 +40,8 @@
 		D704E1B018B16F6200170B7E /* ProceduresTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AF18B16F6200170B7E /* ProceduresTests.m */; };
 		D706CCA618E60B7000F7762E /* SourceFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D706CCA518E60B7000F7762E /* SourceFieldValidatorTests.m */; };
 		D706CCA818E630CC00F7762E /* samples_different_capitalization.csv in Resources */ = {isa = PBXBuildFile; fileRef = D706CCA718E630CC00F7762E /* samples_different_capitalization.csv */; };
+		D706CCAD18E63E7700F7762E /* SourcePhotosWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D706CCAB18E63E7700F7762E /* SourcePhotosWindowController.m */; };
+		D706CCAE18E63E7700F7762E /* SourcePhotosWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D706CCAC18E63E7700F7762E /* SourcePhotosWindowController.xib */; };
 		D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */; };
 		D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */; };
 		D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */; };
@@ -205,6 +207,9 @@
 		D704E1AF18B16F6200170B7E /* ProceduresTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresTests.m; sourceTree = "<group>"; };
 		D706CCA518E60B7000F7762E /* SourceFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceFieldValidatorTests.m; sourceTree = "<group>"; };
 		D706CCA718E630CC00F7762E /* samples_different_capitalization.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_different_capitalization.csv; sourceTree = "<group>"; };
+		D706CCAA18E63E7700F7762E /* SourcePhotosWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcePhotosWindowController.h; sourceTree = "<group>"; };
+		D706CCAB18E63E7700F7762E /* SourcePhotosWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcePhotosWindowController.m; sourceTree = "<group>"; };
+		D706CCAC18E63E7700F7762E /* SourcePhotosWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcePhotosWindowController.xib; sourceTree = "<group>"; };
 		D706DDB018B0AC9D0023D2BF /* ProcedureNameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureNameConstants.h; sourceTree = "<group>"; };
 		D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureNameConstants.m; sourceTree = "<group>"; };
 		D706DDB318B0BB310023D2BF /* PrimitiveProcedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveProcedures.h; sourceTree = "<group>"; };
@@ -483,6 +488,16 @@
 				D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */,
 			);
 			name = SimpleDBLibraryObjectStore;
+			sourceTree = "<group>";
+		};
+		D706CCA918E63E4C00F7762E /* SourcePhotosWindow */ = {
+			isa = PBXGroup;
+			children = (
+				D706CCAA18E63E7700F7762E /* SourcePhotosWindowController.h */,
+				D706CCAB18E63E7700F7762E /* SourcePhotosWindowController.m */,
+				D706CCAC18E63E7700F7762E /* SourcePhotosWindowController.xib */,
+			);
+			name = SourcePhotosWindow;
 			sourceTree = "<group>";
 		};
 		D706DDAF18B0AC550023D2BF /* Procedure */ = {
@@ -819,6 +834,7 @@
 			isa = PBXGroup;
 			children = (
 				D038CBC918DBFBBF00635442 /* SourcesWindowController */,
+				D706CCA918E63E4C00F7762E /* SourcePhotosWindow */,
 				D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */,
 				D780E1EF18C837FC003F3D92 /* ChangeLocationWindow */,
 				D7125EED18C462EC00BBCD3E /* ProceduresWindow */,
@@ -1150,6 +1166,7 @@
 				D711C95318C44B3E00D637D7 /* SamplesWindowController.xib in Resources */,
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D738D55718BAA52600A777E2 /* DetailPanelViewController.xib in Resources */,
+				D706CCAE18E63E7700F7762E /* SourcePhotosWindowController.xib in Resources */,
 				D059F8F018E547100024AA58 /* SourcesDetailPanelViewController.xib in Resources */,
 				D038CBD418DC072400635442 /* SourcesTableViewController.xib in Resources */,
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
@@ -1244,6 +1261,7 @@
 				D7439E1B18A5FC53000EE008 /* main.m in Sources */,
 				D7C8732D18B2F9F800F2976F /* CHCSVParser.m in Sources */,
 				D059F92E18E560160024AA58 /* mmask.c in Sources */,
+				D706CCAD18E63E7700F7762E /* SourcePhotosWindowController.m in Sources */,
 				D059F92C18E560160024AA58 /* bitstream.c in Sources */,
 				D0C51DCA18BABF0C001B3929 /* ConflictResolution.m in Sources */,
 				D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */,

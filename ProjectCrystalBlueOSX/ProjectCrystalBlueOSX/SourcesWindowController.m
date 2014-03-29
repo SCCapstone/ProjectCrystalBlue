@@ -9,6 +9,7 @@
 #import "SourcesWindowController.h"
 #import "SourcesTableViewController.h"
 #import "SourcesDetailPanelViewController.h"
+#import "SourcePhotosWindowController.h"
 #import "AddNewSourceWindowController.h"
 #import "SamplesWindowController.h"
 #import "SimpleDBLibraryObjectStore.h"
@@ -180,6 +181,22 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [windowController setDataStore:dataStore];
     [windowController showWindow:self];
     [activeWindowControllers addObject:windowController];
+}
+
+- (IBAction)sourcePhotos:(id)sender {
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+
+    NSInteger selectedRow = [tableViewController.tableView selectedRow];
+    if (selectedRow < 0) {
+        return;
+    }
+
+    Source *source = [tableViewController.displayedSources objectAtIndex:selectedRow];
+
+    SourcePhotosWindowController *photosWindowController = [[SourcePhotosWindowController alloc] initWithWindowNibName:@"SourcePhotosWindowController"];
+    [photosWindowController setSource:source];
+    [photosWindowController showWindow:self];
+    [activeWindowControllers addObject:photosWindowController];
 }
 
 - (IBAction)importExport:(id)sender

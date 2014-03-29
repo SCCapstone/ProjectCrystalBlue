@@ -18,6 +18,7 @@
 - (IBAction)openAddNewSourcesWindow:(id)sender;
 - (IBAction)deleteSource:(id)sender;
 - (IBAction)viewSamples:(id)sender;
+- (IBAction)sourcePhotos:(id)sender;
 - (IBAction)importExport:(id)sender;
 - (IBAction)sync:(id)sender;
 
