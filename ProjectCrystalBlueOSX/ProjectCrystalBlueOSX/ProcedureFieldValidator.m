@@ -11,11 +11,12 @@
 
 @implementation ProcedureFieldValidator
 
-/// Validates that initials are no more than 10 characters, and contain only alphanumeric characters
+/// Validates that initials are between 1-10 characters, and contain only alphanumeric characters
 /// and spaces.
 +(ValidationResponse *)validateInitials:(NSString *)initials
 {
     const NSUInteger maxLength = 10;
+    const NSUInteger minLength = 1;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -26,6 +27,16 @@
         [valid setIsValid:NO];
         NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
                               maxLength,
+                              initials.length];
+        [valid.errors addObject:errorStr];
+    }
+
+    if (![PrimitiveFieldValidator validateField:initials
+                             isAtLeastMinLength:minLength])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MIN_CHARS copy],
+                              minLength,
                               initials.length];
         [valid.errors addObject:errorStr];
     }

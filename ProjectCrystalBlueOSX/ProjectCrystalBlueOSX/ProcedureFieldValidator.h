@@ -12,7 +12,7 @@
 /// Validation for user-entered fields associated with Procedures.
 @interface ProcedureFieldValidator : NSObject
 
-/// Validates that initials are no more than 10 characters, and contain only alphanumeric characters.
+/// Validates that initials are between 1-10 characters, and contain only alphanumeric characters.
 +(ValidationResponse *)validateInitials:(NSString *)initials;
 
 @end

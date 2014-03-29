@@ -24,12 +24,12 @@
 /// Format string for an error message about a field being too short. The format args are
 /// the minimum length for this field and the length of the user's input.
 static const NSString *VALIDATION_FRMT_MIN_CHARS =
-    @"Minimum of %d characters; your entry was %d long.";
+    @"Minimum of %d characters; your entry was %d characters long.";
 
 /// Format string for an error message about a field being too long. The format args are
 /// the maximum length for this field and the length of the user's input.
 static const NSString *VALIDATION_FRMT_MAX_CHARS =
-    @"Maximum of %d characters; your input was %d long.";
+    @"Maximum of %d characters; your input was %d characters long.";
 
 /// Format string for an error message about a field containing invalid characters. The format
 /// arg is a description of the set of valid characters, e.g. "alphanumeric characters" or

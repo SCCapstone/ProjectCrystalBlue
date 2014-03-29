@@ -37,7 +37,7 @@
     NSString *notValid3 = @"|";
     NSString *notValid4 = @"01234567890";
 
-    XCTAssertTrue ([[ProcedureFieldValidator validateInitials:emptyStr]     isValid]);
+    XCTAssertFalse([[ProcedureFieldValidator validateInitials:emptyStr]     isValid]);
     XCTAssertTrue ([[ProcedureFieldValidator validateInitials:valid]        isValid]);
     XCTAssertTrue ([[ProcedureFieldValidator validateInitials:valid2]       isValid]);
     XCTAssertFalse([[ProcedureFieldValidator validateInitials:notValid1]    isValid]);
