@@ -338,9 +338,9 @@ DQ
                         </textFieldCell>
                     </textField>
                     <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wq8-mx-6H6">
-                        <rect key="frame" x="122" y="60" width="202" height="27"/>
+                        <rect key="frame" x="120" y="63" width="200" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="y9A-zO-vzo">
+                        <datePickerCell key="cell" borderStyle="bezel" alignment="left" datePickerStyle="textField" id="y9A-zO-vzo">
                             <font key="font" metaFont="system"/>
                             <date key="date" timeIntervalSinceReferenceDate="419659200">
                                 <!--2014-04-20 04:00:00 +0000-->
