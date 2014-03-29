@@ -9,6 +9,7 @@
 #import "ProceduresWindowController.h"
 #import "SamplesWindowController.h"
 #import "ProcedureNameConstants.h"
+#import "ProcedureFieldValidator.h"
 #import "Procedures.h"
 #import "Sample.h"
 
@@ -52,11 +53,41 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [self populateProcedureSelector];
 }
 
+/// Validates the contents of the initials field. If the values are not valid, then a pop-up will
+/// be displayed to the user with the validation issue(s).
+- (BOOL)initialsAreValid
+{
+    ValidationResponse *response = [ProcedureFieldValidator validateInitials:initialsTextField.stringValue];
+
+    if (!response.isValid) {
+
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setAlertStyle:NSWarningAlertStyle];
+
+        NSString *message = [NSString stringWithFormat:@"Invalid initials \"%@\"", initialsTextField.stringValue];
+        [alert setMessageText:message];
+
+        NSMutableString *info = [[NSMutableString alloc] init];
+        for (NSString *validationError in response.errors) {
+            [info appendFormat:@"- %@\n", validationError];
+        }
+        [alert setInformativeText:info];
+
+        [alert runModal];
+    }
+
+    return response.isValid;
+}
+
 - (IBAction)cancelButton:(id)sender {
     [self.window close];
 }
 
 - (IBAction)applyProcedure:(id)sender {
+    if (![self initialsAreValid]) {
+        return;
+    }
+
     NSString *selectedProcedureName = [[procedureSelector selectedItem] title];
     DDLogDebug(@"%s: %@", __PRETTY_FUNCTION__, selectedProcedureName);
 
