@@ -63,7 +63,11 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.CONTINENT" id="g2N-vE-xeh"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.CONTINENT" id="YPM-vu-ai5">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jof-8R-LMR">
@@ -78,13 +82,17 @@
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rdX-Kd-AdY">
                                         <rect key="frame" x="79" y="762" width="148" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="WsU-5K-Zjh">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="WsU-5K-Zjh">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.key" id="k1n-4L-aWu"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.key" id="9xp-0A-pAA">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eCa-ez-BGv">
@@ -96,7 +104,11 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.LATITUDE" id="Ttf-En-gJu"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.LATITUDE" id="9lu-OM-ned">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtV-1u-MHF">
@@ -117,7 +129,11 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.LOCALITY" id="A0O-F9-f75"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.LOCALITY" id="B7L-Rl-Nyd">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T1f-J5-9EO">
@@ -167,7 +183,11 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.LONGITUDE" id="0f5-l0-j3Q"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.LONGITUDE" id="3Fe-kl-gtz">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fK8-K4-BwB">
@@ -179,7 +199,11 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.REGION" id="UDE-tL-m7u"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.REGION" id="0Pp-K0-4AU">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ok2-2g-x36">
@@ -200,7 +224,11 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.AGE" id="luE-Lz-akG"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.AGE" id="hdD-go-j52">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hAF-nc-JSJ">
@@ -294,11 +322,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.AGE_DATA_TYPE" id="AkV-Pd-1J1"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.AGE_DATA_TYPE" id="0tM-QP-3iX">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Nh-mG-MfE">
-                                        <rect key="frame" x="18" y="467" width="100" height="17"/>
+                                        <rect key="frame" x="18" y="470" width="100" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Age Data Type:" id="ayX-5g-hDi">
                                             <font key="font" metaFont="system"/>
@@ -330,7 +362,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.ROCK_GROUP" id="7s4-Dg-P3V"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.ROCK_GROUP" id="TtF-fD-MDD">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="60c-K1-PRM">
@@ -351,7 +387,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.FORMATION" id="ej1-Gg-OzD"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.FORMATION" id="GR5-sE-mjW">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="65u-tT-w6O">
@@ -372,7 +412,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.MEMBER" id="toN-hO-zDB"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.MEMBER" id="J5c-Dl-FWL">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3ab-RA-DI3">
@@ -417,7 +461,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.SECTION" id="XJ8-ow-5gI"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.SECTION" id="hf0-kd-6HJ">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iXP-pq-JPd">
@@ -438,7 +486,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="self.source.attributes.METER" id="pHv-yV-Cjv"/>
+                                            <binding destination="-2" name="value" keyPath="self.source.attributes.METER" id="xVI-64-5IU">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZLq-5Z-O8J">
@@ -485,7 +537,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <size key="minSize" width="190" height="89"/>
                                                     <size key="maxSize" width="463" height="10000000"/>
                                                     <connections>
-                                                        <binding destination="-2" name="value" keyPath="self.source.attributes.NOTES" id="zga-PN-eLa"/>
+                                                        <binding destination="-2" name="value" keyPath="self.source.attributes.NOTES" id="BPr-O9-I4X">
+                                                            <dictionary key="options">
+                                                                <bool key="NSValidatesImmediately" value="YES"/>
+                                                            </dictionary>
+                                                        </binding>
                                                     </connections>
                                                 </textView>
                                             </subviews>
@@ -520,7 +576,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <size key="minSize" width="190" height="89"/>
                                                     <size key="maxSize" width="463" height="10000000"/>
                                                     <connections>
-                                                        <binding destination="-2" name="value" keyPath="self.source.attributes.HYPERLINKS" id="Flb-wU-jQW"/>
+                                                        <binding destination="-2" name="value" keyPath="self.source.attributes.HYPERLINKS" id="tjc-fC-4c4">
+                                                            <dictionary key="options">
+                                                                <bool key="NSValidatesImmediately" value="YES"/>
+                                                            </dictionary>
+                                                        </binding>
                                                     </connections>
                                                 </textView>
                                             </subviews>
@@ -555,7 +615,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstItem="iNX-Pw-g0e" firstAttribute="top" secondItem="g4D-Gd-Ftl" secondAttribute="bottom" constant="8" symbolic="YES" id="3fM-za-6sh"/>
                                     <constraint firstItem="0zJ-cR-nAc" firstAttribute="leading" secondItem="yR5-rX-4wS" secondAttribute="leading" id="3oN-bP-ZFo"/>
                                     <constraint firstItem="8Na-AZ-EIm" firstAttribute="trailing" secondItem="tjU-Mg-ak5" secondAttribute="trailing" id="3ym-79-ft2"/>
-                                    <constraint firstItem="Sq5-SP-KIT" firstAttribute="top" secondItem="3Nh-mG-MfE" secondAttribute="bottom" constant="5" id="4Ss-bU-dzn"/>
+                                    <constraint firstItem="Sq5-SP-KIT" firstAttribute="top" secondItem="3Nh-mG-MfE" secondAttribute="bottom" constant="8" id="4Ss-bU-dzn"/>
                                     <constraint firstItem="Jof-8R-LMR" firstAttribute="leading" secondItem="1aP-48-3b0" secondAttribute="leading" id="4yx-Ye-cm9"/>
                                     <constraint firstItem="1aP-48-3b0" firstAttribute="centerY" secondItem="uHj-Zl-Q1W" secondAttribute="centerY" id="550-YZ-ZuQ"/>
                                     <constraint firstItem="3ab-RA-DI3" firstAttribute="top" secondItem="65u-tT-w6O" secondAttribute="bottom" constant="10" id="5Fn-rg-JF3"/>
@@ -584,7 +644,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstItem="T1f-J5-9EO" firstAttribute="baseline" secondItem="QJ1-aR-oyE" secondAttribute="baseline" id="J2f-sy-bBR"/>
                                     <constraint firstItem="Ok2-2g-x36" firstAttribute="leading" secondItem="hAF-nc-JSJ" secondAttribute="leading" id="Jdy-H9-f8q"/>
                                     <constraint firstItem="Cbs-RO-yHv" firstAttribute="bottom" secondItem="hHx-1d-qUZ" secondAttribute="bottom" id="Jlg-xv-eim"/>
-                                    <constraint firstItem="60c-K1-PRM" firstAttribute="top" secondItem="3Nh-mG-MfE" secondAttribute="bottom" constant="6" id="KPr-Ce-cJf"/>
+                                    <constraint firstItem="60c-K1-PRM" firstAttribute="top" secondItem="3Nh-mG-MfE" secondAttribute="bottom" constant="9" id="KPr-Ce-cJf"/>
                                     <constraint firstItem="Q2q-Pe-D1N" firstAttribute="leading" secondItem="T1f-J5-9EO" secondAttribute="leading" id="LB9-Rc-8bY"/>
                                     <constraint firstItem="XIC-It-MQF" firstAttribute="top" secondItem="tjU-Mg-ak5" secondAttribute="bottom" constant="7" id="LQX-ze-i6k"/>
                                     <constraint firstItem="65u-tT-w6O" firstAttribute="top" secondItem="Sq5-SP-KIT" secondAttribute="bottom" constant="6" id="Lut-ed-l59"/>
@@ -623,7 +683,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstItem="8Na-AZ-EIm" firstAttribute="top" secondItem="hH0-bk-XUs" secondAttribute="bottom" constant="5" id="ebU-9b-4Hq"/>
                                     <constraint firstItem="3ab-RA-DI3" firstAttribute="leading" secondItem="y0D-Vf-gBU" secondAttribute="leading" id="evm-Hb-nm6"/>
                                     <constraint firstItem="QJ1-aR-oyE" firstAttribute="top" secondItem="KAL-YQ-VWL" secondAttribute="bottom" constant="6" id="g2A-7K-lL3"/>
-                                    <constraint firstItem="ftF-KS-uTq" firstAttribute="bottom" secondItem="3Nh-mG-MfE" secondAttribute="bottom" id="iyV-th-Kc7"/>
+                                    <constraint firstItem="ftF-KS-uTq" firstAttribute="bottom" secondItem="3Nh-mG-MfE" secondAttribute="bottom" constant="3" id="iyV-th-Kc7"/>
                                     <constraint firstItem="fK8-K4-BwB" firstAttribute="leading" secondItem="wtV-1u-MHF" secondAttribute="trailing" constant="8" symbolic="YES" id="kMJ-Jt-aNt"/>
                                     <constraint firstItem="wtV-1u-MHF" firstAttribute="leading" secondItem="2IC-46-4ut" secondAttribute="leading" id="khQ-0i-8IQ"/>
                                     <constraint firstItem="nbS-bE-8xj" firstAttribute="top" secondItem="aaB-Fg-M8M" secondAttribute="top" constant="791" id="lAP-PL-dcT"/>
