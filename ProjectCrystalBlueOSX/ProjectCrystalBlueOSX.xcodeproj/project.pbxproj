@@ -834,8 +834,8 @@
 			isa = PBXGroup;
 			children = (
 				D038CBC918DBFBBF00635442 /* SourcesWindowController */,
-				D706CCA918E63E4C00F7762E /* SourcePhotosWindow */,
 				D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */,
+				D706CCA918E63E4C00F7762E /* SourcePhotosWindow */,
 				D780E1EF18C837FC003F3D92 /* ChangeLocationWindow */,
 				D7125EED18C462EC00BBCD3E /* ProceduresWindow */,
 				D7F822BB18B199290017548F /* SamplesView */,

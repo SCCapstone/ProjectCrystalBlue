@@ -61,6 +61,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [self.ageTextField              setStringValue:SRC_DEF_VAL_AGE];
     [self.ageMethodDropDownField    setStringValue:SRC_DEF_VAL_AGE_METHOD];
     [self.ageDataTypeTextField      setStringValue:SRC_DEF_VAL_AGE_DATATYPE];
+    [self.hyperlinkTextView         setString:SRC_DEF_VAL_HYPERLINKS];
+    [self.notesTextView             setString:SRC_DEF_VAL_NOTES];
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
@@ -90,6 +92,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [attributes setObject:self.ageTextField.stringValue             forKey:SRC_AGE];
     [attributes setObject:self.ageMethodDropDownField.stringValue   forKey:SRC_AGE_METHOD];
     [attributes setObject:self.ageDataTypeTextField.stringValue     forKey:SRC_AGE_DATATYPE];
+    [attributes setObject:self.hyperlinkTextView.string             forKey:SRC_HYPERLINKS];
+    [attributes setObject:self.notesTextView.string                 forKey:SRC_NOTES];
 
     NSDate *dateCollected = self.dateCollectedPicker.dateValue;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
