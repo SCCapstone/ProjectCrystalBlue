@@ -34,6 +34,7 @@
 
 - (IBAction)previousPhoto:(id)sender;
 - (IBAction)nextPhoto:(id)sender;
+- (IBAction)popupSelectedPhoto:(id)sender;
 
 /// Reloads the image keys for the source, for example after an image upload.
 - (void)reloadImageKeys;

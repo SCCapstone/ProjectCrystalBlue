@@ -28,7 +28,7 @@
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yjB-d8-QuB">
                         <rect key="frame" x="17" y="58" width="616" height="311"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="u8z-AX-19u"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" id="u8z-AX-19u"/>
                     </imageView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NOa-73-uvE">
                         <rect key="frame" x="543" y="13" width="93" height="32"/>
@@ -39,6 +39,7 @@
                         <buttonCell key="cell" type="push" title="Next" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="944-Pp-YAd">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent"></string>
                         </buttonCell>
                         <connections>
                             <action selector="nextPhoto:" target="-2" id="Iez-AZ-CMV"/>
@@ -53,6 +54,7 @@
                         <buttonCell key="cell" type="push" title="Previous" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5tw-BR-AZl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent"></string>
                         </buttonCell>
                         <connections>
                             <action selector="previousPhoto:" target="-2" id="xnC-vC-Pu2"/>
@@ -70,6 +72,9 @@
                             <font key="font" metaFont="system"/>
                             <menu key="menu" title="OtherViews" id="R4k-a2-KWW"/>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="popupSelectedPhoto:" target="-2" id="eLw-Sr-jW8"/>
+                        </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Apl-KJ-71F">
                         <rect key="frame" x="18" y="374" width="614" height="17"/>

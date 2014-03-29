@@ -74,6 +74,7 @@
         return;
     }
 
+    [imageSelectionPopupButton selectItemAtIndex:index];
     [currentImageKey setStringValue:[imageKeys objectAtIndex:index]];
     [currentImageDisplay setImage:[images objectAtIndex:index]];
 }
@@ -100,6 +101,11 @@
 
 - (IBAction)nextPhoto:(id)sender {
     currentPhotoIndex = (currentPhotoIndex + 1) % imageKeys.count;
+    [self displayImageAtIndex:currentPhotoIndex];
+}
+
+- (IBAction)popupSelectedPhoto:(id)sender {
+    currentPhotoIndex = [imageSelectionPopupButton indexOfSelectedItem];
     [self displayImageAtIndex:currentPhotoIndex];
 }
 
