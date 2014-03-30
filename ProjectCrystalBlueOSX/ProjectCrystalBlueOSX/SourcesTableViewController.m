@@ -43,6 +43,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)awakeFromNib
 {
     [self updateDisplayedSources];
+    
+    // Setup table combo boxes
+    [self.rockTypeComboBoxCell addItemsWithObjectValues:[SourceConstants rockTypes]];
+    [self.ageMethodComboBoxCell addItemsWithObjectValues:[SourceConstants ageMethods]];
+    [self updateComboBoxesWithRockType:self.rockTypeComboBoxCell.stringValue];
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
@@ -95,6 +100,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     
     return YES;
+}
+
+- (void)updateComboBoxesWithRockType:(NSString *)rockType
+{
+    // Setup lithology dropdown when type changes
+    [self.lithologyComboBoxCell removeAllItems];
+    NSArray *lithologyValues = [SourceConstants lithologiesForRockType:rockType];
+    if (lithologyValues)
+        [self.lithologyComboBoxCell addItemsWithObjectValues:lithologyValues];
+    
+    // Setup deposystem dropdown when type changes
+    [self.deposystemComboBoxCell removeAllItems];
+    NSArray *deposystemValues = [SourceConstants deposystemsForRockType:rockType];
+    if (deposystemValues)
+        [self.deposystemComboBoxCell addItemsWithObjectValues:deposystemValues];
 }
 
 - (void)addSource:(Source *)source

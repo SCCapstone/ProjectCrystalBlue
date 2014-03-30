@@ -7,6 +7,7 @@
 //
 
 #import "SourcesDetailPanelViewController.h"
+#import "SourcesTableViewController.h"
 #import "Source.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
@@ -36,6 +37,10 @@
     [scrollView setHasVerticalScroller:YES];
     [scrollView setDocumentView:self.view];
     [self setView:scrollView];
+    
+    [self.rockTypeComboBox addItemsWithObjectValues:[SourceConstants rockTypes]];
+    [self.ageMethodComboBox addItemsWithObjectValues:[SourceConstants ageMethods]];
+    [self updateComboBoxesAndShouldClearValue:NO];
 }
 
 - (void)setSource:(Source *)newSource
@@ -84,17 +89,46 @@
                        context:(void *)context
 {
     NSString *attr = [keyPath substringFromIndex:11];
-    
-    [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
-    
+
     // Update link if latitude, longitude, or source changes
     if ([attr isEqualToString:SRC_LATITUDE] || [attr isEqualToString:SRC_LONGITUDE])
         [self setupGoogleMapsHyperlink];
+    // Update combo boxes when rock type changes
+    else if ([attr isEqualToString:SRC_TYPE]) {
+        [self updateComboBoxesAndShouldClearValue:YES];
+        [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
+    }
+    else
+        [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
 }
 
 - (void)updateDatePicker
 {
     [datePicker setDateValue:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
+}
+
+- (void)updateComboBoxesAndShouldClearValue:(BOOL)shouldClearValue
+{
+    NSString *rockType = self.rockTypeComboBox.stringValue;
+    
+    // Setup lithology dropdown when type changes
+    [self.lithologyComboBox removeAllItems];
+    if (shouldClearValue)
+        [source.attributes setObject:@"" forKey:SRC_LITHOLOGY];
+    NSArray *lithologyValues = [SourceConstants lithologiesForRockType:rockType];
+    if (lithologyValues)
+        [self.lithologyComboBox addItemsWithObjectValues:lithologyValues];
+    
+    // Setup deposystem dropdown when type changes
+    [self.deposystemComboBox removeAllItems];
+    if (shouldClearValue)
+        [source.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
+    NSArray *deposystemValues = [SourceConstants deposystemsForRockType:rockType];
+    if (deposystemValues)
+        [self.deposystemComboBox addItemsWithObjectValues:deposystemValues];
+    
+    // Hacky way of updating table view combo boxes
+    [self.tableViewController updateComboBoxesWithRockType:rockType];
 }
 
 - (void)setupGoogleMapsHyperlink

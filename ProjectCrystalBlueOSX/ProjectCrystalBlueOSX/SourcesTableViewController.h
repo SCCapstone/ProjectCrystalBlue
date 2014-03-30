@@ -13,12 +13,19 @@
 @interface SourcesTableViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 
 @property (weak) IBOutlet NSTableView *tableView;
+@property (strong) IBOutlet NSArrayController *arrayController;
+@property (weak) IBOutlet NSComboBoxCell *rockTypeComboBoxCell;
+@property (weak) IBOutlet NSComboBoxCell *lithologyComboBoxCell;
+@property (weak) IBOutlet NSComboBoxCell *ageMethodComboBoxCell;
+@property (weak) IBOutlet NSComboBoxCell *deposystemComboBoxCell;
+
 @property (weak) NSSearchField *searchField;
 @property AbstractCloudLibraryObjectStore *dataStore;
 @property NSMutableArray *displayedSources;
 @property SourcesDetailPanelViewController *detailPanel;
-@property (strong) IBOutlet NSArrayController *arrayController;
 
+
+- (void)updateComboBoxesWithRockType:(NSString *)rockType;
 - (void)addSource:(Source *)source;
 - (void)deleteSourceWithKey:(NSString *)key;
 - (void)updateDisplayedSources;

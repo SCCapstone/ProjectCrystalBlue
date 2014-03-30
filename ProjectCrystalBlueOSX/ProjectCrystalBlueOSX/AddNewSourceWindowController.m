@@ -75,12 +75,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     // Setup lithology dropdown when type changes
     [self.lithologyComboBox removeAllItems];
+    [self.lithologyComboBox setStringValue:@""];
     NSArray *lithologyValues = [SourceConstants lithologiesForRockType:rockType];
     if (lithologyValues)
         [self.lithologyComboBox addItemsWithObjectValues:lithologyValues];
     
     // Setup deposystem dropdown when type changes
     [self.deposystemComboBox removeAllItems];
+    [self.deposystemComboBox setStringValue:@""];
     NSArray *deposystemValues = [SourceConstants deposystemsForRockType:rockType];
     if (deposystemValues)
         [self.deposystemComboBox addItemsWithObjectValues:deposystemValues];

@@ -70,6 +70,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [tableViewController setDataStore:dataStore];
         [tableViewController setSearchField:searchField];
         [tableViewController setDetailPanel:detailPanelController];
+        [detailPanelController setTableViewController:tableViewController];
     }    
     
     // Setup split view
