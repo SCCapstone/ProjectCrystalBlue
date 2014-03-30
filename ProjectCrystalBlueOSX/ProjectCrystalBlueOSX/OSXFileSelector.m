@@ -31,6 +31,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     OSXFileSelector *imageSelector = [[OSXFileSelector alloc] init];
     [imageSelector setAllowedFileTypes:[[NSArray alloc] initWithObjects:@"JPG", @"jpg",
+                                                                        @"JPEG", @"jpeg",
                                                                         @"PNG", @"png",
                                                                         nil]];
     return imageSelector;
