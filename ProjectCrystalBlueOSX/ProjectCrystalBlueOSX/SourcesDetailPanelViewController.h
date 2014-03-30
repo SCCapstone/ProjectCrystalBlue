@@ -12,8 +12,10 @@
 
 @interface SourcesDetailPanelViewController : NSViewController
 
-@property Source *source;
-@property (weak) IBOutlet NSTextField *googleMapsLink;
+@property (nonatomic) Source *source;
 @property AbstractCloudLibraryObjectStore *dataStore;
+@property (weak) IBOutlet NSTextField *googleMapsLink;
+@property (weak) IBOutlet NSDatePicker *datePicker;
+@property (nonatomic) NSDate *dateCollected;
 
 @end

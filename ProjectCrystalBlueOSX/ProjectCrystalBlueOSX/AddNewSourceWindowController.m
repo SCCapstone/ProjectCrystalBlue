@@ -206,7 +206,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
     NSDate *dateCollected = self.dateCollectedPicker.dateValue;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
     NSString *dateString = [formatter stringFromDate:dateCollected];
 
     [attributes setObject:dateString

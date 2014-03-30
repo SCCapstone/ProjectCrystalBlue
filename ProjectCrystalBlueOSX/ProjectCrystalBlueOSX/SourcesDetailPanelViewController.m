@@ -12,25 +12,20 @@
 
 @interface SourcesDetailPanelViewController ()
 
-
 @end
 
 @implementation SourcesDetailPanelViewController
 
-@synthesize source, googleMapsLink, dataStore;
+@synthesize source, googleMapsLink, dataStore, datePicker, dateCollected;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        dateCollected = [NSDate date];
     }
     return self;
-}
-
-- (Source *)source
-{
-    return source;
 }
 
 - (void)setSource:(Source *)newSource
@@ -39,8 +34,22 @@
         [self removeObserversFromSelectedSource];
     
     source = newSource;
+    [self setDateCollected:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
     [self addObserversToSelectedSource];
     [self setupGoogleMapsHyperlink];
+}
+
+- (void)setDateCollected:(NSDate *)newDateCollected
+{
+    dateCollected = newDateCollected;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    NSString *dateString = [formatter stringFromDate:dateCollected];
+    
+    [source.attributes setObject:dateString
+                          forKey:SRC_DATE_COLLECTED];
 }
 
 - (void)addObserversToSelectedSource
@@ -71,6 +80,11 @@
     // Update link if latitude, longitude, or source changes
     if ([attr isEqualToString:SRC_LATITUDE] || [attr isEqualToString:SRC_LONGITUDE])
         [self setupGoogleMapsHyperlink];
+}
+
+- (void)updateDatePicker
+{
+    [datePicker setDateValue:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
 }
 
 - (void)setupGoogleMapsHyperlink

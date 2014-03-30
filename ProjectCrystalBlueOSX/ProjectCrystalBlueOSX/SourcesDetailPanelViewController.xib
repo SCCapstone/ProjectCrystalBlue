@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SourcesDetailPanelViewController">
             <connections>
+                <outlet property="datePicker" destination="iNX-Pw-g0e" id="Kel-Fe-qPP"/>
                 <outlet property="googleMapsLink" destination="hAe-f2-uGC" id="hlJ-yI-2Vi"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -273,6 +274,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <datePickerElements key="datePickerElements" year="YES" month="YES" day="YES" hour="YES" minute="YES"/>
                                         </datePickerCell>
+                                        <connections>
+                                            <binding destination="-2" name="value" keyPath="self.dateCollected" id="geq-su-5f1"/>
+                                        </connections>
                                     </datePicker>
                                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QJ1-aR-oyE">
                                         <rect key="frame" x="96" y="678" width="134" height="26"/>

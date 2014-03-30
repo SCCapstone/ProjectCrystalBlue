@@ -57,14 +57,44 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [detailPanel setSource:source];
 }
 
-- (void)tableView:(NSTableView *)tableView
-   setObjectValue:(id)object
-   forTableColumn:(NSTableColumn *)tableColumn
-              row:(NSInteger)row
+- (BOOL)tableView:(NSTableView *)mTableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    // Update database when value is changed
-    [dataStore updateLibraryObject:[arrayController.arrangedObjects objectAtIndex:row]
-                         IntoTable:[SourceConstants tableName]];
+    // Use custom date picker for date cell
+    if ([[tableColumn.headerCell stringValue] isEqualToString:@"Date Collected"]) {
+    
+        // Create a frame which covers the cell to be edited
+        NSRect frame = [tableView frameOfCellAtColumn:[[tableView tableColumns] indexOfObject:tableColumn] row:row];
+        frame.origin.x -= [tableView intercellSpacing].width * 0.5;
+        frame.origin.y -= [tableView intercellSpacing].height * 0.5;
+        frame.size.width += 50;
+        frame.size.height = 23;
+        
+        // Set up a date picker with no border or background
+        NSDatePicker *datePicker = [[NSDatePicker alloc] initWithFrame:frame];
+        [datePicker setBordered:NO];
+        [datePicker setDrawsBackground:NO];
+        [datePicker setDatePickerElements:NSHourMinuteDatePickerElementFlag | NSYearMonthDayDatePickerElementFlag];
+        [datePicker setDatePickerStyle:NSTextFieldDatePickerStyle];
+        
+        Source *source = [arrayController.arrangedObjects objectAtIndex:row];
+        [datePicker setDateValue:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
+        
+        // Create a menu with a single menu item, and set the date picker as the menu item's view
+        id menu = [[NSMenu alloc] initWithTitle:@"Title"];
+        id item = [[NSMenuItem alloc] initWithTitle:@"Item Title" action:NULL keyEquivalent:@""];
+        [item setView:datePicker];
+        [menu addItem:item];
+        
+        // Display the menu
+        [menu popUpMenuPositioningItem:nil atLocation:frame.origin inView:tableView];
+        
+        // Set new date value
+        [detailPanel setDateCollected:[datePicker dateValue]];
+        
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (void)addSource:(Source *)source
