@@ -283,6 +283,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     
     [dataStore synchronizeWithCloud];
+    [tableViewController updateDisplayedSources];
 }
 
 - (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem
