@@ -450,7 +450,7 @@
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
 
-    if (![PrimitiveFieldValidator validateFieldIsDecimal:meters]) {
+    if (![meters isEqualToString:@""] && ![PrimitiveFieldValidator validateFieldIsDecimal:meters]) {
         [valid setIsValid:NO];
         [valid.errors addObject:@"Should be formatted as a decimal (e.g. -3.1415)"];
     }
@@ -464,7 +464,7 @@
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
 
-    if (![PrimitiveFieldValidator validateFieldIsDecimal:latitude]) {
+    if (![latitude isEqualToString:@""] && ![PrimitiveFieldValidator validateFieldIsDecimal:latitude]) {
         [valid setIsValid:NO];
         [valid.errors addObject:@"Should be formatted as a decimal (e.g. -3.1415)"];
     }
@@ -478,7 +478,7 @@
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
 
-    if (![PrimitiveFieldValidator validateFieldIsDecimal:longitude]) {
+    if (![longitude isEqualToString:@""] && ![PrimitiveFieldValidator validateFieldIsDecimal:longitude]) {
         [valid setIsValid:NO];
         [valid.errors addObject:@"Should be formatted as a decimal (e.g. -3.1415)"];
     }
@@ -492,7 +492,7 @@
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
 
-    if (![PrimitiveFieldValidator validateFieldIsDecimal:age]) {
+    if (![age isEqualToString:@""] && ![PrimitiveFieldValidator validateFieldIsDecimal:age]) {
         [valid setIsValid:NO];
         [valid.errors addObject:@"Should be formatted as a decimal (e.g. -3.1415)"];
     }
