@@ -65,7 +65,7 @@
 +(ValidationResponse *)validateContinent:(NSString *)continent
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -218,7 +218,7 @@
 +(ValidationResponse *)validateFormation:(NSString *)formation
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -264,7 +264,7 @@
 +(ValidationResponse *)validateMember:(NSString *)member
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -310,7 +310,7 @@
 +(ValidationResponse *)validateRegion:(NSString *)region
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -356,7 +356,7 @@
 +(ValidationResponse *)validateLocality:(NSString *)locality
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -402,7 +402,7 @@
 +(ValidationResponse *)validateSection:(NSString *)section
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -500,21 +500,71 @@
     return valid;
 }
 
-/// Validates that ageMethod is an expected value.
+/// Validates that ageMethod is less than 90 characters long, and uses only alphanumeric and whitespace characters.
 +(ValidationResponse *)validateAgeMethod:(NSString *)ageMethod
 {
+    const NSUInteger maxLength = 90;
+
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-    // TODO
+
+    if (![PrimitiveFieldValidator validateField:ageMethod
+                          isNoMoreThanMaxLength:maxLength])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
+                              maxLength,
+                              ageMethod.length];
+        [valid.errors addObject:errorStr];
+    }
+
+    NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
+
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    if (![PrimitiveFieldValidator validateField:ageMethod
+                            containsOnlyCharSet:validCharacters])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_INVALID_CHARACTERS copy],
+                              @"letters, numbers, and spaces"];
+        [valid.errors addObject:errorStr];
+    }
     return valid;
 }
 
-/// Validates that ageDataType is an expected value.
+/// Validates that ageDataType is less than 90 characters long, and uses only alphanumeric and whitespace characters.
 +(ValidationResponse *)validateAgeDatatype:(NSString *)ageDatatype
 {
+    const NSUInteger maxLength = 90;
+
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-    // TODO
+
+    if (![PrimitiveFieldValidator validateField:ageDatatype
+                          isNoMoreThanMaxLength:maxLength])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
+                              maxLength,
+                              ageDatatype.length];
+        [valid.errors addObject:errorStr];
+    }
+
+    NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
+
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    if (![PrimitiveFieldValidator validateField:ageDatatype
+                            containsOnlyCharSet:validCharacters])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_INVALID_CHARACTERS copy],
+                              @"letters, numbers, and spaces"];
+        [valid.errors addObject:errorStr];
+    }
     return valid;
 }
 
@@ -524,10 +574,7 @@
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
 
-    if (![PrimitiveFieldValidator validateFieldIsIntegral:dateCollected]) {
-        [valid setIsValid:NO];
-        [valid.errors addObject:@"Should be formatted as a whole number value (e.g. -31415)"];
-    }
+    // TODO
 
     return valid;
 }
