@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SourcesTableViewController">
             <connections>
+                <outlet property="arrayController" destination="HuF-wB-40k" id="pSi-c5-9Pm"/>
                 <outlet property="tableView" destination="UTf-Bo-kV3" id="2cA-Wp-eoi"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -37,7 +38,7 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Text" id="4TO-du-Xyu">
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" title="Text" id="4TO-du-Xyu">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -45,9 +46,9 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="key"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.key" id="bk3-GN-ZRx">
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.key" id="p03-UC-Y1j">
                                                 <dictionary key="options">
-                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
                                                 </dictionary>
                                             </binding>
                                         </connections>
@@ -144,7 +145,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.LOCALITY"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.LOCALITY" id="PcE-Db-yy0"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.LOCALITY" id="cGL-6b-Zou">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="112.34375" minWidth="10" maxWidth="3.4028234663852886e+38" id="WGZ-2B-Gsu">
@@ -161,7 +166,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.LATITUDE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.LATITUDE" id="7hn-J9-iXC"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.LATITUDE" id="f3F-Fw-tAn">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="108.82421875" minWidth="10" maxWidth="3.4028234663852886e+38" id="Pab-9j-oFh">
@@ -178,7 +187,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.LONGITUDE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.LONGITUDE" id="Ug2-mF-GnC"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.LONGITUDE" id="RFu-V0-0QM">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="109.69140625" minWidth="10" maxWidth="3.4028234663852886e+38" id="zrD-He-Yd3">
@@ -195,7 +208,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.DATE_COLLECTED"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.DATE_COLLECTED" id="84K-Qb-eT6"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.DATE_COLLECTED" id="CCS-fn-sH5">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="101.26171875" minWidth="10" maxWidth="3.4028234663852886e+38" id="pdq-ru-REb">
@@ -212,7 +229,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.AGE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.AGE" id="P4V-uI-l2C"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.AGE" id="2Wa-rA-rmE">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="104.21484375" minWidth="10" maxWidth="3.4028234663852886e+38" id="RKa-aM-FUC">
@@ -247,7 +268,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.AGE_DATA_TYPE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.AGE_DATA_TYPE" id="Vh3-gc-cKx"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.AGE_DATA_TYPE" id="KRj-ue-s2O">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="109.75390625" minWidth="10" maxWidth="3.4028234663852886e+38" id="0lW-tB-rEf">
@@ -264,7 +289,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.ROCK_GROUP"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.ROCK_GROUP" id="Yve-f4-Tge"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.ROCK_GROUP" id="jkC-qc-Vw6">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="105.69140625" minWidth="10" maxWidth="3.4028234663852886e+38" id="3aU-wv-mjM">
@@ -281,7 +310,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.FORMATION"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.FORMATION" id="rQI-Ex-I6A"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.FORMATION" id="MMs-73-dUF">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="113.60546875" minWidth="10" maxWidth="3.4028234663852886e+38" id="UYT-l0-LYQ">
@@ -298,7 +331,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.MEMBER"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.MEMBER" id="8Zg-4f-0Xt"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.MEMBER" id="fKS-F7-d1m">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="109.38671875" minWidth="10" maxWidth="3.4028234663852886e+38" id="c2H-v2-P3h">
@@ -333,7 +370,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.SECTION"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.SECTION" id="SR3-uS-jf0"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.SECTION" id="AKR-kT-yAe">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="107.43359375" minWidth="10" maxWidth="3.4028234663852886e+38" id="8cC-2P-uPB">
@@ -350,7 +391,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.METER"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.METER" id="sFo-6h-UtF"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.METER" id="quB-4Q-DnN">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="136.6875" minWidth="10" maxWidth="3.4028234663852886e+38" id="b0R-eI-wfA">
@@ -367,7 +412,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.NOTES"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.NOTES" id="XoP-oe-7v7"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.NOTES" id="1u2-zE-Ane">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="150" minWidth="150" maxWidth="3.4028234663852886e+38" id="vcn-Eo-A3d">
@@ -384,11 +433,16 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="attributes.HYPERLINKS"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.HYPERLINKS" id="YjM-cX-eLK"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.HYPERLINKS" id="EjC-qJ-jcc">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
+                                    <outlet property="dataSource" destination="-2" id="Ofv-Zo-3Q9"/>
                                     <outlet property="delegate" destination="-2" id="kRb-KH-G40"/>
                                 </connections>
                             </tableView>

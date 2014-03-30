@@ -8,6 +8,7 @@
 
 #import "SourcesDetailPanelViewController.h"
 #import "Source.h"
+#import "AbstractCloudLibraryObjectStore.h"
 
 @interface SourcesDetailPanelViewController ()
 
@@ -15,25 +16,66 @@
 
 @implementation SourcesDetailPanelViewController
 
-@synthesize source, googleMapsLink;
+@synthesize source, googleMapsLink, dataStore, datePicker, dateCollected;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        dateCollected = [NSDate date];
     }
     return self;
 }
 
 - (void)awakeFromNib
 {
-    [self setupGoogleMapsHyperlink];
+    // Embed custom view in scroll view
+    NSScrollView *scrollView = [[NSScrollView alloc] initWithFrame:[self.view frame]];
+    [scrollView setBorderType:NSNoBorder];
+    [scrollView setHasVerticalScroller:YES];
+    [scrollView setDocumentView:self.view];
+    [self setView:scrollView];
+}
+
+- (void)setSource:(Source *)newSource
+{
+    if (source != nil)
+        [self removeObserversFromSelectedSource];
     
-    // Watch latitude, longitude, and source for changes (to update google maps link)
-    [source addObserver:self forKeyPath:@"attributes.LATITUDE" options:NSKeyValueObservingOptionNew context:nil];
-    [source addObserver:self forKeyPath:@"attributes.LONGITUDE" options:NSKeyValueObservingOptionNew context:nil];
-    [self addObserver:self forKeyPath:@"source" options:NSKeyValueObservingOptionNew context:nil];
+    source = newSource;
+    [self setDateCollected:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
+    [self addObserversToSelectedSource];
+    [self setupGoogleMapsHyperlink];
+}
+
+- (void)setDateCollected:(NSDate *)newDateCollected
+{
+    dateCollected = newDateCollected;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    NSString *dateString = [formatter stringFromDate:dateCollected];
+    
+    [source.attributes setObject:dateString
+                          forKey:SRC_DATE_COLLECTED];
+}
+
+- (void)addObserversToSelectedSource
+{
+    NSArray *attributes = [SourceConstants attributeNames];
+    for (NSString *attr in attributes) {
+        [source addObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.%@", attr] options:NSKeyValueObservingOptionNew context:nil];
+    }
+}
+
+- (void)removeObserversFromSelectedSource
+{
+    NSArray *attributes = [SourceConstants attributeNames];
+    for (NSString *attr in attributes) {
+        [source removeObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.%@", attr]];
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -41,21 +83,31 @@
                         change:(NSDictionary *)change
                        context:(void *)context
 {
+    NSString *attr = [keyPath substringFromIndex:11];
+    
+    [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
+    
     // Update link if latitude, longitude, or source changes
-    [self setupGoogleMapsHyperlink];
+    if ([attr isEqualToString:SRC_LATITUDE] || [attr isEqualToString:SRC_LONGITUDE])
+        [self setupGoogleMapsHyperlink];
+}
+
+- (void)updateDatePicker
+{
+    [datePicker setDateValue:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
 }
 
 - (void)setupGoogleMapsHyperlink
 {
-    NSString *latitude = [self.source.attributes objectForKey:SRC_LATITUDE];
-    NSString *longitude = [self.source.attributes objectForKey:SRC_LONGITUDE];
+    NSString *latitude = [source.attributes objectForKey:SRC_LATITUDE];
+    NSString *longitude = [source.attributes objectForKey:SRC_LONGITUDE];
     
     if ([latitude isEqualToString:SRC_DEF_VAL_LATITUDE] || [longitude isEqualToString:SRC_DEF_VAL_LONGITUDE]) {
         [self.googleMapsLink setStringValue:@"No Google Maps link available."];
     }
     else {
-        [self.googleMapsLink setAllowsEditingTextAttributes:YES];
-        [self.googleMapsLink setSelectable:YES];
+        [googleMapsLink setAllowsEditingTextAttributes:YES];
+        [googleMapsLink setSelectable:YES];
         
         NSString *stringUrl = [NSString stringWithFormat:@"www.maps.google.com/?ll=%@,%@", latitude, longitude];
         NSURL *url = [NSURL URLWithString:[stringUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -71,7 +123,7 @@
         [attributedString addAttribute:@"NSFont" value:[NSFont systemFontOfSize:13.0] range:range];
         [attributedString endEditing];
         
-        [self.googleMapsLink setAttributedStringValue:attributedString];
+        [googleMapsLink setAttributedStringValue:attributedString];
     }
 }
 

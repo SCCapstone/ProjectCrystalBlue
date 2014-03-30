@@ -27,7 +27,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SourcesTableViewController
 
-@synthesize displayedSources, tableView, searchField, dataStore, detailPanel;
+@synthesize displayedSources, tableView, searchField, dataStore, detailPanel, arrayController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,14 +47,54 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-    NSInteger selectedRow = [self.tableView selectedRow];
+    NSInteger selectedRow = [tableView selectedRow];
     if (selectedRow == -1) {
         //[detailPanel clear];
         return;
     }
     
-    Source *source = [displayedSources objectAtIndex:selectedRow];
-    [self.detailPanel setSource:source];
+    Source *source = [arrayController.arrangedObjects objectAtIndex:selectedRow];
+    [detailPanel setSource:source];
+}
+
+- (BOOL)tableView:(NSTableView *)mTableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    // Use custom date picker for date cell
+    if ([[tableColumn.headerCell stringValue] isEqualToString:@"Date Collected"]) {
+    
+        // Create a frame which covers the cell to be edited
+        NSRect frame = [tableView frameOfCellAtColumn:[[tableView tableColumns] indexOfObject:tableColumn] row:row];
+        frame.origin.x -= [tableView intercellSpacing].width * 0.5;
+        frame.origin.y -= [tableView intercellSpacing].height * 0.5;
+        frame.size.width += 50;
+        frame.size.height = 23;
+        
+        // Set up a date picker with no border or background
+        NSDatePicker *datePicker = [[NSDatePicker alloc] initWithFrame:frame];
+        [datePicker setBordered:NO];
+        [datePicker setDrawsBackground:NO];
+        [datePicker setDatePickerElements:NSHourMinuteDatePickerElementFlag | NSYearMonthDayDatePickerElementFlag];
+        [datePicker setDatePickerStyle:NSTextFieldDatePickerStyle];
+        
+        Source *source = [arrayController.arrangedObjects objectAtIndex:row];
+        [datePicker setDateValue:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
+        
+        // Create a menu with a single menu item, and set the date picker as the menu item's view
+        id menu = [[NSMenu alloc] initWithTitle:@"Title"];
+        id item = [[NSMenuItem alloc] initWithTitle:@"Item Title" action:NULL keyEquivalent:@""];
+        [item setView:datePicker];
+        [menu addItem:item];
+        
+        // Display the menu
+        [menu popUpMenuPositioningItem:nil atLocation:frame.origin inView:tableView];
+        
+        // Set new date value
+        [detailPanel setDateCollected:[datePicker dateValue]];
+        
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (void)addSource:(Source *)source
@@ -82,11 +122,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSString *attrName = [[SourceConstants attributeNames] objectAtIndex:searchField.tag];
     
     if ([searchField.stringValue isEqualToString:@""])
-        [self setDisplayedSources:[[self.dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] mutableCopy]];
+        [self setDisplayedSources:[[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] mutableCopy]];
     else
-        [self setDisplayedSources:[[self.dataStore getAllLibraryObjectsForAttributeName:attrName
-                                                             WithAttributeValue:searchField.stringValue
-                                                                      FromTable:[SourceConstants tableName]] mutableCopy]];
+        [self setDisplayedSources:[[dataStore getAllLibraryObjectsForAttributeName:attrName
+                                                                WithAttributeValue:searchField.stringValue
+                                                                         FromTable:[SourceConstants tableName]] mutableCopy]];
 }
 
 @end

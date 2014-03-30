@@ -8,11 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class Source;
+@class Source, AbstractCloudLibraryObjectStore;
 
 @interface SourcesDetailPanelViewController : NSViewController
 
-@property Source *source;
+@property (nonatomic) Source *source;
+@property AbstractCloudLibraryObjectStore *dataStore;
 @property (weak) IBOutlet NSTextField *googleMapsLink;
+@property (weak) IBOutlet NSDatePicker *datePicker;
+@property (nonatomic) NSDate *dateCollected;
 
 @end

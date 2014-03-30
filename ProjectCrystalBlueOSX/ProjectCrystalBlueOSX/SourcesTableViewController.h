@@ -10,13 +10,14 @@
 
 @class AbstractCloudLibraryObjectStore, Source, SourcesDetailPanelViewController;
 
-@interface SourcesTableViewController : NSViewController <NSTableViewDelegate>
+@interface SourcesTableViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) NSSearchField *searchField;
 @property AbstractCloudLibraryObjectStore *dataStore;
 @property NSMutableArray *displayedSources;
 @property SourcesDetailPanelViewController *detailPanel;
+@property (strong) IBOutlet NSArrayController *arrayController;
 
 - (void)addSource:(Source *)source;
 - (void)deleteSourceWithKey:(NSString *)key;
