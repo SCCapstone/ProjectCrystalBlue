@@ -99,6 +99,54 @@
     XCTAssertFalse([[SourceFieldValidator validateMember:tooLong] isValid]);
 }
 
+- (void)testValidateGroup
+{
+    NSString *emptyStr = @"";
+    NSString *valid = @"a new start 2222";
+    NSString *invalid = @".";
+    NSMutableString *tooLong = [NSMutableString stringWithString:@""];
+    for (int i = 0; i < 91; ++i) {
+        [tooLong appendString:@"a"];
+    }
+
+    XCTAssertTrue( [[SourceFieldValidator validateGroup:emptyStr]   isValid]);
+    XCTAssertTrue( [[SourceFieldValidator validateGroup:valid]      isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateGroup:invalid]    isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateGroup:tooLong]    isValid]);
+}
+
+- (void)testValidateType
+{
+    NSString *emptyStr = @"";
+    NSString *valid = @"a new start 2222";
+    NSString *invalid = @".";
+    NSMutableString *tooLong = [NSMutableString stringWithString:@""];
+    for (int i = 0; i < 91; ++i) {
+        [tooLong appendString:@"a"];
+    }
+
+    XCTAssertTrue( [[SourceFieldValidator validateType:emptyStr]   isValid]);
+    XCTAssertTrue( [[SourceFieldValidator validateType:valid]      isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateType:invalid]    isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateType:tooLong]    isValid]);
+}
+
+- (void)testValidateDeposystem
+{
+    NSString *emptyStr = @"";
+    NSString *valid = @"a new start 2222";
+    NSString *invalid = @".";
+    NSMutableString *tooLong = [NSMutableString stringWithString:@""];
+    for (int i = 0; i < 91; ++i) {
+        [tooLong appendString:@"a"];
+    }
+
+    XCTAssertTrue( [[SourceFieldValidator validateDeposystem:emptyStr]   isValid]);
+    XCTAssertTrue( [[SourceFieldValidator validateDeposystem:valid]      isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateDeposystem:invalid]    isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateDeposystem:tooLong]    isValid]);
+}
+
 - (void)testValidateRegion
 {
     NSString *valid = @"region north 1";
@@ -111,9 +159,9 @@
 
     XCTAssertTrue([[SourceFieldValidator validateRegion:valid] isValid]);
 
-    XCTAssertFalse([[SourceFieldValidator validateRegion:invalid] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateRegion:tooShort] isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateRegion:tooLong] isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateRegion:invalid]   isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateRegion:tooShort]  isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateRegion:tooLong]   isValid]);
 }
 
 - (void)testValidateSection

@@ -108,30 +108,108 @@
 
 }
 
-/// Validates that type is an expected value.
+/// Validates that Type is no more than 90 characters, and contains alphanumeric
+/// characters and whitespace only.
 +(ValidationResponse *)validateType:(NSString *)type
 {
+    const NSUInteger maxLength = 90;
+
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-    // TODO
+
+    if (![PrimitiveFieldValidator validateField:type
+                          isNoMoreThanMaxLength:maxLength])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
+                              maxLength,
+                              type.length];
+        [valid.errors addObject:errorStr];
+    }
+
+    NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
+
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    if (![PrimitiveFieldValidator validateField:type
+                            containsOnlyCharSet:validCharacters])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_INVALID_CHARACTERS copy],
+                              @"letters, numbers, and spaces"];
+        [valid.errors addObject:errorStr];
+    }
     return valid;
 }
 
-/// Validates that deposystem is an expected value.
+/// Validates that Deposystem is no more than 90 characters, and contains alphanumeric
+/// characters and whitespace only.
 +(ValidationResponse *)validateDeposystem:(NSString *)deposystem
 {
+    const NSUInteger maxLength = 90;
+
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-    // TODO
+
+    if (![PrimitiveFieldValidator validateField:deposystem
+                          isNoMoreThanMaxLength:maxLength])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
+                              maxLength,
+                              deposystem.length];
+        [valid.errors addObject:errorStr];
+    }
+
+    NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
+
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    if (![PrimitiveFieldValidator validateField:deposystem
+                            containsOnlyCharSet:validCharacters])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_INVALID_CHARACTERS copy],
+                              @"letters, numbers, and spaces"];
+        [valid.errors addObject:errorStr];
+    }
     return valid;
 }
 
-/// Validates that group is an expected value.
+/// Validates that Group is no more than 90 characters, and contains alphanumeric
+/// characters and whitespace only.
 +(ValidationResponse *)validateGroup:(NSString *)group
 {
+    const NSUInteger maxLength = 90;
+
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
-    // TODO
+
+    if (![PrimitiveFieldValidator validateField:group
+                          isNoMoreThanMaxLength:maxLength])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
+                              maxLength,
+                              group.length];
+        [valid.errors addObject:errorStr];
+    }
+
+    NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
+
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    if (![PrimitiveFieldValidator validateField:group
+                            containsOnlyCharSet:validCharacters])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_INVALID_CHARACTERS copy],
+                              @"letters, numbers, and spaces"];
+        [valid.errors addObject:errorStr];
+    }
     return valid;
 }
 
