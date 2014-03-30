@@ -7,11 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class SourcesTableViewController;
+@class SourcesTableViewController, AbstractCloudLibraryObjectStore;
 
 @interface AddNewSourceWindowController : NSWindowController
 
 @property SourcesTableViewController *sourcesTableViewController;
+@property AbstractCloudLibraryObjectStore *dataStore;
 
 @property (weak) IBOutlet NSTextField *keyTextField;
 @property (weak) IBOutlet NSTextField *continentTextField;

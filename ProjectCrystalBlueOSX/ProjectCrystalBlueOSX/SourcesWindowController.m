@@ -132,6 +132,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     AddNewSourceWindowController *addNewSourceWindowController = [[AddNewSourceWindowController alloc] initWithWindowNibName:@"AddNewSourceWindowController"];
     [addNewSourceWindowController setSourcesTableViewController:tableViewController];
+    [addNewSourceWindowController setDataStore:dataStore];
     [addNewSourceWindowController showWindow:self];
     [activeWindowControllers addObject:addNewSourceWindowController];
 }

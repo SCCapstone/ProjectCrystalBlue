@@ -10,6 +10,7 @@
 #import "SourcesTableViewController.h"
 #import "SourceFieldValidator.h"
 #import "Source.h"
+#import "AbstractCloudLibraryObjectStore.h"
 #import "GenerateQRCode.h"
 
 #import "DDLog.h"
@@ -26,7 +27,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation AddNewSourceWindowController
 
-@synthesize sourcesTableViewController;
+@synthesize sourcesTableViewController, dataStore;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -93,8 +94,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)validateTextFieldValues
 {
     BOOL validationPassed = YES;
-
-    ValidationResponse *keyOK = [SourceFieldValidator validateSourceKey:self.keyTextField.stringValue];
+    
+    ValidationResponse *keyOK = [SourceFieldValidator validateSourceKey:self.keyTextField.stringValue
+                                                          WithDataStore:dataStore];
     if (!keyOK.isValid) {
         validationPassed = NO;
         NSAlert *alert = [keyOK alertWithFieldName:@"source key"
