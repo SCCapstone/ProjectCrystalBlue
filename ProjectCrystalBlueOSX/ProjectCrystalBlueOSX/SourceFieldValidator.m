@@ -9,18 +9,29 @@
 #import "SourceFieldValidator.h"
 #import "PrimitiveFieldValidator.h"
 #import "ValidationResponse.h"
+#import "SourceConstants.h"
 
 @implementation SourceFieldValidator
 
 /// Validates that a source key is between 1 and 90 characters, and contains alphanumeric
 /// characters and whitespace only.
 +(ValidationResponse *)validateSourceKey:(NSString *)key
+                           WithDataStore:(AbstractLibraryObjectStore *)dataStore
 {
     const NSUInteger maxLength = 90;
     const NSUInteger minLength = 1;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
+    
+    if (![PrimitiveFieldValidator validateKey:key
+                          isUniqueInDataStore:dataStore
+                                      inTable:[SourceConstants tableName]])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:@"%@ is not a unique source key.", key];
+        [valid.errors addObject:errorStr];
+    }
 
     if (![PrimitiveFieldValidator validateField:key
                           isNoMoreThanMaxLength:maxLength])
@@ -57,7 +68,6 @@
     }
     
     return valid;
-
 }
 
 /// Validates that a continent is between 1 and 90 characters, and contains letters and spaces

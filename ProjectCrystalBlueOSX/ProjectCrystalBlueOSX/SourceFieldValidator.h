@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "ValidationResponse.h"
 
+@class AbstractLibraryObjectStore;
+
 @interface SourceFieldValidator : NSObject
 
-/// Validates that a source key is between 1 and 90 characters, and contains alphanumeric
-/// characters and whitespace only.
-+(ValidationResponse *)validateSourceKey:(NSString *)key;
+/// Validates that a source key is between 1 and 90 characters, contains alphanumeric
+/// characters and whitespace only, and it is a unique key
++(ValidationResponse *)validateSourceKey:(NSString *)key
+                           WithDataStore:(AbstractLibraryObjectStore *)dataStore;
 
 /// Validates that a continent is between 1 and 90 characters, and contains letters and spaces
 /// only.
