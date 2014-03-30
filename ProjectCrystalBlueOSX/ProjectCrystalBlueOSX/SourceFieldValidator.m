@@ -65,7 +65,7 @@
 +(ValidationResponse *)validateContinent:(NSString *)continent
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -218,7 +218,7 @@
 +(ValidationResponse *)validateFormation:(NSString *)formation
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -264,7 +264,7 @@
 +(ValidationResponse *)validateMember:(NSString *)member
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -310,7 +310,7 @@
 +(ValidationResponse *)validateRegion:(NSString *)region
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -356,7 +356,7 @@
 +(ValidationResponse *)validateLocality:(NSString *)locality
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
@@ -402,7 +402,7 @@
 +(ValidationResponse *)validateSection:(NSString *)section
 {
     const NSUInteger maxLength = 90;
-    const NSUInteger minLength = 1;
+    const NSUInteger minLength = 0;
 
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
