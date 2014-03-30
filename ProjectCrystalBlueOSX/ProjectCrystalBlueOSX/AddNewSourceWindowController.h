@@ -15,9 +15,9 @@
 
 @property (weak) IBOutlet NSTextField *keyTextField;
 @property (weak) IBOutlet NSTextField *continentTextField;
-@property (weak) IBOutlet NSPopUpButton *typeDropDownField;
-@property (weak) IBOutlet NSPopUpButton *lithologyDropDownField;
-@property (weak) IBOutlet NSPopUpButton *deposystemDropDownField;
+@property (weak) IBOutlet NSComboBox *rockTypeComboBox;
+@property (weak) IBOutlet NSComboBox *lithologyComboBox;
+@property (weak) IBOutlet NSComboBox *deposystemComboBox;
 @property (weak) IBOutlet NSTextField *groupTextField;
 @property (weak) IBOutlet NSTextField *formationTextField;
 @property (weak) IBOutlet NSTextField *memberTextField;
@@ -28,7 +28,7 @@
 @property (weak) IBOutlet NSTextField *latitudeTextField;
 @property (weak) IBOutlet NSTextField *longitudeTextField;
 @property (weak) IBOutlet NSTextField *ageTextField;
-@property (weak) IBOutlet NSPopUpButton *ageMethodDropDownField;
+@property (weak) IBOutlet NSComboBox *ageMethodComboBox;
 @property (weak) IBOutlet NSTextField *ageDataTypeTextField;
 @property (weak) IBOutlet NSDatePicker *dateCollectedPicker;
 @property (unsafe_unretained) IBOutlet NSTextView *hyperlinkTextView;
@@ -36,5 +36,6 @@
 
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)saveButtonPressed:(id)sender;
+- (IBAction)rockTypeChanged:(id)sender;
 
 @end
