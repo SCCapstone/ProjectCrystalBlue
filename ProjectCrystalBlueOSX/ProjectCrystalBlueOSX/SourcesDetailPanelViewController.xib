@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5ve-7t-ERp">
-                    <rect key="frame" x="18" y="576" width="56" height="17"/>
+                    <rect key="frame" x="18" y="576" width="60" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Latitude:" id="2sJ-MG-yMX">
                         <font key="font" metaFont="system"/>
@@ -86,7 +86,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eCa-ez-BGv">
-                    <rect key="frame" x="80" y="573" width="147" height="22"/>
+                    <rect key="frame" x="84" y="573" width="143" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="BTE-d4-Y2Y">
                         <font key="font" metaFont="system"/>
@@ -640,7 +640,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <constraint firstItem="Cbs-RO-yHv" firstAttribute="leading" secondItem="hAF-nc-JSJ" secondAttribute="leading" id="NOR-aa-e4k"/>
                 <constraint firstItem="8Na-AZ-EIm" firstAttribute="leading" secondItem="3ab-RA-DI3" secondAttribute="trailing" constant="8" symbolic="YES" id="NWM-pQ-qNd"/>
                 <constraint firstItem="iXP-pq-JPd" firstAttribute="leading" secondItem="y0D-Vf-gBU" secondAttribute="leading" id="OSw-wb-VEK"/>
-                <constraint firstItem="uHj-Zl-Q1W" firstAttribute="leading" secondItem="eCa-ez-BGv" secondAttribute="leading" id="POl-je-sAo"/>
+                <constraint firstItem="uHj-Zl-Q1W" firstAttribute="leading" secondItem="eCa-ez-BGv" secondAttribute="leading" constant="-4" id="POl-je-sAo"/>
                 <constraint firstItem="3Nh-mG-MfE" firstAttribute="leading" secondItem="60c-K1-PRM" secondAttribute="leading" id="Pa4-ag-o0Q"/>
                 <constraint firstItem="ftF-KS-uTq" firstAttribute="top" secondItem="hHx-1d-qUZ" secondAttribute="bottom" constant="5" id="PhD-TO-z1M"/>
                 <constraint firstItem="rdX-Kd-AdY" firstAttribute="centerX" secondItem="fK8-K4-BwB" secondAttribute="centerX" id="Pk2-7L-ZIO"/>
