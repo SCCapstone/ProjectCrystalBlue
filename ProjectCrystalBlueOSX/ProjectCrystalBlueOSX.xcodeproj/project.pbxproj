@@ -52,6 +52,9 @@
 		D7125EF118C4630B00BBCD3E /* ProceduresWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */; };
 		D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */; };
 		D71BE30C18D7A85A00B7572F /* samples_non_ascii_chars.csv in Resources */ = {isa = PBXBuildFile; fileRef = D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */; };
+		D720532B18E757E500831BE6 /* ProcedureFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D720532A18E757E500831BE6 /* ProcedureFieldValidator.m */; };
+		D720532D18E7595F00831BE6 /* ProcedureFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D720532C18E7595F00831BE6 /* ProcedureFieldValidatorTests.m */; };
+		D720533218E75A4000831BE6 /* ImagesFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D720533118E75A4000831BE6 /* ImagesFieldValidator.m */; };
 		D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
 		D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E318A6010E00EA2DD2 /* CFNetwork.framework */; };
@@ -123,6 +126,7 @@
 		D7A41E3218B6A4E200653B3E /* samples_extra_attribute.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */; };
 		D7A41E3318B6A4E200653B3E /* samples_missing_attribute.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */; };
 		D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A41E3618B6F60000653B3E /* OSXFileSelector.m */; };
+		D7C6AB3518E75AF700599810 /* ImagesFieldvalidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C6AB3418E75AF700599810 /* ImagesFieldvalidatorTests.m */; };
 		D7C8732D18B2F9F800F2976F /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8732C18B2F9F800F2976F /* CHCSVParser.m */; };
 		D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733018B2FA4D00F2976F /* LibraryObjectCSVWriter.m */; };
 		D7C8733718B2FB0B00F2976F /* LibraryObjectCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */; };
@@ -225,6 +229,11 @@
 		D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresWindowController.m; sourceTree = "<group>"; };
 		D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProceduresWindowController.xib; sourceTree = "<group>"; };
 		D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_non_ascii_chars.csv; sourceTree = "<group>"; };
+		D720532918E757E500831BE6 /* ProcedureFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureFieldValidator.h; sourceTree = "<group>"; };
+		D720532A18E757E500831BE6 /* ProcedureFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureFieldValidator.m; sourceTree = "<group>"; };
+		D720532C18E7595F00831BE6 /* ProcedureFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureFieldValidatorTests.m; sourceTree = "<group>"; };
+		D720533018E75A4000831BE6 /* ImagesFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesFieldValidator.h; sourceTree = "<group>"; };
+		D720533118E75A4000831BE6 /* ImagesFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesFieldValidator.m; sourceTree = "<group>"; };
 		D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = include/AWSiOSSDK.framework; sourceTree = "<group>"; };
 		D72405E118A6010000EA2DD2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D72405E318A6010E00EA2DD2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -340,6 +349,7 @@
 		D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_missing_attribute.csv; sourceTree = "<group>"; };
 		D7A41E3518B6F60000653B3E /* OSXFileSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXFileSelector.h; sourceTree = "<group>"; };
 		D7A41E3618B6F60000653B3E /* OSXFileSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXFileSelector.m; sourceTree = "<group>"; };
+		D7C6AB3418E75AF700599810 /* ImagesFieldvalidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesFieldvalidatorTests.m; sourceTree = "<group>"; };
 		D7C8732B18B2F9F800F2976F /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 		D7C8732C18B2F9F800F2976F /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		D7C8733018B2FA4D00F2976F /* LibraryObjectCSVWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectCSVWriter.m; sourceTree = "<group>"; };
@@ -1057,14 +1067,18 @@
 		D7FAAD7118DE1040003A9A13 /* Validation */ = {
 			isa = PBXGroup;
 			children = (
+				D7CCCEBB18E538EE009D0308 /* ValidationResponse.h */,
+				D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */,
 				D7FAAD7218DE10AD003A9A13 /* PrimitiveFieldValidator.h */,
 				D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */,
 				D7FAAD7818DE1A1B003A9A13 /* SampleFieldValidator.h */,
 				D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */,
-				D7CCCEBB18E538EE009D0308 /* ValidationResponse.h */,
-				D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */,
 				D7CCCEBE18E54C3A009D0308 /* SourceFieldValidator.h */,
 				D7CCCEBF18E54C3A009D0308 /* SourceFieldValidator.m */,
+				D720532918E757E500831BE6 /* ProcedureFieldValidator.h */,
+				D720532A18E757E500831BE6 /* ProcedureFieldValidator.m */,
+				D720533018E75A4000831BE6 /* ImagesFieldValidator.h */,
+				D720533118E75A4000831BE6 /* ImagesFieldValidator.m */,
 			);
 			name = Validation;
 			sourceTree = "<group>";
@@ -1075,6 +1089,8 @@
 				D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */,
 				D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */,
 				D706CCA518E60B7000F7762E /* SourceFieldValidatorTests.m */,
+				D720532C18E7595F00831BE6 /* ProcedureFieldValidatorTests.m */,
+				D7C6AB3418E75AF700599810 /* ImagesFieldvalidatorTests.m */,
 			);
 			name = ValidatorTests;
 			sourceTree = "<group>";
@@ -1241,10 +1257,12 @@
 				D059F93718E560200024AA58 /* GenerateQRCode.m in Sources */,
 				D7A0CB7B18BC596900A61E32 /* LibraryObjectExportController.m in Sources */,
 				D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */,
+				D720533218E75A4000831BE6 /* ImagesFieldValidator.m in Sources */,
 				D78ACC9818A5FEB6006084D6 /* LibraryObject.m in Sources */,
 				D78ACC7E18A5FE7C006084D6 /* AbstractLibraryObjectStore.m in Sources */,
 				D78ACC4C18A5FDD9006084D6 /* DDLog.m in Sources */,
 				D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */,
+				D720532B18E757E500831BE6 /* ProcedureFieldValidator.m in Sources */,
 				D711C94D18C42CC300D637D7 /* AddNewSourceWindowController.m in Sources */,
 				D059F93218E560160024AA58 /* qrspec.c in Sources */,
 				D78ACC3F18A5FDC0006084D6 /* FMResultSet.m in Sources */,
@@ -1286,6 +1304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */,
+				D720532D18E7595F00831BE6 /* ProcedureFieldValidatorTests.m in Sources */,
 				D706CCA618E60B7000F7762E /* SourceFieldValidatorTests.m in Sources */,
 				D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */,
 				D7FAAD8618DE42FA003A9A13 /* SourceImageUtilsTests.m in Sources */,
@@ -1305,6 +1324,7 @@
 				D0B410FA18B590F000017FAC /* TransactionEqualsAndHashcodeTests.m in Sources */,
 				D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */,
 				D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */,
+				D7C6AB3518E75AF700599810 /* ImagesFieldvalidatorTests.m in Sources */,
 				D7FAAD7C18DE1D1B003A9A13 /* SampleFieldValidatorTests.m in Sources */,
 				D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */,
 				D704E1AB18B1654200170B7E /* ProcedureRecordParserTests.m in Sources */,

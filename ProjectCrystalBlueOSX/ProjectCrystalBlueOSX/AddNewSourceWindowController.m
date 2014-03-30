@@ -8,6 +8,7 @@
 
 #import "AddNewSourceWindowController.h"
 #import "SourcesTableViewController.h"
+#import "SourceFieldValidator.h"
 #import "Source.h"
 #import "GenerateQRCode.h"
 
@@ -65,11 +66,119 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [self.notesTextView             setString:SRC_DEF_VAL_NOTES];
 }
 
+/// Validates all the values entered into the text fields. If there are any problems, this will
+/// return NO and display the problems to the user.
+- (BOOL)validateTextFieldValues
+{
+    BOOL validationPassed = YES;
+
+    ValidationResponse *keyOK = [SourceFieldValidator validateSourceKey:self.keyTextField.stringValue];
+    if (!keyOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [keyOK alertWithFieldName:@"source key"
+                                        fieldValue:self.keyTextField.stringValue];
+        [alert runModal];
+    }
+
+    ValidationResponse *continentOK = [SourceFieldValidator validateContinent:self.continentTextField.stringValue];
+    if (!continentOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [continentOK alertWithFieldName:@"continent"
+                                              fieldValue:self.continentTextField.stringValue];
+        [alert runModal];
+    }
+
+    ValidationResponse *formationOK = [SourceFieldValidator validateFormation:self.formationTextField.stringValue];
+    if (!formationOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [formationOK alertWithFieldName:@"formation"
+                                              fieldValue:self.formationTextField.stringValue];
+        [alert runModal];
+    }
+
+    ValidationResponse *memberOK = [SourceFieldValidator validateMember:self.memberTextField.stringValue];
+    if (!memberOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [memberOK alertWithFieldName:@"member"
+                                           fieldValue:self.memberTextField.stringValue];
+        [alert runModal];
+    }
+
+    ValidationResponse *regionOK = [SourceFieldValidator validateRegion:self.regionTextField.stringValue];
+    if (!regionOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [regionOK alertWithFieldName:@"region"
+                                           fieldValue:self.regionTextField.stringValue];
+        [alert runModal];
+    }
+
+    ValidationResponse *localityOK = [SourceFieldValidator validateLocality:self.localityTextField.stringValue];
+    if (!localityOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [localityOK alertWithFieldName:@"locality"
+                                             fieldValue:self.localityTextField.stringValue];
+        [alert runModal];
+    }
+
+    ValidationResponse *sectionOK = [SourceFieldValidator validateContinent:self.sectionTextField.stringValue];
+    if (!sectionOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [sectionOK alertWithFieldName:@"section"
+                                            fieldValue:self.sectionTextField.stringValue];
+        [alert runModal];
+    }
+
+    ValidationResponse *meterOK = [SourceFieldValidator validateMeters:self.meterTextField.stringValue];
+    if (!meterOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [meterOK alertWithFieldName:@"meter"
+                                          fieldValue:self.meterTextField.stringValue];
+        [alert runModal];
+    }
+
+    ValidationResponse *latitudeOK = [SourceFieldValidator validateLatitude:self.latitudeTextField.stringValue];
+    if (!latitudeOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [latitudeOK alertWithFieldName:@"latitude"
+                                              fieldValue:self.latitudeTextField.stringValue];
+        [alert runModal];
+    }
+
+    ValidationResponse *longitudeOK = [SourceFieldValidator validateLongitude:self.longitudeTextField.stringValue];
+    if (!longitudeOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [longitudeOK alertWithFieldName:@"longitude"
+                                              fieldValue:self.longitudeTextField.stringValue];
+        [alert runModal];
+    }
+
+    ValidationResponse *ageOK = [SourceFieldValidator validateAge:self.ageTextField.stringValue];
+    if (!ageOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [ageOK alertWithFieldName:@"age"
+                                              fieldValue:self.ageTextField.stringValue];
+        [alert runModal];
+    }
+
+    ValidationResponse *ageDatatypeOK = [SourceFieldValidator validateAgeDatatype:self.ageDataTypeTextField.stringValue];
+    if (!ageDatatypeOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [ageDatatypeOK alertWithFieldName:@"age datatype"
+                                              fieldValue:self.ageDataTypeTextField.stringValue];
+        [alert runModal];
+    }
+
+    return validationPassed;
+}
+
 - (IBAction)cancelButtonPressed:(id)sender {
     [self close];
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
+    if (![self validateTextFieldValues]) {
+        return;
+    }
     NSString *key = self.keyTextField.stringValue;
     [GenerateQRCode writeQRCode:self.keyTextField.stringValue];
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] initWithObjects:[SourceConstants attributeDefaultValues]

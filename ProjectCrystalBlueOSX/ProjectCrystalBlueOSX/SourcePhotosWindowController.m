@@ -11,6 +11,13 @@
 #import "SourceImageUtils.h"
 #import "OSXFileSelector.h"
 #import "OSXImageUploadHandler.h"
+#import "DDLog.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 
 @interface SourcePhotosWindowController ()
 
@@ -51,6 +58,7 @@
 - (void)reloadImageKeys
 {
     [imageSelectionPopupButton removeAllItems];
+    [currentImageDisplay setImage:nil];
     imageKeys = [SourceImageUtils imageKeysForSource:source];
     currentPhotoIndex = 0;
 
@@ -93,11 +101,39 @@
 
 - (IBAction)removePhoto:(id)sender {
     NSString *imageKeyToRemove = [imageKeys objectAtIndex:currentPhotoIndex];
-    [SourceImageUtils removeImage:imageKeyToRemove
-                        forSource:source
-                      inDataStore:dataStore
-                     inImageStore:[SourceImageUtils defaultImageStore]];
-    [self reloadImageKeys];
+
+    NSAlert *confirmation = [[NSAlert alloc] init];
+    [confirmation setAlertStyle:NSWarningAlertStyle];
+
+    NSString *message = [NSString stringWithFormat:@"Really delete %@?", imageKeyToRemove];
+    [confirmation setMessageText:message];
+
+    NSString *info = @"This image will be permanently deleted!";
+    [confirmation setInformativeText:info];
+
+    // If the order of buttons changes, the numerical constants below NEED to be swapped.
+    [confirmation addButtonWithTitle:@"Delete"];
+    short const DELETE_BUTTON = 1000;
+    [confirmation addButtonWithTitle:@"Cancel"];
+    short const CANCEL_BUTTON = 1001;
+
+    [confirmation beginSheetModalForWindow:self.window
+                         completionHandler:^(NSModalResponse returnCode) {
+                             switch (returnCode) {
+                                 case DELETE_BUTTON:
+                                     [SourceImageUtils removeImage:imageKeyToRemove
+                                                         forSource:source
+                                                       inDataStore:dataStore
+                                                      inImageStore:[SourceImageUtils defaultImageStore]];
+                                     break;
+                                 case CANCEL_BUTTON:
+                                     break;
+                                 default:
+                                     DDLogWarn(@"Unexpected return code %ld from DeleteSource Alert", (long)returnCode);
+                                     break;
+                             }
+                             [self reloadImageKeys];
+                         }];
 }
 
 - (IBAction)previousPhoto:(id)sender {

@@ -11,6 +11,7 @@
 #import "FMDatabaseQueue.h"
 #import "FMResultSet.h"
 #import "Source.h"
+#import "SourceImageUtils.h"
 #import "Sample.h"
 #import "DDLog.h"
 
@@ -348,8 +349,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         DDLogCError(@"%@: Library object attempting to delete does not exist in the local database", NSStringFromClass(self.class));
         return NO;
     }
+
+    // Delete images, if any
+    LibraryObject *obj = [self getLibraryObjectForKey:key FromTable:tableName];
+    if ([obj.attributes.allKeys containsObject:SRC_IMAGES]) {
+        [SourceImageUtils removeAllImagesForSource:(Source *)obj
+                                       inDataStore:self
+                                      inImageStore:[SourceImageUtils defaultImageStore]];
+    }
+
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE KEY='%@'", tableName, key];
-    
+
     // Delete library object
     __block BOOL isDeleted = NO;
     [localQueue inDatabase:^(FMDatabase *localDatabase) {
@@ -361,8 +371,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
     }];
     
-    if ([tableName isEqualToString:[SourceConstants tableName]])
+    if ([tableName isEqualToString:[SourceConstants tableName]]) {
         [self deleteAllSamplesForSourceKey:key];
+    }
     
     return isDeleted;
 }
