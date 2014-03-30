@@ -111,4 +111,9 @@ static NSString *const SRC_DISPLAY_IMAGES       = @"Images";
 /// with local database to cleanly store database attributes
 + (NSString *)tableValueKeys;
 
++ (NSArray *)rockTypes;
++ (NSArray *)lithologiesForRockType:(NSString *)rockType;
++ (NSArray *)deposystemsForRockType:(NSString *)rockType;
++ (NSArray *)ageMethods;
+
 @end

@@ -51,8 +51,7 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
                           SRC_METER,
                           SRC_NOTES,
                           SRC_HYPERLINKS,
-                          SRC_IMAGES,
-                          nil];
+                          SRC_IMAGES, nil];
     }
     
     return attributeNames;
@@ -84,8 +83,7 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
                                   SRC_DEF_VAL_METER,
                                   SRC_DEF_VAL_NOTES,
                                   SRC_DEF_VAL_HYPERLINKS,
-                                  SRC_DEF_VAL_IMAGES,
-                                  nil];
+                                  SRC_DEF_VAL_IMAGES, nil];
     }
     return attributeDefaultValues;
 }
@@ -116,8 +114,7 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
                                 SRC_DISPLAY_METER,
                                 SRC_DISPLAY_NOTES,
                                 SRC_DISPLAY_HYPERLINKS,
-                                SRC_DISPLAY_IMAGES,
-                                nil];
+                                SRC_DISPLAY_IMAGES, nil];
     }
     return attributeLabelValues;
 }
@@ -193,6 +190,64 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
         valueKeys = [attrNames componentsJoinedByString:@","];
     }
     return valueKeys;
+}
+
++ (NSArray *)rockTypes
+{
+    return [NSArray arrayWithObjects: @"Siliciclastic", @"Carbonate", @"Authigenic", @"Plutonic", @"Volcanic",
+            @"Metasedimentary", @"Metaigneous", @"Igneous", @"Metamorphic", @"Unknown", nil];
+}
+
++ (NSArray *)lithologiesForRockType:(NSString *)rockType
+{
+    if ([rockType isEqualToString:@"Siliciclastic"]) {
+        return [NSArray arrayWithObjects: @"Conglomerate", @"Breccia", @"Sandstone", @"Mudstone", @"Gravel",
+                @"Sand", @"Mud", @"Blank", nil];
+    }
+    else if ([rockType isEqualToString:@"Carbonate"]) {
+        return [NSArray arrayWithObjects: @"Marl", @"Micrate", @"Wackestone", @"Packstone", @"Grainstone",
+                @"Boundstone", @"Blank", nil];
+    }
+    else if ([rockType isEqualToString:@"Authigenic"]) {
+        return [NSArray arrayWithObjects: @"Glauconite", @"Blank", nil];
+    }
+    else if ([rockType isEqualToString:@"Plutonic"]) {
+        return [NSArray arrayWithObjects: @"Granitoid", @"Granite", @"Granodiorite", @"Tonalite", @"Diorite",
+                @"Gabbro", @"Monzonite", @"Syenite", @"Blank", nil];
+    }
+    else if ([rockType isEqualToString:@"Volcanic"]) {
+        return [NSArray arrayWithObjects: @"Ash", @"Rhyolite", @"Dacite", @"Andesite", @"Basalt", @"Trachyte", @"Blank", nil];
+    }
+    else if ([rockType isEqualToString:@"Metasedimentary"]) {
+        return [NSArray arrayWithObjects: @"Slate", @"Phyllite", @"Schist", @"Gneiss", @"Blank", nil];
+    }
+    else if ([rockType isEqualToString:@"Metaigneous"]) {
+        return [NSArray arrayWithObjects: @"Felsic Orthoschist", @"Felsic Orthogneiss", @"Intermediate Orthoschist",
+                @"Intermediate Orthogneiss", @"Amphobite", @"Blank", nil];
+    }
+    else {
+        return nil;
+    }
+}
+
++ (NSArray *)deposystemsForRockType:(NSString *)rockType
+{
+    if ([rockType isEqualToString:@"Siliciclastic"]) {
+        return [NSArray arrayWithObjects: @"Alluvial Fan", @"Fluvial Megafan", @"Meandering Fluvial", @"Alpine Glacial", @"Ice Sheet",
+                @"Lacustrine", @"Eolian", @"Deltac", @"Estuarine", @"Shallow Marine", @"Shelf", @"Pelagic", @"Submarine Fan", @"Unknown", nil];
+    }
+    else if ([rockType isEqualToString:@"Carbonate"]) {
+        return [NSArray arrayWithObjects: @"Carbonate Platform", @"Carbonate Reef", @"Pelagic", @"Eolian", @"Unknown", nil];
+    }
+    else {
+        return nil;
+    }
+}
+
++ (NSArray *)ageMethods
+{
+    return [NSArray arrayWithObjects: @"Biostratigraphy", @"Magnetostratigraphy", @"Chemostratigraphy", @"Geochronology",
+            @"Thermochronology", @"Other", nil];
 }
 
 @end
