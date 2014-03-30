@@ -40,6 +40,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SourcesWindowController
 
+@synthesize splitView, searchField;
+
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
@@ -60,19 +62,20 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     if (!detailPanelController) {
         detailPanelController = [[SourcesDetailPanelViewController alloc] initWithNibName:@"SourcesDetailPanelViewController" bundle:nil];
+        [detailPanelController setDataStore:dataStore];
     }
     
     if (!tableViewController) {
         tableViewController = [[SourcesTableViewController alloc] initWithNibName:@"SourcesTableViewController" bundle:nil];
         [tableViewController setDataStore:dataStore];
-        [tableViewController setSearchField:self.searchField];
+        [tableViewController setSearchField:searchField];
         [tableViewController setDetailPanel:detailPanelController];
     }    
     
     // Setup split view
-    [self.splitView replaceSubview:[self.splitView.subviews objectAtIndex:tableSubview] with:tableViewController.view];
-    [self.splitView replaceSubview:[self.splitView.subviews objectAtIndex:detailPanelSubview] with:detailPanelController.view];
-    CGFloat dividerPosition = [self.splitView maxPossiblePositionOfDividerAtIndex:0] - 275;
+    [self.splitView replaceSubview:[splitView.subviews objectAtIndex:tableSubview] with:tableViewController.view];
+    [self.splitView replaceSubview:[splitView.subviews objectAtIndex:detailPanelSubview] with:detailPanelController.view];
+    CGFloat dividerPosition = [splitView maxPossiblePositionOfDividerAtIndex:0] - 275;
     [self.splitView setPosition:dividerPosition ofDividerAtIndex:0];
     
     // Setup search field
@@ -86,7 +89,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [attrItem setTag:i];
         [attrMenu insertItem:attrItem atIndex:i];
     }
-    [self.searchField.cell setSearchMenuTemplate:attrMenu];
+    [searchField.cell setSearchMenuTemplate:attrMenu];
     [self setSearchCategoryFrom:[attrMenu itemAtIndex:0]];
 }
 
@@ -98,7 +101,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview
 {
-    if ([subview isEqual:[splitView.subviews objectAtIndex:detailPanelSubview]])
+    if ([subview isEqual:[self.splitView.subviews objectAtIndex:detailPanelSubview]])
         return YES;
     else
         return NO;
@@ -270,8 +273,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem
 {
-    self.searchField.tag = menuItem.tag;
-    [self.searchField.cell setPlaceholderString:menuItem.title];
+    searchField.tag = menuItem.tag;
+    [searchField.cell setPlaceholderString:menuItem.title];
 }
 
 - (IBAction)searchSources:(id)sender

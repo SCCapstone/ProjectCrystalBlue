@@ -47,14 +47,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-    NSInteger selectedRow = [self.tableView selectedRow];
+    NSInteger selectedRow = [tableView selectedRow];
     if (selectedRow == -1) {
         //[detailPanel clear];
         return;
     }
     
-    Source *source = [self.arrayController.arrangedObjects objectAtIndex:selectedRow];
-    [self.detailPanel setSource:source];
+    Source *source = [arrayController.arrangedObjects objectAtIndex:selectedRow];
+    [detailPanel setSource:source];
 }
 
 - (void)tableView:(NSTableView *)tableView
@@ -63,7 +63,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
               row:(NSInteger)row
 {
     // Update database when value is changed
-    [dataStore updateLibraryObject:[self.arrayController.arrangedObjects objectAtIndex:row]
+    [dataStore updateLibraryObject:[arrayController.arrangedObjects objectAtIndex:row]
                          IntoTable:[SourceConstants tableName]];
 }
 
@@ -92,11 +92,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSString *attrName = [[SourceConstants attributeNames] objectAtIndex:searchField.tag];
     
     if ([searchField.stringValue isEqualToString:@""])
-        [self setDisplayedSources:[[self.dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] mutableCopy]];
+        [self setDisplayedSources:[[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] mutableCopy]];
     else
-        [self setDisplayedSources:[[self.dataStore getAllLibraryObjectsForAttributeName:attrName
-                                                             WithAttributeValue:searchField.stringValue
-                                                                      FromTable:[SourceConstants tableName]] mutableCopy]];
+        [self setDisplayedSources:[[dataStore getAllLibraryObjectsForAttributeName:attrName
+                                                                WithAttributeValue:searchField.stringValue
+                                                                         FromTable:[SourceConstants tableName]] mutableCopy]];
 }
 
 @end

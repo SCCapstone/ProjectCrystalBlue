@@ -8,11 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class Source;
+@class Source, AbstractCloudLibraryObjectStore;
 
 @interface SourcesDetailPanelViewController : NSViewController
 
 @property Source *source;
 @property (weak) IBOutlet NSTextField *googleMapsLink;
+@property AbstractCloudLibraryObjectStore *dataStore;
 
 @end
