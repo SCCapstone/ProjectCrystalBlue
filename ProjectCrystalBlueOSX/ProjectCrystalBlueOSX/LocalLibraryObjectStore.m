@@ -300,13 +300,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     }
     
-    NSArray *attrKeys = [libraryObject.attributes allKeys];
+    NSArray *attrKeys = [tableName isEqualToString:[SourceConstants tableName]] ? [SourceConstants attributeNames] : [SampleConstants attributeNames];
     NSString *setSql;
     
     // Build the sql command, only update attributes that have changed
     for (int i=0; i<attrKeys.count; i++) {
         NSString *attrValue = [libraryObject.attributes objectForKey:[attrKeys objectAtIndex:i]];
         NSString *oldAttrValue = [oldObject.attributes objectForKey:[attrKeys objectAtIndex:i]];
+        
+        // If somehow got set to nil, change to empty string
+        if (!attrValue)
+            attrValue = @"";
         
         if (![attrValue isEqualToString:oldAttrValue]) {
             if (!setSql)
@@ -317,10 +321,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     
     // No attributes have changed
-    if (!setSql) {
-        DDLogCInfo(@"%@: There were no attributes to update.", NSStringFromClass(self.class));
+    if (!setSql)
         return YES;
-    }
     
     NSString *sql = [NSString stringWithFormat:@"UPDATE %@ %@ WHERE KEY='%@'", tableName, setSql, libraryObject.key];
     
