@@ -47,8 +47,6 @@
 		D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */; };
 		D711C94D18C42CC300D637D7 /* AddNewSourceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711C94B18C42CC300D637D7 /* AddNewSourceWindowController.m */; };
 		D711C94E18C42CC300D637D7 /* AddNewSourceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */; };
-		D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711C95018C44B3E00D637D7 /* SamplesWindowController.m */; };
-		D711C95318C44B3E00D637D7 /* SamplesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D711C95118C44B3E00D637D7 /* SamplesWindowController.xib */; };
 		D7125EF118C4630B00BBCD3E /* ProceduresWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */; };
 		D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */; };
 		D71BE30C18D7A85A00B7572F /* samples_non_ascii_chars.csv in Resources */ = {isa = PBXBuildFile; fileRef = D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */; };
@@ -222,9 +220,6 @@
 		D711C94A18C42CC300D637D7 /* AddNewSourceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSourceWindowController.h; sourceTree = "<group>"; };
 		D711C94B18C42CC300D637D7 /* AddNewSourceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSourceWindowController.m; sourceTree = "<group>"; };
 		D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewSourceWindowController.xib; sourceTree = "<group>"; };
-		D711C94F18C44B3E00D637D7 /* SamplesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesWindowController.h; sourceTree = "<group>"; };
-		D711C95018C44B3E00D637D7 /* SamplesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesWindowController.m; sourceTree = "<group>"; };
-		D711C95118C44B3E00D637D7 /* SamplesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesWindowController.xib; sourceTree = "<group>"; };
 		D7125EEE18C4630B00BBCD3E /* ProceduresWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProceduresWindowController.h; sourceTree = "<group>"; };
 		D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresWindowController.m; sourceTree = "<group>"; };
 		D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProceduresWindowController.xib; sourceTree = "<group>"; };
@@ -848,7 +843,6 @@
 				D706CCA918E63E4C00F7762E /* SourcePhotosWindow */,
 				D780E1EF18C837FC003F3D92 /* ChangeLocationWindow */,
 				D7125EED18C462EC00BBCD3E /* ProceduresWindow */,
-				D7F822BB18B199290017548F /* SamplesView */,
 				D770578118AD7C8900F011E5 /* EditSourceView */,
 				D738D55818BAA52A00A777E2 /* DetailPanelView */,
 			);
@@ -1054,16 +1048,6 @@
 			name = AddNewSourceView;
 			sourceTree = "<group>";
 		};
-		D7F822BB18B199290017548F /* SamplesView */ = {
-			isa = PBXGroup;
-			children = (
-				D711C94F18C44B3E00D637D7 /* SamplesWindowController.h */,
-				D711C95018C44B3E00D637D7 /* SamplesWindowController.m */,
-				D711C95118C44B3E00D637D7 /* SamplesWindowController.xib */,
-			);
-			name = SamplesView;
-			sourceTree = "<group>";
-		};
 		D7FAAD7118DE1040003A9A13 /* Validation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1179,7 +1163,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D711C95318C44B3E00D637D7 /* SamplesWindowController.xib in Resources */,
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D738D55718BAA52600A777E2 /* DetailPanelViewController.xib in Resources */,
 				D706CCAE18E63E7700F7762E /* SourcePhotosWindowController.xib in Resources */,
@@ -1285,7 +1268,6 @@
 				D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */,
 				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
-				D711C95218C44B3E00D637D7 /* SamplesWindowController.m in Sources */,
 				D038CBCC18DBFBF400635442 /* SourcesWindowController.m in Sources */,
 				D7CCCEBD18E538EE009D0308 /* ValidationResponse.m in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
