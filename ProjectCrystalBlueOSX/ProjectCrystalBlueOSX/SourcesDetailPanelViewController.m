@@ -28,6 +28,16 @@
     return self;
 }
 
+- (void)awakeFromNib
+{
+    // Embed custom view in scroll view
+    NSScrollView *scrollView = [[NSScrollView alloc] initWithFrame:[self.view frame]];
+    [scrollView setBorderType:NSNoBorder];
+    [scrollView setHasVerticalScroller:YES];
+    [scrollView setDocumentView:self.view];
+    [self setView:scrollView];
+}
+
 - (void)setSource:(Source *)newSource
 {
     if (source != nil)

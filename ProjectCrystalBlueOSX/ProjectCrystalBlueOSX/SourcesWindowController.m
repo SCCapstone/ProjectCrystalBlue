@@ -75,7 +75,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     // Setup split view
     [self.splitView replaceSubview:[splitView.subviews objectAtIndex:tableSubview] with:tableViewController.view];
     [self.splitView replaceSubview:[splitView.subviews objectAtIndex:detailPanelSubview] with:detailPanelController.view];
-    CGFloat dividerPosition = [splitView maxPossiblePositionOfDividerAtIndex:0] - 275;
+    CGFloat dividerPosition = self.window.frame.size.width - 250;
     [self.splitView setPosition:dividerPosition ofDividerAtIndex:0];
     
     // Setup search field
@@ -93,10 +93,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [self setSearchCategoryFrom:[attrMenu itemAtIndex:0]];
 }
 
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition
-         ofSubviewAt:(NSInteger)dividerIndex
+- (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex
 {
-    return proposedMaximumPosition - 275;
+    return [self.splitView maxPossiblePositionOfDividerAtIndex:0] - 250;
 }
 
 - (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview
@@ -105,6 +104,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return YES;
     else
         return NO;
+}
+
+- (void)splitView:(NSSplitView *)sender resizeSubviewsWithOldSize:(NSSize)oldSize
+{
+    NSView *leftView = [splitView.subviews objectAtIndex:tableSubview];
+    NSView *rightView = [splitView.subviews objectAtIndex:detailPanelSubview];
+    
+    if (![splitView isSubviewCollapsed:rightView]) {
+        NSSize splitViewFrameSize = splitView.frame.size;
+        CGFloat leftViewWidth = splitViewFrameSize.width - 250.0f - splitView.dividerThickness;
+        leftView.frameSize = NSMakeSize(leftViewWidth, splitViewFrameSize.height);
+        rightView.frame = NSMakeRect(leftViewWidth + splitView.dividerThickness, 0.0f, 250.0, splitViewFrameSize.height);
+    }
+    else
+        [splitView adjustSubviews];
 }
 
 
