@@ -554,7 +554,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </comboBoxCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.source.attributes.ROCK_TYPE" id="DHI-C0-4ec"/>
+                        <binding destination="-2" name="value" keyPath="self.source.attributes.ROCK_TYPE" id="Ihw-5p-Euf">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </comboBox>
                 <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Y9-Y4-HmX">
@@ -566,7 +570,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </comboBoxCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.source.attributes.LITHOLOGY" id="qA0-mL-qc1"/>
+                        <binding destination="-2" name="value" keyPath="self.source.attributes.LITHOLOGY" id="lPC-R2-QZn">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </comboBox>
                 <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aqz-8y-DNx">
@@ -578,7 +586,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </comboBoxCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.source.attributes.AGE_METHOD" id="7rW-Pl-QW6"/>
+                        <binding destination="-2" name="value" keyPath="self.source.attributes.AGE_METHOD" id="Qxg-Oc-Gr1">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </comboBox>
                 <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4ZU-bP-EZe">
@@ -590,7 +602,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </comboBoxCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.source.attributes.DEPOSYSTEM" id="EVk-MN-cZI"/>
+                        <binding destination="-2" name="value" keyPath="self.source.attributes.DEPOSYSTEM" id="69z-Sa-rNT">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </comboBox>
             </subviews>

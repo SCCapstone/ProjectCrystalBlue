@@ -76,7 +76,11 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.sample.attributes.CURRENT_LOCATION" id="7fi-O2-CdI"/>
+                        <binding destination="-2" name="value" keyPath="self.sample.attributes.CURRENT_LOCATION" id="5BJ-et-8VF">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xex-qJ-Qev">

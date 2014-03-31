@@ -64,6 +64,22 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         response = [SourceFieldValidator validateHyperlinks:newValue];
     else if ([attr isEqualToString:SRC_NOTES])
         response = [SourceFieldValidator validateNotes:newValue];
+    else if ([attr isEqualToString:SRC_TYPE]) {
+        if (!newValue) return YES;
+        response = [SourceFieldValidator validateType:newValue];
+    }
+    else if ([attr isEqualToString:SRC_LITHOLOGY]){
+        if (!newValue) return YES;
+        response = [SourceFieldValidator validateLithology:newValue];
+    }
+    else if ([attr isEqualToString:SRC_DEPOSYSTEM]){
+        if (!newValue) return YES;
+        response = [SourceFieldValidator validateDeposystem:newValue];
+    }
+    else if ([attr isEqualToString:SRC_AGE_METHOD]){
+        if (!newValue) return YES;
+        response = [SourceFieldValidator validateAgeMethod:newValue];
+    }
     else
         return YES;
     

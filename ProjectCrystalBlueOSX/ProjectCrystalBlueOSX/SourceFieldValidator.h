@@ -25,6 +25,9 @@
 /// Validates that type is an expected value.
 +(ValidationResponse *)validateType:(NSString *)type;
 
+// Validates that lithology is an expected value.
++(ValidationResponse *)validateLithology:(NSString *)lithology;
+
 /// Validates that deposystem is an expected value.
 +(ValidationResponse *)validateDeposystem:(NSString *)deposystem;
 

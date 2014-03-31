@@ -113,7 +113,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.TYPE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.ROCK_TYPE" id="1QL-9c-GuL"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.ROCK_TYPE" id="QkN-3D-oTZ">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="91.77734375" minWidth="10" maxWidth="3.4028234663852886e+38" id="dgi-ny-oQe">
@@ -130,7 +134,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.LITHOLOGY"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.LITHOLOGY" id="TjL-oF-OxA"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.LITHOLOGY" id="Hna-zY-Ssh">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="106.43359375" minWidth="10" maxWidth="3.4028234663852886e+38" id="60M-v2-M4s">
@@ -353,7 +361,11 @@
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.DEPOSYSTEM"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.DEPOSYSTEM" id="HfE-zo-hl4"/>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.DEPOSYSTEM" id="dIC-1t-Hwz">
+                                                <dictionary key="options">
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="108.8203125" minWidth="10" maxWidth="3.4028234663852886e+38" id="RtU-1K-rS3">
