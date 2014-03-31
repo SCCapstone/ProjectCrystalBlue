@@ -7,7 +7,7 @@
 //
 
 #import "ProceduresWindowController.h"
-#import "SamplesWindowController.h"
+#import "SamplesTableViewController.h"
 #import "ProcedureNameConstants.h"
 #import "ProcedureFieldValidator.h"
 #import "Procedures.h"
@@ -32,7 +32,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 @synthesize instructionsText;
 @synthesize sample;
 @synthesize dataStore;
-@synthesize samplesWindow;
+@synthesize samplesTableViewController;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -167,7 +167,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     }
-    [samplesWindow updateDisplayedSamples];
+    [samplesTableViewController updateDisplayedSamples];
     [self.window close];
 }
 

@@ -33,6 +33,12 @@
 		D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */; };
 		D0C51DCA18BABF0C001B3929 /* ConflictResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C51DC918BABF0C001B3929 /* ConflictResolution.m */; };
 		D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */; };
+		D0CED3BF18E8E4D10031E996 /* SamplesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CED3BD18E8E4D10031E996 /* SamplesWindowController.m */; };
+		D0CED3C018E8E4D10031E996 /* SamplesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CED3BE18E8E4D10031E996 /* SamplesWindowController.xib */; };
+		D0CED3C618E8E6DE0031E996 /* SamplesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CED3C418E8E6DE0031E996 /* SamplesTableViewController.m */; };
+		D0CED3C718E8E6DE0031E996 /* SamplesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CED3C518E8E6DE0031E996 /* SamplesTableViewController.xib */; };
+		D0CED3D518E8E7540031E996 /* SamplesDetailPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CED3D318E8E7540031E996 /* SamplesDetailPanelViewController.m */; };
+		D0CED3D618E8E7540031E996 /* SamplesDetailPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CED3D418E8E7540031E996 /* SamplesDetailPanelViewController.xib */; };
 		D704E1A718B15C5B00170B7E /* ProcedureRecordParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A618B15C5B00170B7E /* ProcedureRecordParser.m */; };
 		D704E1A918B162CE00170B7E /* ProcedureNameConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A818B162CE00170B7E /* ProcedureNameConstantsTests.m */; };
 		D704E1AB18B1654200170B7E /* ProcedureRecordParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AA18B1654200170B7E /* ProcedureRecordParserTests.m */; };
@@ -200,6 +206,15 @@
 		D0C51DC818BABF0C001B3929 /* ConflictResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConflictResolution.h; sourceTree = "<group>"; };
 		D0C51DC918BABF0C001B3929 /* ConflictResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConflictResolution.m; sourceTree = "<group>"; };
 		D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBLibraryObjectStoreTests.m; sourceTree = "<group>"; };
+		D0CED3BC18E8E4D10031E996 /* SamplesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesWindowController.h; sourceTree = "<group>"; };
+		D0CED3BD18E8E4D10031E996 /* SamplesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesWindowController.m; sourceTree = "<group>"; };
+		D0CED3BE18E8E4D10031E996 /* SamplesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesWindowController.xib; sourceTree = "<group>"; };
+		D0CED3C318E8E6DE0031E996 /* SamplesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesTableViewController.h; sourceTree = "<group>"; };
+		D0CED3C418E8E6DE0031E996 /* SamplesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesTableViewController.m; sourceTree = "<group>"; };
+		D0CED3C518E8E6DE0031E996 /* SamplesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesTableViewController.xib; sourceTree = "<group>"; };
+		D0CED3D218E8E7540031E996 /* SamplesDetailPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesDetailPanelViewController.h; sourceTree = "<group>"; };
+		D0CED3D318E8E7540031E996 /* SamplesDetailPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesDetailPanelViewController.m; sourceTree = "<group>"; };
+		D0CED3D418E8E7540031E996 /* SamplesDetailPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesDetailPanelViewController.xib; sourceTree = "<group>"; };
 		D704E1A518B15C5B00170B7E /* ProcedureRecordParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureRecordParser.h; sourceTree = "<group>"; };
 		D704E1A618B15C5B00170B7E /* ProcedureRecordParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecordParser.m; sourceTree = "<group>"; };
 		D704E1A818B162CE00170B7E /* ProcedureNameConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureNameConstantsTests.m; sourceTree = "<group>"; };
@@ -493,6 +508,38 @@
 				D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */,
 			);
 			name = SimpleDBLibraryObjectStore;
+			sourceTree = "<group>";
+		};
+		D0CED3BB18E8E4BF0031E996 /* SamplesWindowController */ = {
+			isa = PBXGroup;
+			children = (
+				D0CED3BC18E8E4D10031E996 /* SamplesWindowController.h */,
+				D0CED3BD18E8E4D10031E996 /* SamplesWindowController.m */,
+				D0CED3BE18E8E4D10031E996 /* SamplesWindowController.xib */,
+				D0CED3C118E8E4DB0031E996 /* SamplesTableViewController */,
+				D0CED3C218E8E4E50031E996 /* SamplesDetailPanel */,
+			);
+			name = SamplesWindowController;
+			sourceTree = "<group>";
+		};
+		D0CED3C118E8E4DB0031E996 /* SamplesTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0CED3C318E8E6DE0031E996 /* SamplesTableViewController.h */,
+				D0CED3C418E8E6DE0031E996 /* SamplesTableViewController.m */,
+				D0CED3C518E8E6DE0031E996 /* SamplesTableViewController.xib */,
+			);
+			name = SamplesTableViewController;
+			sourceTree = "<group>";
+		};
+		D0CED3C218E8E4E50031E996 /* SamplesDetailPanel */ = {
+			isa = PBXGroup;
+			children = (
+				D0CED3D218E8E7540031E996 /* SamplesDetailPanelViewController.h */,
+				D0CED3D318E8E7540031E996 /* SamplesDetailPanelViewController.m */,
+				D0CED3D418E8E7540031E996 /* SamplesDetailPanelViewController.xib */,
+			);
+			name = SamplesDetailPanel;
 			sourceTree = "<group>";
 		};
 		D706CCA918E63E4C00F7762E /* SourcePhotosWindow */ = {
@@ -841,6 +888,7 @@
 				D038CBC918DBFBBF00635442 /* SourcesWindowController */,
 				D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */,
 				D706CCA918E63E4C00F7762E /* SourcePhotosWindow */,
+				D0CED3BB18E8E4BF0031E996 /* SamplesWindowController */,
 				D780E1EF18C837FC003F3D92 /* ChangeLocationWindow */,
 				D7125EED18C462EC00BBCD3E /* ProceduresWindow */,
 				D770578118AD7C8900F011E5 /* EditSourceView */,
@@ -1173,6 +1221,9 @@
 				D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */,
 				D780E1F418C83812003F3D92 /* ChangeLocationWindowController.xib in Resources */,
 				D7439E1F18A5FC53000EE008 /* Credits.rtf in Resources */,
+				D0CED3C018E8E4D10031E996 /* SamplesWindowController.xib in Resources */,
+				D0CED3D618E8E7540031E996 /* SamplesDetailPanelViewController.xib in Resources */,
+				D0CED3C718E8E6DE0031E996 /* SamplesTableViewController.xib in Resources */,
 				D038CBCE18DBFC0E00635442 /* SourcesWindowController.xib in Resources */,
 				D711C94E18C42CC300D637D7 /* AddNewSourceWindowController.xib in Resources */,
 				D7439E2518A5FC53000EE008 /* MainMenu.xib in Resources */,
@@ -1216,8 +1267,10 @@
 				D059F8EF18E547100024AA58 /* SourcesDetailPanelViewController.m in Sources */,
 				D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
+				D0CED3BF18E8E4D10031E996 /* SamplesWindowController.m in Sources */,
 				D7439E2218A5FC53000EE008 /* AppDelegate.m in Sources */,
 				D7C8733718B2FB0B00F2976F /* LibraryObjectCSVReader.m in Sources */,
+				D0CED3D518E8E7540031E996 /* SamplesDetailPanelViewController.m in Sources */,
 				D770578518AD7CC100F011E5 /* EditSourceViewController.m in Sources */,
 				D059F93118E560160024AA58 /* qrinput.c in Sources */,
 				D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */,
@@ -1251,6 +1304,7 @@
 				D78ACC3F18A5FDC0006084D6 /* FMResultSet.m in Sources */,
 				D78ACC6518A5FE21006084D6 /* AbstractImageStore.m in Sources */,
 				D72465D418B71C99002EDE5B /* SampleImportController.m in Sources */,
+				D0CED3C618E8E6DE0031E996 /* SamplesTableViewController.m in Sources */,
 				D78ACC7718A5FE68006084D6 /* LocalLibraryObjectStore.m in Sources */,
 				D059F93018E560160024AA58 /* qrencode.c in Sources */,
 				D059F92F18E560160024AA58 /* mqrspec.c in Sources */,

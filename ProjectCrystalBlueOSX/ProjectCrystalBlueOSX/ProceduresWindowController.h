@@ -7,9 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class Sample;
-@class AbstractLibraryObjectStore;
-@class SamplesWindowController;
+
+@class AbstractLibraryObjectStore, Sample, SamplesTableViewController;
 
 @interface ProceduresWindowController : NSWindowController
 
@@ -21,7 +20,7 @@
 @property (weak) IBOutlet NSTextField *instructionsText;
 @property Sample *sample;
 @property AbstractLibraryObjectStore *dataStore;
-@property SamplesWindowController *samplesWindow;
+@property SamplesTableViewController *samplesTableViewController;
 
 @end
 
