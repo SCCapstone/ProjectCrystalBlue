@@ -12,8 +12,9 @@
 
 @interface SamplesDetailPanelViewController : NSViewController
 
+@property (weak) IBOutlet NSTextField *recentProceduresTextField;
+
 @property (nonatomic) Sample *sample;
-@property (nonatomic) NSString *recentProcedures;
 @property AbstractCloudLibraryObjectStore *dataStore;
 
 @end

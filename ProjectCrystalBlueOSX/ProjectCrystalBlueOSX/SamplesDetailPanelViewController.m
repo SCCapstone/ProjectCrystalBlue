@@ -11,6 +11,7 @@
 #import "Sample.h"
 #import "ProcedureRecord.h"
 #import "ProcedureRecordParser.h"
+#import "ProcedureNameConstants.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -34,6 +35,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // Initialization code here.
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    [self updateRecentProcedures];
 }
 
 - (void)setSample:(Sample *)newSample
@@ -74,17 +80,24 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)updateRecentProcedures
 {
-    NSArray *procedureList = [ProcedureRecordParser nameArrayFromRecordList:[sample.attributes objectForKey:SMP_TAGS]];
-//    NSMutableString *history = [[NSMutableString alloc] init];
-//    
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateFormat:@"MM/dd/yy"];
-//    for (ProcedureRecord *procedure in procedureList) {
-//        NSString *date = [formatter stringFromDate:procedure.date];
-//        [history appendString:[NSString stringWithFormat:@"%@ on %@ by %@", procedure.tag, date, procedure.initials]];
-//    }
-    NSString *history = [procedureList componentsJoinedByString:@"\n"];
-    [self setRecentProcedures:history];
+    NSArray *procedureList = [ProcedureRecordParser procedureRecordArrayFromList:[sample.attributes objectForKey:SMP_TAGS]];
+    NSMutableString *history = [[NSMutableString alloc] init];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yy"];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.headIndent = 29;
+    
+    for (int i=(int)procedureList.count-1; i>=0; i--) {
+        ProcedureRecord *procedure = [procedureList objectAtIndex:i];
+        NSString *procedureName = [ProcedureNameConstants procedureNameForTag:procedure.tag];
+        NSString *date = [formatter stringFromDate:procedure.date];
+        
+        [history appendFormat:@"\u2022\t%@ on %@ by %@\n", procedureName, date, procedure.initials];
+    }
+    
+    [self.recentProceduresTextField setAttributedStringValue:[[NSAttributedString alloc] initWithString:history attributes:@{ NSParagraphStyleAttributeName:paragraphStyle }]];
 }
 
 @end

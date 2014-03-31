@@ -38,7 +38,10 @@
     [parser scanString:INTERNAL_DELIMITER intoString:nil];
     [parser scanUpToString:@"}" intoString:&parsedDateString];
     
-    NSDate *parsedDate = [[NSDate alloc] initWithString:parsedDateString];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"MM/dd/yy"];
+    NSDate *parsedDate = [formatter dateFromString:parsedDateString];
+    
     return [self initWithTag:parsedTag
                  andInitials:parsedInitials
                      andDate:parsedDate];
