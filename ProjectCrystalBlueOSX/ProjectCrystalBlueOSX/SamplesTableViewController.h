@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class AbstractCloudLibraryObjectStore, SamplesDetailPanelViewController, Sample;
+@class AbstractCloudLibraryObjectStore, SamplesDetailPanelViewController, Source, Sample;
 
 @interface SamplesTableViewController : NSViewController <NSTableViewDelegate>
 
@@ -17,6 +17,7 @@
 
 @property (weak) NSSearchField *searchField;
 @property AbstractCloudLibraryObjectStore *dataStore;
+@property Source *source;
 @property NSMutableArray *displayedSamples;
 @property SamplesDetailPanelViewController *detailPanel;
 

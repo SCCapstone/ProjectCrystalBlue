@@ -6,6 +6,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SamplesTableViewController">
             <connections>
+                <outlet property="arrayController" destination="aRb-GU-cSg" id="5Ii-6b-fqb"/>
+                <outlet property="tableView" destination="aw2-Hb-uZM" id="aGC-Mq-OCu"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -30,7 +32,7 @@
                                 <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="150" minWidth="40" maxWidth="1000" id="7Gs-Lo-geW">
+                                    <tableColumn editable="NO" width="150" minWidth="40" maxWidth="1000" id="7Gs-Lo-geW">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Sample">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -42,8 +44,11 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="aRb-GU-cSg" name="value" keyPath="arrangedObjects.key" id="bRM-Em-4CB"/>
+                                        </connections>
                                     </tableColumn>
-                                    <tableColumn width="150" minWidth="40" maxWidth="1000" id="cOP-e7-bZT">
+                                    <tableColumn editable="NO" width="150" minWidth="40" maxWidth="1000" id="cOP-e7-bZT">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Source Key">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -55,6 +60,9 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="aRb-GU-cSg" name="value" keyPath="arrangedObjects.attributes.SOURCE_KEY" id="LW4-Ce-lF3"/>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn width="150" minWidth="10" maxWidth="3.4028234663852886e+38" id="xKQ-bU-uzQ">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Location">
@@ -68,8 +76,11 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="aRb-GU-cSg" name="value" keyPath="arrangedObjects.attributes.CURRENT_LOCATION" id="jLc-aO-Ky8"/>
+                                        </connections>
                                     </tableColumn>
-                                    <tableColumn width="149" minWidth="10" maxWidth="3.4028234663852886e+38" id="hWm-jv-mYw">
+                                    <tableColumn editable="NO" width="149" minWidth="10" maxWidth="3.4028234663852886e+38" id="hWm-jv-mYw">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Procedure Log">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -81,8 +92,14 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="aRb-GU-cSg" name="value" keyPath="arrangedObjects.attributes.TAGS" id="NkU-8t-yrI"/>
+                                        </connections>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="SMo-MF-WRN"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -108,5 +125,16 @@
                 <constraint firstAttribute="trailing" secondItem="bDC-sK-zdD" secondAttribute="trailing" id="v2y-U1-J8q"/>
             </constraints>
         </customView>
+        <arrayController id="aRb-GU-cSg">
+            <declaredKeys>
+                <string>key</string>
+                <string>attributes.SOURCE_KEY</string>
+                <string>attributes.LOCATION</string>
+                <string>attributes.TAGS</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="self.displayedSamples" id="BGf-od-vm7"/>
+            </connections>
+        </arrayController>
     </objects>
 </document>

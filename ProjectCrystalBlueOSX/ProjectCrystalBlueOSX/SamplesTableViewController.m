@@ -26,7 +26,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SamplesTableViewController
 
-@synthesize dataStore, tableView, displayedSamples, arrayController, detailPanel, searchField;
+@synthesize dataStore, tableView, source, displayedSamples, arrayController, detailPanel, searchField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -71,11 +71,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSString *attrName = [[SourceConstants attributeNames] objectAtIndex:searchField.tag];
     
     if ([searchField.stringValue isEqualToString:@""])
-        [self setDisplayedSamples:[[dataStore getAllLibraryObjectsFromTable:[SourceConstants tableName]] mutableCopy]];
+        [self setDisplayedSamples:[[dataStore getAllSamplesForSourceKey:source.key] mutableCopy]];
     else
-        [self setDisplayedSamples:[[dataStore getAllLibraryObjectsForAttributeName:attrName
-                                                                WithAttributeValue:searchField.stringValue
-                                                                         FromTable:[SourceConstants tableName]] mutableCopy]];
+        [self setDisplayedSamples:[[dataStore getAllSamplesForSourceKey:source.key
+                                                    AndForAttributeName:attrName
+                                                     WithAttributeValue:searchField.stringValue] mutableCopy]];
 }
 
 @end

@@ -53,6 +53,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     [super windowDidLoad];
     
+    NSString *windowTitle = [NSString stringWithFormat:@"Samples For '%@'", source.key];
+    [self.window setTitle:windowTitle];
+    
     if (!detailPanelController) {
         detailPanelController = [[SamplesDetailPanelViewController alloc] initWithNibName:@"SamplesDetailPanelViewController" bundle:nil];
         [detailPanelController setDataStore:dataStore];
@@ -61,6 +64,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (!tableViewController) {
         tableViewController = [[SamplesTableViewController alloc] initWithNibName:@"SamplesTableViewController" bundle:nil];
         [tableViewController setDataStore:dataStore];
+        [tableViewController setSource:source];
         [tableViewController setSearchField:searchField];
         [tableViewController setDetailPanel:detailPanelController];
     }
@@ -201,7 +205,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     DDLogDebug(@"%s", __PRETTY_FUNCTION__);
     
     NSInteger selectedRow = [tableViewController.tableView selectedRow];
-    if (selectedRow != -1) {
+    if (selectedRow == -1) {
         return;
     }
     
