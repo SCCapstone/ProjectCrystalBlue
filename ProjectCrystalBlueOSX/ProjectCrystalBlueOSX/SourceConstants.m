@@ -202,28 +202,28 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
 {
     if ([rockType isEqualToString:@"Siliciclastic"]) {
         return [NSArray arrayWithObjects: @"Conglomerate", @"Breccia", @"Sandstone", @"Mudstone", @"Gravel",
-                @"Sand", @"Mud", @"Blank", nil];
+                @"Sand", @"Mud", @"Unknown", nil];
     }
     else if ([rockType isEqualToString:@"Carbonate"]) {
         return [NSArray arrayWithObjects: @"Marl", @"Micrate", @"Wackestone", @"Packstone", @"Grainstone",
-                @"Boundstone", @"Blank", nil];
+                @"Boundstone", @"Unknown", nil];
     }
     else if ([rockType isEqualToString:@"Authigenic"]) {
-        return [NSArray arrayWithObjects: @"Glauconite", @"Blank", nil];
+        return [NSArray arrayWithObjects: @"Glauconite", @"Unknown", nil];
     }
     else if ([rockType isEqualToString:@"Plutonic"]) {
         return [NSArray arrayWithObjects: @"Granitoid", @"Granite", @"Granodiorite", @"Tonalite", @"Diorite",
-                @"Gabbro", @"Monzonite", @"Syenite", @"Blank", nil];
+                @"Gabbro", @"Monzonite", @"Syenite", @"Unknown", nil];
     }
     else if ([rockType isEqualToString:@"Volcanic"]) {
-        return [NSArray arrayWithObjects: @"Ash", @"Rhyolite", @"Dacite", @"Andesite", @"Basalt", @"Trachyte", @"Blank", nil];
+        return [NSArray arrayWithObjects: @"Ash", @"Rhyolite", @"Dacite", @"Andesite", @"Basalt", @"Trachyte", @"Unknown", nil];
     }
     else if ([rockType isEqualToString:@"Metasedimentary"]) {
-        return [NSArray arrayWithObjects: @"Slate", @"Phyllite", @"Schist", @"Gneiss", @"Blank", nil];
+        return [NSArray arrayWithObjects: @"Slate", @"Phyllite", @"Schist", @"Gneiss", @"Unknown", nil];
     }
     else if ([rockType isEqualToString:@"Metaigneous"]) {
         return [NSArray arrayWithObjects: @"Felsic Orthoschist", @"Felsic Orthogneiss", @"Intermediate Orthoschist",
-                @"Intermediate Orthogneiss", @"Amphobite", @"Blank", nil];
+                @"Intermediate Orthogneiss", @"Amphobite", @"Unknown", nil];
     }
     else {
         return nil;

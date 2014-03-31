@@ -153,7 +153,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03AE34D918B1B991006AD856 /* libqrencode.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqrencode.3.dylib; path = include/libqrencode.3.dylib; sourceTree = "<group>"; };
 		D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D038CBCA18DBFBF400635442 /* SourcesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesWindowController.h; sourceTree = "<group>"; };
 		D038CBCB18DBFBF400635442 /* SourcesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesWindowController.m; sourceTree = "<group>"; };
@@ -706,7 +705,6 @@
 		D7439E0D18A5FC53000EE008 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				03AE34D918B1B991006AD856 /* libqrencode.3.dylib */,
 				D72405E318A6010E00EA2DD2 /* CFNetwork.framework */,
 				D72405E118A6010000EA2DD2 /* libsqlite3.dylib */,
 				D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */,

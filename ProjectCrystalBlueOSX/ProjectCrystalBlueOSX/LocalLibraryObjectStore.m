@@ -44,14 +44,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
         NSString *localDirectory = [documentsDirectory stringByAppendingPathComponent:directory];
         
-        BOOL directoryExists;
-        [[NSFileManager defaultManager] fileExistsAtPath:localDirectory isDirectory:&directoryExists];
-        if (!directoryExists) {
-            [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
-                                      withIntermediateDirectories:YES
-                                                       attributes:nil
-                                                            error:nil];
-        }
+        [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:nil];
         
         localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
         
