@@ -36,6 +36,13 @@
                                WithAttributeValue:(NSString *)attributeValue
                                         FromTable:(NSString *)tableName;
 
+/** Retrieve all samples for a source key where the attribute is equal to the
+ *  specified attribute value.
+ */
+- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
+                   AndForAttributeName:(NSString *)attributeName
+                    WithAttributeValue:(NSString *)attributeValue;
+
 /** Retrieve an array of unique attribute values for the specified attribute name.
  *
  *  Use case of autocomplete a field based on previous entries.

@@ -191,6 +191,34 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return libraryObjects;
 }
 
+- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
+                   AndForAttributeName:(NSString *)attributeName
+                    WithAttributeValue:(NSString *)attributeValue
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE SOURCE_KEY='%@' AND %@ LIKE '%%%@%%'", [SampleConstants tableName], sourceKey, attributeName, attributeValue];
+    
+    // Get all corresponding samples from table
+    __block NSMutableArray *samples = [[NSMutableArray alloc] init];;
+    [localQueue inDatabase:^(FMDatabase *localDatabase) {
+        FMResultSet *results = [localDatabase executeQuery:sql];
+        
+        if (localDatabase.hadError) {
+            DDLogCError(@"%@: Failed to get all library objects for attributeName. Error: %@", NSStringFromClass(self.class), localDatabase.lastError);
+            [results close];
+            [[NSException exceptionWithName:@"SQLiteException" reason:@"SQLite failed to get all library objects for attributeName." userInfo:nil] raise];
+        }
+        
+        // Add all the results to the samples array
+        while (results.next) {
+            NSString *key = [results.resultDictionary objectForKey:@"KEY"];
+            [samples addObject:[[Sample alloc] initWithKey:key AndWithAttributeDictionary:results.resultDictionary]];
+        }
+        [results close];
+    }];
+    
+    return samples;
+}
+
 - (NSArray *)getUniqueAttributeValuesForAttributeName:(NSString *)attributeName
                                             FromTable:(NSString *)tableName
 {
