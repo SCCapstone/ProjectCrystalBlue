@@ -13,6 +13,7 @@
 @interface SamplesDetailPanelViewController : NSViewController
 
 @property (nonatomic) Sample *sample;
+@property (nonatomic) NSString *recentProcedures;
 @property AbstractCloudLibraryObjectStore *dataStore;
 
 @end

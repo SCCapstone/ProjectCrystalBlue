@@ -9,6 +9,8 @@
 #import "SamplesDetailPanelViewController.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "Sample.h"
+#import "ProcedureRecord.h"
+#import "ProcedureRecordParser.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -41,22 +43,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     sample = newSample;
     [self addObserversToSelectedSample];
+    [self updateRecentProcedures];
 }
 
 - (void)addObserversToSelectedSample
 {
-    NSArray *attributes = [SampleConstants attributeNames];
-    for (NSString *attr in attributes) {
-        [sample addObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.%@", attr] options:NSKeyValueObservingOptionNew context:nil];
-    }
+    [sample addObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.CURRENT_LOCATION"] options:NSKeyValueObservingOptionNew context:nil];
+    [sample addObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.TAGS"] options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)removeObserversFromSelectedSample
 {
-    NSArray *attributes = [SampleConstants attributeNames];
-    for (NSString *attr in attributes) {
-        [sample removeObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.%@", attr]];
-    }
+    [sample removeObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.CURRENT_LOCATION"]];
+    [sample removeObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.TAGS"]];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -64,7 +63,28 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                         change:(NSDictionary *)change
                        context:(void *)context
 {
+    NSString *attr = [keyPath substringFromIndex:11];
+    
+    if ([attr isEqualToString:SMP_TAGS]) {
+        [self updateRecentProcedures];
+    }
+    
     [dataStore updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
+}
+
+- (void)updateRecentProcedures
+{
+    NSArray *procedureList = [ProcedureRecordParser nameArrayFromRecordList:[sample.attributes objectForKey:SMP_TAGS]];
+//    NSMutableString *history = [[NSMutableString alloc] init];
+//    
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"MM/dd/yy"];
+//    for (ProcedureRecord *procedure in procedureList) {
+//        NSString *date = [formatter stringFromDate:procedure.date];
+//        [history appendString:[NSString stringWithFormat:@"%@ on %@ by %@", procedure.tag, date, procedure.initials]];
+//    }
+    NSString *history = [procedureList componentsJoinedByString:@"\n"];
+    [self setRecentProcedures:history];
 }
 
 @end
