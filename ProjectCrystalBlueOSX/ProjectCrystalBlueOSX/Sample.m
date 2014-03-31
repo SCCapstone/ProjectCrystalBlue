@@ -32,11 +32,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [[self attributes] objectForKey:SMP_SOURCE_KEY];
 }
 
+/// This method is called automatically via data binding. Should not manually call this method.
 - (BOOL)validateValue:(inout __autoreleasing id *)ioValue forKeyPath:(NSString *)inKeyPath error:(out NSError *__autoreleasing *)outError
 {
     NSString *newValue = (NSString *)*ioValue;
     ValidationResponse *response;
-    NSString *attr = [inKeyPath isEqualTo:@"key"] ? @"key" : [inKeyPath substringFromIndex:11];
+    NSString *attr = [inKeyPath isEqualToString:@"key"] ? @"key" : [inKeyPath substringFromIndex:11];
     
     // Validate depending on attribute
     if ([attr isEqualToString:SMP_CURRENT_LOCATION])
