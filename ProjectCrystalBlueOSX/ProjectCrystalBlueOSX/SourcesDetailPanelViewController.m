@@ -41,6 +41,7 @@
     [self.rockTypeComboBox addItemsWithObjectValues:[SourceConstants rockTypes]];
     [self.ageMethodComboBox addItemsWithObjectValues:[SourceConstants ageMethods]];
     [self updateComboBoxesAndShouldClearValue:NO];
+    [self setupGoogleMapsHyperlink];
 }
 
 - (void)setSource:(Source *)newSource
@@ -136,7 +137,7 @@
     NSString *latitude = [source.attributes objectForKey:SRC_LATITUDE];
     NSString *longitude = [source.attributes objectForKey:SRC_LONGITUDE];
     
-    if ([latitude isEqualToString:SRC_DEF_VAL_LATITUDE] || [longitude isEqualToString:SRC_DEF_VAL_LONGITUDE]) {
+    if ([latitude isEqualToString:@""] || [longitude isEqualToString:@""]) {
         [self.googleMapsLink setStringValue:@"No Google Maps link available."];
     }
     else {

@@ -34,6 +34,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     ValidationResponse *response;
     NSString *attr = [inKeyPath isEqualToString:@"key"] ? @"key" : [inKeyPath substringFromIndex:11];
     
+    // If empty value then skip validation
+    if (!newValue)
+        return YES;
+    
     // Validate depending on attribute
     if ([attr isEqualToString:SRC_REGION])
         response = [SourceFieldValidator validateRegion:newValue];
@@ -65,22 +69,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         response = [SourceFieldValidator validateHyperlinks:newValue];
     else if ([attr isEqualToString:SRC_NOTES])
         response = [SourceFieldValidator validateNotes:newValue];
-    else if ([attr isEqualToString:SRC_TYPE]) {
-        if (!newValue) return YES;
+    else if ([attr isEqualToString:SRC_TYPE])
         response = [SourceFieldValidator validateType:newValue];
-    }
-    else if ([attr isEqualToString:SRC_LITHOLOGY]){
-        if (!newValue) return YES;
+    else if ([attr isEqualToString:SRC_LITHOLOGY])
         response = [SourceFieldValidator validateLithology:newValue];
-    }
-    else if ([attr isEqualToString:SRC_DEPOSYSTEM]){
-        if (!newValue) return YES;
+    else if ([attr isEqualToString:SRC_DEPOSYSTEM])
         response = [SourceFieldValidator validateDeposystem:newValue];
-    }
-    else if ([attr isEqualToString:SRC_AGE_METHOD]){
-        if (!newValue) return YES;
+    else if ([attr isEqualToString:SRC_AGE_METHOD])
         response = [SourceFieldValidator validateAgeMethod:newValue];
-    }
     else
         return YES;
     
