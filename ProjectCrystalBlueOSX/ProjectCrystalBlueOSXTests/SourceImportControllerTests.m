@@ -22,6 +22,7 @@
     NSString *localDirectory;
     NSString *dbPath;
     NSString *csvPath;
+    NSString *testDirectoryFullPath;
 }
 
 @end
@@ -32,27 +33,23 @@
 {
     [super setUp];
     
+    localDirectory = TEST_DIRECTORY;
+    objectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
+                                                       WithDatabaseName:TEST_DB_NAME];
+
     NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", TEST_DIRECTORY];
-    
-    [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
-                              withIntermediateDirectories:YES
-                                               attributes:nil
-                                                    error:nil];
-    
-    objectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:localDirectory
-                                                       WithDatabaseName:TEST_DB_NAME];
-    
-    csvPath = [localDirectory stringByAppendingFormat:@"/%@", TEST_CSV_FILE];
-    dbPath = [localDirectory stringByAppendingFormat:@"/%@", TEST_DB_NAME];
+
+    csvPath = [documentDirectory stringByAppendingFormat:@"/%@/%@", TEST_DIRECTORY, TEST_CSV_FILE];
+    dbPath = [documentDirectory stringByAppendingFormat:@"/%@/%@", TEST_DIRECTORY,  TEST_DB_NAME];
+    testDirectoryFullPath = [documentDirectory stringByAppendingFormat:@"/%@", TEST_DIRECTORY];
 }
 
 - (void)tearDown
 {
     [[NSFileManager defaultManager] removeItemAtPath:csvPath error:nil];
     [[NSFileManager defaultManager] removeItemAtPath:dbPath error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:localDirectory error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:testDirectoryFullPath error:nil];
     [super tearDown];
 }
 
@@ -62,16 +59,23 @@
 {
     NSMutableArray *sources = [[NSMutableArray alloc] initWithCapacity:count];
     for (int i = 0; i < count; ++i) {
-        NSString *key = [NSString stringWithFormat:@"key%04d", i];
+        NSString *key = [NSString stringWithFormat:@"KEY%04d", i];
         
         Source *s = [[Source alloc] initWithKey:key
                               AndWithAttributes:[SourceConstants attributeNames]
                                       AndValues:[SourceConstants attributeDefaultValues]];
         
         for (NSString *attribute in [SourceConstants attributeNames]) {
-            NSString *value = [attribute stringByAppendingFormat:@"%04d", i];
+            NSString *value = [[attribute substringToIndex:3] stringByAppendingFormat:@"%04d", i];
             [s.attributes setObject:value forKey:attribute];
         }
+
+        // some fields are a special case
+        [s.attributes setObject:@"128.2" forKey:SRC_METER];
+        [s.attributes setObject:@"0.50" forKey:SRC_LATITUDE];
+        [s.attributes setObject:@"0.80" forKey:SRC_LONGITUDE];
+        [s.attributes setObject:@"1/1/70, 12:00 PM" forKey:SRC_DATE_COLLECTED];
+        [s.attributes setObject:@"128" forKey:SRC_AGE];
         
         [sources addObject:s];
     }
@@ -95,10 +99,10 @@
         XCTAssertTrue([objectStore libraryObjectExistsForKey:s.key
                                                    FromTable:[SourceConstants tableName]],
                       @"%@ wasn't found", s.key);
-        
-        XCTAssertEqualObjects(s, [objectStore getLibraryObjectForKey:s.key
-                                                           FromTable:[SourceConstants tableName]]
-                              , @"Object with key %@ did not match.", s.key);
+
+        Source *expectedSource = s;
+        Source *actualSource = (Source *)[objectStore getLibraryObjectForKey:s.key FromTable:[SourceConstants tableName]];
+        XCTAssertEqualObjects(expectedSource, actualSource, @"Object with key %@ did not match.", s.key);
     }
 }
 

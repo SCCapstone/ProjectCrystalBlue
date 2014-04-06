@@ -105,6 +105,7 @@
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
 
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet letterCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet decimalDigitCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
 
     if (![PrimitiveFieldValidator validateField:continent

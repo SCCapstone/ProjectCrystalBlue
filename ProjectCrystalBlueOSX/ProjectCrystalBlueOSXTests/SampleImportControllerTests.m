@@ -41,7 +41,7 @@
                                                attributes:nil
                                                     error:nil];
     
-    objectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:localDirectory
+    objectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
                                                        WithDatabaseName:TEST_DB_NAME];
     
     csvPath = [localDirectory stringByAppendingFormat:@"/%@", TEST_CSV_FILE];
@@ -61,7 +61,7 @@
 {
     NSMutableArray *samples = [[NSMutableArray alloc] initWithCapacity:count];
     for (int i = 0; i < count; ++i) {
-        NSString *key = [NSString stringWithFormat:@"key%04d", i];
+        NSString *key = [NSString stringWithFormat:@"KEY%04d", i];
         
         Sample *s = [[Sample alloc] initWithKey:key
                               AndWithAttributes:[SampleConstants attributeNames]

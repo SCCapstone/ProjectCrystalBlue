@@ -13,7 +13,14 @@
  */
 @interface ImportResult : NSObject
 
+/// An overall result - whether there were any detected errors during import.
 @property BOOL hasError;
+
+/// A list of the keys of any invalid LibraryObjects encountered during import.
+@property NSMutableArray *keysOfInvalidLibraryObjects;
+
+/// A list of any keys that were encountered multiple times during import.
+@property NSMutableArray *duplicateKeys;
 
 @end
 

@@ -10,6 +10,19 @@
 
 @implementation ImportResult
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        keysOfInvalidLibraryObjects = [[NSMutableArray alloc] init];
+        duplicateKeys = [[NSMutableArray alloc] init];
+        hasError = YES;
+    }
+    return self;
+}
+
 @synthesize hasError;
+@synthesize keysOfInvalidLibraryObjects;
+@synthesize duplicateKeys;
 
 @end
