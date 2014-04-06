@@ -7,11 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "SourcesWindowController.h"
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
 #import "DDFileLogger.h"
-#import "SourcesWindowController.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;

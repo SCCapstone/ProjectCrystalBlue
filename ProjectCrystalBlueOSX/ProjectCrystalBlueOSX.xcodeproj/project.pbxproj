@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D021B93118F0E38900ADE234 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D021B93018F0E38900ADE234 /* Reachability.m */; };
+		D021B93318F0E3B900ADE234 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D021B93218F0E3B800ADE234 /* SystemConfiguration.framework */; };
 		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
 		D038CBCC18DBFBF400635442 /* SourcesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D038CBCB18DBFBF400635442 /* SourcesWindowController.m */; };
 		D038CBCE18DBFC0E00635442 /* SourcesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D038CBCD18DBFC0E00635442 /* SourcesWindowController.xib */; };
@@ -153,6 +155,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D021B92F18F0E38900ADE234 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		D021B93018F0E38900ADE234 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		D021B93218F0E3B800ADE234 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStoreTests.m; sourceTree = "<group>"; };
 		D038CBCA18DBFBF400635442 /* SourcesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesWindowController.h; sourceTree = "<group>"; };
 		D038CBCB18DBFBF400635442 /* SourcesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesWindowController.m; sourceTree = "<group>"; };
@@ -379,6 +384,7 @@
 			files = (
 				D7439E0F18A5FC53000EE008 /* Cocoa.framework in Frameworks */,
 				D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */,
+				D021B93318F0E3B900ADE234 /* SystemConfiguration.framework in Frameworks */,
 				D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */,
 				D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */,
 			);
@@ -705,6 +711,7 @@
 		D7439E0D18A5FC53000EE008 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D021B93218F0E3B800ADE234 /* SystemConfiguration.framework */,
 				D72405E318A6010E00EA2DD2 /* CFNetwork.framework */,
 				D72405E118A6010000EA2DD2 /* libsqlite3.dylib */,
 				D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */,
@@ -831,6 +838,8 @@
 				D7FAAD7118DE1040003A9A13 /* Validation */,
 				D78ACC4F18A5FDE9006084D6 /* ImageUtils.h */,
 				D78ACC5018A5FDE9006084D6 /* ImageUtils.m */,
+				D021B92F18F0E38900ADE234 /* Reachability.h */,
+				D021B93018F0E38900ADE234 /* Reachability.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1211,6 +1220,7 @@
 				D7A0CB7818BC57A900A61E32 /* OSXSaveSelector.m in Sources */,
 				D7125EF118C4630B00BBCD3E /* ProceduresWindowController.m in Sources */,
 				D059F8EF18E547100024AA58 /* SourcesDetailPanelViewController.m in Sources */,
+				D021B93118F0E38900ADE234 /* Reachability.m in Sources */,
 				D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
 				D0CED3BF18E8E4D10031E996 /* SamplesWindowController.m in Sources */,

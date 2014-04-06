@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="searchField" destination="cbU-TA-ncV" id="uqy-o3-eBY"/>
                 <outlet property="splitView" destination="cem-R6-0O1" id="irL-eM-zXA"/>
+                <outlet property="syncToolbarButton" destination="wIw-fV-viq" id="VkY-1q-YvR"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="TtF-1Q-LVI"/>
             </connections>
         </customObject>
@@ -17,7 +18,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="978" height="507"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="978" height="507"/>
                 <autoresizingMask key="autoresizingMask"/>

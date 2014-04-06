@@ -13,6 +13,7 @@
 
 @property (weak) IBOutlet NSSplitView *splitView;
 @property (weak) IBOutlet NSSearchField *searchField;
+@property (weak) IBOutlet NSToolbarItem *syncToolbarButton;
 
 // Toolbar buttons
 - (IBAction)openAddNewSourcesWindow:(id)sender;

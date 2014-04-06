@@ -17,6 +17,7 @@
 #import "SourceImportController.h"
 #import "LibraryObjectExportController.h"
 #import "LibraryObjectCSVWriter.h"
+#import "Reachability.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -40,7 +41,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SourcesWindowController
 
-@synthesize splitView, searchField;
+@synthesize splitView, searchField, syncToolbarButton;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -92,6 +93,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     [searchField.cell setSearchMenuTemplate:attrMenu];
     [self setSearchCategoryFrom:[attrMenu itemAtIndex:0]];
+    
+    // Setup notification for network changes
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+    [reach startNotifier];
+    if (![reach isReachable])
+        [syncToolbarButton setEnabled:NO];
 }
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex
@@ -120,6 +131,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     else
         [splitView adjustSubviews];
+}
+
+
+/*  Internet connectivity notification
+ */
+- (void)reachabilityChanged:(NSNotification *)notification
+{
+    Reachability *reach = [notification object];
+    
+    if ([reach isReachable]) {
+        [syncToolbarButton setEnabled:YES];
+    }
+    else {
+        [syncToolbarButton setEnabled:NO];
+    }
 }
 
 
