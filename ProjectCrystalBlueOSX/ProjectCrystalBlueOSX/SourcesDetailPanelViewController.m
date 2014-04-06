@@ -12,7 +12,9 @@
 #import "AbstractCloudLibraryObjectStore.h"
 
 @interface SourcesDetailPanelViewController ()
-
+{
+    enum comboBoxTags { rockTypeTag, lithologyTag, deposystemTag, ageMethodTag };
+}
 @end
 
 @implementation SourcesDetailPanelViewController
@@ -38,9 +40,6 @@
     [scrollView setDocumentView:self.view];
     [self setView:scrollView];
     
-    [self.rockTypeComboBox addItemsWithObjectValues:[SourceConstants rockTypes]];
-    [self.ageMethodComboBox addItemsWithObjectValues:[SourceConstants ageMethods]];
-    [self updateComboBoxesAndShouldClearValue:NO];
     [self setupGoogleMapsHyperlink];
 }
 
@@ -72,7 +71,10 @@
 {
     NSArray *attributes = [SourceConstants attributeNames];
     for (NSString *attr in attributes) {
-        [source addObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.%@", attr] options:NSKeyValueObservingOptionNew context:nil];
+        [source addObserver:self
+                 forKeyPath:[NSString stringWithFormat:@"attributes.%@", attr]
+                    options:NSKeyValueObservingOptionNew
+                    context:nil];
     }
 }
 
@@ -80,7 +82,8 @@
 {
     NSArray *attributes = [SourceConstants attributeNames];
     for (NSString *attr in attributes) {
-        [source removeObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.%@", attr]];
+        [source removeObserver:self
+                    forKeyPath:[NSString stringWithFormat:@"attributes.%@", attr]];
     }
 }
 
@@ -91,16 +94,15 @@
 {
     NSString *attr = [keyPath substringFromIndex:11];
 
-    // Update link if latitude, longitude, or source changes
+    // Update link if latitude or longitude changes
     if ([attr isEqualToString:SRC_LATITUDE] || [attr isEqualToString:SRC_LONGITUDE])
         [self setupGoogleMapsHyperlink];
-    // Update combo boxes when rock type changes
     else if ([attr isEqualToString:SRC_TYPE]) {
-        [self updateComboBoxesAndShouldClearValue:YES];
-        [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
+        [source.attributes setObject:@"" forKey:SRC_LITHOLOGY];
+        [source.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
     }
-    else
-        [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
+    
+    [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
 }
 
 - (void)updateDatePicker
@@ -108,28 +110,52 @@
     [datePicker setDateValue:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
 }
 
-- (void)updateComboBoxesAndShouldClearValue:(BOOL)shouldClearValue
+- (NSInteger)numberOfItemsInComboBox:(NSComboBox *)comboBox
 {
-    NSString *rockType = self.rockTypeComboBox.stringValue;
+    if (comboBox.tag == rockTypeTag)
+        return [[SourceConstants rockTypes] count];
+    else if (comboBox.tag == lithologyTag)
+        return [[SourceConstants lithologiesForRockType:self.rockTypeComboBox.stringValue] count];
+    else if (comboBox.tag == deposystemTag)
+        return [[SourceConstants deposystemsForRockType:self.rockTypeComboBox.stringValue] count];
+    else if (comboBox.tag == ageMethodTag)
+        return [[SourceConstants ageMethods] count];
+    else
+        return 0;
+}
+
+- (id)comboBox:(NSComboBox *)comboBox objectValueForItemAtIndex:(NSInteger)index
+{
+    if (comboBox.tag == rockTypeTag)
+        return [[SourceConstants rockTypes] objectAtIndex:index];
+    else if (comboBox.tag == lithologyTag)
+        return [[SourceConstants lithologiesForRockType:self.rockTypeComboBox.stringValue] objectAtIndex:index];
+    else if (comboBox.tag == deposystemTag)
+        return [[SourceConstants deposystemsForRockType:self.rockTypeComboBox.stringValue] objectAtIndex:index];
+    else if (comboBox.tag == ageMethodTag)
+        return [[SourceConstants ageMethods] objectAtIndex:index];
+    else
+        return nil;
+}
+
+- (NSString *)comboBox:(NSComboBox *)comboBox completedString:(NSString *)enteredValue
+{
+    NSArray *prefilledValues;
+    if (comboBox.tag == rockTypeTag)
+        prefilledValues = [SourceConstants rockTypes];
+    else if (comboBox.tag == lithologyTag)
+        prefilledValues = [SourceConstants lithologiesForRockType:self.rockTypeComboBox.stringValue];
+    else if (comboBox.tag == deposystemTag)
+        prefilledValues = [SourceConstants deposystemsForRockType:self.rockTypeComboBox.stringValue];
+    else if (comboBox.tag == ageMethodTag)
+        prefilledValues = [SourceConstants ageMethods];
     
-    // Setup lithology dropdown when type changes
-    [self.lithologyComboBox removeAllItems];
-    if (shouldClearValue)
-        [source.attributes setObject:@"" forKey:SRC_LITHOLOGY];
-    NSArray *lithologyValues = [SourceConstants lithologiesForRockType:rockType];
-    if (lithologyValues)
-        [self.lithologyComboBox addItemsWithObjectValues:lithologyValues];
-    
-    // Setup deposystem dropdown when type changes
-    [self.deposystemComboBox removeAllItems];
-    if (shouldClearValue)
-        [source.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
-    NSArray *deposystemValues = [SourceConstants deposystemsForRockType:rockType];
-    if (deposystemValues)
-        [self.deposystemComboBox addItemsWithObjectValues:deposystemValues];
-    
-    // Hacky way of updating table view combo boxes
-    [self.tableViewController updateComboBoxesWithRockType:rockType];
+    // Check if entered value is prefix of one of the prefilled values
+    for (NSString *value in prefilledValues) {
+        if ([value.lowercaseString hasPrefix:enteredValue.lowercaseString])
+            return value;
+    }
+    return nil;
 }
 
 - (void)setupGoogleMapsHyperlink

@@ -10,7 +10,7 @@
 
 @class Source, AbstractCloudLibraryObjectStore, SourcesTableViewController;
 
-@interface SourcesDetailPanelViewController : NSViewController
+@interface SourcesDetailPanelViewController : NSViewController <NSComboBoxDataSource>
 
 @property (weak) IBOutlet NSTextField *googleMapsLink;
 @property (weak) IBOutlet NSDatePicker *datePicker;
@@ -22,6 +22,5 @@
 @property (nonatomic) Source *source;
 @property (nonatomic) NSDate *dateCollected;
 @property AbstractCloudLibraryObjectStore *dataStore;
-@property SourcesTableViewController *tableViewController;
 
 @end
