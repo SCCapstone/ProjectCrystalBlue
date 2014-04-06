@@ -148,6 +148,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
 }
 
+- (BOOL)validateToolbarItem:(NSToolbarItem *)item
+{
+    return [item isEnabled];
+}
+
 
 /*  Toolbar actions
  */

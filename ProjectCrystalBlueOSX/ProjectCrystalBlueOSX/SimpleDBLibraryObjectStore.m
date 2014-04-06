@@ -49,8 +49,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
         simpleDBClient = [[AmazonSimpleDBClient alloc] initWithCredentialsProvider:credentialsProvider];
         
-        if (![self setupDomains])
-            return nil;
+        [self setupDomains];
     }
     
     return self;
