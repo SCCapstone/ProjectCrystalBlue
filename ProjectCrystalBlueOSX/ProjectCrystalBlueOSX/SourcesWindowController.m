@@ -11,6 +11,7 @@
 #import "SourcesDetailPanelViewController.h"
 #import "SourcePhotosWindowController.h"
 #import "AddNewSourceWindowController.h"
+#import "BatchEditWindowController.h"
 #import "SamplesWindowController.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "Source.h"
@@ -167,12 +168,29 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [activeWindowControllers addObject:addNewSourceWindowController];
 }
 
+- (IBAction)openBatchEditSourcesWindow:(id)sender
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    
+    NSIndexSet *selectedRows = [tableViewController.tableView selectedRowIndexes];
+    if (selectedRows.count == 0)
+        return;
+    
+    NSArray *selectedSources = [tableViewController.arrayController.arrangedObjects objectsAtIndexes:selectedRows];
+    
+    BatchEditWindowController *batchEditSourceWindowController = [[BatchEditWindowController alloc] initWithWindowNibName:@"BatchEditWindowController"];
+    [batchEditSourceWindowController setSelectedSources:selectedSources];
+    [batchEditSourceWindowController setDataStore:dataStore];
+    [batchEditSourceWindowController showWindow:self];
+    [activeWindowControllers addObject:batchEditSourceWindowController];
+}
+
 - (IBAction)deleteSource:(id)sender
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     
     NSIndexSet *selectedRows = [tableViewController.tableView selectedRowIndexes];
-    if (selectedRows.count == -1)
+    if (selectedRows.count == 0)
         return;
     
     NSArray *selectedSources = [tableViewController.arrayController.arrangedObjects objectsAtIndexes:selectedRows];

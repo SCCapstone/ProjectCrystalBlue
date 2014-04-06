@@ -25,7 +25,6 @@
 @property SourcesDetailPanelViewController *detailPanel;
 
 
-- (void)updateComboBoxesWithRockType:(NSString *)rockType;
 - (void)addSource:(Source *)source;
 - (void)deleteSourceWithKey:(NSString *)key;
 - (void)updateDisplayedSources;

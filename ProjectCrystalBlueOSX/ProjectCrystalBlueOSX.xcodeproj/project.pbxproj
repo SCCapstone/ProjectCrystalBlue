@@ -29,6 +29,8 @@
 		D0655A0718B209CB008947B5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
+		D09152E418F2067D00F6B579 /* BatchEditWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09152E218F2067D00F6B579 /* BatchEditWindowController.m */; };
+		D09152E518F2067D00F6B579 /* BatchEditWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09152E318F2067D00F6B579 /* BatchEditWindowController.xib */; };
 		D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C7E9718B1A72A001B98AF /* SimpleDBUtils.m */; };
 		D09C7E9A18B1ABFE001B98AF /* SimpleDBUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */; };
 		D0B410FA18B590F000017FAC /* TransactionEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B410F918B590F000017FAC /* TransactionEqualsAndHashcodeTests.m */; };
@@ -195,6 +197,9 @@
 		D08631A018AC5ACB007A8DAA /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
 		D08631A318AC61BA007A8DAA /* TransactionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionStore.h; sourceTree = "<group>"; };
 		D08631A418AC61BA007A8DAA /* TransactionStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionStore.m; sourceTree = "<group>"; };
+		D09152E118F2067D00F6B579 /* BatchEditWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchEditWindowController.h; sourceTree = "<group>"; };
+		D09152E218F2067D00F6B579 /* BatchEditWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchEditWindowController.m; sourceTree = "<group>"; };
+		D09152E318F2067D00F6B579 /* BatchEditWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BatchEditWindowController.xib; sourceTree = "<group>"; };
 		D09C7E9618B1A72A001B98AF /* SimpleDBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBUtils.h; sourceTree = "<group>"; };
 		D09C7E9718B1A72A001B98AF /* SimpleDBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtils.m; sourceTree = "<group>"; };
 		D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtilsTests.m; sourceTree = "<group>"; };
@@ -412,7 +417,7 @@
 			name = TransactionStore;
 			sourceTree = "<group>";
 		};
-		D038CBC918DBFBBF00635442 /* SourcesWindowController */ = {
+		D038CBC918DBFBBF00635442 /* SourcesWindow */ = {
 			isa = PBXGroup;
 			children = (
 				D038CBCA18DBFBF400635442 /* SourcesWindowController.h */,
@@ -421,7 +426,7 @@
 				D038CBCF18DC06EE00635442 /* SourcesTableViewController */,
 				D059F8EB18E546A90024AA58 /* SourcesDetailPanel */,
 			);
-			name = SourcesWindowController;
+			name = SourcesWindow;
 			sourceTree = "<group>";
 		};
 		D038CBCF18DC06EE00635442 /* SourcesTableViewController */ = {
@@ -491,6 +496,16 @@
 			name = TransactionStore;
 			sourceTree = "<group>";
 		};
+		D09152E018F205E700F6B579 /* BatchEditWindow */ = {
+			isa = PBXGroup;
+			children = (
+				D09152E118F2067D00F6B579 /* BatchEditWindowController.h */,
+				D09152E218F2067D00F6B579 /* BatchEditWindowController.m */,
+				D09152E318F2067D00F6B579 /* BatchEditWindowController.xib */,
+			);
+			name = BatchEditWindow;
+			sourceTree = "<group>";
+		};
 		D0C9F1E518AEF5CD00885DB4 /* SimpleDBLibraryObjectStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,7 +515,7 @@
 			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
 		};
-		D0CED3BB18E8E4BF0031E996 /* SamplesWindowController */ = {
+		D0CED3BB18E8E4BF0031E996 /* SamplesWindow */ = {
 			isa = PBXGroup;
 			children = (
 				D0CED3BC18E8E4D10031E996 /* SamplesWindowController.h */,
@@ -509,7 +524,7 @@
 				D0CED3C118E8E4DB0031E996 /* SamplesTableViewController */,
 				D0CED3C218E8E4E50031E996 /* SamplesDetailPanel */,
 			);
-			name = SamplesWindowController;
+			name = SamplesWindow;
 			sourceTree = "<group>";
 		};
 		D0CED3C118E8E4DB0031E996 /* SamplesTableViewController */ = {
@@ -847,10 +862,11 @@
 		D78ACC2F18A5FD9B006084D6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D038CBC918DBFBBF00635442 /* SourcesWindowController */,
-				D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */,
+				D038CBC918DBFBBF00635442 /* SourcesWindow */,
+				D7EA0B8A18A84AFF003D74BA /* AddNewSourceWindow */,
+				D09152E018F205E700F6B579 /* BatchEditWindow */,
 				D706CCA918E63E4C00F7762E /* SourcePhotosWindow */,
-				D0CED3BB18E8E4BF0031E996 /* SamplesWindowController */,
+				D0CED3BB18E8E4BF0031E996 /* SamplesWindow */,
 				D7125EED18C462EC00BBCD3E /* ProceduresWindow */,
 			);
 			name = ViewController;
@@ -1045,14 +1061,14 @@
 			name = ReadWrite;
 			sourceTree = "<group>";
 		};
-		D7EA0B8A18A84AFF003D74BA /* AddNewSourceView */ = {
+		D7EA0B8A18A84AFF003D74BA /* AddNewSourceWindow */ = {
 			isa = PBXGroup;
 			children = (
 				D711C94A18C42CC300D637D7 /* AddNewSourceWindowController.h */,
 				D711C94B18C42CC300D637D7 /* AddNewSourceWindowController.m */,
 				D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */,
 			);
-			name = AddNewSourceView;
+			name = AddNewSourceWindow;
 			sourceTree = "<group>";
 		};
 		D7FAAD7118DE1040003A9A13 /* Validation */ = {
@@ -1177,6 +1193,7 @@
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
 				D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */,
 				D7439E1F18A5FC53000EE008 /* Credits.rtf in Resources */,
+				D09152E518F2067D00F6B579 /* BatchEditWindowController.xib in Resources */,
 				D0CED3C018E8E4D10031E996 /* SamplesWindowController.xib in Resources */,
 				D0CED3D618E8E7540031E996 /* SamplesDetailPanelViewController.xib in Resources */,
 				D0CED3C718E8E6DE0031E996 /* SamplesTableViewController.xib in Resources */,
@@ -1242,6 +1259,7 @@
 				D704E1A718B15C5B00170B7E /* ProcedureRecordParser.m in Sources */,
 				D72FE4A018B5641A00C6452F /* ProcedureRecord.m in Sources */,
 				D78ACC4B18A5FDD9006084D6 /* DDASLLogger.m in Sources */,
+				D09152E418F2067D00F6B579 /* BatchEditWindowController.m in Sources */,
 				D72465D718B71CA6002EDE5B /* SourceImportController.m in Sources */,
 				D78ACC6E18A5FE2E006084D6 /* S3ImageStore.m in Sources */,
 				D059F93718E560200024AA58 /* GenerateQRCode.m in Sources */,

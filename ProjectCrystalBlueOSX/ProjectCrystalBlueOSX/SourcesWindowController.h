@@ -17,6 +17,7 @@
 
 // Toolbar buttons
 - (IBAction)openAddNewSourcesWindow:(id)sender;
+- (IBAction)openBatchEditSourcesWindow:(id)sender;
 - (IBAction)deleteSource:(id)sender;
 - (IBAction)viewSamples:(id)sender;
 - (IBAction)sourcePhotos:(id)sender;

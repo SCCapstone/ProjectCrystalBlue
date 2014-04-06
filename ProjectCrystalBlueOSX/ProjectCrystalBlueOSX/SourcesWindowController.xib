@@ -18,7 +18,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="978" height="507"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="978" height="507"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -102,9 +102,15 @@
                             <action selector="sourcePhotos:" target="-2" id="XqN-Kz-uyL"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="9F92BCAF-A79E-4B8D-9CA3-457E0965815F" label="Batch Edit" paletteLabel="Batch Edit" tag="-1" image="NSApplicationIcon" id="YTC-3G-okV">
+                        <connections>
+                            <action selector="openBatchEditSourcesWindow:" target="-2" id="ovM-Ww-hYI"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="IDp-6J-EK2"/>
+                    <toolbarItem reference="YTC-3G-okV"/>
                     <toolbarItem reference="ZCp-V6-AfB"/>
                     <toolbarItem reference="CAn-ip-JCw"/>
                     <toolbarItem reference="5d0-5v-eIE"/>
@@ -118,6 +124,7 @@
     </objects>
     <resources>
         <image name="NSAddTemplate" width="8" height="8"/>
+        <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="NSFolderBurnable" width="32" height="32"/>
         <image name="NSListViewTemplate" width="11" height="10"/>
         <image name="NSMobileMe" width="32" height="32"/>
