@@ -59,6 +59,9 @@
 		D711C94E18C42CC300D637D7 /* AddNewSourceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D711C94C18C42CC300D637D7 /* AddNewSourceWindowController.xib */; };
 		D7125EF118C4630B00BBCD3E /* ProceduresWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */; };
 		D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */; };
+		D715168718F1BBFE00D1D965 /* CSVImportWithValidationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D715168618F1BBFE00D1D965 /* CSVImportWithValidationTests.m */; };
+		D715168918F1BCDA00D1D965 /* sources_ok.csv in Resources */ = {isa = PBXBuildFile; fileRef = D715168818F1BCDA00D1D965 /* sources_ok.csv */; };
+		D715168B18F1BD8F00D1D965 /* samples_ok.csv in Resources */ = {isa = PBXBuildFile; fileRef = D715168A18F1BD8F00D1D965 /* samples_ok.csv */; };
 		D71BE30C18D7A85A00B7572F /* samples_non_ascii_chars.csv in Resources */ = {isa = PBXBuildFile; fileRef = D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */; };
 		D720532B18E757E500831BE6 /* ProcedureFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D720532A18E757E500831BE6 /* ProcedureFieldValidator.m */; };
 		D720532D18E7595F00831BE6 /* ProcedureFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D720532C18E7595F00831BE6 /* ProcedureFieldValidatorTests.m */; };
@@ -134,6 +137,7 @@
 		D7C8733718B2FB0B00F2976F /* LibraryObjectCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */; };
 		D7C8733D18B3031800F2976F /* CSVReadWriteUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */; };
 		D7C8733F18B31CF400F2976F /* samples_reordered_columns.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */; };
+		D7CA7D6218F1FF8B0042894A /* sources_missing_dates.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7CA7D6118F1FF8B0042894A /* sources_missing_dates.csv */; };
 		D7CCCEBD18E538EE009D0308 /* ValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */; };
 		D7CCCEC018E54C3A009D0308 /* SourceFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CCCEBF18E54C3A009D0308 /* SourceFieldValidator.m */; };
 		D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */; };
@@ -241,6 +245,9 @@
 		D7125EEE18C4630B00BBCD3E /* ProceduresWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProceduresWindowController.h; sourceTree = "<group>"; };
 		D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresWindowController.m; sourceTree = "<group>"; };
 		D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProceduresWindowController.xib; sourceTree = "<group>"; };
+		D715168618F1BBFE00D1D965 /* CSVImportWithValidationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVImportWithValidationTests.m; sourceTree = "<group>"; };
+		D715168818F1BCDA00D1D965 /* sources_ok.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sources_ok.csv; sourceTree = "<group>"; };
+		D715168A18F1BD8F00D1D965 /* samples_ok.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_ok.csv; sourceTree = "<group>"; };
 		D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_non_ascii_chars.csv; sourceTree = "<group>"; };
 		D720532918E757E500831BE6 /* ProcedureFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureFieldValidator.h; sourceTree = "<group>"; };
 		D720532A18E757E500831BE6 /* ProcedureFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureFieldValidator.m; sourceTree = "<group>"; };
@@ -364,6 +371,7 @@
 		D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectCSVReader.m; sourceTree = "<group>"; };
 		D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVReadWriteUnitTests.m; sourceTree = "<group>"; };
 		D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_reordered_columns.csv; sourceTree = "<group>"; };
+		D7CA7D6118F1FF8B0042894A /* sources_missing_dates.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sources_missing_dates.csv; sourceTree = "<group>"; };
 		D7CCCEBB18E538EE009D0308 /* ValidationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidationResponse.h; sourceTree = "<group>"; };
 		D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidationResponse.m; sourceTree = "<group>"; };
 		D7CCCEBE18E54C3A009D0308 /* SourceFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceFieldValidator.h; sourceTree = "<group>"; };
@@ -594,6 +602,17 @@
 				D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */,
 			);
 			name = ProceduresWindow;
+			sourceTree = "<group>";
+		};
+		D715168518F1BBE200D1D965 /* CSVImportWithValidation */ = {
+			isa = PBXGroup;
+			children = (
+				D715168A18F1BD8F00D1D965 /* samples_ok.csv */,
+				D715168818F1BCDA00D1D965 /* sources_ok.csv */,
+				D7CA7D6118F1FF8B0042894A /* sources_missing_dates.csv */,
+				D715168618F1BBFE00D1D965 /* CSVImportWithValidationTests.m */,
+			);
+			name = CSVImportWithValidation;
 			sourceTree = "<group>";
 		};
 		D72405E718A601CC00EA2DD2 /* Store Tests */ = {
@@ -1056,6 +1075,7 @@
 			isa = PBXGroup;
 			children = (
 				D72465DF18B731F0002EDE5B /* LibraryObjectImportController */,
+				D715168518F1BBE200D1D965 /* CSVImportWithValidation */,
 				D72465DE18B731EC002EDE5B /* CSV */,
 			);
 			name = ReadWrite;
@@ -1208,6 +1228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D715168B18F1BD8F00D1D965 /* samples_ok.csv in Resources */,
 				D75BA1FA18DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv in Resources */,
 				D7A41E3318B6A4E200653B3E /* samples_missing_attribute.csv in Resources */,
 				D72405FC18A6024900EA2DD2 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */,
@@ -1215,6 +1236,8 @@
 				D7439E3718A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D7A41E3218B6A4E200653B3E /* samples_extra_attribute.csv in Resources */,
 				D706CCA818E630CC00F7762E /* samples_different_capitalization.csv in Resources */,
+				D7CA7D6218F1FF8B0042894A /* sources_missing_dates.csv in Resources */,
+				D715168918F1BCDA00D1D965 /* sources_ok.csv in Resources */,
 				D71BE30C18D7A85A00B7572F /* samples_non_ascii_chars.csv in Resources */,
 				D7C8733F18B31CF400F2976F /* samples_reordered_columns.csv in Resources */,
 			);
@@ -1329,6 +1352,7 @@
 				D7C8733D18B3031800F2976F /* CSVReadWriteUnitTests.m in Sources */,
 				D72405F218A6022500EA2DD2 /* AbstractImageStoreTests.m in Sources */,
 				D72465E318B73D9F002EDE5B /* SourceImportControllerTests.m in Sources */,
+				D715168718F1BBFE00D1D965 /* CSVImportWithValidationTests.m in Sources */,
 				D0B410FA18B590F000017FAC /* TransactionEqualsAndHashcodeTests.m in Sources */,
 				D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */,
 				D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */,
