@@ -58,6 +58,7 @@
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"_."];
     [validCharacters removeCharactersInString:@"'"];
 
     if (![PrimitiveFieldValidator validateField:key
