@@ -58,6 +58,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)synchronizeWithCloud
 {
     // Get remote history since last update
+    DDLogCInfo(@"%@: Getting remote history since last update.", NSStringFromClass(self.class));
     NSTimeInterval lastSyncTime = [transactionStore timeOfLastSync];
     NSString *query = [NSString stringWithFormat:@"select * from %@ where %@ >= '%f' order by %@ limit 250", [TransactionConstants tableName], TRN_TIMESTAMP, lastSyncTime, TRN_TIMESTAMP];
     NSArray *remoteTransactions = [SimpleDBUtils executeSelectQuery:query
@@ -67,6 +68,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return NO;
     
     // Initialize some arrays and get ConflictResolution objects
+    DDLogCInfo(@"%@: Resolving conflicts.", NSStringFromClass(self.class));
     NSArray *resolvedConflicts = [transactionStore resolveConflicts:remoteTransactions];
     NSMutableArray *unsyncedTransactions = [[NSMutableArray alloc] init];
     NSMutableArray *unsyncedSourcePuts = [[NSMutableArray alloc] init];
@@ -75,6 +77,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSMutableArray *unsyncedSampleDeletes = [[NSMutableArray alloc] init];
     
     // For each conflict where local is more recent, add to appropriate array
+    DDLogCInfo(@"%@: Preparing resolved conflicts for remote syncing.", NSStringFromClass(self.class));
     for (ConflictResolution *resolvedConflict in resolvedConflicts) {
         if (resolvedConflict.isLocalMoreRecent) {
             // Reset transaction to current time
@@ -105,6 +108,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     
     // Add remaining 'dirty' transactions/objects to unsynced arrays
+    DDLogCInfo(@"%@: Adding remaining dirty transactions to data to be synced.", NSStringFromClass(self.class));
     NSArray *unsyncedLocalTransactions = [transactionStore getAllTransactions];
     for (Transaction *localTransaction in unsyncedLocalTransactions) {
         // Reset localTransactions to current time
@@ -135,17 +139,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
     
     // Put unsynced objects in remote database
+    DDLogCInfo(@"%@: Batch put unsynced sources.", NSStringFromClass(self.class));
     [SimpleDBUtils executeBatchPut:unsyncedSourcePuts WithDomainName:[SourceConstants tableName] UsingClient:simpleDBClient];
+    DDLogCInfo(@"%@: Batch put unsynced samples.", NSStringFromClass(self.class));
     [SimpleDBUtils executeBatchPut:unsyncedSamplePuts WithDomainName:[SampleConstants tableName] UsingClient:simpleDBClient];
     
     // Delete unsynced objects in remote database
+    DDLogCInfo(@"%@: Batch delete unsynced sources.", NSStringFromClass(self.class));
     [SimpleDBUtils executeBatchDelete:unsyncedSourceDeletes WithDomainName:[SourceConstants tableName] UsingClient:simpleDBClient];
+    DDLogCInfo(@"%@: Batch delete unsynced samples.", NSStringFromClass(self.class));
     [SimpleDBUtils executeBatchDelete:unsyncedSampleDeletes WithDomainName:[SampleConstants tableName] UsingClient:simpleDBClient];
     
     // Put unsycned transaction in remote database
+    DDLogCInfo(@"%@: Batch put unsynced transactions.", NSStringFromClass(self.class));
     [SimpleDBUtils executeBatchPut:unsyncedTransactions WithDomainName:[TransactionConstants tableName] UsingClient:simpleDBClient];
     
     // Get changed objects from remote database
+    DDLogCInfo(@"%@: Adding remotely changed objects to local database", NSStringFromClass(self.class));
     @try {
         for (ConflictResolution *resolvedConflict in resolvedConflicts) {
             // Only for conflicts where remote is more recent

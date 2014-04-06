@@ -10,7 +10,7 @@
 
 @class AbstractCloudLibraryObjectStore, Source, SourcesDetailPanelViewController;
 
-@interface SourcesTableViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
+@interface SourcesTableViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSComboBoxCellDataSource>
 
 @property (weak) IBOutlet NSTableView *tableView;
 @property (strong) IBOutlet NSArrayController *arrayController;

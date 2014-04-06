@@ -21,7 +21,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @interface SourcesTableViewController ()
 {
-    
+    enum comboBoxTags { rockTypeTag, lithologyTag, deposystemTag, ageMethodTag };
 }
 @end
 
@@ -43,11 +43,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)awakeFromNib
 {
     [self updateDisplayedSources];
-    
-    // Setup table combo boxes
-    [self.rockTypeComboBoxCell addItemsWithObjectValues:[SourceConstants rockTypes]];
-    [self.ageMethodComboBoxCell addItemsWithObjectValues:[SourceConstants ageMethods]];
-    [self updateComboBoxesWithRockType:self.rockTypeComboBoxCell.stringValue];
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
@@ -60,6 +55,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     Source *source = [arrayController.arrangedObjects objectAtIndex:selectedRow];
     [detailPanel setSource:source];
+    
+    // Update the combo box values
+    [self.lithologyComboBoxCell reloadData];
+    [self.deposystemComboBoxCell reloadData];
 }
 
 - (BOOL)tableView:(NSTableView *)mTableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -102,19 +101,68 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return YES;
 }
 
-- (void)updateComboBoxesWithRockType:(NSString *)rockType
+- (NSInteger)numberOfItemsInComboBoxCell:(NSComboBoxCell *)comboBoxCell
 {
-    // Setup lithology dropdown when type changes
-    [self.lithologyComboBoxCell removeAllItems];
-    NSArray *lithologyValues = [SourceConstants lithologiesForRockType:rockType];
-    if (lithologyValues)
-        [self.lithologyComboBoxCell addItemsWithObjectValues:lithologyValues];
+    NSString *rockType = nil;
+    if (tableView.selectedRow != -1)
+        rockType = [((Source *)[displayedSources objectAtIndex:tableView.selectedRow]).attributes objectForKey:SRC_TYPE];
     
-    // Setup deposystem dropdown when type changes
-    [self.deposystemComboBoxCell removeAllItems];
-    NSArray *deposystemValues = [SourceConstants deposystemsForRockType:rockType];
-    if (deposystemValues)
-        [self.deposystemComboBoxCell addItemsWithObjectValues:deposystemValues];
+    if (comboBoxCell.tag == rockTypeTag)
+        return [[SourceConstants rockTypes] count];
+    else if (comboBoxCell.tag == lithologyTag) {
+        NSArray *lithologies = [SourceConstants lithologiesForRockType:rockType];
+        return lithologies == nil ? 0 : lithologies.count;
+    }
+    else if (comboBoxCell.tag == deposystemTag){
+        NSArray *deposystems = [SourceConstants deposystemsForRockType:rockType];
+        return deposystems == nil ? 0 : deposystems.count;
+    }
+    else if (comboBoxCell.tag == ageMethodTag)
+        return [[SourceConstants ageMethods] count];
+    else
+        return 0;
+}
+
+- (id)comboBoxCell:(NSComboBoxCell *)comboBoxCell objectValueForItemAtIndex:(NSInteger)index
+{
+    NSString *rockType = nil;
+    if (tableView.selectedRow != -1)
+        rockType = [((Source *)[displayedSources objectAtIndex:tableView.selectedRow]).attributes objectForKey:SRC_TYPE];
+    
+    if (comboBoxCell.tag == rockTypeTag)
+        return [[SourceConstants rockTypes] objectAtIndex:index];
+    else if (comboBoxCell.tag == lithologyTag)
+        return [[SourceConstants lithologiesForRockType:rockType] objectAtIndex:index];
+    else if (comboBoxCell.tag == deposystemTag)
+        return [[SourceConstants deposystemsForRockType:rockType] objectAtIndex:index];
+    else if (comboBoxCell.tag == ageMethodTag)
+        return [[SourceConstants ageMethods] objectAtIndex:index];
+    else
+        return nil;
+}
+
+- (NSString *)comboBoxCell:(NSComboBoxCell *)comboBoxCell completedString:(NSString *)enteredValue
+{
+    NSString *rockType = nil;
+    if (tableView.selectedRow != -1)
+        rockType = [((Source *)[displayedSources objectAtIndex:tableView.selectedRow]).attributes objectForKey:SRC_TYPE];
+    
+    NSArray *prefilledValues;
+    if (comboBoxCell.tag == rockTypeTag)
+        prefilledValues = [SourceConstants rockTypes];
+    else if (comboBoxCell.tag == lithologyTag)
+        prefilledValues = [SourceConstants lithologiesForRockType:rockType];
+    else if (comboBoxCell.tag == deposystemTag)
+        prefilledValues = [SourceConstants deposystemsForRockType:rockType];
+    else if (comboBoxCell.tag == ageMethodTag)
+        prefilledValues = [SourceConstants ageMethods];
+    
+    // Check if entered value is prefix of one of the prefilled values
+    for (NSString *value in prefilledValues) {
+        if ([value.lowercaseString hasPrefix:enteredValue.lowercaseString])
+            return value;
+    }
+    return nil;
 }
 
 - (void)addSource:(Source *)source

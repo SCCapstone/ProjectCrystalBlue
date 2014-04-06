@@ -25,11 +25,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="2252" height="507"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="a7G-OY-FNR">
-                        <rect key="frame" x="1" y="17" width="2250" height="474"/>
+                        <rect key="frame" x="1" y="17" width="2250" height="489"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveColumns="NO" headerView="ClV-ij-aSA" id="UTf-Bo-kV3">
-                                <rect key="frame" x="0.0" y="0.0" width="2252" height="474"/>
+                                <rect key="frame" x="0.0" y="0.0" width="2252" height="489"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -105,10 +105,13 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <comboBoxCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" buttonBordered="NO" numberOfVisibleItems="5" id="YnM-Mz-Gyx">
+                                        <comboBoxCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" buttonBordered="NO" usesDataSource="YES" numberOfVisibleItems="5" id="YnM-Mz-Gyx">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="-2" id="1Ng-Qk-Ji0"/>
+                                            </connections>
                                         </comboBoxCell>
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.TYPE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
@@ -126,10 +129,13 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <comboBoxCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" buttonBordered="NO" numberOfVisibleItems="5" id="0BI-1T-eWc">
+                                        <comboBoxCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" tag="1" buttonBordered="NO" usesDataSource="YES" numberOfVisibleItems="5" id="0BI-1T-eWc">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="-2" id="ea0-Bg-L1M"/>
+                                            </connections>
                                         </comboBoxCell>
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.LITHOLOGY"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
@@ -252,10 +258,13 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <comboBoxCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" buttonBordered="NO" numberOfVisibleItems="5" id="uxO-bI-0Ta">
+                                        <comboBoxCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" tag="3" buttonBordered="NO" usesDataSource="YES" numberOfVisibleItems="5" id="uxO-bI-0Ta">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="-2" id="Ree-sM-T0t"/>
+                                            </connections>
                                         </comboBoxCell>
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.AGE_METHOD"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
@@ -353,10 +362,13 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <comboBoxCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" buttonBordered="NO" numberOfVisibleItems="5" id="WfH-dW-tWi">
+                                        <comboBoxCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" tag="2" buttonBordered="NO" usesDataSource="YES" numberOfVisibleItems="5" id="WfH-dW-tWi">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="-2" id="yPd-Op-Zfs"/>
+                                            </connections>
                                         </comboBoxCell>
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.DEPOSYSTEM"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
@@ -462,7 +474,7 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="ng3-N9-fuj">
-                        <rect key="frame" x="1" y="491" width="2250" height="15"/>
+                        <rect key="frame" x="1" y="490" width="2250" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="qT8-MV-OWx">
