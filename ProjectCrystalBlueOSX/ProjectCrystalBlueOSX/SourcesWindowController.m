@@ -82,7 +82,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     // Setup search field
     NSMenu *attrMenu = [[NSMenu alloc] initWithTitle:@"Attribute Names"];
-    NSArray *attrNames = [SourceConstants attributeNames];
+    NSArray *attrNames = [SourceConstants humanReadableLabels];
     for (int i=0; i<attrNames.count; i++) {
         NSMenuItem *attrItem = [[NSMenuItem alloc] initWithTitle:[attrNames objectAtIndex:i]
                                                           action:@selector(setSearchCategoryFrom:)

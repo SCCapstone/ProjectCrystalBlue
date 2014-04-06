@@ -59,7 +59,7 @@ static NSString *const SRC_DEF_VAL_IMAGES       = @"";
 
 /*  Human-readable attribute names
  */
-static NSString *const SRC_DISPLAY_KEY          = @"Key";
+static NSString *const SRC_DISPLAY_KEY          = @"Source";
 static NSString *const SRC_DISPLAY_CONTINENT    = @"Continent";
 static NSString *const SRC_DISPLAY_TYPE         = @"Rock Type";
 static NSString *const SRC_DISPLAY_LITHOLOGY    = @"Lithology";
