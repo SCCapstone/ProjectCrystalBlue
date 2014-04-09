@@ -9,6 +9,7 @@
 #import "SourcesDetailPanelViewController.h"
 #import "SourcesTableViewController.h"
 #import "Source.h"
+#import "SourceImageUtils.h"
 #import "AbstractCloudLibraryObjectStore.h"
 
 @interface SourcesDetailPanelViewController ()
@@ -40,6 +41,11 @@
     [scrollView setDocumentView:self.view];
     [self setView:scrollView];
     
+    NSArray *sourceImages = [SourceImageUtils imagesForSource:source
+                                                 inImageStore:[SourceImageUtils defaultImageStore]];
+    if (sourceImages.count != 0)
+        [self.imageCell setImage:[sourceImages firstObject]];
+    
     [self setupGoogleMapsHyperlink];
 }
 
@@ -50,6 +56,13 @@
     
     source = newSource;
     [self setDateCollected:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
+    
+    [self.imageCell setImage:nil];
+    NSArray *sourceImages = [SourceImageUtils imagesForSource:source
+                                                 inImageStore:[SourceImageUtils defaultImageStore]];
+    if (sourceImages.count != 0)
+        [self.imageCell setImage:[sourceImages firstObject]];
+    
     [self addObserversToSelectedSource];
     [self setupGoogleMapsHyperlink];
 }

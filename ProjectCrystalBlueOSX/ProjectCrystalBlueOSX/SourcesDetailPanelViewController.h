@@ -18,6 +18,7 @@
 @property (weak) IBOutlet NSComboBox *lithologyComboBox;
 @property (weak) IBOutlet NSComboBox *ageMethodComboBox;
 @property (weak) IBOutlet NSComboBox *deposystemComboBox;
+@property (weak) IBOutlet NSImageCell *imageCell;
 
 @property (nonatomic) Source *source;
 @property (nonatomic) NSDate *dateCollected;
