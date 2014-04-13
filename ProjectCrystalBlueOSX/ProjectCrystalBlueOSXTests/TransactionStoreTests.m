@@ -8,8 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "TransactionStore.h"
+#import "FileSystemUtils.h"
 
-#define TEST_DIRECTORY @"project-crystal-blue-test-temp"
 #define DATABASE_NAME @"test_database.db"
 
 @interface TransactionStoreTests : XCTestCase
@@ -26,19 +26,14 @@
 - (void)tearDown
 {
     // Delete the test_database.db file after each test
-    NSError *error = nil;
-    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *databasePath = [[documentsDirectory stringByAppendingPathComponent:TEST_DIRECTORY]
-                              stringByAppendingPathComponent:DATABASE_NAME];
-    [[NSFileManager defaultManager] removeItemAtPath:databasePath error:&error];
-    XCTAssertNil(error, @"Error removing database file!");
+    [FileSystemUtils clearTestDirectory];
     
     [super tearDown];
 }
 
 - (void)testCommitInvalidSqlCommand
 {
-    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:TEST_DIRECTORY
+    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
                                                                        WithDatabaseName:DATABASE_NAME];
     // Get is not a transaction we want to store
     Transaction *getTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"GET"];
@@ -52,7 +47,7 @@
 
 - (void)testLastSyncTime
 {
-    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:TEST_DIRECTORY
+    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
                                                                        WithDatabaseName:DATABASE_NAME];
     // Get last sync time from database
     NSTimeInterval lastSyncTime = [transactionStore timeOfLastSync];
@@ -71,7 +66,7 @@
 
 - (void)testGetTransactionFromKey
 {
-    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:TEST_DIRECTORY
+    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
                                                                        WithDatabaseName:DATABASE_NAME];
     // Initialize some transaction objects
     Transaction *putTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"PUT"];
@@ -84,7 +79,7 @@
 
 - (void)testOptimizeTransaction
 {
-    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:TEST_DIRECTORY
+    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
                                                                        WithDatabaseName:DATABASE_NAME];
     // Initialize some transaction objects
     Transaction *putTransaction = [[Transaction alloc] initWithLibraryObjectKey:@"uniqueKey" AndWithTableName:@"tableName" AndWithSqlCommandType:@"PUT"];
@@ -124,7 +119,7 @@
 
 - (void)testGetCommitAndClearTransactions
 {
-    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:TEST_DIRECTORY
+    TransactionStore *transactionStore = [[TransactionStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
                                                                        WithDatabaseName:DATABASE_NAME];
     // Make sure transaction store is empty
     NSArray *transactions = [transactionStore getAllTransactions];

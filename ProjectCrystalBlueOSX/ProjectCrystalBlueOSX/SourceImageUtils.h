@@ -11,9 +11,6 @@
 @class AbstractImageStore;
 @class AbstractLibraryObjectStore;
 
-/// Name of the local storage location for images.
-static const NSString *LOCAL_IMAGE_DIRECTORY = @"ProjectCrystalBlueImages";
-
 /// Delimiter used to separate image keys in the database.
 static const NSString *IMAGE_LIST_DELIMITER = @",";
 

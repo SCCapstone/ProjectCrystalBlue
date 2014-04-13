@@ -10,20 +10,23 @@
 #import "AbstractLibraryObjectStore.h"
 #import "LocalLibraryObjectStore.h"
 #import "LibraryObject.h"
+#import "FileSystemUtils.h"
 #import "Source.h"
 #import "Sample.h"
 
-#define TEST_DIRECTORY @"project-crystal-blue-test-temp"
 #define DATABASE_NAME @"test_database.db"
 
 @interface LocalLibraryObjectStoreTests : XCTestCase
 
 @end
 
-@implementation LocalLibraryObjectStoreTests
+@implementation LocalLibraryObjectStoreTests {
+    NSString *TEST_DIRECTORY;
+}
 
 - (void)setUp
 {
+    TEST_DIRECTORY = [FileSystemUtils testDirectory];
     [super setUp];
 }
 
@@ -37,6 +40,9 @@
     NSString *databasePath = [[documentsDirectory stringByAppendingPathComponent:TEST_DIRECTORY] stringByAppendingPathComponent:DATABASE_NAME];
     BOOL success = [NSFileManager.defaultManager removeItemAtPath:databasePath error:&error];
     XCTAssertTrue(success, @"Error removing database file! Error: %@", error);
+
+    // Just to be sure everything is cleared
+    [FileSystemUtils clearTestDirectory];
 }
 
 // Veryify failure on nonexistent table

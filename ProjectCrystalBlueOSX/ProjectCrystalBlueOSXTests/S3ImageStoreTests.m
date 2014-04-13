@@ -10,8 +10,8 @@
 #import "AbstractCloudImageStore.h"
 #import "LocalImageStore.h"
 #import "S3ImageStore.h"
+#import "FileSystemUtils.h"
 
-#define IMAGE_DIRECTORY @"project-crystal-blue-test-temp"
 #define DIRTY_KEY_FILE_NAME @"dirty_s3_image_keys.txt" // make sure this matches the filename in S3ImageStore
 
 @interface S3ImageStoreTests : XCTestCase
@@ -29,6 +29,7 @@
 - (void)tearDown
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [FileSystemUtils clearTestDirectory];
     [super tearDown];
 }
 
@@ -43,8 +44,8 @@
  */
 - (void)testRetrieveLocalImage
 {
-    AbstractCloudImageStore *s3ImageStore = [[S3ImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
-    AbstractImageStore *localStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractCloudImageStore *s3ImageStore = [[S3ImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
+    AbstractImageStore *localStore = [[LocalImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
     
     NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
@@ -63,7 +64,7 @@
 /// Verify that a default image is retrieved for an image that does not exist.
 - (void)testNonexistantImageReturnsDefaultImage
 {
-    AbstractCloudImageStore *imageStore = [[S3ImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractCloudImageStore *imageStore = [[S3ImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
     NSString *nonexistantImage = @"NO-ONE-USE-THIS-AS-A-KEY-PLEASE";
     
     XCTAssertFalse([imageStore imageExistsForKey:nonexistantImage]);
@@ -77,8 +78,8 @@
  */
 - (void)testUploadImage
 {
-    AbstractCloudImageStore *s3imageStore = [[S3ImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
-    AbstractImageStore *localImageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractCloudImageStore *s3imageStore = [[S3ImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
+    AbstractImageStore *localImageStore = [[LocalImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
     
     NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
@@ -133,8 +134,8 @@
 {
     int NUMBER_OF_IMAGES_TO_TEST = 3; // don't set this too high since this test actually hits S3 and uses bandwidth
     
-    AbstractImageStore *localImageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
-    LocalTransactionCache *dirtyImageKeyStore = [[LocalTransactionCache alloc] initInDirectory:IMAGE_DIRECTORY
+    AbstractImageStore *localImageStore = [[LocalImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
+    LocalTransactionCache *dirtyImageKeyStore = [[LocalTransactionCache alloc] initInDirectory:[FileSystemUtils testDirectory]
                                                                                   withFileName:DIRTY_KEY_FILE_NAME];
     
     NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
@@ -154,7 +155,7 @@
     // Now that we've set up the scenario, we can clear our instances and initialize the s3 client.
     dirtyImageKeyStore = nil;
     localImageStore = nil;
-    AbstractCloudImageStore *s3 = [[S3ImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractCloudImageStore *s3 = [[S3ImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
     
     // The keys should be marked as dirty.
     for (NSString *key in testKeySet) {

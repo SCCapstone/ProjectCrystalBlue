@@ -13,9 +13,9 @@
 #import "ProcedureNameConstants.h"
 #import "ProcedureRecord.h"
 #import "SampleConstants.h"
+#import "FileSystemUtils.h"
 #import "Sample.h"
 
-#define TEST_DIR @"pcb-procedures-tests"
 #define DATABASE_NAME @"procedures-test-db"
 
 @interface PrimitiveProcedureTests : XCTestCase
@@ -31,23 +31,24 @@ LocalLibraryObjectStore *testStore;
     [super setUp];
     
     // Set up a test table
-    testStore = [[LocalLibraryObjectStore alloc]
-                       initInLocalDirectory:TEST_DIR
-                          WithDatabaseName:DATABASE_NAME];
+    testStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
+                                                     WithDatabaseName:DATABASE_NAME];
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-    
     // Remove test store
     NSError *error = nil;
     NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *databasePath = [[documentsDirectory stringByAppendingPathComponent:TEST_DIR]
+    NSString *databasePath = [[documentsDirectory stringByAppendingPathComponent:[FileSystemUtils testDirectory]]
                               stringByAppendingPathComponent:DATABASE_NAME];
     [[NSFileManager defaultManager] removeItemAtPath:databasePath error:&error];
     XCTAssertNil(error, @"Error removing database file!");
+
+    // Just to be sure everything is gone.
+    [FileSystemUtils clearTestDirectory];
+
+    [super tearDown];
 }
 
 /// Simply clone a single sample object.

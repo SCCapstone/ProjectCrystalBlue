@@ -11,9 +11,9 @@
 #import "Source.h"
 #import "SourceConstants.h"
 #import "LocalLibraryObjectStore.h"
+#import "FileSystemUtils.h"
 #import "LibraryObjectCSVWriter.h"
 
-#define TEST_DIRECTORY @"pcb-sample-import-controller-test"
 #define TEST_DB_NAME @"pcb-test-db"
 #define TEST_CSV_FILE @"testSources.csv"
 
@@ -33,23 +33,17 @@
 {
     [super setUp];
     
-    localDirectory = TEST_DIRECTORY;
-    objectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
+    localDirectory = [FileSystemUtils testDirectory];
+    objectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
                                                        WithDatabaseName:TEST_DB_NAME];
 
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-
-    csvPath = [documentDirectory stringByAppendingFormat:@"/%@/%@", TEST_DIRECTORY, TEST_CSV_FILE];
-    dbPath = [documentDirectory stringByAppendingFormat:@"/%@/%@", TEST_DIRECTORY,  TEST_DB_NAME];
-    testDirectoryFullPath = [documentDirectory stringByAppendingFormat:@"/%@", TEST_DIRECTORY];
+    csvPath = [localDirectory stringByAppendingPathComponent:TEST_CSV_FILE];
+    dbPath = [localDirectory stringByAppendingPathComponent:TEST_DB_NAME];
 }
 
 - (void)tearDown
 {
-    [[NSFileManager defaultManager] removeItemAtPath:csvPath error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:dbPath error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:testDirectoryFullPath error:nil];
+    [FileSystemUtils clearTestDirectory];
     [super tearDown];
 }
 

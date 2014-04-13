@@ -25,10 +25,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     self = [super initWithLocalDirectory:directory];
     if (self) {
-        NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-        localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", directory];
-        
+        localDirectory = directory;
         [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
                                   withIntermediateDirectories:YES
                                                    attributes:nil

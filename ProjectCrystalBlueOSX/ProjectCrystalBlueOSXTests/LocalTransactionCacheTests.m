@@ -8,8 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "LocalTransactionCache.h"
+#import "FileSystemUtils.h"
 
-#define TEST_DIRECTORY @"project-crystal-blue-local-trnsctn-cache-test-dir"
 #define FILE_NAME @"transaction_cache.txt"
 
 @interface LocalTransactionCacheTests : XCTestCase
@@ -26,7 +26,7 @@
 
 - (void)tearDown
 {
-    // Put teardown code here; it will be run once, after the last test case.
+    [FileSystemUtils clearTestDirectory];
     [super tearDown];
 }
 
@@ -34,21 +34,12 @@
 - (void)testAddIndividualtransactions
 {
     int TRANSACTION_COUNT = 100;
-    
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    NSString *fullPath = [documentDirectory stringByAppendingFormat:@"/%@", TEST_DIRECTORY];
-    
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager createDirectoryAtPath:fullPath
-           withIntermediateDirectories:NO
-                            attributes:nil
-                                 error:nil];
-    
+
     // Check that the file gets created correctly.
-    LocalTransactionCache *transactions = [[LocalTransactionCache alloc] initInDirectory:TEST_DIRECTORY
+    LocalTransactionCache *transactions = [[LocalTransactionCache alloc] initInDirectory:[FileSystemUtils testDirectory]
                                                                            withFileName:FILE_NAME];
-    NSString *expectedFilePath = [fullPath stringByAppendingFormat:@"/%@", [transactions fileName]];
+    NSString *expectedFilePath = [[FileSystemUtils testDirectory] stringByAppendingFormat:@"/%@", [transactions fileName]];
     XCTAssertTrue([fileManager fileExistsAtPath:expectedFilePath]);
     XCTAssertTrue([transactions count] == 0);
     
@@ -62,7 +53,7 @@
     XCTAssertEqual([transactions count], (unsigned long)TRANSACTION_COUNT);
     
     /// We'll initialize another LocalTransactionCache. It should contain the same members if it loads the file correctly.
-    LocalTransactionCache *otherTransactions = [[LocalTransactionCache alloc] initInDirectory:TEST_DIRECTORY
+    LocalTransactionCache *otherTransactions = [[LocalTransactionCache alloc] initInDirectory:[FileSystemUtils testDirectory]
                                                                                  withFileName:FILE_NAME];
     
     XCTAssertEqual([otherTransactions count], [transactions count]);
@@ -71,10 +62,7 @@
         NSString *key = [NSString stringWithFormat:@"KEY_%4d", i];
         XCTAssertTrue([otherTransactions contains:key]);
     }
-    
-    // Clean-up
-    [fileManager removeItemAtPath:expectedFilePath error:nil];
-    [fileManager removeItemAtPath:fullPath error:nil];
+
 }
 
 /// Check that we can remove transactions from the file.
@@ -82,21 +70,13 @@
 {
     // Please use an even number for this test to avoid rounding issues when dividing the count in half.
     int TRANSACTION_COUNT = 100;
-    
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    NSString *fullPath = [documentDirectory stringByAppendingFormat:@"/%@", TEST_DIRECTORY];
-    
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager createDirectoryAtPath:fullPath
-           withIntermediateDirectories:NO
-                            attributes:nil
-                                 error:nil];
     
     // Check that the file gets created correctly.
-    LocalTransactionCache *cache = [[LocalTransactionCache alloc] initInDirectory:TEST_DIRECTORY
-                                                                           withFileName:FILE_NAME];
-    NSString *expectedFilePath = [fullPath stringByAppendingFormat:@"/%@", [cache fileName]];
+    LocalTransactionCache *cache = [[LocalTransactionCache alloc] initInDirectory:[FileSystemUtils testDirectory]
+                                                                     withFileName:FILE_NAME];
+    NSString *expectedFilePath = [[FileSystemUtils testDirectory] stringByAppendingFormat:@"/%@", [cache fileName]];
     XCTAssertTrue([fileManager fileExistsAtPath:expectedFilePath]);
     XCTAssertTrue([cache count] == 0);
     
@@ -116,17 +96,13 @@
     XCTAssertEqual([cache count], (unsigned long)(TRANSACTION_COUNT / 2));
     
     // We'll initialize another LocalTransactionCache. It should contain the same members if it loads the file correctly.
-    LocalTransactionCache *other = [[LocalTransactionCache alloc] initInDirectory:TEST_DIRECTORY
+    LocalTransactionCache *other = [[LocalTransactionCache alloc] initInDirectory:[FileSystemUtils testDirectory]
                                                                      withFileName:FILE_NAME];
     XCTAssertEqual([other count], [cache count]);
     
     for (NSString *key in [cache allTransactions]) {
         XCTAssertTrue([other contains:key]);
     }
-    
-    // Clean-up
-    [fileManager removeItemAtPath:expectedFilePath error:nil];
-    [fileManager removeItemAtPath:fullPath error:nil];
 }
 
 /**
@@ -137,16 +113,6 @@
 {
     int TRANSACTION_COUNT = 5000;
     
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    NSString *fullPath = [documentDirectory stringByAppendingFormat:@"/%@", TEST_DIRECTORY];
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager createDirectoryAtPath:fullPath
-           withIntermediateDirectories:NO
-                            attributes:nil
-                                 error:nil];
-    
     // Build the set of keys to add
     NSMutableArray *keys = [[NSMutableArray alloc] init];
     for (int i = 0; i < TRANSACTION_COUNT; ++i) {
@@ -154,24 +120,19 @@
         [keys addObject:key];
     }
     
-    LocalTransactionCache *firstCache = [[LocalTransactionCache alloc] initInDirectory:TEST_DIRECTORY
+    LocalTransactionCache *firstCache = [[LocalTransactionCache alloc] initInDirectory:[FileSystemUtils testDirectory]
                                                                                 withFileName:FILE_NAME];
     [firstCache addAll:keys];
     XCTAssertEqual([firstCache count], (unsigned long) TRANSACTION_COUNT);
     
     // We'll initialize another DirtyKeySet. It should contain the same members if it loads the file correctly.
-    LocalTransactionCache *other = [[LocalTransactionCache alloc] initInDirectory:TEST_DIRECTORY
+    LocalTransactionCache *other = [[LocalTransactionCache alloc] initInDirectory:[FileSystemUtils testDirectory]
                                                                      withFileName:FILE_NAME];
     XCTAssertEqual([other count], [firstCache count]);
     
     for (NSString *key in [firstCache allTransactions]) {
         XCTAssertTrue([other contains:key]);
     }
-    
-    // Clean-up
-    NSString *expectedFilePath = [fullPath stringByAppendingFormat:@"/%@", [firstCache fileName]];
-    [fileManager removeItemAtPath:expectedFilePath error:nil];
-    [fileManager removeItemAtPath:fullPath error:nil];
 }
 
 /**
@@ -181,17 +142,7 @@
 {
     int TRANSACTION_COUNT = 50;
     
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    NSString *fullPath = [documentDirectory stringByAppendingFormat:@"/%@", TEST_DIRECTORY];
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager createDirectoryAtPath:fullPath
-           withIntermediateDirectories:NO
-                            attributes:nil
-                                 error:nil];
-    
-    LocalTransactionCache *transactionCache = [[LocalTransactionCache alloc] initInDirectory:TEST_DIRECTORY
+    LocalTransactionCache *transactionCache = [[LocalTransactionCache alloc] initInDirectory:[FileSystemUtils testDirectory]
                                                                             withFileName:FILE_NAME];
     
     // We will use a mix of AddAll and individual adds.
@@ -222,7 +173,7 @@
     transactionCache = nil;
     orderedSet = nil;
     
-    transactionCache = [[LocalTransactionCache alloc] initInDirectory:TEST_DIRECTORY
+    transactionCache = [[LocalTransactionCache alloc] initInDirectory:[FileSystemUtils testDirectory]
                                                          withFileName:FILE_NAME];
     
     // Check that elements are in the correct order after reading from the file
@@ -231,11 +182,6 @@
         NSString *expectedValue = [NSString stringWithFormat:@"TRANSACTION%3d", i];
         XCTAssertTrue([[orderedSet objectAtIndex:i] isEqualToString:expectedValue]);
     }
-    
-    // Clean-up
-    NSString *expectedFilePath = [fullPath stringByAppendingFormat:@"/%@", [transactionCache fileName]];
-    [fileManager removeItemAtPath:expectedFilePath error:nil];
-    [fileManager removeItemAtPath:fullPath error:nil];
 }
 
 @end

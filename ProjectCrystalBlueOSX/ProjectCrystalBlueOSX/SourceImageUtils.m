@@ -11,6 +11,7 @@
 #import "AbstractLibraryObjectStore.h"
 #import "Source.h"
 #import "SourceConstants.h"
+#import "FileSystemUtils.h"
 #import "DDLog.h"
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -39,7 +40,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 + (AbstractImageStore *)defaultImageStore
 {
-    return [[S3ImageStore alloc] initWithLocalDirectory:[LOCAL_IMAGE_DIRECTORY copy]];
+    return [[S3ImageStore alloc] initWithLocalDirectory:[FileSystemUtils localImagesDirectory]];
 }
 
 + (NSArray *)imageKeysForSource:(Source *)source
