@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030156E318FB2D89005F325B /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030156E218FB2D89005F325B /* Quartz.framework */; };
+		030156E618FB2E00005F325B /* PDFRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 030156E518FB2E00005F325B /* PDFRenderer.m */; };
 		D021B93118F0E38900ADE234 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D021B93018F0E38900ADE234 /* Reachability.m */; };
 		D021B93318F0E3B900ADE234 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D021B93218F0E3B800ADE234 /* SystemConfiguration.framework */; };
 		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
@@ -25,7 +27,6 @@
 		D059F93218E560160024AA58 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F92618E560160024AA58 /* qrspec.c */; };
 		D059F93318E560160024AA58 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F92818E560160024AA58 /* rscode.c */; };
 		D059F93418E560160024AA58 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = D059F92A18E560160024AA58 /* split.c */; };
-		D059F93718E560200024AA58 /* GenerateQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = D059F93618E560200024AA58 /* GenerateQRCode.m */; };
 		D0655A0718B209CB008947B5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405E118A6010000EA2DD2 /* libsqlite3.dylib */; };
 		D08631A118AC5ACB007A8DAA /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A018AC5ACB007A8DAA /* Transaction.m */; };
 		D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D08631A418AC61BA007A8DAA /* TransactionStore.m */; };
@@ -168,6 +169,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		030156DF18FB2D54005F325B /* PDFRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDFRenderer.h; path = ../../../pdfrender/PDFRenderer.h; sourceTree = "<group>"; };
+		030156E218FB2D89005F325B /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		030156E418FB2E00005F325B /* PDFRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFRenderer.h; sourceTree = "<group>"; };
+		030156E518FB2E00005F325B /* PDFRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFRenderer.m; sourceTree = "<group>"; };
 		D021B92F18F0E38900ADE234 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		D021B93018F0E38900ADE234 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D021B93218F0E3B800ADE234 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -203,7 +208,6 @@
 		D059F92A18E560160024AA58 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		D059F92B18E560160024AA58 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		D059F93518E560200024AA58 /* GenerateQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateQRCode.h; sourceTree = "<group>"; };
-		D059F93618E560200024AA58 /* GenerateQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateQRCode.m; sourceTree = "<group>"; };
 		D086319F18AC5ACB007A8DAA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
 		D08631A018AC5ACB007A8DAA /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
 		D08631A318AC61BA007A8DAA /* TransactionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionStore.h; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 				D021B93318F0E3B900ADE234 /* SystemConfiguration.framework in Frameworks */,
 				D72405DE18A600B300EA2DD2 /* AWSiOSSDK.framework in Frameworks */,
 				D72405E218A6010000EA2DD2 /* libsqlite3.dylib in Frameworks */,
+				030156E318FB2D89005F325B /* Quartz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +485,9 @@
 			children = (
 				D059F91618E560160024AA58 /* qrlib */,
 				D059F93518E560200024AA58 /* GenerateQRCode.h */,
-				D059F93618E560200024AA58 /* GenerateQRCode.m */,
+				030156E418FB2E00005F325B /* PDFRenderer.h */,
+				030156E518FB2E00005F325B /* PDFRenderer.m */,
+				030156DF18FB2D54005F325B /* PDFRenderer.h */,
 			);
 			name = "QR Code Generator";
 			sourceTree = "<group>";
@@ -775,6 +782,7 @@
 		D7439E0D18A5FC53000EE008 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				030156E218FB2D89005F325B /* Quartz.framework */,
 				D021B93218F0E3B800ADE234 /* SystemConfiguration.framework */,
 				D72405E318A6010E00EA2DD2 /* CFNetwork.framework */,
 				D72405E118A6010000EA2DD2 /* libsqlite3.dylib */,
@@ -1356,7 +1364,6 @@
 				D72465D718B71CA6002EDE5B /* SourceImportController.m in Sources */,
 				D715CF6618F9E93B00768693 /* LocalEncryptedCredentialsProvider.m in Sources */,
 				D78ACC6E18A5FE2E006084D6 /* S3ImageStore.m in Sources */,
-				D059F93718E560200024AA58 /* GenerateQRCode.m in Sources */,
 				D7A0CB7B18BC596900A61E32 /* LibraryObjectExportController.m in Sources */,
 				D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */,
 				D720533218E75A4000831BE6 /* ImagesFieldValidator.m in Sources */,
@@ -1370,6 +1377,7 @@
 				D78ACC3F18A5FDC0006084D6 /* FMResultSet.m in Sources */,
 				D7A0BD9018FB189A00282714 /* FileSystemUtils.m in Sources */,
 				D78ACC6518A5FE21006084D6 /* AbstractImageStore.m in Sources */,
+				030156E618FB2E00005F325B /* PDFRenderer.m in Sources */,
 				D72465D418B71C99002EDE5B /* SampleImportController.m in Sources */,
 				D0CED3C618E8E6DE0031E996 /* SamplesTableViewController.m in Sources */,
 				D78ACC7718A5FE68006084D6 /* LocalLibraryObjectStore.m in Sources */,
