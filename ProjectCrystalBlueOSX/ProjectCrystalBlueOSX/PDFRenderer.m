@@ -8,6 +8,7 @@
 
 #import "PDFRenderer.h"
 #import "LibraryObject.h"
+#import "FileSystemUtils.h"
 
 @implementation PDFRenderer
 
@@ -29,7 +30,7 @@
     NSPrintOperation *op = [pdfDocument getPrintOperationForPrintInfo:printInfo autoRotate:YES];
     [op setPrintPanel:[NSPrintPanel printPanel]];
     [op setShowsPrintPanel:YES];
-    [op setShowsProgressPanel:YES];
+    [op setShowsProgressPanel:NO];
     [op runOperationModalForWindow:window delegate:nil didRunSelector:nil contextInfo:nil];
 }
 
@@ -131,9 +132,7 @@
 +(void)printQRWithLibraryObjects:(NSArray*)libraryObjects WithWindow:(NSWindow *)window
 {
     CGContextRef pdfContext;
-    NSArray *dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documents = [dirs objectAtIndex:0];
-    NSString *pdfPath = [documents stringByAppendingString:@"/qrcodesfrompcb/test.pdf"];
+    NSString *pdfPath = [[FileSystemUtils localRootDirectory] stringByAppendingString:@"/qrcode.pdf"];
     NSURL *pdfUrl = [NSURL fileURLWithPath:pdfPath];
     
     CFMutableDictionaryRef myDictionary = CFDictionaryCreateMutable(NULL, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
