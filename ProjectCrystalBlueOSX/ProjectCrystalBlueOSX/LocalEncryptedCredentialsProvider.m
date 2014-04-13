@@ -15,11 +15,33 @@
 
 -(AmazonCredentials *)credentials
 {
-    return nil;
+    if (![self credentialsStoreFileExists]) {
+        // TODO - will replace this with the user manually entering the keys.
+        AmazonCredentials *hardcoded = [[AmazonCredentials alloc] initWithAccessKey:@"AKIAIAWCA532UPYBPVAA"
+                                                                  withSecretKey:@"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"];
+        [self storeCredentials:hardcoded withKey:nil];
+    }
+
+    return [self retrieveCredentialsWithKey:nil];
 }
 
 -(void)refresh {
+    [self credentials];
+}
 
+-(BOOL)credentialsStoreFileExists
+{
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+    NSString *localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", @"PCB_temp"];
+
+    [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
+                              withIntermediateDirectories:YES
+                                               attributes:nil
+                                                    error:nil];
+
+    NSString *fullLocalPath = [localDirectory stringByAppendingFormat:@"/%@", filename];
+    return [[NSFileManager defaultManager] fileExistsAtPath:fullLocalPath];
 }
 
 /// Stores credentials in the local storage location,
@@ -44,8 +66,7 @@
     return writeSuccess;
 }
 
-/// Attempts to retrieve keys from the local storage location.
-/// Returns nil if keys cannot be obtained.
+/// Retrieve keys from the local storage location.
 -(AmazonCredentials *)retrieveCredentialsWithKey:(NSString *)key
 {
     NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

@@ -14,7 +14,7 @@
 #import "Sample.h"
 #import "ConflictResolution.h"
 #import <AWSiOSSDK/SimpleDB/AmazonSimpleDBClient.h>
-#import "HardcodedCredentialsProvider.h"
+#import "LocalEncryptedCredentialsProvider.h"
 #import "SimpleDBUtils.h"
 #import "DDLog.h"
 
@@ -46,7 +46,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         transactionStore = [[TransactionStore alloc] initInLocalDirectory:directory
                                                          WithDatabaseName:databaseName];
         
-        NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
+        id<AmazonCredentialsProvider> credentialsProvider = [[LocalEncryptedCredentialsProvider alloc] init];
         simpleDBClient = [[AmazonSimpleDBClient alloc] initWithCredentialsProvider:credentialsProvider];
         
         [self setupDomains];

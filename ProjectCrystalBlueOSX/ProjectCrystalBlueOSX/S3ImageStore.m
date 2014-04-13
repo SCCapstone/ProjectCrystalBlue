@@ -12,7 +12,7 @@
 #import "S3Utils.h"
 #import "ImageUtils.h"
 #import "LocalImageStore.h"
-#import "HardcodedCredentialsProvider.h"
+#import "LocalEncryptedCredentialsProvider.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -37,7 +37,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         dirtyKeys = [[LocalTransactionCache alloc] initInDirectory:directory
                                                       withFileName:DIRTY_KEY_FILE_NAME];
         
-        NSObject<AmazonCredentialsProvider> *credentialsProvider = [[HardcodedCredentialsProvider alloc] init];
+        id<AmazonCredentialsProvider> credentialsProvider = [[LocalEncryptedCredentialsProvider alloc] init];
         s3Client = [[AmazonS3Client alloc] initWithCredentialsProvider:credentialsProvider];
         
         @try {

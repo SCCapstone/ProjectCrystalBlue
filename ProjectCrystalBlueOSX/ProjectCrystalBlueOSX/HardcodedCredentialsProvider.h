@@ -11,6 +11,7 @@
 
 // TEMPORARILY HARD-CODING CREDENTIALS for test purposes.
 // This is obviously a huge security issue and cannot be in the Beta version.
+__attribute__ ((deprecated))
 @interface HardcodedCredentialsProvider : NSObject <AmazonCredentialsProvider>
 
 -(AmazonCredentials *)credentials;
