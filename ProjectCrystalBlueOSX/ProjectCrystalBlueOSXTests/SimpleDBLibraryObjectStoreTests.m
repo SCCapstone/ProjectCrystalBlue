@@ -35,6 +35,7 @@
 {
     AbstractCloudLibraryObjectStore *simpleDBStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
                                                                                              WithDatabaseName:DATABASE_NAME];
+    XCTAssertNotNil(simpleDBStore);
     
 }
 

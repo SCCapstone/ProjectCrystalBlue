@@ -13,14 +13,6 @@
 #import "AbstractCloudLibraryObjectStore.h"
 #import "GenerateQRCode.h"
 
-#import "DDLog.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
-
 @interface AddNewSourceWindowController ()
 
 @end

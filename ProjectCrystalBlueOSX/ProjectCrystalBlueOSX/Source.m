@@ -9,13 +9,6 @@
 #import "Source.h"
 #import "SourceFieldValidator.h"
 #import "ValidationResponse.h"
-#import "DDLog.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
 
 @implementation Source
 
