@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "LocalEncryptedCredentialsProvider.h"
 #import "AmazonCredentialsEncodable.h"
+#import "FileSystemUtils.h"
 
 @interface CredentialsProviderTests : XCTestCase
 
@@ -25,14 +26,14 @@
     NSString *accessKey = @"DummyAccessKey1234567890";
     NSString *secretKey = @"SuperSecretDummyKey0987654321";
     testCredentials = [[AmazonCredentials alloc] initWithAccessKey:accessKey
-                                                                        withSecretKey:secretKey];
+                                                     withSecretKey:secretKey];
 
     localKey = @"abcd123";
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [FileSystemUtils clearTestDirectory];
     [super tearDown];
 }
 
@@ -50,7 +51,9 @@
 - (void)testReadAndWriteToFile
 {
     LocalEncryptedCredentialsProvider *credentialsProvider = [[LocalEncryptedCredentialsProvider alloc] init];
+    [credentialsProvider setFilepath:[[FileSystemUtils testDirectory] stringByAppendingPathComponent:@"dummy_credentials"]];
     [credentialsProvider storeCredentials:testCredentials withKey:localKey];
+
     AmazonCredentials *actual = [credentialsProvider retrieveCredentialsWithKey:localKey];
 
     XCTAssertTrue([actual.accessKey isEqualToString:testCredentials.accessKey]);

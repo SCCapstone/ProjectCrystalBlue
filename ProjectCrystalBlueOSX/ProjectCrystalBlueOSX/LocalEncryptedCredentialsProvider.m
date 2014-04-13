@@ -8,10 +8,23 @@
 
 #import "LocalEncryptedCredentialsProvider.h"
 #import "AmazonCredentialsEncodable.h"
+#import "FileSystemUtils.h"
 
 #define filename @"credentials"
 
 @implementation LocalEncryptedCredentialsProvider
+
+@synthesize filepath;
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        // Set the default filepath.
+        filepath = [[FileSystemUtils localRootDirectory] stringByAppendingPathComponent:filename];
+    }
+    return self;
+}
 
 -(AmazonCredentials *)credentials
 {
@@ -31,17 +44,7 @@
 
 -(BOOL)credentialsStoreFileExists
 {
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    NSString *localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", @"PCB_temp"];
-
-    [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
-                              withIntermediateDirectories:YES
-                                               attributes:nil
-                                                    error:nil];
-
-    NSString *fullLocalPath = [localDirectory stringByAppendingFormat:@"/%@", filename];
-    return [[NSFileManager defaultManager] fileExistsAtPath:fullLocalPath];
+    return [[NSFileManager defaultManager] fileExistsAtPath:filepath];
 }
 
 /// Stores credentials in the local storage location,
@@ -49,38 +52,18 @@
 -(BOOL)storeCredentials:(AmazonCredentials *)credentials
                 withKey:(NSString *)key
 {
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    NSString *localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", @"PCB_temp"];
-
-    [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
-                              withIntermediateDirectories:YES
-                                               attributes:nil
-                                                    error:nil];
-
-    NSString *fullLocalPath = [localDirectory stringByAppendingFormat:@"/%@", filename];
     AmazonCredentialsEncodable *encodableCredentials = [[AmazonCredentialsEncodable alloc] initFromAmazonCredentials:credentials];
     NSData *credentialsAsData = [NSKeyedArchiver archivedDataWithRootObject:encodableCredentials];
 
-    BOOL writeSuccess = [credentialsAsData writeToFile:fullLocalPath atomically:YES];
+    BOOL writeSuccess = [credentialsAsData writeToFile:filepath
+                                            atomically:YES];
     return writeSuccess;
 }
 
 /// Retrieve keys from the local storage location.
 -(AmazonCredentials *)retrieveCredentialsWithKey:(NSString *)key
 {
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    NSString *localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", @"PCB_temp"];
-
-    [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
-                              withIntermediateDirectories:YES
-                                               attributes:nil
-                                                    error:nil];
-
-
-    NSString *fullLocalPath = [localDirectory stringByAppendingFormat:@"/%@", filename];
-    NSData *dataFromFile = [NSData dataWithContentsOfFile:fullLocalPath];
+    NSData *dataFromFile = [NSData dataWithContentsOfFile:filepath];
 
     AmazonCredentialsEncodable *decodedCredentials = [NSKeyedUnarchiver unarchiveObjectWithData:dataFromFile];
     return [decodedCredentials asAmazonCredentials];
