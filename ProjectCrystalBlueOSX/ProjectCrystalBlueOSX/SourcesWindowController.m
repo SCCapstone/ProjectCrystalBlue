@@ -20,6 +20,7 @@
 #import "LibraryObjectExportController.h"
 #import "LibraryObjectCSVWriter.h"
 #import "Reachability.h"
+#import "PDFRenderer.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -139,14 +140,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
  */
 - (void)reachabilityChanged:(NSNotification *)notification
 {
-    Reachability *reach = [notification object];
+//    Reachability *reach = [notification object];
     
-    if ([reach isReachable]) {
-        [syncToolbarButton setEnabled:YES];
-    }
-    else {
-        [syncToolbarButton setEnabled:NO];
-    }
+//    if ([reach isReachable]) {
+//        [syncToolbarButton setEnabled:YES];
+//    }
+//    else {
+//        [syncToolbarButton setEnabled:NO];
+//    }
 }
 
 - (BOOL)validateToolbarItem:(NSToolbarItem *)item
@@ -327,6 +328,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void) displayResults:(ImportResult *)result
 {
     [tableViewController updateDisplayedSources];
+}
+
+- (IBAction)printBarcodes:(id)sender
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    
+    NSIndexSet *selectedRows = [tableViewController.tableView selectedRowIndexes];
+    if (selectedRows.count == 0)
+        return;
+    
+    NSArray *selectedSources = [tableViewController.arrayController.arrangedObjects objectsAtIndexes:selectedRows];
+    
+    [PDFRenderer printQRWithLibraryObjects:selectedSources WithWindow:self.window];
 }
 
 - (IBAction)sync:(id)sender

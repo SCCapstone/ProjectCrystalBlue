@@ -22,6 +22,7 @@
 - (IBAction)viewSamples:(id)sender;
 - (IBAction)sourcePhotos:(id)sender;
 - (IBAction)importExport:(id)sender;
+- (IBAction)printBarcodes:(id)sender;
 - (IBAction)sync:(id)sender;
 
 // Search functionality
