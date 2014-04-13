@@ -9,8 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "AbstractImageStore.h"
 #import "LocalImageStore.h"
-
-#define IMAGE_DIRECTORY @"project-crystal-blue-test-temp"
+#import "FileSystemUtils.h"
 
 @interface LocalImageStoreTests : XCTestCase
 
@@ -26,14 +25,14 @@
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [FileSystemUtils clearTestDirectory];
     [super tearDown];
 }
 
 /// Verify that trying to retrieve a nonexistent image returns a nil object
 - (void)testNonexistentImageReturnsNil
 {
-    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
     NSString *nonExistentImageKey = @"NO-ONE-USE-THIS-AS-AN-IMAGE-KEY-PLEASE";
     
     NSImage *retrievedImage = [imageStore getImageForKey:nonExistentImageKey];
@@ -42,7 +41,7 @@
 
 - (void)testDeleteNonexistentFile
 {
-    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
     NSString *key = @"NO-ONE-USE-THIS-AS-AN-IMAGE-KEY-PLEASE";
     
     XCTAssertFalse([imageStore deleteImageWithKey:key],
@@ -52,7 +51,7 @@
 /// Verify that we can successfully perform basic image tasks locally: PUT, GET, and DELETE an image
 - (void)testSaveGetAndDeleteImage
 {
-    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
     
     NSString *testFile = @"big_test_image_4096-4096";
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
@@ -97,7 +96,7 @@
 {
     int NUMBER_OF_IMAGES = 2;
     AbstractImageStore *imageStore = [[LocalImageStore alloc]
-                                      initWithLocalDirectory:[IMAGE_DIRECTORY stringByAppendingString:@"/flushTest"]];
+                                      initWithLocalDirectory:[[FileSystemUtils testDirectory] stringByAppendingString:@"/flushTest"]];
     
     NSString *testFile = @"big_test_image_4096-4096";
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];

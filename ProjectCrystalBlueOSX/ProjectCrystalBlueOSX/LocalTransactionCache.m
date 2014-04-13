@@ -40,10 +40,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     self = [super init];
     if (self) {
-        NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentDirectory = [documentDirectories objectAtIndex:0];
         fileName = aFilename;
-        filePath = [documentDirectory stringByAppendingFormat:@"/%@/%@", directory, fileName];
+        filePath = [directory stringByAppendingPathComponent:fileName];
         [self loadFromFile];
     }
     return self;

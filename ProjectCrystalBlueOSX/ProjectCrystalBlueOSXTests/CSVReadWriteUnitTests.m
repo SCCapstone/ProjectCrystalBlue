@@ -9,10 +9,9 @@
 #import <XCTest/XCTest.h>
 #import "Sample.h"
 #import "Source.h"
+#import "FileSystemUtils.h"
 #import "LibraryObjectCSVWriter.h"
 #import "LibraryObjectCSVReader.h"
-
-#define TEST_DIRECTORY @"csv-test-directory"
 
 @interface CSVReadWriteUnitTests : XCTestCase
 
@@ -28,18 +27,13 @@ NSString* filePath;
     [super setUp];
     NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", TEST_DIRECTORY];
-    
-    [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
-                              withIntermediateDirectories:YES
-                                               attributes:nil
-                                                    error:nil];
+    localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", [FileSystemUtils testDirectory]];
+
 }
 
 - (void)tearDown
 {
-    [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:localDirectory error:nil];
+    [FileSystemUtils clearTestDirectory];
     [super tearDown];
 }
 

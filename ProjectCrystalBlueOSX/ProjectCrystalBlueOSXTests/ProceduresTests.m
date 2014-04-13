@@ -12,9 +12,9 @@
 #import "ProcedureRecordParser.h"
 #import "ProcedureRecord.h"
 #import "AbstractLibraryObjectStore.h"
+#import "FileSystemUtils.h"
 #import "LocalLibraryObjectStore.h"
 
-#define TEST_DIR @"pcb-procedures-tests"
 #define DATABASE_NAME @"procedures-test-db"
 
 @interface ProceduresTests : XCTestCase
@@ -31,22 +31,24 @@ AbstractLibraryObjectStore *testStore;
     
     // Set up a test table
     testStore = [[LocalLibraryObjectStore alloc]
-                 initInLocalDirectory:TEST_DIR
+                 initInLocalDirectory:[FileSystemUtils testDirectory]
                  WithDatabaseName:DATABASE_NAME];
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
     
     // Remove test store
     NSError *error = nil;
     NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *databasePath = [[documentsDirectory stringByAppendingPathComponent:TEST_DIR]
+    NSString *databasePath = [[documentsDirectory stringByAppendingPathComponent:[FileSystemUtils testDirectory]]
                               stringByAppendingPathComponent:DATABASE_NAME];
     [[NSFileManager defaultManager] removeItemAtPath:databasePath error:&error];
     XCTAssertNil(error, @"Error removing database file!");
+
+    [FileSystemUtils clearTestDirectory];
+
+    [super tearDown];
 }
 
 - (void)testJawCrush

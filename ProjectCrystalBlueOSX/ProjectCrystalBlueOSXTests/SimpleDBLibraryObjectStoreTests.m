@@ -9,8 +9,8 @@
 #import <XCTest/XCTest.h>
 #import "AbstractCloudLibraryObjectStore.h"
 #import "SimpleDBLibraryObjectStore.h"
+#import "FileSystemUtils.h"
 
-#define TEST_DIRECTORY @"project-crystal-blue-test-temp"
 #define DATABASE_NAME @"test_database.db"
 
 @interface SimpleDBLibraryObjectStoreTests : XCTestCase
@@ -29,14 +29,6 @@
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
-}
-
-- (void)testExample
-{
-    AbstractCloudLibraryObjectStore *simpleDBStore = [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
-                                                                                             WithDatabaseName:DATABASE_NAME];
-    XCTAssertNotNil(simpleDBStore);
-    
 }
 
 @end

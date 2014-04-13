@@ -12,6 +12,7 @@
 #import "FMResultSet.h"
 #import "Source.h"
 #import "SourceImageUtils.h"
+#import "FileSystemUtils.h"
 #import "Sample.h"
 #import "DDLog.h"
 
@@ -41,8 +42,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     self = [super initInLocalDirectory:directory WithDatabaseName:databaseName];
     if (self) {
         // Setup local directory
-        NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-        NSString *localDirectory = [documentsDirectory stringByAppendingPathComponent:directory];
+        NSString *localDirectory = [[FileSystemUtils localRootDirectory] stringByAppendingPathComponent:directory];
         
         [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
                                   withIntermediateDirectories:YES

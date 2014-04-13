@@ -13,6 +13,7 @@
 #import "LocalLibraryObjectStore.h"
 #import "SourceImportController.h"
 #import "SampleImportController.h"
+#import "FileSystemUtils.h"
 #import "Source.h"
 #import "Sample.h"
 
@@ -26,23 +27,15 @@ NSString* localDirectory;
 ImportResult* importResult;
 AbstractLibraryObjectStore *objectStore;
 NSString *dbPath;
-#define TEST_DIRECTORY @"csv-test-directory"
 #define TEST_DB_NAME @"pcb-test-db"
 
 - (void)setUp
 {
     [super setUp];
     importResult = nil;
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", TEST_DIRECTORY];
 
-    [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
-                              withIntermediateDirectories:YES
-                                               attributes:nil
-                                                    error:nil];
-
-    objectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
+    localDirectory = [FileSystemUtils testDirectory];
+    objectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:localDirectory
                                                        WithDatabaseName:TEST_DB_NAME];
 
     dbPath = [localDirectory stringByAppendingFormat:@"/%@", TEST_DB_NAME];
@@ -50,8 +43,7 @@ NSString *dbPath;
 
 - (void)tearDown
 {
-    [[NSFileManager defaultManager] removeItemAtPath:dbPath error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:localDirectory error:nil];
+    [FileSystemUtils clearTestDirectory];
     [super tearDown];
 }
 

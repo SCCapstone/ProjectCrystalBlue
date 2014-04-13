@@ -12,10 +12,9 @@
 #import "SourceConstants.h"
 #import "LocalLibraryObjectStore.h"
 #import "LocalImageStore.h"
+#import "FileSystemUtils.h"
 
-#define DATABASE_DIRECTORY @"project-crystal-blue-test-temp"
 #define DATABASE_NAME @"test_database.db"
-#define IMAGE_DIRECTORY @"project-crystal-blue-test-images-temp"
 
 @interface SourceImageUtilsTests : XCTestCase
 
@@ -31,17 +30,18 @@
 
 - (void)tearDown
 {
+    [FileSystemUtils clearTestDirectory];
     [super tearDown];
 }
 
 /// Tests the main "addImage/forSource" methods
 - (void)testAddImages
 {
-    AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:DATABASE_DIRECTORY
+    AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
                                                                                  WithDatabaseName:DATABASE_NAME];
 
 
-    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
 
     NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
@@ -102,11 +102,11 @@
 
 - (void)testRemoveAllImagesForSource
 {
-    AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:DATABASE_DIRECTORY
+    AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
                                                                                  WithDatabaseName:DATABASE_NAME];
 
 
-    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
 
     NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];
@@ -163,10 +163,10 @@
 /// Removal of a single image from a source.
 - (void)testRemoveSingleImage
 {
-    AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:DATABASE_DIRECTORY
+    AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
                                                                                  WithDatabaseName:DATABASE_NAME];
 
-    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:IMAGE_DIRECTORY];
+    AbstractImageStore *imageStore = [[LocalImageStore alloc] initWithLocalDirectory:[FileSystemUtils testDirectory]];
 
     NSString *testFile = @"UNIT_TEST_UPLOAD_IMAGE_16x16";
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"jpg"];

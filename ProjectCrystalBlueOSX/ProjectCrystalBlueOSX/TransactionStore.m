@@ -11,6 +11,7 @@
 #import "FMDatabase.h"
 #import "FMDatabaseQueue.h"
 #import "FMResultSet.h"
+#import "FileSystemUtils.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -49,8 +50,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     self = [super init];
     if (self) {
         // Setup local directory
-        NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-        NSString *localDirectory = [documentsDirectory stringByAppendingPathComponent:directory];
+        NSString *localDirectory = [[FileSystemUtils localRootDirectory] stringByAppendingPathComponent:directory];
         
         BOOL directoryExists;
         [[NSFileManager defaultManager] fileExistsAtPath:localDirectory isDirectory:&directoryExists];

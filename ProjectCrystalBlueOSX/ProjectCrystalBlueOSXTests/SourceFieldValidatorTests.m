@@ -10,9 +10,9 @@
 #import "SourceFieldValidator.h"
 #import "ValidationResponse.h"
 #import "LocalLibraryObjectStore.h"
+#import "FileSystemUtils.h"
 #import "Source.h"
 
-#define TEST_DIRECTORY @"project-crystal-blue-test-temp"
 #define DATABASE_NAME @"test_database.db"
 
 @interface SourceFieldValidatorTests : XCTestCase
@@ -30,6 +30,7 @@
 - (void)tearDown
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [FileSystemUtils clearTestDirectory];
     [super tearDown];
 }
 
@@ -46,7 +47,7 @@
         [tooLong appendString:@"a"];
     }
     
-    AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
+    AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
                                                                                  WithDatabaseName:DATABASE_NAME];
     
     Source *source = [[Source alloc] initWithKey:keyNotUnique
