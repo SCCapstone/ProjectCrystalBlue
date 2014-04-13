@@ -10,7 +10,34 @@
 
 @implementation GenerateQRCode
 
-const unsigned int max_size = 10000;
+const int max_size = 10000;
+
++ (struct bitmapData)getQRBitmap:(NSString *)qrData
+{
+    QRcode *qrcode;
+    const char *string=[qrData cStringUsingEncoding:NSASCIIStringEncoding];
+    qrcode = QRcode_encodeString(string, 0, QR_ECLEVEL_H, QR_MODE_8, 1); // case-sensitivy is 5th argument
+    unsigned int width = qrcode->width;
+    
+    //const unsigned int bmp_length=width*width+width;
+    
+    struct bitmapData bitmap;
+    bitmap.width=width;
+    
+    int k=0;
+    for (int i = width-1; i >= 0; --i) {
+        for (int j = i*width; j < i*width+width; ++j) {
+            NSNumber *number = [[NSNumber alloc] initWithUnsignedChar:qrcode->data[j]];
+            if ([number intValue] % 2 == 0) {
+                bitmap.data[k] = 0xFF;
+            } else {
+                bitmap.data[k] = 0x00;
+            }
+            k++;
+        }
+    }
+    return bitmap;
+}
 
 + (void)writeQRCode:(NSString *)qrData
 {
@@ -67,17 +94,7 @@ const unsigned int max_size = 10000;
 
     NSArray *dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documents = [dirs objectAtIndex:0];
-    
-    NSString *path = [documents stringByAppendingString:@"/ProjectCrystalBlue/QRCodes/"];
-    BOOL directoryExists;
-    [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&directoryExists];
-    if (!directoryExists) {
-        [[NSFileManager defaultManager] createDirectoryAtPath:path
-                                  withIntermediateDirectories:YES
-                                                   attributes:nil
-                                                        error:nil];
-    }
-    
+    NSString *path = [documents stringByAppendingString:@"/qrcodesfrompcb/"];
     path = [path stringByAppendingString:qrData];
     path = [path stringByAppendingString:@".bmp"];
 

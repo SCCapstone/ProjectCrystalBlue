@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		030156E318FB2D89005F325B /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030156E218FB2D89005F325B /* Quartz.framework */; };
-		030156E618FB2E00005F325B /* PDFRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 030156E518FB2E00005F325B /* PDFRenderer.m */; };
+		030156E918FB2EEB005F325B /* GenerateQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 030156E818FB2EEB005F325B /* GenerateQRCode.m */; };
+		030156EC18FB2F00005F325B /* PDFRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 030156EB18FB2F00005F325B /* PDFRenderer.m */; };
 		D021B93118F0E38900ADE234 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D021B93018F0E38900ADE234 /* Reachability.m */; };
 		D021B93318F0E3B900ADE234 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D021B93218F0E3B800ADE234 /* SystemConfiguration.framework */; };
 		D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D024A0D618ADA07600B577E4 /* TransactionStoreTests.m */; };
@@ -169,10 +170,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		030156DF18FB2D54005F325B /* PDFRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDFRenderer.h; path = ../../../pdfrender/PDFRenderer.h; sourceTree = "<group>"; };
 		030156E218FB2D89005F325B /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
-		030156E418FB2E00005F325B /* PDFRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFRenderer.h; sourceTree = "<group>"; };
-		030156E518FB2E00005F325B /* PDFRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFRenderer.m; sourceTree = "<group>"; };
+		030156E718FB2EEB005F325B /* GenerateQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateQRCode.h; sourceTree = "<group>"; };
+		030156E818FB2EEB005F325B /* GenerateQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateQRCode.m; sourceTree = "<group>"; };
+		030156EA18FB2F00005F325B /* PDFRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFRenderer.h; sourceTree = "<group>"; };
+		030156EB18FB2F00005F325B /* PDFRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFRenderer.m; sourceTree = "<group>"; };
 		D021B92F18F0E38900ADE234 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		D021B93018F0E38900ADE234 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D021B93218F0E3B800ADE234 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -207,7 +209,6 @@
 		D059F92918E560160024AA58 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
 		D059F92A18E560160024AA58 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		D059F92B18E560160024AA58 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
-		D059F93518E560200024AA58 /* GenerateQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateQRCode.h; sourceTree = "<group>"; };
 		D086319F18AC5ACB007A8DAA /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
 		D08631A018AC5ACB007A8DAA /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
 		D08631A318AC61BA007A8DAA /* TransactionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionStore.h; sourceTree = "<group>"; };
@@ -483,11 +484,11 @@
 		D059F91518E5600F0024AA58 /* QR Code Generator */ = {
 			isa = PBXGroup;
 			children = (
+				030156EA18FB2F00005F325B /* PDFRenderer.h */,
+				030156EB18FB2F00005F325B /* PDFRenderer.m */,
+				030156E718FB2EEB005F325B /* GenerateQRCode.h */,
+				030156E818FB2EEB005F325B /* GenerateQRCode.m */,
 				D059F91618E560160024AA58 /* qrlib */,
-				D059F93518E560200024AA58 /* GenerateQRCode.h */,
-				030156E418FB2E00005F325B /* PDFRenderer.h */,
-				030156E518FB2E00005F325B /* PDFRenderer.m */,
-				030156DF18FB2D54005F325B /* PDFRenderer.h */,
 			);
 			name = "QR Code Generator";
 			sourceTree = "<group>";
@@ -1377,7 +1378,6 @@
 				D78ACC3F18A5FDC0006084D6 /* FMResultSet.m in Sources */,
 				D7A0BD9018FB189A00282714 /* FileSystemUtils.m in Sources */,
 				D78ACC6518A5FE21006084D6 /* AbstractImageStore.m in Sources */,
-				030156E618FB2E00005F325B /* PDFRenderer.m in Sources */,
 				D72465D418B71C99002EDE5B /* SampleImportController.m in Sources */,
 				D0CED3C618E8E6DE0031E996 /* SamplesTableViewController.m in Sources */,
 				D78ACC7718A5FE68006084D6 /* LocalLibraryObjectStore.m in Sources */,
@@ -1388,11 +1388,13 @@
 				D79B09AD18FA2B0A000100CB /* AmazonCredentialsEncodable.m in Sources */,
 				D72465DA18B71E32002EDE5B /* ImportResult.m in Sources */,
 				D704E1AE18B16C4700170B7E /* Procedures.m in Sources */,
+				030156EC18FB2F00005F325B /* PDFRenderer.m in Sources */,
 				D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */,
 				D7439E1B18A5FC53000EE008 /* main.m in Sources */,
 				D7C8732D18B2F9F800F2976F /* CHCSVParser.m in Sources */,
 				D059F92E18E560160024AA58 /* mmask.c in Sources */,
 				D706CCAD18E63E7700F7762E /* SourcePhotosWindowController.m in Sources */,
+				030156E918FB2EEB005F325B /* GenerateQRCode.m in Sources */,
 				D059F92C18E560160024AA58 /* bitstream.c in Sources */,
 				D0C51DCA18BABF0C001B3929 /* ConflictResolution.m in Sources */,
 				D09152EA18F21A9300F6B579 /* LoadingSheet.m in Sources */,
