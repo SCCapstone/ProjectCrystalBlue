@@ -9,9 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <CoreText/CoreText.h>
 #import "GenerateQRCode.h"
+#import <Quartz/Quartz.h>
 
 @interface PDFRenderer : NSObject
 
-+(void)drawPDF:(NSString*)fileName;
++(void)printQRWithLibraryObjects:(NSArray*)libraryObjects WithWindow:(NSWindow *)window;
+
+@end
+
+@interface PDFDocument (CustomPDFDocument)
+
+- (NSPrintOperation *)getPrintOperationForPrintInfo:(NSPrintInfo *)printInfo autoRotate:(BOOL)doRotate;
 
 @end

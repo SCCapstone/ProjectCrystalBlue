@@ -7,12 +7,12 @@
 //
 
 #import "PDFRenderer.h"
-#import <Quartz/Quartz.h>
+#import "LibraryObject.h"
 
 @implementation PDFRenderer
 
 
-+(void)printPDF:(NSURL *)fileURL
++(void)printPDF:(NSURL *)fileURL WithWindow:(NSWindow *)window
 {
     // Create the print settings.
     NSPrintInfo *printInfo = [NSPrintInfo sharedPrintInfo];
@@ -26,24 +26,11 @@
     // Create the document reference.
     PDFDocument *pdfDocument = [[PDFDocument alloc] initWithURL:fileURL];
     
-    // Invoke private method.
-    // NOTE: Use NSInvocation because one argument is a BOOL type. Alternately, you could declare the method in a category and just call it.
-    BOOL autoRotate = YES;
-    NSMethodSignature *signature = [PDFDocument instanceMethodSignatureForSelector:@selector(getPrintOperationForPrintInfo:autoRotate:)];
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-    [invocation setSelector:@selector(getPrintOperationForPrintInfo:autoRotate:)];
-    [invocation setArgument:&printInfo atIndex:2];
-    [invocation setArgument:&autoRotate atIndex:3];
-    [invocation invokeWithTarget:pdfDocument];
-    
-    // Grab the returned print operation.
-    NSPrintOperation *op = nil;
-    [invocation getReturnValue:&op];
-    
-    // Run the print operation without showing any dialogs.
-    [op setShowsPrintPanel:NO];
-    [op setShowsProgressPanel:NO];
-    [op runOperation];
+    NSPrintOperation *op = [pdfDocument getPrintOperationForPrintInfo:printInfo autoRotate:YES];
+    [op setPrintPanel:[NSPrintPanel printPanel]];
+    [op setShowsPrintPanel:YES];
+    [op setShowsProgressPanel:YES];
+    [op runOperationModalForWindow:window delegate:nil didRunSelector:nil contextInfo:nil];
 }
 
 +(void) drawQR:(CGContextRef)ctx :(CGRect)pageRect :(NSString*)key :(CGFloat)x :(CGFloat)y :(CGFloat)qrWidth
@@ -141,14 +128,14 @@
 
 }
 
-+(void)drawPDF:(NSString*)fileName
++(void)printQRWithLibraryObjects:(NSArray*)libraryObjects WithWindow:(NSWindow *)window
 {
     CGContextRef pdfContext;
     NSArray *dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documents = [dirs objectAtIndex:0];
     NSString *pdfPath = [documents stringByAppendingString:@"/qrcodesfrompcb/test.pdf"];
     NSURL *pdfUrl = [NSURL fileURLWithPath:pdfPath];
-
+    
     CFMutableDictionaryRef myDictionary = CFDictionaryCreateMutable(NULL, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
     CFDictionarySetValue(myDictionary, kCGPDFContextTitle, CFSTR("QR Codes"));
     CFDictionarySetValue(myDictionary, kCGPDFContextCreator, CFSTR("Project Crystal Blue"));
@@ -160,27 +147,27 @@
     
     CGContextSetShouldAntialias(pdfContext, true);
     
-    [self drawText:pdfContext :pageRect :@"test" :100 :150];
-    [self drawQR:pdfContext :pageRect :@"test" :100 :100 :25];
+    CGFloat x=(CGFloat)100;
+    CGFloat y=(CGFloat)100;
+    CGFloat qrwidth=(CGFloat)50;
+    for(LibraryObject* obj in libraryObjects)
+    {
+        NSString* key=obj.key;
+        [self drawText:pdfContext :pageRect :key :x :y+(CGFloat)50];
+        [self drawQR:pdfContext :pageRect :key :x :y :qrwidth];
+        x=x+(CGFloat)100;
+        if(x==(CGFloat)700)
+        {
+            x=(CGFloat)100;
+            y=y+(CGFloat)150;
+        }
+    }
     
-    [self drawText:pdfContext :pageRect :@"test" :200 :150];
-    [self drawQR:pdfContext :pageRect :@"test" :200 :100 :35];
-    
-    [self drawText:pdfContext :pageRect :@"test" :300 :150];
-    [self drawQR:pdfContext :pageRect :@"test" :300 :100 :45];
-    
-    [self drawText:pdfContext :pageRect :@"test" :400 :150];
-    [self drawQR:pdfContext :pageRect :@"test" :400 :100 :65];
-    
-    [self drawText:pdfContext :pageRect :@"test" :500 :150];
-    [self drawQR:pdfContext :pageRect :@"test" :500 :100 :75];
-    
-    [self drawText:pdfContext :pageRect :@"test" :600 :150];
-    [self drawQR:pdfContext :pageRect :@"test" :600 :100 :85];
     
     CGContextEndPage (pdfContext);
     CGContextRelease (pdfContext);
-    [self printPDF:pdfUrl];
+    [self printPDF:pdfUrl WithWindow:window];
+    
 }
 
 @end
