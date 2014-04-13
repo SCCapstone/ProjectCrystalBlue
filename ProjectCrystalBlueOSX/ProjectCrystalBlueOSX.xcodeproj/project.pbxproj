@@ -64,6 +64,7 @@
 		D715168718F1BBFE00D1D965 /* CSVImportWithValidationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D715168618F1BBFE00D1D965 /* CSVImportWithValidationTests.m */; };
 		D715168918F1BCDA00D1D965 /* sources_ok.csv in Resources */ = {isa = PBXBuildFile; fileRef = D715168818F1BCDA00D1D965 /* sources_ok.csv */; };
 		D715168B18F1BD8F00D1D965 /* samples_ok.csv in Resources */ = {isa = PBXBuildFile; fileRef = D715168A18F1BD8F00D1D965 /* samples_ok.csv */; };
+		D715CF6618F9E93B00768693 /* LocalEncryptedCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D715CF6518F9E93B00768693 /* LocalEncryptedCredentialsProvider.m */; };
 		D71BE30C18D7A85A00B7572F /* samples_non_ascii_chars.csv in Resources */ = {isa = PBXBuildFile; fileRef = D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */; };
 		D720532B18E757E500831BE6 /* ProcedureFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D720532A18E757E500831BE6 /* ProcedureFieldValidator.m */; };
 		D720532D18E7595F00831BE6 /* ProcedureFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D720532C18E7595F00831BE6 /* ProcedureFieldValidatorTests.m */; };
@@ -128,6 +129,8 @@
 		D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9318A5FEB6006084D6 /* Sample.m */; };
 		D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9518A5FEB6006084D6 /* SourceConstants.m */; };
 		D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9718A5FEB6006084D6 /* SampleConstants.m */; };
+		D79B09A918FA2686000100CB /* CredentialsProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D79B09A818FA2686000100CB /* CredentialsProviderTests.m */; };
+		D79B09AD18FA2B0A000100CB /* AmazonCredentialsEncodable.m in Sources */ = {isa = PBXBuildFile; fileRef = D79B09AC18FA2B0A000100CB /* AmazonCredentialsEncodable.m */; };
 		D7A0CB7818BC57A900A61E32 /* OSXSaveSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A0CB7718BC57A900A61E32 /* OSXSaveSelector.m */; };
 		D7A0CB7B18BC596900A61E32 /* LibraryObjectExportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A0CB7A18BC596900A61E32 /* LibraryObjectExportController.m */; };
 		D7A41E3218B6A4E200653B3E /* samples_extra_attribute.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */; };
@@ -253,6 +256,8 @@
 		D715168618F1BBFE00D1D965 /* CSVImportWithValidationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVImportWithValidationTests.m; sourceTree = "<group>"; };
 		D715168818F1BCDA00D1D965 /* sources_ok.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sources_ok.csv; sourceTree = "<group>"; };
 		D715168A18F1BD8F00D1D965 /* samples_ok.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_ok.csv; sourceTree = "<group>"; };
+		D715CF6418F9E93B00768693 /* LocalEncryptedCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalEncryptedCredentialsProvider.h; sourceTree = "<group>"; };
+		D715CF6518F9E93B00768693 /* LocalEncryptedCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalEncryptedCredentialsProvider.m; sourceTree = "<group>"; };
 		D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_non_ascii_chars.csv; sourceTree = "<group>"; };
 		D720532918E757E500831BE6 /* ProcedureFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureFieldValidator.h; sourceTree = "<group>"; };
 		D720532A18E757E500831BE6 /* ProcedureFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureFieldValidator.m; sourceTree = "<group>"; };
@@ -357,6 +362,9 @@
 		D78ACC9518A5FEB6006084D6 /* SourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceConstants.m; sourceTree = "<group>"; };
 		D78ACC9618A5FEB6006084D6 /* SampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleConstants.h; sourceTree = "<group>"; };
 		D78ACC9718A5FEB6006084D6 /* SampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleConstants.m; sourceTree = "<group>"; };
+		D79B09A818FA2686000100CB /* CredentialsProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsProviderTests.m; sourceTree = "<group>"; };
+		D79B09AB18FA2B0A000100CB /* AmazonCredentialsEncodable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonCredentialsEncodable.h; sourceTree = "<group>"; };
+		D79B09AC18FA2B0A000100CB /* AmazonCredentialsEncodable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonCredentialsEncodable.m; sourceTree = "<group>"; };
 		D7A0CB7618BC57A900A61E32 /* OSXSaveSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXSaveSelector.h; sourceTree = "<group>"; };
 		D7A0CB7718BC57A900A61E32 /* OSXSaveSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXSaveSelector.m; sourceTree = "<group>"; };
 		D7A0CB7918BC596900A61E32 /* LibraryObjectExportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectExportController.h; sourceTree = "<group>"; };
@@ -633,6 +641,7 @@
 		D72405E718A601CC00EA2DD2 /* Store Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D79B09A718FA2666000100CB /* CredentialsProvider */,
 				D024A0D518ADA05100B577E4 /* TransactionStore */,
 				D72405E818A601D600EA2DD2 /* LibraryObjectStore */,
 				D72405EF18A6020D00EA2DD2 /* ImageStore */,
@@ -872,8 +881,7 @@
 				D78ACC5C18A5FE06006084D6 /* ImageStore */,
 				D78ACC5318A5FDFD006084D6 /* LocalTransactionCache.h */,
 				D78ACC5418A5FDFD006084D6 /* LocalTransactionCache.m */,
-				D78ACC6C18A5FE2E006084D6 /* HardcodedCredentialsProvider.h */,
-				D78ACC6D18A5FE2E006084D6 /* HardcodedCredentialsProvider.m */,
+				D79B09AA18FA2AF5000100CB /* Credentials */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -1016,6 +1024,27 @@
 				D09C7E9718B1A72A001B98AF /* SimpleDBUtils.m */,
 			);
 			name = SimpleDBLibraryObjectStore;
+			sourceTree = "<group>";
+		};
+		D79B09A718FA2666000100CB /* CredentialsProvider */ = {
+			isa = PBXGroup;
+			children = (
+				D79B09A818FA2686000100CB /* CredentialsProviderTests.m */,
+			);
+			name = CredentialsProvider;
+			sourceTree = "<group>";
+		};
+		D79B09AA18FA2AF5000100CB /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				D78ACC6C18A5FE2E006084D6 /* HardcodedCredentialsProvider.h */,
+				D78ACC6D18A5FE2E006084D6 /* HardcodedCredentialsProvider.m */,
+				D715CF6418F9E93B00768693 /* LocalEncryptedCredentialsProvider.h */,
+				D715CF6518F9E93B00768693 /* LocalEncryptedCredentialsProvider.m */,
+				D79B09AB18FA2B0A000100CB /* AmazonCredentialsEncodable.h */,
+				D79B09AC18FA2B0A000100CB /* AmazonCredentialsEncodable.m */,
+			);
+			name = Credentials;
 			sourceTree = "<group>";
 		};
 		D7A0CB7518BC572600A61E32 /* OSX Filesystem */ = {
@@ -1301,6 +1330,7 @@
 				D78ACC4B18A5FDD9006084D6 /* DDASLLogger.m in Sources */,
 				D09152E418F2067D00F6B579 /* BatchEditWindowController.m in Sources */,
 				D72465D718B71CA6002EDE5B /* SourceImportController.m in Sources */,
+				D715CF6618F9E93B00768693 /* LocalEncryptedCredentialsProvider.m in Sources */,
 				D78ACC6E18A5FE2E006084D6 /* S3ImageStore.m in Sources */,
 				D059F93718E560200024AA58 /* GenerateQRCode.m in Sources */,
 				D7A0CB7B18BC596900A61E32 /* LibraryObjectExportController.m in Sources */,
@@ -1322,6 +1352,7 @@
 				D059F92F18E560160024AA58 /* mqrspec.c in Sources */,
 				D78ACC3D18A5FDC0006084D6 /* FMDatabasePool.m in Sources */,
 				D78ACC7F18A5FE7C006084D6 /* AbstractCloudLibraryObjectStore.m in Sources */,
+				D79B09AD18FA2B0A000100CB /* AmazonCredentialsEncodable.m in Sources */,
 				D72465DA18B71E32002EDE5B /* ImportResult.m in Sources */,
 				D704E1AE18B16C4700170B7E /* Procedures.m in Sources */,
 				D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */,
@@ -1374,6 +1405,7 @@
 				D0B410FA18B590F000017FAC /* TransactionEqualsAndHashcodeTests.m in Sources */,
 				D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */,
 				D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */,
+				D79B09A918FA2686000100CB /* CredentialsProviderTests.m in Sources */,
 				D7C6AB3518E75AF700599810 /* ImagesFieldvalidatorTests.m in Sources */,
 				D7FAAD7C18DE1D1B003A9A13 /* SampleFieldValidatorTests.m in Sources */,
 				D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */,
