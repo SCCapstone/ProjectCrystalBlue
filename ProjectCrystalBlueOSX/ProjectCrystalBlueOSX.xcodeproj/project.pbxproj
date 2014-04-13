@@ -484,11 +484,11 @@
 		D059F91518E5600F0024AA58 /* QR Code Generator */ = {
 			isa = PBXGroup;
 			children = (
-				030156EA18FB2F00005F325B /* PDFRenderer.h */,
-				030156EB18FB2F00005F325B /* PDFRenderer.m */,
+				D059F91618E560160024AA58 /* qrlib */,
 				030156E718FB2EEB005F325B /* GenerateQRCode.h */,
 				030156E818FB2EEB005F325B /* GenerateQRCode.m */,
-				D059F91618E560160024AA58 /* qrlib */,
+				030156EA18FB2F00005F325B /* PDFRenderer.h */,
+				030156EB18FB2F00005F325B /* PDFRenderer.m */,
 			);
 			name = "QR Code Generator";
 			sourceTree = "<group>";
