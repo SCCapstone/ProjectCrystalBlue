@@ -140,14 +140,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
  */
 - (void)reachabilityChanged:(NSNotification *)notification
 {
-//    Reachability *reach = [notification object];
-    
-//    if ([reach isReachable]) {
-//        [syncToolbarButton setEnabled:YES];
-//    }
-//    else {
-//        [syncToolbarButton setEnabled:NO];
-//    }
+    Reachability *reach = [notification object];
+
+    if ([reach isReachable]) {
+        [syncToolbarButton setEnabled:YES];
+    }
+    else {
+        [syncToolbarButton setEnabled:NO];
+    }
 }
 
 - (BOOL)validateToolbarItem:(NSToolbarItem *)item
