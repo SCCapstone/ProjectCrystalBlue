@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AWSiOSSDK/AmazonCredentialsProvider.h>
+@class CredentialsInputWindowController;
 
 /// Securely stores credentials in a local file.
 @interface LocalEncryptedCredentialsProvider : NSObject <AmazonCredentialsProvider>
@@ -18,9 +19,16 @@
 /// (e.g. for testing).
 @property NSString *filepath;
 
+/// For a session, we can keep the local key in memory.
+@property NSString *localKey;
+
++(LocalEncryptedCredentialsProvider *)sharedInstance;
+
 -(BOOL)storeCredentials:(AmazonCredentials *)credentials
                 withKey:(NSString *)key;
 
 -(AmazonCredentials *)retrieveCredentialsWithKey:(NSString *)key;
+
+-(BOOL)credentialsStoreFileExists;
 
 @end

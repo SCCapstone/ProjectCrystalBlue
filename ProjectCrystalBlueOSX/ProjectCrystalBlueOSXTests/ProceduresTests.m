@@ -37,15 +37,6 @@ AbstractLibraryObjectStore *testStore;
 
 - (void)tearDown
 {
-    
-    // Remove test store
-    NSError *error = nil;
-    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *databasePath = [[documentsDirectory stringByAppendingPathComponent:[FileSystemUtils testDirectory]]
-                              stringByAppendingPathComponent:DATABASE_NAME];
-    [[NSFileManager defaultManager] removeItemAtPath:databasePath error:&error];
-    XCTAssertNil(error, @"Error removing database file!");
-
     [FileSystemUtils clearTestDirectory];
 
     [super tearDown];

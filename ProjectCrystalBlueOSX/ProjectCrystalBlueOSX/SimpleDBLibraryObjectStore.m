@@ -46,10 +46,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         transactionStore = [[TransactionStore alloc] initInLocalDirectory:directory
                                                          WithDatabaseName:databaseName];
         
-        id<AmazonCredentialsProvider> credentialsProvider = [[LocalEncryptedCredentialsProvider alloc] init];
+        id<AmazonCredentialsProvider> credentialsProvider = [LocalEncryptedCredentialsProvider sharedInstance];
         simpleDBClient = [[AmazonSimpleDBClient alloc] initWithCredentialsProvider:credentialsProvider];
         
-        [self setupDomains];
+//        [self setupDomains];
     }
     
     return self;

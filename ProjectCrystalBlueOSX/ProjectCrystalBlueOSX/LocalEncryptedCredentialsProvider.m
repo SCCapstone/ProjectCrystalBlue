@@ -8,6 +8,7 @@
 
 #import "LocalEncryptedCredentialsProvider.h"
 #import "AmazonCredentialsEncodable.h"
+#import "CredentialsInputWindowController.h"
 #import "FileSystemUtils.h"
 
 #define filename @"credentials"
@@ -15,6 +16,7 @@
 @implementation LocalEncryptedCredentialsProvider
 
 @synthesize filepath;
+@synthesize localKey;
 
 - (instancetype)init
 {
@@ -28,14 +30,7 @@
 
 -(AmazonCredentials *)credentials
 {
-    if (![self credentialsStoreFileExists]) {
-        // TODO - will replace this with the user manually entering the keys.
-        AmazonCredentials *hardcoded = [[AmazonCredentials alloc] initWithAccessKey:@"AKIAIAWCA532UPYBPVAA"
-                                                                  withSecretKey:@"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"];
-        [self storeCredentials:hardcoded withKey:nil];
-    }
-
-    return [self retrieveCredentialsWithKey:nil];
+    return [self retrieveCredentialsWithKey:localKey];
 }
 
 -(void)refresh {
@@ -52,6 +47,9 @@
 -(BOOL)storeCredentials:(AmazonCredentials *)credentials
                 withKey:(NSString *)key
 {
+    // Store the localKey
+    localKey = key;
+
     AmazonCredentialsEncodable *encodableCredentials = [[AmazonCredentialsEncodable alloc] initFromAmazonCredentials:credentials];
     NSData *credentialsAsData = [NSKeyedArchiver archivedDataWithRootObject:encodableCredentials];
 
@@ -63,10 +61,25 @@
 /// Retrieve keys from the local storage location.
 -(AmazonCredentials *)retrieveCredentialsWithKey:(NSString *)key
 {
+    if (![self credentialsStoreFileExists]) {
+        return [[AmazonCredentials alloc] initWithAccessKey:@"dummy"
+                                              withSecretKey:@"dummy"];
+    }
+
+    localKey = key;
     NSData *dataFromFile = [NSData dataWithContentsOfFile:filepath];
 
     AmazonCredentialsEncodable *decodedCredentials = [NSKeyedUnarchiver unarchiveObjectWithData:dataFromFile];
     return [decodedCredentials asAmazonCredentials];
+}
+
++(LocalEncryptedCredentialsProvider *)sharedInstance {
+    static LocalEncryptedCredentialsProvider *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
 
 @end

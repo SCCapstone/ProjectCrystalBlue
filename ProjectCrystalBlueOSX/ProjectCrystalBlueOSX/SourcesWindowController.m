@@ -19,6 +19,7 @@
 #import "SourceImportController.h"
 #import "LibraryObjectExportController.h"
 #import "LibraryObjectCSVWriter.h"
+#import "CredentialsInputWindowController.h"
 #import "Reachability.h"
 #import "PDFRenderer.h"
 #import "DDLog.h"
@@ -63,7 +64,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    
+
     if (!detailPanelController) {
         detailPanelController = [[SourcesDetailPanelViewController alloc] initWithNibName:@"SourcesDetailPanelViewController" bundle:nil];
         [detailPanelController setDataStore:dataStore];
@@ -105,6 +106,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [reach startNotifier];
     if (![reach isReachable])
         [syncToolbarButton setEnabled:NO];
+
+
+    // Display credentials input window
+    CredentialsInputWindowController *credentialsInput = [[CredentialsInputWindowController alloc] initWithWindowNibName:@"CredentialsInputWindowController"];
+
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+
+    [activeWindowControllers addObject:credentialsInput];
+    [credentialsInput showWindow:self];
+    [credentialsInput.window makeKeyAndOrderFront:self];
 }
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex

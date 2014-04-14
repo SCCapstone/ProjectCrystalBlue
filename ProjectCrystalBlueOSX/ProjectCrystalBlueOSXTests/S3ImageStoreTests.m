@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "AbstractCloudImageStore.h"
 #import "LocalImageStore.h"
+#import "LocalEncryptedCredentialsProvider.h"
 #import "S3ImageStore.h"
 #import "FileSystemUtils.h"
 
@@ -18,11 +19,16 @@
 
 @end
 
+/// Important: some of the tests in this test class will fail unless credentials are present.
+/// Run the application, enter in credentials, then hard-code your local key below:
+#define TEST_LOCAL_KEY @"1234"
+
 @implementation S3ImageStoreTests
 
 - (void)setUp
 {
     [super setUp];
+    [[LocalEncryptedCredentialsProvider sharedInstance] setLocalKey:TEST_LOCAL_KEY];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 

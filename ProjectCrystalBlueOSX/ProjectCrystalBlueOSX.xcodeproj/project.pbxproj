@@ -103,6 +103,8 @@
 		D7439E2F18A5FC53000EE008 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7439E0E18A5FC53000EE008 /* Cocoa.framework */; };
 		D7439E3718A5FC53000EE008 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7439E3518A5FC53000EE008 /* InfoPlist.strings */; };
 		D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */; };
+		D74C061618FB456A00677CD5 /* CredentialsInputWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D74C061418FB456A00677CD5 /* CredentialsInputWindowController.m */; };
+		D74C061718FB456A00677CD5 /* CredentialsInputWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D74C061518FB456A00677CD5 /* CredentialsInputWindowController.xib */; };
 		D75BA1FA18DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv in Resources */ = {isa = PBXBuildFile; fileRef = D75BA1F918DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv */; };
 		D78ACC3B18A5FDC0006084D6 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC3218A5FDC0006084D6 /* FMDatabase.m */; };
 		D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC3418A5FDC0006084D6 /* FMDatabaseAdditions.m */; };
@@ -315,6 +317,9 @@
 		D7439E3418A5FC53000EE008 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
 		D7439E3618A5FC53000EE008 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
+		D74C061318FB456A00677CD5 /* CredentialsInputWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialsInputWindowController.h; sourceTree = "<group>"; };
+		D74C061418FB456A00677CD5 /* CredentialsInputWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsInputWindowController.m; sourceTree = "<group>"; };
+		D74C061518FB456A00677CD5 /* CredentialsInputWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CredentialsInputWindowController.xib; sourceTree = "<group>"; };
 		D75BA1F918DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = source_with_western_europe_apple_encoding.csv; sourceTree = "<group>"; };
 		D78ACC3118A5FDC0006084D6 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		D78ACC3218A5FDC0006084D6 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -857,6 +862,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D74C060F18FB452B00677CD5 /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				D74C061318FB456A00677CD5 /* CredentialsInputWindowController.h */,
+				D74C061418FB456A00677CD5 /* CredentialsInputWindowController.m */,
+				D74C061518FB456A00677CD5 /* CredentialsInputWindowController.xib */,
+			);
+			name = Credentials;
+			sourceTree = "<group>";
+		};
 		D78ACC2B18A5FD7F006084D6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -920,6 +935,7 @@
 		D78ACC2F18A5FD9B006084D6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D74C060F18FB452B00677CD5 /* Credentials */,
 				D038CBC918DBFBBF00635442 /* SourcesWindow */,
 				D7EA0B8A18A84AFF003D74BA /* AddNewSourceWindow */,
 				D09152E018F205E700F6B579 /* BatchEditWindow */,
@@ -1285,6 +1301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
+				D74C061718FB456A00677CD5 /* CredentialsInputWindowController.xib in Resources */,
 				D706CCAE18E63E7700F7762E /* SourcePhotosWindowController.xib in Resources */,
 				D059F8F018E547100024AA58 /* SourcesDetailPanelViewController.xib in Resources */,
 				D038CBD418DC072400635442 /* SourcesTableViewController.xib in Resources */,
@@ -1359,6 +1376,7 @@
 				D78ACC5F18A5FE13006084D6 /* LocalImageStore.m in Sources */,
 				D78ACC4A18A5FDD9006084D6 /* DDTTYLogger.m in Sources */,
 				D704E1A718B15C5B00170B7E /* ProcedureRecordParser.m in Sources */,
+				D74C061618FB456A00677CD5 /* CredentialsInputWindowController.m in Sources */,
 				D72FE4A018B5641A00C6452F /* ProcedureRecord.m in Sources */,
 				D78ACC4B18A5FDD9006084D6 /* DDASLLogger.m in Sources */,
 				D09152E418F2067D00F6B579 /* BatchEditWindowController.m in Sources */,

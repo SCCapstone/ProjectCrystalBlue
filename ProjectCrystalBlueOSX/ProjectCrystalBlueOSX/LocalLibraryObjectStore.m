@@ -42,7 +42,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     self = [super initInLocalDirectory:directory WithDatabaseName:databaseName];
     if (self) {
         // Setup local directory
-        NSString *localDirectory = [[FileSystemUtils localRootDirectory] stringByAppendingPathComponent:directory];
+        NSString *localDirectory = directory;
         
         [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
                                   withIntermediateDirectories:YES

@@ -37,7 +37,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         dirtyKeys = [[LocalTransactionCache alloc] initInDirectory:directory
                                                       withFileName:DIRTY_KEY_FILE_NAME];
         
-        id<AmazonCredentialsProvider> credentialsProvider = [[LocalEncryptedCredentialsProvider alloc] init];
+        id<AmazonCredentialsProvider> credentialsProvider = [LocalEncryptedCredentialsProvider sharedInstance];
         s3Client = [[AmazonS3Client alloc] initWithCredentialsProvider:credentialsProvider];
         
         @try {

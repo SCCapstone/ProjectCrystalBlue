@@ -11,6 +11,7 @@
 #import "LocalLibraryObjectStore.h"
 #import "LibraryObject.h"
 #import "FileSystemUtils.h"
+#import "LocalEncryptedCredentialsProvider.h"
 #import "Source.h"
 #import "Sample.h"
 
@@ -33,13 +34,6 @@
 - (void)tearDown
 {
     [super tearDown];
-    
-    // Delete the test_database.db file after each test
-    NSError *error = nil;
-    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *databasePath = [[documentsDirectory stringByAppendingPathComponent:TEST_DIRECTORY] stringByAppendingPathComponent:DATABASE_NAME];
-    BOOL success = [NSFileManager.defaultManager removeItemAtPath:databasePath error:&error];
-    XCTAssertTrue(success, @"Error removing database file! Error: %@", error);
 
     // Just to be sure everything is cleared
     [FileSystemUtils clearTestDirectory];
