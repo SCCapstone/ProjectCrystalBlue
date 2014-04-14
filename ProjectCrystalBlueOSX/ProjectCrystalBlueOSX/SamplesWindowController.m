@@ -18,6 +18,7 @@
 #import "SampleImportController.h"
 #import "LibraryObjectExportController.h"
 #import "LibraryObjectCSVWriter.h"
+#import "PDFRenderer.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -268,6 +269,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     [importExportOptions beginSheetModalForWindow:self.window
                                 completionHandler:modalHandler];
+}
+
+- (IBAction)printBarcodes:(id)sender
+{
+    DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
+    
+    NSIndexSet *selectedRows = [tableViewController.tableView selectedRowIndexes];
+    if (selectedRows.count == 0)
+        return;
+    
+    NSArray *selectedSamples = [tableViewController.arrayController.arrangedObjects objectsAtIndexes:selectedRows];
+    
+    [PDFRenderer printQRWithLibraryObjects:selectedSamples WithWindow:self.window];
 }
 
 -(void) displayResults:(ImportResult *)result

@@ -24,6 +24,7 @@
 - (IBAction)deleteSample:(id)sender;
 - (IBAction)performProcedure:(id)sender;
 - (IBAction)importExport:(id)sender;
+- (IBAction)printBarcodes:(id)sender;
 
 // Search functionality
 - (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem;

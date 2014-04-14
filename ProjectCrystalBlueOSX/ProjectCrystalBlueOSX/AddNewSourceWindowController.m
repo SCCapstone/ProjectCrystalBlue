@@ -198,7 +198,6 @@
         return;
     }
     NSString *key = self.keyTextField.stringValue;
-    [GenerateQRCode writeQRCode:self.keyTextField.stringValue];
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] initWithObjects:[SourceConstants attributeDefaultValues]
                                                                            forKeys:[SourceConstants attributeNames]];
 
