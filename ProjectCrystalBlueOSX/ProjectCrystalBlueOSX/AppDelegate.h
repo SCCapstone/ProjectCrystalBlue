@@ -15,4 +15,7 @@
     SourcesWindowController *sourcesWindowController;
 }
 
+- (IBAction)clearLocalDatabase:(id)sender;
+- (IBAction)showImagesInFinder:(id)sender;
+
 @end
