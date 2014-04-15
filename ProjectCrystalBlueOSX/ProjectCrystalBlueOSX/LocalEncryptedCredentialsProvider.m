@@ -9,6 +9,7 @@
 #import "LocalEncryptedCredentialsProvider.h"
 #import "AmazonCredentialsEncodable.h"
 #import "CredentialsInputWindowController.h"
+#import "CredentialsEncryption.h"
 #import "FileSystemUtils.h"
 
 #define filename @"credentials"
@@ -50,26 +51,31 @@
     // Store the localKey
     localKey = key;
 
-    AmazonCredentialsEncodable *encodableCredentials = [[AmazonCredentialsEncodable alloc] initFromAmazonCredentials:credentials];
-    NSData *credentialsAsData = [NSKeyedArchiver archivedDataWithRootObject:encodableCredentials];
+    const AmazonCredentialsEncodable *encodableCredentials = [[AmazonCredentialsEncodable alloc] initFromAmazonCredentials:credentials];
+    const NSData *credentialsAsData = [NSKeyedArchiver archivedDataWithRootObject:encodableCredentials];
 
-    BOOL writeSuccess = [credentialsAsData writeToFile:filepath
-                                            atomically:YES];
+    // Encrypt the data
+    const NSData *encryptedData = [CredentialsEncryption encryptData:credentialsAsData WithKey:localKey];
+    BOOL writeSuccess = [encryptedData writeToFile:filepath
+                                       atomically:YES];
     return writeSuccess;
 }
 
 /// Retrieve keys from the local storage location.
 -(AmazonCredentials *)retrieveCredentialsWithKey:(NSString *)key
 {
-    if (![self credentialsStoreFileExists]) {
+    if (![self credentialsStoreFileExists] || key == nil) {
         return [[AmazonCredentials alloc] initWithAccessKey:@"dummy"
                                               withSecretKey:@"dummy"];
     }
 
     localKey = key;
-    NSData *dataFromFile = [NSData dataWithContentsOfFile:filepath];
+    const NSData *dataFromFile = [NSData dataWithContentsOfFile:filepath];
 
-    AmazonCredentialsEncodable *decodedCredentials = [NSKeyedUnarchiver unarchiveObjectWithData:dataFromFile];
+    // Decrypt the data
+    NSData *decryptedData = [CredentialsEncryption decryptData:dataFromFile WithKey:localKey];
+
+    AmazonCredentialsEncodable *decodedCredentials = [NSKeyedUnarchiver unarchiveObjectWithData:decryptedData];
     return [decodedCredentials asAmazonCredentials];
 }
 
