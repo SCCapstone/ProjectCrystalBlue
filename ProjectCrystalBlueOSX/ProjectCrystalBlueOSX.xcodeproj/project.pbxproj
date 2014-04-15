@@ -90,6 +90,7 @@
 		D72465DD18B71F03002EDE5B /* LibraryObjectImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */; };
 		D72465E118B7320C002EDE5B /* SampleImportControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */; };
 		D72465E318B73D9F002EDE5B /* SourceImportControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */; };
+		D72B385018FCCE64002796B9 /* CredentialsEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D72B384F18FCCE64002796B9 /* CredentialsEncryption.m */; };
 		D72FE4A018B5641A00C6452F /* ProcedureRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE49F18B5641A00C6452F /* ProcedureRecord.m */; };
 		D72FE4A218B57B0F00C6452F /* ProcedureRecordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE4A118B57B0F00C6452F /* ProcedureRecordTests.m */; };
 		D7439E0F18A5FC53000EE008 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7439E0E18A5FC53000EE008 /* Cocoa.framework */; };
@@ -152,6 +153,9 @@
 		D7CCCEBD18E538EE009D0308 /* ValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */; };
 		D7CCCEC018E54C3A009D0308 /* SourceFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CCCEBF18E54C3A009D0308 /* SourceFieldValidator.m */; };
 		D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */; };
+		D7EDA6A018FCE5BA00DFB93A /* CredentialsEncryptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDA69F18FCE5BA00DFB93A /* CredentialsEncryptionTests.m */; };
+		D7EDA6A218FCE7B100DFB93A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EDA6A118FCE7B100DFB93A /* Security.framework */; };
+		D7EDA6A318FCE7C200DFB93A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EDA6A118FCE7B100DFB93A /* Security.framework */; };
 		D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */; };
 		D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */; };
 		D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */; };
@@ -295,6 +299,8 @@
 		D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectImportController.m; sourceTree = "<group>"; };
 		D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleImportControllerTests.m; sourceTree = "<group>"; };
 		D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImportControllerTests.m; sourceTree = "<group>"; };
+		D72B384E18FCCE64002796B9 /* CredentialsEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialsEncryption.h; sourceTree = "<group>"; };
+		D72B384F18FCCE64002796B9 /* CredentialsEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsEncryption.m; sourceTree = "<group>"; };
 		D72FE49E18B5641A00C6452F /* ProcedureRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureRecord.h; sourceTree = "<group>"; };
 		D72FE49F18B5641A00C6452F /* ProcedureRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecord.m; sourceTree = "<group>"; };
 		D72FE4A118B57B0F00C6452F /* ProcedureRecordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecordTests.m; sourceTree = "<group>"; };
@@ -405,6 +411,8 @@
 		D7CCCEBE18E54C3A009D0308 /* SourceFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceFieldValidator.h; sourceTree = "<group>"; };
 		D7CCCEBF18E54C3A009D0308 /* SourceFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceFieldValidator.m; sourceTree = "<group>"; };
 		D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectEqualsAndHashcodeTests.m; sourceTree = "<group>"; };
+		D7EDA69F18FCE5BA00DFB93A /* CredentialsEncryptionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsEncryptionTests.m; sourceTree = "<group>"; };
+		D7EDA6A118FCE7B100DFB93A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D7FAAD7218DE10AD003A9A13 /* PrimitiveFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveFieldValidator.h; sourceTree = "<group>"; };
 		D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveFieldValidator.m; sourceTree = "<group>"; };
 		D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveValidatorTests.m; sourceTree = "<group>"; };
@@ -423,6 +431,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7EDA6A218FCE7B100DFB93A /* Security.framework in Frameworks */,
 				D7439E0F18A5FC53000EE008 /* Cocoa.framework in Frameworks */,
 				D72405E418A6010E00EA2DD2 /* CFNetwork.framework in Frameworks */,
 				D021B93318F0E3B900ADE234 /* SystemConfiguration.framework in Frameworks */,
@@ -436,6 +445,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7EDA6A318FCE7C200DFB93A /* Security.framework in Frameworks */,
 				D7439E2F18A5FC53000EE008 /* Cocoa.framework in Frameworks */,
 				D7439E2E18A5FC53000EE008 /* XCTest.framework in Frameworks */,
 				D724060718A602DF00EA2DD2 /* AWSiOSSDK.framework in Frameworks */,
@@ -788,6 +798,7 @@
 		D7439E0D18A5FC53000EE008 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7EDA6A118FCE7B100DFB93A /* Security.framework */,
 				030156E218FB2D89005F325B /* Quartz.framework */,
 				D021B93218F0E3B800ADE234 /* SystemConfiguration.framework */,
 				D72405E318A6010E00EA2DD2 /* CFNetwork.framework */,
@@ -1062,6 +1073,7 @@
 			isa = PBXGroup;
 			children = (
 				D79B09A818FA2686000100CB /* CredentialsProviderTests.m */,
+				D7EDA69F18FCE5BA00DFB93A /* CredentialsEncryptionTests.m */,
 			);
 			name = CredentialsProvider;
 			sourceTree = "<group>";
@@ -1075,6 +1087,8 @@
 				D715CF6518F9E93B00768693 /* LocalEncryptedCredentialsProvider.m */,
 				D79B09AB18FA2B0A000100CB /* AmazonCredentialsEncodable.h */,
 				D79B09AC18FA2B0A000100CB /* AmazonCredentialsEncodable.m */,
+				D72B384E18FCCE64002796B9 /* CredentialsEncryption.h */,
+				D72B384F18FCCE64002796B9 /* CredentialsEncryption.m */,
 			);
 			name = Credentials;
 			sourceTree = "<group>";
@@ -1369,6 +1383,7 @@
 				D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */,
 				D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */,
 				D7CCCEC018E54C3A009D0308 /* SourceFieldValidator.m in Sources */,
+				D72B385018FCCE64002796B9 /* CredentialsEncryption.m in Sources */,
 				D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */,
 				D78ACC9918A5FEB6006084D6 /* Source.m in Sources */,
 				D72465DD18B71F03002EDE5B /* LibraryObjectImportController.m in Sources */,
@@ -1460,6 +1475,7 @@
 				D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */,
 				D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */,
 				D79B09A918FA2686000100CB /* CredentialsProviderTests.m in Sources */,
+				D7EDA6A018FCE5BA00DFB93A /* CredentialsEncryptionTests.m in Sources */,
 				D7C6AB3518E75AF700599810 /* ImagesFieldvalidatorTests.m in Sources */,
 				D7FAAD7C18DE1D1B003A9A13 /* SampleFieldValidatorTests.m in Sources */,
 				D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */,
