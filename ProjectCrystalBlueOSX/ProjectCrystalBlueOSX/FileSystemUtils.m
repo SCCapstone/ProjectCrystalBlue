@@ -11,7 +11,7 @@
 #define APP_SUPPORT_DIR @"Application Support"
 #define APP_NAME @"CrystalBlue"
 #define IMAGES @"Images"
-#define DATASTORE @"Database"
+#define DATASTORE @"Data"
 #define TMP @"Temp"
 
 @implementation FileSystemUtils

@@ -329,6 +329,25 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Database" id="UO5-SE-srq">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Database" id="Ut7-cn-LBJ">
+                        <items>
+                            <menuItem title="Clear Local Database" id="XMj-uD-iO4">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="clearLocalDatabase:" target="494" id="FMK-na-t80"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show Images In Finder" id="1jG-kH-z1f">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showImagesInFinder:" target="494" id="fsR-c3-pIQ"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Format" id="375">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Format" id="376">

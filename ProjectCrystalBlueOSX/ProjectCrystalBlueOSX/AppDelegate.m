@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SourcesWindowController.h"
+#import "FileSystemUtils.h"
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
@@ -34,4 +35,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 
+- (IBAction)clearLocalDatabase:(id)sender
+{
+    [[NSFileManager defaultManager] removeItemAtPath:[FileSystemUtils localDataDirectory] error:nil];
+    [NSApp terminate:nil];
+}
+
+- (IBAction)showImagesInFinder:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] selectFile:[FileSystemUtils localImagesDirectory] inFileViewerRootedAtPath:@""];
+}
 @end

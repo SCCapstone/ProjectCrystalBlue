@@ -53,8 +53,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     self = [super initWithWindow:window];
     
     if (self) {
-        NSString *localDirectory = [[FileSystemUtils localRootDirectory] stringByAppendingPathComponent:@"Data"];
-        dataStore =  [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:localDirectory
+        dataStore =  [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:[FileSystemUtils localDataDirectory]
                                                              WithDatabaseName:@"ProjectCrystalBlueLocalData"];
         
         activeWindowControllers = [[NSMutableArray alloc] init];
