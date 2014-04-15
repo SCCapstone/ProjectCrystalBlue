@@ -16,6 +16,7 @@
 #import "LoadingSheet.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "Source.h"
+#import "FileSystemUtils.h"
 #import "SourceImportController.h"
 #import "LibraryObjectExportController.h"
 #import "LibraryObjectCSVWriter.h"
@@ -52,7 +53,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     self = [super initWithWindow:window];
     
     if (self) {
-        dataStore =  [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:@"ProjectCrystalBlue/Data"
+        NSString *localDirectory = [[FileSystemUtils localRootDirectory] stringByAppendingPathComponent:@"Data"];
+        dataStore =  [[SimpleDBLibraryObjectStore alloc] initInLocalDirectory:localDirectory
                                                              WithDatabaseName:@"ProjectCrystalBlueLocalData"];
         
         activeWindowControllers = [[NSMutableArray alloc] init];
