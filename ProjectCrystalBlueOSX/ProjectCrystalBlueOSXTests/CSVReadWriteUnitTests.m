@@ -25,10 +25,7 @@ NSString* filePath;
 - (void)setUp
 {
     [super setUp];
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    localDirectory = [documentDirectory stringByAppendingFormat:@"/%@", [FileSystemUtils testDirectory]];
-
+    localDirectory = [FileSystemUtils testDirectory];
 }
 
 - (void)tearDown
