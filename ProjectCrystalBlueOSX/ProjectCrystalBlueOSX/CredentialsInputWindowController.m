@@ -16,10 +16,16 @@
 NSString *firstTimeInstructions =
 @"It appears this is your first time running the application on this Mac. Please enter your AWS\
   credentials below. You can obtain these credentials from your lab administrator. Please also\
-  provide a local passcode - you will need to enter this passcode everytime you open the program.";
+  provide a local passcode - you will need to enter this passcode everytime you open the program.\n\
+  \nIf you do not wish to utilize the cloud syncing functionality, you can skip this step and run\
+  the program locally.";
 
 NSString *standardInstructions =
-@"Please enter your local passcode to obtain AWS Credentials.";
+@"Please enter your local passcode to obtain saved AWS Credentials, or enter new AWS credentials\
+  and a new local passcode to overwrite the saved credentials file.";
+
+NSString *passwordError =
+@"Couldn't retrieve credentials. Did you enter an incorrect passcode?";
 
 @implementation CredentialsInputWindowController
 
@@ -40,7 +46,6 @@ NSString *standardInstructions =
     } else {
         [self.instructionsDisplay setStringValue:firstTimeInstructions];
     }
-    [self.window makeKeyAndOrderFront:self];
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
@@ -61,6 +66,9 @@ NSString *standardInstructions =
     retrieved = [[LocalEncryptedCredentialsProvider sharedInstance] retrieveCredentialsWithKey:self.localKeyField.stringValue];
     if (retrieved) {
         [self.window close];
+    } else {
+        [self.instructionsDisplay setStringValue:passwordError];
+        [self.instructionsDisplay setTextColor:[NSColor orangeColor]];
     }
 }
 @end

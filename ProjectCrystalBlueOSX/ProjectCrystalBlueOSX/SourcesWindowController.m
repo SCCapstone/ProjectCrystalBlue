@@ -116,7 +116,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
     [activeWindowControllers addObject:credentialsInput];
     [credentialsInput showWindow:self];
-    [credentialsInput.window makeKeyAndOrderFront:self];
+    [credentialsInput.window center];
+    // The delayed call is necessary because otherwise the sources window will appear in front. The delay of 0.0
+    // just means that it will be deferred until the very next run loop.
+    [credentialsInput.window performSelector:@selector(makeKeyAndOrderFront:) withObject:nil afterDelay:0.0];
 }
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex
