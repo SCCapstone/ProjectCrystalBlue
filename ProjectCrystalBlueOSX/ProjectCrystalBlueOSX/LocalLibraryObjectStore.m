@@ -288,6 +288,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         DDLogCError(@"%@: Invalid table name. Use the SourceConstants or SampleConstants tableName.", NSStringFromClass(self.class));
         return NO;
     }
+    // Update instead if already exists
+    if ([self libraryObjectExistsForKey:libraryObject.key FromTable:tableName]) {
+        [self updateLibraryObject:libraryObject IntoTable:tableName];
+        return YES;
+    }
     // Setup sql query
     NSString *sql;
     if ([tableName isEqualToString:[SourceConstants tableName]])
