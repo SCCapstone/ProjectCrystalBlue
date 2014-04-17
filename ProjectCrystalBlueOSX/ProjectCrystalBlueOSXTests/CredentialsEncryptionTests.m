@@ -30,7 +30,7 @@
 
 - (void)testEncryptAndDecryptString
 {
-    const unsigned long numberOfTests = 5;
+    const unsigned long numberOfTests = 1000;
 
     for (unsigned long i = 0; i < numberOfTests; ++i) {
         // Generate a random key
@@ -61,7 +61,7 @@
 
 - (void)testEncryptAndDecryptAmazonCredentials
 {
-    const unsigned long numberOfTests = 3;
+    const unsigned long numberOfTests = 1000;
 
     for (unsigned long i = 0; i < numberOfTests; ++i) {
         // Generate a random key

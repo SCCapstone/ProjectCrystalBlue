@@ -24,6 +24,11 @@
     SecTransformSetAttribute(encrypter, kSecTransformInputAttributeName, (__bridge CFTypeRef)(plaintextData), &error);
 
     NSData *encryptedData = CFBridgingRelease(SecTransformExecute(encrypter, &error));
+
+    // Free memory
+    CFRelease(encrypter);
+    CFRelease(cryptoKey);
+
     return encryptedData;
 }
 
@@ -38,6 +43,11 @@
     SecTransformSetAttribute(decrypter, kSecTransformInputAttributeName, CFBridgingRetain(encryptedData), &error);
 
     NSData *decryptedData = CFBridgingRelease(SecTransformExecute(decrypter, &error));
+
+    // Free memory
+    CFRelease(decrypter);
+    CFRelease(cryptoKey);
+
     return decryptedData;
 }
 
@@ -71,7 +81,11 @@
     CFErrorRef error;
     SecKeyRef cryptoKey = SecKeyCreateFromData(secKeyParams, cfCryptoKey, &error);
 
+    // Free memory
     free(rawKey);
+    CFRelease(secKeyParams);
+    CFRelease(cfCryptoKey);
+
     return cryptoKey;
 }
 
