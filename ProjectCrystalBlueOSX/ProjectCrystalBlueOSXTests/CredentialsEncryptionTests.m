@@ -46,6 +46,9 @@
         const NSData *encryptedData = [CredentialsEncryption encryptData:dataToEncrypt
                                                                  WithKey:key];
 
+        // Check that encrypting has actually changed the data
+        XCTAssertFalse([dataToEncrypt isEqualTo:encryptedData]);
+
         // Decrypt it
         const NSData *decryptedData = [CredentialsEncryption decryptData:encryptedData
                                                                  WithKey:key];
@@ -78,6 +81,9 @@
         // Encrypt it
         const NSData *encryptedData = [CredentialsEncryption encryptData:dataToEncrypt
                                                                  WithKey:key];
+
+        // Check that encrypting has actually changed the data
+        XCTAssertFalse([dataToEncrypt isEqualTo:encryptedData]);
 
         // Decrypt it
         const NSData *decryptedData = [CredentialsEncryption decryptData:encryptedData
