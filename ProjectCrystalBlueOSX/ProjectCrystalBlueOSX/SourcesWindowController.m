@@ -65,6 +65,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    [self.window setDelegate:self];
 
     if (!detailPanelController) {
         detailPanelController = [[SourcesDetailPanelViewController alloc] initWithNibName:@"SourcesDetailPanelViewController" bundle:nil];
@@ -150,6 +151,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [splitView adjustSubviews];
 }
 
+- (void)windowWillClose:(NSNotification *)notification {
+    [NSApp terminate:self];
+}
 
 /*  Internet connectivity notification
  */
