@@ -230,6 +230,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [numberSuffix integerValue];
 }
 
++ (NSString *)extractImageTagFromKey:(NSString *)key
+{
+    NSScanner *scanner = [[NSScanner alloc] initWithString:key];
 
+    // We ignore the first part of the string, which is the "_i123" part.
+    NSString *REMOVEME;
+    [scanner scanUpToString:@"." intoString:&REMOVEME];
+    [scanner scanString:@"."     intoString:&REMOVEME];
+
+    NSString *imageTag;
+    [scanner scanUpToString:@"." intoString:&imageTag];
+    return imageTag;
+}
 
 @end

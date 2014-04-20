@@ -289,4 +289,17 @@
     result = [SourceImageUtils extractNumberSuffixFromKey:key];
     XCTAssertTrue(expected == result);
 }
+
+- (void)testExtractTagFromKeys
+{
+    NSString *key;
+    NSString *result;
+    NSString *expected;
+
+    expected = @"ImageTagHere";
+    key = [NSString stringWithFormat:@"SOURCEKEY_i100.%@.jpg", expected];
+    result = [SourceImageUtils extractImageTagFromKey:key];
+    XCTAssertTrue([expected isEqualToString:result]);
+}
+
 @end
