@@ -47,7 +47,6 @@
 
         
         if ([keysEncountered containsObject:source.key]) {
-            validationErrors = YES;
             [result.duplicateKeys addObject:source.key];
         }
         [keysEncountered addObject:source.key];

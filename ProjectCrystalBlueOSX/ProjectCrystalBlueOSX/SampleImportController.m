@@ -33,7 +33,6 @@
 
     for (Sample *sample in libraryObjects) {
         if ([keysEncountered containsObject:sample.key]) {
-            hasValidationErrors = YES;
             [result.duplicateKeys addObject:sample.key];
         }
         [keysEncountered addObject:sample.key];
@@ -44,6 +43,7 @@
 
         if (!sampleIsValid) {
             [result.keysOfInvalidLibraryObjects addObject:sample.key];
+            hasValidationErrors = YES;
         }
     }
 
