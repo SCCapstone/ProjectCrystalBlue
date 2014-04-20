@@ -163,7 +163,7 @@
 
 
 /// Validates that Lithology is no more than 90 characters, and contains alphanumeric
-/// characters and whitespace only.
+/// characters, punctuation, and whitespace only.
 +(ValidationResponse *)validateLithology:(NSString *)lithology
 {
     const NSUInteger maxLength = 90;
@@ -193,14 +193,14 @@
     {
         [valid setIsValid:NO];
         NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_INVALID_CHARACTERS copy],
-                              @"letters, numbers, and spaces"];
+                              @"letters, numbers, punctuation, and spaces"];
         [valid.errors addObject:errorStr];
     }
     return valid;
 }
 
 /// Validates that Deposystem is no more than 90 characters, and contains alphanumeric
-/// characters and whitespace only.
+/// characters, punctuation, and whitespace only.
 +(ValidationResponse *)validateDeposystem:(NSString *)deposystem
 {
     const NSUInteger maxLength = 90;
@@ -230,7 +230,7 @@
     {
         [valid setIsValid:NO];
         NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_INVALID_CHARACTERS copy],
-                              @"letters, numbers, and spaces"];
+                              @"letters, numbers, punctuation, and spaces"];
         [valid.errors addObject:errorStr];
     }
     return valid;
