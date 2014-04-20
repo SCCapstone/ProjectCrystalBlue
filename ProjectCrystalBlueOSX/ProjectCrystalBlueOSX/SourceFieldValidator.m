@@ -557,17 +557,39 @@
     return valid;
 }
 
-/// Validates that age is a properly formatted decimal number.
+/// Validates that age is at most 90 characters, and only letters, numbers, punctuation and spaces.
 +(ValidationResponse *)validateAge:(NSString *)age
 {
+    const NSUInteger maxLength = 90;
+
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
 
-    if (![age isEqualToString:@""] && ![PrimitiveFieldValidator validateFieldIsDecimal:age]) {
+    if (![PrimitiveFieldValidator validateField:age
+                          isNoMoreThanMaxLength:maxLength])
+    {
         [valid setIsValid:NO];
-        [valid.errors addObject:@"Should be formatted as a decimal (e.g. -3.1415)"];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
+                              maxLength,
+                              age.length];
+        [valid.errors addObject:errorStr];
     }
 
+    NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
+
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
+
+    if (![PrimitiveFieldValidator validateField:age
+                            containsOnlyCharSet:validCharacters])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_INVALID_CHARACTERS copy],
+                              @"letters, numbers, punctuation, and spaces"];
+        [valid.errors addObject:errorStr];
+    }
     return valid;
 }
 
