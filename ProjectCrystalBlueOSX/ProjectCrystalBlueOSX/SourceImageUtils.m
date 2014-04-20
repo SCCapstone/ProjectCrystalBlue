@@ -234,10 +234,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     NSScanner *scanner = [[NSScanner alloc] initWithString:key];
 
-    // We ignore the first part of the string, which is the "_i123" part.
-    NSString *REMOVEME;
-    [scanner scanUpToString:@"." intoString:&REMOVEME];
-    [scanner scanString:@"."     intoString:&REMOVEME];
+    // throw away the first two parts of the key
+    [scanner scanUpToString:@"." intoString:nil];
+    [scanner scanString:@"."     intoString:nil];
 
     NSString *imageTag;
     [scanner scanUpToString:@"." intoString:&imageTag];
