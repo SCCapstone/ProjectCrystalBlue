@@ -23,6 +23,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     NSSavePanel *savePanel = [[NSSavePanel alloc] init];
     [savePanel setCanCreateDirectories:YES];
+    [savePanel setAllowedFileTypes:[[NSArray alloc] initWithObjects:@"csv", @"CSV", @"txt", @"TXT", nil]];
     
     [savePanel beginWithCompletionHandler:^(NSInteger result)
      {
