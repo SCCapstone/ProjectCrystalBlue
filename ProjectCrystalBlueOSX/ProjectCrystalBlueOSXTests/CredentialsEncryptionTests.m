@@ -30,7 +30,7 @@
 
 - (void)testEncryptAndDecryptString
 {
-    const unsigned long numberOfTests = 5;
+    const unsigned long numberOfTests = 1000;
 
     for (unsigned long i = 0; i < numberOfTests; ++i) {
         // Generate a random key
@@ -45,6 +45,9 @@
         // Encrypt it
         const NSData *encryptedData = [CredentialsEncryption encryptData:dataToEncrypt
                                                                  WithKey:key];
+
+        // Check that encrypting has actually changed the data
+        XCTAssertFalse([dataToEncrypt isEqualTo:encryptedData]);
 
         // Decrypt it
         const NSData *decryptedData = [CredentialsEncryption decryptData:encryptedData
@@ -61,7 +64,7 @@
 
 - (void)testEncryptAndDecryptAmazonCredentials
 {
-    const unsigned long numberOfTests = 3;
+    const unsigned long numberOfTests = 1000;
 
     for (unsigned long i = 0; i < numberOfTests; ++i) {
         // Generate a random key
@@ -78,6 +81,9 @@
         // Encrypt it
         const NSData *encryptedData = [CredentialsEncryption encryptData:dataToEncrypt
                                                                  WithKey:key];
+
+        // Check that encrypting has actually changed the data
+        XCTAssertFalse([dataToEncrypt isEqualTo:encryptedData]);
 
         // Decrypt it
         const NSData *decryptedData = [CredentialsEncryption decryptData:encryptedData
