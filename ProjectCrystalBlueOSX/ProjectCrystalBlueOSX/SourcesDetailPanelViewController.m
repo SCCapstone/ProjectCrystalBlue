@@ -117,8 +117,15 @@
     if ([attr isEqualToString:SRC_LATITUDE] || [attr isEqualToString:SRC_LONGITUDE])
         [self setupGoogleMapsHyperlink];
     else if ([attr isEqualToString:SRC_TYPE]) {
+        NSString *rockType = [source.attributes objectForKey:SRC_TYPE];
+        if ([rockType isEqualToString:@"Siliciclastic"] || [rockType isEqualToString:@"Carbonate"] ||
+                [rockType isEqualToString:@"Authigenic"] || [rockType isEqualToString:@"Volcanic"] ||
+                [rockType isEqualToString:@"Fossil"])
+            [source.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
+        else
+            [source.attributes setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
+            
         [source.attributes setObject:@"" forKey:SRC_LITHOLOGY];
-        [source.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
     }
     
     [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
