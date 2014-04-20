@@ -145,7 +145,7 @@
 {
     NSString *emptyStr = @"";
     NSString *valid = @"a new start 2222";
-    NSString *invalid = @".";
+    NSString *alsoValid = @"N/A";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
@@ -153,7 +153,7 @@
 
     XCTAssertTrue( [[SourceFieldValidator validateDeposystem:emptyStr]   isValid]);
     XCTAssertTrue( [[SourceFieldValidator validateDeposystem:valid]      isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateDeposystem:invalid]    isValid]);
+    XCTAssertTrue( [[SourceFieldValidator validateDeposystem:alsoValid]  isValid]);
     XCTAssertFalse([[SourceFieldValidator validateDeposystem:tooLong]    isValid]);
 }
 
