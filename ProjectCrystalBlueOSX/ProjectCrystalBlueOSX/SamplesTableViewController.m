@@ -46,7 +46,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     NSInteger selectedRow = [tableView selectedRow];
     if (selectedRow == -1) {
-        //[detailPanel clear];
+        [detailPanel setSample:nil];
         return;
     }
     

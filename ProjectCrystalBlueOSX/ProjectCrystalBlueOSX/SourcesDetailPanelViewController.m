@@ -55,16 +55,22 @@
         [self removeObserversFromSelectedSource];
     
     source = newSource;
-    [self setDateCollected:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
-    
     [self.imageCell setImage:nil];
-    NSArray *sourceImages = [SourceImageUtils imagesForSource:source
-                                                 inImageStore:[SourceImageUtils defaultImageStore]];
-    if (sourceImages.count != 0)
-        [self.imageCell setImage:[sourceImages firstObject]];
     
-    [self addObserversToSelectedSource];
-    [self setupGoogleMapsHyperlink];
+    if (source == nil)
+        [datePicker setEnabled:NO];
+    else {
+        [datePicker setEnabled:YES];
+        [self setDateCollected:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
+        
+        NSArray *sourceImages = [SourceImageUtils imagesForSource:source
+                                                     inImageStore:[SourceImageUtils defaultImageStore]];
+        if (sourceImages.count != 0)
+            [self.imageCell setImage:[sourceImages firstObject]];
+        
+        [self addObserversToSelectedSource];
+        [self setupGoogleMapsHyperlink];
+    }
 }
 
 - (void)setDateCollected:(NSDate *)newDateCollected

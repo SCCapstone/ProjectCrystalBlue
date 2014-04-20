@@ -41,8 +41,11 @@
         [self removeObserversFromSelectedSample];
     
     sample = newSample;
-    [self addObserversToSelectedSample];
-    [self updateRecentProcedures];
+    
+    if (sample != nil) {
+        [self addObserversToSelectedSample];
+        [self updateRecentProcedures];
+    }
 }
 
 - (void)addObserversToSelectedSample

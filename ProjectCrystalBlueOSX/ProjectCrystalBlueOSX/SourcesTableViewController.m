@@ -48,8 +48,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
     NSInteger selectedRow = [tableView selectedRow];
-    if (selectedRow == -1)
+    if (selectedRow == -1) {
+        [detailPanel setSource:nil];
         return;
+    }
     
     Source *source = [arrayController.arrangedObjects objectAtIndex:selectedRow];
     [detailPanel setSource:source];
