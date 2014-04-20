@@ -38,21 +38,21 @@
 
 - (void)initializeTextFieldValues
 {
-    [self.keyTextField              setStringValue:SRC_DEF_VAL_KEY];
-    [self.continentTextField        setStringValue:SRC_DEF_VAL_CONTINENT];
-    [self.groupTextField            setStringValue:SRC_DEF_VAL_GROUP];
-    [self.formationTextField        setStringValue:SRC_DEF_VAL_FORMATION];
-    [self.memberTextField           setStringValue:SRC_DEF_VAL_MEMBER];
-    [self.regionTextField           setStringValue:SRC_DEF_VAL_REGION];
-    [self.localityTextField         setStringValue:SRC_DEF_VAL_LOCALITY];
-    [self.sectionTextField          setStringValue:SRC_DEF_VAL_SECTION];
-    [self.meterTextField            setStringValue:SRC_DEF_VAL_METER];
-    [self.latitudeTextField         setStringValue:SRC_DEF_VAL_LATITUDE];
-    [self.longitudeTextField        setStringValue:SRC_DEF_VAL_LONGITUDE];
-    [self.ageTextField              setStringValue:SRC_DEF_VAL_AGE];
-    [self.ageDataTypeTextField      setStringValue:SRC_DEF_VAL_AGE_DATATYPE];
-    [self.hyperlinkTextView         setString:SRC_DEF_VAL_HYPERLINKS];
-    [self.notesTextView             setString:SRC_DEF_VAL_NOTES];
+    [self.keyTextField.cell             setPlaceholderString:SRC_DEF_VAL_KEY];
+    [self.continentTextField.cell       setPlaceholderString:SRC_DEF_VAL_CONTINENT];
+    [self.groupTextField.cell           setPlaceholderString:SRC_DEF_VAL_GROUP];
+    [self.formationTextField.cell       setPlaceholderString:SRC_DEF_VAL_FORMATION];
+    [self.memberTextField.cell          setPlaceholderString:SRC_DEF_VAL_MEMBER];
+    [self.regionTextField.cell          setPlaceholderString:SRC_DEF_VAL_REGION];
+    [self.localityTextField.cell        setPlaceholderString:SRC_DEF_VAL_LOCALITY];
+    [self.sectionTextField.cell         setPlaceholderString:SRC_DEF_VAL_SECTION];
+    [self.meterTextField.cell           setPlaceholderString:SRC_DEF_VAL_METER];
+    [self.latitudeTextField.cell        setPlaceholderString:SRC_DEF_VAL_LATITUDE];
+    [self.longitudeTextField.cell       setPlaceholderString:SRC_DEF_VAL_LONGITUDE];
+    [self.ageTextField.cell             setPlaceholderString:SRC_DEF_VAL_AGE];
+    [self.ageDataTypeTextField.cell     setPlaceholderString:SRC_DEF_VAL_AGE_DATATYPE];
+    [self.hyperlinkTextView             setString:SRC_DEF_VAL_HYPERLINKS];
+    [self.notesTextView                 setString:SRC_DEF_VAL_NOTES];
     
     [self.rockTypeComboBox addItemsWithObjectValues:[SourceConstants rockTypes]];
     [self rockTypeChanged:nil];

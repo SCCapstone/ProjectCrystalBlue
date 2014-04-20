@@ -51,9 +51,9 @@ static NSString *const SRC_DEF_VAL_LONGITUDE    = @"0.00";
 static NSString *const SRC_DEF_VAL_AGE          = @"0.00";
 static NSString *const SRC_DEF_VAL_AGE_METHOD   = @"Age method here";
 static NSString *const SRC_DEF_VAL_AGE_DATATYPE = @"Age data type here";
-static NSString *const SRC_DEF_VAL_DATE_COLLECTED = @"04/20/2014, 12:00 AM";
-static NSString *const SRC_DEF_VAL_NOTES        = @"Notes here";
-static NSString *const SRC_DEF_VAL_HYPERLINKS   = @"Hyperlinks here";
+static NSString *const SRC_DEF_VAL_DATE_COLLECTED = @"01/01/1970, 12:01 AM";
+static NSString *const SRC_DEF_VAL_NOTES        = @"";
+static NSString *const SRC_DEF_VAL_HYPERLINKS   = @"http://www.geol.sc.edu";
  /* default value for "Images" should be empty string, since this will be a list of image names */
 static NSString *const SRC_DEF_VAL_IMAGES       = @"";
 
