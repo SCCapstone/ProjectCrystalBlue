@@ -55,16 +55,22 @@
         [self removeObserversFromSelectedSource];
     
     source = newSource;
-    [self setDateCollected:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
-    
     [self.imageCell setImage:nil];
-    NSArray *sourceImages = [SourceImageUtils imagesForSource:source
-                                                 inImageStore:[SourceImageUtils defaultImageStore]];
-    if (sourceImages.count != 0)
-        [self.imageCell setImage:[sourceImages firstObject]];
     
-    [self addObserversToSelectedSource];
-    [self setupGoogleMapsHyperlink];
+    if (source == nil)
+        [datePicker setEnabled:NO];
+    else {
+        [datePicker setEnabled:YES];
+        [self setDateCollected:[NSDate dateWithNaturalLanguageString:[source.attributes objectForKey:SRC_DATE_COLLECTED]]];
+        
+        NSArray *sourceImages = [SourceImageUtils imagesForSource:source
+                                                     inImageStore:[SourceImageUtils defaultImageStore]];
+        if (sourceImages.count != 0)
+            [self.imageCell setImage:[sourceImages firstObject]];
+        
+        [self addObserversToSelectedSource];
+        [self setupGoogleMapsHyperlink];
+    }
 }
 
 - (void)setDateCollected:(NSDate *)newDateCollected
@@ -111,8 +117,15 @@
     if ([attr isEqualToString:SRC_LATITUDE] || [attr isEqualToString:SRC_LONGITUDE])
         [self setupGoogleMapsHyperlink];
     else if ([attr isEqualToString:SRC_TYPE]) {
+        NSString *rockType = [source.attributes objectForKey:SRC_TYPE];
+        if ([rockType isEqualToString:@"Siliciclastic"] || [rockType isEqualToString:@"Carbonate"] ||
+                [rockType isEqualToString:@"Authigenic"] || [rockType isEqualToString:@"Volcanic"] ||
+                [rockType isEqualToString:@"Fossil"])
+            [source.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
+        else
+            [source.attributes setObject:@"N/A" forKey:SRC_DEPOSYSTEM];
+            
         [source.attributes setObject:@"" forKey:SRC_LITHOLOGY];
-        [source.attributes setObject:@"" forKey:SRC_DEPOSYSTEM];
     }
     
     [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];

@@ -198,6 +198,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                      break;
                              }
                              [tableViewController updateDisplayedSamples];
+                             
+                             // Update detail panel selection
+                             NSUInteger row = [tableViewController.tableView selectedRow];
+                             if (row == -1)
+                                 [detailPanelController setSample:nil];
+                             else
+                                 [detailPanelController setSample:[tableViewController.arrayController.arrangedObjects objectAtIndex:row]];
                          }];
 }
 
