@@ -350,6 +350,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void) displayResults:(ImportResult *)result
 {
     [tableViewController updateDisplayedSources];
+    NSAlert *importResultAlert = [result alertWithResults];
+    [importResultAlert runModal];
 }
 
 - (IBAction)printBarcodes:(id)sender
