@@ -34,8 +34,11 @@
                                 topLevelObjects:nil];
         else
             // We're running on Lion or lower
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             [NSBundle loadNibNamed:@"LoadingSheet"
                              owner:self];
+#pragma clang diagnostic pop
     }
     
     [self.loadingText setStringValue:loadingText];
