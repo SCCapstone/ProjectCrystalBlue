@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class LocalEncryptedCredentialsProvider;
+@class LocalEncryptedCredentialsProvider, AbstractCloudLibraryObjectStore;
 
 @interface CredentialsInputWindowController : NSWindowController
 
@@ -15,6 +15,7 @@
 @property (weak) IBOutlet NSTextField *awsSecretKeyField;
 @property (weak) IBOutlet NSTextField *localKeyField;
 @property (weak) IBOutlet NSTextField *instructionsDisplay;
+@property AbstractCloudLibraryObjectStore *dataStore;
 
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)okButtonPressed:(id)sender;

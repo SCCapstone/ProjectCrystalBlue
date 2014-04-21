@@ -216,4 +216,37 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return simpleDBDeleteableItems;
 }
 
++ (BOOL)setupDomainsUsingClient:(AmazonSimpleDBClient *)simpleDBClient
+{
+    @try {
+        SimpleDBListDomainsResponse *listResponse = [simpleDBClient listDomains:[[SimpleDBListDomainsRequest alloc] init]];
+        SimpleDBCreateDomainRequest *createRequest;
+        
+        // Source domain
+        if (![listResponse.domainNames containsObject:[SourceConstants tableName]]) {
+            createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SourceConstants tableName]];
+            [simpleDBClient createDomain:createRequest];
+        }
+        
+        // Sample domain
+        if (![listResponse.domainNames containsObject:[SampleConstants tableName]]) {
+            createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SampleConstants tableName]];
+            [simpleDBClient createDomain:createRequest];
+        }
+        
+        // Transaction domain
+        if (![listResponse.domainNames containsObject:[TransactionConstants tableName]]) {
+            createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[TransactionConstants tableName]];
+            [simpleDBClient createDomain:createRequest];
+        }
+    }
+    @catch (NSException *exception) {
+        DDLogCError(@"%@: Failed to create the domains. Error: %@", NSStringFromClass(self.class), exception);
+        return NO;
+    }
+    
+    DDLogCInfo(@"%@: Setup the remote domains.", NSStringFromClass(self.class));
+    return YES;
+}
+
 @end

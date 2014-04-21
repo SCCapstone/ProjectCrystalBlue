@@ -112,6 +112,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
     // Display credentials input window
     CredentialsInputWindowController *credentialsInput = [[CredentialsInputWindowController alloc] initWithWindowNibName:@"CredentialsInputWindowController"];
+    [credentialsInput setDataStore:dataStore];
 
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 
