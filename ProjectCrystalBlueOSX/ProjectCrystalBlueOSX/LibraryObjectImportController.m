@@ -7,6 +7,7 @@
 //
 
 #import "LibraryObjectImportController.h"
+#import "LoadingSheet.h"
 
 @implementation LibraryObjectImportController
 
@@ -24,13 +25,18 @@
                     format:@"The fileReader, libraryObjectStore, and tableName properties must be set!"];
         return;
     }
-    
+
+    LoadingSheet *loading = [[LoadingSheet alloc] init];
+    [loading activateSheetWithParentWindow:[NSApp keyWindow]
+                                   AndText:@"Importing CSV file. This may take a few minutes for large files."];
+
     NSArray* libraryObjects = [fileReader readFromFileAtPath:filePath];
     ImportResult *result = [self validateObjects:libraryObjects];
     
     if (![result hasError]) {
         [self addLibraryObjectsToStore:libraryObjects];
     }
+    [loading closeSheet];
     [importResultReporter displayResults:result];
 }
 
