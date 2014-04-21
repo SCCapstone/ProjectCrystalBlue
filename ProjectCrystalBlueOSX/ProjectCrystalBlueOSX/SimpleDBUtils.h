@@ -68,4 +68,8 @@
  */
 + (NSArray *)convertObjectArrayToSimpleDBItemArray:(NSArray *)objectArray;
 
+/*  Sets up the remote domains
+ */
++ (BOOL)setupDomainsUsingClient:(AmazonSimpleDBClient *)simpleDBClient;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "CredentialsInputWindowController.h"
 #import "LocalEncryptedCredentialsProvider.h"
+#import "SimpleDBLibraryObjectStore.h"
 
 @interface CredentialsInputWindowController ()
 
@@ -65,6 +66,7 @@ NSString *passwordError =
     AmazonCredentials *retrieved;
     retrieved = [[LocalEncryptedCredentialsProvider sharedInstance] retrieveCredentialsWithKey:self.localKeyField.stringValue];
     if (retrieved) {
+        [self.dataStore setupDomains];
         [self.window close];
     } else {
         [self.instructionsDisplay setStringValue:passwordError];

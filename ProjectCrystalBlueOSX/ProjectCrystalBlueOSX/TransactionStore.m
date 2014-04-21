@@ -50,16 +50,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     self = [super init];
     if (self) {
         // Setup local directory
-        NSString *localDirectory = [[FileSystemUtils localRootDirectory] stringByAppendingPathComponent:directory];
+        NSString *localDirectory = directory;
         
-        BOOL directoryExists;
-        [[NSFileManager defaultManager] fileExistsAtPath:localDirectory isDirectory:&directoryExists];
-        if (!directoryExists) {
-            [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
-                                      withIntermediateDirectories:YES
-                                                       attributes:nil
-                                                            error:nil];
-        }
+        [[NSFileManager defaultManager] createDirectoryAtPath:localDirectory
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:nil];
         
         localQueue = [FMDatabaseQueue databaseQueueWithPath:[localDirectory stringByAppendingPathComponent:databaseName]];
         
