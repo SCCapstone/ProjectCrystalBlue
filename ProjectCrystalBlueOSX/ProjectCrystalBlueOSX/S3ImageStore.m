@@ -50,9 +50,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                 [s3Client createBucketWithName:BUCKET_NAME];
             }
         }
-        @catch (NSException *exception) {
+        @catch (AmazonServiceException *exception) {
             DDLogInfo(@"%@: Could not init S3Client - probably because the device could not connect to S3.", CLASS_NAME);
-            DDLogDebug(@"%@: Exception: %@ with reason: %@", CLASS_NAME, [exception name], [exception reason]);
+            DDLogDebug(@"%@: Exception: %@ with error code: %@", CLASS_NAME, [exception name], [exception errorCode]);
         }
     }
     
@@ -74,9 +74,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
         return YES;
     }
-    @catch (NSException *exception) {
+    @catch (AmazonServiceException *exception) {
         DDLogInfo(@"%@: Could not sync with S3 - probably because the device could not connect to S3.", CLASS_NAME);
-        DDLogDebug(@"%@: Exception: %@ with reason: %@", CLASS_NAME, [exception name], [exception reason]);
+        DDLogDebug(@"%@: Exception: %@ with errorcode: %@", CLASS_NAME, [exception name], [exception errorCode]);
     }
     
     return NO;
@@ -114,8 +114,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             [localStore putImage:image forKey:key];
         }
     }
-    @catch (NSException *exception) {
-        DDLogError(@"%@: Exception: %@ ; Reason %@", CLASS_NAME, [exception name], [exception reason]);
+    @catch (AmazonServiceException *exception) {
+        DDLogError(@"%@: Exception: %@ ; Errorcode %@", CLASS_NAME, [exception name], [exception errorCode]);
         image = [self.class defaultImage];
     }
     @finally {
@@ -134,8 +134,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         S3GetObjectMetadataResponse *metadataResponse = [s3Client getObjectMetadata:metadataRequest];
         return (nil == metadataResponse);
     }
-    @catch (NSException *exception) {
-        DDLogError(@"%@: Exception: %@ ; Reason %@", CLASS_NAME, [exception name], [exception reason]);
+    @catch (AmazonServiceException *exception) {
+        DDLogError(@"%@: Exception: %@ ; Error %@", CLASS_NAME, [exception name], [exception errorCode]);
         return NO;
     }
 }
@@ -167,9 +167,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             return YES;
         }
     }
-    @catch (NSException *exception) {
+    @catch (AmazonServiceException *exception) {
         DDLogInfo(@"%@: Couldn't upload image to S3 because of an exception. Probably the client is offline.", CLASS_NAME);
-        DDLogDebug(@"%@: Exception: %@ ; Reason %@", CLASS_NAME, [exception name], [exception reason]);
+        DDLogDebug(@"%@: Exception: %@ ; ErrorCode %@", CLASS_NAME, [exception name], [exception errorCode]);
         [dirtyKeys add:key];
     }
 }

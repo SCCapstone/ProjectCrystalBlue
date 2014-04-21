@@ -9,7 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "ImportResult.h"
 
-@interface SourcesWindowController : NSWindowController <NSSplitViewDelegate, ImportResultReporter>
+@interface SourcesWindowController : NSWindowController <NSSplitViewDelegate,
+                                                         ImportResultReporter,
+                                                         NSWindowDelegate>
 
 @property (weak) IBOutlet NSSplitView *splitView;
 @property (weak) IBOutlet NSSearchField *searchField;

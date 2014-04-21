@@ -164,15 +164,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [self.class appendImageKey:key
                       toSource:source];
 
-    BOOL success = !(nil == image);
+    BOOL tableUpdated = [dataStore updateLibraryObject:source
+                                             IntoTable:[SourceConstants tableName]];
+    BOOL imageUploaded = [imageStore putImage:image forKey:key];
 
-    success = success && [dataStore updateLibraryObject:source
-                                              IntoTable:[SourceConstants tableName]];
-
-    success = success && [imageStore putImage:image
-                                       forKey:key];
-
-    return success;
+    return (tableUpdated && imageUploaded);
 }
 
 // Some "private" helper methods.
@@ -234,6 +230,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [numberSuffix integerValue];
 }
 
++ (NSString *)extractImageTagFromKey:(NSString *)key
+{
+    NSScanner *scanner = [[NSScanner alloc] initWithString:key];
 
+    // throw away the first two parts of the key
+    [scanner scanUpToString:@"." intoString:nil];
+    [scanner scanString:@"."     intoString:nil];
+
+    NSString *imageTag;
+    [scanner scanUpToString:@"." intoString:&imageTag];
+    return imageTag;
+}
 
 @end

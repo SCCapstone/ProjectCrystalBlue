@@ -22,6 +22,9 @@
 /// A list of any keys that were encountered multiple times during import.
 @property NSMutableArray *duplicateKeys;
 
+/// Generates an NSAlert containing the information from this ImportResult.
+-(NSAlert *)alertWithResults;
+
 @end
 
 /**
