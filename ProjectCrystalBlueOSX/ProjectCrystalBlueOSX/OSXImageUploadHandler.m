@@ -9,6 +9,7 @@
 #import "OSXImageUploadHandler.h"
 #import "SourcePhotosWindowController.h"
 #import "AbstractImageStore.h"
+#import "LoadingSheet.h"
 #import "SourceImageUtils.h"
 
 @implementation OSXImageUploadHandler
@@ -28,6 +29,10 @@
         return;
     }
 
+    LoadingSheet *loading = [[LoadingSheet alloc] init];
+    [loading activateSheetWithParentWindow:photosWindow.window
+                                   AndText:@"Uploading image. Please wait!"];
+
     NSImage *imageToUpload = [[NSImage alloc] initWithData:[NSData dataWithContentsOfFile:filePath]];
 
     [SourceImageUtils addImage:imageToUpload
@@ -39,6 +44,8 @@
     if (photosWindow) {
         [photosWindow reloadImageKeys];
     }
+
+    [loading closeSheet];
 }
 
 @end
