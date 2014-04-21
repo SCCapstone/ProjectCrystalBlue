@@ -113,32 +113,36 @@
 {
     NSString *emptyStr = @"";
     NSString *valid = @"a new start 2222";
-    NSString *invalid = @".";
+    NSString *punctuation = @"._-/";
+    NSString *singleQuote = @"'";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
 
-    XCTAssertTrue( [[SourceFieldValidator validateGroup:emptyStr]   isValid]);
-    XCTAssertTrue( [[SourceFieldValidator validateGroup:valid]      isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateGroup:invalid]    isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateGroup:tooLong]    isValid]);
+    XCTAssertTrue( [[SourceFieldValidator validateGroup:emptyStr]       isValid]);
+    XCTAssertTrue( [[SourceFieldValidator validateGroup:valid]          isValid]);
+    XCTAssertTrue( [[SourceFieldValidator validateGroup:punctuation]    isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateGroup:singleQuote]    isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateGroup:tooLong]        isValid]);
 }
 
 - (void)testValidateType
 {
     NSString *emptyStr = @"";
     NSString *valid = @"a new start 2222";
-    NSString *invalid = @".";
+    NSString *punctuation = @"._-/";
+    NSString *singleQuote = @"'";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
     }
 
-    XCTAssertTrue( [[SourceFieldValidator validateType:emptyStr]   isValid]);
-    XCTAssertTrue( [[SourceFieldValidator validateType:valid]      isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateType:invalid]    isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateType:tooLong]    isValid]);
+    XCTAssertTrue( [[SourceFieldValidator validateType:emptyStr]        isValid]);
+    XCTAssertTrue( [[SourceFieldValidator validateType:valid]           isValid]);
+    XCTAssertTrue( [[SourceFieldValidator validateType:punctuation]     isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateType:singleQuote]     isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateType:tooLong]         isValid]);
 }
 
 - (void)testValidateDeposystem
@@ -146,7 +150,7 @@
     NSString *emptyStr = @"";
     NSString *valid = @"a new start 2222";
     NSString *alsoValid = @"N/A";
-    NSString *invalid = @"SingleQuote'";
+    NSString *singleQuote = @"SingleQuote'";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 91; ++i) {
         [tooLong appendString:@"a"];
@@ -156,7 +160,7 @@
     XCTAssertTrue( [[SourceFieldValidator validateDeposystem:valid]      isValid]);
     XCTAssertTrue( [[SourceFieldValidator validateDeposystem:alsoValid]  isValid]);
     XCTAssertFalse([[SourceFieldValidator validateDeposystem:tooLong]    isValid]);
-    XCTAssertFalse([[SourceFieldValidator validateDeposystem:invalid]    isValid]);
+    XCTAssertFalse([[SourceFieldValidator validateDeposystem:singleQuote]isValid]);
 }
 
 - (void)testValidateRegion
