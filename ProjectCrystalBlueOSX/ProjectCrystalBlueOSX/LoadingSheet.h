@@ -12,6 +12,7 @@
 
 @property (assign) IBOutlet NSWindow *sheet;
 @property (weak) IBOutlet NSTextField *loadingText;
+@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 
 
 - (void)activateSheetWithParentWindow:(NSWindow *)parentWindow

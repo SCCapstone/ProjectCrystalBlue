@@ -13,6 +13,7 @@
 @end
 
 @implementation LoadingSheet
+@synthesize progressIndicator;
 
 - (id)init
 {
@@ -48,7 +49,7 @@
         modalDelegate:self
        didEndSelector:@selector(didEndSheet:returnCode:contextInfo:)
           contextInfo:nil];
-    
+    [self.progressIndicator startAnimation:nil];
 }
 
 - (void)closeSheet
