@@ -90,6 +90,7 @@
 		D72465DD18B71F03002EDE5B /* LibraryObjectImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */; };
 		D72465E118B7320C002EDE5B /* SampleImportControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */; };
 		D72465E318B73D9F002EDE5B /* SourceImportControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */; };
+		D725D1441905DF01005CDADE /* TestingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D725D1431905DF01005CDADE /* TestingUtils.m */; };
 		D72B385018FCCE64002796B9 /* CredentialsEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D72B384F18FCCE64002796B9 /* CredentialsEncryption.m */; };
 		D72FE4A018B5641A00C6452F /* ProcedureRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE49F18B5641A00C6452F /* ProcedureRecord.m */; };
 		D72FE4A218B57B0F00C6452F /* ProcedureRecordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72FE4A118B57B0F00C6452F /* ProcedureRecordTests.m */; };
@@ -299,6 +300,8 @@
 		D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectImportController.m; sourceTree = "<group>"; };
 		D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleImportControllerTests.m; sourceTree = "<group>"; };
 		D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImportControllerTests.m; sourceTree = "<group>"; };
+		D725D1421905DF01005CDADE /* TestingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingUtils.h; sourceTree = "<group>"; };
+		D725D1431905DF01005CDADE /* TestingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingUtils.m; sourceTree = "<group>"; };
 		D72B384E18FCCE64002796B9 /* CredentialsEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialsEncryption.h; sourceTree = "<group>"; };
 		D72B384F18FCCE64002796B9 /* CredentialsEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsEncryption.m; sourceTree = "<group>"; };
 		D72FE49E18B5641A00C6452F /* ProcedureRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureRecord.h; sourceTree = "<group>"; };
@@ -867,6 +870,8 @@
 				D724060218A6027200EA2DD2 /* ModelTests */,
 				D72405E718A601CC00EA2DD2 /* Store Tests */,
 				D7439E3318A5FC53000EE008 /* Supporting Files */,
+				D725D1421905DF01005CDADE /* TestingUtils.h */,
+				D725D1431905DF01005CDADE /* TestingUtils.m */,
 			);
 			path = ProjectCrystalBlueOSXTests;
 			sourceTree = "<group>";
@@ -1459,6 +1464,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D725D1441905DF01005CDADE /* TestingUtils.m in Sources */,
 				D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */,
 				D720532D18E7595F00831BE6 /* ProcedureFieldValidatorTests.m in Sources */,
 				D7A0BD9318FB1DCE00282714 /* FileSystemUtilsTests.m in Sources */,
