@@ -86,7 +86,7 @@
     
     SourceImportController *importController = [[SourceImportController alloc] init];
     [importController setLibraryObjectStore:objectStore];
-    [importController fileSelector:nil didOpenFileAtPath:csvPath];
+    [importController fileSelectorDidOpenFileAtPath:csvPath];
     
     // These samples should now have been imported to the db.
     for (Source *s in testSources) {

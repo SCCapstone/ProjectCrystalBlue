@@ -18,8 +18,7 @@
 @synthesize tag;
 @synthesize photosWindow;
 
--(void)fileSelector:(id)selector
-  didOpenFileAtPath:(NSString *)filePath
+-(void)fileSelectorDidOpenFileAtPath:(NSString *)filePath
 {
     // Make sure properties are correctly set
     if (!source)

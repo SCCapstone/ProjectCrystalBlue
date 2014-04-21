@@ -52,7 +52,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if (result == NSFileHandlingPanelOKButton) {
             NSString *path = [panel.URL.path description];
             if (delegate) {
-                [delegate fileSelector:self didOpenFileAtPath:path];
+                [delegate performSelectorInBackground:@selector(fileSelectorDidOpenFileAtPath:) withObject:path];
             } else {
                 DDLogWarn(@"%@: User selected file %@, but no delegate was set.",
                           NSStringFromClass(self.class), path);

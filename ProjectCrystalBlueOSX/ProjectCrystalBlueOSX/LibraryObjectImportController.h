@@ -25,9 +25,6 @@
 @property AbstractLibraryObjectStore *libraryObjectStore;
 @property NSString *tableName;
 
--(void)fileSelector:(id)selector
-  didOpenFileAtPath:(NSString *)filePath;
-
 /// Check that all LibraryObjects have the correct attributes and the attribute values are valid.
 /// This should not be called by external classes - use the proper validation utility classes.
 -(ImportResult *)validateObjects:(NSArray *)libraryObjects;

@@ -40,7 +40,6 @@
 		D0B410FA18B590F000017FAC /* TransactionEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B410F918B590F000017FAC /* TransactionEqualsAndHashcodeTests.m */; };
 		D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */; };
 		D0C51DCA18BABF0C001B3929 /* ConflictResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C51DC918BABF0C001B3929 /* ConflictResolution.m */; };
-		D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */; };
 		D0CED3BF18E8E4D10031E996 /* SamplesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CED3BD18E8E4D10031E996 /* SamplesWindowController.m */; };
 		D0CED3C018E8E4D10031E996 /* SamplesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CED3BE18E8E4D10031E996 /* SamplesWindowController.xib */; };
 		D0CED3C618E8E6DE0031E996 /* SamplesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CED3C418E8E6DE0031E996 /* SamplesTableViewController.m */; };
@@ -103,7 +102,6 @@
 		D7439E2E18A5FC53000EE008 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7439E2D18A5FC53000EE008 /* XCTest.framework */; };
 		D7439E2F18A5FC53000EE008 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7439E0E18A5FC53000EE008 /* Cocoa.framework */; };
 		D7439E3718A5FC53000EE008 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7439E3518A5FC53000EE008 /* InfoPlist.strings */; };
-		D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */; };
 		D74C061618FB456A00677CD5 /* CredentialsInputWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D74C061418FB456A00677CD5 /* CredentialsInputWindowController.m */; };
 		D74C061718FB456A00677CD5 /* CredentialsInputWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D74C061518FB456A00677CD5 /* CredentialsInputWindowController.xib */; };
 		D75BA1FA18DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv in Resources */ = {isa = PBXBuildFile; fileRef = D75BA1F918DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv */; };
@@ -233,7 +231,6 @@
 		D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionConstants.m; sourceTree = "<group>"; };
 		D0C51DC818BABF0C001B3929 /* ConflictResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConflictResolution.h; sourceTree = "<group>"; };
 		D0C51DC918BABF0C001B3929 /* ConflictResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConflictResolution.m; sourceTree = "<group>"; };
-		D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBLibraryObjectStoreTests.m; sourceTree = "<group>"; };
 		D0CED3BC18E8E4D10031E996 /* SamplesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesWindowController.h; sourceTree = "<group>"; };
 		D0CED3BD18E8E4D10031E996 /* SamplesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesWindowController.m; sourceTree = "<group>"; };
 		D0CED3BE18E8E4D10031E996 /* SamplesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesWindowController.xib; sourceTree = "<group>"; };
@@ -322,7 +319,6 @@
 		D7439E2D18A5FC53000EE008 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D7439E3418A5FC53000EE008 /* ProjectCrystalBlueOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectCrystalBlueOSXTests-Info.plist"; sourceTree = "<group>"; };
 		D7439E3618A5FC53000EE008 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectCrystalBlueOSXTests.m; sourceTree = "<group>"; };
 		D74C061318FB456A00677CD5 /* CredentialsInputWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialsInputWindowController.h; sourceTree = "<group>"; };
 		D74C061418FB456A00677CD5 /* CredentialsInputWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsInputWindowController.m; sourceTree = "<group>"; };
 		D74C061518FB456A00677CD5 /* CredentialsInputWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CredentialsInputWindowController.xib; sourceTree = "<group>"; };
@@ -568,7 +564,6 @@
 		D0C9F1E518AEF5CD00885DB4 /* SimpleDBLibraryObjectStore */ = {
 			isa = PBXGroup;
 			children = (
-				D0C9F1E618AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m */,
 				D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */,
 			);
 			name = SimpleDBLibraryObjectStore;
@@ -858,7 +853,6 @@
 				D7C8733818B302D900F2976F /* ReadWrite */,
 				D724060218A6027200EA2DD2 /* ModelTests */,
 				D72405E718A601CC00EA2DD2 /* Store Tests */,
-				D7439E3818A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m */,
 				D7439E3318A5FC53000EE008 /* Supporting Files */,
 			);
 			path = ProjectCrystalBlueOSXTests;
@@ -1455,7 +1449,6 @@
 				D720532D18E7595F00831BE6 /* ProcedureFieldValidatorTests.m in Sources */,
 				D7A0BD9318FB1DCE00282714 /* FileSystemUtilsTests.m in Sources */,
 				D706CCA618E60B7000F7762E /* SourceFieldValidatorTests.m in Sources */,
-				D0C9F1E718AEF5E800885DB4 /* SimpleDBLibraryObjectStoreTests.m in Sources */,
 				D7FAAD8618DE42FA003A9A13 /* SourceImageUtilsTests.m in Sources */,
 				D72405F718A6023B00EA2DD2 /* LocalImageStoreTests.m in Sources */,
 				D09C7E9A18B1ABFE001B98AF /* SimpleDBUtilsTests.m in Sources */,
@@ -1464,7 +1457,6 @@
 				D72405EB18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m in Sources */,
 				D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */,
 				D704E1B018B16F6200170B7E /* ProceduresTests.m in Sources */,
-				D7439E3918A5FC53000EE008 /* ProjectCrystalBlueOSXTests.m in Sources */,
 				D024A0D718ADA07600B577E4 /* TransactionStoreTests.m in Sources */,
 				D72FE4A218B57B0F00C6452F /* ProcedureRecordTests.m in Sources */,
 				D7C8733D18B3031800F2976F /* CSVReadWriteUnitTests.m in Sources */,

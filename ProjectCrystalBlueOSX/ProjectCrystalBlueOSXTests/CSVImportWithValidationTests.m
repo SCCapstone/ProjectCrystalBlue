@@ -59,7 +59,7 @@ NSString *dbPath;
     [importController setLibraryObjectStore:objectStore];
     [importController setTableName:[SourceConstants tableName]];
 
-    [importController fileSelector:nil didOpenFileAtPath:testPath];
+    [importController fileSelectorDidOpenFileAtPath:testPath];
 
     XCTAssertNotNil(importResult);
     XCTAssertFalse(importResult.hasError);
@@ -77,7 +77,7 @@ NSString *dbPath;
     [importController setLibraryObjectStore:objectStore];
     [importController setTableName:[SampleConstants tableName]];
 
-    [importController fileSelector:nil didOpenFileAtPath:testPath];
+    [importController fileSelectorDidOpenFileAtPath:testPath];
 
     XCTAssertNotNil(importResult);
     XCTAssertFalse(importResult.hasError);
@@ -95,7 +95,7 @@ NSString *dbPath;
     [importController setLibraryObjectStore:objectStore];
     [importController setTableName:[SourceConstants tableName]];
 
-    [importController fileSelector:nil didOpenFileAtPath:testPath];
+    [importController fileSelectorDidOpenFileAtPath:testPath];
 
     XCTAssertNotNil(importResult);
     XCTAssertFalse(importResult.hasError);

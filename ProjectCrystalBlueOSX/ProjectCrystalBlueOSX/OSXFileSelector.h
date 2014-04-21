@@ -15,8 +15,7 @@
 /// Callback that is triggered when the user selects a file. Implementations of this method should
 /// carry out the necessary action for the filepath. It's reasonable to assume that the filepath
 /// is to a valid file of the correct format, but it wouldn't hurt to do extra validation to be sure.
--(void)fileSelector:(id)selector
-  didOpenFileAtPath:(NSString *)filePath;
+-(void)fileSelectorDidOpenFileAtPath:(NSString *)filePath;
 
 @end
 
@@ -26,7 +25,7 @@
 @interface OSXFileSelector : NSObject
 
 @property NSArray *allowedFileTypes;
-@property id<OSXFileSelectorDelegate> delegate;
+@property NSObject<OSXFileSelectorDelegate> *delegate;
 
 /// Return an instance of this class that selects CSV files.
 +(OSXFileSelector *)CSVFileSelector;
