@@ -57,7 +57,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     // Get remote history since last update (and 3 minutes before, just in case)
     DDLogCInfo(@"%@: Getting remote history since last update.", NSStringFromClass(self.class));
-    NSTimeInterval lastSyncTime = [transactionStore timeOfLastSync] - 180;
+    NSTimeInterval lastSyncTime = [transactionStore timeOfLastSync];
     NSString *query = [NSString stringWithFormat:@"select * from %@ where %@ >= '%f' order by %@ limit 250", [TransactionConstants tableName], TRN_TIMESTAMP, lastSyncTime, TRN_TIMESTAMP];
     NSArray *remoteTransactions = [SimpleDBUtils executeSelectQuery:query
                                             WithReturnedObjectClass:[Transaction class]
