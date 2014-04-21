@@ -196,7 +196,7 @@
         [googleMapsLink setAllowsEditingTextAttributes:YES];
         [googleMapsLink setSelectable:YES];
         
-        NSString *stringUrl = [NSString stringWithFormat:@"www.maps.google.com/?ll=%@,%@", latitude, longitude];
+        NSString *stringUrl = [NSString stringWithFormat:@"https://www.google.com/maps/preview/@%@,%@,8z", latitude, longitude];
         NSURL *url = [NSURL URLWithString:[stringUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         NSString *label = @"Google Maps Link";
         
