@@ -41,11 +41,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                      LoadingSheet *loading = [[LoadingSheet alloc] init];
                                      [loading activateSheetWithParentWindow:window
                                                                     AndText:kLoadingSheetText];
-                                     for (Source *s in sources) {
-                                         [controller deleteSourceWithKey:s.key];
-                                     }
-                                     [loading closeSheet];
-                                     [controller updateDisplayedSources];
+                                     [loading.progressIndicator setIndeterminate:NO];
+
+                                     dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                                     dispatch_async(backgroundQueue, ^{
+                                         const double progressStepSize = 100.0 / (double)sources.count;
+                                         for (Source *s in sources) {
+                                             [controller deleteSourceWithKey:s.key];
+                                             [loading.progressIndicator incrementBy:progressStepSize];
+                                         }
+                                         [loading closeSheet];
+                                         [controller updateDisplayedSources];
+                                     });
+
                                      didDelete = YES;
                                      break;
                                  }
