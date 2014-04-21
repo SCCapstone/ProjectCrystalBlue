@@ -123,11 +123,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSArray *imageKeys = [self.class imageKeysForSource:source];
     BOOL success = YES;
     for (NSString *imageKey in imageKeys) {
-        success = success && [imageStore deleteImageWithKey:imageKey];
+        const BOOL deletionSuccess = [imageStore deleteImageWithKey:imageKey];
+        if (!deletionSuccess) {
+            success = NO;
+        }
     }
+
     [source.attributes setObject:@"" forKey:SRC_IMAGES];
 
-    success = success && [dataStore updateLibraryObject:source IntoTable:[SourceConstants tableName]];
+    const BOOL updateSourceSuccess = [dataStore updateLibraryObject:source
+                                                          IntoTable:[SourceConstants tableName]];
+    if (!updateSourceSuccess) {
+        success = NO;
+    }
 
     return success;
 }

@@ -179,18 +179,28 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     S3DeleteObjectRequest *request = [[S3DeleteObjectRequest alloc] init];
     [request setKey:key];
     [request setBucket:BUCKET_NAME];
-    
-    S3DeleteObjectResponse *response = [s3Client deleteObject:request];
-    if ([response error]) {
-        DDLogError(@"%@: %@", CLASS_NAME, [response error]);
-        return NO;
-    } else {
-        DDLogInfo(@"%@: Successfully deleted image for key %@ from S3!", CLASS_NAME, key);
-        
-        // Now delete the image locally.
-        [localStore deleteImageWithKey:key];
-        return YES;
+
+    BOOL s3Success = YES;
+    @try {
+        S3DeleteObjectResponse *response = [s3Client deleteObject:request];
+        if ([response error]) {
+            DDLogError(@"%@: %@", CLASS_NAME, [response error]);
+        } else {
+            DDLogInfo(@"%@: Successfully deleted image for key %@ from S3!", CLASS_NAME, key);
+            s3Success = YES;
+        }
     }
+    @catch (AmazonServiceException *exception) {
+        DDLogError(@"%@: Could not delete image from S3 due to an exception.", CLASS_NAME);
+        DDLogError(@"%@: Exception: %@ ; ErrorCode %@", CLASS_NAME, [exception name], [exception errorCode]);
+        s3Success = NO;
+    }
+    @finally {
+        // Now delete the image locally.
+        const BOOL localSuccess = [localStore deleteImageWithKey:key];
+        return (s3Success && localSuccess);
+    }
+
 }
 
 -(BOOL)keyIsDirty:(NSString *)key
