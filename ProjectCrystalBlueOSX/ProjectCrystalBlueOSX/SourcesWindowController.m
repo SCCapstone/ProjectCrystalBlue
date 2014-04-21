@@ -23,6 +23,7 @@
 #import "CredentialsInputWindowController.h"
 #import "Reachability.h"
 #import "PDFRenderer.h"
+#import "SourcesDeleteController.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -216,50 +217,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     
     NSArray *selectedSources = [tableViewController.arrayController.arrangedObjects objectsAtIndexes:selectedRows];
-    
-    NSAlert *confirmation = [[NSAlert alloc] init];
-    [confirmation setAlertStyle:NSWarningAlertStyle];
-    
-    NSString *message = [NSString stringWithFormat:@"Really delete %lu source(s)?",
-                         selectedSources.count];
-    [confirmation setMessageText:message];
-    
-    NSMutableString *info = [NSMutableString stringWithString:
-                             @"These source(s) will be permanently deleted from the database:"];
-    for (Source *s in selectedSources) {
-        [info appendFormat:@"\n\t%@", s.key];
+    SourcesDeleteController *deleteController = [[SourcesDeleteController alloc] init];
+
+    const BOOL didDelete = [deleteController presentDeletionDialogInWindow:self.window
+                                                           toDeleteSources:selectedSources
+                                                   fromTableViewController:tableViewController];
+    if (didDelete) {
+        // Update detail panel selection
+        NSUInteger row = [tableViewController.tableView selectedRow];
+        if (row == -1)
+            [detailPanelController setSource:nil];
+        else
+            [detailPanelController setSource:[tableViewController.arrayController.arrangedObjects objectAtIndex:row]];
     }
-    [confirmation setInformativeText:info];
-    
-    // If the order of buttons changes, the numerical constants below NEED to be swapped.
-    [confirmation addButtonWithTitle:@"Delete"];
-    short const DELETE_BUTTON = 1000;
-    [confirmation addButtonWithTitle:@"Cancel"];
-    short const CANCEL_BUTTON = 1001;
-    
-    [confirmation beginSheetModalForWindow:self.window
-                         completionHandler:^(NSModalResponse returnCode) {
-                             switch (returnCode) {
-                                 case DELETE_BUTTON:
-                                     for (Source *s in selectedSources) {
-                                         [tableViewController deleteSourceWithKey:s.key];
-                                     }
-                                     break;
-                                 case CANCEL_BUTTON:
-                                     break;
-                                 default:
-                                     DDLogWarn(@"Unexpected return code %ld from DeleteSource Alert", (long)returnCode);
-                                     break;
-                             }
-                             [tableViewController updateDisplayedSources];
-                             
-                             // Update detail panel selection
-                             NSUInteger row = [tableViewController.tableView selectedRow];
-                             if (row == -1)
-                                 [detailPanelController setSource:nil];
-                             else
-                                 [detailPanelController setSource:[tableViewController.arrayController.arrangedObjects objectAtIndex:row]];
-                         }];
 }
 
 - (IBAction)viewSamples:(id)sender

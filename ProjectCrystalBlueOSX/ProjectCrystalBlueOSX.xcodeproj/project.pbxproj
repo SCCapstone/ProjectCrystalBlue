@@ -67,6 +67,7 @@
 		D715168B18F1BD8F00D1D965 /* samples_ok.csv in Resources */ = {isa = PBXBuildFile; fileRef = D715168A18F1BD8F00D1D965 /* samples_ok.csv */; };
 		D715CF6618F9E93B00768693 /* LocalEncryptedCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D715CF6518F9E93B00768693 /* LocalEncryptedCredentialsProvider.m */; };
 		D71BE30C18D7A85A00B7572F /* samples_non_ascii_chars.csv in Resources */ = {isa = PBXBuildFile; fileRef = D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */; };
+		D71E38FB1905B86E0099C794 /* SourcesDeleteController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71E38FA1905B86E0099C794 /* SourcesDeleteController.m */; };
 		D720532B18E757E500831BE6 /* ProcedureFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D720532A18E757E500831BE6 /* ProcedureFieldValidator.m */; };
 		D720532D18E7595F00831BE6 /* ProcedureFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D720532C18E7595F00831BE6 /* ProcedureFieldValidatorTests.m */; };
 		D720533218E75A4000831BE6 /* ImagesFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D720533118E75A4000831BE6 /* ImagesFieldValidator.m */; };
@@ -269,6 +270,8 @@
 		D715CF6418F9E93B00768693 /* LocalEncryptedCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalEncryptedCredentialsProvider.h; sourceTree = "<group>"; };
 		D715CF6518F9E93B00768693 /* LocalEncryptedCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalEncryptedCredentialsProvider.m; sourceTree = "<group>"; };
 		D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_non_ascii_chars.csv; sourceTree = "<group>"; };
+		D71E38F91905B86E0099C794 /* SourcesDeleteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesDeleteController.h; sourceTree = "<group>"; };
+		D71E38FA1905B86E0099C794 /* SourcesDeleteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesDeleteController.m; sourceTree = "<group>"; };
 		D720532918E757E500831BE6 /* ProcedureFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureFieldValidator.h; sourceTree = "<group>"; };
 		D720532A18E757E500831BE6 /* ProcedureFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureFieldValidator.m; sourceTree = "<group>"; };
 		D720532C18E7595F00831BE6 /* ProcedureFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureFieldValidatorTests.m; sourceTree = "<group>"; };
@@ -468,6 +471,7 @@
 				D038CBCD18DBFC0E00635442 /* SourcesWindowController.xib */,
 				D038CBCF18DC06EE00635442 /* SourcesTableViewController */,
 				D059F8EB18E546A90024AA58 /* SourcesDetailPanel */,
+				D71E38F81905B8520099C794 /* SourcesDeleteController */,
 			);
 			name = SourcesWindow;
 			sourceTree = "<group>";
@@ -659,6 +663,15 @@
 				D715168618F1BBFE00D1D965 /* CSVImportWithValidationTests.m */,
 			);
 			name = CSVImportWithValidation;
+			sourceTree = "<group>";
+		};
+		D71E38F81905B8520099C794 /* SourcesDeleteController */ = {
+			isa = PBXGroup;
+			children = (
+				D71E38F91905B86E0099C794 /* SourcesDeleteController.h */,
+				D71E38FA1905B86E0099C794 /* SourcesDeleteController.m */,
+			);
+			name = SourcesDeleteController;
 			sourceTree = "<group>";
 		};
 		D72405E718A601CC00EA2DD2 /* Store Tests */ = {
@@ -1425,6 +1438,7 @@
 				D059F92C18E560160024AA58 /* bitstream.c in Sources */,
 				D0C51DCA18BABF0C001B3929 /* ConflictResolution.m in Sources */,
 				D09152EA18F21A9300F6B579 /* LoadingSheet.m in Sources */,
+				D71E38FB1905B86E0099C794 /* SourcesDeleteController.m in Sources */,
 				D78ACC3C18A5FDC0006084D6 /* FMDatabaseAdditions.m in Sources */,
 				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
