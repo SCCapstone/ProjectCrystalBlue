@@ -346,12 +346,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     
-    LoadingSheet *loading = [[LoadingSheet alloc] init];
-    [loading activateSheetWithParentWindow:self.window
-                                   AndText:@"Syncing with the remote database. Do not interupt this operation.  It may take several minutes to complete."];
     [dataStore synchronizeWithCloud];
     [tableViewController updateDisplayedSources];
-    [loading closeSheet];
 }
 
 - (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem

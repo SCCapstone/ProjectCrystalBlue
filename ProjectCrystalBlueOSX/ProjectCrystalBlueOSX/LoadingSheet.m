@@ -49,6 +49,7 @@
         modalDelegate:self
        didEndSelector:@selector(didEndSheet:returnCode:contextInfo:)
           contextInfo:nil];
+    
     [self.progressIndicator startAnimation:nil];
 }
 
