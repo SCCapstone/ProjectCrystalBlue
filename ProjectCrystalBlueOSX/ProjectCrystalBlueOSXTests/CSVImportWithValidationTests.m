@@ -16,6 +16,7 @@
 #import "FileSystemUtils.h"
 #import "Source.h"
 #import "Sample.h"
+#import "TestingUtils.h"
 
 @interface CSVImportWithValidationTests : XCTestCase <ImportResultReporter>
 
@@ -61,6 +62,8 @@ NSString *dbPath;
 
     [importController fileSelectorDidOpenFileAtPath:testPath];
 
+    [TestingUtils busyWaitForSeconds:0.5f];
+
     XCTAssertNotNil(importResult);
     XCTAssertFalse(importResult.hasError);
 }
@@ -79,6 +82,8 @@ NSString *dbPath;
 
     [importController fileSelectorDidOpenFileAtPath:testPath];
 
+    [TestingUtils busyWaitForSeconds:0.5f];
+
     XCTAssertNotNil(importResult);
     XCTAssertFalse(importResult.hasError);
 }
@@ -96,6 +101,8 @@ NSString *dbPath;
     [importController setTableName:[SourceConstants tableName]];
 
     [importController fileSelectorDidOpenFileAtPath:testPath];
+
+    [TestingUtils busyWaitForSeconds:0.5f];
 
     XCTAssertNotNil(importResult);
     XCTAssertFalse(importResult.hasError);

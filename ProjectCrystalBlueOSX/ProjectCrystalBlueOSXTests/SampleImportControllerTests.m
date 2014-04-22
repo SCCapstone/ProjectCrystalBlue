@@ -13,6 +13,7 @@
 #import "LocalLibraryObjectStore.h"
 #import "LibraryObjectCSVWriter.h"
 #import "FileSystemUtils.h"
+#import "TestingUtils.h"
 
 #define TEST_DB_NAME @"pcb-test-db"
 #define TEST_CSV_FILE @"testSamples.csv"
@@ -78,7 +79,9 @@
     SampleImportController *importController = [[SampleImportController alloc] init];
     [importController setLibraryObjectStore:objectStore];
     [importController fileSelectorDidOpenFileAtPath:csvPath];
-    
+
+    [TestingUtils busyWaitForSeconds:0.2f];
+
     // These samples should now have been imported to the db.
     for (Sample *s in testSamples) {
         XCTAssertTrue([objectStore libraryObjectExistsForKey:s.key

@@ -13,6 +13,7 @@
 #import "LocalLibraryObjectStore.h"
 #import "FileSystemUtils.h"
 #import "LibraryObjectCSVWriter.h"
+#import "TestingUtils.h"
 
 #define TEST_DB_NAME @"pcb-test-db"
 #define TEST_CSV_FILE @"testSources.csv"
@@ -87,6 +88,8 @@
     SourceImportController *importController = [[SourceImportController alloc] init];
     [importController setLibraryObjectStore:objectStore];
     [importController fileSelectorDidOpenFileAtPath:csvPath];
+
+    [TestingUtils busyWaitForSeconds:0.3f];
     
     // These samples should now have been imported to the db.
     for (Source *s in testSources) {

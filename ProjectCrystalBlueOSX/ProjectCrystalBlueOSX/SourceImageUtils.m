@@ -40,7 +40,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 + (AbstractImageStore *)defaultImageStore
 {
-    return [[S3ImageStore alloc] initWithLocalDirectory:[FileSystemUtils localImagesDirectory]];
+    static S3ImageStore *sharedInstance = nil;
+    if (nil == sharedInstance) {
+        sharedInstance = [[S3ImageStore alloc] initWithLocalDirectory:[FileSystemUtils localImagesDirectory]];
+    }
+    return sharedInstance;
 }
 
 + (NSArray *)imageKeysForSource:(Source *)source
