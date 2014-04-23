@@ -90,6 +90,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // For each conflict where local is more recent, add to appropriate array
         DDLogCInfo(@"%@: Preparing resolved conflicts for remote syncing.", NSStringFromClass(self.class));
         for (ConflictResolution *resolvedConflict in resolvedConflicts) {
+            double progressStepSize = 25.00 / (double)resolvedConflicts.count;
+            
             if (resolvedConflict.isLocalMoreRecent) {
                 // Reset transaction to current time
                 Transaction *resolvedTransaction = resolvedConflict.transaction;
@@ -116,13 +118,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                 // Add transaction to be sent to remote
                 [unsyncedTransactions addObject:resolvedTransaction];
             }
+            [loading.progressIndicator incrementBy:progressStepSize];
         }
-        [loading.progressIndicator incrementBy:10.00];
+        if (resolvedConflicts.count == 0)
+            [loading.progressIndicator incrementBy:25.00];
         
         // Add remaining 'dirty' transactions/objects to unsynced arrays
         DDLogCInfo(@"%@: Adding remaining dirty transactions to data to be synced.", NSStringFromClass(self.class));
         NSArray *unsyncedLocalTransactions = [transactionStore getAllTransactions];
         for (Transaction *localTransaction in unsyncedLocalTransactions) {
+            double progressStepSize = 15.00 / (double)unsyncedLocalTransactions.count;
+            
             // Reset localTransactions to current time
             [localTransaction resetTimestamp];
             
@@ -148,13 +154,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             // Add transaction to be sent to remote
             [unsyncedTransactions addObject:localTransaction];
             
+            [loading.progressIndicator incrementBy:progressStepSize];
         }
-        [loading.progressIndicator incrementBy:10.00];
+        if (unsyncedLocalTransactions.count == 0)
+            [loading.progressIndicator incrementBy:15.00];
         
         // Put unsynced objects in remote database
         DDLogCInfo(@"%@: Batch put unsynced sources.", NSStringFromClass(self.class));
         [SimpleDBUtils executeBatchPut:unsyncedSourcePuts WithDomainName:[SourceConstants tableName] UsingClient:simpleDBClient];
-        [loading.progressIndicator incrementBy:10.00];
         DDLogCInfo(@"%@: Batch put unsynced samples.", NSStringFromClass(self.class));
         [SimpleDBUtils executeBatchPut:unsyncedSamplePuts WithDomainName:[SampleConstants tableName] UsingClient:simpleDBClient];
         [loading.progressIndicator incrementBy:10.00];
@@ -162,7 +169,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // Delete unsynced objects in remote database
         DDLogCInfo(@"%@: Batch delete unsynced sources.", NSStringFromClass(self.class));
         [SimpleDBUtils executeBatchDelete:unsyncedSourceDeletes WithDomainName:[SourceConstants tableName] UsingClient:simpleDBClient];
-        [loading.progressIndicator incrementBy:10.00];
         DDLogCInfo(@"%@: Batch delete unsynced samples.", NSStringFromClass(self.class));
         [SimpleDBUtils executeBatchDelete:unsyncedSampleDeletes WithDomainName:[SampleConstants tableName] UsingClient:simpleDBClient];
         [loading.progressIndicator incrementBy:10.00];
@@ -170,12 +176,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // Put unsycned transaction in remote database
         DDLogCInfo(@"%@: Batch put unsynced transactions.", NSStringFromClass(self.class));
         [SimpleDBUtils executeBatchPut:unsyncedTransactions WithDomainName:[TransactionConstants tableName] UsingClient:simpleDBClient];
-        [loading.progressIndicator incrementBy:10.00];
+        [loading.progressIndicator incrementBy:5.00];
         
         // Get changed objects from remote database
         DDLogCInfo(@"%@: Adding remotely changed objects to local database", NSStringFromClass(self.class));
         @try {
             for (ConflictResolution *resolvedConflict in resolvedConflicts) {
+                double progressStepSize = 25.00 / (double)resolvedConflicts.count;
+                
                 // Only for conflicts where remote is more recent
                 if (!resolvedConflict.isLocalMoreRecent) {
                     NSString *tableName = [resolvedConflict.transaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE];
@@ -197,8 +205,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                             [localStore updateLibraryObject:remoteObject IntoTable:tableName];
                     }
                 }
+                [loading.progressIndicator incrementBy:progressStepSize];
             }
-            [loading.progressIndicator incrementBy:20.00];
+            if (resolvedConflicts.count == 0)
+                [loading.progressIndicator incrementBy:25.00];
         }
         @catch (NSException *exception) {
             DDLogCError(@"%@: Failed while get changed library object from remote database. Error: %@", NSStringFromClass(self.class), exception);
