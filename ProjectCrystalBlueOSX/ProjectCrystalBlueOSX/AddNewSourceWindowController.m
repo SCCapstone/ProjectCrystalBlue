@@ -51,6 +51,7 @@
     [self.longitudeTextField.cell       setPlaceholderString:SRC_DEF_VAL_LONGITUDE];
     [self.ageTextField.cell             setPlaceholderString:SRC_DEF_VAL_AGE];
     [self.ageDataTypeTextField.cell     setPlaceholderString:SRC_DEF_VAL_AGE_DATATYPE];
+    [self.collectedByTextField.cell     setPlaceholderString:SRC_DEF_VAL_COLLECTED_BY];
     [self.hyperlinkTextView             setString:SRC_DEF_VAL_HYPERLINKS];
     [self.notesTextView                 setString:SRC_DEF_VAL_NOTES];
     
@@ -183,6 +184,14 @@
                                               fieldValue:self.ageDataTypeTextField.stringValue];
         [alert runModal];
     }
+    
+    ValidationResponse *collectedByOK = [SourceFieldValidator validateCollectedBy:self.collectedByTextField.stringValue];
+    if (!collectedByOK.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [collectedByOK alertWithFieldName:@"collected by"
+                                                fieldValue:self.collectedByTextField.stringValue];
+        [alert runModal];
+    }
 
     return validationPassed;
 }
@@ -218,6 +227,7 @@
     [attributes setObject:self.ageTextField.stringValue                     forKey:SRC_AGE];
     [attributes setObject:self.ageMethodComboBox.stringValue                forKey:SRC_AGE_METHOD];
     [attributes setObject:self.ageDataTypeTextField.stringValue             forKey:SRC_AGE_DATATYPE];
+    [attributes setObject:self.collectedByTextField.stringValue             forKey:SRC_COLLECTED_BY];
     [attributes setObject:self.hyperlinkTextView.string                     forKey:SRC_HYPERLINKS];
     [attributes setObject:self.notesTextView.string                         forKey:SRC_NOTES];
 

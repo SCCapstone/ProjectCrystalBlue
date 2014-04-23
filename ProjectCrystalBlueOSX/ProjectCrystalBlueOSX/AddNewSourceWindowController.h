@@ -32,6 +32,7 @@
 @property (weak) IBOutlet NSComboBox *ageMethodComboBox;
 @property (weak) IBOutlet NSTextField *ageDataTypeTextField;
 @property (weak) IBOutlet NSDatePicker *dateCollectedPicker;
+@property (weak) IBOutlet NSTextField *collectedByTextField;
 @property (unsafe_unretained) IBOutlet NSTextView *hyperlinkTextView;
 @property (unsafe_unretained) IBOutlet NSTextView *notesTextView;
 

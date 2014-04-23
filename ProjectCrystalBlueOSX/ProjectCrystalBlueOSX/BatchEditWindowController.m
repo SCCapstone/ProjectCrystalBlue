@@ -152,6 +152,14 @@
         [alert runModal];
     }
     
+    ValidationResponse *collectedByOk = [SourceFieldValidator validateCollectedBy:self.collectedByTextField.stringValue];
+    if (!collectedByOk.isValid) {
+        validationPassed = NO;
+        NSAlert *alert = [collectedByOk alertWithFieldName:@"collected by"
+                                                fieldValue:self.collectedByTextField.stringValue];
+        [alert runModal];
+    }
+    
     return validationPassed;
 }
 
@@ -199,6 +207,8 @@
             [source.attributes setObject:self.ageMethodComboBox.stringValue forKey:SRC_AGE_METHOD];
         if (![self.ageDataTypeTextField.stringValue isEqualToString:@""])
             [source.attributes setObject:self.ageDataTypeTextField.stringValue forKey:SRC_AGE_DATATYPE];
+        if (![self.collectedByTextField.stringValue isEqualToString:@""])
+            [source.attributes setObject:self.collectedByTextField.stringValue forKey:SRC_COLLECTED_BY];
         if (![self.hyperlinkTextView.string isEqualToString:@""])
             [source.attributes setObject:self.hyperlinkTextView.string forKey:SRC_HYPERLINKS];
         if (![self.notesTextView.string isEqualToString:@""])
