@@ -200,32 +200,34 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
 
 + (NSArray *)lithologiesForRockType:(NSString *)rockType
 {
-    if ([rockType isEqualToString:@"Siliciclastic"]) {
+    rockType = [rockType lowercaseString];
+    
+    if ([rockType isEqualToString:@"siliciclastic"]) {
         return [NSArray arrayWithObjects: @"Conglomerate", @"Breccia", @"Sandstone", @"Mudstone", @"Gravel",
                 @"Sand", @"Mud", @"Other", @"Unknown", nil];
     }
-    else if ([rockType isEqualToString:@"Carbonate"]) {
+    else if ([rockType isEqualToString:@"carbonate"]) {
         return [NSArray arrayWithObjects: @"Marl", @"Micrite", @"Wackestone", @"Packstone", @"Grainstone",
                 @"Boundstone", @"Other", @"Unknown", nil];
     }
-    else if ([rockType isEqualToString:@"Authigenic"]) {
+    else if ([rockType isEqualToString:@"authigenic"]) {
         return [NSArray arrayWithObjects: @"Glauconite", @"Other", @"Unknown", nil];
     }
-    else if ([rockType isEqualToString:@"Plutonic"]) {
+    else if ([rockType isEqualToString:@"plutonic"]) {
         return [NSArray arrayWithObjects: @"Granitoid", @"Granite", @"Granodiorite", @"Tonalite", @"Diorite",
                 @"Gabbro", @"Monzonite", @"Syenite", @"Other", @"Unknown", nil];
     }
-    else if ([rockType isEqualToString:@"Volcanic"]) {
+    else if ([rockType isEqualToString:@"volcanic"]) {
         return [NSArray arrayWithObjects: @"Ash", @"Rhyolite", @"Dacite", @"Andesite", @"Basalt", @"Trachyte", @"Other", @"Unknown", nil];
     }
-    else if ([rockType isEqualToString:@"Metasedimentary"]) {
+    else if ([rockType isEqualToString:@"metasedimentary"]) {
         return [NSArray arrayWithObjects: @"Slate", @"Phyllite", @"Schist", @"Gneiss", @"Quartzite", @"Marble", @"Other", @"Unknown", nil];
     }
-    else if ([rockType isEqualToString:@"Metaigneous"]) {
+    else if ([rockType isEqualToString:@"metaigneous"]) {
         return [NSArray arrayWithObjects: @"Felsic Orthoschist", @"Felsic Orthogneiss", @"Intermediate Orthoschist",
                 @"Intermediate Orthogneiss", @"Amphibolite", @"Other", @"Unknown", nil];
     }
-    else if ([rockType isEqualToString:@"Fossil"]) {
+    else if ([rockType isEqualToString:@"fossil"]) {
         return [NSArray arrayWithObjects:@"Conglomerate", @"Sandstone", @"Mudstone", @"Marl", @"Micrite", @"Wackestone",
                 @"Packstone", @"Grainstone", @"Other", @"Unknown", nil];
     }
@@ -236,14 +238,16 @@ static NSString *const SOURCE_TABLE_NAME = @"prod_source_table";
 
 + (NSArray *)deposystemsForRockType:(NSString *)rockType
 {
-    if ([rockType isEqualToString:@"Siliciclastic"]) {
+    rockType = [rockType lowercaseString];
+    
+    if ([rockType isEqualToString:@"siliciclastic"]) {
         return [NSArray arrayWithObjects: @"Alluvial Fan", @"Fluvial Megafan", @"Meandering Fluvial", @"Alpine Glacial", @"Ice Sheet",
                 @"Lacustrine", @"Eolian", @"Deltaic", @"Estuarine", @"Shallow Marine", @"Shelf", @"Pelagic", @"Submarine Fan", @"Unknown", nil];
     }
-    else if ([rockType isEqualToString:@"Carbonate"]) {
+    else if ([rockType isEqualToString:@"carbonate"]) {
         return [NSArray arrayWithObjects: @"Carbonate Platform", @"Carbonate Reef", @"Pelagic", @"Eolian", @"Unknown", nil];
     }
-    else if ([rockType isEqualToString:@"Fossil"]) {
+    else if ([rockType isEqualToString:@"fossil"]) {
         return [NSArray arrayWithObjects: @"Alluvial Fan", @"Fluvial Megafan", @"Meandering Fluvial", @"Alpine Glacial", @"Ice Sheet",
                 @"Lacustrine", @"Eolian", @"Deltaic", @"Estuarine", @"Shallow Marine", @"Shelf", @"Pelagic", @"Submarine Fan",
                 @"Carbonate Platform", @"Carbonate Reef", @"Pelagic", @"Eolian", @"Unknown", nil];
