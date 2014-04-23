@@ -676,6 +676,54 @@
     return valid;
 }
 
+/// Validates that collected by is between 1 and 90 characters, and contains alphanumeric
+/// characters and whitespace only.
++(ValidationResponse *)validateCollectedBy:(NSString *)collectedBy
+{
+    const NSUInteger maxLength = 90;
+    const NSUInteger minLength = 0;
+    
+    ValidationResponse *valid = [[ValidationResponse alloc] init];
+    [valid setIsValid:YES];
+    
+    if (![PrimitiveFieldValidator validateField:collectedBy
+                          isNoMoreThanMaxLength:maxLength])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
+                              maxLength,
+                              collectedBy.length];
+        [valid.errors addObject:errorStr];
+    }
+    
+    if (![PrimitiveFieldValidator validateField:collectedBy
+                             isAtLeastMinLength:minLength])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MIN_CHARS copy],
+                              minLength,
+                              collectedBy.length];
+        [valid.errors addObject:errorStr];
+    }
+    
+    NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
+    
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:@"'"];
+    
+    if (![PrimitiveFieldValidator validateField:collectedBy
+                            containsOnlyCharSet:validCharacters])
+    {
+        [valid setIsValid:NO];
+        NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_INVALID_CHARACTERS copy],
+                              @"letters, numbers, and spaces"];
+        [valid.errors addObject:errorStr];
+    }
+    return valid;
+}
+
 /// Validates that Notes is between 0 and 2000 characters.
 +(ValidationResponse *)validateNotes:(NSString *)notes
 {

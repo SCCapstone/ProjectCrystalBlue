@@ -44,6 +44,8 @@
         response = [SourceFieldValidator validateLongitude:newValue];
     else if ([attr isEqualToString:SRC_DATE_COLLECTED])
         response = [SourceFieldValidator validateDateCollected:newValue];
+    else if ([attr isEqualToString:SRC_COLLECTED_BY])
+        response = [SourceFieldValidator validateCollectedBy:newValue];
     else if ([attr isEqualToString:SRC_AGE])
         response = [SourceFieldValidator validateAge:newValue];
     else if ([attr isEqualToString:SRC_AGE_DATATYPE])

@@ -75,6 +75,10 @@
 /// Validates that dateCollected is an integral numerical value (UNIX TIME)
 +(ValidationResponse *)validateDateCollected:(NSString *)dateCollected;
 
+/// Validates that collected by is between 1 and 90 characters, and contains alphanumeric
+/// characters and whitespace only.
++(ValidationResponse *)validateCollectedBy:(NSString *)collectedBy;
+
 /// Validates that Notes is between 0 and 2000 characters.
 +(ValidationResponse *)validateNotes:(NSString *)notes;
 
