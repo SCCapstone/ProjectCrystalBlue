@@ -404,6 +404,7 @@ NSString* filePath;
     NSString *section       = @"´Ï";
     NSString *formation     = @"∑≈";
     NSString *images        = @"ÏÔ˚ÒÅ˚Ò";
+    NSString *collectedBy   = @"˝ÔÓÎÏ˝ÓÒÔÓ˝Ò˝Ó˝ÓÒÒÎÔÓ˝";
 
     Source *expected = [[Source alloc] initWithKey:key
                                  AndWithAttributes:[SourceConstants attributeNames]
@@ -429,6 +430,7 @@ NSString* filePath;
     [expected.attributes setObject:section      forKey:SRC_SECTION];
     [expected.attributes setObject:formation    forKey:SRC_FORMATION];
     [expected.attributes setObject:images       forKey:SRC_IMAGES];
+    [expected.attributes setObject:collectedBy  forKey:SRC_COLLECTED_BY];
 
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
     NSArray *readSamples = [reader readFromFileAtPath:testPath];
