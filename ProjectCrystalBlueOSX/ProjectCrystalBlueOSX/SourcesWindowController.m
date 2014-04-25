@@ -21,6 +21,8 @@
 #import "LibraryObjectExportController.h"
 #import "LibraryObjectCSVWriter.h"
 #import "CredentialsInputWindowController.h"
+#import "SourceImageUtils.h"
+#import "AbstractCloudImageStore.h"
 #import "Reachability.h"
 #import "PDFRenderer.h"
 #import "SourcesDeleteController.h"
@@ -347,6 +349,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     
     [dataStore synchronizeWithCloud];
+    [(AbstractCloudImageStore *)[SourceImageUtils defaultImageStore] synchronizeWithCloud];
+
     [tableViewController updateDisplayedSources];
 }
 
