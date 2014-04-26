@@ -45,7 +45,7 @@
     XCTAssertFalse([[SplitFieldValidator validateCurrentLocation:tooLong] isValid]);
 }
 
-- (void)testValidateSampleKey
+- (void)testValidateSplitKey
 {
     NSString *valid = @"my sample.001";
     NSString *keyNotUnique = @"This key already exists.001";

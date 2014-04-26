@@ -680,11 +680,11 @@
 		D72405E718A601CC00EA2DD2 /* Store Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D7A0BD9118FB1DBA00282714 /* FileSystemUtilsTests */,
 				D79B09A718FA2666000100CB /* CredentialsProvider */,
 				D024A0D518ADA05100B577E4 /* TransactionStore */,
 				D72405E818A601D600EA2DD2 /* LibraryObjectStore */,
 				D72405EF18A6020D00EA2DD2 /* ImageStore */,
+				D7A0BD9118FB1DBA00282714 /* FileSystemUtilsTests */,
 				D72405FF18A6025600EA2DD2 /* LocalTransactionCache */,
 			);
 			name = "Store Tests";
@@ -865,9 +865,9 @@
 		D7439E3218A5FC53000EE008 /* ProjectCrystalBlueOSXTests */ = {
 			isa = PBXGroup;
 			children = (
+				D724060218A6027200EA2DD2 /* ModelTests */,
 				D7FAAD7518DE1323003A9A13 /* ValidatorTests */,
 				D7C8733818B302D900F2976F /* ReadWrite */,
-				D724060218A6027200EA2DD2 /* ModelTests */,
 				D72405E718A601CC00EA2DD2 /* Store Tests */,
 				D7439E3318A5FC53000EE008 /* Supporting Files */,
 				D725D1421905DF01005CDADE /* TestingUtils.h */,
@@ -1234,8 +1234,8 @@
 			isa = PBXGroup;
 			children = (
 				D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */,
-				D7FAAD7B18DE1D1B003A9A13 /* SplitFieldValidatorTests.m */,
 				D706CCA518E60B7000F7762E /* SampleFieldValidatorTests.m */,
+				D7FAAD7B18DE1D1B003A9A13 /* SplitFieldValidatorTests.m */,
 				D720532C18E7595F00831BE6 /* ProcedureFieldValidatorTests.m */,
 				D7C6AB3418E75AF700599810 /* ImagesFieldvalidatorTests.m */,
 			);
