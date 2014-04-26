@@ -10,7 +10,7 @@
 #import "SimpleDBUtils.h"
 #import "HardcodedCredentialsProvider.h"
 #import "Transaction.h"
-#import "Source.h"
+#import "Sample.h"
 
 #define TEST_DOMAIN_NAME @"testDomain"
 
@@ -81,22 +81,22 @@
     // Ensure the converted transaction object is equal to the original transaction object
     XCTAssertEqualObjects(convertedTransaction, transaction, @"The two transaction objects are not equal.");
     
-    // Convert source object to SimpleDBReplaceableItem
-    Source *source = [[Source alloc] initWithKey:@"rock1030"
-                                   AndWithValues:[SourceConstants attributeDefaultValues]];
-    replaceableItem = [SimpleDBUtils convertObjectToSimpleDBItem:source];
-    XCTAssertNotNil(replaceableItem, @"SimpleDBUtils failed to convert the source object.");
-    XCTAssertEqual(source.attributes.count, replaceableItem.attributes.count, @"SimpleDBItem does not contain the correct number of attributes.");
+    // Convert sample object to SimpleDBReplaceableItem
+    Sample *sample = [[Sample alloc] initWithKey:@"rock1030"
+                                   AndWithValues:[SampleConstants attributeDefaultValues]];
+    replaceableItem = [SimpleDBUtils convertObjectToSimpleDBItem:sample];
+    XCTAssertNotNil(replaceableItem, @"SimpleDBUtils failed to convert the sample object.");
+    XCTAssertEqual(sample.attributes.count, replaceableItem.attributes.count, @"SimpleDBItem does not contain the correct number of attributes.");
     
     // Convert SimpleDBReplaceableItem to transaction object
     item = [[SimpleDBItem alloc] initWithName:replaceableItem.name
                                 andAttributes:replaceableItem.attributes];
-    Source *convertedSource = [SimpleDBUtils convertSimpleDBAttributes:item.attributes ToObjectOfClass:[Source class]];
-    XCTAssertNotNil(convertedSource, @"SimpleDBUtils failed to convert the simpleDBItem.");
-    XCTAssertEqual(item.attributes.count, convertedSource.attributes.count, @"convertedSource does not contain the correct number of attributes.");
+    Sample *convertedSample = [SimpleDBUtils convertSimpleDBAttributes:item.attributes ToObjectOfClass:[Sample class]];
+    XCTAssertNotNil(convertedSample, @"SimpleDBUtils failed to convert the simpleDBItem.");
+    XCTAssertEqual(item.attributes.count, convertedSample.attributes.count, @"convertedSample does not contain the correct number of attributes.");
     
     // Ensure the converted transaction object is equal to the original transaction object
-    XCTAssertEqualObjects(convertedSource, source, @"The two source objects are not equal.");
+    XCTAssertEqualObjects(convertedSample, sample, @"The two sample objects are not equal.");
 }
 
 /// Verify batchPut, selectQuery, and batchDelete operations work correctly

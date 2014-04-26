@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "SourcesWindowController.h"
+#import "SamplesWindowController.h"
 #import "FileSystemUtils.h"
 #import "DDLog.h"
 #import "DDTTYLogger.h"
@@ -29,9 +29,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSDate *now = [[NSDate alloc] init];
     DDLogInfo(@"Launched app %@", now);
     
-    if (!sourcesWindowController)
-        sourcesWindowController = [[SourcesWindowController alloc] initWithWindowNibName:@"SourcesWindowController"];
-    [sourcesWindowController showWindow:self];
+    if (!samplesWindowController)
+        samplesWindowController = [[SamplesWindowController alloc] initWithWindowNibName:@"SamplesWindowController"];
+    [samplesWindowController showWindow:self];
 }
 
 

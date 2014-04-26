@@ -1,20 +1,20 @@
 //
-//  BatchEditWindowController.h
+//  AddNewSampleWindowController.h
 //  ProjectCrystalBlueOSX
 //
-//  Created by Justin Baumgartner on 4/6/14.
+//  Created by Logan Hood on 3/2/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
+@class SamplesTableViewController, AbstractCloudLibraryObjectStore;
 
-@class AbstractCloudLibraryObjectStore;
+@interface AddNewSampleWindowController : NSWindowController
 
-@interface BatchEditWindowController : NSWindowController
-
-@property NSArray *selectedSamples;
+@property SamplesTableViewController *samplesTableViewController;
 @property AbstractCloudLibraryObjectStore *dataStore;
 
+@property (weak) IBOutlet NSTextField *keyTextField;
 @property (weak) IBOutlet NSTextField *continentTextField;
 @property (weak) IBOutlet NSComboBox *rockTypeComboBox;
 @property (weak) IBOutlet NSComboBox *lithologyComboBox;
@@ -31,6 +31,7 @@
 @property (weak) IBOutlet NSTextField *ageTextField;
 @property (weak) IBOutlet NSComboBox *ageMethodComboBox;
 @property (weak) IBOutlet NSTextField *ageDataTypeTextField;
+@property (weak) IBOutlet NSDatePicker *dateCollectedPicker;
 @property (weak) IBOutlet NSTextField *collectedByTextField;
 @property (unsafe_unretained) IBOutlet NSTextView *hyperlinkTextView;
 @property (unsafe_unretained) IBOutlet NSTextView *notesTextView;

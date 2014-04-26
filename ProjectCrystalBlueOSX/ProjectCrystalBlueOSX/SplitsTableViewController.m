@@ -9,7 +9,7 @@
 #import "SplitsTableViewController.h"
 #import "SplitsDetailPanelViewController.h"
 #import "AbstractCloudLibraryObjectStore.h"
-#import "Source.h"
+#import "Sample.h"
 #import "Split.h"
 #import "Procedures.h"
 #import "DDLog.h"
@@ -26,7 +26,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SplitsTableViewController
 
-@synthesize dataStore, tableView, source, displayedSplits, arrayController, detailPanel, searchField;
+@synthesize dataStore, tableView, sample, displayedSplits, arrayController, detailPanel, searchField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -68,12 +68,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)updateDisplayedSplits
 {
-    NSString *attrName = [[SourceConstants attributeNames] objectAtIndex:searchField.tag];
+    NSString *attrName = [[SampleConstants attributeNames] objectAtIndex:searchField.tag];
     
     if ([searchField.stringValue isEqualToString:@""])
-        [self setDisplayedSplits:[[dataStore getAllSplitsForSampleKey:source.key] mutableCopy]];
+        [self setDisplayedSplits:[[dataStore getAllSplitsForSampleKey:sample.key] mutableCopy]];
     else
-        [self setDisplayedSplits:[[dataStore getAllSplitsForSampleKey:source.key
+        [self setDisplayedSplits:[[dataStore getAllSplitsForSampleKey:sample.key
                                                     AndForAttributeName:attrName
                                                      WithAttributeValue:searchField.stringValue] mutableCopy]];
 }

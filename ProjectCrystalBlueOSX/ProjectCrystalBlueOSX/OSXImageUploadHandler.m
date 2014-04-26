@@ -7,14 +7,14 @@
 //
 
 #import "OSXImageUploadHandler.h"
-#import "SourcePhotosWindowController.h"
+#import "SamplePhotosWindowController.h"
 #import "AbstractImageStore.h"
 #import "LoadingSheet.h"
-#import "SourceImageUtils.h"
+#import "SampleImageUtils.h"
 
 @implementation OSXImageUploadHandler
 
-@synthesize source;
+@synthesize sample;
 @synthesize dataStore;
 @synthesize tag;
 @synthesize photosWindow;
@@ -22,10 +22,10 @@
 -(void)fileSelectorDidOpenFileAtPath:(NSString *)filePath
 {
     // Make sure properties are correctly set
-    if (!source)
+    if (!sample)
     {
         [NSException raise:@"Null properties"
-                    format:@"The source and datastore property must be set!"];
+                    format:@"The sample and datastore property must be set!"];
         return;
     }
 
@@ -35,11 +35,11 @@
 
     NSImage *imageToUpload = [[NSImage alloc] initWithData:[NSData dataWithContentsOfFile:filePath]];
 
-    [SourceImageUtils addImage:imageToUpload
-                     forSource:source
+    [SampleImageUtils addImage:imageToUpload
+                     forSample:sample
                    inDataStore:dataStore
                   withImageTag:tag
-                intoImageStore:[SourceImageUtils defaultImageStore]];
+                intoImageStore:[SampleImageUtils defaultImageStore]];
 
     if (photosWindow) {
         [photosWindow reloadImageKeys];

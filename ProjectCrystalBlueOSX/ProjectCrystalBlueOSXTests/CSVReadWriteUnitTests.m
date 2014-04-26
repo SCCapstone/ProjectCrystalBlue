@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "Split.h"
-#import "Source.h"
+#import "Sample.h"
 #import "FileSystemUtils.h"
 #import "LibraryObjectCSVWriter.h"
 #import "LibraryObjectCSVReader.h"
@@ -75,85 +75,85 @@ NSString* filePath;
     }
 }
 
-/// Populates an array of sources, writes them to a file, then parses them again.
+/// Populates an array of samples, writes them to a file, then parses them again.
 /// The results from the parser should match the original array.
-- (void)testWriteAndReadSources
+- (void)testWriteAndReadSamples
 {
-    filePath = [localDirectory stringByAppendingFormat:@"/%@", @"testWriteSources.csv"];
+    filePath = [localDirectory stringByAppendingFormat:@"/%@", @"testWriteSamples.csv"];
     
-    NSMutableArray *sources = [[NSMutableArray alloc] init];
+    NSMutableArray *samples = [[NSMutableArray alloc] init];
     
-    const int numberOfSources = 100;
-    for (int i = 0; i < numberOfSources; ++i) {
-        NSString *key = [NSString stringWithFormat:@"%@%05d", SRC_KEY, i];
-        Source *s = [[Source alloc] initWithKey:key
-                              AndWithAttributes:[SourceConstants attributeNames]
-                                      AndValues:[SourceConstants attributeDefaultValues]];
+    const int numberOfSamples = 100;
+    for (int i = 0; i < numberOfSamples; ++i) {
+        NSString *key = [NSString stringWithFormat:@"%@%05d", SMP_KEY, i];
+        Sample *s = [[Sample alloc] initWithKey:key
+                              AndWithAttributes:[SampleConstants attributeNames]
+                                      AndValues:[SampleConstants attributeDefaultValues]];
         
-        for (NSString *attribute in [SourceConstants attributeNames]) {
+        for (NSString *attribute in [SampleConstants attributeNames]) {
             NSString *attributeValue = [NSString stringWithFormat:@"%@%05d", attribute, i];
             [s.attributes setObject:attributeValue forKey:attribute];
         }
         
-        [sources addObject:s];
+        [samples addObject:s];
     }
     
     // Write to the file
     LibraryObjectCSVWriter *writer = [[LibraryObjectCSVWriter alloc] init];
-    [writer writeObjects:sources
+    [writer writeObjects:samples
             ToFileAtPath:filePath];
     XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:filePath]);
     
     // Read from the file
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    NSArray *readSources = [reader readFromFileAtPath:filePath];
+    NSArray *readSamples = [reader readFromFileAtPath:filePath];
     
-    XCTAssertEqual(readSources.count, sources.count);
-    for (int i = 0; i < numberOfSources; ++i) {
-        LibraryObject *expected = (LibraryObject *)[sources objectAtIndex:i];
-        LibraryObject *actual = [readSources objectAtIndex:i];
+    XCTAssertEqual(readSamples.count, samples.count);
+    for (int i = 0; i < numberOfSamples; ++i) {
+        LibraryObject *expected = (LibraryObject *)[samples objectAtIndex:i];
+        LibraryObject *actual = [readSamples objectAtIndex:i];
         XCTAssertEqualObjects(expected, actual);
     }
 }
 
-/// Populates an array of sources, writes them to a file, then parses them again.
+/// Populates an array of samples, writes them to a file, then parses them again.
 /// This time some of the attributes contain commas.
 /// The results from the parser should match the original array.
 - (void)testWriteAndReadAttributesContainingCommas
 {
-    filePath = [localDirectory stringByAppendingFormat:@"/%@", @"testWriteSourcesWithCommas.csv"];
+    filePath = [localDirectory stringByAppendingFormat:@"/%@", @"testWriteSamplesWithCommas.csv"];
     
-    NSMutableArray *sources = [[NSMutableArray alloc] init];
+    NSMutableArray *samples = [[NSMutableArray alloc] init];
     
-    const int numberOfSources = 100;
-    for (int i = 0; i < numberOfSources; ++i) {
-        NSString *key = [NSString stringWithFormat:@"artichoke,eggplant,%@%05d", SRC_KEY, i];
-        Source *s = [[Source alloc] initWithKey:key
-                              AndWithAttributes:[SourceConstants attributeNames]
-                                      AndValues:[SourceConstants attributeDefaultValues]];
+    const int numberOfSamples = 100;
+    for (int i = 0; i < numberOfSamples; ++i) {
+        NSString *key = [NSString stringWithFormat:@"artichoke,eggplant,%@%05d", SMP_KEY, i];
+        Sample *s = [[Sample alloc] initWithKey:key
+                              AndWithAttributes:[SampleConstants attributeNames]
+                                      AndValues:[SampleConstants attributeDefaultValues]];
         
-        for (NSString *attribute in [SourceConstants attributeNames]) {
+        for (NSString *attribute in [SampleConstants attributeNames]) {
             NSString *attributeValue = [NSString stringWithFormat:@"artichoke,eggplant,%@%05d", attribute, i];
             [s.attributes setObject:attributeValue forKey:attribute];
         }
         
-        [sources addObject:s];
+        [samples addObject:s];
     }
     
     // Write to the file
     LibraryObjectCSVWriter *writer = [[LibraryObjectCSVWriter alloc] init];
-    [writer writeObjects:sources
+    [writer writeObjects:samples
             ToFileAtPath:filePath];
     XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:filePath]);
     
     // Read from the file
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    NSArray *readSources = [reader readFromFileAtPath:filePath];
+    NSArray *readSamples = [reader readFromFileAtPath:filePath];
     
-    XCTAssertEqual(readSources.count, sources.count);
-    for (int i = 0; i < numberOfSources; ++i) {
-        LibraryObject *expected = (LibraryObject *)[sources objectAtIndex:i];
-        LibraryObject *actual = [readSources objectAtIndex:i];
+    XCTAssertEqual(readSamples.count, samples.count);
+    for (int i = 0; i < numberOfSamples; ++i) {
+        LibraryObject *expected = (LibraryObject *)[samples objectAtIndex:i];
+        LibraryObject *actual = [readSamples objectAtIndex:i];
         XCTAssertEqualObjects(expected, actual);
     }
 }
@@ -169,7 +169,7 @@ NSString* filePath;
     const int numberOfSplits = 3; // Do not change this value unless you create a new test file.
     
     for (int i = 0; i < numberOfSplits; ++i) {
-        NSString *key = [NSString stringWithFormat:@"%@%05d", SRC_KEY, i];
+        NSString *key = [NSString stringWithFormat:@"%@%05d", SMP_KEY, i];
         Split *s = [[Split alloc] initWithKey:key
                               AndWithAttributes:[SplitConstants attributeNames]
                                       AndValues:[SplitConstants attributeDefaultValues]];
@@ -205,7 +205,7 @@ NSString* filePath;
     const int numberOfSplits = 3; // Do not change this value unless you create a new test file.
 
     for (int i = 0; i < numberOfSplits; ++i) {
-        NSString *key = [NSString stringWithFormat:@"%@%05d", SRC_KEY, i];
+        NSString *key = [NSString stringWithFormat:@"%@%05d", SMP_KEY, i];
         Split *s = [[Split alloc] initWithKey:key
                               AndWithAttributes:[SplitConstants attributeNames]
                                       AndValues:[SplitConstants attributeDefaultValues]];
@@ -331,25 +331,25 @@ NSString* filePath;
     XCTAssertEqualObjects([readSplits objectAtIndex:0], expected);
 }
 
-/// Populates an array of sources (containing UTF8 characters in some fields), writes them to a
+/// Populates an array of samples (containing UTF8 characters in some fields), writes them to a
 /// file, then parses them again.
 /// The results from the parser should match the original array.
-- (void)testWriteAndReadSourcesWithUTF8Characters
+- (void)testWriteAndReadSamplesWithUTF8Characters
 {
-    filePath = [localDirectory stringByAppendingFormat:@"/%@", @"testWriteSources.csv"];
+    filePath = [localDirectory stringByAppendingFormat:@"/%@", @"testWriteSamples.csv"];
 
-    NSMutableArray *sources = [[NSMutableArray alloc] init];
+    NSMutableArray *samples = [[NSMutableArray alloc] init];
 
-    const int numberOfSources = 100;
-    for (int i = 0; i < numberOfSources; ++i) {
+    const int numberOfSamples = 100;
+    for (int i = 0; i < numberOfSamples; ++i) {
         NSString *key = [NSString stringWithFormat:@"˚®ˆø∂ƒøˆ∆ƒ%05d", i];
-        Source *s = [[Source alloc] initWithKey:key
-                              AndWithAttributes:[SourceConstants attributeNames]
-                                      AndValues:[SourceConstants attributeDefaultValues]];
+        Sample *s = [[Sample alloc] initWithKey:key
+                              AndWithAttributes:[SampleConstants attributeNames]
+                                      AndValues:[SampleConstants attributeDefaultValues]];
 
-        for (NSString *attribute in [SourceConstants attributeNames]) {
+        for (NSString *attribute in [SampleConstants attributeNames]) {
             NSString *attributeValue;
-            if ([attribute isEqualToString:SRC_KEY]) {
+            if ([attribute isEqualToString:SMP_KEY]) {
                 attributeValue = s.key;
             } else {
                 attributeValue = [NSString stringWithFormat:@"ø∑øˆ´øˆˆø∑ˆø´ˆø∑•ªª•%@%05d", attribute, i];
@@ -357,31 +357,31 @@ NSString* filePath;
             [s.attributes setObject:attributeValue forKey:attribute];
         }
 
-        [sources addObject:s];
+        [samples addObject:s];
     }
 
     // Write to the file
     LibraryObjectCSVWriter *writer = [[LibraryObjectCSVWriter alloc] init];
-    [writer writeObjects:sources
+    [writer writeObjects:samples
             ToFileAtPath:filePath];
     XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:filePath]);
 
     // Read from the file
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    NSArray *readSources = [reader readFromFileAtPath:filePath];
+    NSArray *readSamples = [reader readFromFileAtPath:filePath];
 
-    XCTAssertEqual(readSources.count, sources.count);
-    for (int i = 0; i < numberOfSources; ++i) {
-        LibraryObject *expected = (LibraryObject *)[sources objectAtIndex:i];
-        LibraryObject *actual = [readSources objectAtIndex:i];
+    XCTAssertEqual(readSamples.count, samples.count);
+    for (int i = 0; i < numberOfSamples; ++i) {
+        LibraryObject *expected = (LibraryObject *)[samples objectAtIndex:i];
+        LibraryObject *actual = [readSamples objectAtIndex:i];
         XCTAssertEqualObjects(expected, actual);
     }
 }
 
 /// Reads a test CSV file with Apple's Western Europe encoding.
-- (void)testReadSourcesFromAppleWesternEuropeEncoding
+- (void)testReadSamplesFromAppleWesternEuropeEncoding
 {
-    NSString *testFile = @"source_with_western_europe_apple_encoding";
+    NSString *testFile = @"sample_with_western_europe_apple_encoding";
     NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
 
     NSString *key           = @"å∫ç∂";
@@ -405,38 +405,38 @@ NSString* filePath;
     NSString *formation     = @"∑≈";
     NSString *images        = @"ÏÔ˚ÒÅ˚Ò";
 
-    Source *expected = [[Source alloc] initWithKey:key
-                                 AndWithAttributes:[SourceConstants attributeNames]
-                                         AndValues:[SourceConstants attributeDefaultValues]];
+    Sample *expected = [[Sample alloc] initWithKey:key
+                                 AndWithAttributes:[SampleConstants attributeNames]
+                                         AndValues:[SampleConstants attributeDefaultValues]];
 
-    [expected.attributes setObject:key          forKey:SRC_KEY];
-    [expected.attributes setObject:continent    forKey:SRC_CONTINENT];
-    [expected.attributes setObject:locality     forKey:SRC_LOCALITY];
-    [expected.attributes setObject:region       forKey:SRC_REGION];
-    [expected.attributes setObject:hyperlinks   forKey:SRC_HYPERLINKS];
-    [expected.attributes setObject:member       forKey:SRC_MEMBER];
-    [expected.attributes setObject:latitude     forKey:SRC_LATITUDE];
-    [expected.attributes setObject:longitude    forKey:SRC_LONGITUDE];
-    [expected.attributes setObject:ageDataType  forKey:SRC_AGE_DATATYPE];
-    [expected.attributes setObject:type         forKey:SRC_TYPE];
-    [expected.attributes setObject:ageMethod    forKey:SRC_AGE_METHOD];
-    [expected.attributes setObject:lithology    forKey:SRC_LITHOLOGY];
-    [expected.attributes setObject:deposystem   forKey:SRC_DEPOSYSTEM];
-    [expected.attributes setObject:meter        forKey:SRC_METER];
-    [expected.attributes setObject:rockGroup    forKey:SRC_GROUP];
-    [expected.attributes setObject:age          forKey:SRC_AGE];
-    [expected.attributes setObject:notes        forKey:SRC_NOTES];
-    [expected.attributes setObject:section      forKey:SRC_SECTION];
-    [expected.attributes setObject:formation    forKey:SRC_FORMATION];
-    [expected.attributes setObject:images       forKey:SRC_IMAGES];
+    [expected.attributes setObject:key          forKey:SMP_KEY];
+    [expected.attributes setObject:continent    forKey:SMP_CONTINENT];
+    [expected.attributes setObject:locality     forKey:SMP_LOCALITY];
+    [expected.attributes setObject:region       forKey:SMP_REGION];
+    [expected.attributes setObject:hyperlinks   forKey:SMP_HYPERLINKS];
+    [expected.attributes setObject:member       forKey:SMP_MEMBER];
+    [expected.attributes setObject:latitude     forKey:SMP_LATITUDE];
+    [expected.attributes setObject:longitude    forKey:SMP_LONGITUDE];
+    [expected.attributes setObject:ageDataType  forKey:SMP_AGE_DATATYPE];
+    [expected.attributes setObject:type         forKey:SMP_TYPE];
+    [expected.attributes setObject:ageMethod    forKey:SMP_AGE_METHOD];
+    [expected.attributes setObject:lithology    forKey:SMP_LITHOLOGY];
+    [expected.attributes setObject:deposystem   forKey:SMP_DEPOSYSTEM];
+    [expected.attributes setObject:meter        forKey:SMP_METER];
+    [expected.attributes setObject:rockGroup    forKey:SMP_GROUP];
+    [expected.attributes setObject:age          forKey:SMP_AGE];
+    [expected.attributes setObject:notes        forKey:SMP_NOTES];
+    [expected.attributes setObject:section      forKey:SMP_SECTION];
+    [expected.attributes setObject:formation    forKey:SMP_FORMATION];
+    [expected.attributes setObject:images       forKey:SMP_IMAGES];
 
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
     NSArray *readSplits = [reader readFromFileAtPath:testPath];
 
-    Source *actual = [readSplits objectAtIndex:0];
+    Sample *actual = [readSplits objectAtIndex:0];
     // We don't care about the dates matching
-    [actual.attributes setObject:[expected.attributes objectForKey:SRC_DATE_COLLECTED]
-                          forKey:SRC_DATE_COLLECTED];
+    [actual.attributes setObject:[expected.attributes objectForKey:SMP_DATE_COLLECTED]
+                          forKey:SMP_DATE_COLLECTED];
 
     XCTAssertEqualObjects(expected, actual);
 }

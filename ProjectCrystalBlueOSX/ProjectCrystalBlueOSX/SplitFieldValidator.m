@@ -7,11 +7,11 @@
 //
 
 #import "SplitFieldValidator.h"
-#import "SourceFieldValidator.h"
+#import "SampleFieldValidator.h"
 #import "PrimitiveFieldValidator.h"
 #import "ValidationResponse.h"
 #import "SplitConstants.h"
-#import "SourceConstants.h"
+#import "SampleConstants.h"
 
 @implementation SplitFieldValidator
 
@@ -72,7 +72,7 @@
     return valid;
 }
 
-+ (ValidationResponse *)validateOriginalSampleKey:(NSString *)sourceKey
++ (ValidationResponse *)validateOriginalSampleKey:(NSString *)sampleKey
                                     WithDataStore:(AbstractLibraryObjectStore *)dataStore
 {
     const NSUInteger maxLength = 90;
@@ -81,32 +81,32 @@
     ValidationResponse *valid = [[ValidationResponse alloc] init];
     [valid setIsValid:YES];
     
-    if ([PrimitiveFieldValidator validateKey:sourceKey
+    if ([PrimitiveFieldValidator validateKey:sampleKey
                         isUniqueInDataStore:dataStore
-                                    inTable:[SourceConstants tableName]])
+                                    inTable:[SampleConstants tableName]])
     {
         [valid setIsValid:NO];
-        NSString *errorStr = [NSString stringWithFormat:@"This split's source key %@ does not exist in the database.", sourceKey];
+        NSString *errorStr = [NSString stringWithFormat:@"This split's sample key %@ does not exist in the database.", sampleKey];
         [valid.errors addObject:errorStr];
     }
     
-    if (![PrimitiveFieldValidator validateField:sourceKey
+    if (![PrimitiveFieldValidator validateField:sampleKey
                           isNoMoreThanMaxLength:maxLength])
     {
         [valid setIsValid:NO];
         NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MAX_CHARS copy],
                               maxLength,
-                              sourceKey.length];
+                              sampleKey.length];
         [valid.errors addObject:errorStr];
     }
     
-    if (![PrimitiveFieldValidator validateField:sourceKey
+    if (![PrimitiveFieldValidator validateField:sampleKey
                              isAtLeastMinLength:minLength])
     {
         [valid setIsValid:NO];
         NSString *errorStr = [NSString stringWithFormat:[VALIDATION_FRMT_MIN_CHARS copy],
                               minLength,
-                              sourceKey.length];
+                              sampleKey.length];
         [valid.errors addObject:errorStr];
     }
     
@@ -117,7 +117,7 @@
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
     [validCharacters removeCharactersInString:@"'"];
     
-    if (![PrimitiveFieldValidator validateField:sourceKey
+    if (![PrimitiveFieldValidator validateField:sampleKey
                             containsOnlyCharSet:validCharacters])
     {
         [valid setIsValid:NO];

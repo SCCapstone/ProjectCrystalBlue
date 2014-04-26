@@ -8,11 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SourcesWindowController;
+@class SamplesWindowController;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
-    SourcesWindowController *sourcesWindowController;
+    SamplesWindowController *samplesWindowController;
 }
 
 - (IBAction)clearLocalDatabase:(id)sender;

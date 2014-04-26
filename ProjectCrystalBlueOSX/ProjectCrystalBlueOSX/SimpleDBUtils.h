@@ -14,7 +14,7 @@
 /*  Uses the provided simpleDBClient to return an object from the specified domain
  *  and with the specified item name (unique object key).
  *
- *  The SimpleDBItem will be converted to an object of the provided class (Source/Split/Transaction).
+ *  The SimpleDBItem will be converted to an object of the provided class (Sample/Split/Transaction).
  */
 + (NSObject *)executeGetWithItemName:(NSString *)itemName
                    AndWithDomainName:(NSString *)domainName
@@ -23,13 +23,13 @@
 
 /*  Uses the provided simpleDBClient to return an array of objects using the specified query.
  *
- *  The SimpleDBItem will be converted to an object of the provided class (Source/Split/Transaction).
+ *  The SimpleDBItem will be converted to an object of the provided class (Sample/Split/Transaction).
  */
 + (NSArray *)executeSelectQuery:(NSString *)query
         WithReturnedObjectClass:(Class)objectClass
                     UsingClient:(AmazonSimpleDBClient *)simpleDBClient;
 
-/*  Uses the provided simpleDBClient to put or update an array of objects (Source/Split/Transaction)
+/*  Uses the provided simpleDBClient to put or update an array of objects (Sample/Split/Transaction)
  *  to the specified domain name.  All objects must be of the same type.
  *
  *  Returns whether the operation was successful.
@@ -48,22 +48,22 @@
                UsingClient:(AmazonSimpleDBClient *)simpleDBClient;
 
 /*  Converts an array of SimpleDBAttributes to an equivalent object of the provided
- *  class (Source/Split/Transaction).
+ *  class (Sample/Split/Transaction).
  */
 + (id)convertSimpleDBAttributes:(NSArray *)simpleDBAttributes
                 ToObjectOfClass:(Class)objectClass;
 
 /*  Converts an array of SimpleDBItems to an equivalent array of objects of the provided
- *  class (Source/Split/Transaction).
+ *  class (Sample/Split/Transaction).
  */
 + (NSArray *)convertSimpleDBItemArray:(NSArray *)simpleDBItems
                      ToObjectsOfClass:(Class)objectClass;
 
-/*  Converts a Source/Split/Transaction object to an equivalent SimpleDBReplaceableItem.
+/*  Converts a Sample/Split/Transaction object to an equivalent SimpleDBReplaceableItem.
  */
 + (SimpleDBReplaceableItem *)convertObjectToSimpleDBItem:(NSObject *)object;
 
-/*  Converts an array of Source/Split/Transaction objects to an equivalent array of 
+/*  Converts an array of Sample/Split/Transaction objects to an equivalent array of 
  *  SimpleDBReplaceableItem.
  */
 + (NSArray *)convertObjectArrayToSimpleDBItemArray:(NSArray *)objectArray;

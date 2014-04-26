@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "LibraryObject.h"
 #import "SplitConstants.h"
-#import "SourceConstants.h"
+#import "SampleConstants.h"
 
 @interface LibraryObjectEqualsAndHashcodeTests : XCTestCase
 
@@ -94,8 +94,8 @@
     NSDictionary *aAttributes = [[NSDictionary alloc] initWithObjects:[SplitConstants attributeDefaultValues]
                                                               forKeys:[SplitConstants attributeNames]];
     
-    NSDictionary *bAttributes = [[NSDictionary alloc] initWithObjects:[SourceConstants attributeDefaultValues]
-                                                              forKeys:[SourceConstants attributeNames]];
+    NSDictionary *bAttributes = [[NSDictionary alloc] initWithObjects:[SampleConstants attributeDefaultValues]
+                                                              forKeys:[SampleConstants attributeNames]];
     
     LibraryObject *a = [[LibraryObject alloc] initWithKey:key AndWithAttributeDictionary:aAttributes];
     LibraryObject *b = [[LibraryObject alloc] initWithKey:key AndWithAttributeDictionary:bAttributes];

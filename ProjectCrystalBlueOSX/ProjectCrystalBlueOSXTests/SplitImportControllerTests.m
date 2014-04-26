@@ -16,7 +16,7 @@
 #import "TestingUtils.h"
 
 #define TEST_DB_NAME @"pcb-test-db"
-#define TEST_CSV_FILE @"testSamples.csv"
+#define TEST_CSV_FILE @"testSplits.csv"
 
 @interface SplitImportControllerTests : XCTestCase {
     AbstractLibraryObjectStore *objectStore;

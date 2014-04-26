@@ -154,7 +154,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     // If we exhaust all 1000 possible splits, this is a problem.
     // Just so that we have something to return, we'll just append part of a UUID to the split.
     // This is ugly, but hopefully will be a clear indication to the user that our app does not scale to their needs.
-    DDLogError(@"%@: There are at least 999 splits with the prefix %@. This application is really not meant to handle that many sub-splits from a single source.", NSStringFromClass(self.class), strippedString);
+    DDLogError(@"%@: There are at least 999 splits with the prefix %@. This application is really not meant to handle that many sub-splits from a single sample.", NSStringFromClass(self.class), strippedString);
     
     NSString *randomCharacters = [[[[NSUUID alloc] init] UUIDString] substringToIndex:4];
     

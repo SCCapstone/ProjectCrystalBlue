@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class AbstractCloudLibraryObjectStore, SplitsDetailPanelViewController, Source, Split;
+@class AbstractCloudLibraryObjectStore, SplitsDetailPanelViewController, Sample, Split;
 
 @interface SplitsTableViewController : NSViewController <NSTableViewDelegate>
 
@@ -17,7 +17,7 @@
 
 @property (weak) NSSearchField *searchField;
 @property AbstractCloudLibraryObjectStore *dataStore;
-@property Source *source;
+@property Sample *sample;
 @property NSMutableArray *displayedSplits;
 @property SplitsDetailPanelViewController *detailPanel;
 

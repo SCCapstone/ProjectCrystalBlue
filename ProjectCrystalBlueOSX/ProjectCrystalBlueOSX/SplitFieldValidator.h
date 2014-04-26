@@ -22,7 +22,7 @@
 /// characters, and its length is between 1 and 90 characters.
 + (ValidationResponse *)validateCurrentLocation:(NSString *)currentLocationValue;
 
-/// Verify that the OriginalSampleKey field fits the requirements of a SourceKey, and the source
+/// Verify that the OriginalSampleKey field fits the requirements of a SampleKey, and the ample
 /// key already exists in the database.
 + (ValidationResponse *)validateOriginalSampleKey:(NSString *)sampleKey
                                     WithDataStore:(AbstractLibraryObjectStore *)dataStore;

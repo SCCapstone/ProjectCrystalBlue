@@ -12,7 +12,7 @@
 #import "LibraryObject.h"
 #import "FileSystemUtils.h"
 #import "LocalEncryptedCredentialsProvider.h"
-#import "Source.h"
+#import "Sample.h"
 #import "Split.h"
 
 #define DATABASE_NAME @"test_database.db"
@@ -57,8 +57,8 @@
                                                                                           WithDatabaseName:DATABASE_NAME];
     NSString *nonexistentKey = @"this-key-doesnt-exist";
     
-    LibraryObject *libraryObject = [libraryObjectStore getLibraryObjectForKey:nonexistentKey FromTable:[SourceConstants tableName]];
-    [libraryObjectStore libraryObjectExistsForKey:nonexistentKey FromTable:[SourceConstants tableName]];
+    LibraryObject *libraryObject = [libraryObjectStore getLibraryObjectForKey:nonexistentKey FromTable:[SampleConstants tableName]];
+    [libraryObjectStore libraryObjectExistsForKey:nonexistentKey FromTable:[SampleConstants tableName]];
     XCTAssertNil(libraryObject, @"Object returned should have been nil.");
 }
 
@@ -69,10 +69,10 @@
                                                                                           WithDatabaseName:DATABASE_NAME];
     // Initialize object that does not exist in the database
     NSString *nonexistentKey = @"this-key-doesnt-exist";
-    LibraryObject *nonexistentObject = [[Source alloc] initWithKey:nonexistentKey
-                                                     AndWithValues:[SourceConstants attributeDefaultValues]];
+    LibraryObject *nonexistentObject = [[Sample alloc] initWithKey:nonexistentKey
+                                                     AndWithValues:[SampleConstants attributeDefaultValues]];
     
-    BOOL isUpdated = [libraryObjectStore updateLibraryObject:nonexistentObject IntoTable:[SourceConstants tableName]];
+    BOOL isUpdated = [libraryObjectStore updateLibraryObject:nonexistentObject IntoTable:[SampleConstants tableName]];
     XCTAssertFalse(isUpdated, @"There should be no object to update.");
 }
 
@@ -83,47 +83,47 @@
                                                                                           WithDatabaseName:DATABASE_NAME];
     NSString *nonexistentKey = @"this-key-doesnt-exist";
     
-    BOOL isDeleted = [libraryObjectStore deleteLibraryObjectWithKey:nonexistentKey FromTable:[SourceConstants tableName]];
+    BOOL isDeleted = [libraryObjectStore deleteLibraryObjectWithKey:nonexistentKey FromTable:[SampleConstants tableName]];
     XCTAssertFalse(isDeleted, @"There should be no object to delete.");
 }
 
-// Verify that we can successfully Put, Get, Update, and Delete both Source and Split objects
+// Verify that we can successfully Put, Get, Update, and Delete both Sample and Split objects
 - (void)testPutGetUpdateAndDeleteLibraryObject
 {
     AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
                                                                                           WithDatabaseName:DATABASE_NAME];
     // Setup some objects to store and make sure they don't already exist
-    NSString *sourceKey = @"rock1030";
-    Source *sourceObject = [[Source alloc] initWithKey:sourceKey AndWithValues:[SourceConstants attributeDefaultValues]];
-    XCTAssertFalse([libraryObjectStore libraryObjectExistsForKey:sourceKey FromTable:[SourceConstants tableName]], @"LocalLibraryObjectStore believes an object with this key already exists.");
+    NSString *sampleKey = @"rock1030";
+    Sample *sampleObject = [[Sample alloc] initWithKey:sampleKey AndWithValues:[SampleConstants attributeDefaultValues]];
+    XCTAssertFalse([libraryObjectStore libraryObjectExistsForKey:sampleKey FromTable:[SampleConstants tableName]], @"LocalLibraryObjectStore believes an object with this key already exists.");
     
     NSString *splitKey = @"rock1030.001";
     Split *splitObject = [[Split alloc] initWithKey:splitKey AndWithValues:[SplitConstants attributeDefaultValues]];
     XCTAssertFalse([libraryObjectStore libraryObjectExistsForKey:splitKey FromTable:[SplitConstants tableName]], @"LocalLibraryObjectStore believes an object with this key already exists.");
     
     // Put the library objects into the local database
-    BOOL putSuccess = [libraryObjectStore putLibraryObject:sourceObject IntoTable:[SourceConstants tableName]];
+    BOOL putSuccess = [libraryObjectStore putLibraryObject:sampleObject IntoTable:[SampleConstants tableName]];
     XCTAssertTrue(putSuccess, @"LocalLibraryObjectStore failed to put the library object into the database.");
     
     putSuccess = [libraryObjectStore putLibraryObject:splitObject IntoTable:[SplitConstants tableName]];
     XCTAssertTrue(putSuccess, @"LocalLibraryObjectStore failed to put the library object into the database.");
     
     // Check the added library objects exist in the local database now
-    XCTAssertTrue([libraryObjectStore libraryObjectExistsForKey:sourceKey FromTable:[SourceConstants tableName]], @"LocalLibraryObjectStore did not find the object.");
+    XCTAssertTrue([libraryObjectStore libraryObjectExistsForKey:sampleKey FromTable:[SampleConstants tableName]], @"LocalLibraryObjectStore did not find the object.");
     XCTAssertTrue([libraryObjectStore libraryObjectExistsForKey:splitKey FromTable:[SplitConstants tableName]], @"LocalLibraryObjectStore did not find the object.");
     
     // Try to get the added objects
-    LibraryObject *storedSource = [libraryObjectStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]];
-    XCTAssertNotNil(storedSource, @"LocalLibraryObjectStore failed to retrieve the specified object.");
-    XCTAssertEqualObjects(storedSource, sourceObject, @"The same object was not returned.");
+    LibraryObject *storedSample = [libraryObjectStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]];
+    XCTAssertNotNil(storedSample, @"LocalLibraryObjectStore failed to retrieve the specified object.");
+    XCTAssertEqualObjects(storedSample, sampleObject, @"The same object was not returned.");
     
     LibraryObject *storedSplit = [libraryObjectStore getLibraryObjectForKey:splitKey FromTable:[SplitConstants tableName]];
     XCTAssertNotNil(storedSplit, @"LocalLibraryObjectStore failed to retrieve the specified object.");
     XCTAssertEqualObjects(storedSplit, splitObject, @"The same object was not returned.");
     
     // Update the objects
-    [sourceObject.attributes setObject:@"really old..." forKey:SRC_AGE];
-    BOOL updateSuccess = [libraryObjectStore updateLibraryObject:sourceObject IntoTable:[SourceConstants tableName]];
+    [sampleObject.attributes setObject:@"really old..." forKey:SMP_AGE];
+    BOOL updateSuccess = [libraryObjectStore updateLibraryObject:sampleObject IntoTable:[SampleConstants tableName]];
     XCTAssertTrue(updateSuccess, @"LocalLibraryObjectStore failed to update the specified object.");
     
     [splitObject.attributes setObject:@"did so much stuff" forKey:SPL_TAGS];
@@ -131,23 +131,23 @@
     XCTAssertTrue(updateSuccess, @"LocalLibraryObjectStore failed to update the specified object.");
     
     // Check the objects have been updated in the database
-    LibraryObject *updatedSource = [libraryObjectStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]];
-    XCTAssertNotNil(updatedSource, @"LocalLibraryObjectStore failed to retrieve the specified object.");
-    XCTAssertEqualObjects(sourceObject, updatedSource, @"LocalLibraryObjectStore did not update the object properly.");
+    LibraryObject *updatedSample = [libraryObjectStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]];
+    XCTAssertNotNil(updatedSample, @"LocalLibraryObjectStore failed to retrieve the specified object.");
+    XCTAssertEqualObjects(sampleObject, updatedSample, @"LocalLibraryObjectStore did not update the object properly.");
     
     LibraryObject *updatedSplit = [libraryObjectStore getLibraryObjectForKey:splitKey FromTable:[SplitConstants tableName]];
     XCTAssertEqualObjects(splitObject, updatedSplit, @"LocalLibraryObjectStore did not update the object properly.");
     
     // Delete the added objects
-    BOOL deleteSuccess = [libraryObjectStore deleteLibraryObjectWithKey:sourceKey FromTable:[SourceConstants tableName]];
+    BOOL deleteSuccess = [libraryObjectStore deleteLibraryObjectWithKey:sampleKey FromTable:[SampleConstants tableName]];
     XCTAssertTrue(deleteSuccess, @"LocalLibraryObjectStore failed to delete the specified object.");
     
     deleteSuccess = [libraryObjectStore deleteLibraryObjectWithKey:splitKey FromTable:[SplitConstants tableName]];
     XCTAssertTrue(deleteSuccess, @"LocalLibraryObjectStore failed to delete the specified object.");
     
     // Veryify the objects have been deleted
-    XCTAssertFalse([libraryObjectStore libraryObjectExistsForKey:sourceKey FromTable:[SourceConstants tableName]], @"LocalLibraryObjectStore still contains the object.");
-    XCTAssertNil([libraryObjectStore getLibraryObjectForKey:sourceKey FromTable:[SourceConstants tableName]], @"LocalLibraryObjectStore should have returned nil.");
+    XCTAssertFalse([libraryObjectStore libraryObjectExistsForKey:sampleKey FromTable:[SampleConstants tableName]], @"LocalLibraryObjectStore still contains the object.");
+    XCTAssertNil([libraryObjectStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]], @"LocalLibraryObjectStore should have returned nil.");
     
     XCTAssertFalse([libraryObjectStore libraryObjectExistsForKey:splitKey FromTable:[SplitConstants tableName]], @"LocalLibraryObjectStore still contains find the object.");
     XCTAssertNil([libraryObjectStore getLibraryObjectForKey:splitKey FromTable:[SplitConstants tableName]], @"LocalLibraryObjectStore should have returned nil.");
@@ -162,7 +162,7 @@
     [self populateDatabaseWithLibraryObjectStore:libraryObjectStore];
     
     // Get all of the objects
-    NSArray *allObjects = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
+    NSArray *allObjects = [libraryObjectStore getAllLibraryObjectsFromTable:[SampleConstants tableName]];
     XCTAssertNotNil(allObjects, @"LibraryObjectStore failed to get all library objects.");
     XCTAssertTrue(allObjects.count == 5, @"All of the objects were not returned from LibraryObjectStore.");
 }
@@ -176,12 +176,12 @@
     [self populateDatabaseWithLibraryObjectStore:libraryObjectStore];
     
     // Get the count
-    NSInteger objectCount = [libraryObjectStore countInTable:[SourceConstants tableName]];
+    NSInteger objectCount = [libraryObjectStore countInTable:[SampleConstants tableName]];
     XCTAssertTrue(objectCount == 5, @"All of the objects were not returned from LibraryObjectStore.");
 }
 
-/// Verify can get all splits that originated from a source
-- (void)testGetSplitsForSourceKey
+/// Verify can get all splits that originated from a sample
+- (void)testGetSplitsForSampleKey
 {
     AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
                                                                                           WithDatabaseName:DATABASE_NAME];
@@ -219,16 +219,16 @@
     XCTAssertNil(libraryObjects, @"executeSqlQuery: should only execute queries that do not change values in the database.");
 }
 
-/// Verify all splits are deleted when deleting its source
-- (void)testDeleteSourceWithSplits
+/// Verify all splits are deleted when deleting its sample
+- (void)testDeleteSampleWithSplits
 {
     AbstractLibraryObjectStore *libraryObjectStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:TEST_DIRECTORY
                                                                                           WithDatabaseName:DATABASE_NAME];
     // Setup some objects to store
     [self populateDatabaseWithLibraryObjectStore:libraryObjectStore];
     
-    // Delete a source and make sure its splits are deleted too
-    BOOL deleteSuccess = [libraryObjectStore deleteLibraryObjectWithKey:@"rock1" FromTable:[SourceConstants tableName]];
+    // Delete a sample and make sure its splits are deleted too
+    BOOL deleteSuccess = [libraryObjectStore deleteLibraryObjectWithKey:@"rock1" FromTable:[SampleConstants tableName]];
     XCTAssertTrue(deleteSuccess, @"LibraryObjectStore failed to delete the library object and its splits from the database.");
     NSArray *splits = [libraryObjectStore getAllLibraryObjectsFromTable:[SplitConstants tableName]];
     XCTAssertNotNil(splits, @"LibraryObjectStore failed to get splits from table.");
@@ -267,40 +267,40 @@
     [self populateDatabaseWithLibraryObjectStore:libraryObjectStore];
     
     // Try to get unique values and make sure the correct number is returned
-    NSArray *uniqueValues = [libraryObjectStore getUniqueAttributeValuesForAttributeName:SRC_AGE
-                                                                               FromTable:[SourceConstants tableName]];
+    NSArray *uniqueValues = [libraryObjectStore getUniqueAttributeValuesForAttributeName:SMP_AGE
+                                                                               FromTable:[SampleConstants tableName]];
     XCTAssertNotNil(uniqueValues, @"LibraryObjectStore failed to get unique values from store.");
     XCTAssertTrue(uniqueValues.count == 1, @"LibraryObjectStore returned the incorrect number of items.");
     
-    uniqueValues = [libraryObjectStore getUniqueAttributeValuesForAttributeName:SRC_KEY
-                                                                      FromTable:[SourceConstants tableName]];
+    uniqueValues = [libraryObjectStore getUniqueAttributeValuesForAttributeName:SMP_KEY
+                                                                      FromTable:[SampleConstants tableName]];
     XCTAssertNotNil(uniqueValues, @"LibraryObjectStore failed to get unique values from store.");
     XCTAssertTrue(uniqueValues.count == 5, @"LibraryObjectStore returned the incorrect number of items.");
 }
 
-/// Populate database with 5 sources and 5 splits for each source
+/// Populate database with 5 samples and 5 splits for each sample
 - (void)populateDatabaseWithLibraryObjectStore:(AbstractLibraryObjectStore *)libraryObjectStore
 {
     for (int i=0; i<5; i++)
     {
-        NSString *sourceKey = [NSString stringWithFormat:@"rock%d", i];
-        Source *source = [[Source alloc] initWithKey:sourceKey AndWithValues:[SourceConstants attributeDefaultValues]];
-        [source.attributes setObject:@"really old..." forKey:SRC_AGE];
-        [libraryObjectStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
+        NSString *sampleKey = [NSString stringWithFormat:@"rock%d", i];
+        Sample *sample = [[Sample alloc] initWithKey:sampleKey AndWithValues:[SampleConstants attributeDefaultValues]];
+        [sample.attributes setObject:@"really old..." forKey:SMP_AGE];
+        [libraryObjectStore putLibraryObject:sample IntoTable:[SampleConstants tableName]];
         
         for (int j=0; j<5; j++)
         {
             NSString *splitKey = [NSString stringWithFormat:@"rock%d.00%d", i, j];
             Split *split = [[Split alloc] initWithKey:splitKey AndWithValues:[SplitConstants attributeDefaultValues]];
-            [split.attributes setObject:sourceKey forKey:SPL_SAMPLE_KEY];
+            [split.attributes setObject:sampleKey forKey:SPL_SAMPLE_KEY];
             [libraryObjectStore putLibraryObject:split IntoTable:[SplitConstants tableName]];
         }
     }
     
     // Make sure objects were put into the store correctly
-    NSArray *sources = [libraryObjectStore getAllLibraryObjectsFromTable:[SourceConstants tableName]];
-    XCTAssertNotNil(sources, @"LibraryObjectStore faied to get sources from table.");
-    XCTAssertTrue(sources.count == 5, @"LibraryObjectStore failed to put all source objects.");
+    NSArray *samples = [libraryObjectStore getAllLibraryObjectsFromTable:[SampleConstants tableName]];
+    XCTAssertNotNil(samples, @"LibraryObjectStore faied to get samples from table.");
+    XCTAssertTrue(samples.count == 5, @"LibraryObjectStore failed to put all sample objects.");
     
     NSArray *splits = [libraryObjectStore getAllLibraryObjectsFromTable:[SplitConstants tableName]];
     XCTAssertNotNil(splits, @"LibraryObjectStore faied to get splits from table.");

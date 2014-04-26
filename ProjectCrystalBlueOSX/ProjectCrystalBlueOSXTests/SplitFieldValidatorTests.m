@@ -47,7 +47,7 @@
 
 - (void)testValidateSampleKey
 {
-    NSString *valid = @"my source.001";
+    NSString *valid = @"my sample.001";
     NSString *keyNotUnique = @"This key already exists.001";
     NSString *tooShort = @"";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];

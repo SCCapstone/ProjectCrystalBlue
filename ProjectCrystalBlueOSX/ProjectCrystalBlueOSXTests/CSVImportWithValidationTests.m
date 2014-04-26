@@ -11,10 +11,10 @@
 #import "LibraryObjectImportController.h"
 #import "AbstractLibraryObjectStore.h"
 #import "LocalLibraryObjectStore.h"
-#import "SourceImportController.h"
+#import "SampleImportController.h"
 #import "SplitImportController.h"
 #import "FileSystemUtils.h"
-#import "Source.h"
+#import "Sample.h"
 #import "Split.h"
 #import "TestingUtils.h"
 
@@ -48,17 +48,17 @@ NSString *dbPath;
     [super tearDown];
 }
 
-- (void)testSourcesNoErrors
+- (void)testSamplesNoErrors
 {
-    NSString *testFile = @"sources_ok";
+    NSString *testFile = @"samples_ok";
     NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
 
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    LibraryObjectImportController *importController = [[SourceImportController alloc] init];
+    LibraryObjectImportController *importController = [[SampleImportController alloc] init];
     [importController setFileReader:reader];
     [importController setImportResultReporter:self];
     [importController setLibraryObjectStore:objectStore];
-    [importController setTableName:[SourceConstants tableName]];
+    [importController setTableName:[SampleConstants tableName]];
 
     [importController fileSelectorDidOpenFileAtPath:testPath];
 
@@ -88,17 +88,17 @@ NSString *dbPath;
     XCTAssertFalse(importResult.hasError);
 }
 
-- (void)testSourcesNoDates
+- (void)testSamplesNoDates
 {
-    NSString *testFile = @"sources_missing_dates";
+    NSString *testFile = @"samples_missing_dates";
     NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
 
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    LibraryObjectImportController *importController = [[SourceImportController alloc] init];
+    LibraryObjectImportController *importController = [[SampleImportController alloc] init];
     [importController setFileReader:reader];
     [importController setImportResultReporter:self];
     [importController setLibraryObjectStore:objectStore];
-    [importController setTableName:[SourceConstants tableName]];
+    [importController setTableName:[SampleConstants tableName]];
 
     [importController fileSelectorDidOpenFileAtPath:testPath];
 

@@ -9,8 +9,8 @@
 #import "LibraryObjectCSVWriter.h"
 #import "LibraryObject.h"
 #import "DDLog.h"
-#import "Source.h"
-#import "SourceConstants.h"
+#import "Sample.h"
+#import "SampleConstants.h"
 #import "Split.h"
 #import "SplitConstants.h"
 
@@ -63,8 +63,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     // Identify which type of LibraryObject we are exporting.
     if ([representativeLibraryObject isKindOfClass:[Split class]]) {
         headers = [SplitConstants attributeNames];
-    } else if ([representativeLibraryObject isKindOfClass:[Source class]]) {
-        headers = [SourceConstants attributeNames];
+    } else if ([representativeLibraryObject isKindOfClass:[Sample class]]) {
+        headers = [SampleConstants attributeNames];
     } else {
         headers = [representativeLibraryObject.attributes allKeys];
     }

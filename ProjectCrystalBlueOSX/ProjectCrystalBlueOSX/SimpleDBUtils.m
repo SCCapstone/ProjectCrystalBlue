@@ -7,7 +7,7 @@
 //
 
 #import "SimpleDBUtils.h"
-#import "Source.h"
+#import "Sample.h"
 #import "Split.h"
 #import "Transaction.h"
 #import "DDLog.h"
@@ -144,14 +144,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [objectAttributes setObject:attribute.value forKey:attribute.name];
     }
     
-    if (objectClass == [Source class])
-        return [[Source alloc] initWithKey:[objectAttributes objectForKey:SRC_KEY] AndWithAttributeDictionary:objectAttributes];
+    if (objectClass == [Sample class])
+        return [[Sample alloc] initWithKey:[objectAttributes objectForKey:SMP_KEY] AndWithAttributeDictionary:objectAttributes];
     else if (objectClass == [Split class])
         return [[Split alloc] initWithKey:[objectAttributes objectForKey:SPL_KEY] AndWithAttributeDictionary:objectAttributes];
     else if (objectClass == [Transaction class])
         return [[Transaction alloc] initWithTimestamp:[NSNumber numberWithDouble:[[objectAttributes objectForKey:TRN_TIMESTAMP] doubleValue]] AndWithAttributeDictionary:objectAttributes];
     else {
-        DDLogCError(@"%@: objectClass must be of type Source, Split, or Transaction.", NSStringFromClass(self.class));
+        DDLogCError(@"%@: objectClass must be of type Sample, Split, or Transaction.", NSStringFromClass(self.class));
         return nil;
     }
 }
@@ -222,9 +222,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         SimpleDBListDomainsResponse *listResponse = [simpleDBClient listDomains:[[SimpleDBListDomainsRequest alloc] init]];
         SimpleDBCreateDomainRequest *createRequest;
         
-        // Source domain
-        if (![listResponse.domainNames containsObject:[SourceConstants tableName]]) {
-            createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SourceConstants tableName]];
+        // Sample domain
+        if (![listResponse.domainNames containsObject:[SampleConstants tableName]]) {
+            createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SampleConstants tableName]];
             [simpleDBClient createDomain:createRequest];
         }
         

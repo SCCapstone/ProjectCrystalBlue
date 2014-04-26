@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SamplePhotosWindowController">
+            <connections>
+                <outlet property="currentImageDisplay" destination="yjB-d8-QuB" id="fNl-i1-jdg"/>
+                <outlet property="currentImageKey" destination="Apl-KJ-71F" id="w9b-rc-iJh"/>
+                <outlet property="imageSelectionPopupButton" destination="kov-26-vDr" id="PaV-Cb-T3d"/>
+                <outlet property="nextButton" destination="NOa-73-uvE" id="6a1-zg-gwf"/>
+                <outlet property="previousButton" destination="aEk-cv-4SD" id="MwG-rn-Jox"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="389" y="285" width="650" height="400"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="650" height="400"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yjB-d8-QuB">
+                        <rect key="frame" x="17" y="58" width="616" height="311"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" id="u8z-AX-19u"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NOa-73-uvE">
+                        <rect key="frame" x="543" y="13" width="93" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="81" id="VBM-PX-Cbq"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Next" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="944-Pp-YAd">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent"></string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="nextPhoto:" target="-2" id="Iez-AZ-CMV"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aEk-cv-4SD">
+                        <rect key="frame" x="14" y="13" width="93" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="81" id="7Az-jg-mPy"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Previous" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5tw-BR-AZl">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent"></string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="previousPhoto:" target="-2" id="xnC-vC-Pu2"/>
+                        </connections>
+                    </button>
+                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kov-26-vDr">
+                        <rect key="frame" x="223" y="17" width="205" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="OaV-f5-Yt5"/>
+                            <constraint firstAttribute="height" constant="21" id="kKq-Wh-opo"/>
+                        </constraints>
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="RtG-nP-Opw">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" title="OtherViews" id="R4k-a2-KWW"/>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="popupSelectedPhoto:" target="-2" id="eLw-Sr-jW8"/>
+                        </connections>
+                    </popUpButton>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Apl-KJ-71F">
+                        <rect key="frame" x="18" y="374" width="614" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Current Image Key" placeholderString="no images" id="dml-nH-Lns">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Apl-KJ-71F" secondAttribute="trailing" constant="20" id="2CI-GZ-JIT"/>
+                    <constraint firstAttribute="bottom" secondItem="kov-26-vDr" secondAttribute="bottom" constant="20" id="4Kq-s1-9II"/>
+                    <constraint firstAttribute="bottom" secondItem="NOa-73-uvE" secondAttribute="bottom" constant="20" id="6MN-b8-uyo"/>
+                    <constraint firstAttribute="trailing" secondItem="NOa-73-uvE" secondAttribute="trailing" constant="20" id="BRz-ao-dZD"/>
+                    <constraint firstItem="NOa-73-uvE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kov-26-vDr" secondAttribute="trailing" constant="9" id="Tsf-K7-0db"/>
+                    <constraint firstItem="kov-26-vDr" firstAttribute="top" secondItem="yjB-d8-QuB" secondAttribute="bottom" constant="20" id="UGg-uI-cOF"/>
+                    <constraint firstAttribute="trailing" secondItem="yjB-d8-QuB" secondAttribute="trailing" constant="20" id="aBT-9d-d2z"/>
+                    <constraint firstAttribute="centerX" secondItem="kov-26-vDr" secondAttribute="centerX" id="coH-cc-w8t"/>
+                    <constraint firstItem="yjB-d8-QuB" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="gNs-9L-K88"/>
+                    <constraint firstItem="Apl-KJ-71F" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="grG-lv-zr4"/>
+                    <constraint firstItem="yjB-d8-QuB" firstAttribute="top" secondItem="Apl-KJ-71F" secondAttribute="bottom" constant="8" id="iFN-Ke-49n"/>
+                    <constraint firstItem="Apl-KJ-71F" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="9" id="lQl-zL-Tqq"/>
+                    <constraint firstItem="aEk-cv-4SD" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="qRF-w3-0gL"/>
+                    <constraint firstAttribute="bottom" secondItem="aEk-cv-4SD" secondAttribute="bottom" constant="20" id="y6z-J7-pVW"/>
+                    <constraint firstItem="kov-26-vDr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aEk-cv-4SD" secondAttribute="trailing" constant="9" id="zSV-Yv-Egs"/>
+                </constraints>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="7AA781FD-081E-4158-95C3-338666D598A4" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="kXT-W4-dFd">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="15ED04CD-3653-4D4D-8ADD-525865C4AD91" label="Add Photo" paletteLabel="Add Photo" tag="-1" image="NSAddTemplate" id="5JI-Aa-24s">
+                        <connections>
+                            <action selector="addPhoto:" target="-2" id="yrb-6o-HEY"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="B810A887-3800-4B91-8E9B-0CC7380076FD" label="Delete Photo" paletteLabel="Delete Photo" tag="-1" image="NSTrashEmpty" id="3bv-fW-rQu">
+                        <connections>
+                            <action selector="removePhoto:" target="-2" id="CxW-Pd-iht"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="5JI-Aa-24s"/>
+                    <toolbarItem reference="3bv-fW-rQu"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+        </window>
+    </objects>
+    <resources>
+        <image name="NSAddTemplate" width="8" height="8"/>
+        <image name="NSTrashEmpty" width="32" height="32"/>
+    </resources>
+</document>

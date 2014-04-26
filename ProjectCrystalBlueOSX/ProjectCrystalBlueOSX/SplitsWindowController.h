@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "ImportResult.h"
 
-@class AbstractCloudLibraryObjectStore, Source;
+@class AbstractCloudLibraryObjectStore, Sample;
 
 @interface SplitsWindowController : NSWindowController <NSSplitViewDelegate, ImportResultReporter>
 
@@ -17,7 +17,7 @@
 @property (weak) IBOutlet NSSearchField *searchField;
 
 @property AbstractCloudLibraryObjectStore *dataStore;
-@property Source *source;
+@property Sample *sample;
 
 // Toolbar actions
 - (IBAction)newBlankSplit:(id)sender;

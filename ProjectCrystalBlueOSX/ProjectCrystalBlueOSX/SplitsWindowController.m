@@ -11,7 +11,7 @@
 #import "SplitsDetailPanelViewController.h"
 #import "ProceduresWindowController.h"
 #import "AbstractCloudLibraryObjectStore.h"
-#import "Source.h"
+#import "Sample.h"
 #import "Split.h"
 #import "Procedures.h"
 #import "PrimitiveProcedures.h"
@@ -39,7 +39,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation SplitsWindowController
 
-@synthesize splitView, searchField, dataStore, source;
+@synthesize splitView, searchField, dataStore, sample;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -54,7 +54,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     [super windowDidLoad];
     
-    NSString *windowTitle = [NSString stringWithFormat:@"Splits For '%@'", source.key];
+    NSString *windowTitle = [NSString stringWithFormat:@"Splits For '%@'", sample.key];
     [self.window setTitle:windowTitle];
     
     if (!detailPanelController) {
@@ -65,7 +65,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (!tableViewController) {
         tableViewController = [[SplitsTableViewController alloc] initWithNibName:@"SplitsTableViewController" bundle:nil];
         [tableViewController setDataStore:dataStore];
-        [tableViewController setSource:source];
+        [tableViewController setSample:sample];
         [tableViewController setSearchField:searchField];
         [tableViewController setDetailPanel:detailPanelController];
     }
@@ -135,14 +135,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     // If nothing is selected, we create a split with default values.
     else {
-        NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:[NSString stringWithFormat:@"%@.001", source.key]
+        NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:[NSString stringWithFormat:@"%@.001", sample.key]
                                                       inStore:dataStore
                                                       inTable:[SplitConstants tableName]];
         
         split = [[Split alloc] initWithKey:key
                            AndWithAttributes:[SplitConstants attributeNames]
                                    AndValues:[SplitConstants attributeDefaultValues]];
-        [split.attributes setObject:source.key
+        [split.attributes setObject:sample.key
                               forKey:SPL_SAMPLE_KEY];
     }
     
@@ -187,14 +187,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                              switch (returnCode) {
                                  case DELETE_BUTTON:
                                      for (Split *s in selectedSplits) {
-                                         DDLogInfo(@"Deleting source with key \"%@\"", s.key);
+                                         DDLogInfo(@"Deleting split with key \"%@\"", s.key);
                                          [tableViewController deleteSplitWithKey:s.key];
                                      }
                                      break;
                                  case CANCEL_BUTTON:
                                      break;
                                  default:
-                                     DDLogWarn(@"Unexpected return code %ld from DeleteSource Alert", (long)returnCode);
+                                     DDLogWarn(@"Unexpected return code %ld from DeleteSplit Alert", (long)returnCode);
                                      break;
                              }
                              [tableViewController updateDisplayedSplits];
