@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LibraryObject.h"
 
-@class Source;
+@class LibraryObject;
 
 @interface AbstractLibraryObjectStore : NSObject
 
@@ -25,9 +25,9 @@
  */
 - (NSArray *)getAllLibraryObjectsFromTable:(NSString *)tableName;
 
-/** Retrieve all the samples that originated from the source object.
+/** Retrieve all the splits that originated from the sample object.
  */
-- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey;
+- (NSArray *)getAllSplitsForSampleKey:(NSString *)sampleKey;
 
 /** Retrieve all library objects where the attribute is equal to the
  *  specified attribute value.
@@ -36,10 +36,10 @@
                                WithAttributeValue:(NSString *)attributeValue
                                         FromTable:(NSString *)tableName;
 
-/** Retrieve all samples for a source key where the attribute is equal to the
+/** Retrieve all splits for a sample key where the attribute is equal to the
  *  specified attribute value.
  */
-- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
+- (NSArray *)getAllSplitsForSampleKey:(NSString *)sampleKey
                    AndForAttributeName:(NSString *)attributeName
                     WithAttributeValue:(NSString *)attributeValue;
 
@@ -88,9 +88,9 @@
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName;
 
-/** Deletes all samples of a source from the LibraryObjectStore. Return whether the deletion is successful.
+/** Deletes all splits of a sample from the LibraryObjectStore. Return whether the deletion is successful.
  */
-- (BOOL)deleteAllSamplesForSourceKey:(NSString *)sourceKey;
+- (BOOL)deleteAllSplitsForSampleKey:(NSString *)sampleKey;
 
 /** Checks if the LibraryObjectStore already has a library object for the given key.
  *  For example, this should always be used before assigning a key to a new library object.

@@ -12,9 +12,9 @@
 #import "PrimitiveProcedures.h"
 #import "ProcedureNameConstants.h"
 #import "ProcedureRecord.h"
-#import "SampleConstants.h"
+#import "SplitConstants.h"
 #import "FileSystemUtils.h"
-#import "Sample.h"
+#import "Split.h"
 
 #define DATABASE_NAME @"procedures-test-db"
 
@@ -43,31 +43,31 @@ LocalLibraryObjectStore *testStore;
     [super tearDown];
 }
 
-/// Simply clone a single sample object.
-- (void)testCloneSample
+/// Simply clone a single split object.
+- (void)testCloneSplit
 {
     NSString *key = @"A_ROCK.001";
-    Sample *s = [[Sample alloc] initWithKey:key
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:key
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
-    [s.attributes setObject:key forKey:SMP_KEY];
+    [s.attributes setObject:key forKey:SPL_KEY];
     
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [PrimitiveProcedures cloneSample:s
+    [PrimitiveProcedures cloneSplit:s
                            intoStore:testStore
-                      intoTableNamed:[SampleConstants tableName]];
+                      intoTableNamed:[SplitConstants tableName]];
     
     NSString *expectedKey = @"A_ROCK.002";
-    LibraryObject *clone = [testStore getLibraryObjectForKey:expectedKey FromTable:[SampleConstants tableName]];
+    LibraryObject *clone = [testStore getLibraryObjectForKey:expectedKey FromTable:[SplitConstants tableName]];
     
-    XCTAssertNotNil(clone, @"No sample with expected key %@ was found!", expectedKey);
-    for (NSString *attribute in [SampleConstants attributeNames]) {
+    XCTAssertNotNil(clone, @"No split with expected key %@ was found!", expectedKey);
+    for (NSString *attribute in [SplitConstants attributeNames]) {
         NSString *cloneAttributeValue = [[clone attributes] objectForKey:attribute];
         NSString *originalAttributeValue = [[s attributes] objectForKey:attribute];
         
-        if ([attribute isEqualToString:SMP_KEY]) {
+        if ([attribute isEqualToString:SPL_KEY]) {
             XCTAssertEqualObjects(cloneAttributeValue, expectedKey,
                                   @"Key attribute in clone was %@; expected %@", cloneAttributeValue, expectedKey);
             continue;
@@ -80,62 +80,62 @@ LocalLibraryObjectStore *testStore;
 }
 
 /**
- *  If we clone MY_SAMPLE.001, but MY_SAMPLE.002 already exists, then the clone will be called MY_SAMPLE.003
+ *  If we clone MY_SPLIT.001, but MY_SPLIT.002 already exists, then the clone will be called MY_SPLIT.003
  */
 - (void)testNameCollision
 {
-    const int NUM_SAMPLES_TO_CREATE = 5;
-    for (int i = 1; i <= NUM_SAMPLES_TO_CREATE; ++i) {
+    const int NUM_SPLITS_TO_CREATE = 5;
+    for (int i = 1; i <= NUM_SPLITS_TO_CREATE; ++i) {
         NSString *key = [NSString stringWithFormat:@"A_ROCK.%03d", i];
-        Sample *s = [[Sample alloc] initWithKey:key
-                              AndWithAttributes:[SampleConstants attributeNames]
-                                      AndValues:[SampleConstants attributeDefaultValues]];
+        Split *s = [[Split alloc] initWithKey:key
+                              AndWithAttributes:[SplitConstants attributeNames]
+                                      AndValues:[SplitConstants attributeDefaultValues]];
         
-        [s.attributes setObject:key forKey:SMP_KEY];
+        [s.attributes setObject:key forKey:SPL_KEY];
         
-        [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+        [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     }
     
-    LibraryObject *original = [testStore getLibraryObjectForKey:@"A_ROCK.001" FromTable:[SampleConstants tableName]];
-    XCTAssertTrue([original isKindOfClass:[Sample class]]);
+    LibraryObject *original = [testStore getLibraryObjectForKey:@"A_ROCK.001" FromTable:[SplitConstants tableName]];
+    XCTAssertTrue([original isKindOfClass:[Split class]]);
     
-    Sample *originalAsSample = (Sample*)original;
-    [PrimitiveProcedures cloneSample:originalAsSample
+    Split *originalAsSplit = (Split*)original;
+    [PrimitiveProcedures cloneSplit:originalAsSplit
                            intoStore:testStore
-                      intoTableNamed:[SampleConstants tableName]];
+                      intoTableNamed:[SplitConstants tableName]];
     
-    NSString *expectedKey = [NSString stringWithFormat:@"A_ROCK.%03d", NUM_SAMPLES_TO_CREATE+1];
-    LibraryObject *clone = [testStore getLibraryObjectForKey:expectedKey FromTable:[SampleConstants tableName]];
+    NSString *expectedKey = [NSString stringWithFormat:@"A_ROCK.%03d", NUM_SPLITS_TO_CREATE+1];
+    LibraryObject *clone = [testStore getLibraryObjectForKey:expectedKey FromTable:[SplitConstants tableName]];
     
-    XCTAssertNotNil(clone, @"No sample with expected key %@ was found!", expectedKey);
+    XCTAssertNotNil(clone, @"No split with expected key %@ was found!", expectedKey);
 }
 
 /// verify that the cloneWithClearedTags method sets the tags to empty string
 - (void)testCloneWithClearedtags
 {
     NSString *key = @"A_ROCK.001";
-    Sample *s = [[Sample alloc] initWithKey:key
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:key
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
-    [s.attributes setObject:key forKey:SMP_KEY];
-    [s.attributes setObject:@"TAG, ANOTHER_TAG, MORE_TAGS" forKey:SMP_TAGS];
+    [s.attributes setObject:key forKey:SPL_KEY];
+    [s.attributes setObject:@"TAG, ANOTHER_TAG, MORE_TAGS" forKey:SPL_TAGS];
     
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [PrimitiveProcedures cloneSampleWithClearedTags:s
+    [PrimitiveProcedures cloneSplitWithClearedTags:s
                                           intoStore:testStore
-                                     intoTableNamed:[SampleConstants tableName]];
+                                     intoTableNamed:[SplitConstants tableName]];
     
     NSString *expectedKey = @"A_ROCK.002";
-    LibraryObject *clone = [testStore getLibraryObjectForKey:expectedKey FromTable:[SampleConstants tableName]];
+    LibraryObject *clone = [testStore getLibraryObjectForKey:expectedKey FromTable:[SplitConstants tableName]];
     
-    XCTAssertNotNil(clone, @"No sample with expected key %@ was found!", expectedKey);
-    NSString *cloneTags = [clone.attributes objectForKey:SMP_TAGS];
+    XCTAssertNotNil(clone, @"No split with expected key %@ was found!", expectedKey);
+    NSString *cloneTags = [clone.attributes objectForKey:SPL_TAGS];
     XCTAssertEqualObjects(cloneTags, @"", @"Expected clone to have empty tags, but tag was %@", cloneTags);
 }
 
-/// Tests that the appendTagInPlace method correctly appends a tag to a sample in place.
+/// Tests that the appendTagInPlace method correctly appends a tag to a split in place.
 - (void)testAppendTagInPlace
 {
     NSString *key = @"A_ROCK.001";
@@ -153,35 +153,35 @@ LocalLibraryObjectStore *testStore;
                                           TAG_DELIMITER,
                                           magRecord];
                               
-    Sample *s = [[Sample alloc] initWithKey:key
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:key
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
-    [s.attributes setObject:key forKey:SMP_KEY];
-    [s.attributes setObject:originalProcedureRecords forKey:SMP_TAGS];
+    [s.attributes setObject:key forKey:SPL_KEY];
+    [s.attributes setObject:originalProcedureRecords forKey:SPL_TAGS];
     
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [PrimitiveProcedures appendToSampleInPlace:s
+    [PrimitiveProcedures appendToSplitInPlace:s
                                      tagString:PROC_TAG_JAWCRUSH
                                   withInitials:aInitials
                                      intoStore:testStore
-                                intoTableNamed:[SampleConstants tableName]];
+                                intoTableNamed:[SplitConstants tableName]];
     
     ProcedureRecord *expectedJawRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_JAWCRUSH andInitials:aInitials];
     s = nil;
     
-    LibraryObject *retrievedObject = [testStore getLibraryObjectForKey:key FromTable:[SampleConstants tableName]];
-    Sample *retrievedSample = (Sample*)retrievedObject;
+    LibraryObject *retrievedObject = [testStore getLibraryObjectForKey:key FromTable:[SplitConstants tableName]];
+    Split *retrievedSplit = (Split*)retrievedObject;
     
     NSString *expectedProcedures = [NSString stringWithFormat:@"%@%@%@", originalProcedureRecords, TAG_DELIMITER, expectedJawRecord];
-    NSString *actualProcedures = [retrievedSample.attributes objectForKey:SMP_TAGS];
+    NSString *actualProcedures = [retrievedSplit.attributes objectForKey:SPL_TAGS];
     
     XCTAssertEqualObjects(expectedProcedures, actualProcedures,
                           @"Expected procedures: %@ \nActual procedures: %@", expectedProcedures, actualProcedures);
 }
 
-/// Tests that the appendTagToClone method correctly appends a tag to a clone of a sample.
+/// Tests that the appendTagToClone method correctly appends a tag to a clone of a split.
 - (void)testAppendTagToClone
 {
     NSString *originalKey = @"A_ROCK.001";
@@ -199,29 +199,29 @@ LocalLibraryObjectStore *testStore;
                                           TAG_DELIMITER,
                                           magRecord];
     
-    Sample *originalSample = [[Sample alloc] initWithKey:originalKey
-                                       AndWithAttributes:[SampleConstants attributeNames]
-                                               AndValues:[SampleConstants attributeDefaultValues]];
+    Split *originalSplit = [[Split alloc] initWithKey:originalKey
+                                       AndWithAttributes:[SplitConstants attributeNames]
+                                               AndValues:[SplitConstants attributeDefaultValues]];
     
-    [originalSample.attributes setObject:originalKey forKey:SMP_KEY];
-    [originalSample.attributes setObject:originalProcedureRecords forKey:SMP_TAGS];
+    [originalSplit.attributes setObject:originalKey forKey:SPL_KEY];
+    [originalSplit.attributes setObject:originalProcedureRecords forKey:SPL_TAGS];
     
-    [testStore putLibraryObject:originalSample IntoTable:[SampleConstants tableName]];
-    [PrimitiveProcedures appendToCloneOfSample:originalSample
+    [testStore putLibraryObject:originalSplit IntoTable:[SplitConstants tableName]];
+    [PrimitiveProcedures appendToCloneOfSplit:originalSplit
                                      tagString:PROC_TAG_JAWCRUSH
                                   withInitials:aInitials
                                      intoStore:testStore
-                                intoTableNamed:[SampleConstants tableName]];
+                                intoTableNamed:[SplitConstants tableName]];
     
     ProcedureRecord *expectedJawRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_JAWCRUSH andInitials:aInitials];
     
     NSString *expectedKey = @"A_ROCK.002";
     
-    LibraryObject *retrievedObject = [testStore getLibraryObjectForKey:expectedKey FromTable:[SampleConstants tableName]];
-    Sample *retrievedSample = (Sample*)retrievedObject;
+    LibraryObject *retrievedObject = [testStore getLibraryObjectForKey:expectedKey FromTable:[SplitConstants tableName]];
+    Split *retrievedSplit = (Split*)retrievedObject;
     
     NSString *expectedProcedures = [NSString stringWithFormat:@"%@%@%@", originalProcedureRecords, TAG_DELIMITER, expectedJawRecord];
-    NSString *actualProcedures = [retrievedSample.attributes objectForKey:SMP_TAGS];
+    NSString *actualProcedures = [retrievedSplit.attributes objectForKey:SPL_TAGS];
     
     XCTAssertEqualObjects(expectedProcedures, actualProcedures,
                           @"Expected records: %@ \nActual records: %@", expectedProcedures, actualProcedures);

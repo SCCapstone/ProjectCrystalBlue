@@ -1,5 +1,5 @@
 //
-//  SampleFieldValidator.h
+//  SplitFieldValidator.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 3/22/14.
@@ -11,20 +11,20 @@
 
 @class AbstractLibraryObjectStore;
 
-@interface SampleFieldValidator : NSObject
+@interface SplitFieldValidator : NSObject
 
-/// Verify that a SampleKey value contains only alphanumeric, punctuation, and whitespace
+/// Verify that a SplitKey value contains only alphanumeric, punctuation, and whitespace
 /// characters, its length is between 1 and 90 characters, and it is a unique key.
-+ (ValidationResponse *)validateSampleKey:(NSString *)key
++ (ValidationResponse *)validateSplitKey:(NSString *)key
                             WithDataStore:(AbstractLibraryObjectStore *)dataStore;
 
 /// Verify that a CurrentLocation value contains only alphanumeric, punctuation, and whitespace
 /// characters, and its length is between 1 and 90 characters.
 + (ValidationResponse *)validateCurrentLocation:(NSString *)currentLocationValue;
 
-/// Verify that the OriginalSourceKey field fits the requirements of a SourceKey, and the source
+/// Verify that the OriginalSampleKey field fits the requirements of a SourceKey, and the source
 /// key already exists in the database.
-+ (ValidationResponse *)validateOriginalSourceKey:(NSString *)sourceKey
++ (ValidationResponse *)validateOriginalSampleKey:(NSString *)sampleKey
                                     WithDataStore:(AbstractLibraryObjectStore *)dataStore;
 
 @end

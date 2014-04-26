@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Sample.h"
+#import "Split.h"
 
 /**
  *  Class for decoding a list of tags into a user readable form.
@@ -31,10 +31,10 @@
 +(NSArray *)procedureRecordArrayFromList:(NSString *)recordList;
 
 /**
- *  Return the most recent procedure performed on this sample.
+ *  Return the most recent procedure performed on this split.
  *  If no procedures have been performed, returns the string "None".
  */
-+(NSString *)mostRecentProcedurePerformedOnSample:(Sample *)sample;
++(NSString *)mostRecentProcedurePerformedOnSplit:(Split *)split;
 
 /**
  *  Parses an array of Procedure TAGS,

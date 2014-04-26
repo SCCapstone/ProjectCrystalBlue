@@ -84,7 +84,7 @@
 }
 
 /**
- *  Objects with different attribute key sets (e.g. a Sample and a Source) are not equal.
+ *  Objects with different attribute key sets (e.g. a Sample and a Split) are not equal.
  */
 - (void)testDifferentAttributeKeysNotEqual
 {

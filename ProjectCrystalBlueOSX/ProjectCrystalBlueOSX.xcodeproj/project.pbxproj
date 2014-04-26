@@ -40,19 +40,19 @@
 		D0B410FA18B590F000017FAC /* TransactionEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B410F918B590F000017FAC /* TransactionEqualsAndHashcodeTests.m */; };
 		D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */; };
 		D0C51DCA18BABF0C001B3929 /* ConflictResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C51DC918BABF0C001B3929 /* ConflictResolution.m */; };
-		D0CED3BF18E8E4D10031E996 /* SamplesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CED3BD18E8E4D10031E996 /* SamplesWindowController.m */; };
-		D0CED3C018E8E4D10031E996 /* SamplesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CED3BE18E8E4D10031E996 /* SamplesWindowController.xib */; };
-		D0CED3C618E8E6DE0031E996 /* SamplesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CED3C418E8E6DE0031E996 /* SamplesTableViewController.m */; };
-		D0CED3C718E8E6DE0031E996 /* SamplesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CED3C518E8E6DE0031E996 /* SamplesTableViewController.xib */; };
-		D0CED3D518E8E7540031E996 /* SamplesDetailPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CED3D318E8E7540031E996 /* SamplesDetailPanelViewController.m */; };
-		D0CED3D618E8E7540031E996 /* SamplesDetailPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CED3D418E8E7540031E996 /* SamplesDetailPanelViewController.xib */; };
+		D0CED3BF18E8E4D10031E996 /* SplitsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CED3BD18E8E4D10031E996 /* SplitsWindowController.m */; };
+		D0CED3C018E8E4D10031E996 /* SplitsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CED3BE18E8E4D10031E996 /* SplitsWindowController.xib */; };
+		D0CED3C618E8E6DE0031E996 /* SplitsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CED3C418E8E6DE0031E996 /* SplitsTableViewController.m */; };
+		D0CED3C718E8E6DE0031E996 /* SplitsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CED3C518E8E6DE0031E996 /* SplitsTableViewController.xib */; };
+		D0CED3D518E8E7540031E996 /* SplitsDetailPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CED3D318E8E7540031E996 /* SplitsDetailPanelViewController.m */; };
+		D0CED3D618E8E7540031E996 /* SplitsDetailPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CED3D418E8E7540031E996 /* SplitsDetailPanelViewController.xib */; };
 		D704E1A718B15C5B00170B7E /* ProcedureRecordParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A618B15C5B00170B7E /* ProcedureRecordParser.m */; };
 		D704E1A918B162CE00170B7E /* ProcedureNameConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1A818B162CE00170B7E /* ProcedureNameConstantsTests.m */; };
 		D704E1AB18B1654200170B7E /* ProcedureRecordParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AA18B1654200170B7E /* ProcedureRecordParserTests.m */; };
 		D704E1AE18B16C4700170B7E /* Procedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AD18B16C4700170B7E /* Procedures.m */; };
 		D704E1B018B16F6200170B7E /* ProceduresTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D704E1AF18B16F6200170B7E /* ProceduresTests.m */; };
 		D706CCA618E60B7000F7762E /* SourceFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D706CCA518E60B7000F7762E /* SourceFieldValidatorTests.m */; };
-		D706CCA818E630CC00F7762E /* samples_different_capitalization.csv in Resources */ = {isa = PBXBuildFile; fileRef = D706CCA718E630CC00F7762E /* samples_different_capitalization.csv */; };
+		D706CCA818E630CC00F7762E /* splits_different_capitalization.csv in Resources */ = {isa = PBXBuildFile; fileRef = D706CCA718E630CC00F7762E /* splits_different_capitalization.csv */; };
 		D706CCAD18E63E7700F7762E /* SourcePhotosWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D706CCAB18E63E7700F7762E /* SourcePhotosWindowController.m */; };
 		D706CCAE18E63E7700F7762E /* SourcePhotosWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D706CCAC18E63E7700F7762E /* SourcePhotosWindowController.xib */; };
 		D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */; };
@@ -64,9 +64,9 @@
 		D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */; };
 		D715168718F1BBFE00D1D965 /* CSVImportWithValidationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D715168618F1BBFE00D1D965 /* CSVImportWithValidationTests.m */; };
 		D715168918F1BCDA00D1D965 /* sources_ok.csv in Resources */ = {isa = PBXBuildFile; fileRef = D715168818F1BCDA00D1D965 /* sources_ok.csv */; };
-		D715168B18F1BD8F00D1D965 /* samples_ok.csv in Resources */ = {isa = PBXBuildFile; fileRef = D715168A18F1BD8F00D1D965 /* samples_ok.csv */; };
+		D715168B18F1BD8F00D1D965 /* splits_ok.csv in Resources */ = {isa = PBXBuildFile; fileRef = D715168A18F1BD8F00D1D965 /* splits_ok.csv */; };
 		D715CF6618F9E93B00768693 /* LocalEncryptedCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D715CF6518F9E93B00768693 /* LocalEncryptedCredentialsProvider.m */; };
-		D71BE30C18D7A85A00B7572F /* samples_non_ascii_chars.csv in Resources */ = {isa = PBXBuildFile; fileRef = D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */; };
+		D71BE30C18D7A85A00B7572F /* splits_non_ascii_chars.csv in Resources */ = {isa = PBXBuildFile; fileRef = D71BE30B18D7A85A00B7572F /* splits_non_ascii_chars.csv */; };
 		D71E38FB1905B86E0099C794 /* SourcesDeleteController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71E38FA1905B86E0099C794 /* SourcesDeleteController.m */; };
 		D720532B18E757E500831BE6 /* ProcedureFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D720532A18E757E500831BE6 /* ProcedureFieldValidator.m */; };
 		D720532D18E7595F00831BE6 /* ProcedureFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D720532C18E7595F00831BE6 /* ProcedureFieldValidatorTests.m */; };
@@ -82,13 +82,13 @@
 		D72405FD18A6024900EA2DD2 /* S3ImageStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72405FA18A6024900EA2DD2 /* S3ImageStoreTests.m */; };
 		D72405FE18A6024900EA2DD2 /* S3UtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72405FB18A6024900EA2DD2 /* S3UtilsTests.m */; };
 		D724060118A6026900EA2DD2 /* LocalTransactionCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D724060018A6026900EA2DD2 /* LocalTransactionCacheTests.m */; };
-		D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D724060318A6027A00EA2DD2 /* OriginalSampleConstantsTests.m */; };
+		D724060418A6027A00EA2DD2 /* OriginalSplitConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D724060318A6027A00EA2DD2 /* OriginalSplitConstantsTests.m */; };
 		D724060718A602DF00EA2DD2 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72405DD18A600B300EA2DD2 /* AWSiOSSDK.framework */; };
-		D72465D418B71C99002EDE5B /* SampleImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465D318B71C99002EDE5B /* SampleImportController.m */; };
+		D72465D418B71C99002EDE5B /* SplitImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465D318B71C99002EDE5B /* SplitImportController.m */; };
 		D72465D718B71CA6002EDE5B /* SourceImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465D618B71CA6002EDE5B /* SourceImportController.m */; };
 		D72465DA18B71E32002EDE5B /* ImportResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465D918B71E32002EDE5B /* ImportResult.m */; };
 		D72465DD18B71F03002EDE5B /* LibraryObjectImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */; };
-		D72465E118B7320C002EDE5B /* SampleImportControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */; };
+		D72465E118B7320C002EDE5B /* SplitImportControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465E018B7320C002EDE5B /* SplitImportControllerTests.m */; };
 		D72465E318B73D9F002EDE5B /* SourceImportControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */; };
 		D725D1441905DF01005CDADE /* TestingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D725D1431905DF01005CDADE /* TestingUtils.m */; };
 		D72B385018FCCE64002796B9 /* CredentialsEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = D72B384F18FCCE64002796B9 /* CredentialsEncryption.m */; };
@@ -131,24 +131,24 @@
 		D78ACC8518A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC8218A5FE8E006084D6 /* SimpleDBLibraryObjectStore.m */; };
 		D78ACC9818A5FEB6006084D6 /* LibraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC8F18A5FEB6006084D6 /* LibraryObject.m */; };
 		D78ACC9918A5FEB6006084D6 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9118A5FEB6006084D6 /* Source.m */; };
-		D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9318A5FEB6006084D6 /* Sample.m */; };
+		D78ACC9A18A5FEB6006084D6 /* Split.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9318A5FEB6006084D6 /* Split.m */; };
 		D78ACC9B18A5FEB6006084D6 /* SourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9518A5FEB6006084D6 /* SourceConstants.m */; };
-		D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9718A5FEB6006084D6 /* SampleConstants.m */; };
+		D78ACC9C18A5FEB6006084D6 /* SplitConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D78ACC9718A5FEB6006084D6 /* SplitConstants.m */; };
 		D79B09A918FA2686000100CB /* CredentialsProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D79B09A818FA2686000100CB /* CredentialsProviderTests.m */; };
 		D79B09AD18FA2B0A000100CB /* AmazonCredentialsEncodable.m in Sources */ = {isa = PBXBuildFile; fileRef = D79B09AC18FA2B0A000100CB /* AmazonCredentialsEncodable.m */; };
 		D7A0BD9018FB189A00282714 /* FileSystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A0BD8F18FB189A00282714 /* FileSystemUtils.m */; };
 		D7A0BD9318FB1DCE00282714 /* FileSystemUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A0BD9218FB1DCE00282714 /* FileSystemUtilsTests.m */; };
 		D7A0CB7818BC57A900A61E32 /* OSXSaveSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A0CB7718BC57A900A61E32 /* OSXSaveSelector.m */; };
 		D7A0CB7B18BC596900A61E32 /* LibraryObjectExportController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A0CB7A18BC596900A61E32 /* LibraryObjectExportController.m */; };
-		D7A41E3218B6A4E200653B3E /* samples_extra_attribute.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */; };
-		D7A41E3318B6A4E200653B3E /* samples_missing_attribute.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */; };
+		D7A41E3218B6A4E200653B3E /* splits_extra_attribute.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7A41E3018B6A4E200653B3E /* splits_extra_attribute.csv */; };
+		D7A41E3318B6A4E200653B3E /* splits_missing_attribute.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7A41E3118B6A4E200653B3E /* splits_missing_attribute.csv */; };
 		D7A41E3718B6F60000653B3E /* OSXFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A41E3618B6F60000653B3E /* OSXFileSelector.m */; };
 		D7C6AB3518E75AF700599810 /* ImagesFieldvalidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C6AB3418E75AF700599810 /* ImagesFieldvalidatorTests.m */; };
 		D7C8732D18B2F9F800F2976F /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8732C18B2F9F800F2976F /* CHCSVParser.m */; };
 		D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733018B2FA4D00F2976F /* LibraryObjectCSVWriter.m */; };
 		D7C8733718B2FB0B00F2976F /* LibraryObjectCSVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */; };
 		D7C8733D18B3031800F2976F /* CSVReadWriteUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */; };
-		D7C8733F18B31CF400F2976F /* samples_reordered_columns.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */; };
+		D7C8733F18B31CF400F2976F /* splits_reordered_columns.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7C8733E18B31CF400F2976F /* splits_reordered_columns.csv */; };
 		D7CA7D6218F1FF8B0042894A /* sources_missing_dates.csv in Resources */ = {isa = PBXBuildFile; fileRef = D7CA7D6118F1FF8B0042894A /* sources_missing_dates.csv */; };
 		D7CCCEBD18E538EE009D0308 /* ValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */; };
 		D7CCCEC018E54C3A009D0308 /* SourceFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CCCEBF18E54C3A009D0308 /* SourceFieldValidator.m */; };
@@ -158,8 +158,8 @@
 		D7EDA6A318FCE7C200DFB93A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EDA6A118FCE7B100DFB93A /* Security.framework */; };
 		D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */; };
 		D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */; };
-		D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */; };
-		D7FAAD7C18DE1D1B003A9A13 /* SampleFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */; };
+		D7FAAD7A18DE1A1B003A9A13 /* SplitFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7918DE1A1B003A9A13 /* SplitFieldValidator.m */; };
+		D7FAAD7C18DE1D1B003A9A13 /* SplitFieldValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7B18DE1D1B003A9A13 /* SplitFieldValidatorTests.m */; };
 		D7FAAD8018DE23BF003A9A13 /* OSXImageUploadHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7F18DE23BF003A9A13 /* OSXImageUploadHandler.m */; };
 		D7FAAD8318DE2EDD003A9A13 /* SourceImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD8218DE2EDD003A9A13 /* SourceImageUtils.m */; };
 		D7FAAD8618DE42FA003A9A13 /* SourceImageUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD8518DE42FA003A9A13 /* SourceImageUtilsTests.m */; };
@@ -233,15 +233,15 @@
 		D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionConstants.m; sourceTree = "<group>"; };
 		D0C51DC818BABF0C001B3929 /* ConflictResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConflictResolution.h; sourceTree = "<group>"; };
 		D0C51DC918BABF0C001B3929 /* ConflictResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConflictResolution.m; sourceTree = "<group>"; };
-		D0CED3BC18E8E4D10031E996 /* SamplesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesWindowController.h; sourceTree = "<group>"; };
-		D0CED3BD18E8E4D10031E996 /* SamplesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesWindowController.m; sourceTree = "<group>"; };
-		D0CED3BE18E8E4D10031E996 /* SamplesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesWindowController.xib; sourceTree = "<group>"; };
-		D0CED3C318E8E6DE0031E996 /* SamplesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesTableViewController.h; sourceTree = "<group>"; };
-		D0CED3C418E8E6DE0031E996 /* SamplesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesTableViewController.m; sourceTree = "<group>"; };
-		D0CED3C518E8E6DE0031E996 /* SamplesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesTableViewController.xib; sourceTree = "<group>"; };
-		D0CED3D218E8E7540031E996 /* SamplesDetailPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesDetailPanelViewController.h; sourceTree = "<group>"; };
-		D0CED3D318E8E7540031E996 /* SamplesDetailPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesDetailPanelViewController.m; sourceTree = "<group>"; };
-		D0CED3D418E8E7540031E996 /* SamplesDetailPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplesDetailPanelViewController.xib; sourceTree = "<group>"; };
+		D0CED3BC18E8E4D10031E996 /* SplitsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitsWindowController.h; sourceTree = "<group>"; };
+		D0CED3BD18E8E4D10031E996 /* SplitsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitsWindowController.m; sourceTree = "<group>"; };
+		D0CED3BE18E8E4D10031E996 /* SplitsWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplitsWindowController.xib; sourceTree = "<group>"; };
+		D0CED3C318E8E6DE0031E996 /* SplitsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitsTableViewController.h; sourceTree = "<group>"; };
+		D0CED3C418E8E6DE0031E996 /* SplitsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitsTableViewController.m; sourceTree = "<group>"; };
+		D0CED3C518E8E6DE0031E996 /* SplitsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplitsTableViewController.xib; sourceTree = "<group>"; };
+		D0CED3D218E8E7540031E996 /* SplitsDetailPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitsDetailPanelViewController.h; sourceTree = "<group>"; };
+		D0CED3D318E8E7540031E996 /* SplitsDetailPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitsDetailPanelViewController.m; sourceTree = "<group>"; };
+		D0CED3D418E8E7540031E996 /* SplitsDetailPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplitsDetailPanelViewController.xib; sourceTree = "<group>"; };
 		D704E1A518B15C5B00170B7E /* ProcedureRecordParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureRecordParser.h; sourceTree = "<group>"; };
 		D704E1A618B15C5B00170B7E /* ProcedureRecordParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureRecordParser.m; sourceTree = "<group>"; };
 		D704E1A818B162CE00170B7E /* ProcedureNameConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureNameConstantsTests.m; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 		D704E1AD18B16C4700170B7E /* Procedures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Procedures.m; sourceTree = "<group>"; };
 		D704E1AF18B16F6200170B7E /* ProceduresTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresTests.m; sourceTree = "<group>"; };
 		D706CCA518E60B7000F7762E /* SourceFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceFieldValidatorTests.m; sourceTree = "<group>"; };
-		D706CCA718E630CC00F7762E /* samples_different_capitalization.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_different_capitalization.csv; sourceTree = "<group>"; };
+		D706CCA718E630CC00F7762E /* splits_different_capitalization.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = splits_different_capitalization.csv; sourceTree = "<group>"; };
 		D706CCAA18E63E7700F7762E /* SourcePhotosWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcePhotosWindowController.h; sourceTree = "<group>"; };
 		D706CCAB18E63E7700F7762E /* SourcePhotosWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcePhotosWindowController.m; sourceTree = "<group>"; };
 		D706CCAC18E63E7700F7762E /* SourcePhotosWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourcePhotosWindowController.xib; sourceTree = "<group>"; };
@@ -267,10 +267,10 @@
 		D7125EF018C4630B00BBCD3E /* ProceduresWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProceduresWindowController.xib; sourceTree = "<group>"; };
 		D715168618F1BBFE00D1D965 /* CSVImportWithValidationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVImportWithValidationTests.m; sourceTree = "<group>"; };
 		D715168818F1BCDA00D1D965 /* sources_ok.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sources_ok.csv; sourceTree = "<group>"; };
-		D715168A18F1BD8F00D1D965 /* samples_ok.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_ok.csv; sourceTree = "<group>"; };
+		D715168A18F1BD8F00D1D965 /* splits_ok.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = splits_ok.csv; sourceTree = "<group>"; };
 		D715CF6418F9E93B00768693 /* LocalEncryptedCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalEncryptedCredentialsProvider.h; sourceTree = "<group>"; };
 		D715CF6518F9E93B00768693 /* LocalEncryptedCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalEncryptedCredentialsProvider.m; sourceTree = "<group>"; };
-		D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_non_ascii_chars.csv; sourceTree = "<group>"; };
+		D71BE30B18D7A85A00B7572F /* splits_non_ascii_chars.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = splits_non_ascii_chars.csv; sourceTree = "<group>"; };
 		D71E38F91905B86E0099C794 /* SourcesDeleteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcesDeleteController.h; sourceTree = "<group>"; };
 		D71E38FA1905B86E0099C794 /* SourcesDeleteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcesDeleteController.m; sourceTree = "<group>"; };
 		D720532918E757E500831BE6 /* ProcedureFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureFieldValidator.h; sourceTree = "<group>"; };
@@ -289,16 +289,16 @@
 		D72405FA18A6024900EA2DD2 /* S3ImageStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3ImageStoreTests.m; sourceTree = "<group>"; };
 		D72405FB18A6024900EA2DD2 /* S3UtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3UtilsTests.m; sourceTree = "<group>"; };
 		D724060018A6026900EA2DD2 /* LocalTransactionCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTransactionCacheTests.m; sourceTree = "<group>"; };
-		D724060318A6027A00EA2DD2 /* OriginalSampleConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSampleConstantsTests.m; sourceTree = "<group>"; };
-		D72465D218B71C99002EDE5B /* SampleImportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleImportController.h; sourceTree = "<group>"; };
-		D72465D318B71C99002EDE5B /* SampleImportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleImportController.m; sourceTree = "<group>"; };
+		D724060318A6027A00EA2DD2 /* OriginalSplitConstantsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalSplitConstantsTests.m; sourceTree = "<group>"; };
+		D72465D218B71C99002EDE5B /* SplitImportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitImportController.h; sourceTree = "<group>"; };
+		D72465D318B71C99002EDE5B /* SplitImportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitImportController.m; sourceTree = "<group>"; };
 		D72465D518B71CA6002EDE5B /* SourceImportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceImportController.h; sourceTree = "<group>"; };
 		D72465D618B71CA6002EDE5B /* SourceImportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImportController.m; sourceTree = "<group>"; };
 		D72465D818B71E32002EDE5B /* ImportResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportResult.h; sourceTree = "<group>"; };
 		D72465D918B71E32002EDE5B /* ImportResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportResult.m; sourceTree = "<group>"; };
 		D72465DB18B71F03002EDE5B /* LibraryObjectImportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectImportController.h; sourceTree = "<group>"; };
 		D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectImportController.m; sourceTree = "<group>"; };
-		D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleImportControllerTests.m; sourceTree = "<group>"; };
+		D72465E018B7320C002EDE5B /* SplitImportControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitImportControllerTests.m; sourceTree = "<group>"; };
 		D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceImportControllerTests.m; sourceTree = "<group>"; };
 		D725D1421905DF01005CDADE /* TestingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingUtils.h; sourceTree = "<group>"; };
 		D725D1431905DF01005CDADE /* TestingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingUtils.m; sourceTree = "<group>"; };
@@ -376,12 +376,12 @@
 		D78ACC8F18A5FEB6006084D6 /* LibraryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObject.m; sourceTree = "<group>"; };
 		D78ACC9018A5FEB6006084D6 /* Source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
 		D78ACC9118A5FEB6006084D6 /* Source.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Source.m; sourceTree = "<group>"; };
-		D78ACC9218A5FEB6006084D6 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
-		D78ACC9318A5FEB6006084D6 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
+		D78ACC9218A5FEB6006084D6 /* Split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Split.h; sourceTree = "<group>"; };
+		D78ACC9318A5FEB6006084D6 /* Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Split.m; sourceTree = "<group>"; };
 		D78ACC9418A5FEB6006084D6 /* SourceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceConstants.h; sourceTree = "<group>"; };
 		D78ACC9518A5FEB6006084D6 /* SourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceConstants.m; sourceTree = "<group>"; };
-		D78ACC9618A5FEB6006084D6 /* SampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleConstants.h; sourceTree = "<group>"; };
-		D78ACC9718A5FEB6006084D6 /* SampleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleConstants.m; sourceTree = "<group>"; };
+		D78ACC9618A5FEB6006084D6 /* SplitConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitConstants.h; sourceTree = "<group>"; };
+		D78ACC9718A5FEB6006084D6 /* SplitConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitConstants.m; sourceTree = "<group>"; };
 		D79B09A818FA2686000100CB /* CredentialsProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsProviderTests.m; sourceTree = "<group>"; };
 		D79B09AB18FA2B0A000100CB /* AmazonCredentialsEncodable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonCredentialsEncodable.h; sourceTree = "<group>"; };
 		D79B09AC18FA2B0A000100CB /* AmazonCredentialsEncodable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonCredentialsEncodable.m; sourceTree = "<group>"; };
@@ -392,8 +392,8 @@
 		D7A0CB7718BC57A900A61E32 /* OSXSaveSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXSaveSelector.m; sourceTree = "<group>"; };
 		D7A0CB7918BC596900A61E32 /* LibraryObjectExportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectExportController.h; sourceTree = "<group>"; };
 		D7A0CB7A18BC596900A61E32 /* LibraryObjectExportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectExportController.m; sourceTree = "<group>"; };
-		D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_extra_attribute.csv; sourceTree = "<group>"; };
-		D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_missing_attribute.csv; sourceTree = "<group>"; };
+		D7A41E3018B6A4E200653B3E /* splits_extra_attribute.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = splits_extra_attribute.csv; sourceTree = "<group>"; };
+		D7A41E3118B6A4E200653B3E /* splits_missing_attribute.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = splits_missing_attribute.csv; sourceTree = "<group>"; };
 		D7A41E3518B6F60000653B3E /* OSXFileSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXFileSelector.h; sourceTree = "<group>"; };
 		D7A41E3618B6F60000653B3E /* OSXFileSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXFileSelector.m; sourceTree = "<group>"; };
 		D7C6AB3418E75AF700599810 /* ImagesFieldvalidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesFieldvalidatorTests.m; sourceTree = "<group>"; };
@@ -406,7 +406,7 @@
 		D7C8733518B2FB0B00F2976F /* LibraryObjectCSVReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryObjectCSVReader.h; sourceTree = "<group>"; };
 		D7C8733618B2FB0B00F2976F /* LibraryObjectCSVReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectCSVReader.m; sourceTree = "<group>"; };
 		D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVReadWriteUnitTests.m; sourceTree = "<group>"; };
-		D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samples_reordered_columns.csv; sourceTree = "<group>"; };
+		D7C8733E18B31CF400F2976F /* splits_reordered_columns.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = splits_reordered_columns.csv; sourceTree = "<group>"; };
 		D7CA7D6118F1FF8B0042894A /* sources_missing_dates.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sources_missing_dates.csv; sourceTree = "<group>"; };
 		D7CCCEBB18E538EE009D0308 /* ValidationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidationResponse.h; sourceTree = "<group>"; };
 		D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidationResponse.m; sourceTree = "<group>"; };
@@ -418,9 +418,9 @@
 		D7FAAD7218DE10AD003A9A13 /* PrimitiveFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveFieldValidator.h; sourceTree = "<group>"; };
 		D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveFieldValidator.m; sourceTree = "<group>"; };
 		D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveValidatorTests.m; sourceTree = "<group>"; };
-		D7FAAD7818DE1A1B003A9A13 /* SampleFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleFieldValidator.h; sourceTree = "<group>"; };
-		D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidator.m; sourceTree = "<group>"; };
-		D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleFieldValidatorTests.m; sourceTree = "<group>"; };
+		D7FAAD7818DE1A1B003A9A13 /* SplitFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitFieldValidator.h; sourceTree = "<group>"; };
+		D7FAAD7918DE1A1B003A9A13 /* SplitFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitFieldValidator.m; sourceTree = "<group>"; };
+		D7FAAD7B18DE1D1B003A9A13 /* SplitFieldValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitFieldValidatorTests.m; sourceTree = "<group>"; };
 		D7FAAD7E18DE23BF003A9A13 /* OSXImageUploadHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXImageUploadHandler.h; sourceTree = "<group>"; };
 		D7FAAD7F18DE23BF003A9A13 /* OSXImageUploadHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXImageUploadHandler.m; sourceTree = "<group>"; };
 		D7FAAD8118DE2EDD003A9A13 /* SourceImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceImageUtils.h; sourceTree = "<group>"; };
@@ -576,36 +576,36 @@
 			name = SimpleDBLibraryObjectStore;
 			sourceTree = "<group>";
 		};
-		D0CED3BB18E8E4BF0031E996 /* SamplesWindow */ = {
+		D0CED3BB18E8E4BF0031E996 /* SplitsWindow */ = {
 			isa = PBXGroup;
 			children = (
-				D0CED3BC18E8E4D10031E996 /* SamplesWindowController.h */,
-				D0CED3BD18E8E4D10031E996 /* SamplesWindowController.m */,
-				D0CED3BE18E8E4D10031E996 /* SamplesWindowController.xib */,
-				D0CED3C118E8E4DB0031E996 /* SamplesTableViewController */,
-				D0CED3C218E8E4E50031E996 /* SamplesDetailPanel */,
+				D0CED3BC18E8E4D10031E996 /* SplitsWindowController.h */,
+				D0CED3BD18E8E4D10031E996 /* SplitsWindowController.m */,
+				D0CED3BE18E8E4D10031E996 /* SplitsWindowController.xib */,
+				D0CED3C118E8E4DB0031E996 /* SplitsTableViewController */,
+				D0CED3C218E8E4E50031E996 /* SplitsDetailPanel */,
 			);
-			name = SamplesWindow;
+			name = SplitsWindow;
 			sourceTree = "<group>";
 		};
-		D0CED3C118E8E4DB0031E996 /* SamplesTableViewController */ = {
+		D0CED3C118E8E4DB0031E996 /* SplitsTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D0CED3C318E8E6DE0031E996 /* SamplesTableViewController.h */,
-				D0CED3C418E8E6DE0031E996 /* SamplesTableViewController.m */,
-				D0CED3C518E8E6DE0031E996 /* SamplesTableViewController.xib */,
+				D0CED3C318E8E6DE0031E996 /* SplitsTableViewController.h */,
+				D0CED3C418E8E6DE0031E996 /* SplitsTableViewController.m */,
+				D0CED3C518E8E6DE0031E996 /* SplitsTableViewController.xib */,
 			);
-			name = SamplesTableViewController;
+			name = SplitsTableViewController;
 			sourceTree = "<group>";
 		};
-		D0CED3C218E8E4E50031E996 /* SamplesDetailPanel */ = {
+		D0CED3C218E8E4E50031E996 /* SplitsDetailPanel */ = {
 			isa = PBXGroup;
 			children = (
-				D0CED3D218E8E7540031E996 /* SamplesDetailPanelViewController.h */,
-				D0CED3D318E8E7540031E996 /* SamplesDetailPanelViewController.m */,
-				D0CED3D418E8E7540031E996 /* SamplesDetailPanelViewController.xib */,
+				D0CED3D218E8E7540031E996 /* SplitsDetailPanelViewController.h */,
+				D0CED3D318E8E7540031E996 /* SplitsDetailPanelViewController.m */,
+				D0CED3D418E8E7540031E996 /* SplitsDetailPanelViewController.xib */,
 			);
-			name = SamplesDetailPanel;
+			name = SplitsDetailPanel;
 			sourceTree = "<group>";
 		};
 		D706CCA918E63E4C00F7762E /* SourcePhotosWindow */ = {
@@ -660,7 +660,7 @@
 		D715168518F1BBE200D1D965 /* CSVImportWithValidation */ = {
 			isa = PBXGroup;
 			children = (
-				D715168A18F1BD8F00D1D965 /* samples_ok.csv */,
+				D715168A18F1BD8F00D1D965 /* splits_ok.csv */,
 				D715168818F1BCDA00D1D965 /* sources_ok.csv */,
 				D7CA7D6118F1FF8B0042894A /* sources_missing_dates.csv */,
 				D715168618F1BBFE00D1D965 /* CSVImportWithValidationTests.m */,
@@ -757,7 +757,7 @@
 			isa = PBXGroup;
 			children = (
 				D706DDB618B0C8DF0023D2BF /* Procedure Tests */,
-				D724060318A6027A00EA2DD2 /* OriginalSampleConstantsTests.m */,
+				D724060318A6027A00EA2DD2 /* OriginalSplitConstantsTests.m */,
 				D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */,
 				D0B410F918B590F000017FAC /* TransactionEqualsAndHashcodeTests.m */,
 			);
@@ -767,12 +767,12 @@
 		D72465DE18B731EC002EDE5B /* CSV */ = {
 			isa = PBXGroup;
 			children = (
-				D706CCA718E630CC00F7762E /* samples_different_capitalization.csv */,
+				D706CCA718E630CC00F7762E /* splits_different_capitalization.csv */,
 				D75BA1F918DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv */,
-				D7A41E3018B6A4E200653B3E /* samples_extra_attribute.csv */,
-				D7A41E3118B6A4E200653B3E /* samples_missing_attribute.csv */,
-				D7C8733E18B31CF400F2976F /* samples_reordered_columns.csv */,
-				D71BE30B18D7A85A00B7572F /* samples_non_ascii_chars.csv */,
+				D7A41E3018B6A4E200653B3E /* splits_extra_attribute.csv */,
+				D7A41E3118B6A4E200653B3E /* splits_missing_attribute.csv */,
+				D7C8733E18B31CF400F2976F /* splits_reordered_columns.csv */,
+				D71BE30B18D7A85A00B7572F /* splits_non_ascii_chars.csv */,
 				D7C8733C18B3031800F2976F /* CSVReadWriteUnitTests.m */,
 			);
 			name = CSV;
@@ -781,7 +781,7 @@
 		D72465DF18B731F0002EDE5B /* LibraryObjectImportController */ = {
 			isa = PBXGroup;
 			children = (
-				D72465E018B7320C002EDE5B /* SampleImportControllerTests.m */,
+				D72465E018B7320C002EDE5B /* SplitImportControllerTests.m */,
 				D72465E218B73D9F002EDE5B /* SourceImportControllerTests.m */,
 			);
 			name = LibraryObjectImportController;
@@ -910,14 +910,14 @@
 				D78ACC8F18A5FEB6006084D6 /* LibraryObject.m */,
 				D78ACC9018A5FEB6006084D6 /* Source.h */,
 				D78ACC9118A5FEB6006084D6 /* Source.m */,
-				D78ACC9218A5FEB6006084D6 /* Sample.h */,
-				D78ACC9318A5FEB6006084D6 /* Sample.m */,
+				D78ACC9218A5FEB6006084D6 /* Split.h */,
+				D78ACC9318A5FEB6006084D6 /* Split.m */,
 				D086319F18AC5ACB007A8DAA /* Transaction.h */,
 				D08631A018AC5ACB007A8DAA /* Transaction.m */,
 				D78ACC9418A5FEB6006084D6 /* SourceConstants.h */,
 				D78ACC9518A5FEB6006084D6 /* SourceConstants.m */,
-				D78ACC9618A5FEB6006084D6 /* SampleConstants.h */,
-				D78ACC9718A5FEB6006084D6 /* SampleConstants.m */,
+				D78ACC9618A5FEB6006084D6 /* SplitConstants.h */,
+				D78ACC9718A5FEB6006084D6 /* SplitConstants.m */,
 				D0C2196C18AAF73500DF9CB7 /* TransactionConstants.h */,
 				D0C2196D18AAF73500DF9CB7 /* TransactionConstants.m */,
 				D0C51DC818BABF0C001B3929 /* ConflictResolution.h */,
@@ -929,12 +929,12 @@
 		D78ACC2D18A5FD92006084D6 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				D79B09AA18FA2AF5000100CB /* Credentials */,
 				D08631A218AC619D007A8DAA /* TransactionStore */,
 				D78ACC7418A5FE5F006084D6 /* LibraryObjectStore */,
 				D78ACC5C18A5FE06006084D6 /* ImageStore */,
 				D78ACC5318A5FDFD006084D6 /* LocalTransactionCache.h */,
 				D78ACC5418A5FDFD006084D6 /* LocalTransactionCache.m */,
-				D79B09AA18FA2AF5000100CB /* Credentials */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -963,7 +963,7 @@
 				D7EA0B8A18A84AFF003D74BA /* AddNewSourceWindow */,
 				D09152E018F205E700F6B579 /* BatchEditWindow */,
 				D706CCA918E63E4C00F7762E /* SourcePhotosWindow */,
-				D0CED3BB18E8E4BF0031E996 /* SamplesWindow */,
+				D0CED3BB18E8E4BF0031E996 /* SplitsWindow */,
 				D7125EED18C462EC00BBCD3E /* ProceduresWindow */,
 				D09152E618F21A1100F6B579 /* LoadingSheet */,
 			);
@@ -1140,8 +1140,8 @@
 				D72465DC18B71F03002EDE5B /* LibraryObjectImportController.m */,
 				D72465D518B71CA6002EDE5B /* SourceImportController.h */,
 				D72465D618B71CA6002EDE5B /* SourceImportController.m */,
-				D72465D218B71C99002EDE5B /* SampleImportController.h */,
-				D72465D318B71C99002EDE5B /* SampleImportController.m */,
+				D72465D218B71C99002EDE5B /* SplitImportController.h */,
+				D72465D318B71C99002EDE5B /* SplitImportController.m */,
 			);
 			name = ImportControllers;
 			sourceTree = "<group>";
@@ -1218,8 +1218,8 @@
 				D7CCCEBC18E538EE009D0308 /* ValidationResponse.m */,
 				D7FAAD7218DE10AD003A9A13 /* PrimitiveFieldValidator.h */,
 				D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */,
-				D7FAAD7818DE1A1B003A9A13 /* SampleFieldValidator.h */,
-				D7FAAD7918DE1A1B003A9A13 /* SampleFieldValidator.m */,
+				D7FAAD7818DE1A1B003A9A13 /* SplitFieldValidator.h */,
+				D7FAAD7918DE1A1B003A9A13 /* SplitFieldValidator.m */,
 				D7CCCEBE18E54C3A009D0308 /* SourceFieldValidator.h */,
 				D7CCCEBF18E54C3A009D0308 /* SourceFieldValidator.m */,
 				D720532918E757E500831BE6 /* ProcedureFieldValidator.h */,
@@ -1234,7 +1234,7 @@
 			isa = PBXGroup;
 			children = (
 				D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */,
-				D7FAAD7B18DE1D1B003A9A13 /* SampleFieldValidatorTests.m */,
+				D7FAAD7B18DE1D1B003A9A13 /* SplitFieldValidatorTests.m */,
 				D706CCA518E60B7000F7762E /* SourceFieldValidatorTests.m */,
 				D720532C18E7595F00831BE6 /* ProcedureFieldValidatorTests.m */,
 				D7C6AB3418E75AF700599810 /* ImagesFieldvalidatorTests.m */,
@@ -1336,9 +1336,9 @@
 				D7439E1F18A5FC53000EE008 /* Credits.rtf in Resources */,
 				D09152E518F2067D00F6B579 /* BatchEditWindowController.xib in Resources */,
 				D09152EB18F21A9300F6B579 /* LoadingSheet.xib in Resources */,
-				D0CED3C018E8E4D10031E996 /* SamplesWindowController.xib in Resources */,
-				D0CED3D618E8E7540031E996 /* SamplesDetailPanelViewController.xib in Resources */,
-				D0CED3C718E8E6DE0031E996 /* SamplesTableViewController.xib in Resources */,
+				D0CED3C018E8E4D10031E996 /* SplitsWindowController.xib in Resources */,
+				D0CED3D618E8E7540031E996 /* SplitsDetailPanelViewController.xib in Resources */,
+				D0CED3C718E8E6DE0031E996 /* SplitsTableViewController.xib in Resources */,
 				D038CBCE18DBFC0E00635442 /* SourcesWindowController.xib in Resources */,
 				D711C94E18C42CC300D637D7 /* AddNewSourceWindowController.xib in Resources */,
 				D7439E2518A5FC53000EE008 /* MainMenu.xib in Resources */,
@@ -1350,18 +1350,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D715168B18F1BD8F00D1D965 /* samples_ok.csv in Resources */,
+				D715168B18F1BD8F00D1D965 /* splits_ok.csv in Resources */,
 				D75BA1FA18DBF57500C718A4 /* source_with_western_europe_apple_encoding.csv in Resources */,
-				D7A41E3318B6A4E200653B3E /* samples_missing_attribute.csv in Resources */,
+				D7A41E3318B6A4E200653B3E /* splits_missing_attribute.csv in Resources */,
 				D72405FC18A6024900EA2DD2 /* UNIT_TEST_UPLOAD_IMAGE_16x16.jpg in Resources */,
 				D72405F618A6023B00EA2DD2 /* big_test_image_4096-4096.jpg in Resources */,
 				D7439E3718A5FC53000EE008 /* InfoPlist.strings in Resources */,
-				D7A41E3218B6A4E200653B3E /* samples_extra_attribute.csv in Resources */,
-				D706CCA818E630CC00F7762E /* samples_different_capitalization.csv in Resources */,
+				D7A41E3218B6A4E200653B3E /* splits_extra_attribute.csv in Resources */,
+				D706CCA818E630CC00F7762E /* splits_different_capitalization.csv in Resources */,
 				D7CA7D6218F1FF8B0042894A /* sources_missing_dates.csv in Resources */,
 				D715168918F1BCDA00D1D965 /* sources_ok.csv in Resources */,
-				D71BE30C18D7A85A00B7572F /* samples_non_ascii_chars.csv in Resources */,
-				D7C8733F18B31CF400F2976F /* samples_reordered_columns.csv in Resources */,
+				D71BE30C18D7A85A00B7572F /* splits_non_ascii_chars.csv in Resources */,
+				D7C8733F18B31CF400F2976F /* splits_reordered_columns.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1377,22 +1377,22 @@
 				D78ACC3B18A5FDC0006084D6 /* FMDatabase.m in Sources */,
 				D78ACC6F18A5FE2E006084D6 /* S3Utils.m in Sources */,
 				D78ACC5518A5FDFD006084D6 /* LocalTransactionCache.m in Sources */,
-				D78ACC9C18A5FEB6006084D6 /* SampleConstants.m in Sources */,
-				D78ACC9A18A5FEB6006084D6 /* Sample.m in Sources */,
+				D78ACC9C18A5FEB6006084D6 /* SplitConstants.m in Sources */,
+				D78ACC9A18A5FEB6006084D6 /* Split.m in Sources */,
 				D7A0CB7818BC57A900A61E32 /* OSXSaveSelector.m in Sources */,
 				D7125EF118C4630B00BBCD3E /* ProceduresWindowController.m in Sources */,
 				D059F8EF18E547100024AA58 /* SourcesDetailPanelViewController.m in Sources */,
 				D021B93118F0E38900ADE234 /* Reachability.m in Sources */,
 				D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */,
 				D78ACC4918A5FDD9006084D6 /* DDFileLogger.m in Sources */,
-				D0CED3BF18E8E4D10031E996 /* SamplesWindowController.m in Sources */,
+				D0CED3BF18E8E4D10031E996 /* SplitsWindowController.m in Sources */,
 				D7439E2218A5FC53000EE008 /* AppDelegate.m in Sources */,
 				D7C8733718B2FB0B00F2976F /* LibraryObjectCSVReader.m in Sources */,
-				D0CED3D518E8E7540031E996 /* SamplesDetailPanelViewController.m in Sources */,
+				D0CED3D518E8E7540031E996 /* SplitsDetailPanelViewController.m in Sources */,
 				D059F93118E560160024AA58 /* qrinput.c in Sources */,
 				D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */,
 				D08631A518AC61BA007A8DAA /* TransactionStore.m in Sources */,
-				D7FAAD7A18DE1A1B003A9A13 /* SampleFieldValidator.m in Sources */,
+				D7FAAD7A18DE1A1B003A9A13 /* SplitFieldValidator.m in Sources */,
 				D7C8733418B2FA4D00F2976F /* LibraryObjectCSVWriter.m in Sources */,
 				D7CCCEC018E54C3A009D0308 /* SourceFieldValidator.m in Sources */,
 				D72B385018FCCE64002796B9 /* CredentialsEncryption.m in Sources */,
@@ -1423,8 +1423,8 @@
 				D78ACC3F18A5FDC0006084D6 /* FMResultSet.m in Sources */,
 				D7A0BD9018FB189A00282714 /* FileSystemUtils.m in Sources */,
 				D78ACC6518A5FE21006084D6 /* AbstractImageStore.m in Sources */,
-				D72465D418B71C99002EDE5B /* SampleImportController.m in Sources */,
-				D0CED3C618E8E6DE0031E996 /* SamplesTableViewController.m in Sources */,
+				D72465D418B71C99002EDE5B /* SplitImportController.m in Sources */,
+				D0CED3C618E8E6DE0031E996 /* SplitsTableViewController.m in Sources */,
 				D78ACC7718A5FE68006084D6 /* LocalLibraryObjectStore.m in Sources */,
 				D059F93018E560160024AA58 /* qrencode.c in Sources */,
 				D059F92F18E560160024AA58 /* mqrspec.c in Sources */,
@@ -1465,7 +1465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D725D1441905DF01005CDADE /* TestingUtils.m in Sources */,
-				D724060418A6027A00EA2DD2 /* OriginalSampleConstantsTests.m in Sources */,
+				D724060418A6027A00EA2DD2 /* OriginalSplitConstantsTests.m in Sources */,
 				D720532D18E7595F00831BE6 /* ProcedureFieldValidatorTests.m in Sources */,
 				D7A0BD9318FB1DCE00282714 /* FileSystemUtilsTests.m in Sources */,
 				D706CCA618E60B7000F7762E /* SourceFieldValidatorTests.m in Sources */,
@@ -1473,7 +1473,7 @@
 				D72405F718A6023B00EA2DD2 /* LocalImageStoreTests.m in Sources */,
 				D09C7E9A18B1ABFE001B98AF /* SimpleDBUtilsTests.m in Sources */,
 				D72405FD18A6024900EA2DD2 /* S3ImageStoreTests.m in Sources */,
-				D72465E118B7320C002EDE5B /* SampleImportControllerTests.m in Sources */,
+				D72465E118B7320C002EDE5B /* SplitImportControllerTests.m in Sources */,
 				D72405EB18A601ED00EA2DD2 /* LocalLibraryObjectStoreTests.m in Sources */,
 				D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */,
 				D704E1B018B16F6200170B7E /* ProceduresTests.m in Sources */,
@@ -1489,7 +1489,7 @@
 				D79B09A918FA2686000100CB /* CredentialsProviderTests.m in Sources */,
 				D7EDA6A018FCE5BA00DFB93A /* CredentialsEncryptionTests.m in Sources */,
 				D7C6AB3518E75AF700599810 /* ImagesFieldvalidatorTests.m in Sources */,
-				D7FAAD7C18DE1D1B003A9A13 /* SampleFieldValidatorTests.m in Sources */,
+				D7FAAD7C18DE1D1B003A9A13 /* SplitFieldValidatorTests.m in Sources */,
 				D7D0358218B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m in Sources */,
 				D704E1AB18B1654200170B7E /* ProcedureRecordParserTests.m in Sources */,
 				D724060118A6026900EA2DD2 /* LocalTransactionCacheTests.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  SamplesWindowController.h
+//  SplitsWindowController.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 3/30/14.
@@ -11,7 +11,7 @@
 
 @class AbstractCloudLibraryObjectStore, Source;
 
-@interface SamplesWindowController : NSWindowController <NSSplitViewDelegate, ImportResultReporter>
+@interface SplitsWindowController : NSWindowController <NSSplitViewDelegate, ImportResultReporter>
 
 @property (weak) IBOutlet NSSplitView *splitView;
 @property (weak) IBOutlet NSSearchField *searchField;
@@ -20,14 +20,14 @@
 @property Source *source;
 
 // Toolbar actions
-- (IBAction)newBlankSample:(id)sender;
-- (IBAction)deleteSample:(id)sender;
+- (IBAction)newBlankSplit:(id)sender;
+- (IBAction)deleteSplit:(id)sender;
 - (IBAction)performProcedure:(id)sender;
 - (IBAction)importExport:(id)sender;
 - (IBAction)printBarcodes:(id)sender;
 
 // Search functionality
 - (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem;
-- (IBAction)searchSamples:(id)sender;
+- (IBAction)searchSplits:(id)sender;
 
 @end

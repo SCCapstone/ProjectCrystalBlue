@@ -9,7 +9,7 @@
 #import "SourcesTableViewController.h"
 #import "SourcesDetailPanelViewController.h"
 #import "Source.h"
-#import "Sample.h"
+#import "Split.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "DDLog.h"
 
@@ -170,13 +170,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [dataStore putLibraryObject:source IntoTable:[SourceConstants tableName]];
     [self updateDisplayedSources];
     
-    // We also need to add a starting sample for this Source.
-    NSString *sampleKey = [NSString stringWithFormat:@"%@.%03d", source.key, 1];
-    Sample *sample = [[Sample alloc] initWithKey:sampleKey
-                               AndWithAttributes:[SampleConstants attributeNames]
-                                       AndValues:[SampleConstants attributeDefaultValues]];
-    [sample.attributes setObject:source.key forKey:SMP_SOURCE_KEY];
-    [dataStore putLibraryObject:sample IntoTable:[SampleConstants tableName]];
+    // We also need to add a starting split for this Source.
+    NSString *splitKey = [NSString stringWithFormat:@"%@.%03d", source.key, 1];
+    Split *split = [[Split alloc] initWithKey:splitKey
+                               AndWithAttributes:[SplitConstants attributeNames]
+                                       AndValues:[SplitConstants attributeDefaultValues]];
+    [split.attributes setObject:source.key forKey:SPL_SAMPLE_KEY];
+    [dataStore putLibraryObject:split IntoTable:[SplitConstants tableName]];
 }
 
 - (void)deleteSourceWithKey:(NSString *)key

@@ -1,5 +1,5 @@
 //
-//  SampleFieldValidatorTests.m
+//  SplitFieldValidatorTests.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 3/22/14.
@@ -7,19 +7,19 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "SampleFieldValidator.h"
+#import "SplitFieldValidator.h"
 #import "ValidationResponse.h"
 #import "LocalLibraryObjectStore.h"
 #import "FileSystemUtils.h"
-#import "Sample.h"
+#import "Split.h"
 
 #define DATABASE_NAME @"test_database.db"
 
-@interface SampleFieldValidatorTests : XCTestCase
+@interface SplitFieldValidatorTests : XCTestCase
 
 @end
 
-@implementation SampleFieldValidatorTests
+@implementation SplitFieldValidatorTests
 
 - (void)setUp
 {
@@ -41,8 +41,8 @@
         [tooLong appendString:@"a"];
     }
 
-    XCTAssertTrue([[SampleFieldValidator validateCurrentLocation:valid] isValid]);
-    XCTAssertFalse([[SampleFieldValidator validateCurrentLocation:tooLong] isValid]);
+    XCTAssertTrue([[SplitFieldValidator validateCurrentLocation:valid] isValid]);
+    XCTAssertFalse([[SplitFieldValidator validateCurrentLocation:tooLong] isValid]);
 }
 
 - (void)testValidateSampleKey
@@ -58,15 +58,15 @@
     AbstractLibraryObjectStore *dataStore = [[LocalLibraryObjectStore alloc] initInLocalDirectory:[FileSystemUtils testDirectory]
                                                                                  WithDatabaseName:DATABASE_NAME];
     
-    Sample *sample = [[Sample alloc] initWithKey:keyNotUnique
-                                   AndWithValues:[SampleConstants attributeDefaultValues]];
-    [dataStore putLibraryObject:sample IntoTable:[SampleConstants tableName]];
+    Split *split = [[Split alloc] initWithKey:keyNotUnique
+                                   AndWithValues:[SplitConstants attributeDefaultValues]];
+    [dataStore putLibraryObject:split IntoTable:[SplitConstants tableName]];
 
-    XCTAssertTrue([[SampleFieldValidator validateSampleKey:valid WithDataStore:dataStore] isValid]);
+    XCTAssertTrue([[SplitFieldValidator validateSplitKey:valid WithDataStore:dataStore] isValid]);
     
-    XCTAssertFalse([[SampleFieldValidator validateSampleKey:keyNotUnique WithDataStore:dataStore] isValid]);
-    XCTAssertFalse([[SampleFieldValidator validateSampleKey:tooShort WithDataStore:dataStore] isValid]);
-    XCTAssertFalse([[SampleFieldValidator validateSampleKey:tooLong WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SplitFieldValidator validateSplitKey:keyNotUnique WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SplitFieldValidator validateSplitKey:tooShort WithDataStore:dataStore] isValid]);
+    XCTAssertFalse([[SplitFieldValidator validateSplitKey:tooLong WithDataStore:dataStore] isValid]);
 }
 
 @end

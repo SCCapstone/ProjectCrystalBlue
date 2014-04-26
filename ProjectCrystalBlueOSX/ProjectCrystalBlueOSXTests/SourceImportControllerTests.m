@@ -78,11 +78,11 @@
     return sources;
 }
 
-/// Sends the SourceInputController an array of valid samples.
-- (void)testSimulateInputValidSamples
+/// Sends the SourceInputController an array of valid sources.
+- (void)testSimulateInputValidSources
 {
     NSArray *testSources = [self generateSources:5];
-    // write the samples to a csv file
+    // write the sources to a csv file
     [[[LibraryObjectCSVWriter alloc] init] writeObjects:testSources ToFileAtPath:csvPath];
     
     SourceImportController *importController = [[SourceImportController alloc] init];
@@ -91,7 +91,7 @@
 
     [TestingUtils busyWaitForSeconds:0.3f];
     
-    // These samples should now have been imported to the db.
+    // These sources should now have been imported to the db.
     for (Source *s in testSources) {
         XCTAssertTrue([objectStore libraryObjectExistsForKey:s.key
                                                    FromTable:[SourceConstants tableName]],

@@ -1,12 +1,12 @@
 //
-//  SampleConstants.m
+//  SplitConstants.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/18/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SampleConstants.h"
+#import "SplitConstants.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -15,15 +15,15 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
-/* Sample table name
+/* Split table name
  */
 #ifdef DEBUG
-static NSString *const SAMPLE_TABLE_NAME = @"test_sample_table";
+static NSString *const SPLIT_TABLE_NAME = @"test_split_table";
 #else
-static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
+static NSString *const SPLIT_TABLE_NAME = @"prod_split_table";
 #endif
 
-@implementation SampleConstants
+@implementation SplitConstants
 
 + (NSArray *)attributeNames
 {
@@ -31,10 +31,10 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
     if (!attributeNames)
     {
         attributeNames = [NSArray arrayWithObjects:
-                          SMP_KEY,
-                          SMP_SOURCE_KEY,
-                          SMP_CURRENT_LOCATION,
-                          SMP_TAGS, nil];
+                          SPL_KEY,
+                          SPL_SAMPLE_KEY,
+                          SPL_CURRENT_LOCATION,
+                          SPL_TAGS, nil];
     }
     return attributeNames;
 }
@@ -45,10 +45,10 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
     if (!attributeDefaultValues)
     {
         attributeDefaultValues = [NSArray arrayWithObjects:
-                                  SMP_DEF_VAL_KEY,
-                                  SMP_DEF_VAL_SOURCE_KEY,
-                                  SMP_DEF_VAL_CURRENT_LOCATION,
-                                  SMP_DEF_VAL_TAGS, nil];
+                                  SPL_DEF_VAL_KEY,
+                                  SPL_DEF_VAL_SAMPLE_KEY,
+                                  SPL_DEF_VAL_CURRENT_LOCATION,
+                                  SPL_DEF_VAL_TAGS, nil];
     }
     return attributeDefaultValues;
 }
@@ -60,10 +60,10 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
     if (!humanReadableLabels)
     {
         humanReadableLabels = [NSArray arrayWithObjects:
-                                  SMP_DISPLAY_KEY,
-                                  SMP_DISPLAY_SOURCE_KEY,
-                                  SMP_DISPLAY_CURRENT_LOCATION,
-                                  SMP_DISPLAY_TAGS, nil];
+                                  SPL_DISPLAY_KEY,
+                                  SPL_DISPLAY_SAMPLE_KEY,
+                                  SPL_DISPLAY_CURRENT_LOCATION,
+                                  SPL_DISPLAY_TAGS, nil];
     }
     return humanReadableLabels;
 }
@@ -93,7 +93,7 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
 
 + (NSString *)tableName
 {
-    return SAMPLE_TABLE_NAME;
+    return SPLIT_TABLE_NAME;
 }
 
 + (NSString *)tableSchema
@@ -108,7 +108,7 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
         {
             NSString *attr = [attrNames objectAtIndex:i];
             [attrNames replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@ TEXT%@",
-                                                          attr, [attr isEqualToString:SMP_KEY] ? @" PRIMARY KEY" : @""]];
+                                                          attr, [attr isEqualToString:SPL_KEY] ? @" PRIMARY KEY" : @""]];
         }
         schema = [attrNames componentsJoinedByString:@","];
     }

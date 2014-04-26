@@ -1,5 +1,5 @@
 //
-//  OriginalSampleConstantsTests.m
+//  OriginalSplitConstantsTests.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/18/14.
@@ -7,13 +7,13 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "SampleConstants.h"
+#import "SplitConstants.h"
 
-@interface OriginalSampleConstantsTests : XCTestCase
+@interface OriginalSplitConstantsTests : XCTestCase
 
 @end
 
-@implementation OriginalSampleConstantsTests
+@implementation OriginalSplitConstantsTests
 
 - (void)setUp
 {
@@ -29,9 +29,9 @@
 
 - (void)testExample
 {
-//    XCTAssertTrue([[SampleConstants attributeNames] count] == 1);
-//    XCTAssertTrue([[SampleConstants attributeDefaultValues] count] == 1);
-    //XCTAssertTrue([[[SampleConstants attributeNames] objectAtIndex:0] isEqualToString:@"Continent"]);
+//    XCTAssertTrue([[SplitConstants attributeNames] count] == 1);
+//    XCTAssertTrue([[SplitConstants attributeDefaultValues] count] == 1);
+    //XCTAssertTrue([[[SplitConstants attributeNames] objectAtIndex:0] isEqualToString:@"Continent"]);
 }
 
 @end

@@ -36,7 +36,7 @@
     return nil;
 }
 
-- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
+- (NSArray *)getAllSplitsForSampleKey:(NSString *)sampleKey
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return nil;
@@ -50,7 +50,7 @@
     return nil;
 }
 
-- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
+- (NSArray *)getAllSplitsForSampleKey:(NSString *)sampleKey
                    AndForAttributeName:(NSString *)attributeName
                     WithAttributeValue:(NSString *)attributeValue
 {
@@ -93,7 +93,7 @@
     return NO;
 }
 
-- (BOOL)deleteAllSamplesForSourceKey:(NSString *)sourceKey
+- (BOOL)deleteAllSplitsForSampleKey:(NSString *)sampleKey
 {
     [NSException raise:@"Invoked abstract method." format:@"You must use a subclass implementation of %@.", NSStringFromClass(self.class)];
     return NO;

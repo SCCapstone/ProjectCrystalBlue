@@ -46,9 +46,9 @@ AbstractLibraryObjectStore *testStore;
 {
     NSString *originalKey = @"Rock.001";
     NSString *initials = @"AAA";
-    Sample *s = [[Sample alloc] initWithKey:originalKey
-                          AndWithAttributes:[SampleConstants attributeNames]
-                                  AndValues:[SampleConstants attributeDefaultValues]];
+    Split *s = [[Split alloc] initWithKey:originalKey
+                          AndWithAttributes:[SplitConstants attributeNames]
+                                  AndValues:[SplitConstants attributeDefaultValues]];
     
     ProcedureRecord *proc1 = [[ProcedureRecord alloc] initWithTag:@"TAG01" andInitials:initials];
     ProcedureRecord *proc2 = [[ProcedureRecord alloc] initWithTag:@"TAG02" andInitials:initials];
@@ -57,17 +57,17 @@ AbstractLibraryObjectStore *testStore;
     
     NSArray *originalRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:originalRecords];
     
-    [s.attributes setValue:originalRecords forKey:SMP_TAGS];
-    [testStore putLibraryObject:s IntoTable:[SampleConstants tableName]];
+    [s.attributes setValue:originalRecords forKey:SPL_TAGS];
+    [testStore putLibraryObject:s IntoTable:[SplitConstants tableName]];
     
-    [Procedures jawCrushSample:s
+    [Procedures jawCrushSplit:s
                   withInitials:initials
                        inStore:testStore];
     
-    LibraryObject *retrievedSample = [testStore getLibraryObjectForKey:originalKey
-                                                             FromTable:[SampleConstants tableName]];
+    LibraryObject *retrievedSplit = [testStore getLibraryObjectForKey:originalKey
+                                                             FromTable:[SplitConstants tableName]];
     
-    NSString *newRecords = [[retrievedSample attributes] objectForKey:SMP_TAGS];
+    NSString *newRecords = [[retrievedSplit attributes] objectForKey:SPL_TAGS];
     NSArray *newRecordArray = [ProcedureRecordParser procedureRecordArrayFromList:newRecords];
     
     ProcedureRecord *expectedJawCrushRecord = [[ProcedureRecord alloc] initWithTag:PROC_TAG_JAWCRUSH andInitials:initials];

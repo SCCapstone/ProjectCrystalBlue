@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AbstractLibraryObjectStore.h"
-#import "Sample.h"
+#import "Split.h"
 
 /**
  *  Primitive procedures are abstractions of very basic operations that are common 
@@ -19,43 +19,43 @@
 @interface PrimitiveProcedures : NSObject
 
 /**
- *  Clone a sample into a store. The cloned sample will have the same attributes, except
+ *  Clone a split into a store. The cloned split will have the same attributes, except
  *  a new unique key.
  */
-+(void)cloneSample:(Sample *)original
++(void)cloneSplit:(Split *)original
          intoStore:(AbstractLibraryObjectStore *)store
     intoTableNamed:(NSString *)tableName;
 
 /**
- *  Clone a "fresh" sample into a store. The cloned sample will have the same attributes, 
+ *  Clone a "fresh" split into a store. The cloned split will have the same attributes, 
  *  except a new unique key and no tags.
  */
-+(void)cloneSampleWithClearedTags:(Sample *)original
++(void)cloneSplitWithClearedTags:(Split *)original
                         intoStore:(AbstractLibraryObjectStore *)store
                    intoTableNamed:(NSString *)tableName;
 
 /**
- *  Append a tag to a sample, modifying it IN PLACE.
+ *  Append a tag to a split, modifying it IN PLACE.
  */
-+(void)appendToSampleInPlace:(Sample *)modifiedSample
++(void)appendToSplitInPlace:(Split *)modifiedSplit
                    tagString:(NSString *)tag
                 withInitials:(NSString *)initials
                    intoStore:(AbstractLibraryObjectStore *)store
               intoTableNamed:(NSString *)tableName;
 
 /**
- *  Append a tag to a clone of a sample.
+ *  Append a tag to a clone of a split.
  */
-+(void)appendToCloneOfSample:(Sample *)original
++(void)appendToCloneOfSplit:(Split *)original
                    tagString:(NSString *)tag
                 withInitials:(NSString *)initials
                    intoStore:(AbstractLibraryObjectStore *)store
               intoTableNamed:(NSString *)tableName;
 
 /**
- *  Helper method to generate a new unique key for a sample. This key is guaranteed to be unique within the given table.
- *  Recall that samples are generally named something like 'SUPER_AWESOME_SAMPLE.001'. This method would generate the key
- *  'SUPER_AWESOME_SAMPLE.002' and, assuming no other sample exists with that name, return it. If 'SUPER_AWESOME_SAMPLE.002'
+ *  Helper method to generate a new unique key for a split. This key is guaranteed to be unique within the given table.
+ *  Recall that splits are generally named something like 'SUPER_AWESOME_SPLIT.001'. This method would generate the key
+ *  'SUPER_AWESOME_SPLIT.002' and, assuming no other split exists with that name, return it. If 'SUPER_AWESOME_SPLIT.002'
  *  already exists, then we try '*.003' '*.004' etc. until we find an open name.
  */
 +(NSString *)uniqueKeyBasedOn:(NSString *)previousKey

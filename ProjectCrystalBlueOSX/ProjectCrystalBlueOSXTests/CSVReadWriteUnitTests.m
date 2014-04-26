@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Sample.h"
+#import "Split.h"
 #import "Source.h"
 #import "FileSystemUtils.h"
 #import "LibraryObjectCSVWriter.h"
@@ -34,43 +34,43 @@ NSString* filePath;
     [super tearDown];
 }
 
-/// Populates an array of samples, writes them to a file, then parses them again.
+/// Populates an array of splits, writes them to a file, then parses them again.
 /// The results from the parser should match the original array.
-- (void)testWriteAndReadSamples
+- (void)testWriteAndReadSplits
 {
-    filePath = [localDirectory stringByAppendingFormat:@"/%@", @"testWriteSamples.csv"];
+    filePath = [localDirectory stringByAppendingFormat:@"/%@", @"testWriteSplits.csv"];
     
-    NSMutableArray *samples = [[NSMutableArray alloc] init];
+    NSMutableArray *splits = [[NSMutableArray alloc] init];
     
-    const int numberOfSamples = 100;
-    for (int i = 0; i < numberOfSamples; ++i) {
-        NSString *key = [NSString stringWithFormat:@"%@%05d", SMP_KEY, i];
-        Sample *s = [[Sample alloc] initWithKey:key
-                              AndWithAttributes:[SampleConstants attributeNames]
-                                      AndValues:[SampleConstants attributeDefaultValues]];
+    const int numberOfSplits = 100;
+    for (int i = 0; i < numberOfSplits; ++i) {
+        NSString *key = [NSString stringWithFormat:@"%@%05d", SPL_KEY, i];
+        Split *s = [[Split alloc] initWithKey:key
+                              AndWithAttributes:[SplitConstants attributeNames]
+                                      AndValues:[SplitConstants attributeDefaultValues]];
         
-        for (NSString *attribute in [SampleConstants attributeNames]) {
+        for (NSString *attribute in [SplitConstants attributeNames]) {
             NSString *attributeValue = [NSString stringWithFormat:@"%@%05d", attribute, i];
             [s.attributes setObject:attributeValue forKey:attribute];
         }
         
-        [samples addObject:s];
+        [splits addObject:s];
     }
     
     // Write to the file
     LibraryObjectCSVWriter *writer = [[LibraryObjectCSVWriter alloc] init];
-    [writer writeObjects:samples
+    [writer writeObjects:splits
             ToFileAtPath:filePath];
     XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:filePath]);
     
     // Read from the file
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    NSArray *readSamples = [reader readFromFileAtPath:filePath];
+    NSArray *readSplits = [reader readFromFileAtPath:filePath];
     
-    XCTAssertEqual(readSamples.count, samples.count);
-    for (int i = 0; i < numberOfSamples; ++i) {
-        LibraryObject *expected = (LibraryObject *)[samples objectAtIndex:i];
-        LibraryObject *actual = [readSamples objectAtIndex:i];
+    XCTAssertEqual(readSplits.count, splits.count);
+    for (int i = 0; i < numberOfSplits; ++i) {
+        LibraryObject *expected = (LibraryObject *)[splits objectAtIndex:i];
+        LibraryObject *actual = [readSplits objectAtIndex:i];
         XCTAssertEqualObjects(expected, actual);
     }
 }
@@ -161,35 +161,35 @@ NSString* filePath;
 /// Order should not matter when parsing CSV files
 - (void)testReadFileWithReorderedColumns
 {
-    NSString *testFile = @"samples_reordered_columns";
+    NSString *testFile = @"splits_reordered_columns";
     NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
     
-    NSMutableArray *samples = [[NSMutableArray alloc] init];
+    NSMutableArray *splits = [[NSMutableArray alloc] init];
     
-    const int numberOfSamples = 3; // Do not change this value unless you create a new test file.
+    const int numberOfSplits = 3; // Do not change this value unless you create a new test file.
     
-    for (int i = 0; i < numberOfSamples; ++i) {
+    for (int i = 0; i < numberOfSplits; ++i) {
         NSString *key = [NSString stringWithFormat:@"%@%05d", SRC_KEY, i];
-        Sample *s = [[Sample alloc] initWithKey:key
-                              AndWithAttributes:[SampleConstants attributeNames]
-                                      AndValues:[SampleConstants attributeDefaultValues]];
+        Split *s = [[Split alloc] initWithKey:key
+                              AndWithAttributes:[SplitConstants attributeNames]
+                                      AndValues:[SplitConstants attributeDefaultValues]];
         
-        for (NSString *attribute in [SampleConstants attributeNames]) {
+        for (NSString *attribute in [SplitConstants attributeNames]) {
             NSString *attributeValue = [NSString stringWithFormat:@"%@%05d", attribute, i];
             [s.attributes setObject:attributeValue forKey:attribute];
         }
         
-        [samples addObject:s];
+        [splits addObject:s];
     }
     
     // Read from the file
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    NSArray *readSamples = [reader readFromFileAtPath:testPath];
+    NSArray *readSplits = [reader readFromFileAtPath:testPath];
     
-    XCTAssertEqual(readSamples.count, samples.count);
-    for (int i = 0; i < numberOfSamples; ++i) {
-        LibraryObject *expected = (LibraryObject *)[samples objectAtIndex:i];
-        LibraryObject *actual = [readSamples objectAtIndex:i];
+    XCTAssertEqual(readSplits.count, splits.count);
+    for (int i = 0; i < numberOfSplits; ++i) {
+        LibraryObject *expected = (LibraryObject *)[splits objectAtIndex:i];
+        LibraryObject *actual = [readSplits objectAtIndex:i];
         XCTAssertEqualObjects(expected, actual);
     }
 }
@@ -197,35 +197,35 @@ NSString* filePath;
 /// Capitalization of headers should not matter when parsing CSV files
 - (void)testReadFileWithDifferentCapitalization
 {
-    NSString *testFile = @"samples_different_capitalization";
+    NSString *testFile = @"splits_different_capitalization";
     NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
 
-    NSMutableArray *samples = [[NSMutableArray alloc] init];
+    NSMutableArray *splits = [[NSMutableArray alloc] init];
 
-    const int numberOfSamples = 3; // Do not change this value unless you create a new test file.
+    const int numberOfSplits = 3; // Do not change this value unless you create a new test file.
 
-    for (int i = 0; i < numberOfSamples; ++i) {
+    for (int i = 0; i < numberOfSplits; ++i) {
         NSString *key = [NSString stringWithFormat:@"%@%05d", SRC_KEY, i];
-        Sample *s = [[Sample alloc] initWithKey:key
-                              AndWithAttributes:[SampleConstants attributeNames]
-                                      AndValues:[SampleConstants attributeDefaultValues]];
+        Split *s = [[Split alloc] initWithKey:key
+                              AndWithAttributes:[SplitConstants attributeNames]
+                                      AndValues:[SplitConstants attributeDefaultValues]];
 
-        for (NSString *attribute in [SampleConstants attributeNames]) {
+        for (NSString *attribute in [SplitConstants attributeNames]) {
             NSString *attributeValue = [NSString stringWithFormat:@"%@%05d", attribute, i];
             [s.attributes setObject:attributeValue forKey:attribute];
         }
 
-        [samples addObject:s];
+        [splits addObject:s];
     }
 
     // Read from the file
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    NSArray *readSamples = [reader readFromFileAtPath:testPath];
+    NSArray *readSplits = [reader readFromFileAtPath:testPath];
 
-    XCTAssertEqual(readSamples.count, samples.count);
-    for (int i = 0; i < numberOfSamples; ++i) {
-        LibraryObject *expected = (LibraryObject *)[samples objectAtIndex:i];
-        LibraryObject *actual = [readSamples objectAtIndex:i];
+    XCTAssertEqual(readSplits.count, splits.count);
+    for (int i = 0; i < numberOfSplits; ++i) {
+        LibraryObject *expected = (LibraryObject *)[splits objectAtIndex:i];
+        LibraryObject *actual = [readSplits objectAtIndex:i];
         XCTAssertEqualObjects(expected, actual);
     }
 }
@@ -233,35 +233,35 @@ NSString* filePath;
 /// If an item has an extra attribute, it should be ignored.
 - (void)testReadFileWithExtraAttribute
 {
-    NSString *testFile = @"samples_extra_attribute";
+    NSString *testFile = @"splits_extra_attribute";
     NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
     
-    NSMutableArray *samples = [[NSMutableArray alloc] init];
+    NSMutableArray *splits = [[NSMutableArray alloc] init];
     
-    const int numberOfSamples = 3; // Do not change this value unless you create a new test file.
+    const int numberOfSplits = 3; // Do not change this value unless you create a new test file.
     
-    for (int i = 0; i < numberOfSamples; ++i) {
-        NSString *key = [NSString stringWithFormat:@"%@%05d", SMP_KEY, i];
-        Sample *s = [[Sample alloc] initWithKey:key
-                              AndWithAttributes:[SampleConstants attributeNames]
-                                      AndValues:[SampleConstants attributeDefaultValues]];
+    for (int i = 0; i < numberOfSplits; ++i) {
+        NSString *key = [NSString stringWithFormat:@"%@%05d", SPL_KEY, i];
+        Split *s = [[Split alloc] initWithKey:key
+                              AndWithAttributes:[SplitConstants attributeNames]
+                                      AndValues:[SplitConstants attributeDefaultValues]];
         
-        for (NSString *attribute in [SampleConstants attributeNames]) {
+        for (NSString *attribute in [SplitConstants attributeNames]) {
             NSString *attributeValue = [NSString stringWithFormat:@"%@%05d", attribute, i];
             [s.attributes setObject:attributeValue forKey:attribute];
         }
         
-        [samples addObject:s];
+        [splits addObject:s];
     }
     
     // Read from the file
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    NSArray *readSamples = [reader readFromFileAtPath:testPath];
+    NSArray *readSplits = [reader readFromFileAtPath:testPath];
     
-    XCTAssertEqual(readSamples.count, samples.count);
-    for (int i = 0; i < numberOfSamples; ++i) {
-        LibraryObject *expected = (LibraryObject *)[samples objectAtIndex:i];
-        LibraryObject *actual = [readSamples objectAtIndex:i];
+    XCTAssertEqual(readSplits.count, splits.count);
+    for (int i = 0; i < numberOfSplits; ++i) {
+        LibraryObject *expected = (LibraryObject *)[splits objectAtIndex:i];
+        LibraryObject *actual = [readSplits objectAtIndex:i];
         XCTAssertEqualObjects(expected, actual);
     }
 }
@@ -269,22 +269,22 @@ NSString* filePath;
 /// If an item is missing any attributes, they should be populated with empty string.
 - (void)testReadFileWithMissingAttribute
 {
-    NSString *testFile = @"samples_missing_attribute";
+    NSString *testFile = @"splits_missing_attribute";
     NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
     
-    NSMutableArray *samples = [[NSMutableArray alloc] init];
+    NSMutableArray *splits = [[NSMutableArray alloc] init];
     
-    const int numberOfSamples = 3; // Do not change this value unless you need to modify the test file.
+    const int numberOfSplits = 3; // Do not change this value unless you need to modify the test file.
     
-    for (int i = 0; i < numberOfSamples; ++i) {
+    for (int i = 0; i < numberOfSplits; ++i) {
         NSString *key = [NSString stringWithFormat:@"key%05d", i];
-        Sample *s = [[Sample alloc] initWithKey:key
-                              AndWithAttributes:[SampleConstants attributeNames]
-                                      AndValues:[SampleConstants attributeDefaultValues]];
+        Split *s = [[Split alloc] initWithKey:key
+                              AndWithAttributes:[SplitConstants attributeNames]
+                                      AndValues:[SplitConstants attributeDefaultValues]];
         
-        for (NSString *attribute in [SampleConstants attributeNames]) {
+        for (NSString *attribute in [SplitConstants attributeNames]) {
             NSString *attributeValue;
-            if ([attribute isEqualToString:SMP_KEY]) {
+            if ([attribute isEqualToString:SPL_KEY]) {
                 attributeValue = key;
             } else {
                 attributeValue = @"";
@@ -293,17 +293,17 @@ NSString* filePath;
             [s.attributes setObject:attributeValue forKey:attribute];
         }
         
-        [samples addObject:s];
+        [splits addObject:s];
     }
     
     // Read from the file
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    NSArray *readSamples = [reader readFromFileAtPath:testPath];
+    NSArray *readSplits = [reader readFromFileAtPath:testPath];
     
-    XCTAssertEqual(readSamples.count, samples.count);
-    for (int i = 0; i < numberOfSamples; ++i) {
-        LibraryObject *expected = (LibraryObject *)[samples objectAtIndex:i];
-        LibraryObject *actual = [readSamples objectAtIndex:i];
+    XCTAssertEqual(readSplits.count, splits.count);
+    for (int i = 0; i < numberOfSplits; ++i) {
+        LibraryObject *expected = (LibraryObject *)[splits objectAtIndex:i];
+        LibraryObject *actual = [readSplits objectAtIndex:i];
         XCTAssertEqualObjects(expected, actual);
     }
 }
@@ -311,24 +311,24 @@ NSString* filePath;
 /// Verify that a file with non-ascii characters is correctly parsed.
 - (void)testReadFileWithNonAsciiChars
 {
-    NSString *testFile = @"samples_non_ascii_chars";
+    NSString *testFile = @"splits_non_ascii_chars";
     NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
 
     // Do not change these values unless you change the test file
-    Sample *expected = [[Sample alloc] initWithKey:@"key00000"
-                                 AndWithAttributes:[SampleConstants attributeNames]
-                                         AndValues:[SampleConstants attributeDefaultValues]];
+    Split *expected = [[Split alloc] initWithKey:@"key00000"
+                                 AndWithAttributes:[SplitConstants attributeNames]
+                                         AndValues:[SplitConstants attributeDefaultValues]];
 
-    [expected.attributes setValue:@"key00000"       forKey:SMP_KEY];
-    [expected.attributes setValue:@"98°"            forKey:SMP_SOURCE_KEY];
-    [expected.attributes setValue:@"≥_≤"            forKey:SMP_CURRENT_LOCATION];
-    [expected.attributes setValue:@"¡™£¢∞§¶•ªº–≠"   forKey:SMP_TAGS];
+    [expected.attributes setValue:@"key00000"       forKey:SPL_KEY];
+    [expected.attributes setValue:@"98°"            forKey:SPL_SAMPLE_KEY];
+    [expected.attributes setValue:@"≥_≤"            forKey:SPL_CURRENT_LOCATION];
+    [expected.attributes setValue:@"¡™£¢∞§¶•ªº–≠"   forKey:SPL_TAGS];
 
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    NSArray *readSamples = [reader readFromFileAtPath:testPath];
+    NSArray *readSplits = [reader readFromFileAtPath:testPath];
 
-    XCTAssertTrue(readSamples.count == 1);
-    XCTAssertEqualObjects([readSamples objectAtIndex:0], expected);
+    XCTAssertTrue(readSplits.count == 1);
+    XCTAssertEqualObjects([readSplits objectAtIndex:0], expected);
 }
 
 /// Populates an array of sources (containing UTF8 characters in some fields), writes them to a
@@ -431,9 +431,9 @@ NSString* filePath;
     [expected.attributes setObject:images       forKey:SRC_IMAGES];
 
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    NSArray *readSamples = [reader readFromFileAtPath:testPath];
+    NSArray *readSplits = [reader readFromFileAtPath:testPath];
 
-    Source *actual = [readSamples objectAtIndex:0];
+    Source *actual = [readSplits objectAtIndex:0];
     // We don't care about the dates matching
     [actual.attributes setObject:[expected.attributes objectForKey:SRC_DATE_COLLECTED]
                           forKey:SRC_DATE_COLLECTED];

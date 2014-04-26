@@ -12,10 +12,10 @@
 #import "AbstractLibraryObjectStore.h"
 #import "LocalLibraryObjectStore.h"
 #import "SourceImportController.h"
-#import "SampleImportController.h"
+#import "SplitImportController.h"
 #import "FileSystemUtils.h"
 #import "Source.h"
-#import "Sample.h"
+#import "Split.h"
 #import "TestingUtils.h"
 
 @interface CSVImportWithValidationTests : XCTestCase <ImportResultReporter>
@@ -68,17 +68,17 @@ NSString *dbPath;
     XCTAssertFalse(importResult.hasError);
 }
 
-- (void)testSamplesNoErrors
+- (void)testSplitsNoErrors
 {
-    NSString *testFile = @"samples_ok";
+    NSString *testFile = @"splits_ok";
     NSString *testPath = [[NSBundle bundleForClass:self.class] pathForResource:testFile ofType:@"csv"];
 
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
-    LibraryObjectImportController *importController = [[SampleImportController alloc] init];
+    LibraryObjectImportController *importController = [[SplitImportController alloc] init];
     [importController setFileReader:reader];
     [importController setImportResultReporter:self];
     [importController setLibraryObjectStore:objectStore];
-    [importController setTableName:[SampleConstants tableName]];
+    [importController setTableName:[SplitConstants tableName]];
 
     [importController fileSelectorDidOpenFileAtPath:testPath];
 

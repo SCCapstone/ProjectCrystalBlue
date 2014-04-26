@@ -1,21 +1,21 @@
 //
-//  SamplesWindowController.m
+//  SplitsWindowController.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 3/30/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SamplesWindowController.h"
-#import "SamplesTableViewController.h"
-#import "SamplesDetailPanelViewController.h"
+#import "SplitsWindowController.h"
+#import "SplitsTableViewController.h"
+#import "SplitsDetailPanelViewController.h"
 #import "ProceduresWindowController.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "Source.h"
-#import "Sample.h"
+#import "Split.h"
 #import "Procedures.h"
 #import "PrimitiveProcedures.h"
-#import "SampleImportController.h"
+#import "SplitImportController.h"
 #import "LibraryObjectExportController.h"
 #import "LibraryObjectCSVWriter.h"
 #import "PDFRenderer.h"
@@ -27,17 +27,17 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
-@interface SamplesWindowController ()
+@interface SplitsWindowController ()
 {
-    SamplesTableViewController *tableViewController;
-    SamplesDetailPanelViewController *detailPanelController;
+    SplitsTableViewController *tableViewController;
+    SplitsDetailPanelViewController *detailPanelController;
     enum subviews { tableSubview, detailPanelSubview };
     
     ProceduresWindowController *proceduresWindowController;
 }
 @end
 
-@implementation SamplesWindowController
+@implementation SplitsWindowController
 
 @synthesize splitView, searchField, dataStore, source;
 
@@ -54,16 +54,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 {
     [super windowDidLoad];
     
-    NSString *windowTitle = [NSString stringWithFormat:@"Samples For '%@'", source.key];
+    NSString *windowTitle = [NSString stringWithFormat:@"Splits For '%@'", source.key];
     [self.window setTitle:windowTitle];
     
     if (!detailPanelController) {
-        detailPanelController = [[SamplesDetailPanelViewController alloc] initWithNibName:@"SamplesDetailPanelViewController" bundle:nil];
+        detailPanelController = [[SplitsDetailPanelViewController alloc] initWithNibName:@"SplitsDetailPanelViewController" bundle:nil];
         [detailPanelController setDataStore:dataStore];
     }
     
     if (!tableViewController) {
-        tableViewController = [[SamplesTableViewController alloc] initWithNibName:@"SamplesTableViewController" bundle:nil];
+        tableViewController = [[SplitsTableViewController alloc] initWithNibName:@"SplitsTableViewController" bundle:nil];
         [tableViewController setDataStore:dataStore];
         [tableViewController setSource:source];
         [tableViewController setSearchField:searchField];
@@ -78,7 +78,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     // Setup search field
     NSMenu *attrMenu = [[NSMenu alloc] initWithTitle:@"Attribute Names"];
-    NSArray *attrNames = [SampleConstants humanReadableLabels];
+    NSArray *attrNames = [SplitConstants humanReadableLabels];
     for (int i=0; i<attrNames.count; i++) {
         NSMenuItem *attrItem = [[NSMenuItem alloc] initWithTitle:[attrNames objectAtIndex:i]
                                                           action:@selector(setSearchCategoryFrom:)
@@ -123,33 +123,33 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 /*  Toolbar actions
  */
 
-- (void)newBlankSample:(id)sender
+- (void)newBlankSplit:(id)sender
 {
     DDLogDebug(@"%s", __PRETTY_FUNCTION__);
     
-    Sample *sample;
+    Split *split;
     NSInteger selectedRow = tableViewController.tableView.selectedRow;
     
     if (selectedRow != -1)
-        sample = [tableViewController.arrayController.arrangedObjects objectAtIndex:selectedRow];
+        split = [tableViewController.arrayController.arrangedObjects objectAtIndex:selectedRow];
     
-    // If nothing is selected, we create a sample with default values.
+    // If nothing is selected, we create a split with default values.
     else {
         NSString *key = [PrimitiveProcedures uniqueKeyBasedOn:[NSString stringWithFormat:@"%@.001", source.key]
                                                       inStore:dataStore
-                                                      inTable:[SampleConstants tableName]];
+                                                      inTable:[SplitConstants tableName]];
         
-        sample = [[Sample alloc] initWithKey:key
-                           AndWithAttributes:[SampleConstants attributeNames]
-                                   AndValues:[SampleConstants attributeDefaultValues]];
-        [sample.attributes setObject:source.key
-                              forKey:SMP_SOURCE_KEY];
+        split = [[Split alloc] initWithKey:key
+                           AndWithAttributes:[SplitConstants attributeNames]
+                                   AndValues:[SplitConstants attributeDefaultValues]];
+        [split.attributes setObject:source.key
+                              forKey:SPL_SAMPLE_KEY];
     }
     
-    [tableViewController addSample:sample];
+    [tableViewController addSplit:split];
 }
 
-- (void)deleteSample:(id)sender
+- (void)deleteSplit:(id)sender
 {
     DDLogDebug(@"%s", __PRETTY_FUNCTION__);
     
@@ -158,19 +158,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
     
-    NSArray *selectedSamples = [tableViewController.arrayController.arrangedObjects objectsAtIndexes:selectedRows];
+    NSArray *selectedSplits = [tableViewController.arrayController.arrangedObjects objectsAtIndexes:selectedRows];
     
     NSAlert *confirmation = [[NSAlert alloc] init];
     [confirmation setAlertStyle:NSWarningAlertStyle];
     
-    NSString *message = [NSString stringWithFormat:@"Really delete %lu sample(s)?",
-                         selectedSamples.count];
+    NSString *message = [NSString stringWithFormat:@"Really delete %lu split(s)?",
+                         selectedSplits.count];
     [confirmation setMessageText:message];
     
     NSMutableString *info = [NSMutableString stringWithString:
-                             @"These samples will be permanently deleted from the database:"];
+                             @"These splits will be permanently deleted from the database:"];
     
-    for (Sample *s in selectedSamples) {
+    for (Split *s in selectedSplits) {
         [info appendFormat:@"\n\t%@", s.key];
     }
     
@@ -186,9 +186,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                          completionHandler:^(NSModalResponse returnCode) {
                              switch (returnCode) {
                                  case DELETE_BUTTON:
-                                     for (Sample *s in selectedSamples) {
+                                     for (Split *s in selectedSplits) {
                                          DDLogInfo(@"Deleting source with key \"%@\"", s.key);
-                                         [tableViewController deleteSampleWithKey:s.key];
+                                         [tableViewController deleteSplitWithKey:s.key];
                                      }
                                      break;
                                  case CANCEL_BUTTON:
@@ -197,14 +197,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                      DDLogWarn(@"Unexpected return code %ld from DeleteSource Alert", (long)returnCode);
                                      break;
                              }
-                             [tableViewController updateDisplayedSamples];
+                             [tableViewController updateDisplayedSplits];
                              
                              // Update detail panel selection
                              NSUInteger row = [tableViewController.tableView selectedRow];
                              if (row == -1)
-                                 [detailPanelController setSample:nil];
+                                 [detailPanelController setSplit:nil];
                              else
-                                 [detailPanelController setSample:[tableViewController.arrayController.arrangedObjects objectAtIndex:row]];
+                                 [detailPanelController setSplit:[tableViewController.arrayController.arrangedObjects objectAtIndex:row]];
                          }];
 }
 
@@ -217,12 +217,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return;
     }
     
-    Sample *s = [tableViewController.arrayController.arrangedObjects objectAtIndex:selectedRow];
+    Split *s = [tableViewController.arrayController.arrangedObjects objectAtIndex:selectedRow];
     
     proceduresWindowController = [[ProceduresWindowController alloc] initWithWindowNibName:@"ProceduresWindowController"];
-    [proceduresWindowController setSample:s];
+    [proceduresWindowController setSplit:s];
     [proceduresWindowController setDataStore:dataStore];
-    [proceduresWindowController setSamplesTableViewController:tableViewController];
+    [proceduresWindowController setSplitsTableViewController:tableViewController];
     [proceduresWindowController showWindow:self];
     [[proceduresWindowController window] makeKeyAndOrderFront:self];
 }
@@ -232,7 +232,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSAlert *importExportOptions = [[NSAlert alloc] init];
     [importExportOptions setAlertStyle:NSInformationalAlertStyle];
     
-    NSString *message = [NSString stringWithFormat:@"Import/Export Samples"];
+    NSString *message = [NSString stringWithFormat:@"Import/Export Splits"];
     [importExportOptions setMessageText:message];
     
     NSString *info = @"Choose an option below:";
@@ -249,7 +249,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     void (^modalHandler)(NSModalResponse) = ^(NSModalResponse returnCode){
         
         if (returnCode == IMPORT_BUTTON) {
-            LibraryObjectImportController *importController = [[SampleImportController alloc] init];
+            LibraryObjectImportController *importController = [[SplitImportController alloc] init];
             [importController setLibraryObjectStore:dataStore];
             [importController setImportResultReporter:self];
             
@@ -260,7 +260,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         } else if (returnCode == EXPORT_BUTTON) {
             LibraryObjectExportController *exportController = [[LibraryObjectExportController alloc] init];
             [exportController setWriter:[[LibraryObjectCSVWriter alloc] init]];
-            [exportController setObjectsToWrite:[dataStore getAllLibraryObjectsFromTable:[SampleConstants tableName]]];
+            [exportController setObjectsToWrite:[dataStore getAllLibraryObjectsFromTable:[SplitConstants tableName]]];
             
             OSXSaveSelector *saveSelector = [[OSXSaveSelector alloc] init];
             [saveSelector setDelegate:exportController];
@@ -271,7 +271,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         } else {
             DDLogWarn(@"Unexpected return code %ld from ImportExport Dialog", (long)returnCode);
         }
-        [tableViewController updateDisplayedSamples];
+        [tableViewController updateDisplayedSplits];
     };
     
     [importExportOptions beginSheetModalForWindow:self.window
@@ -286,15 +286,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (selectedRows.count == 0)
         return;
     
-    NSArray *selectedSamples = [tableViewController.arrayController.arrangedObjects objectsAtIndexes:selectedRows];
+    NSArray *selectedSplits = [tableViewController.arrayController.arrangedObjects objectsAtIndexes:selectedRows];
     
-    [PDFRenderer printQRWithLibraryObjects:selectedSamples WithWindow:self.window];
+    [PDFRenderer printQRWithLibraryObjects:selectedSplits WithWindow:self.window];
 }
 
 -(void) displayResults:(ImportResult *)result
 {
     // to-do
-    [tableViewController updateDisplayedSamples];
+    [tableViewController updateDisplayedSplits];
 }
 
 - (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem
@@ -303,9 +303,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [searchField.cell setPlaceholderString:menuItem.title];
 }
 
-- (IBAction)searchSamples:(id)sender
+- (IBAction)searchSplits:(id)sender
 {
-    [tableViewController updateDisplayedSamples];
+    [tableViewController updateDisplayedSplits];
 }
 
 @end

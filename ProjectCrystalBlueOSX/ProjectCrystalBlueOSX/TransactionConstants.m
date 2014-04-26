@@ -8,7 +8,7 @@
 
 #import "TransactionConstants.h"
 
-/* Sample table name
+/* Transaction table name
  */
 #ifdef DEBUG
 static NSString *const TRANSACTION_TABLE_NAME = @"test_transaction_table";

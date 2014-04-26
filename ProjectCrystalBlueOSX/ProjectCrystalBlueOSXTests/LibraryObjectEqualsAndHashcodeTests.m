@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "LibraryObject.h"
-#import "SampleConstants.h"
+#import "SplitConstants.h"
 #import "SourceConstants.h"
 
 @interface LibraryObjectEqualsAndHashcodeTests : XCTestCase
@@ -33,8 +33,8 @@
 - (void)testEqualsReflexive
 {
     NSString *key = [[[NSUUID alloc] init] UUIDString];
-    NSDictionary *attributes = [[NSDictionary alloc] initWithObjects:[SampleConstants attributeDefaultValues]
-                                                             forKeys:[SampleConstants attributeNames]];
+    NSDictionary *attributes = [[NSDictionary alloc] initWithObjects:[SplitConstants attributeDefaultValues]
+                                                             forKeys:[SplitConstants attributeNames]];
     
     LibraryObject *a = [[LibraryObject alloc] initWithKey:key AndWithAttributeDictionary:attributes];
     LibraryObject *b = [[LibraryObject alloc] initWithKey:key AndWithAttributeDictionary:attributes];
@@ -52,8 +52,8 @@
 - (void)testChangeMutableFieldsMaintainsSameHashcode
 {
     NSString *key = [[[NSUUID alloc] init] UUIDString];
-    NSDictionary *attributes = [[NSDictionary alloc] initWithObjects:[SampleConstants attributeDefaultValues]
-                                                             forKeys:[SampleConstants attributeNames]];
+    NSDictionary *attributes = [[NSDictionary alloc] initWithObjects:[SplitConstants attributeDefaultValues]
+                                                             forKeys:[SplitConstants attributeNames]];
     
     LibraryObject *a = [[LibraryObject alloc] initWithKey:key AndWithAttributeDictionary:attributes];
     NSUInteger hashBefore = [a hash];
@@ -76,8 +76,8 @@
 {
     NSString *aKey = [[[NSUUID alloc] init] UUIDString];
     NSString *bKey = [[[NSUUID alloc] init] UUIDString];
-    NSDictionary *attributes = [[NSDictionary alloc] initWithObjects:[SampleConstants attributeDefaultValues]
-                                                             forKeys:[SampleConstants attributeNames]];
+    NSDictionary *attributes = [[NSDictionary alloc] initWithObjects:[SplitConstants attributeDefaultValues]
+                                                             forKeys:[SplitConstants attributeNames]];
     
     LibraryObject *a = [[LibraryObject alloc] initWithKey:aKey AndWithAttributeDictionary:attributes];
     LibraryObject *b = [[LibraryObject alloc] initWithKey:bKey AndWithAttributeDictionary:attributes];
@@ -86,13 +86,13 @@
 }
 
 /**
- *  Objects with different attribute key sets (e.g. a Sample and a Source) are not equal.
+ *  Objects with different attribute key sets (e.g. a Sample and a Split) are not equal.
  */
 - (void)testDifferentAttributeKeysNotEqual
 {
     NSString *key = [[[NSUUID alloc] init] UUIDString];
-    NSDictionary *aAttributes = [[NSDictionary alloc] initWithObjects:[SampleConstants attributeDefaultValues]
-                                                              forKeys:[SampleConstants attributeNames]];
+    NSDictionary *aAttributes = [[NSDictionary alloc] initWithObjects:[SplitConstants attributeDefaultValues]
+                                                              forKeys:[SplitConstants attributeNames]];
     
     NSDictionary *bAttributes = [[NSDictionary alloc] initWithObjects:[SourceConstants attributeDefaultValues]
                                                               forKeys:[SourceConstants attributeNames]];
@@ -109,8 +109,8 @@
 - (void)testDifferentAttributeValuesNotEqual
 {
     NSString *key = [[[NSUUID alloc] init] UUIDString];
-    NSDictionary *attributes = [[NSDictionary alloc] initWithObjects:[SampleConstants attributeDefaultValues]
-                                                             forKeys:[SampleConstants attributeNames]];
+    NSDictionary *attributes = [[NSDictionary alloc] initWithObjects:[SplitConstants attributeDefaultValues]
+                                                             forKeys:[SplitConstants attributeNames]];
     
     LibraryObject *a = [[LibraryObject alloc] initWithKey:key AndWithAttributeDictionary:attributes];
     

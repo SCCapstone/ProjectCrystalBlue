@@ -1,5 +1,5 @@
 //
-//  Sample.h
+//  Split.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 1/18/14.
@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "LibraryObject.h"
-#import "SampleConstants.h"
+#import "SplitConstants.h"
 
-@interface Sample : LibraryObject
+@interface Split : LibraryObject
 
 - (id)initWithKey:(NSString *)key
     AndWithValues:(NSArray *)attributeValues;
 
-- (NSString *)sourceKey;
+- (NSString *)sampleKey;
 
 @end

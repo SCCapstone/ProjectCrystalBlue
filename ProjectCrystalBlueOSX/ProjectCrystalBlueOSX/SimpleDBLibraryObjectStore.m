@@ -11,7 +11,7 @@
 #import "LocalLibraryObjectStore.h"
 #import "TransactionStore.h"
 #import "Source.h"
-#import "Sample.h"
+#import "Split.h"
 #import "ConflictResolution.h"
 #import <AWSiOSSDK/SimpleDB/AmazonSimpleDBClient.h>
 #import "LocalEncryptedCredentialsProvider.h"
@@ -83,9 +83,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         NSArray *resolvedConflicts = [transactionStore resolveConflicts:remoteTransactions];
         NSMutableArray *unsyncedTransactions = [[NSMutableArray alloc] init];
         NSMutableArray *unsyncedSourcePuts = [[NSMutableArray alloc] init];
-        NSMutableArray *unsyncedSamplePuts = [[NSMutableArray alloc] init];
+        NSMutableArray *unsyncedSplitPuts = [[NSMutableArray alloc] init];
         NSMutableArray *unsyncedSourceDeletes = [[NSMutableArray alloc] init];
-        NSMutableArray *unsyncedSampleDeletes = [[NSMutableArray alloc] init];
+        NSMutableArray *unsyncedSplitDeletes = [[NSMutableArray alloc] init];
         
         // For each conflict where local is more recent, add to appropriate array
         DDLogCInfo(@"%@: Preparing resolved conflicts for remote syncing.", NSStringFromClass(self.class));
@@ -102,18 +102,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                     if ([[resolvedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE] isEqualToString:[SourceConstants tableName]])
                         [unsyncedSourceDeletes addObject:[resolvedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
                     else
-                        [unsyncedSampleDeletes addObject:[resolvedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
+                        [unsyncedSplitDeletes addObject:[resolvedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
                 }
                 // Put/Update transaction
                 else {
                     // Get library object associated with transaction
                     LibraryObject *resolvedObject = [localStore getLibraryObjectForKey:[resolvedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]
                                                                              FromTable:[resolvedTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE]];
-                    // Add it to Source/Sample array to be sent to remote
+                    // Add it to Source/Split array to be sent to remote
                     if ([resolvedObject isMemberOfClass:[Source class]])
                         [unsyncedSourcePuts addObject:resolvedObject];
                     else
-                        [unsyncedSamplePuts addObject:resolvedObject];
+                        [unsyncedSplitPuts addObject:resolvedObject];
                 }
                 // Add transaction to be sent to remote
                 [unsyncedTransactions addObject:resolvedTransaction];
@@ -137,18 +137,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                 if ([[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE] isEqualToString:[SourceConstants tableName]])
                     [unsyncedSourceDeletes addObject:[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
                 else
-                    [unsyncedSampleDeletes addObject:[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
+                    [unsyncedSplitDeletes addObject:[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]];
             }
             // Put/Update transaction
             else {
                 // Get library object associated with transaction
                 LibraryObject *resolvedObject = [localStore getLibraryObjectForKey:[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_KEY]
                                                                          FromTable:[localTransaction.attributes objectForKey:TRN_LIBRARY_OBJECT_TABLE]];
-                // Add it to Source/Sample array to be sent to remote
+                // Add it to Source/Split array to be sent to remote
                 if ([resolvedObject isMemberOfClass:[Source class]])
                     [unsyncedSourcePuts addObject:resolvedObject];
                 else
-                    [unsyncedSamplePuts addObject:resolvedObject];
+                    [unsyncedSplitPuts addObject:resolvedObject];
             }
             
             // Add transaction to be sent to remote
@@ -162,15 +162,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         // Put unsynced objects in remote database
         DDLogCInfo(@"%@: Batch put unsynced sources.", NSStringFromClass(self.class));
         [SimpleDBUtils executeBatchPut:unsyncedSourcePuts WithDomainName:[SourceConstants tableName] UsingClient:simpleDBClient];
-        DDLogCInfo(@"%@: Batch put unsynced samples.", NSStringFromClass(self.class));
-        [SimpleDBUtils executeBatchPut:unsyncedSamplePuts WithDomainName:[SampleConstants tableName] UsingClient:simpleDBClient];
+        DDLogCInfo(@"%@: Batch put unsynced splits.", NSStringFromClass(self.class));
+        [SimpleDBUtils executeBatchPut:unsyncedSplitPuts WithDomainName:[SplitConstants tableName] UsingClient:simpleDBClient];
         [loading.progressIndicator incrementBy:10.00];
         
         // Delete unsynced objects in remote database
         DDLogCInfo(@"%@: Batch delete unsynced sources.", NSStringFromClass(self.class));
         [SimpleDBUtils executeBatchDelete:unsyncedSourceDeletes WithDomainName:[SourceConstants tableName] UsingClient:simpleDBClient];
-        DDLogCInfo(@"%@: Batch delete unsynced samples.", NSStringFromClass(self.class));
-        [SimpleDBUtils executeBatchDelete:unsyncedSampleDeletes WithDomainName:[SampleConstants tableName] UsingClient:simpleDBClient];
+        DDLogCInfo(@"%@: Batch delete unsynced splits.", NSStringFromClass(self.class));
+        [SimpleDBUtils executeBatchDelete:unsyncedSplitDeletes WithDomainName:[SplitConstants tableName] UsingClient:simpleDBClient];
         [loading.progressIndicator incrementBy:10.00];
         
         // Put unsycned transaction in remote database
@@ -198,7 +198,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                         LibraryObject *remoteObject = (LibraryObject *)[SimpleDBUtils executeGetWithItemName:libraryObjectKey
                                                                                            AndWithDomainName:tableName
                                                                                                  UsingClient:simpleDBClient
-                                                                                             ToObjectOfClass:[tableName isEqualToString:[SourceConstants tableName]] ? [Source class] : [Sample class]];
+                                                                                             ToObjectOfClass:[tableName isEqualToString:[SourceConstants tableName]] ? [Source class] : [Split class]];
                         if ([sqlCommandType isEqualToString:@"PUT"])
                             [localStore putLibraryObject:remoteObject IntoTable:tableName];
                         else if ([sqlCommandType isEqualToString:@"UPDATE"])
@@ -241,9 +241,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [localStore getAllLibraryObjectsFromTable:tableName];
 }
 
-- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
+- (NSArray *)getAllSplitsForSampleKey:(NSString *)sampleKey
 {
-    return [localStore getAllSamplesForSourceKey:sourceKey];
+    return [localStore getAllSplitsForSampleKey:sampleKey];
 }
 
 - (NSArray *)getAllLibraryObjectsForAttributeName:(NSString *)attributeName
@@ -255,11 +255,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                                   FromTable:tableName];
 }
 
-- (NSArray *)getAllSamplesForSourceKey:(NSString *)sourceKey
+- (NSArray *)getAllSplitsForSampleKey:(NSString *)sampleKey
                    AndForAttributeName:(NSString *)attributeName
                     WithAttributeValue:(NSString *)attributeValue
 {
-    return [localStore getAllSamplesForSourceKey:sourceKey
+    return [localStore getAllSplitsForSampleKey:sampleKey
                              AndForAttributeName:attributeName
                               WithAttributeValue:attributeValue];
 }
@@ -309,9 +309,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)deleteLibraryObjectWithKey:(NSString *)key
                          FromTable:(NSString *)tableName
 {
-    NSArray *samples;
+    NSArray *splits;
     if ([tableName isEqualToString:[SourceConstants tableName]])
-        samples = [localStore getAllSamplesForSourceKey:key];
+        splits = [localStore getAllSplitsForSampleKey:key];
     
     if (![localStore deleteLibraryObjectWithKey:key FromTable:tableName])
         return NO;
@@ -322,11 +322,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (![transactionStore commitTransaction:transaction])
         return NO;
     
-    // Need to add sample deletions to transaction table too
-    if (samples) {
-        for (Sample *sample in samples) {
-            Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:sample.key
-                                                                    AndWithTableName:[SampleConstants tableName]
+    // Need to add split deletions to transaction table too
+    if (splits) {
+        for (Split *split in splits) {
+            Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:split.key
+                                                                    AndWithTableName:[SplitConstants tableName]
                                                                AndWithSqlCommandType:@"DELETE"];
             if (![transactionStore commitTransaction:transaction])
                 return NO;
@@ -336,16 +336,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return YES;
 }
 
-- (BOOL)deleteAllSamplesForSourceKey:(NSString *)sourceKey
+- (BOOL)deleteAllSplitsForSampleKey:(NSString *)sampleKey
 {
-    NSArray *samples = [localStore getAllSamplesForSourceKey:sourceKey];
+    NSArray *splits = [localStore getAllSplitsForSampleKey:sampleKey];
     
-    if (![localStore deleteAllSamplesForSourceKey:sourceKey])
+    if (![localStore deleteAllSplitsForSampleKey:sampleKey])
         return NO;
     
-    for (Sample *sample in samples) {
-        Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:sample.key
-                                                                AndWithTableName:[SampleConstants tableName]
+    for (Split *split in splits) {
+        Transaction *transaction = [[Transaction alloc] initWithLibraryObjectKey:split.key
+                                                                AndWithTableName:[SplitConstants tableName]
                                                            AndWithSqlCommandType:@"DELETE"];
         if (![transactionStore commitTransaction:transaction])
             return NO;

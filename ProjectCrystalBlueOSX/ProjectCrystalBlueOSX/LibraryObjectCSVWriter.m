@@ -11,8 +11,8 @@
 #import "DDLog.h"
 #import "Source.h"
 #import "SourceConstants.h"
-#import "Sample.h"
-#import "SampleConstants.h"
+#import "Split.h"
+#import "SplitConstants.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -61,8 +61,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSArray *headers;
 
     // Identify which type of LibraryObject we are exporting.
-    if ([representativeLibraryObject isKindOfClass:[Sample class]]) {
-        headers = [SampleConstants attributeNames];
+    if ([representativeLibraryObject isKindOfClass:[Split class]]) {
+        headers = [SplitConstants attributeNames];
     } else if ([representativeLibraryObject isKindOfClass:[Source class]]) {
         headers = [SourceConstants attributeNames];
     } else {

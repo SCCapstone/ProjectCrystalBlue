@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class AbstractLibraryObjectStore, Sample, SamplesTableViewController;
+@class AbstractLibraryObjectStore, Split, SplitsTableViewController;
 
 @interface ProceduresWindowController : NSWindowController
 
@@ -18,17 +18,17 @@
 @property (weak) IBOutlet NSTextField *initialsTextField;
 @property (weak) IBOutlet NSPopUpButton *procedureSelector;
 @property (weak) IBOutlet NSTextField *instructionsText;
-@property Sample *sample;
+@property Split *split;
 @property AbstractLibraryObjectStore *dataStore;
-@property SamplesTableViewController *samplesTableViewController;
+@property SplitsTableViewController *splitsTableViewController;
 
 @end
 
 /* Constant string display names for procedures */
-static NSString *longNameSlab      = @"Slab from sample";
-static NSString *longNameBillet    = @"Billet from sample";
-static NSString *longNameThinSect  = @"Thin-section from sample";
-static NSString *longNameTrim      = @"Trim sample";
+static NSString *longNameSlab      = @"Slab from split";
+static NSString *longNameBillet    = @"Billet from split";
+static NSString *longNameThinSect  = @"Thin-section from split";
+static NSString *longNameTrim      = @"Trim split";
 static NSString *longNamePulv      = @"Pulverize";
 static NSString *longNameJawCrush  = @"Jaw-crush";
 static NSString *longNameGemini    = @"Gemini separation";

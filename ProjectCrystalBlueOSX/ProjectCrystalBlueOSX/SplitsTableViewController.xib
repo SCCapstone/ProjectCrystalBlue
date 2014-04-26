@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SamplesTableViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="SplitsTableViewController">
             <connections>
                 <outlet property="arrayController" destination="aRb-GU-cSg" id="5Ii-6b-fqb"/>
                 <outlet property="tableView" destination="aw2-Hb-uZM" id="aGC-Mq-OCu"/>
@@ -33,7 +33,7 @@
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn editable="NO" width="150" minWidth="40" maxWidth="1000" id="7Gs-Lo-geW">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Sample">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Split">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,7 +49,7 @@
                                         </connections>
                                     </tableColumn>
                                     <tableColumn editable="NO" width="150" minWidth="40" maxWidth="1000" id="cOP-e7-bZT">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Source Key">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Sample Key">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,7 +61,11 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="aRb-GU-cSg" name="value" keyPath="arrangedObjects.attributes.SOURCE_KEY" id="LW4-Ce-lF3"/>
+                                            <binding destination="aRb-GU-cSg" name="value" keyPath="arrangedObjects.attributes.SAMPLE_KEY" id="MQc-le-eU4">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="150" minWidth="10" maxWidth="3.4028234663852886e+38" id="xKQ-bU-uzQ">
@@ -137,7 +141,7 @@
                 <string>attributes.TAGS</string>
             </declaredKeys>
             <connections>
-                <binding destination="-2" name="contentArray" keyPath="self.displayedSamples" id="BGf-od-vm7"/>
+                <binding destination="-2" name="contentArray" keyPath="self.displayedSplits" id="huA-fj-Sd6"/>
             </connections>
         </arrayController>
     </objects>

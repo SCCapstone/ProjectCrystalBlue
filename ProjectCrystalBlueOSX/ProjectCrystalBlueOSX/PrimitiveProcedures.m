@@ -9,7 +9,7 @@
 #import "PrimitiveProcedures.h"
 #import "ProcedureNameConstants.h"
 #import "DDLog.h"
-#import "SampleConstants.h"
+#import "SplitConstants.h"
 #import "ProcedureRecord.h"
 
 #ifdef DEBUG
@@ -20,67 +20,67 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation PrimitiveProcedures
 
-+(void)cloneSample:(Sample *)original
++(void)cloneSplit:(Split *)original
          intoStore:(AbstractLibraryObjectStore *)store
     intoTableNamed:(NSString *)tableName
 {
-    DDLogInfo(@"%@: cloning sample with key %@", NSStringFromClass(self.class), original.key);
+    DDLogInfo(@"%@: cloning split with key %@", NSStringFromClass(self.class), original.key);
     
     NSMutableDictionary *newAttributes = [[NSMutableDictionary alloc] initWithDictionary:original.attributes];
     NSString *key = [self.class uniqueKeyBasedOn:original.key
                                          inStore:store
                                          inTable:tableName];
-    [newAttributes setObject:key forKey:SMP_KEY];
-    Sample *newSample = [[Sample alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
+    [newAttributes setObject:key forKey:SPL_KEY];
+    Split *newSplit = [[Split alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
-    [store putLibraryObject:newSample IntoTable:tableName];
+    [store putLibraryObject:newSplit IntoTable:tableName];
 }
 
-+(void)cloneSampleWithClearedTags:(Sample *)original
++(void)cloneSplitWithClearedTags:(Split *)original
                         intoStore:(AbstractLibraryObjectStore *)store
                    intoTableNamed:(NSString *)tableName
 {
-    DDLogInfo(@"%@: creating a fresh (no tags) from sample with key %@", NSStringFromClass(self.class), original.key);
+    DDLogInfo(@"%@: creating a fresh (no tags) from split with key %@", NSStringFromClass(self.class), original.key);
     
     NSMutableDictionary *newAttributes = [[NSMutableDictionary alloc] initWithDictionary:original.attributes];
     NSString *key = [self.class uniqueKeyBasedOn:original.key
                                          inStore:store
                                          inTable:tableName];
-    [newAttributes setObject:key forKey:SMP_KEY];
-    [newAttributes setObject:@"" forKey:SMP_TAGS];
-    Sample *newSample = [[Sample alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
+    [newAttributes setObject:key forKey:SPL_KEY];
+    [newAttributes setObject:@"" forKey:SPL_TAGS];
+    Split *newSplit = [[Split alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
-    [store putLibraryObject:newSample IntoTable:tableName];
+    [store putLibraryObject:newSplit IntoTable:tableName];
 }
 
-+(void)appendToSampleInPlace:(Sample *)modifiedSample
++(void)appendToSplitInPlace:(Split *)modifiedSplit
                    tagString:(NSString *)tag
                 withInitials:(NSString *)initials
                    intoStore:(AbstractLibraryObjectStore *)store
               intoTableNamed:(NSString *)tableName
 {
-    DDLogInfo(@"%@: IN-PLACE Appending tag %@ to sample with key %@", NSStringFromClass(self.class), tag, modifiedSample.key);
+    DDLogInfo(@"%@: IN-PLACE Appending tag %@ to split with key %@", NSStringFromClass(self.class), tag, modifiedSplit.key);
     
-    NSString *oldTagList = [[modifiedSample attributes] objectForKey:SMP_TAGS];
+    NSString *oldTagList = [[modifiedSplit attributes] objectForKey:SPL_TAGS];
     ProcedureRecord *newProcedureRecord = [[ProcedureRecord alloc] initWithTag:tag
                                                        andInitials:initials];
     
     NSString *newTagList = [self.class appendTagToString:oldTagList
                                                tagString:[newProcedureRecord description]];
     
-    [[modifiedSample attributes] setObject:newTagList forKey:SMP_TAGS];
-    [store updateLibraryObject:modifiedSample IntoTable:tableName];
+    [[modifiedSplit attributes] setObject:newTagList forKey:SPL_TAGS];
+    [store updateLibraryObject:modifiedSplit IntoTable:tableName];
 }
 
-+(void)appendToCloneOfSample:(Sample *)original
++(void)appendToCloneOfSplit:(Split *)original
                    tagString:(NSString *)tag
                 withInitials:(NSString *)initials
                    intoStore:(AbstractLibraryObjectStore *)store
               intoTableNamed:(NSString *)tableName
 {
-    DDLogInfo(@"%@: cloning sample with key %@ and adding tag %@", NSStringFromClass(self.class), original.key, tag);
+    DDLogInfo(@"%@: cloning split with key %@ and adding tag %@", NSStringFromClass(self.class), original.key, tag);
     
-    NSString *oldTagList = [[original attributes] objectForKey:SMP_TAGS];
+    NSString *oldTagList = [[original attributes] objectForKey:SPL_TAGS];
     ProcedureRecord *newProcedureRecord = [[ProcedureRecord alloc] initWithTag:tag
                                                                    andInitials:initials];
     
@@ -91,11 +91,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSString *key = [self.class uniqueKeyBasedOn:original.key
                                          inStore:store
                                          inTable:tableName];
-    [newAttributes setObject:key forKey:SMP_KEY];
-    [newAttributes setObject:newTagList forKey:SMP_TAGS];
-    Sample *newSample = [[Sample alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
+    [newAttributes setObject:key forKey:SPL_KEY];
+    [newAttributes setObject:newTagList forKey:SPL_TAGS];
+    Split *newSplit = [[Split alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
-    [store putLibraryObject:newSample IntoTable:tableName];
+    [store putLibraryObject:newSplit IntoTable:tableName];
 }
 
 /**
@@ -116,9 +116,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 /**
- *  Helper method to generate a new unique key for a sample. This key is guaranteed to be unique within the given table.
- *  Recall that samples are generally named something like 'SUPER_AWESOME_SAMPLE.001'. This method would generate the key
- *  'SUPER_AWESOME_SAMPLE.002' and, assuming no other sample exists with that name, return it. If 'SUPER_AWESOME_SAMPLE.002'
+ *  Helper method to generate a new unique key for a split. This key is guaranteed to be unique within the given table.
+ *  Recall that splits are generally named something like 'SUPER_AWESOME_SPLIT.001'. This method would generate the key
+ *  'SUPER_AWESOME_SPLIT.002' and, assuming no other split exists with that name, return it. If 'SUPER_AWESOME_SPLIT.002'
  *  already exists, then we try '*.003' '*.004' etc. until we find an open name.
  */
 +(NSString *)uniqueKeyBasedOn:(NSString *)previousKey
@@ -147,14 +147,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             DDLogInfo(@"%@: Created new key %@ from key %@", NSStringFromClass(self.class), newKey, previousKey);
             return newKey;
         } else {
-            DDLogDebug(@"%@: A sample with key %@ already exists...", NSStringFromClass(self.class), newKey);
+            DDLogDebug(@"%@: A split with key %@ already exists...", NSStringFromClass(self.class), newKey);
         }
     }
     
-    // If we exhaust all 1000 possible samples, this is a problem.
-    // Just so that we have something to return, we'll just append part of a UUID to the sample.
+    // If we exhaust all 1000 possible splits, this is a problem.
+    // Just so that we have something to return, we'll just append part of a UUID to the split.
     // This is ugly, but hopefully will be a clear indication to the user that our app does not scale to their needs.
-    DDLogError(@"%@: There are at least 999 samples with the prefix %@. This application is really not meant to handle that many sub-samples from a single source.", NSStringFromClass(self.class), strippedString);
+    DDLogError(@"%@: There are at least 999 splits with the prefix %@. This application is really not meant to handle that many sub-splits from a single source.", NSStringFromClass(self.class), strippedString);
     
     NSString *randomCharacters = [[[[NSUUID alloc] init] UUIDString] substringToIndex:4];
     

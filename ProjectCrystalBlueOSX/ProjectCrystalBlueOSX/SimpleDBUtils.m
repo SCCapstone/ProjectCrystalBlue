@@ -8,7 +8,7 @@
 
 #import "SimpleDBUtils.h"
 #import "Source.h"
-#import "Sample.h"
+#import "Split.h"
 #import "Transaction.h"
 #import "DDLog.h"
 
@@ -146,12 +146,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     if (objectClass == [Source class])
         return [[Source alloc] initWithKey:[objectAttributes objectForKey:SRC_KEY] AndWithAttributeDictionary:objectAttributes];
-    else if (objectClass == [Sample class])
-        return [[Sample alloc] initWithKey:[objectAttributes objectForKey:SMP_KEY] AndWithAttributeDictionary:objectAttributes];
+    else if (objectClass == [Split class])
+        return [[Split alloc] initWithKey:[objectAttributes objectForKey:SPL_KEY] AndWithAttributeDictionary:objectAttributes];
     else if (objectClass == [Transaction class])
         return [[Transaction alloc] initWithTimestamp:[NSNumber numberWithDouble:[[objectAttributes objectForKey:TRN_TIMESTAMP] doubleValue]] AndWithAttributeDictionary:objectAttributes];
     else {
-        DDLogCError(@"%@: objectClass must be of type Source, Sample, or Transaction.", NSStringFromClass(self.class));
+        DDLogCError(@"%@: objectClass must be of type Source, Split, or Transaction.", NSStringFromClass(self.class));
         return nil;
     }
 }
@@ -228,9 +228,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             [simpleDBClient createDomain:createRequest];
         }
         
-        // Sample domain
-        if (![listResponse.domainNames containsObject:[SampleConstants tableName]]) {
-            createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SampleConstants tableName]];
+        // Split domain
+        if (![listResponse.domainNames containsObject:[SplitConstants tableName]]) {
+            createRequest = [[SimpleDBCreateDomainRequest alloc] initWithDomainName:[SplitConstants tableName]];
             [simpleDBClient createDomain:createRequest];
         }
         

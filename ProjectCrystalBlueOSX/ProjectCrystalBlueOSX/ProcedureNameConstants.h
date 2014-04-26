@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 /**
- *  Constants class to hold names and tags of procedures that can be applied to samples.
+ *  Constants class to hold names and tags of procedures that can be applied to splits.
  */
 
 
 /*  Human-readable procedure names.
- *  These can be presented in a list when viewing an individual sample.
+ *  These can be presented in a list when viewing an individual split.
  *  Some (e.g. HEAVY LIQUID) require a format argument.
  *  Each should have a one-to-one correspondence to a unique tag below.
  */

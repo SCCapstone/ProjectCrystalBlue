@@ -30,7 +30,7 @@ static NSString *const TRN_DEF_VAL_SQL_COMMAND_TYPE = @"PUT,UPDATE,DELETE here";
 /// Array of default values for each attribute
 + (NSArray *)attributeDefaultValues;
 
-/// Returns the name of the local and remote table name for Sample
+/// Returns the name of the local and remote table name for Transaction
 + (NSString *)tableName;
 
 /// Returns the string representation of the table schema

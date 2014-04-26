@@ -1,5 +1,5 @@
 //
-//  SamplesDetailPanelViewController.h
+//  SplitsDetailPanelViewController.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 3/30/14.
@@ -8,13 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class Sample, AbstractCloudLibraryObjectStore;
+@class Split, AbstractCloudLibraryObjectStore;
 
-@interface SamplesDetailPanelViewController : NSViewController
+@interface SplitsDetailPanelViewController : NSViewController
 
 @property (weak) IBOutlet NSTextField *recentProceduresTextField;
 
-@property (nonatomic) Sample *sample;
+@property (nonatomic) Split *split;
 @property AbstractCloudLibraryObjectStore *dataStore;
 
 @end

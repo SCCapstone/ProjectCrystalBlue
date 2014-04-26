@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SourcesWindowController">
@@ -61,7 +61,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="1EED496A-25FD-4814-BCFB-8F6044672FA9" label="View Samples" paletteLabel="View Samples" tag="-1" image="NSListViewTemplate" id="CAn-ip-JCw">
                         <connections>
-                            <action selector="viewSamples:" target="-2" id="4PT-Tx-YEm"/>
+                            <action selector="viewSplits:" target="-2" id="OP4-BT-Ppz"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="7F29C76C-EBC7-4BE8-A38F-54A2C69AD036" label="Import/Export" paletteLabel="Import/Export" tag="-1" image="NSShareTemplate" id="PcP-CD-XZs">

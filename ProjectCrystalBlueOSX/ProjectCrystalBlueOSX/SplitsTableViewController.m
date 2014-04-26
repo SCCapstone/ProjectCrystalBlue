@@ -1,16 +1,16 @@
 //
-//  SamplesTableViewController.m
+//  SplitsTableViewController.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 3/30/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SamplesTableViewController.h"
-#import "SamplesDetailPanelViewController.h"
+#import "SplitsTableViewController.h"
+#import "SplitsDetailPanelViewController.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "Source.h"
-#import "Sample.h"
+#import "Split.h"
 #import "Procedures.h"
 #import "DDLog.h"
 
@@ -20,60 +20,60 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
-@interface SamplesTableViewController ()
+@interface SplitsTableViewController ()
 
 @end
 
-@implementation SamplesTableViewController
+@implementation SplitsTableViewController
 
-@synthesize dataStore, tableView, source, displayedSamples, arrayController, detailPanel, searchField;
+@synthesize dataStore, tableView, source, displayedSplits, arrayController, detailPanel, searchField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        displayedSamples = [[NSMutableArray alloc] init];
+        displayedSplits = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 - (void)awakeFromNib
 {
-    [self updateDisplayedSamples];
+    [self updateDisplayedSplits];
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
     NSInteger selectedRow = [tableView selectedRow];
     if (selectedRow == -1) {
-        [detailPanel setSample:nil];
+        [detailPanel setSplit:nil];
         return;
     }
     
-    Sample *sample = [arrayController.arrangedObjects objectAtIndex:selectedRow];
-    [detailPanel setSample:sample];
+    Split *split = [arrayController.arrangedObjects objectAtIndex:selectedRow];
+    [detailPanel setSplit:split];
 }
 
-- (void)addSample:(Sample *)sample
+- (void)addSplit:(Split *)split
 {
-    [Procedures addFreshSample:sample inStore:dataStore];
-    [self updateDisplayedSamples];
+    [Procedures addFreshSplit:split inStore:dataStore];
+    [self updateDisplayedSplits];
 }
 
-- (void)deleteSampleWithKey:(NSString *)key
+- (void)deleteSplitWithKey:(NSString *)key
 {
-    DDLogInfo(@"Deleting sample with key \"%@\"", key);
-    [dataStore deleteLibraryObjectWithKey:key FromTable:[SampleConstants tableName]];
+    DDLogInfo(@"Deleting split with key \"%@\"", key);
+    [dataStore deleteLibraryObjectWithKey:key FromTable:[SplitConstants tableName]];
 }
 
-- (void)updateDisplayedSamples
+- (void)updateDisplayedSplits
 {
     NSString *attrName = [[SourceConstants attributeNames] objectAtIndex:searchField.tag];
     
     if ([searchField.stringValue isEqualToString:@""])
-        [self setDisplayedSamples:[[dataStore getAllSamplesForSourceKey:source.key] mutableCopy]];
+        [self setDisplayedSplits:[[dataStore getAllSplitsForSampleKey:source.key] mutableCopy]];
     else
-        [self setDisplayedSamples:[[dataStore getAllSamplesForSourceKey:source.key
+        [self setDisplayedSplits:[[dataStore getAllSplitsForSampleKey:source.key
                                                     AndForAttributeName:attrName
                                                      WithAttributeValue:searchField.stringValue] mutableCopy]];
 }

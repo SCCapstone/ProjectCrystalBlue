@@ -12,7 +12,7 @@
 #import "SourcePhotosWindowController.h"
 #import "AddNewSourceWindowController.h"
 #import "BatchEditWindowController.h"
-#import "SamplesWindowController.h"
+#import "SplitsWindowController.h"
 #import "LoadingSheet.h"
 #import "SimpleDBLibraryObjectStore.h"
 #import "Source.h"
@@ -232,7 +232,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
 }
 
-- (IBAction)viewSamples:(id)sender
+- (IBAction)viewSplits:(id)sender
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     
@@ -242,7 +242,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     Source *source = [tableViewController.arrayController.arrangedObjects objectAtIndex:selectedRow];
     
-    SamplesWindowController *windowController = [[SamplesWindowController alloc] initWithWindowNibName:@"SamplesWindowController"];
+    SplitsWindowController *windowController = [[SplitsWindowController alloc] initWithWindowNibName:@"SplitsWindowController"];
     [windowController setSource:source];
     [windowController setDataStore:dataStore];
     [windowController showWindow:self];

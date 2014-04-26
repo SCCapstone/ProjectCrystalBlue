@@ -1,5 +1,5 @@
 //
-//  SampleImportController.m
+//  SplitImportController.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 2/21/14.
@@ -7,9 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "SampleImportController.h"
-#import "Sample.h"
-#import "SampleConstants.h"
+#import "SplitImportController.h"
+#import "Split.h"
+#import "SplitConstants.h"
 #import "LocalLibraryObjectStore.h"
 #import "LibraryObjectCSVWriter.h"
 #import "FileSystemUtils.h"
@@ -18,7 +18,7 @@
 #define TEST_DB_NAME @"pcb-test-db"
 #define TEST_CSV_FILE @"testSamples.csv"
 
-@interface SampleImportControllerTests : XCTestCase {
+@interface SplitImportControllerTests : XCTestCase {
     AbstractLibraryObjectStore *objectStore;
     NSString *localDirectory;
     NSString *dbPath;
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation SampleImportControllerTests
+@implementation SplitImportControllerTests
 
 - (void)setUp
 {
@@ -47,49 +47,49 @@
     [super tearDown];
 }
 
-/// Quickly generate a valid array of samples.
-- (NSArray *)generateSamples:(NSUInteger)count
+/// Quickly generate a valid array of splits.
+- (NSArray *)generateSplits:(NSUInteger)count
 {
-    NSMutableArray *samples = [[NSMutableArray alloc] initWithCapacity:count];
+    NSMutableArray *splits = [[NSMutableArray alloc] initWithCapacity:count];
     for (int i = 0; i < count; ++i) {
         NSString *key = [NSString stringWithFormat:@"KEY%04d", i];
         
-        Sample *s = [[Sample alloc] initWithKey:key
-                              AndWithAttributes:[SampleConstants attributeNames]
-                                      AndValues:[SampleConstants attributeDefaultValues]];
+        Split *s = [[Split alloc] initWithKey:key
+                              AndWithAttributes:[SplitConstants attributeNames]
+                                      AndValues:[SplitConstants attributeDefaultValues]];
         
-        for (NSString *attribute in [SampleConstants attributeNames]) {
+        for (NSString *attribute in [SplitConstants attributeNames]) {
             NSString *value = [attribute stringByAppendingFormat:@"%04d", i];
             [s.attributes setObject:value forKey:attribute];
         }
         
-        [samples addObject:s];
+        [splits addObject:s];
     }
     
-    return samples;
+    return splits;
 }
 
-/// Sends the SampleInputController an array of valid samples.
+/// Sends the SplitInputController an array of valid splits.
 - (void)testSimulateInputValidSamples
 {
-    NSArray *testSamples = [self generateSamples:5];
-    // write the samples to a csv file
-    [[[LibraryObjectCSVWriter alloc] init] writeObjects:testSamples ToFileAtPath:csvPath];
+    NSArray *testSplits = [self generateSplits:5];
+    // write the splits to a csv file
+    [[[LibraryObjectCSVWriter alloc] init] writeObjects:testSplits ToFileAtPath:csvPath];
     
-    SampleImportController *importController = [[SampleImportController alloc] init];
+    SplitImportController *importController = [[SplitImportController alloc] init];
     [importController setLibraryObjectStore:objectStore];
     [importController fileSelectorDidOpenFileAtPath:csvPath];
 
     [TestingUtils busyWaitForSeconds:0.2f];
 
-    // These samples should now have been imported to the db.
-    for (Sample *s in testSamples) {
+    // These splits should now have been imported to the db.
+    for (Split *s in testSplits) {
         XCTAssertTrue([objectStore libraryObjectExistsForKey:s.key
-                                                   FromTable:[SampleConstants tableName]],
+                                                   FromTable:[SplitConstants tableName]],
                       @"%@ wasn't found", s.key);
         
         XCTAssertEqualObjects(s, [objectStore getLibraryObjectForKey:s.key
-                                                           FromTable:[SampleConstants tableName]]
+                                                           FromTable:[SplitConstants tableName]]
                               , @"Object with key %@ did not match.", s.key);
     }
 }

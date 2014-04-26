@@ -109,28 +109,28 @@
 
 - (void)testMostRecentProcedure
 {
-    NSString *key = @"MY_SAMPLE.001";
+    NSString *key = @"MY_SPLIT.001";
     NSString *initials = @"ABC";
     ProcedureRecord *jc = [[ProcedureRecord alloc] initWithTag:PROC_TAG_JAWCRUSH andInitials:initials];
     ProcedureRecord *pv = [[ProcedureRecord alloc] initWithTag:PROC_TAG_PULVERIZE andInitials:initials];
     
-    Sample *sample = [[Sample alloc] initWithKey:key
-                               AndWithAttributes:[SampleConstants attributeNames]
-                                       AndValues:[SampleConstants attributeDefaultValues]];
+    Split *split = [[Split alloc] initWithKey:key
+                               AndWithAttributes:[SplitConstants attributeNames]
+                                       AndValues:[SplitConstants attributeDefaultValues]];
     
     NSString *mostRecent;
     
-    mostRecent = [ProcedureRecordParser mostRecentProcedurePerformedOnSample:sample];
+    mostRecent = [ProcedureRecordParser mostRecentProcedurePerformedOnSplit:split];
     XCTAssertTrue([@"None" isEqualToString:mostRecent]);
     
-    [sample.attributes setObject:[NSString stringWithFormat:@"%@", jc]
-                          forKey:SMP_TAGS];
-    mostRecent = [ProcedureRecordParser mostRecentProcedurePerformedOnSample:sample];
+    [split.attributes setObject:[NSString stringWithFormat:@"%@", jc]
+                          forKey:SPL_TAGS];
+    mostRecent = [ProcedureRecordParser mostRecentProcedurePerformedOnSplit:split];
     XCTAssertTrue([PROC_NAME_JAWCRUSH isEqualToString:mostRecent]);
     
-    [sample.attributes setObject:[NSString stringWithFormat:@"%@%@%@", jc, TAG_DELIMITER, pv]
-                          forKey:SMP_TAGS];
-    mostRecent = [ProcedureRecordParser mostRecentProcedurePerformedOnSample:sample];
+    [split.attributes setObject:[NSString stringWithFormat:@"%@%@%@", jc, TAG_DELIMITER, pv]
+                          forKey:SPL_TAGS];
+    mostRecent = [ProcedureRecordParser mostRecentProcedurePerformedOnSplit:split];
     XCTAssertTrue([PROC_NAME_PULVERIZE isEqualToString:mostRecent]);
 }
 

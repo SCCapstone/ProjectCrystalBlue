@@ -1,25 +1,25 @@
 //
-//  SamplesDetailPanelViewController.m
+//  SplitsDetailPanelViewController.m
 //  ProjectCrystalBlueOSX
 //
 //  Created by Justin Baumgartner on 3/30/14.
 //  Copyright (c) 2014 Project Crystal Blue. All rights reserved.
 //
 
-#import "SamplesDetailPanelViewController.h"
+#import "SplitsDetailPanelViewController.h"
 #import "AbstractCloudLibraryObjectStore.h"
-#import "Sample.h"
+#import "Split.h"
 #import "ProcedureRecord.h"
 #import "ProcedureRecordParser.h"
 #import "ProcedureNameConstants.h"
 
-@interface SamplesDetailPanelViewController ()
+@interface SplitsDetailPanelViewController ()
 
 @end
 
-@implementation SamplesDetailPanelViewController
+@implementation SplitsDetailPanelViewController
 
-@synthesize dataStore, sample;
+@synthesize dataStore, split;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,29 +35,29 @@
     [self updateRecentProcedures];
 }
 
-- (void)setSample:(Sample *)newSample
+- (void)setSplit:(Split *)newSplit
 {
-    if (sample != nil)
-        [self removeObserversFromSelectedSample];
+    if (split != nil)
+        [self removeObserversFromSelectedSplit];
     
-    sample = newSample;
+    split = newSplit;
     
-    if (sample != nil) {
-        [self addObserversToSelectedSample];
+    if (split != nil) {
+        [self addObserversToSelectedSplit];
         [self updateRecentProcedures];
     }
 }
 
-- (void)addObserversToSelectedSample
+- (void)addObserversToSelectedSplit
 {
-    [sample addObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.CURRENT_LOCATION"] options:NSKeyValueObservingOptionNew context:nil];
-    [sample addObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.TAGS"] options:NSKeyValueObservingOptionNew context:nil];
+    [split addObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.CURRENT_LOCATION"] options:NSKeyValueObservingOptionNew context:nil];
+    [split addObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.TAGS"] options:NSKeyValueObservingOptionNew context:nil];
 }
 
-- (void)removeObserversFromSelectedSample
+- (void)removeObserversFromSelectedSplit
 {
-    [sample removeObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.CURRENT_LOCATION"]];
-    [sample removeObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.TAGS"]];
+    [split removeObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.CURRENT_LOCATION"]];
+    [split removeObserver:self forKeyPath:[NSString stringWithFormat:@"attributes.TAGS"]];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -67,16 +67,16 @@
 {
     NSString *attr = [keyPath substringFromIndex:11];
     
-    if ([attr isEqualToString:SMP_TAGS]) {
+    if ([attr isEqualToString:SPL_TAGS]) {
         [self updateRecentProcedures];
     }
     
-    [dataStore updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
+    [dataStore updateLibraryObject:split IntoTable:[SplitConstants tableName]];
 }
 
 - (void)updateRecentProcedures
 {
-    NSArray *procedureList = [ProcedureRecordParser procedureRecordArrayFromList:[sample.attributes objectForKey:SMP_TAGS]];
+    NSArray *procedureList = [ProcedureRecordParser procedureRecordArrayFromList:[split.attributes objectForKey:SPL_TAGS]];
     NSMutableString *history = [[NSMutableString alloc] init];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

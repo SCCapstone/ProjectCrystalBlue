@@ -1,5 +1,5 @@
 //
-//  SampleImportController.h
+//  SplitImportController.h
 //  ProjectCrystalBlueOSX
 //
 //  Created by Logan Hood on 2/21/14.
@@ -15,6 +15,6 @@
  *      - populate the fileReader, libraryObjectStore, and tableName properties
  *      - optionally, set the importResultReporter property.
  */
-@interface SampleImportController : LibraryObjectImportController
+@interface SplitImportController : LibraryObjectImportController
 
 @end

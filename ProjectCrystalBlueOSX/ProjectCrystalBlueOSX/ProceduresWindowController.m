@@ -7,11 +7,11 @@
 //
 
 #import "ProceduresWindowController.h"
-#import "SamplesTableViewController.h"
+#import "SplitsTableViewController.h"
 #import "ProcedureNameConstants.h"
 #import "ProcedureFieldValidator.h"
 #import "Procedures.h"
-#import "Sample.h"
+#import "Split.h"
 
 // Logging
 #import "DDLog.h"
@@ -30,9 +30,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 @synthesize initialsTextField;
 @synthesize procedureSelector;
 @synthesize instructionsText;
-@synthesize sample;
+@synthesize split;
 @synthesize dataStore;
-@synthesize samplesTableViewController;
+@synthesize splitsTableViewController;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -47,7 +47,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [super windowDidLoad];
     NSString *instructions;
     instructions = [NSString stringWithFormat:@"Select a procedure to apply to %@. Please triple-check that you are applying the correct procedure, enter your initials, then click Apply Procedure.",
-                        sample.key];
+                        split.key];
     [instructionsText setStringValue:instructions];
 
     [self populateProcedureSelector];
@@ -83,91 +83,91 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     DDLogDebug(@"%s: %@", __PRETTY_FUNCTION__, selectedProcedureName);
 
     if ([longNameSlab isEqualToString:selectedProcedureName]) {
-        [Procedures makeSlabfromSample:sample
+        [Procedures makeSlabfromSplit:split
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     } else if ([longNameBillet isEqualToString:selectedProcedureName]) {
-        [Procedures makeBilletfromSample:sample
+        [Procedures makeBilletfromSplit:split
                             withInitials:initialsTextField.stringValue
                                  inStore:dataStore];
     } else if ([longNameThinSect isEqualToString:selectedProcedureName]) {
-        [Procedures makeThinSectionfromSample:sample
+        [Procedures makeThinSectionfromSplit:split
                                  withInitials:initialsTextField.stringValue
                                       inStore:dataStore];
     } else if ([longNameTrim isEqualToString:selectedProcedureName]) {
-        [Procedures trimSample:sample
+        [Procedures trimSplit:split
                   withInitials:initialsTextField.stringValue
                        inStore:dataStore];
     } else if ([longNamePulv isEqualToString:selectedProcedureName]) {
-        [Procedures pulverizeSample:sample
+        [Procedures pulverizeSplit:split
                        withInitials:initialsTextField.stringValue
                             inStore:dataStore];
     } else if ([longNameJawCrush isEqualToString:selectedProcedureName]) {
-        [Procedures jawCrushSample:sample
+        [Procedures jawCrushSplit:split
                       withInitials:initialsTextField.stringValue
                            inStore:dataStore];
     } else if ([longNameGemini isEqualToString:selectedProcedureName]) {
-        [Procedures geminiSample:sample
+        [Procedures geminiSplit:split
                     withInitials:initialsTextField.stringValue
                          inStore:dataStore];
     } else if ([longNamePan isEqualToString:selectedProcedureName]) {
-        [Procedures panSample:sample
+        [Procedures panSplit:split
                  withInitials:initialsTextField.stringValue
                       inStore:dataStore];
     } else if ([longNameSieve10 isEqualToString:selectedProcedureName]) {
-        [Procedures sievesTenSample:sample
+        [Procedures sievesTenSplit:split
                        withInitials:initialsTextField.stringValue
                             inStore:dataStore];
     } else if ([longNameHL330 isEqualToString:selectedProcedureName]) {
-        [Procedures heavyLiquid_330_Sample:sample
+        [Procedures heavyLiquid_330_Split:split
                       withInitials:initialsTextField.stringValue
                            inStore:dataStore];
     } else if ([longNameHL290 isEqualToString:selectedProcedureName]) {
-        [Procedures heavyLiquid_290_Sample:sample
+        [Procedures heavyLiquid_290_Split:split
                               withInitials:initialsTextField.stringValue
                                    inStore:dataStore];
     } else if ([longNameHL265 isEqualToString:selectedProcedureName]) {
-        [Procedures heavyLiquid_265_Sample:sample
+        [Procedures heavyLiquid_265_Split:split
                               withInitials:initialsTextField.stringValue
                                    inStore:dataStore];
     } else if ([longNameHL255 isEqualToString:selectedProcedureName]) {
-        [Procedures heavyLiquid_255_Sample:sample
+        [Procedures heavyLiquid_255_Split:split
                               withInitials:initialsTextField.stringValue
                                    inStore:dataStore];
     } else if ([longNameHandMagnet isEqualToString:selectedProcedureName]) {
-        [Procedures handMagnetSample:sample
+        [Procedures handMagnetSplit:split
                         withInitials:initialsTextField.stringValue
                              inStore:dataStore];
     } else if ([longNameMagnet02A isEqualToString:selectedProcedureName]) {
-        [Procedures magnet02AmpsSample:sample
+        [Procedures magnet02AmpsSplit:split
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     } else if ([longNameMagnet04A isEqualToString:selectedProcedureName]) {
-        [Procedures magnet04AmpsSample:sample
+        [Procedures magnet04AmpsSplit:split
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     } else if ([longNameMagnet06A isEqualToString:selectedProcedureName]) {
-        [Procedures magnet06AmpsSample:sample
+        [Procedures magnet06AmpsSplit:split
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     } else if ([longNameMagnet08A isEqualToString:selectedProcedureName]) {
-        [Procedures magnet08AmpsSample:sample
+        [Procedures magnet08AmpsSplit:split
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     } else if ([longNameMagnet10A isEqualToString:selectedProcedureName]) {
-        [Procedures magnet10AmpsSample:sample
+        [Procedures magnet10AmpsSplit:split
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     } else if ([longNameMagnet12A isEqualToString:selectedProcedureName]) {
-        [Procedures magnet12AmpsSample:sample
+        [Procedures magnet12AmpsSplit:split
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     } else if ([longNameMagnet14A isEqualToString:selectedProcedureName]) {
-        [Procedures magnet14AmpsSample:sample
+        [Procedures magnet14AmpsSplit:split
                           withInitials:initialsTextField.stringValue
                                inStore:dataStore];
     }
-    [samplesTableViewController updateDisplayedSamples];
+    [splitsTableViewController updateDisplayedSplits];
     [self.window close];
 }
 
