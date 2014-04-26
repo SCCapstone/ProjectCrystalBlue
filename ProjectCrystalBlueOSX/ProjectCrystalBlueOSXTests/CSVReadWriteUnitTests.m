@@ -428,7 +428,7 @@ NSString* filePath;
     [expected.attributes setObject:notes        forKey:SRC_NOTES];
     [expected.attributes setObject:section      forKey:SRC_SECTION];
     [expected.attributes setObject:formation    forKey:SRC_FORMATION];
-    [expected.attributes setObject:images       forKey:SRC_IMAGES
+    [expected.attributes setObject:images       forKey:SRC_IMAGES];
     [expected.attributes setObject:collectedBy  forKey:SRC_COLLECTED_BY];
 
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
