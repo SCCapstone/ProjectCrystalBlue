@@ -404,32 +404,33 @@ NSString* filePath;
     NSString *section       = @"´Ï";
     NSString *formation     = @"∑≈";
     NSString *images        = @"ÏÔ˚ÒÅ˚Ò";
+    NSString *collectedBy   = @"˝ÔÓÎÏ˝ÓÒÔÓ˝Ò˝Ó˝ÓÒÒÎÔÓ˝";
 
     Sample *expected = [[Sample alloc] initWithKey:key
                                  AndWithAttributes:[SampleConstants attributeNames]
                                          AndValues:[SampleConstants attributeDefaultValues]];
 
-    [expected.attributes setObject:key          forKey:SRC_KEY];
-    [expected.attributes setObject:continent    forKey:SRC_CONTINENT];
-    [expected.attributes setObject:locality     forKey:SRC_LOCALITY];
-    [expected.attributes setObject:region       forKey:SRC_REGION];
-    [expected.attributes setObject:hyperlinks   forKey:SRC_HYPERLINKS];
-    [expected.attributes setObject:member       forKey:SRC_MEMBER];
-    [expected.attributes setObject:latitude     forKey:SRC_LATITUDE];
-    [expected.attributes setObject:longitude    forKey:SRC_LONGITUDE];
-    [expected.attributes setObject:ageDataType  forKey:SRC_AGE_DATATYPE];
-    [expected.attributes setObject:type         forKey:SRC_TYPE];
-    [expected.attributes setObject:ageMethod    forKey:SRC_AGE_METHOD];
-    [expected.attributes setObject:lithology    forKey:SRC_LITHOLOGY];
-    [expected.attributes setObject:deposystem   forKey:SRC_DEPOSYSTEM];
-    [expected.attributes setObject:meter        forKey:SRC_METER];
-    [expected.attributes setObject:rockGroup    forKey:SRC_GROUP];
-    [expected.attributes setObject:age          forKey:SRC_AGE];
-    [expected.attributes setObject:notes        forKey:SRC_NOTES];
-    [expected.attributes setObject:section      forKey:SRC_SECTION];
-    [expected.attributes setObject:formation    forKey:SRC_FORMATION];
-    [expected.attributes setObject:images       forKey:SRC_IMAGES];
-    [expected.attributes setObject:collectedBy  forKey:SRC_COLLECTED_BY];
+    [expected.attributes setObject:key          forKey:SMP_KEY];
+    [expected.attributes setObject:continent    forKey:SMP_CONTINENT];
+    [expected.attributes setObject:locality     forKey:SMP_LOCALITY];
+    [expected.attributes setObject:region       forKey:SMP_REGION];
+    [expected.attributes setObject:hyperlinks   forKey:SMP_HYPERLINKS];
+    [expected.attributes setObject:member       forKey:SMP_MEMBER];
+    [expected.attributes setObject:latitude     forKey:SMP_LATITUDE];
+    [expected.attributes setObject:longitude    forKey:SMP_LONGITUDE];
+    [expected.attributes setObject:ageDataType  forKey:SMP_AGE_DATATYPE];
+    [expected.attributes setObject:type         forKey:SMP_TYPE];
+    [expected.attributes setObject:ageMethod    forKey:SMP_AGE_METHOD];
+    [expected.attributes setObject:lithology    forKey:SMP_LITHOLOGY];
+    [expected.attributes setObject:deposystem   forKey:SMP_DEPOSYSTEM];
+    [expected.attributes setObject:meter        forKey:SMP_METER];
+    [expected.attributes setObject:rockGroup    forKey:SMP_GROUP];
+    [expected.attributes setObject:age          forKey:SMP_AGE];
+    [expected.attributes setObject:notes        forKey:SMP_NOTES];
+    [expected.attributes setObject:section      forKey:SMP_SECTION];
+    [expected.attributes setObject:formation    forKey:SMP_FORMATION];
+    [expected.attributes setObject:images       forKey:SMP_IMAGES];
+    [expected.attributes setObject:collectedBy  forKey:SMP_COLLECTED_BY];
 
     LibraryObjectCSVReader *reader = [[LibraryObjectCSVReader alloc] init];
     NSArray *readSplits = [reader readFromFileAtPath:testPath];
