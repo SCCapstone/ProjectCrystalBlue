@@ -18,7 +18,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="1128" height="569"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="1128" height="569"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -69,7 +69,7 @@
                             <action selector="importExport:" target="-2" id="Oxd-h8-Z7Z"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="DCEC0130-B303-427A-98C8-1F81F63361A6" label="Delete Sample" paletteLabel="Delete Sample" tag="-1" image="NSTrashEmpty" id="ZCp-V6-AfB">
+                    <toolbarItem implicitItemIdentifier="DCEC0130-B303-427A-98C8-1F81F63361A6" label="Delete Sample" paletteLabel="Delete Sample" tag="-1" image="TrashIcon" id="ZCp-V6-AfB">
                         <connections>
                             <action selector="deleteSample:" target="-2" id="zaL-Qs-EVE"/>
                         </connections>
@@ -97,17 +97,17 @@
                             </connections>
                         </searchField>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="208944F3-8149-4626-8B53-3672B287880D" label="Sample Photos" paletteLabel="Sample Photos" tag="-1" image="NSFolderBurnable" id="5d0-5v-eIE">
+                    <toolbarItem implicitItemIdentifier="208944F3-8149-4626-8B53-3672B287880D" label="Sample Photos" paletteLabel="Sample Photos" tag="-1" image="iPhoto Library" id="5d0-5v-eIE">
                         <connections>
                             <action selector="samplePhotos:" target="-2" id="i1k-dQ-WwX"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="9F92BCAF-A79E-4B8D-9CA3-457E0965815F" label="Batch Edit" paletteLabel="Batch Edit" tag="-1" image="NSApplicationIcon" id="YTC-3G-okV">
+                    <toolbarItem implicitItemIdentifier="9F92BCAF-A79E-4B8D-9CA3-457E0965815F" label="Batch Edit" paletteLabel="Batch Edit" tag="-1" image="AppleScript Editor" id="YTC-3G-okV">
                         <connections>
                             <action selector="openBatchEditSamplesWindow:" target="-2" id="bUx-d5-4e9"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="06065340-57C2-41A6-AD83-9BA6DE02F35E" label="Print Barcodes" paletteLabel="Print Barcodes" tag="-1" image="NSSlideshowTemplate" id="uuc-d3-ASc">
+                    <toolbarItem implicitItemIdentifier="06065340-57C2-41A6-AD83-9BA6DE02F35E" label="Print Barcodes" paletteLabel="Print Barcodes" tag="-1" image="Printer" id="uuc-d3-ASc">
                         <connections>
                             <action selector="printBarcodes:" target="-2" id="LN8-VC-o3o"/>
                         </connections>
@@ -129,13 +129,13 @@
         </window>
     </objects>
     <resources>
+        <image name="AppleScript Editor" width="256" height="256"/>
         <image name="NSAddTemplate" width="8" height="8"/>
-        <image name="NSApplicationIcon" width="128" height="128"/>
-        <image name="NSFolderBurnable" width="32" height="32"/>
         <image name="NSListViewTemplate" width="11" height="10"/>
         <image name="NSMobileMe" width="32" height="32"/>
         <image name="NSShareTemplate" width="18" height="16"/>
-        <image name="NSSlideshowTemplate" width="17" height="14"/>
-        <image name="NSTrashEmpty" width="32" height="32"/>
+        <image name="Printer" width="256" height="256"/>
+        <image name="TrashIcon" width="256" height="256"/>
+        <image name="iPhoto Library" width="256" height="256"/>
     </resources>
 </document>
