@@ -21,7 +21,7 @@
 @interface LibraryObjectImportController : NSObject <OSXFileSelectorDelegate>
 
 @property id<LibraryObjectFileReader> fileReader;
-@property id<ImportResultReporter> importResultReporter;
+@property NSObject<ImportResultReporter> *importResultReporter;
 @property AbstractLibraryObjectStore *libraryObjectStore;
 @property NSString *tableName;
 

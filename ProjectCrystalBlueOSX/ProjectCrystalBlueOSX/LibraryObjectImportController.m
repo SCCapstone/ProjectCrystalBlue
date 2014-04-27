@@ -40,10 +40,14 @@
     if (![result hasError]) {
         [result setSuccessfulImportsCount:libraryObjects.count];
         [self addLibraryObjectsToStore:libraryObjects];
-        [loading.progressIndicator incrementBy:50.00];
     }
-    [loading closeSheet];
-    [importResultReporter displayResults:result];
+
+    /* Since this method isn't necessarily running on the main thread, we need to make sure that our
+     * CoreAnimation calls are dispatched to the main thread */
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [loading closeSheet];
+        [importResultReporter displayResults:result];
+    });
 }
 
 -(ImportResult *)validateObjects:(NSArray *)libraryObjects
