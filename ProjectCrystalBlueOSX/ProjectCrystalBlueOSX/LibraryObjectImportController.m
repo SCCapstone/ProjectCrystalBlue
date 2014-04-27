@@ -38,6 +38,7 @@
     [loading.progressIndicator incrementBy:30.00];
 
     if (![result hasError]) {
+        [result setSuccessfulImportsCount:libraryObjects.count];
         [self addLibraryObjectsToStore:libraryObjects];
         [loading.progressIndicator incrementBy:50.00];
     }

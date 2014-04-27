@@ -16,6 +16,15 @@
 /// An overall result - whether there were any detected errors during import.
 @property BOOL hasError;
 
+/// Number of items that were successfully imported.
+@property NSUInteger successfulImportsCount;
+
+/// A list of any expected headers that were not present
+@property NSMutableArray *missingHeaders;
+
+/// A list of any unexpected headers that were found during import.
+@property NSMutableArray *unexpectedHeaders;
+
 /// A list of the keys of any invalid LibraryObjects encountered during import.
 @property NSMutableArray *keysOfInvalidLibraryObjects;
 

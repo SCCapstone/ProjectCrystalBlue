@@ -8,6 +8,10 @@
 
 #import "ImportResult.h"
 
+#define SUCCESS_MESSAGE @"Import complete"
+#define UNSUCCESS_MESSAGE @"Import was unsuccessful"
+#define SUCCESSFUL_IMPORT_COUNT_FORMAT @"Imported %lu items successfully."
+
 @implementation ImportResult
 
 @synthesize hasError;
@@ -29,30 +33,35 @@
 -(NSAlert *)alertWithResults
 {
     NSAlert *alert = [[NSAlert alloc] init];
-
     [alert setAlertStyle:NSInformationalAlertStyle];
 
-    NSString *message = self.hasError ? @"Import was unsuccessful": @"Import complete";
-    [alert setMessageText:message];
-
     NSMutableString *info = [[NSMutableString alloc] initWithString:@""];
-    if (self.hasError) {
-        [info appendString:@"\nThere were errors importing the following items:\n\n"];
-        [info appendFormat:@"%@", [keysOfInvalidLibraryObjects firstObject]];
-        for (NSUInteger i = 1; i < keysOfInvalidLibraryObjects.count; ++i) {
-            [info appendFormat:@", %@", [keysOfInvalidLibraryObjects objectAtIndex:i]];
+    NSString *message;
+
+    if (!self.hasError) {
+        message = SUCCESS_MESSAGE;
+        [info appendFormat:SUCCESSFUL_IMPORT_COUNT_FORMAT, self.successfulImportsCount];
+    } else {
+        message = UNSUCCESS_MESSAGE;
+
+        if (self.hasError) {
+            [info appendString:@"\nThere were errors importing the following items:\n\n"];
+            [info appendFormat:@"%@", [keysOfInvalidLibraryObjects firstObject]];
+            for (NSUInteger i = 1; i < keysOfInvalidLibraryObjects.count; ++i) {
+                [info appendFormat:@", %@", [keysOfInvalidLibraryObjects objectAtIndex:i]];
+            }
+        }
+
+        if (self.duplicateKeys.count > 0) {
+            [info appendString:@"\n\nWarning - there were multiple occurances of the following keys:\n\n"];
+            [info appendFormat:@"%@", [duplicateKeys firstObject]];
+            for (NSUInteger i = 1; i < duplicateKeys.count; ++i) {
+                [info appendFormat:@", %@", [duplicateKeys objectAtIndex:i]];
+            }
         }
     }
 
-    if (self.duplicateKeys.count > 0) {
-        [info appendString:@"\n\nWarning - there were multiple occurances of the following keys:\n\n"];
-        [info appendFormat:@"%@", [duplicateKeys firstObject]];
-        for (NSUInteger i = 1; i < duplicateKeys.count; ++i) {
-            [info appendFormat:@", %@", [duplicateKeys objectAtIndex:i]];
-        }
-    }
-
-
+    [alert setMessageText:message];
     [alert setInformativeText:info];
 
     return alert;
