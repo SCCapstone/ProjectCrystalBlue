@@ -12,6 +12,7 @@
                 <outlet property="deposystemComboBox" destination="4ZU-bP-EZe" id="Kny-O9-uBu"/>
                 <outlet property="deposystemRockType" destination="4ZU-bP-EZe" id="yB8-cX-3D5"/>
                 <outlet property="googleMapsLink" destination="hAe-f2-uGC" id="hlJ-yI-2Vi"/>
+                <outlet property="hyperlinksTextView" destination="r6g-nk-Aqb" id="1iV-1U-UYx"/>
                 <outlet property="imageCell" destination="ofj-2p-IaK" id="e4q-8t-6aa"/>
                 <outlet property="lithologyComboBox" destination="5Y9-Y4-HmX" id="N1H-Ch-6Qn"/>
                 <outlet property="lithologyRockType" destination="5Y9-Y4-HmX" id="Ams-Mu-jFu"/>
@@ -514,11 +515,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <size key="minSize" width="205" height="89"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                                 <connections>
-                                    <binding destination="-2" name="value" keyPath="self.sample.attributes.HYPERLINKS" id="kRw-vf-9if">
-                                        <dictionary key="options">
-                                            <bool key="NSValidatesImmediately" value="YES"/>
-                                        </dictionary>
-                                    </binding>
+                                    <binding destination="-2" name="value" keyPath="self.sample.attributes.HYPERLINKS" id="5hT-Ik-xVk"/>
+                                    <outlet property="delegate" destination="-2" id="Ev1-Jc-ywY"/>
                                 </connections>
                             </textView>
                         </subviews>
