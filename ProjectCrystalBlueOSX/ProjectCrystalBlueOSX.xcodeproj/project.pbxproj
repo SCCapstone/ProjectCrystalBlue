@@ -35,6 +35,10 @@
 		D09152E518F2067D00F6B579 /* BatchEditWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09152E318F2067D00F6B579 /* BatchEditWindowController.xib */; };
 		D09152EA18F21A9300F6B579 /* LoadingSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D09152E818F21A9300F6B579 /* LoadingSheet.m */; };
 		D09152EB18F21A9300F6B579 /* LoadingSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09152E918F21A9300F6B579 /* LoadingSheet.xib */; };
+		D09A6732190DAE9700BBF9C7 /* AppleScript Editor.ico in Resources */ = {isa = PBXBuildFile; fileRef = D09A672E190DAE9700BBF9C7 /* AppleScript Editor.ico */; };
+		D09A6733190DAE9700BBF9C7 /* iPhoto Library.ico in Resources */ = {isa = PBXBuildFile; fileRef = D09A672F190DAE9700BBF9C7 /* iPhoto Library.ico */; };
+		D09A6734190DAE9700BBF9C7 /* TrashIcon.ico in Resources */ = {isa = PBXBuildFile; fileRef = D09A6730190DAE9700BBF9C7 /* TrashIcon.ico */; };
+		D09A6735190DAE9700BBF9C7 /* Printer.ico in Resources */ = {isa = PBXBuildFile; fileRef = D09A6731190DAE9700BBF9C7 /* Printer.ico */; };
 		D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C7E9718B1A72A001B98AF /* SimpleDBUtils.m */; };
 		D09C7E9A18B1ABFE001B98AF /* SimpleDBUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */; };
 		D0B410FA18B590F000017FAC /* TransactionEqualsAndHashcodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B410F918B590F000017FAC /* TransactionEqualsAndHashcodeTests.m */; };
@@ -225,6 +229,10 @@
 		D09152E718F21A9300F6B579 /* LoadingSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingSheet.h; sourceTree = "<group>"; };
 		D09152E818F21A9300F6B579 /* LoadingSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingSheet.m; sourceTree = "<group>"; };
 		D09152E918F21A9300F6B579 /* LoadingSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingSheet.xib; sourceTree = "<group>"; };
+		D09A672E190DAE9700BBF9C7 /* AppleScript Editor.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = "AppleScript Editor.ico"; sourceTree = "<group>"; };
+		D09A672F190DAE9700BBF9C7 /* iPhoto Library.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = "iPhoto Library.ico"; sourceTree = "<group>"; };
+		D09A6730190DAE9700BBF9C7 /* TrashIcon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = TrashIcon.ico; sourceTree = "<group>"; };
+		D09A6731190DAE9700BBF9C7 /* Printer.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = Printer.ico; sourceTree = "<group>"; };
 		D09C7E9618B1A72A001B98AF /* SimpleDBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleDBUtils.h; sourceTree = "<group>"; };
 		D09C7E9718B1A72A001B98AF /* SimpleDBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtils.m; sourceTree = "<group>"; };
 		D09C7E9918B1ABFE001B98AF /* SimpleDBUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleDBUtilsTests.m; sourceTree = "<group>"; };
@@ -568,6 +576,17 @@
 			name = LoadingSheet;
 			sourceTree = "<group>";
 		};
+		D09A672D190DAE8D00BBF9C7 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				D09A672E190DAE9700BBF9C7 /* AppleScript Editor.ico */,
+				D09A672F190DAE9700BBF9C7 /* iPhoto Library.ico */,
+				D09A6730190DAE9700BBF9C7 /* TrashIcon.ico */,
+				D09A6731190DAE9700BBF9C7 /* Printer.ico */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		D0C9F1E518AEF5CD00885DB4 /* SimpleDBLibraryObjectStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -853,6 +872,7 @@
 		D7439E1518A5FC53000EE008 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D09A672D190DAE8D00BBF9C7 /* Icons */,
 				D7439E1618A5FC53000EE008 /* ProjectCrystalBlueOSX-Info.plist */,
 				D7439E1718A5FC53000EE008 /* InfoPlist.strings */,
 				D7439E1A18A5FC53000EE008 /* main.m */,
@@ -1329,11 +1349,14 @@
 				D7439E1918A5FC53000EE008 /* InfoPlist.strings in Resources */,
 				D74C061718FB456A00677CD5 /* CredentialsInputWindowController.xib in Resources */,
 				D706CCAE18E63E7700F7762E /* SamplePhotosWindowController.xib in Resources */,
+				D09A6732190DAE9700BBF9C7 /* AppleScript Editor.ico in Resources */,
+				D09A6735190DAE9700BBF9C7 /* Printer.ico in Resources */,
 				D059F8F018E547100024AA58 /* SamplesDetailPanelViewController.xib in Resources */,
 				D038CBD418DC072400635442 /* SamplesTableViewController.xib in Resources */,
 				D7439E2718A5FC53000EE008 /* Images.xcassets in Resources */,
 				D7125EF218C4630B00BBCD3E /* ProceduresWindowController.xib in Resources */,
 				D7439E1F18A5FC53000EE008 /* Credits.rtf in Resources */,
+				D09A6733190DAE9700BBF9C7 /* iPhoto Library.ico in Resources */,
 				D09152E518F2067D00F6B579 /* BatchEditWindowController.xib in Resources */,
 				D09152EB18F21A9300F6B579 /* LoadingSheet.xib in Resources */,
 				D0CED3C018E8E4D10031E996 /* SplitsWindowController.xib in Resources */,
@@ -1341,6 +1364,7 @@
 				D0CED3C718E8E6DE0031E996 /* SplitsTableViewController.xib in Resources */,
 				D038CBCE18DBFC0E00635442 /* SamplesWindowController.xib in Resources */,
 				D711C94E18C42CC300D637D7 /* AddNewSampleWindowController.xib in Resources */,
+				D09A6734190DAE9700BBF9C7 /* TrashIcon.ico in Resources */,
 				D7439E2518A5FC53000EE008 /* MainMenu.xib in Resources */,
 				D78ACC7318A5FE44006084D6 /* no_image.png in Resources */,
 			);
