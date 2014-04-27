@@ -32,9 +32,9 @@
     NSString *emptyStr = @"";
     NSString *valid = @"myinitials";
     NSString *valid2 = @"foo2";
-    NSString *notValid1 = @",";
-    NSString *notValid2 = @"{}";
-    NSString *notValid3 = @"|";
+    NSString *singleQuote = @"'";
+    NSString *notValid2 = @".";
+    NSString *notValid3 = @"_";
     NSMutableString *tooLong = [NSMutableString stringWithString:@""];
     for (int i = 0; i < 31; ++i) {
         [tooLong appendString:@"a"];
@@ -43,7 +43,7 @@
     XCTAssertTrue ([[ImagesFieldValidator validateImageTag:emptyStr]     isValid]);
     XCTAssertTrue ([[ImagesFieldValidator validateImageTag:valid]        isValid]);
     XCTAssertTrue ([[ImagesFieldValidator validateImageTag:valid2]       isValid]);
-    XCTAssertFalse([[ImagesFieldValidator validateImageTag:notValid1]    isValid]);
+    XCTAssertFalse([[ImagesFieldValidator validateImageTag:singleQuote]  isValid]);
     XCTAssertFalse([[ImagesFieldValidator validateImageTag:notValid2]    isValid]);
     XCTAssertFalse([[ImagesFieldValidator validateImageTag:notValid3]    isValid]);
     XCTAssertFalse([[ImagesFieldValidator validateImageTag:tooLong]      isValid]);
