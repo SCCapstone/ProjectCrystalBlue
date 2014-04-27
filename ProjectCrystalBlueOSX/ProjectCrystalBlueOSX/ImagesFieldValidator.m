@@ -9,6 +9,8 @@
 #import "ImagesFieldValidator.h"
 #import "PrimitiveFieldValidator.h"
 
+#define ILLEGAL_TAG_CHARACTERS @"_'."
+
 @implementation ImagesFieldValidator
 
 +(ValidationResponse *)validateImageTag:(NSString *)imageTag
@@ -31,6 +33,9 @@
     NSMutableCharacterSet *validCharacters = [[NSMutableCharacterSet alloc] init];
 
     [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet alphanumericCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet whitespaceAndNewlineCharacterSet]];
+    [validCharacters formUnionWithCharacterSet:[NSMutableCharacterSet punctuationCharacterSet]];
+    [validCharacters removeCharactersInString:ILLEGAL_TAG_CHARACTERS];
 
     if (![PrimitiveFieldValidator validateField:imageTag
                             containsOnlyCharSet:validCharacters])

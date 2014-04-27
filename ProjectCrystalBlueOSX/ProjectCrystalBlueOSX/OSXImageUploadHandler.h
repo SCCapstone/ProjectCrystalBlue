@@ -13,11 +13,13 @@
 @class SamplePhotosWindowController;
 
 /// Delegate to handle image uploads from an OSXFileSelector.
-@interface OSXImageUploadHandler : NSObject <OSXFileSelectorDelegate>
+@interface OSXImageUploadHandler : NSObject
 
 @property Sample *sample;
 @property AbstractLibraryObjectStore *dataStore;
 @property NSString *tag;
 @property SamplePhotosWindowController *photosWindow;
+
+-(void)uploadImage:(NSImage *)imageToUpload;
 
 @end

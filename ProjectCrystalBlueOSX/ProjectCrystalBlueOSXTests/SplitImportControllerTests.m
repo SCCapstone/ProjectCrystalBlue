@@ -78,7 +78,7 @@
     
     SplitImportController *importController = [[SplitImportController alloc] init];
     [importController setLibraryObjectStore:objectStore];
-    [importController fileSelectorDidOpenFileAtPath:csvPath];
+    [importController fileSelectorDidOpenFileAtURL:[NSURL fileURLWithPath:csvPath]];
 
     [TestingUtils busyWaitForSeconds:0.2f];
 

@@ -19,7 +19,7 @@
 @synthesize tag;
 @synthesize photosWindow;
 
--(void)fileSelectorDidOpenFileAtPath:(NSString *)filePath
+-(void)uploadImage:(NSImage *)imageToUpload
 {
     // Make sure properties are correctly set
     if (!sample)
@@ -32,8 +32,6 @@
     LoadingSheet *loading = [[LoadingSheet alloc] init];
     [loading activateSheetWithParentWindow:photosWindow.window
                                    AndText:@"Uploading image. Please wait!"];
-
-    NSImage *imageToUpload = [[NSImage alloc] initWithData:[NSData dataWithContentsOfFile:filePath]];
 
     [SampleImageUtils addImage:imageToUpload
                      forSample:sample

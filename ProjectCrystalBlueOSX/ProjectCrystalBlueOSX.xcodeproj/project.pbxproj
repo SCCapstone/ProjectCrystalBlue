@@ -58,6 +58,8 @@
 		D706DDB218B0AC9D0023D2BF /* ProcedureNameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB118B0AC9D0023D2BF /* ProcedureNameConstants.m */; };
 		D706DDB518B0BB310023D2BF /* PrimitiveProcedures.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */; };
 		D706DDB818B0C8EF0023D2BF /* PrimitiveProcedureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */; };
+		D7115990190D930400088783 /* ImageTagInputWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711598E190D930400088783 /* ImageTagInputWindowController.m */; };
+		D7115991190D930400088783 /* ImageTagInputWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D711598F190D930400088783 /* ImageTagInputWindowController.xib */; };
 		D711C94D18C42CC300D637D7 /* AddNewSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711C94B18C42CC300D637D7 /* AddNewSampleWindowController.m */; };
 		D711C94E18C42CC300D637D7 /* AddNewSampleWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D711C94C18C42CC300D637D7 /* AddNewSampleWindowController.xib */; };
 		D7125EF118C4630B00BBCD3E /* ProceduresWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7125EEF18C4630B00BBCD3E /* ProceduresWindowController.m */; };
@@ -259,6 +261,9 @@
 		D706DDB318B0BB310023D2BF /* PrimitiveProcedures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveProcedures.h; sourceTree = "<group>"; };
 		D706DDB418B0BB310023D2BF /* PrimitiveProcedures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveProcedures.m; sourceTree = "<group>"; };
 		D706DDB718B0C8EF0023D2BF /* PrimitiveProcedureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveProcedureTests.m; sourceTree = "<group>"; };
+		D711598D190D930400088783 /* ImageTagInputWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTagInputWindowController.h; sourceTree = "<group>"; };
+		D711598E190D930400088783 /* ImageTagInputWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTagInputWindowController.m; sourceTree = "<group>"; };
+		D711598F190D930400088783 /* ImageTagInputWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageTagInputWindowController.xib; sourceTree = "<group>"; };
 		D711C94A18C42CC300D637D7 /* AddNewSampleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewSampleWindowController.h; sourceTree = "<group>"; };
 		D711C94B18C42CC300D637D7 /* AddNewSampleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewSampleWindowController.m; sourceTree = "<group>"; };
 		D711C94C18C42CC300D637D7 /* AddNewSampleWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewSampleWindowController.xib; sourceTree = "<group>"; };
@@ -614,6 +619,9 @@
 				D706CCAA18E63E7700F7762E /* SamplePhotosWindowController.h */,
 				D706CCAB18E63E7700F7762E /* SamplePhotosWindowController.m */,
 				D706CCAC18E63E7700F7762E /* SamplePhotosWindowController.xib */,
+				D711598D190D930400088783 /* ImageTagInputWindowController.h */,
+				D711598E190D930400088783 /* ImageTagInputWindowController.m */,
+				D711598F190D930400088783 /* ImageTagInputWindowController.xib */,
 			);
 			name = SamplePhotosWindow;
 			sourceTree = "<group>";
@@ -1339,6 +1347,7 @@
 				D0CED3C018E8E4D10031E996 /* SplitsWindowController.xib in Resources */,
 				D0CED3D618E8E7540031E996 /* SplitsDetailPanelViewController.xib in Resources */,
 				D0CED3C718E8E6DE0031E996 /* SplitsTableViewController.xib in Resources */,
+				D7115991190D930400088783 /* ImageTagInputWindowController.xib in Resources */,
 				D038CBCE18DBFC0E00635442 /* SamplesWindowController.xib in Resources */,
 				D711C94E18C42CC300D637D7 /* AddNewSampleWindowController.xib in Resources */,
 				D7439E2518A5FC53000EE008 /* MainMenu.xib in Resources */,
@@ -1457,6 +1466,7 @@
 				D09C7E9818B1A72A001B98AF /* SimpleDBUtils.m in Sources */,
 				D059F93418E560160024AA58 /* split.c in Sources */,
 				D038CBD318DC072400635442 /* SamplesTableViewController.m in Sources */,
+				D7115990190D930400088783 /* ImageTagInputWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

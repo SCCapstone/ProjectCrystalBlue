@@ -16,7 +16,7 @@
 @synthesize libraryObjectStore;
 @synthesize tableName;
 
--(void)fileSelectorDidOpenFileAtPath:(NSString *)filePath
+-(void)fileSelectorDidOpenFileAtURL:(NSURL *)fileURL
 {
     // Make sure properties are correctly set
     if (!fileReader || !libraryObjectStore || !tableName)
@@ -34,7 +34,7 @@
     dispatch_async(backgroundQueue, ^{
         [loading.progressIndicator setIndeterminate:NO];
 
-        NSArray* libraryObjects = [fileReader readFromFileAtPath:filePath];
+        NSArray* libraryObjects = [fileReader readFromFileAtPath:[fileURL path]];
         [loading.progressIndicator incrementBy:20.00];
         ImportResult *result = [self validateObjects:libraryObjects];
         [loading.progressIndicator incrementBy:30.00];
