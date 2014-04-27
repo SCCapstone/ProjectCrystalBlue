@@ -38,7 +38,7 @@
     [loading.progressIndicator incrementBy:30.00];
 
     if (![result hasError]) {
-        [result setSuccessfulImportsCount:libraryObjects.count];
+        [result setSuccessfulImportsCount:(libraryObjects.count - result.duplicateKeys.count)];
         [self addLibraryObjectsToStore:libraryObjects];
     }
 

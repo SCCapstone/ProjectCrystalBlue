@@ -51,13 +51,14 @@
                 [info appendFormat:@", %@", [keysOfInvalidLibraryObjects objectAtIndex:i]];
             }
         }
+    }
 
-        if (self.duplicateKeys.count > 0) {
-            [info appendString:@"\n\nWarning - there were multiple occurances of the following keys:\n\n"];
-            [info appendFormat:@"%@", [duplicateKeys firstObject]];
-            for (NSUInteger i = 1; i < duplicateKeys.count; ++i) {
-                [info appendFormat:@", %@", [duplicateKeys objectAtIndex:i]];
-            }
+    /* duplicate keys don't cause an import to fail, but we should still report them */
+    if (self.duplicateKeys.count > 0) {
+        [info appendString:@"\n\nWarning - there were multiple occurances of the following keys:\n\n"];
+        [info appendFormat:@"%@", [duplicateKeys firstObject]];
+        for (NSUInteger i = 1; i < duplicateKeys.count; ++i) {
+            [info appendFormat:@", %@", [duplicateKeys objectAtIndex:i]];
         }
     }
 
