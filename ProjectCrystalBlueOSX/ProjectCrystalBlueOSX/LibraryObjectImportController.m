@@ -57,6 +57,27 @@
     return nil;
 }
 
+-(void)validateHeadersInRepresentativeObject:(LibraryObject *)representative
+                      againstExpectedHeaders:(NSArray *)expectedHeaders
+                            withImportResult:(ImportResult *)result
+{
+    // First, find any unexpected headers present in the object.
+    NSArray *actualHeaders = representative.attributes.allKeys;
+    for (NSString *header in actualHeaders) {
+        if (![expectedHeaders containsObject:header]) {
+            result.hasError = YES;
+            [result.unexpectedHeaders addObject:header];
+        }
+    }
+    // Next, make sure that all expected headers are present.
+    for (NSString *header in expectedHeaders) {
+        if (![actualHeaders containsObject:header]) {
+            result.hasError = YES;
+            [result.missingHeaders addObject:header];
+        }
+    }
+}
+
 -(void)addLibraryObjectsToStore:(NSArray *)libraryObjects
 {
     for (LibraryObject *obj in libraryObjects) {

@@ -27,8 +27,11 @@
 -(ImportResult *)validateObjects:(NSArray *)libraryObjects
 {
     ImportResult *result = [[ImportResult alloc] init];
-    BOOL validationErrors = NO;
     NSMutableSet *keysEncountered = [[NSMutableSet alloc] initWithCapacity:libraryObjects.count];
+
+    [self validateHeadersInRepresentativeObject:[libraryObjects firstObject]
+                         againstExpectedHeaders:[SampleConstants attributeNames]
+                               withImportResult:result];
 
     for (Sample *sample in libraryObjects)
     {
@@ -89,11 +92,10 @@
 
         if (!sampleIsValid) {
             [result.keysOfInvalidLibraryObjects addObject:sample.key];
-            validationErrors = YES;
+            result.hasError = YES;
         }
     }
 
-    [result setHasError:validationErrors];
     return result;
 }
 
