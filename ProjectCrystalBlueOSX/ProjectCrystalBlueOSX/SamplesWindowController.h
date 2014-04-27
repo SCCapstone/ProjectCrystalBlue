@@ -31,4 +31,6 @@
 - (IBAction)setSearchCategoryFrom:(NSMenuItem *)menuItem;
 - (IBAction)searchSamples:(id)sender;
 
+- (void)openCredentialsWindow;
+
 @end

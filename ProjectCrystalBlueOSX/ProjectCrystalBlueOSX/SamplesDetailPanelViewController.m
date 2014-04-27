@@ -47,6 +47,9 @@
         [self.imageCell setImage:[sampleImages firstObject]];
     
     [self setupGoogleMapsHyperlink];
+    
+    // Make sure hyperlinks are formatted
+    [self formatHyperlinks];
 }
 
 - (void)setSample:(Sample *)newSample
@@ -70,7 +73,15 @@
         
         [self addObserversToSelectedSample];
         [self setupGoogleMapsHyperlink];
+        
+        // Make sure hyperlinks are formatted
+        [self performSelector:@selector(formatHyperlinks) withObject:nil afterDelay:0.0];
     }
+}
+
+- (void)formatHyperlinks
+{
+    [self.hyperlinksTextView checkTextInDocument:nil];
 }
 
 - (void)setDateCollected:(NSDate *)newDateCollected
@@ -126,6 +137,10 @@
             [sample.attributes setObject:@"N/A" forKey:SMP_DEPOSYSTEM];
             
         [sample.attributes setObject:@"" forKey:SMP_LITHOLOGY];
+    }
+    else if ([attr isEqualToString:SMP_HYPERLINKS]) {
+        // Make sure hyperlinks are formatted
+        [self formatHyperlinks];
     }
     
     [dataStore updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
@@ -196,7 +211,7 @@
         [googleMapsLink setAllowsEditingTextAttributes:YES];
         [googleMapsLink setSelectable:YES];
         
-        NSString *stringUrl = [NSString stringWithFormat:@"https://www.google.com/maps/preview/@%@,%@,8z", latitude, longitude];
+        NSString *stringUrl = [NSString stringWithFormat:@"https://maps.google.com/maps?q=%@,%@", latitude, longitude];
         NSURL *url = [NSURL URLWithString:[stringUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         NSString *label = @"Google Maps Link";
         

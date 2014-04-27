@@ -113,7 +113,7 @@
                                                 <outlet property="dataSource" destination="-2" id="1Ng-Qk-Ji0"/>
                                             </connections>
                                         </comboBoxCell>
-                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.TYPE"/>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.ROCK_TYPE"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
                                             <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.ROCK_TYPE" id="QkN-3D-oTZ">
@@ -520,7 +520,7 @@
                 <string>key</string>
                 <string>attributes.REGION</string>
                 <string>attributes.CONTINENT</string>
-                <string>attributes.TYPE</string>
+                <string>attributes.ROCK_TYPE</string>
                 <string>attributes.LITHOLOGY</string>
                 <string>attributes.LOCALITY</string>
                 <string>attributes.LATITUDE</string>

@@ -49,11 +49,13 @@ NSString *passwordError =
     }
 }
 
-- (IBAction)cancelButtonPressed:(id)sender {
+- (IBAction)cancelButtonPressed:(id)sender
+{
     [self.window close];
 }
 
-- (IBAction)okButtonPressed:(id)sender {
+- (IBAction)okButtonPressed:(id)sender
+{
     if (self.awsAccessKeyField.stringValue.length > 0 &&
         self.awsSecretKeyField.stringValue.length > 0)
     {
