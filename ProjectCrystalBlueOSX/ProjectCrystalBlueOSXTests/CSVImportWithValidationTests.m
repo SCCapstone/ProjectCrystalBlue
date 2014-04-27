@@ -60,7 +60,7 @@ NSString *dbPath;
     [importController setLibraryObjectStore:objectStore];
     [importController setTableName:[SampleConstants tableName]];
 
-    [importController fileSelectorDidOpenFileAtPath:testPath];
+    [importController fileSelectorDidOpenFileAtURL:[NSURL fileURLWithPath:testPath]];
 
     [TestingUtils busyWaitForSeconds:0.5f];
 
@@ -80,7 +80,7 @@ NSString *dbPath;
     [importController setLibraryObjectStore:objectStore];
     [importController setTableName:[SplitConstants tableName]];
 
-    [importController fileSelectorDidOpenFileAtPath:testPath];
+    [importController fileSelectorDidOpenFileAtURL:[NSURL fileURLWithPath:testPath]];
 
     [TestingUtils busyWaitForSeconds:0.5f];
 
@@ -100,7 +100,7 @@ NSString *dbPath;
     [importController setLibraryObjectStore:objectStore];
     [importController setTableName:[SampleConstants tableName]];
 
-    [importController fileSelectorDidOpenFileAtPath:testPath];
+    [importController fileSelectorDidOpenFileAtURL:[NSURL fileURLWithPath:testPath]];
 
     [TestingUtils busyWaitForSeconds:0.5f];
 

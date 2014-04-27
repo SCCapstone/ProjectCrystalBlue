@@ -16,7 +16,7 @@
 @synthesize libraryObjectStore;
 @synthesize tableName;
 
--(void)fileSelectorDidOpenFileAtPath:(NSString *)filePath
+-(void)fileSelectorDidOpenFileAtURL:(NSURL *)fileURL
 {
     // Make sure properties are correctly set
     if (!fileReader || !libraryObjectStore || !tableName)
@@ -30,22 +30,19 @@
     [loading activateSheetWithParentWindow:[NSApp keyWindow]
                                    AndText:@"Importing CSV file. This may take a few minutes for large files."];
 
-    dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(backgroundQueue, ^{
-        [loading.progressIndicator setIndeterminate:NO];
+    [loading.progressIndicator setIndeterminate:NO];
 
-        NSArray* libraryObjects = [fileReader readFromFileAtPath:filePath];
-        [loading.progressIndicator incrementBy:20.00];
-        ImportResult *result = [self validateObjects:libraryObjects];
-        [loading.progressIndicator incrementBy:30.00];
-    
-        if (![result hasError]) {
-            [self addLibraryObjectsToStore:libraryObjects];
-            [loading.progressIndicator incrementBy:50.00];
-        }
-        [loading closeSheet];
-        [importResultReporter displayResults:result];
-    });
+    NSArray* libraryObjects = [fileReader readFromFileAtPath:[fileURL path]];
+    [loading.progressIndicator incrementBy:20.00];
+    ImportResult *result = [self validateObjects:libraryObjects];
+    [loading.progressIndicator incrementBy:30.00];
+
+    if (![result hasError]) {
+        [self addLibraryObjectsToStore:libraryObjects];
+        [loading.progressIndicator incrementBy:50.00];
+    }
+    [loading closeSheet];
+    [importResultReporter displayResults:result];
 }
 
 -(ImportResult *)validateObjects:(NSArray *)libraryObjects

@@ -11,6 +11,7 @@
 #import "SampleImageUtils.h"
 #import "OSXFileSelector.h"
 #import "OSXImageUploadHandler.h"
+#import "ImageTagInputWindowController.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -23,7 +24,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @end
 
-@implementation SamplePhotosWindowController
+@implementation SamplePhotosWindowController {
+    NSWindowController *imageTagInputWindowController;
+}
 
 @synthesize sample;
 @synthesize dataStore;
@@ -89,13 +92,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (IBAction)addPhoto:(id)sender {
-    OSXFileSelector *imageSelector = [OSXFileSelector ImageFileSelector];
-    OSXImageUploadHandler *imageUploadHandler = [[OSXImageUploadHandler alloc] init];
+    imageTagInputWindowController = [[ImageTagInputWindowController alloc] initWithWindowNibName:@"ImageTagInputWindowController"];
 
+    OSXImageUploadHandler *imageUploadHandler = [[OSXImageUploadHandler alloc] init];
     [imageUploadHandler setSample:sample];
     [imageUploadHandler setDataStore:dataStore];
     [imageUploadHandler setPhotosWindow:self];
-    [imageSelector setDelegate:imageUploadHandler];
+    [(ImageTagInputWindowController *)imageTagInputWindowController setImageUploadHandler:imageUploadHandler];
+
+    [imageTagInputWindowController showWindow:self];
+
+    OSXFileSelector *imageSelector = [OSXFileSelector ImageFileSelector];
+    [imageSelector setDelegate:(ImageTagInputWindowController *)imageTagInputWindowController];
     [imageSelector presentFileSelectorToUser];
 }
 
