@@ -197,8 +197,8 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
 
 + (NSArray *)rockTypes
 {
-    return [NSArray arrayWithObjects: @"Siliciclastic", @"Carbonate", @"Authigenic", @"Other Sedimentary", @"Plutonic",
-            @"Volcanic", @"Other Igneous", @"Metasedimentary", @"Metaigneous", @"Other Metamorphic", @"Fossil", @"Unknown", nil];
+    return [NSArray arrayWithObjects: @"siliciclastic", @"carbonate", @"authigenic", @"other sedimentary", @"plutonic",
+            @"volcanic", @"other igneous", @"metasedimentary", @"metaigneous", @"other metamorphic", @"fossil", @"unknown", nil];
 }
 
 + (NSArray *)lithologiesForRockType:(NSString *)rockType
@@ -206,33 +206,33 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
     rockType = [rockType lowercaseString];
     
     if ([rockType isEqualToString:@"siliciclastic"]) {
-        return [NSArray arrayWithObjects: @"Conglomerate", @"Breccia", @"Sandstone", @"Mudstone", @"Gravel",
-                @"Sand", @"Mud", @"Other", @"Unknown", nil];
+        return [NSArray arrayWithObjects: @"conglomerate", @"breccia", @"sandstone", @"mudstone", @"gravel",
+                @"sand", @"mud", @"other", @"unknown", nil];
     }
     else if ([rockType isEqualToString:@"carbonate"]) {
-        return [NSArray arrayWithObjects: @"Marl", @"Micrite", @"Wackestone", @"Packstone", @"Grainstone",
-                @"Boundstone", @"Other", @"Unknown", nil];
+        return [NSArray arrayWithObjects: @"marl", @"micrite", @"wackestone", @"packstone", @"grainstone",
+                @"boundstone", @"other", @"unknown", nil];
     }
     else if ([rockType isEqualToString:@"authigenic"]) {
-        return [NSArray arrayWithObjects: @"Glauconite", @"Other", @"Unknown", nil];
+        return [NSArray arrayWithObjects: @"glauconite", @"other", @"unknown", nil];
     }
     else if ([rockType isEqualToString:@"plutonic"]) {
-        return [NSArray arrayWithObjects: @"Granitoid", @"Granite", @"Granodiorite", @"Tonalite", @"Diorite",
-                @"Gabbro", @"Monzonite", @"Syenite", @"Other", @"Unknown", nil];
+        return [NSArray arrayWithObjects: @"granitoid", @"granite", @"granodiorite", @"gonalite", @"diorite",
+                @"gabbro", @"monzonite", @"syenite", @"other", @"unknown", nil];
     }
     else if ([rockType isEqualToString:@"volcanic"]) {
-        return [NSArray arrayWithObjects: @"Ash", @"Rhyolite", @"Dacite", @"Andesite", @"Basalt", @"Trachyte", @"Other", @"Unknown", nil];
+        return [NSArray arrayWithObjects: @"ash", @"rhyolite", @"dacite", @"andesite", @"basalt", @"trachyte", @"other", @"unknown", nil];
     }
     else if ([rockType isEqualToString:@"metasedimentary"]) {
-        return [NSArray arrayWithObjects: @"Slate", @"Phyllite", @"Schist", @"Gneiss", @"Quartzite", @"Marble", @"Other", @"Unknown", nil];
+        return [NSArray arrayWithObjects: @"slate", @"phyllite", @"schist", @"gneiss", @"quartzite", @"marble", @"other", @"unknown", nil];
     }
     else if ([rockType isEqualToString:@"metaigneous"]) {
-        return [NSArray arrayWithObjects: @"Felsic Orthoschist", @"Felsic Orthogneiss", @"Intermediate Orthoschist",
-                @"Intermediate Orthogneiss", @"Amphibolite", @"Other", @"Unknown", nil];
+        return [NSArray arrayWithObjects: @"felsic orthoschist", @"felsic orthogneiss", @"intermediate orthoschist",
+                @"intermediate orthogneiss", @"amphibolite", @"other", @"unknown", nil];
     }
     else if ([rockType isEqualToString:@"fossil"]) {
-        return [NSArray arrayWithObjects:@"Conglomerate", @"Sandstone", @"Mudstone", @"Marl", @"Micrite", @"Wackestone",
-                @"Packstone", @"Grainstone", @"Other", @"Unknown", nil];
+        return [NSArray arrayWithObjects:@"conglomerate", @"sandstone", @"mudstone", @"marl", @"micrite", @"wackestone",
+                @"packstone", @"grainstone", @"other", @"unknown", nil];
     }
     else {
         return nil;
@@ -244,16 +244,16 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
     rockType = [rockType lowercaseString];
     
     if ([rockType isEqualToString:@"siliciclastic"]) {
-        return [NSArray arrayWithObjects: @"Alluvial Fan", @"Fluvial Megafan", @"Meandering Fluvial", @"Alpine Glacial", @"Ice Sheet",
-                @"Lacustrine", @"Eolian", @"Deltaic", @"Estuarine", @"Shallow Marine", @"Shelf", @"Pelagic", @"Submarine Fan", @"Unknown", nil];
+        return [NSArray arrayWithObjects: @"alluvial fan", @"fluvial megafan", @"meandering fluvial", @"alpine glacial", @"ice sheet",
+                @"lacustrine", @"eolian", @"deltaic", @"estuarine", @"shallow marine", @"shelf", @"pelagic", @"submarine fan", @"unknown", nil];
     }
     else if ([rockType isEqualToString:@"carbonate"]) {
-        return [NSArray arrayWithObjects: @"Carbonate Platform", @"Carbonate Reef", @"Pelagic", @"Eolian", @"Unknown", nil];
+        return [NSArray arrayWithObjects: @"carbonate platform", @"carbonate reef", @"pelagic", @"eolian", @"unknown", nil];
     }
     else if ([rockType isEqualToString:@"fossil"]) {
-        return [NSArray arrayWithObjects: @"Alluvial Fan", @"Fluvial Megafan", @"Meandering Fluvial", @"Alpine Glacial", @"Ice Sheet",
-                @"Lacustrine", @"Eolian", @"Deltaic", @"Estuarine", @"Shallow Marine", @"Shelf", @"Pelagic", @"Submarine Fan",
-                @"Carbonate Platform", @"Carbonate Reef", @"Pelagic", @"Eolian", @"Unknown", nil];
+        return [NSArray arrayWithObjects: @"alluvial fan", @"fluvial megafan", @"meandering fluvial", @"alpine glacial", @"ice sheet",
+                @"lacustrine", @"eolian", @"deltaic", @"estuarine", @"shallow marine", @"shelf", @"pelagic", @"submarine fan",
+                @"carbonate platform", @"carbonate reef", @"pelagic", @"eolian", @"unknown", nil];
     }
     else {
         return nil;
@@ -262,8 +262,8 @@ static NSString *const SAMPLE_TABLE_NAME = @"prod_sample_table";
 
 + (NSArray *)ageMethods
 {
-    return [NSArray arrayWithObjects: @"Biostratigraphy", @"Magnetostratigraphy", @"Chemostratigraphy", @"Geochronology",
-            @"Thermochronology", @"Other", @"None", nil];
+    return [NSArray arrayWithObjects: @"biostratigraphy", @"magnetostratigraphy", @"chemostratigraphy", @"geochronology",
+            @"thermochronology", @"other", @"none", nil];
 }
 
 @end
