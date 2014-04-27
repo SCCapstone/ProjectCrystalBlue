@@ -16,6 +16,7 @@
 }
 
 - (IBAction)clearLocalDatabase:(id)sender;
+- (IBAction)changeAmazonCredentials:(id)sender;
 - (IBAction)showImagesInFinder:(id)sender;
 
 @end

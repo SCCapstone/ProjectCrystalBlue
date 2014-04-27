@@ -41,6 +41,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [NSApp terminate:nil];
 }
 
+- (IBAction)changeAmazonCredentials:(id)sender
+{
+    [samplesWindowController openCredentialsWindow];
+}
+
 - (IBAction)showImagesInFinder:(id)sender
 {
     [[NSWorkspace sharedWorkspace] selectFile:[FileSystemUtils localImagesDirectory] inFileViewerRootedAtPath:@""];

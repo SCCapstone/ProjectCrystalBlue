@@ -109,20 +109,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [reach startNotifier];
     if (![reach isReachable])
         [syncToolbarButton setEnabled:NO];
-
-
-    // Display credentials input window
-    CredentialsInputWindowController *credentialsInput = [[CredentialsInputWindowController alloc] initWithWindowNibName:@"CredentialsInputWindowController"];
-    [credentialsInput setDataStore:dataStore];
-
-    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-
-    [activeWindowControllers addObject:credentialsInput];
-    [credentialsInput showWindow:self];
-    [credentialsInput.window center];
-    // The delayed call is necessary because otherwise the samples window will appear in front. The delay of 0.0
-    // just means that it will be deferred until the very next run loop.
-    [credentialsInput.window performSelector:@selector(makeKeyAndOrderFront:) withObject:nil afterDelay:0.0];
+    
+    [self openCredentialsWindow];
 }
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex
@@ -153,7 +141,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [splitView adjustSubviews];
 }
 
-- (void)windowWillClose:(NSNotification *)notification {
+- (void)windowWillClose:(NSNotification *)notification
+{
     [NSApp terminate:self];
 }
 
@@ -174,6 +163,22 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL)validateToolbarItem:(NSToolbarItem *)item
 {
     return [item isEnabled];
+}
+
+- (void)openCredentialsWindow
+{
+    // Display credentials input window
+    CredentialsInputWindowController *credentialsInput = [[CredentialsInputWindowController alloc] initWithWindowNibName:@"CredentialsInputWindowController"];
+    [credentialsInput setDataStore:dataStore];
+    
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    
+    [activeWindowControllers addObject:credentialsInput];
+    [credentialsInput showWindow:self];
+    [credentialsInput.window center];
+    // The delayed call is necessary because otherwise the samples window will appear in front. The delay of 0.0
+    // just means that it will be deferred until the very next run loop.
+    [credentialsInput.window performSelector:@selector(makeKeyAndOrderFront:) withObject:nil afterDelay:0.0];
 }
 
 
