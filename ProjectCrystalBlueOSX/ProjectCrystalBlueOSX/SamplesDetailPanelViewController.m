@@ -129,9 +129,9 @@
         [self setupGoogleMapsHyperlink];
     else if ([attr isEqualToString:SMP_TYPE]) {
         NSString *rockType = [sample.attributes objectForKey:SMP_TYPE];
-        if ([rockType isEqualToString:@"Siliciclastic"] || [rockType isEqualToString:@"Carbonate"] ||
-                [rockType isEqualToString:@"Authigenic"] || [rockType isEqualToString:@"Volcanic"] ||
-                [rockType isEqualToString:@"Fossil"])
+        if ([rockType isEqualToString:@"siliciclastic"] || [rockType isEqualToString:@"carbonate"] ||
+                [rockType isEqualToString:@"authigenic"] || [rockType isEqualToString:@"volcanic"] ||
+                [rockType isEqualToString:@"fossil"])
             [sample.attributes setObject:@"" forKey:SMP_DEPOSYSTEM];
         else
             [sample.attributes setObject:@"N/A" forKey:SMP_DEPOSYSTEM];
