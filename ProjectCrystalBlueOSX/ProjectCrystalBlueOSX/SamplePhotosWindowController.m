@@ -145,7 +145,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (IBAction)previousPhoto:(id)sender {
-    currentPhotoIndex = (currentPhotoIndex - 1) % imageKeys.count;
+    if (currentPhotoIndex == 0) {
+        currentPhotoIndex = imageKeys.count - 1;
+    } else {
+        currentPhotoIndex = (currentPhotoIndex - 1) % imageKeys.count;
+    }
     [self displayImageAtIndex:currentPhotoIndex];
 }
 
