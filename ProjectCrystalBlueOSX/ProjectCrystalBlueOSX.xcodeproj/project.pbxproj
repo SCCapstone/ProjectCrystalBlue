@@ -162,6 +162,7 @@
 		D7EDA6A018FCE5BA00DFB93A /* CredentialsEncryptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDA69F18FCE5BA00DFB93A /* CredentialsEncryptionTests.m */; };
 		D7EDA6A218FCE7B100DFB93A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EDA6A118FCE7B100DFB93A /* Security.framework */; };
 		D7EDA6A318FCE7C200DFB93A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EDA6A118FCE7B100DFB93A /* Security.framework */; };
+		D7F77CD8190DE631007F4ED4 /* PCBLogWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F77CD7190DE631007F4ED4 /* PCBLogWrapper.m */; };
 		D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */; };
 		D7FAAD7718DE1342003A9A13 /* PrimitiveValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */; };
 		D7FAAD7A18DE1A1B003A9A13 /* SplitFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FAAD7918DE1A1B003A9A13 /* SplitFieldValidator.m */; };
@@ -428,6 +429,8 @@
 		D7D0358118B2E71E00F76CC5 /* LibraryObjectEqualsAndHashcodeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryObjectEqualsAndHashcodeTests.m; sourceTree = "<group>"; };
 		D7EDA69F18FCE5BA00DFB93A /* CredentialsEncryptionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialsEncryptionTests.m; sourceTree = "<group>"; };
 		D7EDA6A118FCE7B100DFB93A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D7F77CD6190DE631007F4ED4 /* PCBLogWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCBLogWrapper.h; sourceTree = "<group>"; };
+		D7F77CD7190DE631007F4ED4 /* PCBLogWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCBLogWrapper.m; sourceTree = "<group>"; };
 		D7FAAD7218DE10AD003A9A13 /* PrimitiveFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveFieldValidator.h; sourceTree = "<group>"; };
 		D7FAAD7318DE10AD003A9A13 /* PrimitiveFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveFieldValidator.m; sourceTree = "<group>"; };
 		D7FAAD7618DE1342003A9A13 /* PrimitiveValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveValidatorTests.m; sourceTree = "<group>"; };
@@ -972,6 +975,8 @@
 			children = (
 				D7A0BD8D18FB187300282714 /* FileSystem */,
 				D78ACC3018A5FDAE006084D6 /* FMDB */,
+				D7F77CD6190DE631007F4ED4 /* PCBLogWrapper.h */,
+				D7F77CD7190DE631007F4ED4 /* PCBLogWrapper.m */,
 				D78ACC4018A5FDC8006084D6 /* Lumberjack */,
 				D059F91518E5600F0024AA58 /* QR Code Generator */,
 				D7FAAD7118DE1040003A9A13 /* Validation */,
@@ -1481,6 +1486,7 @@
 				D0C2196E18AAF73500DF9CB7 /* TransactionConstants.m in Sources */,
 				D78ACC3E18A5FDC0006084D6 /* FMDatabaseQueue.m in Sources */,
 				D038CBCC18DBFBF400635442 /* SamplesWindowController.m in Sources */,
+				D7F77CD8190DE631007F4ED4 /* PCBLogWrapper.m in Sources */,
 				D7CCCEBD18E538EE009D0308 /* ValidationResponse.m in Sources */,
 				D78ACC5218A5FDE9006084D6 /* ImageUtils.m in Sources */,
 				D7FAAD7418DE10AD003A9A13 /* PrimitiveFieldValidator.m in Sources */,

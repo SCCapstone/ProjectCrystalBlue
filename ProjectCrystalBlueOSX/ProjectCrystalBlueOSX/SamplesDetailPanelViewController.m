@@ -11,6 +11,7 @@
 #import "Sample.h"
 #import "SampleImageUtils.h"
 #import "AbstractCloudLibraryObjectStore.h"
+#import "PCBLogWrapper.h"
 
 @interface SamplesDetailPanelViewController ()
 {

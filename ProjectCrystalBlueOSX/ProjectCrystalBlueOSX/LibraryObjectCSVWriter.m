@@ -8,18 +8,11 @@
 
 #import "LibraryObjectCSVWriter.h"
 #import "LibraryObject.h"
-#import "DDLog.h"
 #import "Sample.h"
 #import "SampleConstants.h"
 #import "Split.h"
 #import "SplitConstants.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
-
+#import "PCBLogWrapper.h"
 
 @implementation LibraryObjectCSVWriter
 

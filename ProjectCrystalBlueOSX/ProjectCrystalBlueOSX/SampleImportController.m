@@ -11,6 +11,7 @@
 #import "SampleConstants.h"
 #import "Sample.h"
 #import "SampleFieldValidator.h"
+#import "PCBLogWrapper.h"
 
 @implementation SampleImportController
 

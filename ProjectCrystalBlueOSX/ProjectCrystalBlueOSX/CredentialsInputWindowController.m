@@ -9,6 +9,7 @@
 #import "CredentialsInputWindowController.h"
 #import "LocalEncryptedCredentialsProvider.h"
 #import "SimpleDBLibraryObjectStore.h"
+#import "PCBLogWrapper.h"
 
 @interface CredentialsInputWindowController ()
 

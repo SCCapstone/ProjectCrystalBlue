@@ -9,6 +9,7 @@
 #import "ConflictResolution.h"
 #import "LibraryObject.h"
 #import "Transaction.h"
+#import "PCBLogWrapper.h"
 
 @implementation ConflictResolution
 

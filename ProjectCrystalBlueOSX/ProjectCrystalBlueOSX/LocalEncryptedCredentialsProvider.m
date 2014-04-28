@@ -11,6 +11,7 @@
 #import "CredentialsInputWindowController.h"
 #import "CredentialsEncryption.h"
 #import "FileSystemUtils.h"
+#import "PCBLogWrapper.h"
 
 #define filename @"credentials"
 

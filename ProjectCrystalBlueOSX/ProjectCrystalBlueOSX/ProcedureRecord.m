@@ -7,6 +7,8 @@
 //
 
 #import "ProcedureRecord.h"
+#import "PCBLogWrapper.h"
+
 #define INTERNAL_DELIMITER @"|"
 
 @implementation ProcedureRecord

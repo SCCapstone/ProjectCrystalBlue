@@ -9,6 +9,7 @@
 #import "ProcedureRecordParser.h"
 #import "ProcedureNameConstants.h"
 #import "ProcedureRecord.h"
+#import "PCBLogWrapper.h"
 
 @implementation ProcedureRecordParser
 

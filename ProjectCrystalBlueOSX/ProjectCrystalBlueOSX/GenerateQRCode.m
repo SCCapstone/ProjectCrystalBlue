@@ -7,6 +7,7 @@
 //
 
 #import "GenerateQRCode.h"
+#import "PCBLogWrapper.h"
 
 @implementation GenerateQRCode
 

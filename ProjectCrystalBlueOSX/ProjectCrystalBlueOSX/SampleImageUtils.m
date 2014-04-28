@@ -12,12 +12,7 @@
 #import "Sample.h"
 #import "SampleConstants.h"
 #import "FileSystemUtils.h"
-#import "DDLog.h"
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
+#import "PCBLogWrapper.h"
 
 /* 
  *  General format used is:

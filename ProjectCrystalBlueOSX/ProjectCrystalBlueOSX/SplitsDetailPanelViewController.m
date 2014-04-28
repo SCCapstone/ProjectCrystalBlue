@@ -12,6 +12,7 @@
 #import "ProcedureRecord.h"
 #import "ProcedureRecordParser.h"
 #import "ProcedureNameConstants.h"
+#import "PCBLogWrapper.h"
 
 @interface SplitsDetailPanelViewController ()
 

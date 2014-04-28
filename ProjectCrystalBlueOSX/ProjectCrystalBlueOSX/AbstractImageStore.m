@@ -10,6 +10,7 @@
 //
 
 #import "AbstractImageStore.h"
+#import "PCBLogWrapper.h"
 
 #define CLASS_NAME @"AbstractImageStore"
 

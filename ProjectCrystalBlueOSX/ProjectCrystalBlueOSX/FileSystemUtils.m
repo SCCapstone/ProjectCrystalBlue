@@ -7,6 +7,7 @@
 //
 
 #import "FileSystemUtils.h"
+#import "PCBLogWrapper.h"
 
 #define APP_SUPPORT_DIR @"Application Support"
 #define APP_NAME @"CrystalBlue"

@@ -10,7 +10,7 @@
 //
 
 #import "AbstractCloudImageStore.h"
-#import "DDLog.h"
+#import "PCBLogWrapper.h"
 
 #define CLASS_NAME @"AbstractCloudImageStore"
 

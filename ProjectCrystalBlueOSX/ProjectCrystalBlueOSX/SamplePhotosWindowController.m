@@ -12,13 +12,7 @@
 #import "OSXFileSelector.h"
 #import "OSXImageUploadHandler.h"
 #import "ImageTagInputWindowController.h"
-#import "DDLog.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
+#import "PCBLogWrapper.h"
 
 @interface SamplePhotosWindowController ()
 

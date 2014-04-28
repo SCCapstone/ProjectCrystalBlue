@@ -9,6 +9,7 @@
 #import "Split.h"
 #import "ValidationResponse.h"
 #import "SplitFieldValidator.h"
+#import "PCBLogWrapper.h"
 
 @implementation Split
 
