@@ -63,6 +63,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void)deleteSplitWithKey:(NSString *)key
 {
     DDLogInfo(@"Deleting split with key \"%@\"", key);
+    Split *split = (Split *)[dataStore getLibraryObjectForKey:key FromTable:[SplitConstants tableName]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DecrementSampleNotification"
+                                                        object:self
+                                                      userInfo:@{ @"sampleKey": [split sampleKey] }];
+    
     [dataStore deleteLibraryObjectWithKey:key FromTable:[SplitConstants tableName]];
 }
 

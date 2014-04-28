@@ -52,6 +52,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     Split *newSplit = [[Split alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
     [store putLibraryObject:newSplit IntoTable:tableName];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"IncrementSampleNotification"
+                                                        object:self
+                                                      userInfo:@{ @"sampleKey": [newSplit sampleKey] }];
 }
 
 +(void)appendToSplitInPlace:(Split *)modifiedSplit
@@ -72,6 +76,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [[modifiedSplit attributes] setObject:newTagList forKey:SPL_TAGS];
     [[modifiedSplit attributes] setObject:[self lastProcedureFromProcedureRecord:newProcedureRecord] forKey:SPL_LAST_PROC];
     [store updateLibraryObject:modifiedSplit IntoTable:tableName];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"IncrementSampleNotification"
+                                                        object:self
+                                                      userInfo:@{ @"sampleKey": [modifiedSplit sampleKey] }];
 }
 
 +(void)appendToCloneOfSplit:(Split *)original
@@ -99,6 +107,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     Split *newSplit = [[Split alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
     [store putLibraryObject:newSplit IntoTable:tableName];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"IncrementSampleNotification"
+                                                        object:self
+                                                      userInfo:@{ @"sampleKey": [newSplit sampleKey] }];
 }
 
 /**

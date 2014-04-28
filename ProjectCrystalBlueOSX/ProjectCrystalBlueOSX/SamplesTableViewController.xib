@@ -25,11 +25,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="2356" height="507"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="a7G-OY-FNR">
-                        <rect key="frame" x="1" y="17" width="2354" height="489"/>
+                        <rect key="frame" x="1" y="17" width="2354" height="474"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveColumns="NO" headerView="ClV-ij-aSA" id="UTf-Bo-kV3">
-                                <rect key="frame" x="0.0" y="0.0" width="2364" height="489"/>
+                                <rect key="frame" x="0.0" y="0.0" width="2477" height="474"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -55,6 +55,23 @@
                                                     <bool key="NSConditionallySetsEditable" value="YES"/>
                                                 </dictionary>
                                             </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn width="110" minWidth="10" maxWidth="3.4028234663852886e+38" id="zL4-uD-Va7">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Number of Splits">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="WMQ-us-TuI">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.REGION"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.NUM_SPLITS" id="4Bw-mh-0kP"/>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn width="113.734375" minWidth="10" maxWidth="3.4028234663852886e+38" id="5cw-Ej-mH1">
@@ -495,7 +512,7 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="ng3-N9-fuj">
-                        <rect key="frame" x="1" y="490" width="2354" height="16"/>
+                        <rect key="frame" x="1" y="491" width="2354" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="qT8-MV-OWx">
@@ -503,7 +520,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="ClV-ij-aSA">
-                        <rect key="frame" x="0.0" y="0.0" width="2364" height="17"/>
+                        <rect key="frame" x="0.0" y="0.0" width="2477" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>

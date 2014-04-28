@@ -58,6 +58,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                                              WithDatabaseName:@"ProjectCrystalBlueLocalData"];
         
         activeWindowControllers = [[NSMutableArray alloc] init];
+        
+        // Add increment/decrement sample observers
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(incrementSampleCount:) name:@"IncrementSampleNotification" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(decrementSampleCount:) name:@"DecrementSampleNotification" object:nil];
     }
     
     return self;
@@ -179,6 +183,35 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     // The delayed call is necessary because otherwise the samples window will appear in front. The delay of 0.0
     // just means that it will be deferred until the very next run loop.
     [credentialsInput.window performSelector:@selector(makeKeyAndOrderFront:) withObject:nil afterDelay:0.0];
+}
+
+/*  NSNotifications
+ */
+
+- (void)incrementSampleCount:(NSNotification *)notification
+{
+    NSString *sampleKey = [notification.userInfo objectForKey:@"sampleKey"];
+    Sample *sample = (Sample *)[dataStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]];
+    
+    NSNumber *count = [sample.attributes objectForKey:SMP_NUM_SPLITS];
+    count = [NSNumber numberWithInt:[count intValue] + 1];
+    [sample.attributes setObject:count.stringValue forKey:SMP_NUM_SPLITS];
+    [dataStore updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
+    
+    [tableViewController updateDisplayedSamples];
+}
+
+- (void)decrementSampleCount:(NSNotification *)notification
+{
+    NSString *sampleKey = [notification.userInfo objectForKey:@"sampleKey"];
+    Sample *sample = (Sample *)[dataStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]];
+    
+    NSNumber *count = [sample.attributes objectForKey:SMP_NUM_SPLITS];
+    count = [NSNumber numberWithInt:[count intValue] - 1];
+    [sample.attributes setObject:count.stringValue forKey:SMP_NUM_SPLITS];
+    [dataStore updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
+    
+    [tableViewController updateDisplayedSamples];
 }
 
 
