@@ -41,10 +41,7 @@
     [scrollView setDocumentView:self.view];
     [self setView:scrollView];
     
-    NSArray *sampleImages = [SampleImageUtils imagesForSample:sample
-                                                 inImageStore:[SampleImageUtils defaultImageStore]];
-    if (sampleImages.count != 0)
-        [self.imageCell setImage:[sampleImages firstObject]];
+    [self performSelectorInBackground:@selector(retrieveImagesForSample:) withObject:sample];
     
     [self setupGoogleMapsHyperlink];
     
@@ -66,16 +63,21 @@
         [datePicker setEnabled:YES];
         [self setDateCollected:[NSDate dateWithNaturalLanguageString:[sample.attributes objectForKey:SMP_DATE_COLLECTED]]];
         
-        NSArray *sampleImages = [SampleImageUtils imagesForSample:sample
-                                                     inImageStore:[SampleImageUtils defaultImageStore]];
-        if (sampleImages.count != 0)
-            [self.imageCell setImage:[sampleImages firstObject]];
+        [self performSelectorInBackground:@selector(retrieveImagesForSample:) withObject:sample];
         
         [self addObserversToSelectedSample];
         [self setupGoogleMapsHyperlink];
         
         // Make sure hyperlinks are formatted
         [self performSelector:@selector(formatHyperlinks) withObject:nil afterDelay:0.0];
+    }
+}
+
+- (void)retrieveImagesForSample:(Sample *)aSample {
+    NSArray *sampleImages = [SampleImageUtils imagesForSample:aSample
+                                                 inImageStore:[SampleImageUtils defaultImageStore]];
+    if (sampleImages.count != 0) {
+        [self.imageCell setImage:[sampleImages firstObject]];
     }
 }
 
