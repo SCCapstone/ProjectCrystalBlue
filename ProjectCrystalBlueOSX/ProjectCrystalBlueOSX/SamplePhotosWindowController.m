@@ -67,12 +67,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
     if (imageKeys.count <= 0) {
         [currentImageKey setStringValue:@"No images yet!"];
-        [nextButton setEnabled:NO];
-        [previousButton setEnabled:NO];
+        [self previousAndNextButtonsAreEnabled:NO];
         [imageSelectionPopupButton setEnabled:NO];
     } else {
-        [nextButton setEnabled:YES];
-        [previousButton setEnabled:YES];
+        if (imageKeys.count <= 1) {
+            [self previousAndNextButtonsAreEnabled:NO];
+        } else {
+            [self previousAndNextButtonsAreEnabled:YES];
+        }
         [imageSelectionPopupButton setEnabled:YES];
         [imageSelectionPopupButton addItemsWithTitles:imageKeys];
         images = [SampleImageUtils imagesForSample:sample
@@ -89,6 +91,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [imageSelectionPopupButton selectItemAtIndex:index];
     [currentImageKey setStringValue:[imageKeys objectAtIndex:index]];
     [currentImageDisplay setImage:[images objectAtIndex:index]];
+}
+
+- (void)previousAndNextButtonsAreEnabled:(BOOL)areEnabled {
+    const CGFloat alphaValue = areEnabled ? 1.0 : 0.0;
+
+    [nextButton setEnabled:areEnabled];
+    [nextButton setAlphaValue:alphaValue];
+    [previousButton setEnabled:areEnabled];
+    [previousButton setAlphaValue:alphaValue];
 }
 
 - (IBAction)addPhoto:(id)sender {
