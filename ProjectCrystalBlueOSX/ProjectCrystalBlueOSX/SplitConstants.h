@@ -14,6 +14,7 @@ static NSString *const SPL_KEY = @"KEY";
 static NSString *const SPL_SAMPLE_KEY = @"SAMPLE_KEY";
 static NSString *const SPL_CURRENT_LOCATION = @"CURRENT_LOCATION";
 static NSString *const SPL_TAGS = @"TAGS";
+static NSString *const SPL_LAST_PROC = @"LAST_PROC";
 
 /* Attribute default values
  */
@@ -23,6 +24,7 @@ static NSString *const SPL_DEF_VAL_CURRENT_LOCATION = @"USC";
 
 // default tags is intentionally empty string, since a fresh split has had no procedures performed on it.
 static NSString *const SPL_DEF_VAL_TAGS = @"";
+static NSString *const SPL_DEF_VAL_LAST_PROC = @"";
 
 /*  Human readable attribute labels
  */
@@ -30,6 +32,7 @@ static NSString *const SPL_DISPLAY_KEY = @"Split Key";
 static NSString *const SPL_DISPLAY_SAMPLE_KEY = @"Original Sample";
 static NSString *const SPL_DISPLAY_CURRENT_LOCATION = @"Current Location";
 static NSString *const SPL_DISPLAY_TAGS = @"Procedure Log";
+static NSString *const SPL_DISPLAY_LAST_PROC = @"Last Procedure";
 
 @interface SplitConstants : NSObject
 
