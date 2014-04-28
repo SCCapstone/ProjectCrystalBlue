@@ -91,6 +91,11 @@
         NSString *date = [formatter stringFromDate:procedure.date];
         
         [history appendFormat:@"\u2022\t%@ on %@ by %@\n", procedureName, date, procedure.initials];
+        
+        if (i == procedureList.count-1) {
+            NSString *lastProc = [NSString stringWithFormat:@"%@ on %@ by %@", procedureName, date, procedure.initials];
+            [split.attributes setObject:lastProc forKey:SPL_LAST_PROC];
+        }
     }
     
     [self.recentProceduresTextField setAttributedStringValue:[[NSAttributedString alloc] initWithString:history attributes:@{ NSParagraphStyleAttributeName:paragraphStyle }]];

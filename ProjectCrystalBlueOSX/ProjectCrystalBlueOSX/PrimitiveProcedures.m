@@ -48,6 +48,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                          inTable:tableName];
     [newAttributes setObject:key forKey:SPL_KEY];
     [newAttributes setObject:@"" forKey:SPL_TAGS];
+    [newAttributes setObject:@"" forKey:SPL_LAST_PROC];
     Split *newSplit = [[Split alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
     [store putLibraryObject:newSplit IntoTable:tableName];
@@ -63,12 +64,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     
     NSString *oldTagList = [[modifiedSplit attributes] objectForKey:SPL_TAGS];
     ProcedureRecord *newProcedureRecord = [[ProcedureRecord alloc] initWithTag:tag
-                                                       andInitials:initials];
+                                                                   andInitials:initials];
     
     NSString *newTagList = [self.class appendTagToString:oldTagList
                                                tagString:[newProcedureRecord description]];
     
     [[modifiedSplit attributes] setObject:newTagList forKey:SPL_TAGS];
+    [[modifiedSplit attributes] setObject:[self lastProcedureFromProcedureRecord:newProcedureRecord] forKey:SPL_LAST_PROC];
     [store updateLibraryObject:modifiedSplit IntoTable:tableName];
 }
 
@@ -93,6 +95,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                                          inTable:tableName];
     [newAttributes setObject:key forKey:SPL_KEY];
     [newAttributes setObject:newTagList forKey:SPL_TAGS];
+    [newAttributes setObject:[self lastProcedureFromProcedureRecord:newProcedureRecord] forKey:SPL_LAST_PROC];
     Split *newSplit = [[Split alloc] initWithKey:key AndWithAttributeDictionary:newAttributes];
     
     [store putLibraryObject:newSplit IntoTable:tableName];
@@ -159,6 +162,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     NSString *randomCharacters = [[[[NSUUID alloc] init] UUIDString] substringToIndex:4];
     
     return [strippedString stringByAppendingFormat:@"%@.%3d", randomCharacters, 1];
+}
+
++ (NSString *)lastProcedureFromProcedureRecord:(ProcedureRecord *)procedureRecord
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yy"];
+    
+    NSString *procedureName = [ProcedureNameConstants procedureNameForTag:procedureRecord.tag];
+    NSString *date = [formatter stringFromDate:procedureRecord.date];
+    return [NSString stringWithFormat:@"%@ on %@ by %@", procedureName, date, procedureRecord.initials];
 }
 
 @end
