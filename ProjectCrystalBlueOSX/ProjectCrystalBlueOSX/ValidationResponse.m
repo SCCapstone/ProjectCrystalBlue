@@ -7,6 +7,7 @@
 //
 
 #import "ValidationResponse.h"
+#import "PCBLogWrapper.h"
 
 @implementation ValidationResponse
 

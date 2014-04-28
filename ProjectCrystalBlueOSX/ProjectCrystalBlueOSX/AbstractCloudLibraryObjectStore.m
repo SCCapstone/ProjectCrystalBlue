@@ -7,6 +7,7 @@
 //
 
 #import "AbstractCloudLibraryObjectStore.h"
+#import "PCBLogWrapper.h"
 
 @implementation AbstractCloudLibraryObjectStore
 

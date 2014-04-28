@@ -7,6 +7,7 @@
 //
 
 #import "Transaction.h"
+#import "PCBLogWrapper.h"
 
 @implementation Transaction
 

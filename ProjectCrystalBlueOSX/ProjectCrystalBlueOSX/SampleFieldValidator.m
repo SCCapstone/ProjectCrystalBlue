@@ -10,6 +10,7 @@
 #import "PrimitiveFieldValidator.h"
 #import "ValidationResponse.h"
 #import "SampleConstants.h"
+#import "PCBLogWrapper.h"
 
 @implementation SampleFieldValidator
 

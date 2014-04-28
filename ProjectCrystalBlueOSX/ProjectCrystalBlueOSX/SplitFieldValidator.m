@@ -12,6 +12,7 @@
 #import "ValidationResponse.h"
 #import "SplitConstants.h"
 #import "SampleConstants.h"
+#import "PCBLogWrapper.h"
 
 @implementation SplitFieldValidator
 

@@ -8,6 +8,7 @@
 
 #import "ProcedureFieldValidator.h"
 #import "PrimitiveFieldValidator.h"
+#import "PCBLogWrapper.h"
 
 @implementation ProcedureFieldValidator
 

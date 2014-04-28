@@ -8,13 +8,7 @@
 
 #import "LibraryObjectCSVReader.h"
 #import "LibraryObject.h"
-#import "DDLog.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
+#import "PCBLogWrapper.h"
 
 /** 
  *  CSVParserDelegate is a "private" class to serve as the CHCSVParserDelegate.

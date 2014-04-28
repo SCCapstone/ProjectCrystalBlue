@@ -9,6 +9,7 @@
 #import "PDFRenderer.h"
 #import "LibraryObject.h"
 #import "FileSystemUtils.h"
+#import "PCBLogWrapper.h"
 
 @implementation PDFRenderer
 

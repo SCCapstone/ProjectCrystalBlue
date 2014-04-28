@@ -11,6 +11,7 @@
 #import "SampleFieldValidator.h"
 #import "ValidationResponse.h"
 #import "AbstractCloudLibraryObjectStore.h"
+#import "PCBLogWrapper.h"
 
 @interface BatchEditWindowController ()
 

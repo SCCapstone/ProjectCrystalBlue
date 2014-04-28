@@ -12,6 +12,7 @@
 #import "Sample.h"
 #import "AbstractCloudLibraryObjectStore.h"
 #import "GenerateQRCode.h"
+#import "PCBLogWrapper.h"
 
 @interface AddNewSampleWindowController ()
 

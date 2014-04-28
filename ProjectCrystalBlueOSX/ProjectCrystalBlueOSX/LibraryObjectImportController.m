@@ -8,6 +8,7 @@
 
 #import "LibraryObjectImportController.h"
 #import "LoadingSheet.h"
+#import "PCBLogWrapper.h"
 
 @implementation LibraryObjectImportController
 

@@ -8,6 +8,7 @@
 
 #import "PrimitiveFieldValidator.h"
 #import "AbstractLibraryObjectStore.h"
+#import "PCBLogWrapper.h"
 
 @implementation PrimitiveFieldValidator
 

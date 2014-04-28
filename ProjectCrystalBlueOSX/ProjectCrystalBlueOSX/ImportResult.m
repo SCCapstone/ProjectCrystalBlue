@@ -7,6 +7,7 @@
 //
 
 #import "ImportResult.h"
+#import "PCBLogWrapper.h"
 
 #define SUCCESS_MESSAGE @"Import complete"
 #define UNSUCCESS_MESSAGE @"Import was unsuccessful"

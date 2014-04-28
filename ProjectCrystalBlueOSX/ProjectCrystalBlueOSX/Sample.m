@@ -9,6 +9,7 @@
 #import "Sample.h"
 #import "SampleFieldValidator.h"
 #import "ValidationResponse.h"
+#import "PCBLogWrapper.h"
 
 @implementation Sample
 

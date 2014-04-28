@@ -7,6 +7,7 @@
 //
 
 #import "TransactionConstants.h"
+#import "PCBLogWrapper.h"
 
 /* Transaction table name
  */

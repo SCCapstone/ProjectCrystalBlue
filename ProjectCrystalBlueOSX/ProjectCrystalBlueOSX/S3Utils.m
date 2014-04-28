@@ -9,6 +9,7 @@
 //
 
 #import "S3Utils.h"
+#import "PCBLogWrapper.h"
 
 NSString *const MIME_JPEG = @"image/jpeg";
 NSString *const MIME_PNG = @"image/png";

@@ -8,6 +8,7 @@
 
 #import "AbstractLibraryObjectStore.h"
 #import "LibraryObject.h"
+#import "PCBLogWrapper.h"
 
 @implementation AbstractLibraryObjectStore
 

@@ -9,23 +9,13 @@
 #import "AppDelegate.h"
 #import "SamplesWindowController.h"
 #import "FileSystemUtils.h"
-#import "DDLog.h"
-#import "DDTTYLogger.h"
-#import "DDASLLogger.h"
-#import "DDFileLogger.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
+#import "PCBLogWrapper.h"
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [PCBLogWrapper setupLog];
     NSDate *now = [[NSDate alloc] init];
     DDLogInfo(@"Launched app %@", now);
     

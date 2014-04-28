@@ -7,13 +7,7 @@
 //
 
 #import "LocalTransactionCache.h"
-#import "DDLog.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
+#import "PCBLogWrapper.h"
 
 /**
  *  A wrapper class for a set of "dirty" transactions that have not been applied to a central database or other cloud service.

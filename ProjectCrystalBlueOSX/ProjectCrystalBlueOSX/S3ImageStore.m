@@ -13,13 +13,7 @@
 #import "ImageUtils.h"
 #import "LocalImageStore.h"
 #import "LocalEncryptedCredentialsProvider.h"
-#import "DDLog.h"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
+#import "PCBLogWrapper.h"
 
 #define CLASS_NAME @"S3ImageStore"
 #define BUCKET_NAME @"project-crystal-blue-test"

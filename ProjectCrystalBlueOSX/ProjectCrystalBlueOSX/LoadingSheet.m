@@ -7,6 +7,7 @@
 //
 
 #import "LoadingSheet.h"
+#import "PCBLogWrapper.h"
 
 @interface LoadingSheet ()
 

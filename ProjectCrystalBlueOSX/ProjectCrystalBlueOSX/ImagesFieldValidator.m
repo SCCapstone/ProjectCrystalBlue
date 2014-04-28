@@ -8,6 +8,7 @@
 
 #import "ImagesFieldValidator.h"
 #import "PrimitiveFieldValidator.h"
+#import "PCBLogWrapper.h"
 
 #define ILLEGAL_TAG_CHARACTERS @"_'."
 

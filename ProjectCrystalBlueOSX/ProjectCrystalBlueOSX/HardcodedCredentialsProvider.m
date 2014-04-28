@@ -7,6 +7,7 @@
 //
 
 #import "HardcodedCredentialsProvider.h"
+#import "PCBLogWrapper.h"
 
 // TEMPORARILY HARD-CODING CREDENTIALS for test purposes.
 // This is obviously a huge security issue and cannot be in the Beta version.

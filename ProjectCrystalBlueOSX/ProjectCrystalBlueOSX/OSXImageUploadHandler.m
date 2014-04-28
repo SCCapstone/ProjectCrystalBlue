@@ -11,6 +11,7 @@
 #import "AbstractImageStore.h"
 #import "LoadingSheet.h"
 #import "SampleImageUtils.h"
+#import "PCBLogWrapper.h"
 
 @implementation OSXImageUploadHandler
 
