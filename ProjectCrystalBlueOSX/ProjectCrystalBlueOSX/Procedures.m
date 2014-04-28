@@ -126,19 +126,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
  is created with the up. For down procedures the current split gets the up and a new split is created with the down
  **/
 
-+ (void)geminiSplit:(Split *)split
++ (void)gemeniSplit:(Split *)split
         withInitials:(NSString *)initials
              inStore:(AbstractLibraryObjectStore *)store
 {
     DDLogDebug(@"%s", __func__);
     [PrimitiveProcedures appendToCloneOfSplit:split
-                                     tagString:PROC_TAG_GEMINI_DOWN
+                                     tagString:PROC_TAG_GEMENI_DOWN
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SplitConstants tableName]];
 
     [PrimitiveProcedures appendToSplitInPlace:split
-                                     tagString:PROC_TAG_GEMINI_UP
+                                     tagString:PROC_TAG_GEMENI_UP
                                   withInitials:initials
                                      intoStore:store
                                 intoTableNamed:[SplitConstants tableName]];

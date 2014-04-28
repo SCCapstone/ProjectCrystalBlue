@@ -21,12 +21,19 @@
 @interface LibraryObjectImportController : NSObject <OSXFileSelectorDelegate>
 
 @property id<LibraryObjectFileReader> fileReader;
-@property id<ImportResultReporter> importResultReporter;
+@property NSObject<ImportResultReporter> *importResultReporter;
 @property AbstractLibraryObjectStore *libraryObjectStore;
 @property NSString *tableName;
 
 /// Check that all LibraryObjects have the correct attributes and the attribute values are valid.
 /// This should not be called by external classes - use the proper validation utility classes.
 -(ImportResult *)validateObjects:(NSArray *)libraryObjects;
+
+/// Check that the library object has the expected headers. The results will be placed in the
+/// result argument. This should not be called by external classes, only by subclasses of
+/// LibraryObjectImportController.
+-(void)validateHeadersInRepresentativeObject:(LibraryObject *)representative
+                      againstExpectedHeaders:(NSArray *)expectedHeaders
+                            withImportResult:(ImportResult *)result;
 
 @end

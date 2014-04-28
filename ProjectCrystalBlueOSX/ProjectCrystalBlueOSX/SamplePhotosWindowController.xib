@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
@@ -20,23 +20,24 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="389" y="285" width="650" height="400"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="650" height="400"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yjB-d8-QuB">
-                        <rect key="frame" x="17" y="58" width="616" height="311"/>
+                        <rect key="frame" x="17" y="58" width="616" height="312"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" id="u8z-AX-19u"/>
                     </imageView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NOa-73-uvE">
-                        <rect key="frame" x="543" y="13" width="93" height="32"/>
+                        <rect key="frame" x="606" y="20" width="24" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="81" id="VBM-PX-Cbq"/>
+                            <constraint firstAttribute="height" constant="21" id="2lB-Lt-R6G"/>
+                            <constraint firstAttribute="width" constant="24" id="uXR-5U-EPE"/>
                         </constraints>
-                        <buttonCell key="cell" type="push" title="Next" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="944-Pp-YAd">
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRightFacingTriangleTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="944-Pp-YAd">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent"></string>
@@ -46,12 +47,13 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aEk-cv-4SD">
-                        <rect key="frame" x="14" y="13" width="93" height="32"/>
+                        <rect key="frame" x="20" y="20" width="24" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="81" id="7Az-jg-mPy"/>
+                            <constraint firstAttribute="height" constant="21" id="ISs-wD-Opc"/>
+                            <constraint firstAttribute="width" constant="24" id="hc5-ND-Gxv"/>
                         </constraints>
-                        <buttonCell key="cell" type="push" title="Previous" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5tw-BR-AZl">
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSLeftFacingTriangleTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="5tw-BR-AZl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent"></string>
@@ -77,8 +79,11 @@
                         </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Apl-KJ-71F">
-                        <rect key="frame" x="18" y="374" width="614" height="17"/>
+                        <rect key="frame" x="18" y="375" width="614" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="ZhG-UX-VPT"/>
+                        </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Current Image Key" placeholderString="no images" id="dml-nH-Lns">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -87,21 +92,19 @@
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Apl-KJ-71F" secondAttribute="trailing" constant="20" id="2CI-GZ-JIT"/>
-                    <constraint firstAttribute="bottom" secondItem="kov-26-vDr" secondAttribute="bottom" constant="20" id="4Kq-s1-9II"/>
-                    <constraint firstAttribute="bottom" secondItem="NOa-73-uvE" secondAttribute="bottom" constant="20" id="6MN-b8-uyo"/>
-                    <constraint firstAttribute="trailing" secondItem="NOa-73-uvE" secondAttribute="trailing" constant="20" id="BRz-ao-dZD"/>
-                    <constraint firstItem="NOa-73-uvE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kov-26-vDr" secondAttribute="trailing" constant="9" id="Tsf-K7-0db"/>
-                    <constraint firstItem="kov-26-vDr" firstAttribute="top" secondItem="yjB-d8-QuB" secondAttribute="bottom" constant="20" id="UGg-uI-cOF"/>
-                    <constraint firstAttribute="trailing" secondItem="yjB-d8-QuB" secondAttribute="trailing" constant="20" id="aBT-9d-d2z"/>
-                    <constraint firstAttribute="centerX" secondItem="kov-26-vDr" secondAttribute="centerX" id="coH-cc-w8t"/>
-                    <constraint firstItem="yjB-d8-QuB" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="gNs-9L-K88"/>
-                    <constraint firstItem="Apl-KJ-71F" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="grG-lv-zr4"/>
-                    <constraint firstItem="yjB-d8-QuB" firstAttribute="top" secondItem="Apl-KJ-71F" secondAttribute="bottom" constant="8" id="iFN-Ke-49n"/>
-                    <constraint firstItem="Apl-KJ-71F" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="9" id="lQl-zL-Tqq"/>
-                    <constraint firstItem="aEk-cv-4SD" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="qRF-w3-0gL"/>
-                    <constraint firstAttribute="bottom" secondItem="aEk-cv-4SD" secondAttribute="bottom" constant="20" id="y6z-J7-pVW"/>
-                    <constraint firstItem="kov-26-vDr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aEk-cv-4SD" secondAttribute="trailing" constant="9" id="zSV-Yv-Egs"/>
+                    <constraint firstAttribute="trailing" secondItem="yjB-d8-QuB" secondAttribute="trailing" constant="20" id="ABM-v8-M1z"/>
+                    <constraint firstAttribute="bottom" secondItem="NOa-73-uvE" secondAttribute="bottom" constant="20" id="HQ5-oI-Za8"/>
+                    <constraint firstAttribute="centerX" secondItem="kov-26-vDr" secondAttribute="centerX" id="P3o-uJ-r8W"/>
+                    <constraint firstAttribute="bottom" secondItem="aEk-cv-4SD" secondAttribute="bottom" constant="20" id="P4S-PB-wfd"/>
+                    <constraint firstItem="yjB-d8-QuB" firstAttribute="top" secondItem="Apl-KJ-71F" secondAttribute="bottom" constant="8" id="RLK-A0-kwd"/>
+                    <constraint firstAttribute="bottom" secondItem="kov-26-vDr" secondAttribute="bottom" constant="20" id="RP5-Bl-emK"/>
+                    <constraint firstItem="Apl-KJ-71F" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="SW2-5T-mSQ"/>
+                    <constraint firstItem="aEk-cv-4SD" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="dXb-DJ-uKx"/>
+                    <constraint firstAttribute="trailing" secondItem="Apl-KJ-71F" secondAttribute="trailing" constant="20" id="fHC-IK-zAO"/>
+                    <constraint firstItem="kov-26-vDr" firstAttribute="top" secondItem="yjB-d8-QuB" secondAttribute="bottom" constant="20" id="u2l-n4-tEz"/>
+                    <constraint firstItem="yjB-d8-QuB" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="u7B-fa-83Z"/>
+                    <constraint firstAttribute="trailing" secondItem="NOa-73-uvE" secondAttribute="trailing" constant="20" id="uxh-RS-zWo"/>
+                    <constraint firstItem="Apl-KJ-71F" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="8" id="yWD-zx-42V"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="7AA781FD-081E-4158-95C3-338666D598A4" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="kXT-W4-dFd">
@@ -129,6 +132,8 @@
     </objects>
     <resources>
         <image name="NSAddTemplate" width="8" height="8"/>
+        <image name="NSLeftFacingTriangleTemplate" width="9" height="9"/>
+        <image name="NSRightFacingTriangleTemplate" width="9" height="9"/>
         <image name="NSTrashEmpty" width="32" height="32"/>
     </resources>
 </document>

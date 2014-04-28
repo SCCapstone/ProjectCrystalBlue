@@ -79,7 +79,7 @@
  *  Split was considered gemeni up. This creates a new split and adds this attribute and appends down
  *  to the current split.
  */
-+ (void)geminiSplit:(Split *)split
++ (void)gemeniSplit:(Split *)split
         withInitials:(NSString *)initials
              inStore:(AbstractLibraryObjectStore *)store;
 

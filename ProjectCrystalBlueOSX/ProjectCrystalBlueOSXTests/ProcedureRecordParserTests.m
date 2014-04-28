@@ -97,14 +97,14 @@
                                     TAG_DELIMITER,
                                     [[ProcedureRecord alloc] initWithTag:CUSTOM_TAG02 andInitials:initials],
                                     TAG_DELIMITER,
-                                    [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMINI_DOWN andInitials:initials]];
+                                    [[ProcedureRecord alloc] initWithTag:PROC_TAG_GEMENI_DOWN andInitials:initials]];
     
     NSArray *nameArray = [ProcedureRecordParser nameArrayFromRecordList:commaSeparatedRecords];
     
     XCTAssertEqualObjects([nameArray objectAtIndex:0], expectedNameForCustomTag01);
     XCTAssertEqualObjects([nameArray objectAtIndex:1], PROC_NAME_BILLET);
     XCTAssertEqualObjects([nameArray objectAtIndex:2], expectedNameForCustomTag02);
-    XCTAssertEqualObjects([nameArray objectAtIndex:3], PROC_NAME_GEMINI_DOWN);
+    XCTAssertEqualObjects([nameArray objectAtIndex:3], PROC_NAME_GEMENI_DOWN);
 }
 
 - (void)testMostRecentProcedure

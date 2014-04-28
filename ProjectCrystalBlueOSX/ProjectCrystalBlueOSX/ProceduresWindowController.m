@@ -106,8 +106,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [Procedures jawCrushSplit:split
                       withInitials:initialsTextField.stringValue
                            inStore:dataStore];
-    } else if ([longNameGemini isEqualToString:selectedProcedureName]) {
-        [Procedures geminiSplit:split
+    } else if ([longNameGemeni isEqualToString:selectedProcedureName]) {
+        [Procedures gemeniSplit:split
                     withInitials:initialsTextField.stringValue
                          inStore:dataStore];
     } else if ([longNamePan isEqualToString:selectedProcedureName]) {
@@ -177,9 +177,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [procedureSelector addItemWithTitle:longNameBillet];
     [procedureSelector addItemWithTitle:longNameThinSect];
     [procedureSelector addItemWithTitle:longNameTrim];
-    [procedureSelector addItemWithTitle:longNamePulv];
     [procedureSelector addItemWithTitle:longNameJawCrush];
-    [procedureSelector addItemWithTitle:longNameGemini];
+    [procedureSelector addItemWithTitle:longNamePulv];
+    [procedureSelector addItemWithTitle:longNameGemeni];
     [procedureSelector addItemWithTitle:longNamePan];
     [procedureSelector addItemWithTitle:longNameSieve10];
     [procedureSelector addItemWithTitle:longNameHL330];

@@ -31,6 +31,10 @@
     BOOL hasValidationErrors = NO;
     NSMutableSet *keysEncountered = [[NSMutableSet alloc] initWithCapacity:libraryObjects.count];
 
+    [self validateHeadersInRepresentativeObject:[libraryObjects firstObject]
+                         againstExpectedHeaders:[SplitConstants attributeNames]
+                               withImportResult:result];
+
     for (Split *split in libraryObjects) {
         if ([keysEncountered containsObject:split.key]) {
             [result.duplicateKeys addObject:split.key];

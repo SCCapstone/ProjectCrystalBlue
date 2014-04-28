@@ -31,7 +31,7 @@ static NSString *longNameThinSect  = @"Thin-section from split";
 static NSString *longNameTrim      = @"Trim split";
 static NSString *longNamePulv      = @"Pulverize";
 static NSString *longNameJawCrush  = @"Jaw-crush";
-static NSString *longNameGemini    = @"Gemini separation";
+static NSString *longNameGemeni    = @"Gemeni separation";
 static NSString *longNamePan       = @"Gold-pan separation";
 static NSString *longNameSieve10   = @"Sieve 10mm separation";
 static NSString *longNameHL330     = @"Heavy Liquid (SG = 3.30) separation";
