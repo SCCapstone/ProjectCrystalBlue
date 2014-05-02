@@ -65,58 +65,70 @@
                 <menuItem title="File" id="83">
                     <menu key="submenu" title="File" id="81">
                         <items>
-                            <menuItem title="New" keyEquivalent="n" id="82">
+                            <menuItem title="New" keyEquivalent="n" id="WSK-aa-Fwe">
                                 <connections>
-                                    <action selector="newDocument:" target="-1" id="373"/>
+                                    <action selector="newLibraryObject:" target="-1" id="lVO-4H-mgK"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open…" keyEquivalent="o" id="72">
+                            <menuItem title="Batch Edit" keyEquivalent="e" id="znn-E4-Kkn">
                                 <connections>
-                                    <action selector="openDocument:" target="-1" id="374"/>
+                                    <action selector="batchEdit:" target="-1" id="1hs-zU-nvp"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open Recent" id="124">
-                                <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="125">
-                                    <items>
-                                        <menuItem title="Clear Menu" id="126">
-                                            <connections>
-                                                <action selector="clearRecentDocuments:" target="-1" id="127"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
+                            <menuItem title="Delete" id="J9X-80-1wM">
+                                <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="deleteLibraryObject:" target="-1" id="odN-fE-obh"/>
+                                </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="79">
+                            <menuItem isSeparatorItem="YES" id="jwY-3B-1gz">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="View Splits" keyEquivalent="i" id="rZx-92-zKH">
+                                <connections>
+                                    <action selector="viewSplits:" target="-1" id="lIB-9S-tqQ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="View Photos" keyEquivalent="d" id="3XV-Q8-iW6">
+                                <connections>
+                                    <action selector="samplePhotos:" target="-1" id="Iwa-gh-PsG"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="fQN-zC-NdS">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Perform Procedure" keyEquivalent="p" id="H2O-n4-EdG">
+                                <connections>
+                                    <action selector="performProcedure:" target="-1" id="HDS-ft-LLm"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="cXR-PE-waR">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Sync" keyEquivalent="s" id="IrL-en-Rng">
+                                <connections>
+                                    <action selector="sync:" target="-1" id="p1U-Cx-xsN"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Import/Export" keyEquivalent="o" id="78">
+                                <connections>
+                                    <action selector="importExport:" target="-1" id="lOj-Cu-oJ9"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Print Barcodes" keyEquivalent="p" id="yhF-aJ-ccb">
+                                <connections>
+                                    <action selector="printBarcodes:" target="-1" id="8k5-Jc-ssd"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="h6Y-RN-lib">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Close" keyEquivalent="w" id="73">
                                 <connections>
                                     <action selector="performClose:" target="-1" id="193"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Save…" keyEquivalent="s" id="75">
-                                <connections>
-                                    <action selector="saveDocument:" target="-1" id="362"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Revert to Saved" id="112">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="revertDocumentToSaved:" target="-1" id="364"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="74">
-                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                            </menuItem>
-                            <menuItem title="Page Setup..." keyEquivalent="P" id="77">
-                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
-                                <connections>
-                                    <action selector="runPageLayout:" target="-1" id="87"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Print…" keyEquivalent="p" id="78">
-                                <connections>
-                                    <action selector="print:" target="-1" id="86"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -198,7 +210,8 @@
                                                 <action selector="performFindPanelAction:" target="-1" id="488"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Use Selection for Find" tag="7" keyEquivalent="e" id="221">
+                                        <menuItem title="Use Selection for Find" tag="7" id="221">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="performFindPanelAction:" target="-1" id="489"/>
                                             </connections>
@@ -296,29 +309,28 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Database" id="UO5-SE-srq">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Database" id="Ut7-cn-LBJ">
+                <menuItem title="Database" id="7r2-6E-NhQ">
+                    <menu key="submenu" title="Database" id="MGY-oX-xxH">
                         <items>
-                            <menuItem title="Clear Local Data" id="XMj-uD-iO4">
+                            <menuItem title="Show Images In Finder" id="ADF-bZ-2lG">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="clearLocalDatabase:" target="494" id="FMK-na-t80"/>
+                                    <action selector="showImagesInFinder:" target="494" id="vmC-zn-Jh0"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Change Amazon Credentials" id="cWR-mO-6qV">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="changeAmazonCredentials:" target="494" id="u8T-sp-43b"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="KfF-Z2-ZG0">
+                            <menuItem isSeparatorItem="YES" id="IVx-3S-QX8">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Show Images In Finder" id="1jG-kH-z1f">
+                            <menuItem title="Change Amazon Credentials" id="CAB-CG-fmF">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="showImagesInFinder:" target="494" id="fsR-c3-pIQ"/>
+                                    <action selector="changeAmazonCredentials:" target="494" id="Q8y-bc-raF"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Clear Local Data" id="TzC-wN-Wbh">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="clearLocalDatabase:" target="494" id="20K-Mo-tAf"/>
                                 </connections>
                             </menuItem>
                         </items>

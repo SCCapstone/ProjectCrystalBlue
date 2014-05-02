@@ -55,12 +55,12 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="BCDD0CD6-D906-47A8-A131-480F54695904" label="New Blank Split" paletteLabel="New Blank Split" tag="-1" image="NSAddTemplate" id="S9x-Xk-mm5">
                         <connections>
-                            <action selector="newBlankSplit:" target="-2" id="f2J-jr-OVp"/>
+                            <action selector="newLibraryObject:" target="-2" id="Ve7-Ym-pHs"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="CEA823AF-C6F2-4628-A274-69FA1D101699" label="Delete Split" paletteLabel="Delete Split" tag="-1" image="NSTrashEmpty" id="MUe-gF-Mrw">
                         <connections>
-                            <action selector="deleteSplit:" target="-2" id="u7v-34-eZD"/>
+                            <action selector="deleteLibraryObject:" target="-2" id="Rmm-QN-Aan"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="B3FF8370-999F-4C54-9869-C71CB2D59881" label="Perform Procedure" paletteLabel="Perform Procedure" tag="-1" image="NSAdvanced" id="H5L-ZI-Pgh">

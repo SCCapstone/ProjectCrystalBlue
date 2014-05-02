@@ -18,9 +18,9 @@
 @property (weak) IBOutlet NSToolbarItem *syncToolbarButton;
 
 // Toolbar buttons
-- (IBAction)openAddNewSamplesWindow:(id)sender;
-- (IBAction)openBatchEditSamplesWindow:(id)sender;
-- (IBAction)deleteSample:(id)sender;
+- (IBAction)newLibraryObject:(id)sender;
+- (IBAction)batchEdit:(id)sender;
+- (IBAction)deleteLibraryObject:(id)sender;
 - (IBAction)viewSplits:(id)sender;
 - (IBAction)samplePhotos:(id)sender;
 - (IBAction)importExport:(id)sender;

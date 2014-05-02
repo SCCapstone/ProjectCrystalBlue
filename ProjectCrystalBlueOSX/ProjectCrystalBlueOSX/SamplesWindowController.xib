@@ -56,7 +56,7 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="A6E67A22-E9F0-4448-BD6D-156FC295DD01" label="New Sample" paletteLabel="New Sample" tag="-1" image="NSAddTemplate" id="IDp-6J-EK2">
                         <connections>
-                            <action selector="openAddNewSamplesWindow:" target="-2" id="Gaj-4e-vmK"/>
+                            <action selector="newLibraryObject:" target="-2" id="NKW-Au-Jhp"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="1EED496A-25FD-4814-BCFB-8F6044672FA9" label="View Splits" paletteLabel="View Splits" tag="-1" image="NSListViewTemplate" id="CAn-ip-JCw">
@@ -71,7 +71,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="DCEC0130-B303-427A-98C8-1F81F63361A6" label="Delete Sample" paletteLabel="Delete Sample" tag="-1" image="TrashIcon" id="ZCp-V6-AfB">
                         <connections>
-                            <action selector="deleteSample:" target="-2" id="zaL-Qs-EVE"/>
+                            <action selector="deleteLibraryObject:" target="-2" id="GZf-4K-0HI"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="F102EBD6-C6B6-4EE6-9E62-601826809442" label="Sync" paletteLabel="Sync" tag="-1" image="NSMobileMe" id="wIw-fV-viq">
@@ -104,7 +104,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="9F92BCAF-A79E-4B8D-9CA3-457E0965815F" label="Batch Edit" paletteLabel="Batch Edit" tag="-1" image="AppleScript Editor" id="YTC-3G-okV">
                         <connections>
-                            <action selector="openBatchEditSamplesWindow:" target="-2" id="bUx-d5-4e9"/>
+                            <action selector="batchEdit:" target="-2" id="wcP-50-ccv"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="06065340-57C2-41A6-AD83-9BA6DE02F35E" label="Print Barcodes" paletteLabel="Print Barcodes" tag="-1" image="Printer" id="uuc-d3-ASc">

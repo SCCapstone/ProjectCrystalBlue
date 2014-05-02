@@ -20,8 +20,8 @@
 @property Sample *sample;
 
 // Toolbar actions
-- (IBAction)newBlankSplit:(id)sender;
-- (IBAction)deleteSplit:(id)sender;
+- (IBAction)newLibraryObject:(id)sender;
+- (IBAction)deleteLibraryObject:(id)sender;
 - (IBAction)performProcedure:(id)sender;
 - (IBAction)importExport:(id)sender;
 - (IBAction)printBarcodes:(id)sender;

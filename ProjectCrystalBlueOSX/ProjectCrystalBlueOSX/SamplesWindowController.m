@@ -195,7 +195,7 @@
 /*  Toolbar actions
  */
 
-- (IBAction)openAddNewSamplesWindow:(id)sender
+- (IBAction)newLibraryObject:(id)sender
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     
@@ -206,7 +206,7 @@
     [activeWindowControllers addObject:addNewSampleWindowController];
 }
 
-- (IBAction)openBatchEditSamplesWindow:(id)sender
+- (IBAction)batchEdit:(id)sender
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     
@@ -223,7 +223,7 @@
     [activeWindowControllers addObject:batchEditSampleWindowController];
 }
 
-- (IBAction)deleteSample:(id)sender
+- (IBAction)deleteLibraryObject:(id)sender
 {
     DDLogDebug(@"%@: %s was called", NSStringFromClass(self.class), __PRETTY_FUNCTION__);
     

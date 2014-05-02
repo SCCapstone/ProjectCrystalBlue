@@ -117,7 +117,7 @@
 /*  Toolbar actions
  */
 
-- (void)newBlankSplit:(id)sender
+- (IBAction)newLibraryObject:(id)sender
 {
     DDLogDebug(@"%s", __PRETTY_FUNCTION__);
     
@@ -142,7 +142,7 @@
     [tableViewController addSplit:split];
 }
 
-- (void)deleteSplit:(id)sender
+- (IBAction)deleteLibraryObject:(id)sender
 {
     DDLogDebug(@"%s", __PRETTY_FUNCTION__);
     
@@ -201,7 +201,7 @@
                          }];
 }
 
-- (void)performProcedure:(id)sender
+- (IBAction)performProcedure:(id)sender
 {
     DDLogDebug(@"%s", __PRETTY_FUNCTION__);
     
@@ -220,7 +220,7 @@
     [[proceduresWindowController window] makeKeyAndOrderFront:self];
 }
 
-- (void)importExport:(id)sender
+- (IBAction)importExport:(id)sender
 {
     NSAlert *importExportOptions = [[NSAlert alloc] init];
     [importExportOptions setAlertStyle:NSInformationalAlertStyle];
@@ -284,7 +284,7 @@
     [PDFRenderer printQRWithLibraryObjects:selectedSplits WithWindow:self.window];
 }
 
--(void) displayResults:(ImportResult *)result
+- (void)displayResults:(ImportResult *)result
 {
     // to-do
     [tableViewController updateDisplayedSplits];
