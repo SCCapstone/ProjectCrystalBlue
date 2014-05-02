@@ -8,7 +8,8 @@
 
 #import "PrimitiveProcedures.h"
 #import "ProcedureNameConstants.h"
-#import "SplitConstants.h"
+#import "Split.h"
+#import "Sample.h"
 #import "ProcedureRecord.h"
 #import "PCBLogWrapper.h"
 
@@ -47,9 +48,17 @@
     
     [store putLibraryObject:newSplit IntoTable:tableName];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"IncrementSampleNotification"
-                                                        object:self
-                                                      userInfo:@{ @"sampleKey": [newSplit sampleKey] }];
+    Sample *sample = (Sample *)[store getLibraryObjectForKey:[newSplit sampleKey] FromTable:[SampleConstants tableName]];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSNumber *count = [formatter numberFromString:[sample.attributes objectForKey:SMP_NUM_SPLITS]];
+    count = [NSNumber numberWithInt:[count intValue] + 1];
+    [sample.attributes setObject:count.stringValue forKey:SMP_NUM_SPLITS];
+    [store updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshSampleData"
+                                                        object:self];
 }
 
 +(void)appendToSplitInPlace:(Split *)modifiedSplit
@@ -70,10 +79,6 @@
     [[modifiedSplit attributes] setObject:newTagList forKey:SPL_TAGS];
     [[modifiedSplit attributes] setObject:[self lastProcedureFromProcedureRecord:newProcedureRecord] forKey:SPL_LAST_PROC];
     [store updateLibraryObject:modifiedSplit IntoTable:tableName];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"IncrementSampleNotification"
-                                                        object:self
-                                                      userInfo:@{ @"sampleKey": [modifiedSplit sampleKey] }];
 }
 
 +(void)appendToCloneOfSplit:(Split *)original
@@ -102,9 +107,17 @@
     
     [store putLibraryObject:newSplit IntoTable:tableName];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"IncrementSampleNotification"
-                                                        object:self
-                                                      userInfo:@{ @"sampleKey": [newSplit sampleKey] }];
+    Sample *sample = (Sample *)[store getLibraryObjectForKey:[newSplit sampleKey] FromTable:[SampleConstants tableName]];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSNumber *count = [formatter numberFromString:[sample.attributes objectForKey:SMP_NUM_SPLITS]];
+    count = [NSNumber numberWithInt:[count intValue] + 1];
+    [sample.attributes setObject:count.stringValue forKey:SMP_NUM_SPLITS];
+    [store updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshSampleData"
+                                                        object:self];
 }
 
 /**

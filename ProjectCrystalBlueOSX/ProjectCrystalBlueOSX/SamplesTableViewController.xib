@@ -68,7 +68,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.REGION"/>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="attributes.NUM_SPLITS"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
                                             <binding destination="HuF-wB-40k" name="value" keyPath="arrangedObjects.attributes.NUM_SPLITS" id="4Bw-mh-0kP"/>
@@ -555,6 +555,7 @@
                 <string>attributes.NOTES</string>
                 <string>attributes.HYPERLINKS</string>
                 <string>attributes.COLLECTED_BY</string>
+                <string>attributes.NUM_SPLITS</string>
             </declaredKeys>
             <connections>
                 <binding destination="-2" name="contentArray" keyPath="displayedSamples" id="hj3-i6-1kk"/>

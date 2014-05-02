@@ -53,9 +53,11 @@
         
         activeWindowControllers = [[NSMutableArray alloc] init];
         
-        // Add increment/decrement sample observers
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(incrementSampleCount:) name:@"IncrementSampleNotification" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(decrementSampleCount:) name:@"DecrementSampleNotification" object:nil];
+        // Refresh table data
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(refreshSampleData:)
+                                                     name:@"RefreshSampleData"
+                                                   object:nil];
     }
     
     return self;
@@ -182,29 +184,8 @@
 /*  NSNotifications
  */
 
-- (void)incrementSampleCount:(NSNotification *)notification
+- (void)refreshSampleData:(NSNotification *)notification
 {
-    NSString *sampleKey = [notification.userInfo objectForKey:@"sampleKey"];
-    Sample *sample = (Sample *)[dataStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]];
-    
-    NSNumber *count = [sample.attributes objectForKey:SMP_NUM_SPLITS];
-    count = [NSNumber numberWithInt:[count intValue] + 1];
-    [sample.attributes setObject:count.stringValue forKey:SMP_NUM_SPLITS];
-    [dataStore updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
-    
-    [tableViewController updateDisplayedSamples];
-}
-
-- (void)decrementSampleCount:(NSNotification *)notification
-{
-    NSString *sampleKey = [notification.userInfo objectForKey:@"sampleKey"];
-    Sample *sample = (Sample *)[dataStore getLibraryObjectForKey:sampleKey FromTable:[SampleConstants tableName]];
-    
-    NSNumber *count = [sample.attributes objectForKey:SMP_NUM_SPLITS];
-    count = [NSNumber numberWithInt:[count intValue] - 1];
-    [sample.attributes setObject:count.stringValue forKey:SMP_NUM_SPLITS];
-    [dataStore updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
-    
     [tableViewController updateDisplayedSamples];
 }
 

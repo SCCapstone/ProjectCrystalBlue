@@ -27,6 +27,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         displayedSplits = [[NSMutableArray alloc] init];
+        
+        // Subscribe to sample changes
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(refreshSampleData:)
+                                                     name:@"RefreshSampleData"
+                                                   object:nil];
     }
     return self;
 }
@@ -57,12 +63,25 @@
 - (void)deleteSplitWithKey:(NSString *)key
 {
     DDLogInfo(@"Deleting split with key \"%@\"", key);
-    Split *split = (Split *)[dataStore getLibraryObjectForKey:key FromTable:[SplitConstants tableName]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"DecrementSampleNotification"
-                                                        object:self
-                                                      userInfo:@{ @"sampleKey": [split sampleKey] }];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSNumber *count = [formatter numberFromString:[sample.attributes objectForKey:SMP_NUM_SPLITS]];
+    count = [NSNumber numberWithInt:[count intValue] - 1];
+    [sample.attributes setObject:count.stringValue forKey:SMP_NUM_SPLITS];
+    [dataStore updateLibraryObject:sample IntoTable:[SampleConstants tableName]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshSampleData"
+                                                        object:self];
     
     [dataStore deleteLibraryObjectWithKey:key FromTable:[SplitConstants tableName]];
+}
+
+- (void)refreshSampleData:(NSNotification *)notification
+{
+    [self setSample:(Sample *)[dataStore getLibraryObjectForKey:sample.key
+                                                      FromTable:[SampleConstants tableName]]];
 }
 
 - (void)updateDisplayedSplits

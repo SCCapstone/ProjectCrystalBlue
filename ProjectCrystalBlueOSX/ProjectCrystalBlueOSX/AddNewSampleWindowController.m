@@ -231,7 +231,7 @@
     [attributes setObject:self.collectedByTextField.stringValue             forKey:SMP_COLLECTED_BY];
     [attributes setObject:self.hyperlinkTextView.string                     forKey:SMP_HYPERLINKS];
     [attributes setObject:self.notesTextView.string                         forKey:SMP_NOTES];
-    [attributes setObject:@1                                                forKey:SMP_NUM_SPLITS];
+    [attributes setObject:@"1"                                              forKey:SMP_NUM_SPLITS];
 
     NSDate *dateCollected = self.dateCollectedPicker.dateValue;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
