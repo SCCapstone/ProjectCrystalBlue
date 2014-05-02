@@ -134,10 +134,9 @@
                                                       inTable:[SplitConstants tableName]];
         
         split = [[Split alloc] initWithKey:key
-                           AndWithAttributes:[SplitConstants attributeNames]
-                                   AndValues:[SplitConstants attributeDefaultValues]];
-        [split.attributes setObject:sample.key
-                              forKey:SPL_SAMPLE_KEY];
+                         AndWithAttributes:[SplitConstants attributeNames]
+                                 AndValues:[SplitConstants attributeDefaultValues]];
+        [split.attributes setObject:sample.key forKey:SPL_SAMPLE_KEY];
     }
     
     [tableViewController addSplit:split];

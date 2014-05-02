@@ -186,7 +186,9 @@
 
 - (void)refreshSampleData:(NSNotification *)notification
 {
+    NSIndexSet *selectedIndeces = [tableViewController.tableView selectedRowIndexes];
     [tableViewController updateDisplayedSamples];
+    [tableViewController.tableView selectRowIndexes:selectedIndeces byExtendingSelection:NO];
 }
 
 

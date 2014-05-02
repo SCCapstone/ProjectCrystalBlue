@@ -163,7 +163,7 @@
     
     previousNumber = [previousNumberAsString intValue];
     
-    for (int newNumber = previousNumber + 1; newNumber < 1000; ++newNumber) {
+    for (int newNumber = previousNumber; newNumber < 1000; newNumber++) {
         NSString *newKey = [strippedString stringByAppendingFormat:@".%03d", newNumber];
         if (![store libraryObjectExistsForKey:newKey FromTable:tableName]) {
             DDLogInfo(@"%@: Created new key %@ from key %@", NSStringFromClass(self.class), newKey, previousKey);
